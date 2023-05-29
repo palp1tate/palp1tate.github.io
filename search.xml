@@ -1,0 +1,1166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>flask框架</title>
+    <url>/2023/05/29/flask/</url>
+    <content><![CDATA[<h1 id="Flask精华总结，基于博客论坛"><a href="#Flask精华总结，基于博客论坛" class="headerlink" title="Flask精华总结，基于博客论坛"></a>Flask精华总结，基于博客论坛</h1><h2 id="1-Flask简介"><a href="#1-Flask简介" class="headerlink" title="1.Flask简介"></a>1.Flask简介</h2>
+
+​	Flask是一个轻量级的可定制框架，使用Python语言编写，较其他同类型框架更为灵活、轻便、安全且容易上手。它可以很好地结合[MVC模式](https://baike.baidu.com/item/MVC模式/713147?fromModule=lemma_inlink)进行开发，开发人员分工合作，小型团队在短时间内就可以完成功能丰富的中小型网站或[Web服务](https://baike.baidu.com/item/Web服务/2837593?fromModule=lemma_inlink)的实现。另外，Flask还有很强的定制性，用户可以根据自己的需求来添加相应的功能，在保持核心功能简单的同时实现功能的丰富与扩展，其强大的插件库可以让用户实现个性化的网站定制，开发出功能强大的网站。
+
+​	Flask是目前十分流行的web框架，采用Python编程语言来实现相关功能。它被称为微框架(microframework)，“微”并不是意味着把整个Web应用放入到一个Python文件，微框架中的“微”是指Flask旨在保持代码简洁且易于扩展，Flask框架的主要特征是核心构成比较简单，但具有很强的扩展性和兼容性，程序员可以使用Python语言快速实现一个网站或Web服务。一般情况下，它不会指定数据库和模板引擎等对象，用户可以根据需要自己选择各种数据库。Flask自身不会提供表单验证功能，在项目实施过程中可以自由配置，从而为应用程序开发提供数据库抽象层基础组件，支持进行表单数据合法性验证、文件上传处理、用户身份认证和数据库集成等功能。Flask主要包括Werkzeug和Jinja2两个核心函数库，它们分别负责业务处理和安全方面的功能，这些基础函数为web项目开发过程提供了丰富的基础组件。Werkzeug库十分强大，功能比较完善，支持URL路由请求集成，一次可以响应多个用户的访问请求；支持Cookie和会话管理，通过身份缓存数据建立长久连接关系，并提高用户访问速度；支持交互式Javascript调试，提高用户体验；可以处理HTTP基本事务，快速响应客户端推送过来的访问请求。Jinja2库支持自动HTML转义功能，能够很好控制外部黑客的脚本攻击。系统运行速度很快，页面加载过程会将源码进行编译形成Python字节码，从而实现模板的高效运行；模板继承机制可以对模板内容进行修改和维护，为不同需求的用户提供相应的模板。
+
+## 2.路由和请求响应对象
+
+* 装饰器其实就是将rule字符串跟视图函数进行了绑定，通过add_url_rule()实现的绑定。
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/index&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;welcome everyone！&#x27;</span></span><br></pre></td></tr></table></figure>
+
+等效
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;welcome everyone！&#x27;</span></span><br><span class="line">app.add_url_rule(<span class="string">&#x27;/index&#x27;</span>, view_func=index)</span><br></pre></td></tr></table></figure>
+
+### 路由变量规则
+
+string  （缺省值） 接受任何不包含斜杠的文本   *
+int      接受正整数  *
+float    接受正浮点数
+path     类似 string ，但可以包含斜杠
+uuid     接受 UUID 字符串
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/index/&lt;path:p&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_path</span>(<span class="params">p</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;******&gt;&#x27;</span>, <span class="built_in">type</span>(p))  <span class="comment"># str类型</span></span><br><span class="line">    <span class="built_in">print</span>(p)</span><br><span class="line">    <span class="keyword">return</span> p</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/test/&lt;uuid:uid&gt;&#x27;</span></span>)  </span><span class="comment"># 必须传递uuid的格式，uuid模块， uuid.uuid4() ----&gt;UUID类型</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>(<span class="params">uid</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;#######&gt;&gt;&gt;&gt;&gt;&#x27;</span>, <span class="built_in">type</span>(uid))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;获取唯一的标识码&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 所有的路由搜索规则都是自上而下搜索，在写路由的是有定义的路由是唯一的。</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/projects&#x27;</span></span>)  </span><span class="comment"># 请求路由中如果添加了/：http://127.0.0.1:5000/about/  显示Not Found</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">about</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;The about page&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/projects/&#x27;</span></span>)  </span><span class="comment"># 路由中定义&#x27;/&#x27;，无论请求的URL是否带有/，都可以执行视图函数。如果请求的是有/，浏览器做了一次重定向</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">projects</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;The project page&#x27;</span></span><br></pre></td></tr></table></figure>
+
+### 视图
+
+返回值：其实返回值返回的都是一个响应对象。
+
+> 视图函数的返回值：
+> response响应：
+> 1.str     自动转成response对象
+> 2.dict    json
+> 3.response对象  response对象
+> 4.make_response()  response对象
+> 5.redirect()   重定向  302状态码
+> 6.render_template()  模板渲染 + 模板
+
+response响应对象
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(response.content_type)</span><br><span class="line"><span class="built_in">print</span>(response.headers)</span><br><span class="line"><span class="built_in">print</span>(response.status_code)  <span class="comment"># 200</span></span><br><span class="line"><span class="built_in">print</span>(response.status)  <span class="comment"># 200 OK</span></span><br><span class="line">response.set_cookie(<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;wxy&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+request请求对象：只需要导入，通过from flask import request
+导入之后可以获取对象的属性和方法
+属性：
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.headers)  <span class="comment"># request对象 对象访问属性，也可以调用方法</span></span><br><span class="line"><span class="built_in">print</span>(request.path)</span><br><span class="line"><span class="built_in">print</span>(request.full_path)</span><br><span class="line"><span class="built_in">print</span>(request.base_url)</span><br><span class="line"><span class="built_in">print</span>(request.url)</span><br></pre></td></tr></table></figure>
+
+#### 获取提交的数据
+
+跟请求方法相关的
+
+* get：
+      request.args 底层是字典的形式   主要获取get提交的请求参数
+      如果是get请求格式是这个样子的：/register2?username=zhangsan&address=Beijing
+      此时的username是form表单中表单元素的name值
+
+  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.args.get(<span class="string">&#x27;username&#x27;</span>))   <span class="comment"># 获取值</span></span><br><span class="line"><span class="built_in">print</span>(request.args.get(<span class="string">&#x27;address&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+* post:
+  request.form 底层是字典的形式   主要获取post提交的请求参数
+  注意post提交必须在路由中进行设置，通过methods = ['GET','POST']
+  按照此种形式：
+  @app.route('/register2', methods=['GET', 'POST'])
+  def register2():  # 获取页面提交的内容
+      .......  内容省略
+  获取数据：
+  print(request.form)  # 如果请求方法是post则需要通过request.form取值
+
+  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.form.get(<span class="string">&#x27;username&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(request.form.get(<span class="string">&#x27;address&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+定制响应头
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">response = make_response(content)  <span class="comment"># 返回值就是一个response对象</span></span><br><span class="line">   <span class="comment"># 定制响应头</span></span><br><span class="line">   response.headers[<span class="string">&#x27;mytest&#x27;</span>] = <span class="string">&#x27;123abc&#x27;</span></span><br><span class="line">   response.headers[<span class="string">&#x27;myhello&#x27;</span>] = <span class="string">&#x27;hellohello&#x27;</span></span><br><span class="line">   <span class="comment"># 将定制好的response返回</span></span><br><span class="line">   <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+
+## 3.模板
+
+模板的语法：
+
+### 传参	
+
+在模板中获取view中传递的变量值：{{ 变量名key }}
+
+render_template('模板名字',key=value,key=value)
+
+    name = '沈凯'  # str
+    age = 18  # int
+    friends = ['建义', '陈璟', '小岳岳', '郭麒麟']  # list
+    dict1 = {'gift': '大手镯', 'gift1': '鲜花', 'gift2': '费列罗'}  # dict
+    # 创建对象
+    girlfriend = Girl('美美', '安徽阜阳')  # 自定义的类构建的类型：Girl对象
+
+模板：
+
+{{ list.0 }}  同 {{ list[0] }}
+{{ dict.key }} 同 {{ dict.get(key) }}
+{{ girl.name }} 同 {{ 对象.属性 }}
+
+### 控制块hexo
+
+{% if  条件 %}
+
+ {% endif %}
+
+ {% if  条件 %}
+     条件为True
+ {% else %}
+     条件为False
+ {% endif %}
+
+ {% for 变量 in 可迭代的对象 %}
+    for循环要做的任务
+
+ {% endfor %}
+
+* 在for循环里面可以使用loop变量
+
+  loop.index  序号从1开始
+  loop.index0  序号从0开始
+
+  loop.revindex  reverse  序号是倒着的
+  loop.revindex0
+
+  loop.first 布尔类型   是否是第一行，是则返回TRUE
+  loop.last  布尔类型   是否是第二行
+
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;%for user in users%&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span> &#123;% <span class="attr">if</span> <span class="attr">loop.last</span> %&#125;<span class="attr">style</span>=<span class="string">&quot;background-color: deeppink&quot;</span> &#123;% <span class="attr">endif</span> %&#125;&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span> ff loop.index H<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; user.username &#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;i user.password H<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123; user.addr H&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span>ii user.phone &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">&#123;%endfor%&#125;</span><br></pre></td></tr></table></figure>
+
+### 过滤器
+
+过滤器的本质就是函数
+模板语法中过滤器：
+
+{{ 变量名 | 过滤器(*args) }}
+
+{{ 变量名 | 过滤器 }}
+
+常见的过滤器：
+1。 safe ： 禁用转译
+msg = `'<h1>520快乐！</h1>'`
+return render_template('show_2.html', girls=girls, users=users, msg=msg)
+不想让其转译：
+{{ msg | safe }}
+2。 capitalize：单词的首字母大写
+{{ n1 | capitalize }}
+3。lower和upper
+大小写的转换
+4。title 一句话中每个单词的首字母大写
+ msg = 'She is a beautiful girl'
+ {{ msg | title}}
+5。reverse  翻转
+{{ n1 | reverse}}
+6。format
+{{ '%s is %d years old' | format('lily',18) }}
+7.truncate 字符串截断
+
+* list的操作：
+  {# 列表过滤器的使用 #}
+  {{ girls | first }}<br>
+  {{ girls | last }}<br{{ girls | length }}<br>
+  {#{{ girls | sum }} 整型的计算 #}
+  {{ [1,3,5,7,9] | sum }}<br>
+  {{ [1,8,5,7,3] | sort }}<br>
+
+* dict:
+  {% for v in users.0.values() %}   ---->获取值
+      <p>{{ v }}</p>
+  {% endfor %}
+
+  {% for k in users.0.keys() %}   ----》获取键
+      <p>{{ k }}</p>
+  {% endfor %}
+
+  {% for k,v in users.0.items() %}  ---》获取键值
+
+​		{{ k }}---{{ v }}
+
+​		{% endfor %}
+
+#### 自定义过滤器
+
+​	过滤器本质就是函数
+
+1. 通过flask模块中的add_template_filter方法
+   a. 定义函数，带有参数和返回值
+   b. 添加过滤器  app.add_template_filter(function,name='')
+   c. 在模板中使用： {{ 变量 | 自定义过滤器 }}
+
+1. 使用装饰器完成
+   a. 定义函数，带有参数和返回值
+   b. 通过装饰器完成，@app.template_filter('过滤器名字')装饰步骤一的函数
+   c. 在模板中使用： {{ 变量 | 自定义过滤器 }}
+
+   
+
+### 模板继承
+
+需要模版继承的情况：
+1。 多个模板具有完全相同的顶部和底部
+2。 多个模板具有相同的模板内容，但是内容中部分不一样
+3。 多个模板具有完全相同的模板内容
+
+标签：
+{% block 名字 %}
+
+{% endblock %}
+
+1.定义父模板
+2.子模板继承父模板
+步骤：
+父模板：
+1。 定义一个base.html的模板
+2。 分析模板中哪些是变化的比如：{% block title %}父模板的title{% endblock %}
+    对变化的部分用block进行"预留位置"也称作：挖坑
+3。注意：样式和脚本 需要提前预留
+    {% block mycss %}{% endblock %}
+    {% block myjs %}{% endblock %}
+
+#### extends继承
+
+1。 {% extends '父模板的名称' %}将父模板继承过来
+2。 找到对应的block（坑）填充，每一个block都是有名字的。
+
+#### include包含
+
+在A，B，C页面都共同的部分，但是其他页面没有这部分。
+这个时候考虑使用include
+步骤：
+1。先定义一个公共的模板部分,xxx.html
+2。谁使用则include过来， {% include '文件夹/xxx.html' %}
+
+#### 宏macro
+
+1。把它看作是jinja2的一个函数，这个函数可以返回一个HTML字符串
+2。目的：代码可以复用，避免代码冗余
+
+​	定义两种方式：
+​	1。在模板中直接定义：
+​    类似： macro1.html  中定义方式
+​	2。将所有宏提取到一个模板中：macro.html
+   谁想使用谁导入：
+   {% import 'macro.html' as xxx %}
+   {{ xxx.宏名字(参数) }}
+
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;% macro form(action,value=&#x27;登录&#x27;,method=&#x27;post&#x27;) %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;&#123;&#123; action &#125;&#125;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;&#123;&#123; method &#125;&#125;&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;用户名&quot;</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;密码&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123; value &#125;&#125;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">&#123;% endmacro %&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>宏的使用2<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">&#123;% import &#x27;macro/macro.html&#x27; as func %&#125;</span><br><span class="line">&#123;&#123; func.form(&#x27;/welcome&#x27;,value=&#x27;注册&#x27;) &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+在html定义变量
+
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">全局变量</span><br><span class="line">&#123;% set username =&#x27;zhangsan&#x27; %&#125;</span><br><span class="line">&#123;&#123; username &#125;&#125;</span><br><span class="line"></span><br><span class="line">只能在with块里面使用的变量</span><br><span class="line">&#123;% with num=1000  %&#125;</span><br><span class="line">   &#123;&#123; num &#125;&#125;</span><br><span class="line">&#123;% endwith %&#125;</span><br><span class="line"></span><br><span class="line">不显示1000</span><br><span class="line">&#123;&#123; num &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+## 4.蓝图
+
+1. 创建项目并设置settings.py文件
+
+2. 删除app.py中的部分内容
+
+3. 创建包apps,并在包中__init__.py中创建app的工厂函数
+
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">create_app</span>():</span><br><span class="line">    app = Flask(__name__)  <span class="comment"># app是一个核心对象</span></span><br><span class="line">    app.config.from_object(settings)  <span class="comment"># 加载配置</span></span><br><span class="line">    <span class="comment"># 蓝图</span></span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+
+   
+
+4. 在apps中创建项目的程序包比如user，goods，order等
+
+5. 以user为例，在user包中创建view.py，在view.py中定义蓝图
+
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">user_bp = Blueprint(<span class="string">&#x27;user&#x27;</span>, __name__)</span><br><span class="line"><span class="comment"># 	其中第一个参数是蓝图的名字，第二个参数是import_name</span></span><br></pre></td></tr></table></figure>
+
+   
+
+6. 使用蓝图定义路由和视图函数
+
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@user_bp.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user_center</span>():</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;user/show.html&#x27;</span>, users=users)</span><br></pre></td></tr></table></figure>
+
+   注意在蓝图中进行了模板的加载，而模板的文件夹默认是跟flask对象是同级的，如果不是同级的注意在Flask对象创建的时候初始化设置
+
+7. 注册蓝图到app对象上
+
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">create_app</span>():</span><br><span class="line">    app = Flask(__name__,template_folder=<span class="string">&#x27;../templates&#x27;</span>,static_folder=<span class="string">&#x27;../static&#x27;</span>)  <span class="comment"># app是一个核心对象</span></span><br><span class="line">    app.config.from_object(settings)  <span class="comment"># 加载配置</span></span><br><span class="line">    <span class="comment"># 蓝图</span></span><br><span class="line">    app.register_blueprint(user_bp)  <span class="comment"># 将蓝图对象绑定到app上</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(app.url_map)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+
+
+### 补充数据删除操作
+
+- 点击删除按钮或者删除链接
+
+- 给链接添加单击事件，可以通过js或者jquery
+
+  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;javascript:;&quot;</span> onclick=<span class="string">&quot;del(&#x27;&#123;&#123; user.username &#125;&#125;&#x27;)&quot;</span>&gt;删除&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+- 在js中定义函数：
+
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">del</span>(<span class="params">username</span>)&#123;</span><br><span class="line">           <span class="comment">// console.log(username)</span></span><br><span class="line">           <span class="comment">// location 地址栏对象</span></span><br><span class="line">           location.<span class="property">href</span> = <span class="string">&#x27;/del?username=&#x27;</span>+username</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+
+- 触发/del的路由函数
+
+  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@user_bp.route(<span class="params"><span class="string">&#x27;/del&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">del_user</span>():</span><br><span class="line">    <span class="comment"># 获取你传递的username</span></span><br><span class="line">    username = request.args.get(<span class="string">&#x27;username&#x27;</span>)</span><br><span class="line">    <span class="comment"># 根据username找到列表中的user对象</span></span><br><span class="line">    <span class="keyword">for</span> user <span class="keyword">in</span> users:</span><br><span class="line">        <span class="keyword">if</span> user.username == username:</span><br><span class="line">            <span class="comment"># 删除user</span></span><br><span class="line">            users.remove(user)</span><br><span class="line">            <span class="keyword">return</span> redirect(<span class="string">&#x27;/&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;删除失败&#x27;</span></span><br></pre></td></tr></table></figure>
+
+## 5.管理使用命令
+
+flask-script
+pip install flask-script
+
+使用里面的Manager进行命令得到管理和使用：
+manager = Manager(app=app)
+
+manager.run()  ---->启动
+
+使用命令在终端：
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">python app.py runserver    ----&gt;Runs the Flask development server</span><br><span class="line">python app.py runserver -h <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span> -p <span class="number">5001</span></span><br></pre></td></tr></table></figure>
+
+* 自定义添加命令：
+
+  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">* @manager.command</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">init</span>():</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">&#x27;初始化&#x27;</span>)</span><br><span class="line"></span><br><span class="line">python3 app.py init</span><br></pre></td></tr></table></figure>
+
+## 6.数据库
+
+### 数据库配置
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 数据库配置信息</span></span><br><span class="line">HOSTNAME = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">PORT = <span class="number">3306</span></span><br><span class="line">USERNAME = <span class="string">&quot;root&quot;</span></span><br><span class="line">PASSWORD =<span class="string">&#x27;&#x27;</span></span><br><span class="line">DATABASE = <span class="string">&quot;wenda&quot;</span></span><br><span class="line">DB_URI=<span class="string">f&quot;mysql+pymysql://<span class="subst">&#123;USERNAME&#125;</span>:<span class="subst">&#123;PASSWORD&#125;</span>@<span class="subst">&#123;HOSTNAME&#125;</span>:<span class="subst">&#123;PORT&#125;</span>/<span class="subst">&#123;DATABASE&#125;</span>?charset=utf8mb4&quot;</span></span><br><span class="line">SQLALCHEMY_DATABASE_URI=DB_URI</span><br></pre></td></tr></table></figure>
+
+或者一步到位
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># mysql+pymysql://user:password@hostip:port/databasename</span></span><br><span class="line">SQLALCHEMY_DATABASE_URI = <span class="string">&#x27;mysql+pymysql://root:root@127.0.0.1:3306/flask&#x27;</span></span><br></pre></td></tr></table></figure>
+
+### flask-sqlalchemy的搭建
+
+创建包exts
+
+__init__.py中添加：
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line">db = SQLAlchemy()   ----&gt;必须跟app联系</span><br></pre></td></tr></table></figure>
+
+再去合适的__init__.py进行如下操作
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> exts <span class="keyword">import</span> db</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_app</span>():</span><br><span class="line">   db.init_app(app)</span><br><span class="line">  	<span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+
+### flask-migrate的配置
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask-migrate <span class="keyword">import</span> Migrate</span><br><span class="line">migrate = Migrate(app=app, db=db)</span><br><span class="line">manager.add_command(<span class="string">&#x27;db&#x27;</span>, MigrateCommand)</span><br></pre></td></tr></table></figure>
+
+### 创建模型
+
+models.py
+模型就是类，经常称作模型类
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>(db.Model):      ------&gt; user表</span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>, autoincrement=<span class="literal">True</span>)</span><br><span class="line">    username = db.Column(db.String(<span class="number">15</span>), nullable=<span class="literal">False</span>)</span><br><span class="line">    password = db.Column(db.String(<span class="number">12</span>), nullable=<span class="literal">False</span>)</span><br><span class="line">    phone = db.Column(db.String(<span class="number">11</span>), unique=<span class="literal">True</span>)</span><br><span class="line">    rdatetime = db.Column(db.DateTime, default=datetime.now)</span><br></pre></td></tr></table></figure>
+
+  常见的数据类型：
+
+>  Integer        整型
+>  String(size)   字符串类型，务必指定大小
+>  Text          长文本类型
+>  DateTime       日期时间
+>  Float         浮点类型
+>  Boolean        布尔类型
+>  PickleType     存储pickle类型  主要跟序列化有关
+>  LargeBinary    存储大的二进制类型
+
+ 可选的：
+
+>   primary_key=True   主键
+>   autoincrement=True  自增
+>   nullable=False      不允许为空
+>   unique=True         唯一
+>   default=datetime.now  默认值  可以设置成当前系统时间或者其他的值
+
+### 使用命令
+
+a. ************敲黑板：没有这句话将会映射不起，创建不了表
+
+***在app.py 中导入模型:from apps.user.models import User***
+
+b. 在终端使用命令：db
+    python app.py db init   -----》 产生一个文件夹migrations
+    python app.py db migrate -----> 自动产生了一个版本文件
+     项目
+      | ---apps
+      | ---ext
+      | ---migrations    python app.py db init     只需要init一次
+               |---versions   版本文件夹
+                    |---71edde7ee937_.py    ---》  python app.py db migrate  迁移
+                    |---cc0dca61130f_.py
+                                                  python app.py db upgrade 同步
+                                                  python app.py db downgrade 降级
+
+### 添加数据
+
+以注册为例：
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#模板，视图与模型结合</span></span><br><span class="line"><span class="comment">#1. 找到模型类并创建对象</span></span><br><span class="line">user = User(username=username,password=password,phone=phone)</span><br><span class="line"><span class="comment">#2. 给对象的属性赋值</span></span><br><span class="line"><span class="comment">#添加</span></span><br><span class="line"><span class="comment">#3.将user对象添加到session中（类似缓存）</span></span><br><span class="line">db.session.add(user)</span><br><span class="line"><span class="comment">#4.提交数据</span></span><br><span class="line">db.session.commit()</span><br></pre></td></tr></table></figure>
+
+### 加密
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">new_password=hashlib.sha1(password.encode(<span class="string">&#x27;utf-8&#x27;</span>)).hexgigest()</span><br><span class="line">new_password=hashlib.sha256(password.encode(<span class="string">&#x27;utf-8&#x27;</span>)).hexgigest()</span><br><span class="line">new_password=hashlib.sha128(password.encode(<span class="string">&#x27;utf-8&#x27;</span>)).hexgigest()</span><br></pre></td></tr></table></figure>
+
+### 查询
+
+查询所有： 模型类.query.all()    ~  select * from user;
+如果有条件的查询：
+         模型类.query.filter_by(字段名 = 值)   ～  select * from user where 字段=值；
+         模型类.query.filter_by(字段名 = 值).first()   ～  select * from user where 字段=值 limit..；
+
+select * from user where age>17 and gender='男'；
+select * from user where username like 'zhang%';
+select * from user where rdatetime> xxx and rdatetime < xxx;
+
+>  模型类.query.filter()  里面是布尔的条件，不只有等值   模型类.query.filter(模型名.字段名 == 值)
+>  模型类.query.filter_by()  里面只能是等值   模型类.query.filter_by(字段名 = 值)
+
+***模型类.query.filter()***
+
+1. 模型类.query.filter().all()   -----> 列表
+
+2. 模型类.query.filter().first()  ----->对象
+
+3. ```python
+   User.query.filter(User.username.endswith('z')).all()   #select * from user where username like '%z';
+   User.query.filter(User.username.startswith('z')).all()  # select * from user where username like 'z%';
+   User.query.filter(User.username.contains('z')).all()  # select * from user where username like '%z%';
+   User.query.filter(User.username.like('z%')).all()
+   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+#### 多条件
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> or_, and_,not_</span><br><span class="line">并且： and_    获取： or_   非： not_</span><br><span class="line">User.query.<span class="built_in">filter</span>(or_(User.username.like(<span class="string">&#x27;z%&#x27;</span>), 			 User.username.contains(<span class="string">&#x27;i&#x27;</span>))).<span class="built_in">all</span>()</span><br><span class="line">类似： select * <span class="keyword">from</span> user where username like <span class="string">&#x27;z%&#x27;</span> <span class="keyword">or</span> username like <span class="string">&#x27;%i%&#x27;</span>;</span><br><span class="line">User.query.<span class="built_in">filter</span>(and_(User.username.contains(<span class="string">&#x27;i&#x27;</span>), User.rdatetime.__gt__(<span class="string">&#x27;2020-05-25 10:30:00&#x27;</span>))).<span class="built_in">all</span>()</span><br><span class="line">select * <span class="keyword">from</span> user where username like <span class="string">&#x27;%i%&#x27;</span> <span class="keyword">and</span> rdatetime &lt; <span class="string">&#x27;xxxx&#x27;</span></span><br><span class="line"></span><br><span class="line">  补充：__gt__,__lt__,__ge__(gt equal),__le__（le equal）  ----》通常应用在范围（整型，日期）</span><br><span class="line">  也可以直接使用 &gt;  &lt;  &gt;=  &lt;=  !=</span><br><span class="line"></span><br><span class="line">User.query.<span class="built_in">filter</span>(not_(User.username.contains(<span class="string">&#x27;i&#x27;</span>))).<span class="built_in">all</span>()</span><br><span class="line">    </span><br><span class="line"><span class="number">18</span> <span class="number">19</span> <span class="number">20</span> <span class="number">17</span> <span class="number">21</span> <span class="number">22</span> ....</span><br><span class="line">User.username.in_([<span class="string">&#x27;&#x27;</span>,<span class="string">&#x27;&#x27;</span>,<span class="string">&#x27;&#x27;</span>])</span><br><span class="line">select * <span class="keyword">from</span> user where age <span class="keyword">in</span> [<span class="number">17</span>,<span class="number">18</span>,<span class="number">20</span>,<span class="number">22</span>];</span><br></pre></td></tr></table></figure>
+
+#### 排序
+
+> order_by
+>
+> user_list = User.query.filter(User.username.contains('z')).order_by(-User.rdatetime).all()  # 先筛选再排序
+> user_list = User.query.order_by(-User.id).all()  对所有的进行排序
+> 注意：order_by(参数)：
+> 1。 直接是字符串： '字段名'  但是不能倒序
+> 2。 填字段名： 模型.字段    order_by(-模型.字段)  倒序
+
+#### 限制
+
+> limit
+>
+> limit的使用 + offset
+>
+> user_list = User.query.limit(2).all()   默认获取前两条
+>
+> user_list = User.query.offset(2).limit(2).all()   跳过2条记录再获取两条记录
+
+#### 总结
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. User.query.all()  所有</span><br><span class="line"></span><br><span class="line">2. User.query.get(pk)  一个</span><br><span class="line"></span><br><span class="line">3. User.query.filter()   *   ？？？？？？？</span><br><span class="line">    如果要检索的字段是字符串（varchar，db.String）:</span><br><span class="line">      User.username.startswith(&#x27;&#x27;)</span><br><span class="line">      User.username.endswith(&#x27;&#x27;)</span><br><span class="line">      User.username.contains(&#x27;&#x27;)</span><br><span class="line">      User.username.like(&#x27;&#x27;)</span><br><span class="line">      User.username.in_([&#x27;&#x27;,&#x27;&#x27;,&#x27;&#x27;])</span><br><span class="line">      User.username == &#x27;zzz&#x27;</span><br><span class="line">    如果要检索的字段是整型或者日期类型：</span><br><span class="line">       User.age.__lt__(18)</span><br><span class="line">       User.rdatetime.__gt__(&#x27;.....&#x27;)</span><br><span class="line">       User.age.__le__(18)</span><br><span class="line">       User.age.__ge__(18)</span><br><span class="line">       User.age.between(15,30)</span><br><span class="line"></span><br><span class="line">     多个条件一起检索： and_, or_</span><br><span class="line">     非的条件： not_</span><br><span class="line"></span><br><span class="line">     排序：order_by()</span><br><span class="line">     获取指定数量： limit() offset()</span><br><span class="line"></span><br><span class="line">4. User.query.filter_by()</span><br></pre></td></tr></table></figure>
+
+### 删除
+
+两种删除：
+ 1。逻辑删除（定义数据库中的表的时候，添加一个字段isdelete，通过此字段控制是否删除）
+ id = request.args.get(id)
+ user = User.query.get(id)
+ user.isdelete = True
+ db.session.commit()
+
+ 2。物理删除(彻底从数据库中删掉)
+ id = request.args.get(id)
+ user = User.query.get(id)
+ db.session.delete(user)
+ db.session.commit()
+
+### 更新
+
+id = request.args.get(id)
+
+user = User.query.get(id)
+
+修改对象的属性
+
+ user.username= xxxx
+ user.phone =xxxx
+
+提交更改
+
+ db.session.commit()
+
+### 多表查询
+
+flask框架为了简化多表的查询，制定了多表的关系：
+
+1. 1对多
+
+   常见的比如：班级对学生，部门对员工，学校对班级，用户对文章，用户对订单
+
+   可以说一个班级有多名同学或者一个部门有多名员工，但是不能说：
+
+   一一个员工属于多个部门，一个班级属于多个学校....
+
+   > 在flask的框架中如何体现1对多的模型关系？
+   >
+   > 就是通过外键ForignKey和relationship体现。ForignKey是给映射关系说的，relationship是给模板使用的。
+
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>(db.Model):</span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>, autoincrement=<span class="literal">True</span>)</span><br><span class="line">    username = db.Column(db.String(<span class="number">15</span>), nullable=<span class="literal">False</span>)</span><br><span class="line">    password = db.Column(db.String(<span class="number">64</span>), nullable=<span class="literal">False</span>)</span><br><span class="line">    phone = db.Column(db.String(<span class="number">11</span>), unique=<span class="literal">True</span>, nullable=<span class="literal">False</span>)</span><br><span class="line">    email = db.Column(db.String(<span class="number">30</span>))</span><br><span class="line">    icon = db.Column(db.String(<span class="number">100</span>))</span><br><span class="line">    isdelete = db.Column(db.Boolean, default=<span class="literal">False</span>)</span><br><span class="line">    rdatetime = db.Column(db.DateTime, default=datetime.now)</span><br><span class="line">    <span class="comment"># 增加一个字段</span></span><br><span class="line">    articles = db.relationship(<span class="string">&#x27;Article&#x27;</span>, backref=<span class="string">&#x27;user&#x27;</span>)</span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__str__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.username</span><br></pre></td></tr></table></figure>
+
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> exts <span class="keyword">import</span> db</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Article</span>(db.Model):</span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>, autoincrement=<span class="literal">True</span>)</span><br><span class="line">    title = db.Column(db.String(<span class="number">50</span>), nullable=<span class="literal">False</span>)</span><br><span class="line">    content = db.Column(db.Text, nullable=<span class="literal">False</span>)</span><br><span class="line">    pdatetime = db.Column(db.DateTime, default=datetime.now)</span><br><span class="line">    click_num = db.Column(db.Integer, default=<span class="number">0</span>)</span><br><span class="line">    save_num = db.Column(db.Integer, default=<span class="number">0</span>)</span><br><span class="line">    love_num = db.Column(db.Integer, default=<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># 外键 同步到数据库的外键关系</span></span><br><span class="line">    user_id = db.Column(db.Integer, db.ForeignKey(<span class="string">&#x27;user.id&#x27;</span>), nullable=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+2. 多对多
+
+   常见的多对多：用户对文章评论，用户对商品，学生对课程
+
+   一个用户可以买多个商品，反过来这个个学生属于多个班级，商品的还可以让多个用户购买
+
+   用户 1 -----》 n 商品
+     n  《-----  1
+
+   一个学生可以选择多门课程，反过来一门课程还可以让多个学生选择
+
+   ....
+
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tags = db.Table(<span class="string">&#x27;tags&#x27;</span>,</span><br><span class="line">    db.Column(<span class="string">&#x27;tag_id&#x27;</span>, db.Integer, db.ForeignKey(<span class="string">&#x27;tag.id&#x27;</span>)),</span><br><span class="line">    db.Column(<span class="string">&#x27;page_id&#x27;</span>, db.Integer, db.ForeignKey(<span class="string">&#x27;page.id&#x27;</span>))</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Page</span>(db.Model):</span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    tags = db.relationship(<span class="string">&#x27;Tag&#x27;</span>, secondary=tags,</span><br><span class="line">    backref=db.backref(<span class="string">&#x27;pages&#x27;</span>, lazy=<span class="string">&#x27;dynamic&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Tag</span>(db.Model):</span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    name = db.Column(db.String(<span class="number">20</span>),nullable=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+或者
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Page</span>(db.Model):</span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    tags = db.relationship(<span class="string">&#x27;Tag&#x27;</span>, secondary=<span class="string">&#x27;Page_tag&#x27;</span>,</span><br><span class="line">        backref=<span class="string">&#x27;pages&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Tag</span>(db.Model):</span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    name = db.Column(db.String(<span class="number">20</span>),nullable=<span class="literal">False</span>)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Page_tag</span>(db.Model):</span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    db.Column(<span class="string">&#x27;tag_id&#x27;</span>, db.Integer, db.ForeignKey(<span class="string">&#x27;tag.id&#x27;</span>))</span><br><span class="line">    db.Column(<span class="string">&#x27;page_id&#x27;</span>, db.Integer, db.ForeignKey(<span class="string">&#x27;page.id&#x27;</span>))</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+
+## 7.flask-bootstrap
+
+使用flask-bootstrap:
+步骤：
+
+1. pip install flask-bootstrap
+
+2. 进行配置：
+
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask-bootstrap <span class="keyword">import</span> Bootstrap</span><br><span class="line">bootstrap = Bootstrap()</span><br><span class="line"><span class="comment"># 在__init__.py中进行初始化：</span></span><br><span class="line">   </span><br><span class="line"><span class="comment">###### 初始化bootstrap</span></span><br><span class="line">   </span><br><span class="line">bootstrap.init_app(app=app)</span><br></pre></td></tr></table></figure>
+
+
+3. 内置的block：
+
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;% block title %&#125;首页&#123;% endblock %&#125;</span><br><span class="line">&#123;% block navbar %&#125; &#123;% endblock %&#125;</span><br><span class="line">&#123;% block content %&#125; &#123;% endblock %&#125;</span><br><span class="line">&#123;% block styles %&#125; &#123;% endblock %&#125;</span><br><span class="line">&#123;% block srcipts %&#125; &#123;% endblock %&#125;</span><br><span class="line">&#123;% block head %&#125; &#123;% endblock %&#125;</span><br><span class="line">&#123;% block body %&#125; &#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+
+4. 创建base.html
+
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;% extends <span class="string">&quot;bootstrap/base.html&quot;</span> %&#125;</span><br><span class="line">&#123;% block title %&#125;首页&#123;% endblock %&#125;</span><br><span class="line">&#123;% block styles %&#125;</span><br><span class="line">    &#123;&#123; <span class="built_in">super</span>() &#125;&#125;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">       .....</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block navbar %&#125;</span><br><span class="line">	....  </span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line">    &#123;% block newcontent %&#125;</span><br><span class="line">        &lt;h1&gt;Hello, Bootstrap&lt;/h1&gt;</span><br><span class="line">    &#123;% endblock %&#125;</span><br><span class="line">    &#123;% block footer %&#125;</span><br><span class="line">        &lt;p <span class="built_in">id</span>=<span class="string">&quot;myfoot&quot;</span>&gt;京ICP备<span class="number">11008000</span>号-<span class="number">6</span>京公网安备<span class="number">11010802020853</span>&lt;/p&gt;</span><br><span class="line">    &#123;% endblock %&#125;</span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+
+   
+
+5. 子模板继承父模板：
+
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;% extends <span class="string">&#x27;base.html&#x27;</span> %&#125;</span><br><span class="line">&#123;% block title %&#125;</span><br><span class="line">    博客首页</span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line">&#123;% block styles %&#125;</span><br><span class="line">    &#123;&#123; <span class="built_in">super</span>() &#125;&#125;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">      .....</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line">&#123;% block newcontent %&#125;</span><br><span class="line">    &lt;div <span class="built_in">id</span>=<span class="string">&quot;container&quot;</span>&gt;</span><br><span class="line">        &lt;div <span class="keyword">class</span>=<span class="string">&quot;article&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+   
+
+## 8.会话机制
+
+* cookie
+
+在网站中，HTTP请求是无状态的。也就是说，即使第一次用户访问服务器并登录成功后，第二次请求服务器依然不知道当前发起请求的是哪个用户。cookie的出现就是为了解决这个问题，第一次登录后服务器返回一些数据（cookie）给浏览器，浏览器将这些数据保存在本地。当用户发起第二次请求的时候，浏览器自动的将上次请求得到的cookie数据携带给服务器，服务器通过这些cookie数据就能分辨出当前发起请求的是哪个用户了。cookie存储的数据量有限，不同的浏览器有不同的存储大小，但一般不超过4K，因此使用cookie只能存储一些少量的数据。
+
+* session
+
+session与cookie的作用有点类似，都是为了存储用户相关的信息。不同的是，cookie是存储在本地浏览器，session存储在服务器。存储在服务器的数据会更加的安全，不容易被窃取。但存储在服务器也有一定的弊端，就是会占用服务器的资源。
+
+* cookie和session结合
+
+web开发发展至今，cookie和session的使用已经出现了一些非常成熟的方案。在如今的市场和企业里，一般有两种存储方式：
+
+> 存储在服务器：通过cookie存储一个session_id，然后具体的数据则保存在session中。当用户已经登录时，会在浏览器的cookie中保存一个session_id，下次再次请求的时候，会把session_id携带上来，服务器根据session_id在session库中获取用户的session数据，从而能够辨别用户身份，以及得到之前保存的状态信息。这种专业术语叫做server side session
+
+> 将session数据加密，然后存储在cookie中。这种专业术语叫做client side session，flask采用的就是这种方式，但是也可以替换成其它形式
+
+### cookie方式
+
+- 保存：
+
+  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">通过response对象保存。</span><br><span class="line"> response = redirect(xxx)</span><br><span class="line"> response = render_template(xxx)</span><br><span class="line"> response = Response()</span><br><span class="line"> response = make_response()</span><br><span class="line"> response = jsonify()</span><br><span class="line"> 通过对象调用方法</span><br><span class="line"> response.set_cookie(key,value,max_age)</span><br><span class="line"> 其中max_age表示过期时间，单位是秒</span><br><span class="line"> 也可以使用expires设置过期时间，expires=datetime.now()+timedelta(hour=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+- 获取：    
+
+  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">通过request对象获取。</span><br><span class="line">    request.form.get()</span><br><span class="line">    request.args.get()</span><br><span class="line">    cookie也在request对象中</span><br><span class="line">    request.cookies.get(key) ----&gt; value</span><br></pre></td></tr></table></figure>
+
+- 删除：
+
+  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">通过response对象删除。 把浏览器中的key=value删除了</span><br><span class="line">   response = redirect(xxx)</span><br><span class="line">   response = render_template(xxx)</span><br><span class="line">   response = Response()</span><br><span class="line">   response = make_response()</span><br><span class="line">   response = jsonify()</span><br><span class="line">  通过对象调用方法</span><br><span class="line">   response.delete_cookie(key)</span><br></pre></td></tr></table></figure>
+
+
+### session方式
+
+session：  是在服务器端进行用户信息的保存。一个字典
+注意：
+使用session必须要设置配置文件，在配置文件中添加SECRET_KEY='xxxxx'，
+添加SECRET_KEY的目的就是用于sessionid的加密。如果不设置会报错。
+
+-   设置：
+      如果要使用session，需要直接导入：
+      from flask import session
+
+​           把session当成字典使用，因此：session[key]=value
+​           就会将key=value保存到session的内存空间
+​            并会在响应的时候自动在response中自动添加有一个cookie：session=加密后的id 
+
+- 获取
+  用户请求页面的时候就会携带上次保存在客户端浏览器的cookie值，其中包含session=加密后的id
+  获取session值的话通过session直接获取，因为session是一个字典，就可以采用字典的方式获取即可。
+  value = session[key] 或者 value = session.get(key)
+
+  > ​     这个时候大家可能会考虑携带的cookie怎么用的？？？？
+  > ​     其实是如果使用session获取内容,底层会自动获取cookie中的sessionid值，
+  > ​     进行查找并找到对应的session空间
+
+- 删除
+  session.clear()  删除session的内存空间和删除cookie
+  del session[key]  只会删除session中的这个键值对，不会删除session空间和cookie
+
+## 9.登录权限
+
+只要走center路由，判断用户是否是登录状态，如果用户登录了，可以正常显示页面，如果用户没有登录
+则自动跳转到登录页面进行登录，登录之后才可以进行查看。
+
+钩子函数：
+直接应用在app上：
+
+> before_first_request
+> before_request
+> after_request
+> teardown_request
+
+应用到蓝图：
+
+> before_app_first_request
+> before_app_request
+> after_app_request
+> teardown_app_request
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">required_login_list = [<span class="string">&#x27;/user/center&#x27;</span>, <span class="string">&#x27;/user/change&#x27;</span>]</span><br><span class="line"><span class="comment"># ****重点*****</span></span><br><span class="line"><span class="meta">@user_bp.before_app_request</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">before_request</span>():</span><br><span class="line">    <span class="keyword">if</span> request.path <span class="keyword">in</span> required_login_list:</span><br><span class="line">        uid = session.get(<span class="string">&#x27;uid&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> uid:</span><br><span class="line">            <span class="keyword">return</span> render_template(<span class="string">&#x27;user/login.html&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            user = User.query.get(uid)</span><br><span class="line">            <span class="comment"># g对象，本次请求的对象,给g对象增加user属性</span></span><br><span class="line">            g.user = user</span><br></pre></td></tr></table></figure>
+
+## 10.文件上传
+
+ A. 本地上传
+    注意：
+    表单：  enctype="multipart/form-data"
+
+ <form action="提交的路径" method="post" enctype="multipart/form-data">
+        <input type="file" name="photo" class="form-control">
+        <input type="submit" value="上传相册" class="btn btn-default">
+ </form>
+
+   view视图函数：
+   photo = request.files.get('photo')   ----》photo是FileStorage
+
+   属性和方法：FileStorage = 》fs
+
+> fs.filename
+>
+> os.path.join(UPLOAD_DIR,filename)
+>
+> fs.save(path)  ----> path上传的路径
+> fs.read()  ----> 将上传的内容转成二进制方式
+
+ B. 上传到云端（对象存储）
+    本地的资源有限或者是空间是有限的
+
+https://developer.qiniu.com/kodo/sdk/1242/python  ---》参照python SDK
+
+**util.py:**
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> qiniu <span class="keyword">import</span> BucketManager</span><br><span class="line"><span class="keyword">from</span> qiniu <span class="keyword">import</span> Auth, put_file, etag, put_data</span><br><span class="line"><span class="keyword">import</span> qiniu.config</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">upload_qiniu</span>(<span class="params">filestorage</span>):</span><br><span class="line">    <span class="comment"># 需要填写你的 Access Key 和 Secret Key</span></span><br><span class="line">    access_key = <span class="string">&#x27;Access Key&#x27;</span></span><br><span class="line">    secret_key = <span class="string">&#x27;Secret Key&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 构建鉴权对象</span></span><br><span class="line">    q = Auth(access_key, secret_key)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 要上传的空间</span></span><br><span class="line">    bucket_name = <span class="string">&#x27;uestcwxy-blog&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 上传后保存的文件名</span></span><br><span class="line">    filename=filestorage.filename</span><br><span class="line">    ran=random.randint(<span class="number">1</span>,<span class="number">100000</span>)</span><br><span class="line">    suffix=filename.rsplit(<span class="string">&#x27;.&#x27;</span>)[-<span class="number">1</span>]</span><br><span class="line">    key = filename.rsplit(<span class="string">&#x27;.&#x27;</span>)[<span class="number">0</span>]+<span class="string">&#x27;_&#x27;</span>+<span class="built_in">str</span>(ran)+suffix</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 生成上传 Token，可以指定过期时间等</span></span><br><span class="line">    token = q.upload_token(bucket_name, key, <span class="number">3600</span>)</span><br><span class="line"></span><br><span class="line">    ret, info = put_data(token, key, filestorage.read())</span><br><span class="line">    <span class="keyword">return</span> ret,info</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">delete_qiniu</span>(<span class="params">filename</span>):</span><br><span class="line">    access_key = <span class="string">&#x27;Access Key&#x27;</span></span><br><span class="line">    secret_key = <span class="string">&#x27;Secret Key&#x27;</span></span><br><span class="line">    <span class="comment"># 初始化Auth状态</span></span><br><span class="line">    q = Auth(access_key, secret_key)</span><br><span class="line">    <span class="comment"># 初始化BucketManager</span></span><br><span class="line">    bucket = BucketManager(q)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 你要测试的空间， 并且这个key在你空间中存在</span></span><br><span class="line">    bucket_name = <span class="string">&#x27;uestcwxy-blog&#x27;</span></span><br><span class="line">    key = filename</span><br><span class="line">    <span class="comment"># 删除bucket_name 中的文件 key</span></span><br><span class="line">    ret, info = bucket.delete(bucket_name, key)</span><br><span class="line">    <span class="keyword">return</span> info</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+评论：
+文章的详情：必须携带aid，aid表示的是文章的主键id
+
+通过主键id得到文章对象
+
+如果还有其他内容的分页，就需要在路由携带page
+
+例如：http://127.0.0.1:5000/article/detail?page=2&aid=1
+
+分页：
+
+> print(pagination.items)  # [<Article 4>, <Article 3>, <Article 2>]
+> print(pagination.page)  # 当前的页码数
+> print(pagination.prev_num)  # 当前页的前一个页码数
+> print(pagination.next_num)  # 当前页的后一页的页码数
+> print(pagination.has_next)  # True
+>
+> print(pagination.has_prev)  # True
+> print(pagination.pages)  # 总共有几页
+> print(pagination.total)  # 总的记录条数
+
+## 11.flask-wtf
+
+https://flask-wtf.readthedocs.io/en/stable/#
+https://wtforms.readthedocs.io/en/2.3.x/
+flask-wtf:集成了wtform，csrf的保护和文件上传功能，图形验证码。
+
+使用：
+
+1. 安装：
+
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install Flask-WTF</span><br></pre></td></tr></table></figure>
+
+​	全局使用csrf保护
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">csrf = CSRFProtect(app=app)</span><br></pre></td></tr></table></figure>
+
+​	必须需要设置SECRET_KEY这个配置项
+​	
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app.config[<span class="string">&#x27;SECRET_KEY&#x27;</span>] = <span class="string">&#x27;fgfhdf4564&#x27;</span></span><br></pre></td></tr></table></figure>
+
+2. 定义form.py:
+   在文件中中添加：
+
+​	
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">UserForm</span>(<span class="title class_ inherited__">FlaskForm</span>):</span><br><span class="line">    	name = StringField(<span class="string">&#x27;name&#x27;</span>, validators=[DataRequired()])</span><br></pre></td></tr></table></figure>
+
+> ​	各种：Field类型
+> ​	StringField
+> ​	PasswordField
+> ​	IntegerField
+> ​	DecimalField
+> ​	FloatField
+> ​	BooleanField
+> ​	RadioField
+> ​	SelectField
+> ​	DatetimeField
+
+>  		各种的验证：
+>  		DataRequired
+>  		EqualTo
+>  		IPAddress
+>  		Length
+>  		NumberRange
+>  		URL
+>  		Email
+>  		Regexp
+
+
+
+3. 使用：
+   视图中：
+     .....
+     form =UserForm()
+     return render_template('user.html',form=form)
+
+ 		模板中：
+
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&#x27;&#x27;</span> <span class="attr">method</span>=<span class="string">&#x27;&#x27;</span>&gt;</span></span><br><span class="line">     &#123;&#123;form.csrf_token&#125;&#125;</span><br><span class="line">     &#123;&#123;form.name&#125;&#125;</span><br><span class="line">     &#123;&#123;form.password&#125;&#125;</span><br><span class="line">     <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&#x27;submit&#x27;</span> <span class="attr">value</span>=<span class="string">&#x27;&#x27;</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+4. 提交验证：
+
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">4.</span> @app.route(<span class="string">&#x27;/&#x27;</span>,methods=[<span class="string">&#x27;GET&#x27;</span>,<span class="string">&#x27;POST&#x27;</span>])</span><br><span class="line">   <span class="keyword">def</span> <span class="title function_">hello_world</span>():</span><br><span class="line">    	uform = UserForm()</span><br><span class="line">    	<span class="keyword">if</span> uform.validate_on_submit():   -------&gt;主要通过validate_on_submit进行校验</span><br><span class="line">        	<span class="built_in">print</span>(uform.name)</span><br><span class="line">        	<span class="built_in">print</span>(uform.password)</span><br><span class="line">        	<span class="keyword">return</span> <span class="string">&#x27;提交成功！&#x27;</span></span><br><span class="line"></span><br><span class="line"> 		<span class="keyword">return</span> render_template(<span class="string">&#x27;user.html&#x27;</span>, uform=uform)</span><br></pre></td></tr></table></figure>
+
+   
+
+### 文件上传
+
+1. 定义form
+   class UserForm(FlaskForm):
+   上传使用的就是FileField，如果需要指定上传文件的类型需要使用：FileAllowed
+   icon = FileField(label='用户头像', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'gif'], message='必须是图片文件格式')])
+
+2. 模板中的使用同其他类型的字段，但是必须在form上面：enctype="multipart/form-data"
+
+3. 视图函数中如果验证成功，通过：
+   icon = uform.icon.data   -----》icon是FileStorage类型
+   filename = secure_filename(icon.filename)
+   icon.save(os.path.join(UPLOAD_DIR, filename))
+
+## 12.图片验证码
+
+步骤：
+
+1. 生成验证码
+
+   pip install pillow
+
+​    	from PIL import Image, ImageFont, ImageDraw, ImageFilter
+
+  2. image对象 code验证码
+
+  2. /login
+
+    GET:
+       渲染login.html
+       
+       <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;&#123;&#123;url_for(&#x27;blog.pic&#x27;)&#125;&#125;&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;ABC&quot;</span> <span class="attr">style</span>=<span class="string">&quot;height:34px;&quot;</span> <span class="attr">id</span>=<span class="string">&quot;pic&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+       
+       POST:
+           获取数据
+           验证码的匹配
+           验证用户和密码（check_password_hash）
+           session['uname'] =
+           重定向到首页
+       /pic
+         image对象 code验证码
+         将image对象转成二进制
+         make_response(buf_bytes)  ---->response
+         response.headers['Content-Type']= 'image/jpg'
+       
+         session['code']=code验证码
+         return response
+
+## 13.redis缓存
+
+缓存中：
+    pip install redis
+    pip install flask-caching
+
+​	启动redis
+​	进到redis目录：
+   redis-server redis.windows.conf
+
+
+
+使用缓存：
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> Cache对象</span><br><span class="line"></span><br><span class="line">   <span class="keyword">from</span> flask-caching <span class="keyword">import</span> Cache</span><br><span class="line"></span><br><span class="line">   cache = Cache()</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span></span><br><span class="line">config = &#123;</span><br><span class="line">    <span class="string">&#x27;CACHE_TYPE&#x27;</span>: <span class="string">&#x27;redis&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;CACHE_REDIS_HOST&#x27;</span>: <span class="string">&#x27;127.0.0.1&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;CACHE_REDIS_PORT&#x27;</span>: <span class="number">6379</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_app</span>():</span><br><span class="line">    .....</span><br><span class="line">    cache.init_app(app,config)</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> 设置缓存:</span><br><span class="line">   cache.<span class="built_in">set</span>(key,value,timeout=second)   ----&gt; flask_cache_pic_abc</span><br><span class="line">   cache.set_many([(key,value),(key,value),(key,value),...])</span><br><span class="line"></span><br><span class="line">   获取缓存值:</span><br><span class="line">   cache.get(key)  ---&gt;value</span><br><span class="line">   cache.get_many(key1,key2,...)</span><br><span class="line"></span><br><span class="line">   删除缓存:</span><br><span class="line">   cache.delete(key)</span><br><span class="line">   cache.delete_many(key1,key2,...)</span><br><span class="line">   cache.clear()</span><br><span class="line"></span><br><span class="line">视图函数缓存:</span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/&quot;</span></span>)</span></span><br><span class="line"><span class="meta">@cache.cached(<span class="params">timeout=<span class="number">50</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;index.html&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+## 14.SMS手机验证码
+
+1. 获取验证码：
+
+   1. 输入手机号码
+
+   2. 通过ajax发送请求
+
+   3. 后端： 获取手机号码
+      使用requests向第三方的服务端（网易易盾）发送请求
+      URL https://api.netease.im/sms/sendcode.action
+      method： POST
+      header:
+        headers={}
+        headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8'
+        AppSecret = 'ee8d51d1061e'
+        Nonce = '74093849032804'
+        CurTime = str(time.time())
+        headers['AppKey'] = 'cc735ffe22684cc4dab2dc943540777c'
+        headers['Nonce'] = Nonce
+        headers['CurTime'] = CurTime
+        s = AppSecret + Nonce + CurTime
+        headers['CheckSum'] = hashlib.sha1(s.encode('utf-8')).hexdigest().lower()
+        res = requests.post(url, data={'mobile': phone}, headers=headers)
+       获取响应对象：
+       res.text     文本内容
+       res.content  二进制
+
+    4. 转成json对象
+       r = json.loads(res.text)
+
+       r.obj  ---> 验证码
+
+       保存到缓存中: cache.set(phone,r.obj)
+
+    5. 返回json结果给ajax
+
+2.登录验证：
+   获取手机号码和验证码进行验证
+        phone = request.form.get('phone')
+        validate = request.form.get('valiadate')
+        code = cache.get(phone)
+        if code == validate:
+            user = User.query.filter(User.phone == phone).first()
+            cache.set('uname', user.username)
+            session['uname'] = user.username
+            return redirect(url_for('blog.index'))
+        else:
+            flash('手机验证码错误')
+            return render_template('login_phonecode.html')
+
+## 15.nginx
+
+安装可以参照的路径:
+ http://nginx.org/en/linux_packages.html#Ubuntu
+
+启动Nginx
+	nginx 	[ -c  configpath]   默认配置目录：/etc/nginx/nginx.conf
+信息查看
+	nginx 	-v
+	nginx	-V
+查看进程：
+	ps -ef |grep nginx
+控制Nginx
+	nginx -s signal
+		stop 		快速关闭
+		quit		优雅的关闭
+		reload		重新加载配置
+
+通过系统管理
+	systemctl  status  nginx	查看nginx状态
+	systemctl  start    nginx	启动nginx服务
+	systemctl  stop     nginx   关闭nginx服务
+	systemctl  enable nginx	设置开机自启
+	systemctl  disable nginx	禁止开机自启
+
+## 16.闪现
+
+ Flask 的闪现系统提供了一个良好的反馈方式。
+
+闪现系统的基本工作方式是：只在下一个请求中访问上一个请求结束时记录的消息。一般我们结合布局模板来使用闪现系统。
+
+需求：有两个函数login 和index
+，有一个人在向login页面发起请求，login生成一个错误，放到session，跳转到index显示错误，然后再把session移除，并且这个错去只能执行一次（也就是让你看一次）这个东西就可以用闪现是实现。
+
+1. 在一个请求结束的时候添加flash
+         
+
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">flash(<span class="string">&#x27;恭喜！验证成功啦！&#x27;</span>,<span class="string">&#x27;info&#x27;</span>)</span><br><span class="line">flash(<span class="string">&#x27;哈哈哈&#x27;</span>,<span class="string">&#x27;error&#x27;</span>)</span><br><span class="line">flash(username,<span class="string">&#x27;warning&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+2. 在当前请求中渲染获取或者仅仅下一个请求中可以获取。
+
+​    添加闪现：（后面的类型是可选择的）
+​    flash('恭喜！验证成功啦！','info')
+​    flash('哈哈哈','error')
+​    flash(username,'warning')
+
+​    获取闪现内容：
+​    get_flash_messages(with_categories=[True/False])
+​    get_flashed_messages(category_filter=["error"])  可选的
+​    有针对性的获取对应类型的闪现消息
+
+## 17.日志
+
+​    uwsgi ----》 uwsgi.log
+
+1. 使用app自带，
+       app.logger.info('')
+       app.logger.debug('A value for debugging')
+       app.logger.warning('A warning occurred (%d apples)', 42)
+       app.logger.error('An error occurred')
+
+2. 通过logging进行创建：
+
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line">logger = logging.getLogger(<span class="string">&#x27;name&#x27;</span>)  <span class="comment"># 默认flask的名字叫：app</span></span><br><span class="line">logger = logging.getLogger(<span class="string">&#x27;app&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+​    保存到文件：
+
+   1. ```python
+      logging.basicConfig(filename='log.txt', filemode='a', level=logging.WARNING,format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+      <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">2. ```python</span><br><span class="line">   logger.setLevel(level=logging.INFO)</span><br><span class="line">   handler = logging.FileHandler(&quot;log1.txt&quot;)</span><br><span class="line">   handler.setLevel(logging.INFO)</span><br><span class="line">   formatter = logging.Formatter(&#x27;%(asctime)s - %(name)s - %(levelname)s - %(message)s&#x27;)</span><br><span class="line">   handler.setFormatter(formatter)</span><br><span class="line">   logger.addHandler(handler)</span><br></pre></td></tr></table></figure>
+
+​    3. 使用logger.info('message')
+
+## 18.flask-restful
+
+什么是RESTful架构：
+（1）每一个URI代表一种资源；
+（2）客户端和服务器之间，传递这种资源的某种表现层；
+（3）客户端通过四个HTTP动词(GET,POST,PUT,DELETE,[PATCH])，对服务器端资源进行操作，实现"表现层状态转化"。
+Postman
+前后端分离：
+前端： app，小程序，pc页面
+后端： 没有页面，mtv： 模型模板视图  去掉了t模板。
+      mv：模型 视图
+      模型的使用：跟原来的用法相同
+      视图： api构建视图
+步骤：
+
+     1. pip install flask-restful
+
+2. 创建api对象
+       api = Api(app=app)
+       api = Api(app=蓝图对象)
+
+3. 定义类视图：
+
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">2.</span> <span class="keyword">from</span> flask_restful <span class="keyword">import</span> Resource</span><br><span class="line">   <span class="keyword">class</span> <span class="title class_">xxxApi</span>(<span class="title class_ inherited__">Resource</span>):</span><br><span class="line">   		<span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">self</span>):</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">    	<span class="keyword">def</span> <span class="title function_">post</span>(<span class="params">self</span>):</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">put</span>(<span class="params">self</span>):</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">delete</span>(<span class="params">self</span>):</span><br><span class="line">            <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+4. 绑定
+
+   api.add_resource(xxxApi,'/user')
+
+​		参照：http://www.pythondoc.com/Flask-RESTful/quickstart.html
+​		https://flask-restful.readthedocs.io/en/latest/
+
+
+路由：
+@app.route('/user')
+def user():              -------》视图函数
+    .....
+    return response对象
+
+增加  修改   删除   查询  按钮动作
+
+http://127.0.0.1:5000/user?id=1
+http://127.0.0.1:5000/user/1
+
+
+restful: ---->api ----> 接口 ---->资源 ----> url
+
+class xxx（Resource）：  -------> 类视图
+    def get(self):
+        pass
+    ....
+
+http://127.0.0.1:5000/user
+get
+post
+put
+delete
+增加  修改   删除   查询  是通过请求方式完成的
+
+路径产生:
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">api.add_resource(Resource的子类，<span class="string">&#x27;/user&#x27;</span>)</span><br><span class="line">api.add_resource(Resource的子类，<span class="string">&#x27;/goods&#x27;</span>)</span><br><span class="line">api.add_resource(Resource的子类，<span class="string">&#x27;/order&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+endpoint:
+http://127.0.0.1:5000/user/1
+
+http://127.0.0.1:5000/goods?type=xxx&page=1&sorted=price   ----》get
+
+### 输入
+
+----------------进：请求参数传入-------------------
+
+步骤：
+
+1. 创建RequestParser对象：
+   \# 参数解析
+   parser = reqparse.RequestParser(bundle_errors=True)  # 解析对象
+
+2. 给解析器添加参数：
+       通过parser.add_argument('名字'，type=类型，required=是否必须填写，help=错误的提示信息，location=表明获取的位置form就是post表单提交)
+       注意在type的位置可以添加一些正则的验证等。
+       例如：
+
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">parser.add_argument(<span class="string">&#x27;username&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, required=<span class="literal">True</span>, <span class="built_in">help</span>=<span class="string">&#x27;必须输入用户名&#x27;</span>, location=[<span class="string">&#x27;form&#x27;</span>])</span><br><span class="line">parser.add_argument(<span class="string">&#x27;password&#x27;</span>, <span class="built_in">type</span>=inputs.regex(<span class="string">r&#x27;^\d&#123;6,12&#125;$&#x27;</span>), required=<span class="literal">True</span>, <span class="built_in">help</span>=<span class="string">&#x27;必须输入6~12位数字密码&#x27;</span>,location=[<span class="string">&#x27;form&#x27;</span>])</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;phone&#x27;</span>,<span class="built_in">type</span>=inputs.regex(<span class="string">r&#x27;^1[356789]\d&#123;9&#125;$&#x27;</span>), location=[<span class="string">&#x27;form&#x27;</span>], <span class="built_in">help</span>=<span class="string">&#x27;手机号码格式错误&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;hobby&#x27;</span>, action=<span class="string">&#x27;append&#x27;</span>)  <span class="comment"># [&#x27;篮球&#x27;, &#x27;游戏&#x27;, &#x27;旅游&#x27;]</span></span><br><span class="line"> parser.add_argument(<span class="string">&#x27;icon&#x27;</span>, <span class="built_in">type</span>=FileStorage, location=[<span class="string">&#x27;files&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+   只要添加上面的内容，就可以控制客户端的提交，以及提交的格式。
+
+3. 在请求的函数中获取数据：
+   可以在get，post，put等中获取数据，通过parser对象.parse_args()
+   \# 获取数据
+   args = parser.parse_args()
+   args是一个字典底层的结构中，因此我们获取具体的数据时可以通过get
+   username = args.get('username')
+   password = args.get('password')
+
+### 输出
+
+------------输出-----------------
+
+
+需要定义字典，字典的格式就是给客户端看的格式
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">user_fields = &#123;</span><br><span class="line">    <span class="string">&#x27;id&#x27;</span>: fields.Integer,</span><br><span class="line">    <span class="string">&#x27;username&#x27;</span>: fields.String(default=<span class="string">&#x27;匿名&#x27;</span>),</span><br><span class="line">    <span class="string">&#x27;pwd&#x27;</span>: fields.String(attribute=<span class="string">&#x27;password&#x27;</span>),</span><br><span class="line">    <span class="string">&#x27;udatetime&#x27;</span>: fields.DateTime(dt_format=<span class="string">&#x27;rfc822&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+客户端能看到的是： id，username，pwd，udatetime这四个key
+默认key的名字是跟model中的模型属性名一致，如果不想让前端看到命名，则可以修改
+但是必须结合attribute='模型的字段名'
+
+#### 自定义fields
+
+1. 必须继承Raw
+2. 重写方法：
+   def format(self):
+        return 结果
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">IsDelete</span>(fields.Raw):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">format</span>(<span class="params">self, value</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;------------------&gt;&#x27;</span>, value)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;删除&#x27;</span> <span class="keyword">if</span> value <span class="keyword">else</span> <span class="string">&#x27;未删除&#x27;</span></span><br><span class="line">user_fields = &#123;<span class="string">&#x27;isDelete1&#x27;</span>: IsDelete(attribute=<span class="string">&#x27;isdelete&#x27;</span>),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+URI:
+
+xxxlist ----->点击具体的一个获取详情 ------> 详情
+
+定义两个user_fields,
+1.用于获取用户的列表信息结构的fields：
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">user_fields_1 = &#123;</span><br><span class="line">    <span class="string">&#x27;id&#x27;</span>: fields.Integer,</span><br><span class="line">    <span class="string">&#x27;username&#x27;</span>: fields.String(default=<span class="string">&#x27;匿名&#x27;</span>),</span><br><span class="line">    <span class="string">&#x27;uri&#x27;</span>: fields.Url(<span class="string">&#x27;single_user&#x27;</span>, absolute=<span class="literal">True</span>)  ----》参数使用的就是endpoint的值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+2。具体用户信息展示的fields
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">user_fields = &#123;</span><br><span class="line">    <span class="string">&#x27;id&#x27;</span>: fields.Integer,</span><br><span class="line">    <span class="string">&#x27;username&#x27;</span>: fields.String(default=<span class="string">&#x27;匿名&#x27;</span>),</span><br><span class="line">    <span class="string">&#x27;pwd&#x27;</span>: fields.String(attribute=<span class="string">&#x27;password&#x27;</span>),</span><br><span class="line">    <span class="string">&#x27;isDelete&#x27;</span>: fields.Boolean(attribute=<span class="string">&#x27;isdelete&#x27;</span>),</span><br><span class="line">    <span class="string">&#x27;isDelete1&#x27;</span>: IsDelete(attribute=<span class="string">&#x27;isdelete&#x27;</span>),</span><br><span class="line">    <span class="string">&#x27;udatetime&#x27;</span>: fields.DateTime(dt_format=<span class="string">&#x27;rfc822&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+涉及endpoint的定义：
+
+api.add_resource(UserSimpleResource, '/user/<int:id>', endpoint='single_user')
+
+出：
+return data
+注意：data必须是符合json格式
+{
+  'aa':10,
+  'bb':[
+     {
+       'id':1,
+       'xxxs':[
+                {},{}
+              ]
+     },
+     {
+
+​     }
+  ]
+}
+如果直接返回不能有自定义的对象User，Friend
+
+如果有这种对象，需要：marchal(),marchal_with()帮助进行转换。
+
+1. marchal(对象，对象的fields格式)  # 对象的fields格式是指字典的输出格式
+   marchal([对象，对象]，对象的fields格式)
+2. marchal_with() 作为装饰器修饰请求方法
+
+​    @marshal_with(user_friend_fields)
+​    def get(self, id):
+​        。。。。
+​        return data
+
+ 函数需要参数，参数就是最终数据输出的格式
+
+ 参数： user_friend_fields，类型是：dict类型
+ 例如：
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"> user_friend_fields = &#123;</span><br><span class="line">    <span class="string">&#x27;username&#x27;</span>: fields.String,</span><br><span class="line">    <span class="string">&#x27;nums&#x27;</span>: fields.Integer,</span><br><span class="line">    <span class="string">&#x27;friends&#x27;</span>: fields.<span class="type">List</span>(fields.Nested(user_fields))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+fields.Nested(fields.String)  ----> ['aaa','bbb','bbbc']
+fields.Nested(user_fields)  -----> user_fields是一个字典结构，将里面的每一个对象转成user_fields
+-----》[user,user,user]
+
+
+参考面试题：https://www.cnblogs.com/Utopia-Clint/p/10824238.html
+
+## 18.跨域问题
+
+一、跨域问题来源于JavaScript的"同源策略"，即只有 协议+主机名+端口号 (如存在)相同，
+则允许相互访问。也就是说JavaScript只能访问和操作自己域下的资源，
+不能访问和操作其他域下的资源。跨域问题是针对JS和ajax的，html本身没有跨域问题。
+后端：
+
+1. 使用第三方扩展flask-cors
+
+​	from flask_cors import CORS
+​	cors= CORS()
+
+​	与app进行绑定
+​	cors.init_app(app=app,supports_credentials=True)
+
+2. response = make_response()
+   response.headers['Access-Control-Allow-Origin']='*'
+   response.headers['Access-Control-Allow-Methods']='GET,POST'
+   response.headers['Access-Control-Allow-Headers']='x-request-with,Content-type'
+   return response
+
+二、蓝图与api使用：
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">user_bp = Blueprint(<span class="string">&#x27;user&#x27;</span>, __name__)</span><br><span class="line">api = Api(user_bp)</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">xxxxApi</span>(<span class="title class_ inherited__">Resource</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">api.add_resource(xxxxApi,<span class="string">&#x27;/xxxx&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>基于b站千锋博客论坛教程:<a href="https://www.bilibili.com/video/BV17z4y1X7UZ?share_source=copy_web">https://www.bilibili.com/video/BV17z4y1X7UZ?share_source=copy_web</a></p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>大二自学</tag>
+      </tags>
+  </entry>
+</search>
