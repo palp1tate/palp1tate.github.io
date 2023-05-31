@@ -1,50 +1,377 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>flask框架(1-2)</title>
-    <url>/2023/05/29/flask/</url>
-    <content><![CDATA[<h2 id="Flask简介"><a href="#Flask简介" class="headerlink" title="Flask简介"></a>Flask简介</h2><p>​		Flask是一个轻量级的可定制框架，使用Python语言编写，较其他同类型框架更为灵活、轻便、安全且容易上手。它可以很好地结合<a href="https://baike.baidu.com/item/MVC%E6%A8%A1%E5%BC%8F/713147?fromModule=lemma_inlink">MVC模式</a>进行开发，开发人员分工合作，小型团队在短时间内就可以完成功能丰富的中小型网站或<a href="https://baike.baidu.com/item/Web%E6%9C%8D%E5%8A%A1/2837593?fromModule=lemma_inlink">Web服务</a>的实现。另外，Flask还有很强的定制性，用户可以根据自己的需求来添加相应的功能，在保持核心功能简单的同时实现功能的丰富与扩展，其强大的插件库可以让用户实现个性化的网站定制，开发出功能强大的网站。</p>
-<p>​		Flask是目前十分流行的web框架，采用Python编程语言来实现相关功能。它被称为微框架(microframework)，“微”并不是意味着把整个Web应用放入到一个Python文件，微框架中的“微”是指Flask旨在保持代码简洁且易于扩展，Flask框架的主要特征是核心构成比较简单，但具有很强的扩展性和兼容性，程序员可以使用Python语言快速实现一个网站或Web服务。一般情况下，它不会指定数据库和模板引擎等对象，用户可以根据需要自己选择各种数据库。Flask自身不会提供表单验证功能，在项目实施过程中可以自由配置，从而为应用程序开发提供数据库抽象层基础组件，支持进行表单数据合法性验证、文件上传处理、用户身份认证和数据库集成等功能。Flask主要包括Werkzeug和Jinja2两个核心函数库，它们分别负责业务处理和安全方面的功能，这些基础函数为web项目开发过程提供了丰富的基础组件。Werkzeug库十分强大，功能比较完善，支持URL路由请求集成，一次可以响应多个用户的访问请求；支持Cookie和会话管理，通过身份缓存数据建立长久连接关系，并提高用户访问速度；支持交互式Javascript调试，提高用户体验；可以处理HTTP基本事务，快速响应客户端推送过来的访问请求。Jinja2库支持自动HTML转义功能，能够很好控制外部黑客的脚本攻击。系统运行速度很快，页面加载过程会将源码进行编译形成Python字节码，从而实现模板的高效运行；模板继承机制可以对模板内容进行修改和维护，为不同需求的用户提供相应的模板。</p>
-<h2 id="路由和请求响应对象"><a href="#路由和请求响应对象" class="headerlink" title="路由和请求响应对象"></a>路由和请求响应对象</h2><ul>
-<li>装饰器其实就是将rule字符串跟视图函数进行了绑定，通过add_url_rule()实现的绑定。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/index&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;welcome everyone！&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>等效</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;welcome everyone！&#x27;</span></span><br><span class="line">app.add_url_rule(<span class="string">&#x27;/index&#x27;</span>, view_func=index)</span><br></pre></td></tr></table></figure>
-
-<h3 id="路由变量规则"><a href="#路由变量规则" class="headerlink" title="路由变量规则"></a>路由变量规则</h3><p>string  （缺省值） 接受任何不包含斜杠的文本   *<br>int      接受正整数  *<br>float    接受正浮点数<br>path     类似 string ，但可以包含斜杠<br>uuid     接受 UUID 字符串</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/index/&lt;path:p&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_path</span>(<span class="params">p</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;******&gt;&#x27;</span>, <span class="built_in">type</span>(p))  <span class="comment"># str类型</span></span><br><span class="line">    <span class="built_in">print</span>(p)</span><br><span class="line">    <span class="keyword">return</span> p</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/test/&lt;uuid:uid&gt;&#x27;</span></span>)  </span><span class="comment"># 必须传递uuid的格式，uuid模块， uuid.uuid4() ----&gt;UUID类型</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>(<span class="params">uid</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;#######&gt;&gt;&gt;&gt;&gt;&#x27;</span>, <span class="built_in">type</span>(uid))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;获取唯一的标识码&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 所有的路由搜索规则都是自上而下搜索，在写路由的是有定义的路由是唯一的。</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/projects&#x27;</span></span>)  </span><span class="comment"># 请求路由中如果添加了/：http://127.0.0.1:5000/about/  显示Not Found</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">about</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;The about page&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/projects/&#x27;</span></span>)  </span><span class="comment"># 路由中定义&#x27;/&#x27;，无论请求的URL是否带有/，都可以执行视图函数。如果请求的是有/，浏览器做了一次重定向</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">projects</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;The project page&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>返回值：其实返回值返回的都是一个响应对象。</p>
+    <title>电大软件测试～第二次作业</title>
+    <url>/2023/05/31/test2/</url>
+    <content><![CDATA[<h2 id="第二次作业及参考答案"><a href="#第二次作业及参考答案" class="headerlink" title="第二次作业及参考答案"></a>第二次作业及参考答案</h2><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p> 在一个客户信息查询界面中，输入条件有“姓名”、“身份证号”、“手机”，采用正交表方式设计该界面查询功能的测试用例。</p>
+<p>答：</p>
+<p>针对本测试有3个输入条件，每个输入有2种取值情况，可以选择L₄(2³)正交表，其正交表值如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>实验数\列号</th>
+<th>姓名</th>
+<th>身份证号</th>
+<th>手机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>测试用例：</p>
+<table>
+<thead>
+<tr>
+<th>测试用例&#x2F;查询条件</th>
+<th>姓名</th>
+<th>身份证号</th>
+<th>手机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>测试用例1</td>
+<td>填写</td>
+<td>填写</td>
+<td>填写</td>
+</tr>
+<tr>
+<td>测试用例2</td>
+<td>填写</td>
+<td>空</td>
+<td>空</td>
+</tr>
+<tr>
+<td>测试用例3</td>
+<td>空</td>
+<td>填写</td>
+<td>空</td>
+</tr>
+<tr>
+<td>测试用例4</td>
+<td>空</td>
+<td>空</td>
+<td>填写</td>
+</tr>
+</tbody></table>
+<h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>根据如下图所示的程序流程图，分别使用语句覆盖测试、判定覆盖测试、条件覆盖测试和路径覆盖测试进行测试用例设计。</p>
+<p><img src="https://s2.loli.net/2023/05/31/YaGS6fzEgLuwdKp.png" alt="VD_MD_EUXLQ_O~DDYPO_G_R.png"></p>
+<p>答：</p>
+<p><em><strong>1）语句覆盖</strong></em></p>
+<p>设计测试用例，使得被测试程序中的每条可执行语句至少被执行一次。其测试用例表如下所示。</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖语句</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(X,Y)&#x3D;(1,11)</td>
+<td>(X,Y)&#x3D;(1,11)</td>
+<td>X&gt;0 AND Y&gt;10;Y&#x3D;Y&#x2F;X;X&lt;-10 OR Y&lt;0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(X,Y)&#x3D;(0,-1)</td>
+<td>(X,Y)&#x3D;(0,1)</td>
+<td>X&gt;0 AND Y&gt;10;X&lt;-10 OR Y&lt;0;Y&#x3D;-(Y+X)</td>
+</tr>
+</tbody></table>
+<p><em><strong>2）判定覆盖</strong></em></p>
+<p>设计测试用例,使得被测试程序中的每个判断的”真”、”假”分支至少被执行一次。设X&gt;0 AND Y&gt;10为判定条件M，X&lt;-10 OR Y&lt;0为判定条件N。<br>设计的判定覆盖测试用例如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖判定条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(X,Y)&#x3D;(1,11)</td>
+<td>(X,Y)&#x3D;(1,11)</td>
+<td>M为真，N为假</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(X,Y)&#x3D;(0,-1)</td>
+<td>(X,Y)&#x3D;(0,1)</td>
+<td>M为假，N为真</td>
+</tr>
+</tbody></table>
+<p><em><strong>3）条件覆盖</strong></em></p>
+<p>设计测试用例,使得被测试程序中分支判断语句中每个条件的可能值至少被满足一次。<br>设</p>
 <blockquote>
-<p>视图函数的返回值：<br>response响应：<br>1.str     自动转成response对象<br>2.dict    json<br>3.response对象  response对象<br>4.make_response()  response对象<br>5.redirect()   重定向  302状态码<br>6.render_template()  模板渲染 + 模板</p>
+<p>条件X&gt;0:<br>取真时为T1，取假时为F1<br>条件Y&gt;10:<br>取真时为T2，取假时为F2<br>条件x&lt;-10:<br>取真时为T3，取假时为F3<br>条件Y&lt;0:<br>取真时为T4,取假时为 F4</p>
 </blockquote>
-<p>response响应对象</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(response.content_type)</span><br><span class="line"><span class="built_in">print</span>(response.headers)</span><br><span class="line"><span class="built_in">print</span>(response.status_code)  <span class="comment"># 200</span></span><br><span class="line"><span class="built_in">print</span>(response.status)  <span class="comment"># 200 OK</span></span><br><span class="line">response.set_cookie(<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;wxy&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>设计的条件覆盖测试用例如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(X,Y)&#x3D;(1,-1)</td>
+<td>(X,Y)&#x3D;(1,0)</td>
+<td>T1，F2，F3，T4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(X,Y)&#x3D;(-11,11)</td>
+<td>(X,Y)&#x3D;(-11,0)</td>
+<td>F1，T2，T3，F4</td>
+</tr>
+</tbody></table>
+<p><em><strong>4）基本路径覆盖</strong></em></p>
+<p>设计测试用例,使得被测试程序中的基本路径至少被覆盖一次。依据该程序控制流图计算环路复杂度&#x3D;3（判断节点数目+1）,因此,该程序的基本路径有3条。</p>
+<p>设计的基本路径覆盖测试用例如下表所示</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(X,Y)&#x3D;(0,0)</td>
+<td>(X,Y)&#x3D;(0,0)</td>
+<td>ace</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(X,Y)&#x3D;(1,11)</td>
+<td>(X,Y)&#x3D;(1,11)</td>
+<td>abce</td>
+</tr>
+<tr>
+<td>3</td>
+<td>(X,Y)&#x3D;(-11,1)</td>
+<td>(X,Y)&#x3D;(-11,10)</td>
+<td>acde</td>
+</tr>
+<tr>
+<td>4</td>
+<td>不存在</td>
+<td>不存在</td>
+<td>abcde</td>
+</tr>
+</tbody></table>
+<h3 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h3><p>针对如下样本程序，分析该程序逻辑覆盖测试方法中的语句覆盖、判定覆盖、条件覆盖和基本路径覆盖，并说明哪种方法覆盖率高？为什么？</p>
+<p>被测样本程序</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Coverage</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;start main function:path a...&quot;</span>);</span><br><span class="line">  <span class="type">int</span> A=<span class="number">0</span>,B=<span class="number">0</span>,X=<span class="number">0</span>;</span><br><span class="line">  <span class="type">Scanner</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">  System.out.println(<span class="string">&quot;输入A：&quot;</span>);  A = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入B=&quot;</span>);  B = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入X=&quot;</span>);  X = s.nextInt();</span><br><span class="line">  s.close();  </span><br><span class="line">  <span class="keyword">if</span> (A&gt;<span class="number">1</span> &amp;&amp; B==<span class="number">0</span>) &#123;</span><br><span class="line">	X=X/A;</span><br><span class="line">	System.out.println(<span class="string">&quot;path c&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path b&quot;</span>);  &#125;</span><br><span class="line">  <span class="keyword">if</span> (A==<span class="number">2</span> || X&gt;<span class="number">1</span>) &#123;</span><br><span class="line">	X=X+<span class="number">1</span>;</span><br><span class="line">	System.out.println(<span class="string">&quot;path e&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path d&quot;</span>);  &#125;</span><br><span class="line">  System.out.println(<span class="string">&quot;end main function.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>request请求对象：只需要导入，通过from flask import request<br>导入之后可以获取对象的属性和方法<br>属性：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.headers)  <span class="comment"># request对象 对象访问属性，也可以调用方法</span></span><br><span class="line"><span class="built_in">print</span>(request.path)</span><br><span class="line"><span class="built_in">print</span>(request.full_path)</span><br><span class="line"><span class="built_in">print</span>(request.base_url)</span><br><span class="line"><span class="built_in">print</span>(request.url)</span><br></pre></td></tr></table></figure>
-
-<h4 id="获取提交的数据"><a href="#获取提交的数据" class="headerlink" title="获取提交的数据"></a>获取提交的数据</h4><p>跟请求方法相关的</p>
-<ul>
-<li><p>get：<br>request.args 底层是字典的形式   主要获取get提交的请求参数<br>如果是get请求格式是这个样子的：&#x2F;register2?username&#x3D;zhangsan&amp;address&#x3D;Beijing<br>此时的username是form表单中表单元素的name值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.args.get(<span class="string">&#x27;username&#x27;</span>))   <span class="comment"># 获取值</span></span><br><span class="line"><span class="built_in">print</span>(request.args.get(<span class="string">&#x27;address&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<p>​	答：</p>
+<p>​	<u><em><strong>注：以下答案只参考了标准答案的一部分</strong></em></u></p>
+<p><img src="https://s2.loli.net/2023/05/31/P7NxLnZ9QhsHmyW.png" alt="VF1D1EJ2__LKYS_1_GPGJ5W.png"></p>
+<ol>
+<li><p>语句覆盖测试</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(A,B,X)&#x3D;(2,0,2)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
+<td>ace</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(A,B,X)&#x3D;(0,1,1)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
+<td>abd</td>
+</tr>
+</tbody></table>
 </li>
-<li><p>post:<br>request.form 底层是字典的形式   主要获取post提交的请求参数<br>注意post提交必须在路由中进行设置，通过methods &#x3D; [‘GET’,’POST’]<br>按照此种形式：<br>@app.route(‘&#x2F;register2’, methods&#x3D;[‘GET’, ‘POST’])<br>def register2():  # 获取页面提交的内容<br>…….  内容省略<br>获取数据：<br>print(request.form)  # 如果请求方法是post则需要通过request.form取值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.form.get(<span class="string">&#x27;username&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(request.form.get(<span class="string">&#x27;address&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>定制响应头</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">response = make_response(content)  <span class="comment"># 返回值就是一个response对象</span></span><br><span class="line">   <span class="comment"># 定制响应头</span></span><br><span class="line">   response.headers[<span class="string">&#x27;mytest&#x27;</span>] = <span class="string">&#x27;123abc&#x27;</span></span><br><span class="line">   response.headers[<span class="string">&#x27;myhello&#x27;</span>] = <span class="string">&#x27;hellohello&#x27;</span></span><br><span class="line">   <span class="comment"># 将定制好的response返回</span></span><br><span class="line">   <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+<li><p>判定覆盖测试</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(A,B,X)&#x3D;(2,0,2)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
+<td>ace</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(A,B,X)&#x3D;(0,1,1)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
+<td>abd</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>条件覆盖测试</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(A,B,X)&#x3D;(2,0,2)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
+<td>ace</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(A,B,X)&#x3D;(0,1,1)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
+<td>abd</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>基本路径覆盖测试</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(A,B,X)&#x3D;(2,0,2)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
+<td>ace</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(A,B,X)&#x3D;(0,1,1)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
+<td>abd</td>
+</tr>
+<tr>
+<td>3</td>
+<td>(A,B,X)&#x3D;(0,1,2)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path e，end main function.</td>
+<td>abe</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<p>综上所述，基本路径覆盖测试用的测试用例最多，覆盖的路径也最多，故基本路径覆盖的覆盖率最高。</p>
+<p><em><strong>注：<a href="https://blog.csdn.net/The_Azur/article/details/117936347">环形复杂度必定是基本路径个数的上限。</a></strong></em></p>
+<p><img src="https://s2.loli.net/2023/05/31/HtDjYwSso3WKVFn.png" alt="Snipaste_2023-05-31_21-48-19.png"></p>
+<h3 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h3><p>使用PMD代码分析工具针对如下被测程序，找出该程序存在的潜在缺陷，给出结果界面截图，并说明各个缺陷出现的原因。</p>
+<p>被测样本程序</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Coverage</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;start main function:path a...&quot;</span>);</span><br><span class="line">  <span class="type">int</span> A=<span class="number">0</span>,B=<span class="number">0</span>,X=<span class="number">0</span>;</span><br><span class="line">  <span class="type">Scanner</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">  System.out.println(<span class="string">&quot;输入A：&quot;</span>);  A = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入B=&quot;</span>);  B = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入X=&quot;</span>);  X = s.nextInt();</span><br><span class="line">  s.close();  </span><br><span class="line">  <span class="keyword">if</span> (A&gt;<span class="number">1</span> &amp;&amp; B==<span class="number">0</span>) &#123;</span><br><span class="line">	X=X/A;</span><br><span class="line">	System.out.println(<span class="string">&quot;path c&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path b&quot;</span>);  &#125;</span><br><span class="line">  <span class="keyword">if</span> (A==<span class="number">2</span> || X&gt;<span class="number">1</span>) &#123;</span><br><span class="line">	X=X+<span class="number">1</span>;</span><br><span class="line">	System.out.println(<span class="string">&quot;path e&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path d&quot;</span>);  &#125;</span><br><span class="line">  System.out.println(<span class="string">&quot;end main function.&quot;</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>答：</p>
+<p><u><em><strong>注：以下答案只参考了标准答案的一部分</strong></em></u></p>
+<p><a href="https://smms.app/image/5I4amZs2cXEldHv" target="_blank"><img src="https://s2.loli.net/2023/05/31/5I4amZs2cXEldHv.jpg" alt="Z__LBIY38___C`L5GCFZSVF.jpg"></a></p>
+<p>以下是可能的缺陷（感觉每个人做出来都不一样哈哈哈哈😆）：</p>
+<blockquote>
+<p>（1）VariableNamingConventions：</p>
+<p>​		①变量应以小写字符开头，’A’’B’’X’均以大写字符开头</p>
+<p>（2）UseUtilityClass：</p>
+<p>​		①所有方法都是静态的，可以考虑使用实用工具类，或添加一个私		有构造函数，或使类抽象来屏蔽这个警告</p>
+<p>（3）LocalVariableCouldBeFinal：</p>
+<p>​		①局部变量’s’可以声明为final</p>
+<p>（4）LocalVaraiableNamingConventions：</p>
+<p>​		①局部变量名’A’’B’’X’不匹配’[a-z][a-zA-Z0-9]*’</p>
+<p>（5）MethodArgumentCouldBeFinal：</p>
+<p>​		①参数’args’未赋值，可以声明为final</p>
+<p>（6）CommentRequired：</p>
+<p>​		①类注释是必需的</p>
+<p>​		②公共方法和构造函数的注释是必需的</p>
+<p>（7）OneDeclarationPerLine：</p>
+<p>​		①int A&#x3D;0,B&#x3D;0,X&#x3D;0; 每个声明为一行，可以增强代码的可读性</p>
+<p>（8）UnusedAssignment：</p>
+<p>​		①变量’B’的初始化式从未使用（后被重写）</p>
+<p>​		②变量’A’的初始化式从未使用（后被覆盖）</p>
+<p>​		③变量’X’的初始化式从未使用（后被覆盖）</p>
+<p>​		④ X&#x3D;X+1; 赋给变量’X’的值从未使用过</p>
+<p>（9）SystemPrintln：</p>
+<p>​		①使用System.out.println</p>
+<p>（10）ShortVariable：</p>
+<p>​		① Scanner s &#x3D; new Scanner(System.in); 避免使用像s这样名字较		短的变量</p>
+<p>​		②避免使用短名称的变量：如A,B,X</p>
+<p>（11）DataflowAnomalyAnalysis：</p>
+<p>​		①发现变量’A’的’DD’异常</p>
+<p>​			int A&#x3D;0,B&#x3D;0,X&#x3D;0;</p>
+<p>​			Scanner s &#x3D; new Scanner(System.in);</p>
+<p>​		    System.out.println(“输入A：”);A &#x3D; s.nextInt();</p>
+<p>​		②发现变量’X’的’DU’异常</p>
+<p>​		X&#x3D;X+1;</p>
+<p>​		System.out.println(“path e”);</p>
+<p>​	} else {</p>
+<p>​		System.out.println(“path d”);  }</p>
+<p>​		System.out.println(“end main function.”);</p>
+<p>​	}</p>
+<p>​		③发现变量’X’的’DD’异常</p>
+<p>​		int A&#x3D;0,B&#x3D;0,X&#x3D;0;</p>
+<p> ​		Scanner s &#x3D; new Scanner(System.in);</p>
+<p>​		System.out.println(“输入A：”);  A &#x3D; s.nextInt();</p>
+<p>​		 System.out.println(“输入B&#x3D;”);  B &#x3D; s.nextInt();</p>
+<p>​        System.out.println(“输入X&#x3D;”);  X &#x3D; s.nextInt();</p>
+<p>​		④发现变量’B’的’DD’异常</p>
+<p>​		int A&#x3D;0,B&#x3D;0,X&#x3D;0;</p>
+<p>​	Scanner s &#x3D; new Scanner(System.in);</p>
+<p>​	System.out.println(“输入A：”);  A &#x3D; s.nextInt();</p>
+<p>​	System.out.println(“输入B&#x3D;”);  B &#x3D; s.nextInt();</p>
+<p>（12）CloseResource：</p>
+<p>​		①Scanner s &#x3D; new Scanner(System.in); 确保像InputStream对象		这样的资源在使用后被关闭</p>
+</blockquote>
+<p><em><strong>声明：除特殊标注外（综合考虑其他同学的答案），答案来源均来自老师原版答案</strong></em></p>
 ]]></content>
       <categories>
-        <category>Flask</category>
+        <category>大二下期末复习</category>
       </categories>
       <tags>
-        <tag>Python</tag>
-        <tag>大二自学</tag>
+        <tag>软件测试</tag>
       </tags>
   </entry>
   <entry>
@@ -74,12 +401,12 @@
 </thead>
 <tbody><tr>
 <td align="left">1</td>
-<td><a href="mailto:&#101;&#120;&#x61;&#x6d;&#112;&#x6c;&#x65;&#64;&#x75;&#101;&#x73;&#x74;&#99;&#46;&#101;&#x64;&#117;&#x2e;&#x63;&#110;">&#101;&#120;&#x61;&#x6d;&#112;&#x6c;&#x65;&#64;&#x75;&#101;&#x73;&#x74;&#99;&#46;&#101;&#x64;&#117;&#x2e;&#x63;&#110;</a></td>
+<td><a href="mailto:&#101;&#120;&#97;&#x6d;&#112;&#x6c;&#x65;&#64;&#x75;&#x65;&#115;&#116;&#x63;&#46;&#x65;&#x64;&#117;&#46;&#99;&#x6e;">&#101;&#120;&#97;&#x6d;&#112;&#x6c;&#x65;&#64;&#x75;&#x65;&#115;&#116;&#x63;&#46;&#x65;&#x64;&#117;&#46;&#99;&#x6e;</a></td>
 <td>(1)</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td>#<a href="mailto:&#x65;&#120;&#x61;&#109;&#x70;&#108;&#x65;&#64;&#x75;&#101;&#115;&#116;&#99;&#46;&#101;&#x64;&#117;&#46;&#x63;&#110;">&#x65;&#120;&#x61;&#109;&#x70;&#108;&#x65;&#64;&#x75;&#101;&#115;&#116;&#99;&#46;&#101;&#x64;&#117;&#46;&#x63;&#110;</a></td>
+<td>#<a href="mailto:&#x65;&#120;&#97;&#x6d;&#x70;&#108;&#101;&#64;&#117;&#101;&#115;&#116;&#x63;&#x2e;&#x65;&#100;&#x75;&#x2e;&#x63;&#110;">&#x65;&#120;&#97;&#x6d;&#x70;&#108;&#101;&#64;&#117;&#101;&#115;&#116;&#x63;&#x2e;&#x65;&#100;&#x75;&#x2e;&#x63;&#110;</a></td>
 <td>(2)</td>
 </tr>
 <tr>
@@ -961,6 +1288,53 @@
       </categories>
       <tags>
         <tag>软件测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>flask框架(1-2)</title>
+    <url>/2023/05/29/flask/</url>
+    <content><![CDATA[<h2 id="Flask简介"><a href="#Flask简介" class="headerlink" title="Flask简介"></a>Flask简介</h2><p>​		Flask是一个轻量级的可定制框架，使用Python语言编写，较其他同类型框架更为灵活、轻便、安全且容易上手。它可以很好地结合<a href="https://baike.baidu.com/item/MVC%E6%A8%A1%E5%BC%8F/713147?fromModule=lemma_inlink">MVC模式</a>进行开发，开发人员分工合作，小型团队在短时间内就可以完成功能丰富的中小型网站或<a href="https://baike.baidu.com/item/Web%E6%9C%8D%E5%8A%A1/2837593?fromModule=lemma_inlink">Web服务</a>的实现。另外，Flask还有很强的定制性，用户可以根据自己的需求来添加相应的功能，在保持核心功能简单的同时实现功能的丰富与扩展，其强大的插件库可以让用户实现个性化的网站定制，开发出功能强大的网站。</p>
+<p>​		Flask是目前十分流行的web框架，采用Python编程语言来实现相关功能。它被称为微框架(microframework)，“微”并不是意味着把整个Web应用放入到一个Python文件，微框架中的“微”是指Flask旨在保持代码简洁且易于扩展，Flask框架的主要特征是核心构成比较简单，但具有很强的扩展性和兼容性，程序员可以使用Python语言快速实现一个网站或Web服务。一般情况下，它不会指定数据库和模板引擎等对象，用户可以根据需要自己选择各种数据库。Flask自身不会提供表单验证功能，在项目实施过程中可以自由配置，从而为应用程序开发提供数据库抽象层基础组件，支持进行表单数据合法性验证、文件上传处理、用户身份认证和数据库集成等功能。Flask主要包括Werkzeug和Jinja2两个核心函数库，它们分别负责业务处理和安全方面的功能，这些基础函数为web项目开发过程提供了丰富的基础组件。Werkzeug库十分强大，功能比较完善，支持URL路由请求集成，一次可以响应多个用户的访问请求；支持Cookie和会话管理，通过身份缓存数据建立长久连接关系，并提高用户访问速度；支持交互式Javascript调试，提高用户体验；可以处理HTTP基本事务，快速响应客户端推送过来的访问请求。Jinja2库支持自动HTML转义功能，能够很好控制外部黑客的脚本攻击。系统运行速度很快，页面加载过程会将源码进行编译形成Python字节码，从而实现模板的高效运行；模板继承机制可以对模板内容进行修改和维护，为不同需求的用户提供相应的模板。</p>
+<h2 id="路由和请求响应对象"><a href="#路由和请求响应对象" class="headerlink" title="路由和请求响应对象"></a>路由和请求响应对象</h2><ul>
+<li>装饰器其实就是将rule字符串跟视图函数进行了绑定，通过add_url_rule()实现的绑定。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/index&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;welcome everyone！&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>等效</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;welcome everyone！&#x27;</span></span><br><span class="line">app.add_url_rule(<span class="string">&#x27;/index&#x27;</span>, view_func=index)</span><br></pre></td></tr></table></figure>
+
+<h3 id="路由变量规则"><a href="#路由变量规则" class="headerlink" title="路由变量规则"></a>路由变量规则</h3><p>string  （缺省值） 接受任何不包含斜杠的文本   *<br>int      接受正整数  *<br>float    接受正浮点数<br>path     类似 string ，但可以包含斜杠<br>uuid     接受 UUID 字符串</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/index/&lt;path:p&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_path</span>(<span class="params">p</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;******&gt;&#x27;</span>, <span class="built_in">type</span>(p))  <span class="comment"># str类型</span></span><br><span class="line">    <span class="built_in">print</span>(p)</span><br><span class="line">    <span class="keyword">return</span> p</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/test/&lt;uuid:uid&gt;&#x27;</span></span>)  </span><span class="comment"># 必须传递uuid的格式，uuid模块， uuid.uuid4() ----&gt;UUID类型</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>(<span class="params">uid</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;#######&gt;&gt;&gt;&gt;&gt;&#x27;</span>, <span class="built_in">type</span>(uid))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;获取唯一的标识码&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 所有的路由搜索规则都是自上而下搜索，在写路由的是有定义的路由是唯一的。</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/projects&#x27;</span></span>)  </span><span class="comment"># 请求路由中如果添加了/：http://127.0.0.1:5000/about/  显示Not Found</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">about</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;The about page&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/projects/&#x27;</span></span>)  </span><span class="comment"># 路由中定义&#x27;/&#x27;，无论请求的URL是否带有/，都可以执行视图函数。如果请求的是有/，浏览器做了一次重定向</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">projects</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;The project page&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>返回值：其实返回值返回的都是一个响应对象。</p>
+<blockquote>
+<p>视图函数的返回值：<br>response响应：<br>1.str     自动转成response对象<br>2.dict    json<br>3.response对象  response对象<br>4.make_response()  response对象<br>5.redirect()   重定向  302状态码<br>6.render_template()  模板渲染 + 模板</p>
+</blockquote>
+<p>response响应对象</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(response.content_type)</span><br><span class="line"><span class="built_in">print</span>(response.headers)</span><br><span class="line"><span class="built_in">print</span>(response.status_code)  <span class="comment"># 200</span></span><br><span class="line"><span class="built_in">print</span>(response.status)  <span class="comment"># 200 OK</span></span><br><span class="line">response.set_cookie(<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;wxy&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>request请求对象：只需要导入，通过from flask import request<br>导入之后可以获取对象的属性和方法<br>属性：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.headers)  <span class="comment"># request对象 对象访问属性，也可以调用方法</span></span><br><span class="line"><span class="built_in">print</span>(request.path)</span><br><span class="line"><span class="built_in">print</span>(request.full_path)</span><br><span class="line"><span class="built_in">print</span>(request.base_url)</span><br><span class="line"><span class="built_in">print</span>(request.url)</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取提交的数据"><a href="#获取提交的数据" class="headerlink" title="获取提交的数据"></a>获取提交的数据</h4><p>跟请求方法相关的</p>
+<ul>
+<li><p>get：<br>request.args 底层是字典的形式   主要获取get提交的请求参数<br>如果是get请求格式是这个样子的：&#x2F;register2?username&#x3D;zhangsan&amp;address&#x3D;Beijing<br>此时的username是form表单中表单元素的name值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.args.get(<span class="string">&#x27;username&#x27;</span>))   <span class="comment"># 获取值</span></span><br><span class="line"><span class="built_in">print</span>(request.args.get(<span class="string">&#x27;address&#x27;</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>post:<br>request.form 底层是字典的形式   主要获取post提交的请求参数<br>注意post提交必须在路由中进行设置，通过methods &#x3D; [‘GET’,’POST’]<br>按照此种形式：<br>@app.route(‘&#x2F;register2’, methods&#x3D;[‘GET’, ‘POST’])<br>def register2():  # 获取页面提交的内容<br>…….  内容省略<br>获取数据：<br>print(request.form)  # 如果请求方法是post则需要通过request.form取值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.form.get(<span class="string">&#x27;username&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(request.form.get(<span class="string">&#x27;address&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>定制响应头</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">response = make_response(content)  <span class="comment"># 返回值就是一个response对象</span></span><br><span class="line">   <span class="comment"># 定制响应头</span></span><br><span class="line">   response.headers[<span class="string">&#x27;mytest&#x27;</span>] = <span class="string">&#x27;123abc&#x27;</span></span><br><span class="line">   response.headers[<span class="string">&#x27;myhello&#x27;</span>] = <span class="string">&#x27;hellohello&#x27;</span></span><br><span class="line">   <span class="comment"># 将定制好的response返回</span></span><br><span class="line">   <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Flask</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>大二自学</tag>
       </tags>
   </entry>
 </search>
