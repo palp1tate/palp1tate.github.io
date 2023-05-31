@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>珩の博客</title>
+  <title>Eternity</title>
   <icon>https://www.gravatar.com/avatar/baf7a9a441045c4183b26510f38f5d76</icon>
-  
+  <subtitle>one uestcerのblog</subtitle>
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-05-31T03:51:24.304Z</updated>
+  <updated>2023-05-31T09:51:04.246Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>电大软件测试～第一次作业</title>
+    <link href="https://uestcwxy.love/2023/05/31/test1/"/>
+    <id>https://uestcwxy.love/2023/05/31/test1/</id>
+    <published>2023-05-31T09:27:57.000Z</published>
+    <updated>2023-05-31T09:51:04.246Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="大二下期末复习" scheme="https://uestcwxy.love/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+    <category term="软件测试" scheme="https://uestcwxy.love/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>flask框架(1-2)</title>
