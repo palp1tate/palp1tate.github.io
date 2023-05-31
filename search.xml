@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>flask框架(1-2)</title>
+    <url>/2023/05/29/flask/</url>
+    <content><![CDATA[<h2 id="Flask简介"><a href="#Flask简介" class="headerlink" title="Flask简介"></a>Flask简介</h2><p>​		Flask是一个轻量级的可定制框架，使用Python语言编写，较其他同类型框架更为灵活、轻便、安全且容易上手。它可以很好地结合<a href="https://baike.baidu.com/item/MVC%E6%A8%A1%E5%BC%8F/713147?fromModule=lemma_inlink">MVC模式</a>进行开发，开发人员分工合作，小型团队在短时间内就可以完成功能丰富的中小型网站或<a href="https://baike.baidu.com/item/Web%E6%9C%8D%E5%8A%A1/2837593?fromModule=lemma_inlink">Web服务</a>的实现。另外，Flask还有很强的定制性，用户可以根据自己的需求来添加相应的功能，在保持核心功能简单的同时实现功能的丰富与扩展，其强大的插件库可以让用户实现个性化的网站定制，开发出功能强大的网站。</p>
+<p>​		Flask是目前十分流行的web框架，采用Python编程语言来实现相关功能。它被称为微框架(microframework)，“微”并不是意味着把整个Web应用放入到一个Python文件，微框架中的“微”是指Flask旨在保持代码简洁且易于扩展，Flask框架的主要特征是核心构成比较简单，但具有很强的扩展性和兼容性，程序员可以使用Python语言快速实现一个网站或Web服务。一般情况下，它不会指定数据库和模板引擎等对象，用户可以根据需要自己选择各种数据库。Flask自身不会提供表单验证功能，在项目实施过程中可以自由配置，从而为应用程序开发提供数据库抽象层基础组件，支持进行表单数据合法性验证、文件上传处理、用户身份认证和数据库集成等功能。Flask主要包括Werkzeug和Jinja2两个核心函数库，它们分别负责业务处理和安全方面的功能，这些基础函数为web项目开发过程提供了丰富的基础组件。Werkzeug库十分强大，功能比较完善，支持URL路由请求集成，一次可以响应多个用户的访问请求；支持Cookie和会话管理，通过身份缓存数据建立长久连接关系，并提高用户访问速度；支持交互式Javascript调试，提高用户体验；可以处理HTTP基本事务，快速响应客户端推送过来的访问请求。Jinja2库支持自动HTML转义功能，能够很好控制外部黑客的脚本攻击。系统运行速度很快，页面加载过程会将源码进行编译形成Python字节码，从而实现模板的高效运行；模板继承机制可以对模板内容进行修改和维护，为不同需求的用户提供相应的模板。</p>
+<h2 id="路由和请求响应对象"><a href="#路由和请求响应对象" class="headerlink" title="路由和请求响应对象"></a>路由和请求响应对象</h2><ul>
+<li>装饰器其实就是将rule字符串跟视图函数进行了绑定，通过add_url_rule()实现的绑定。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/index&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;welcome everyone！&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>等效</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;welcome everyone！&#x27;</span></span><br><span class="line">app.add_url_rule(<span class="string">&#x27;/index&#x27;</span>, view_func=index)</span><br></pre></td></tr></table></figure>
+
+<h3 id="路由变量规则"><a href="#路由变量规则" class="headerlink" title="路由变量规则"></a>路由变量规则</h3><p>string  （缺省值） 接受任何不包含斜杠的文本   *<br>int      接受正整数  *<br>float    接受正浮点数<br>path     类似 string ，但可以包含斜杠<br>uuid     接受 UUID 字符串</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/index/&lt;path:p&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_path</span>(<span class="params">p</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;******&gt;&#x27;</span>, <span class="built_in">type</span>(p))  <span class="comment"># str类型</span></span><br><span class="line">    <span class="built_in">print</span>(p)</span><br><span class="line">    <span class="keyword">return</span> p</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/test/&lt;uuid:uid&gt;&#x27;</span></span>)  </span><span class="comment"># 必须传递uuid的格式，uuid模块， uuid.uuid4() ----&gt;UUID类型</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>(<span class="params">uid</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;#######&gt;&gt;&gt;&gt;&gt;&#x27;</span>, <span class="built_in">type</span>(uid))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;获取唯一的标识码&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 所有的路由搜索规则都是自上而下搜索，在写路由的是有定义的路由是唯一的。</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/projects&#x27;</span></span>)  </span><span class="comment"># 请求路由中如果添加了/：http://127.0.0.1:5000/about/  显示Not Found</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">about</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;The about page&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/projects/&#x27;</span></span>)  </span><span class="comment"># 路由中定义&#x27;/&#x27;，无论请求的URL是否带有/，都可以执行视图函数。如果请求的是有/，浏览器做了一次重定向</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">projects</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;The project page&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>返回值：其实返回值返回的都是一个响应对象。</p>
+<blockquote>
+<p>视图函数的返回值：<br>response响应：<br>1.str     自动转成response对象<br>2.dict    json<br>3.response对象  response对象<br>4.make_response()  response对象<br>5.redirect()   重定向  302状态码<br>6.render_template()  模板渲染 + 模板</p>
+</blockquote>
+<p>response响应对象</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(response.content_type)</span><br><span class="line"><span class="built_in">print</span>(response.headers)</span><br><span class="line"><span class="built_in">print</span>(response.status_code)  <span class="comment"># 200</span></span><br><span class="line"><span class="built_in">print</span>(response.status)  <span class="comment"># 200 OK</span></span><br><span class="line">response.set_cookie(<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;wxy&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>request请求对象：只需要导入，通过from flask import request<br>导入之后可以获取对象的属性和方法<br>属性：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.headers)  <span class="comment"># request对象 对象访问属性，也可以调用方法</span></span><br><span class="line"><span class="built_in">print</span>(request.path)</span><br><span class="line"><span class="built_in">print</span>(request.full_path)</span><br><span class="line"><span class="built_in">print</span>(request.base_url)</span><br><span class="line"><span class="built_in">print</span>(request.url)</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取提交的数据"><a href="#获取提交的数据" class="headerlink" title="获取提交的数据"></a>获取提交的数据</h4><p>跟请求方法相关的</p>
+<ul>
+<li><p>get：<br>request.args 底层是字典的形式   主要获取get提交的请求参数<br>如果是get请求格式是这个样子的：&#x2F;register2?username&#x3D;zhangsan&amp;address&#x3D;Beijing<br>此时的username是form表单中表单元素的name值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.args.get(<span class="string">&#x27;username&#x27;</span>))   <span class="comment"># 获取值</span></span><br><span class="line"><span class="built_in">print</span>(request.args.get(<span class="string">&#x27;address&#x27;</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>post:<br>request.form 底层是字典的形式   主要获取post提交的请求参数<br>注意post提交必须在路由中进行设置，通过methods &#x3D; [‘GET’,’POST’]<br>按照此种形式：<br>@app.route(‘&#x2F;register2’, methods&#x3D;[‘GET’, ‘POST’])<br>def register2():  # 获取页面提交的内容<br>…….  内容省略<br>获取数据：<br>print(request.form)  # 如果请求方法是post则需要通过request.form取值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.form.get(<span class="string">&#x27;username&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(request.form.get(<span class="string">&#x27;address&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>定制响应头</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">response = make_response(content)  <span class="comment"># 返回值就是一个response对象</span></span><br><span class="line">   <span class="comment"># 定制响应头</span></span><br><span class="line">   response.headers[<span class="string">&#x27;mytest&#x27;</span>] = <span class="string">&#x27;123abc&#x27;</span></span><br><span class="line">   response.headers[<span class="string">&#x27;myhello&#x27;</span>] = <span class="string">&#x27;hellohello&#x27;</span></span><br><span class="line">   <span class="comment"># 将定制好的response返回</span></span><br><span class="line">   <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Flask</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>大二自学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>电大软件测试～第一次作业</title>
     <url>/2023/05/31/test1/</url>
     <content><![CDATA[<h2 id="第一次作业及参考答案"><a href="#第一次作业及参考答案" class="headerlink" title="第一次作业及参考答案"></a>第一次作业及参考答案</h2><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p>针对电子科技大学信息门户的“密码找回”界面的邮箱输入域进行验证， 采用等价划分法设计相应的测试用例，包括尽量多的无效等价类。</p>
@@ -27,12 +74,12 @@
 </thead>
 <tbody><tr>
 <td align="left">1</td>
-<td><a href="mailto:&#101;&#120;&#x61;&#x6d;&#x70;&#x6c;&#101;&#x40;&#x75;&#101;&#x73;&#x74;&#x63;&#46;&#101;&#100;&#x75;&#x2e;&#99;&#110;">&#101;&#120;&#x61;&#x6d;&#x70;&#x6c;&#101;&#x40;&#x75;&#101;&#x73;&#x74;&#x63;&#46;&#101;&#100;&#x75;&#x2e;&#99;&#110;</a></td>
+<td><a href="mailto:&#101;&#120;&#x61;&#x6d;&#112;&#x6c;&#x65;&#64;&#x75;&#101;&#x73;&#x74;&#99;&#46;&#101;&#x64;&#117;&#x2e;&#x63;&#110;">&#101;&#120;&#x61;&#x6d;&#112;&#x6c;&#x65;&#64;&#x75;&#101;&#x73;&#x74;&#99;&#46;&#101;&#x64;&#117;&#x2e;&#x63;&#110;</a></td>
 <td>(1)</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td>#<a href="mailto:&#101;&#120;&#97;&#109;&#112;&#x6c;&#101;&#64;&#x75;&#x65;&#115;&#116;&#99;&#46;&#101;&#100;&#117;&#x2e;&#x63;&#x6e;">&#101;&#120;&#97;&#109;&#112;&#x6c;&#101;&#64;&#x75;&#x65;&#115;&#116;&#99;&#46;&#101;&#100;&#117;&#x2e;&#x63;&#x6e;</a></td>
+<td>#<a href="mailto:&#x65;&#120;&#x61;&#109;&#x70;&#108;&#x65;&#64;&#x75;&#101;&#115;&#116;&#99;&#46;&#101;&#x64;&#117;&#46;&#x63;&#110;">&#x65;&#120;&#x61;&#109;&#x70;&#108;&#x65;&#64;&#x75;&#101;&#115;&#116;&#99;&#46;&#101;&#x64;&#117;&#46;&#x63;&#110;</a></td>
 <td>(2)</td>
 </tr>
 <tr>
@@ -914,53 +961,6 @@
       </categories>
       <tags>
         <tag>软件测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>flask框架(1-2)</title>
-    <url>/2023/05/29/flask/</url>
-    <content><![CDATA[<h2 id="Flask简介"><a href="#Flask简介" class="headerlink" title="Flask简介"></a>Flask简介</h2><p>​		Flask是一个轻量级的可定制框架，使用Python语言编写，较其他同类型框架更为灵活、轻便、安全且容易上手。它可以很好地结合<a href="https://baike.baidu.com/item/MVC%E6%A8%A1%E5%BC%8F/713147?fromModule=lemma_inlink">MVC模式</a>进行开发，开发人员分工合作，小型团队在短时间内就可以完成功能丰富的中小型网站或<a href="https://baike.baidu.com/item/Web%E6%9C%8D%E5%8A%A1/2837593?fromModule=lemma_inlink">Web服务</a>的实现。另外，Flask还有很强的定制性，用户可以根据自己的需求来添加相应的功能，在保持核心功能简单的同时实现功能的丰富与扩展，其强大的插件库可以让用户实现个性化的网站定制，开发出功能强大的网站。</p>
-<p>​		Flask是目前十分流行的web框架，采用Python编程语言来实现相关功能。它被称为微框架(microframework)，“微”并不是意味着把整个Web应用放入到一个Python文件，微框架中的“微”是指Flask旨在保持代码简洁且易于扩展，Flask框架的主要特征是核心构成比较简单，但具有很强的扩展性和兼容性，程序员可以使用Python语言快速实现一个网站或Web服务。一般情况下，它不会指定数据库和模板引擎等对象，用户可以根据需要自己选择各种数据库。Flask自身不会提供表单验证功能，在项目实施过程中可以自由配置，从而为应用程序开发提供数据库抽象层基础组件，支持进行表单数据合法性验证、文件上传处理、用户身份认证和数据库集成等功能。Flask主要包括Werkzeug和Jinja2两个核心函数库，它们分别负责业务处理和安全方面的功能，这些基础函数为web项目开发过程提供了丰富的基础组件。Werkzeug库十分强大，功能比较完善，支持URL路由请求集成，一次可以响应多个用户的访问请求；支持Cookie和会话管理，通过身份缓存数据建立长久连接关系，并提高用户访问速度；支持交互式Javascript调试，提高用户体验；可以处理HTTP基本事务，快速响应客户端推送过来的访问请求。Jinja2库支持自动HTML转义功能，能够很好控制外部黑客的脚本攻击。系统运行速度很快，页面加载过程会将源码进行编译形成Python字节码，从而实现模板的高效运行；模板继承机制可以对模板内容进行修改和维护，为不同需求的用户提供相应的模板。</p>
-<h2 id="路由和请求响应对象"><a href="#路由和请求响应对象" class="headerlink" title="路由和请求响应对象"></a>路由和请求响应对象</h2><ul>
-<li>装饰器其实就是将rule字符串跟视图函数进行了绑定，通过add_url_rule()实现的绑定。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/index&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;welcome everyone！&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>等效</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;welcome everyone！&#x27;</span></span><br><span class="line">app.add_url_rule(<span class="string">&#x27;/index&#x27;</span>, view_func=index)</span><br></pre></td></tr></table></figure>
-
-<h3 id="路由变量规则"><a href="#路由变量规则" class="headerlink" title="路由变量规则"></a>路由变量规则</h3><p>string  （缺省值） 接受任何不包含斜杠的文本   *<br>int      接受正整数  *<br>float    接受正浮点数<br>path     类似 string ，但可以包含斜杠<br>uuid     接受 UUID 字符串</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/index/&lt;path:p&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_path</span>(<span class="params">p</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;******&gt;&#x27;</span>, <span class="built_in">type</span>(p))  <span class="comment"># str类型</span></span><br><span class="line">    <span class="built_in">print</span>(p)</span><br><span class="line">    <span class="keyword">return</span> p</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/test/&lt;uuid:uid&gt;&#x27;</span></span>)  </span><span class="comment"># 必须传递uuid的格式，uuid模块， uuid.uuid4() ----&gt;UUID类型</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>(<span class="params">uid</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;#######&gt;&gt;&gt;&gt;&gt;&#x27;</span>, <span class="built_in">type</span>(uid))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;获取唯一的标识码&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 所有的路由搜索规则都是自上而下搜索，在写路由的是有定义的路由是唯一的。</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/projects&#x27;</span></span>)  </span><span class="comment"># 请求路由中如果添加了/：http://127.0.0.1:5000/about/  显示Not Found</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">about</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;The about page&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/projects/&#x27;</span></span>)  </span><span class="comment"># 路由中定义&#x27;/&#x27;，无论请求的URL是否带有/，都可以执行视图函数。如果请求的是有/，浏览器做了一次重定向</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">projects</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;The project page&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>返回值：其实返回值返回的都是一个响应对象。</p>
-<blockquote>
-<p>视图函数的返回值：<br>response响应：<br>1.str     自动转成response对象<br>2.dict    json<br>3.response对象  response对象<br>4.make_response()  response对象<br>5.redirect()   重定向  302状态码<br>6.render_template()  模板渲染 + 模板</p>
-</blockquote>
-<p>response响应对象</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(response.content_type)</span><br><span class="line"><span class="built_in">print</span>(response.headers)</span><br><span class="line"><span class="built_in">print</span>(response.status_code)  <span class="comment"># 200</span></span><br><span class="line"><span class="built_in">print</span>(response.status)  <span class="comment"># 200 OK</span></span><br><span class="line">response.set_cookie(<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;wxy&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>request请求对象：只需要导入，通过from flask import request<br>导入之后可以获取对象的属性和方法<br>属性：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.headers)  <span class="comment"># request对象 对象访问属性，也可以调用方法</span></span><br><span class="line"><span class="built_in">print</span>(request.path)</span><br><span class="line"><span class="built_in">print</span>(request.full_path)</span><br><span class="line"><span class="built_in">print</span>(request.base_url)</span><br><span class="line"><span class="built_in">print</span>(request.url)</span><br></pre></td></tr></table></figure>
-
-<h4 id="获取提交的数据"><a href="#获取提交的数据" class="headerlink" title="获取提交的数据"></a>获取提交的数据</h4><p>跟请求方法相关的</p>
-<ul>
-<li><p>get：<br>request.args 底层是字典的形式   主要获取get提交的请求参数<br>如果是get请求格式是这个样子的：&#x2F;register2?username&#x3D;zhangsan&amp;address&#x3D;Beijing<br>此时的username是form表单中表单元素的name值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.args.get(<span class="string">&#x27;username&#x27;</span>))   <span class="comment"># 获取值</span></span><br><span class="line"><span class="built_in">print</span>(request.args.get(<span class="string">&#x27;address&#x27;</span>))</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>post:<br>request.form 底层是字典的形式   主要获取post提交的请求参数<br>注意post提交必须在路由中进行设置，通过methods &#x3D; [‘GET’,’POST’]<br>按照此种形式：<br>@app.route(‘&#x2F;register2’, methods&#x3D;[‘GET’, ‘POST’])<br>def register2():  # 获取页面提交的内容<br>…….  内容省略<br>获取数据：<br>print(request.form)  # 如果请求方法是post则需要通过request.form取值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.form.get(<span class="string">&#x27;username&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(request.form.get(<span class="string">&#x27;address&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>定制响应头</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">response = make_response(content)  <span class="comment"># 返回值就是一个response对象</span></span><br><span class="line">   <span class="comment"># 定制响应头</span></span><br><span class="line">   response.headers[<span class="string">&#x27;mytest&#x27;</span>] = <span class="string">&#x27;123abc&#x27;</span></span><br><span class="line">   response.headers[<span class="string">&#x27;myhello&#x27;</span>] = <span class="string">&#x27;hellohello&#x27;</span></span><br><span class="line">   <span class="comment"># 将定制好的response返回</span></span><br><span class="line">   <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Flask</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>大二自学</tag>
       </tags>
   </entry>
 </search>
