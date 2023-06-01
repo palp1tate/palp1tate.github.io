@@ -106,95 +106,6 @@
       </tags>
   </entry>
   <entry>
-    <title>go的基本介绍</title>
-    <url>/2023/06/01/Go/2/</url>
-    <content><![CDATA[<h2 id="Go的特点"><a href="#Go的特点" class="headerlink" title="Go的特点"></a>Go的特点</h2><ul>
-<li>高性能，该并发</li>
-<li>部署简单，学习简单</li>
-<li>丰富的标准库</li>
-<li>完善的工具链</li>
-<li>静态链接</li>
-<li>快速编译</li>
-<li>跨平台</li>
-<li>垃圾回收</li>
-</ul>
-<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Go是一门编译型语言，Go语言的工具链将源代码及其依赖转换成计算机的机器指令（静态编译）。Go语言提供的工具都通过一个单独的命令<code>go</code>调用，<code>go</code>命令有一系列子命令。最简单的一个子命令就是run。这个命令编译一个或多个以.go结尾的源文件，链接库文件，并运行最终生成的可执行文件。要想运行上述程序，命令行进入其目录，执行命令：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go run helloworld.go</span></span><br></pre></td></tr></table></figure>
-
-<p>Go语言原生支持Unicode，它可以处理全世界任何语言的文本。</p>
-<p>如果不只是一次性实验，并且希望能够编译这个程序，保存编译结果以备将来之用。可以用build子命令：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go build helloworld.go</span></span><br></pre></td></tr></table></figure>
-
-<p>这个命令生成一个名为<code>helloworld</code>的<em><strong>可执行的二进制文件（Windows系统下生成的可执行文件是helloworld.exe），之后可以随时运行它</strong></em>（在Windows系统下在命令行直接输入helloworld.exe命令运行），不需任何处理（因为静态编译，所以不用担心在系统库更新的时候冲突，<em><strong>python也有相关的库<code>pyinstaller</code>将程序转为可执行文件</strong></em>）。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./helloworld</span></span><br><span class="line">hello world </span><br></pre></td></tr></table></figure>
-
-<h2 id="Go的简介-挺有意思的，建议看看"><a href="#Go的简介-挺有意思的，建议看看" class="headerlink" title="Go的简介(挺有意思的，建议看看)"></a>Go的简介(挺有意思的，建议看看)</h2><p>​		Go语言的代码通过<em><strong>包</strong></em>（package）组织，包类似于其它语言里的库（libraries）或者模块（modules）。一个包由位于单个目录下的一个或多个.go源代码文件组成，目录定义包的作用。每个源文件都以一条<code>package</code>声明语句开始，上述例子里就是<code>package main</code>，表示该文件属于哪个包，紧跟着一系列导入（import）的包，之后是存储在这个文件里的程序语句。</p>
-<p>​		Go的标准库提供了100多个包，以支持常见功能，如输入、输出、排序以及文本处理。比如<code>fmt</code>包，就含有格式化输出、接收输入的函数。<code>Println</code>是其中一个基础函数，可以打印以空格间隔的一个或多个值，并在最后添加一个换行符，从而输出一整行。</p>
-<p>​		<strong><code>	main</code>包比较特殊。它定义了一个独立可执行的程序，而不是一个库。在<code>main</code>里的<code>main</code> <em>函数</em> 也很特殊，它是整个程序执行时的入口（C系语言类似）</strong>。<code>main</code>函数所做的事情就是程序做的。当然了，<code>main</code>函数一般调用其它包里的函数完成很多工作（例如：<code>fmt.Println</code>）。</p>
-<ul>
-<li><p>必须告诉编译器源文件需要哪些包，这就是跟随在<code>package</code>声明后面的<code>import</code>声明扮演的角色。hello world例子只用到了一个包，大多数程序需要导入多个包。</p>
-</li>
-<li><p>必须恰当导入需要的包，缺少了必要的包或者导入了不需要的包，程序都无法编译通过。<em><strong>这项严格要求避免了程序开发过程中引入未使用的包</strong></em>（<em><strong>Go语言编译过程没有警告信息</strong></em>）。</p>
-<p>  <code>import</code>声明必须跟在文件的<code>package</code>声明之后。随后，则是组成程序的函数、变量、常量、类型的声明语句（分别由关键字<code>func</code>、<code>var</code>、<code>const</code>、<code>type</code>定义）。这些内容的声明顺序并不重要（最好按照规范要求自己）。上述例子的程序已经尽可能短了，只声明了一个函数，其中只调用了一个其他函数。为了节省篇幅，有些时候示例程序会省略<code>package</code>和<code>import</code>声明，但是，这些声明在源代码里有，并且必须得有才能编译。</p>
-<p>  一个函数的声明由<code>func</code>关键字、函数名、参数列表、返回值列表（上述例子里的<code>main</code>函数参数列表和返回值都是空的）以及包含在大括号里的函数体组成。</p>
-<p>  Go语言<em><strong>不需要在语句或者声明的末尾添加分号</strong></em>，除非一行上有多条语句。实际上，编译器<em><strong>会主动把特定符号后的换行符转换为分号</strong></em>，因此<em><strong>换行符添加的位置会影响Go代码的正确解析</strong></em>（比如行末是标识符、整数、浮点数、虚数、字符或字符串文字、关键字<code>break</code>、<code>continue</code>、<code>fallthrough</code>或<code>return</code>中的一个、运算符和分隔符<code>++</code>、<code>--</code>、<code>)</code>、<code>]</code>或<code>&#125;</code>中的一个）。举个例子，函数的左括号<code>&#123;</code>必须和<code>func</code>函数声明在同一行上，且位于末尾，不能独占一行，而在表达式<code>x + y</code>中，可在<code>+</code>后换行，不能在<code>+</code>前换行（以+结尾的话不会被插入分号分隔符，但是以x结尾的话则会被分号分隔符，从而导致编译错误）</p>
-</li>
-</ul>
-<h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><h3 id="go-clean"><a href="#go-clean" class="headerlink" title="go clean"></a><strong>go clean</strong></h3><p>go clean 命令是用来移除当前源码包里面编译生成的文件，这些文件包括</p>
-<ul>
-<li>_obj&#x2F; 旧的object目录，由Makefiles遗留</li>
-<li>_test&#x2F; 旧的test目录，由Makefiles遗留</li>
-<li>_testmain.go 旧的gotest文件，由Makefiles遗留</li>
-<li>test.out 旧的test记录，由Makefiles遗留</li>
-<li>build.out 旧的test记录，由Makefiles遗留</li>
-<li>*.[568ao] object文件，由Makefiles遗留</li>
-<li>DIR(.exe) 由 go build 产生</li>
-<li>DIR.test(.exe) 由 go test -c 产生</li>
-<li>MAINFILE(.exe) 由 go build MAINFILE.go产生</li>
-</ul>
-<h3 id="go-test"><a href="#go-test" class="headerlink" title="go test"></a><strong>go test</strong></h3><p>go test 命令，会自动读取源码目录下面名为*_test.go的文件，生成并运行测试用的可执行文件。默认的情况下，不需要任何的参数，它会自动把你源码包下面所有test文件测试完毕，当然你也可以带上参数，详情请参考go help testflag</p>
-<h3 id="go-doc"><a href="#go-doc" class="headerlink" title="go doc"></a><strong>go doc</strong></h3><p>go doc 命令其实就是一个很强大的文档工具。</p>
-<p>如何查看相应package的文档呢？ 例如builtin包，那么执行go doc builtin；如果是http包，那么执行go doc net&#x2F;http；查看某一个包里面的函数，那么执行go doc fmt Printf；也可以查看相应的代码，执行go doc -src fmt Printf；</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看net/http包</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go doc net/http</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看time包</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go doc time</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看某个包里的指定函数</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go doc <span class="built_in">fmt</span> Printf</span></span><br></pre></td></tr></table></figure>
-
-<p>通过命令在命令行执行 go doc -http&#x3D;:端口号，比如godoc -http&#x3D;:8080。然后在浏览器中打开127.0.0.1:8080，你将会看到一个golang.org的本地copy版本，通过它你可以查询pkg文档等其它内容。如果你设置了GOPATH，在pkg分类下，不但会列出标准包的文档，还会列出你本地GOPATH中所有项目的相关文档，这对于经常被限制访问的用户来说是一个不错的选择。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">godoc -http=:9527</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>go fix 用来修复以前老版本的代码到新版本，例如go1之前老版本的代码转化到go1</p>
-<p>go version 查看go当前的版本</p>
-<p>go env 查看当前go的环境变量</p>
-<p>go list 列出当前全部安装的package</p>
-<h2 id="gofmt和goimports的配置"><a href="#gofmt和goimports的配置" class="headerlink" title="gofmt和goimports的配置"></a><code>gofmt</code>和<code>goimports</code>的配置</h2><p>​		<em><strong>Go语言在代码格式上采取了很强硬的态度</strong></em>。<code>gofmt</code>工具把代码格式化为标准格式（这个格式化工具没有任何可以调整代码格式的参数，Go语言就是这么任性），并且<code>go</code>工具中的<code>fmt</code>子命令会对指定包，否则默认为当前目录中所有.go源文件应用<code>gofmt</code>命令。我们应该养成格式化自己的代码的习惯。以法令方式规定标准的代码格式可以避免无尽的无意义的琐碎争执导致了Go语言的<a href="https://baike.baidu.com/item/Tiobe/2830870?fr=aladdin"><code>TIOBE</code></a>排名较低，争议的话题较少。更重要的是，这样可以做多种自动源码转换，如果放任Go语言代码格式，这些转换就不大可能了。</p>
-<p>很多文本编辑器都可以配置为保存文件时自动执行<code>gofmt</code>，这样源代码总会被恰当地格式化，<code>gofmt</code>包含在标准的分发包中。还有个相关的工具，<code>goimports</code>，可以根据代码需要，自动地添加或删除<code>import</code>声明。这个工具并没有包含在标准的分发包中，可以用下面的命令在在<code>goland</code>中在任意一个项目的终端执行：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">$ <span class="keyword">go</span> get -v golang.org/x/tools/cmd/goimports</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/df0d744ab4bc4f0f9204e4f4d0eb0a90~tplv-k3u1fbpfcp-watermark.image" alt="image-20230513220732135.png"></p>
-<p>进入<code>GOPATH</code>(Go语言安装目录)，执行以下命令安装<code>goimports</code>,没有加版本号会报错</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">go</span> install golang.org/x/tools/cmd/goimports@latest</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cdc5eae7c83743338f84058f08c881ca~tplv-k3u1fbpfcp-watermark.image" alt="image-20230513221248033.png"></p>
-<p>至此，我们可以在 <code>GOPATH/bin </code>目录下看到 <code>goimports.exe</code></p>
-<p>然后在<code>goland</code>的设置中点击工具&gt;File Watcher</p>
-<p>添加<code>gofmt</code>和<code>goimports</code></p>
-<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2632d630f887491b9370e03f4b43b1ba~tplv-k3u1fbpfcp-watermark.image" alt="image-20230513221553805.png"></p>
-<p><code>goimports.exe</code>在<code>GOPATH/bin </code>目录下,其实<code>goland</code>能够自动找到它</p>
-<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cc409d417dc34f17a299b7e35691e9d6~tplv-k3u1fbpfcp-watermark.image" alt="image-20230513221658244.png"></p>
-<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6c31c5998d814a3f9e30de7b2b7c91af~tplv-k3u1fbpfcp-watermark.image" alt="image-20230513221724453.png"></p>
-<p>点击确定，<code>gofmt</code>和<code>goimports</code>配置成功</p>
-<p>原文链接：<a href="https://juejin.cn/post/7232689996821495865">Go的基本介绍（附gofmt和goimports配置）|青训营笔记 - 掘金 (juejin.cn)</a></p>
-]]></content>
-      <categories>
-        <category>青训营</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>go的编码规范</title>
     <url>/2023/06/01/Go/3/</url>
     <content><![CDATA[<h1 id="编码规范"><a href="#编码规范" class="headerlink" title="编码规范"></a>编码规范</h1><p>本规范旨在为日常Go项目开发提供一个代码的规范指导，方便团队形成一个统一的代码风格，提高代码的可读性，规范性和统一性。本规范将从命名规范，注释规范，代码风格和 Go 语言提供的常用的工具这几个方面做一个说明。该规范参考了 go 语言官方代码的风格制定。</p>
@@ -340,6 +251,516 @@
       </tags>
   </entry>
   <entry>
+    <title>go的基本介绍</title>
+    <url>/2023/06/01/Go/2/</url>
+    <content><![CDATA[<h2 id="Go的特点"><a href="#Go的特点" class="headerlink" title="Go的特点"></a>Go的特点</h2><ul>
+<li>高性能，该并发</li>
+<li>部署简单，学习简单</li>
+<li>丰富的标准库</li>
+<li>完善的工具链</li>
+<li>静态链接</li>
+<li>快速编译</li>
+<li>跨平台</li>
+<li>垃圾回收</li>
+</ul>
+<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Go是一门编译型语言，Go语言的工具链将源代码及其依赖转换成计算机的机器指令（静态编译）。Go语言提供的工具都通过一个单独的命令<code>go</code>调用，<code>go</code>命令有一系列子命令。最简单的一个子命令就是run。这个命令编译一个或多个以.go结尾的源文件，链接库文件，并运行最终生成的可执行文件。要想运行上述程序，命令行进入其目录，执行命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go run helloworld.go</span></span><br></pre></td></tr></table></figure>
+
+<p>Go语言原生支持Unicode，它可以处理全世界任何语言的文本。</p>
+<p>如果不只是一次性实验，并且希望能够编译这个程序，保存编译结果以备将来之用。可以用build子命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go build helloworld.go</span></span><br></pre></td></tr></table></figure>
+
+<p>这个命令生成一个名为<code>helloworld</code>的<em><strong>可执行的二进制文件（Windows系统下生成的可执行文件是helloworld.exe），之后可以随时运行它</strong></em>（在Windows系统下在命令行直接输入helloworld.exe命令运行），不需任何处理（因为静态编译，所以不用担心在系统库更新的时候冲突，<em><strong>python也有相关的库<code>pyinstaller</code>将程序转为可执行文件</strong></em>）。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./helloworld</span></span><br><span class="line">hello world </span><br></pre></td></tr></table></figure>
+
+<h2 id="Go的简介-挺有意思的，建议看看"><a href="#Go的简介-挺有意思的，建议看看" class="headerlink" title="Go的简介(挺有意思的，建议看看)"></a>Go的简介(挺有意思的，建议看看)</h2><p>​		Go语言的代码通过<em><strong>包</strong></em>（package）组织，包类似于其它语言里的库（libraries）或者模块（modules）。一个包由位于单个目录下的一个或多个.go源代码文件组成，目录定义包的作用。每个源文件都以一条<code>package</code>声明语句开始，上述例子里就是<code>package main</code>，表示该文件属于哪个包，紧跟着一系列导入（import）的包，之后是存储在这个文件里的程序语句。</p>
+<p>​		Go的标准库提供了100多个包，以支持常见功能，如输入、输出、排序以及文本处理。比如<code>fmt</code>包，就含有格式化输出、接收输入的函数。<code>Println</code>是其中一个基础函数，可以打印以空格间隔的一个或多个值，并在最后添加一个换行符，从而输出一整行。</p>
+<p>​		<strong><code>	main</code>包比较特殊。它定义了一个独立可执行的程序，而不是一个库。在<code>main</code>里的<code>main</code> <em>函数</em> 也很特殊，它是整个程序执行时的入口（C系语言类似）</strong>。<code>main</code>函数所做的事情就是程序做的。当然了，<code>main</code>函数一般调用其它包里的函数完成很多工作（例如：<code>fmt.Println</code>）。</p>
+<ul>
+<li><p>必须告诉编译器源文件需要哪些包，这就是跟随在<code>package</code>声明后面的<code>import</code>声明扮演的角色。hello world例子只用到了一个包，大多数程序需要导入多个包。</p>
+</li>
+<li><p>必须恰当导入需要的包，缺少了必要的包或者导入了不需要的包，程序都无法编译通过。<em><strong>这项严格要求避免了程序开发过程中引入未使用的包</strong></em>（<em><strong>Go语言编译过程没有警告信息</strong></em>）。</p>
+<p>  <code>import</code>声明必须跟在文件的<code>package</code>声明之后。随后，则是组成程序的函数、变量、常量、类型的声明语句（分别由关键字<code>func</code>、<code>var</code>、<code>const</code>、<code>type</code>定义）。这些内容的声明顺序并不重要（最好按照规范要求自己）。上述例子的程序已经尽可能短了，只声明了一个函数，其中只调用了一个其他函数。为了节省篇幅，有些时候示例程序会省略<code>package</code>和<code>import</code>声明，但是，这些声明在源代码里有，并且必须得有才能编译。</p>
+<p>  一个函数的声明由<code>func</code>关键字、函数名、参数列表、返回值列表（上述例子里的<code>main</code>函数参数列表和返回值都是空的）以及包含在大括号里的函数体组成。</p>
+<p>  Go语言<em><strong>不需要在语句或者声明的末尾添加分号</strong></em>，除非一行上有多条语句。实际上，编译器<em><strong>会主动把特定符号后的换行符转换为分号</strong></em>，因此<em><strong>换行符添加的位置会影响Go代码的正确解析</strong></em>（比如行末是标识符、整数、浮点数、虚数、字符或字符串文字、关键字<code>break</code>、<code>continue</code>、<code>fallthrough</code>或<code>return</code>中的一个、运算符和分隔符<code>++</code>、<code>--</code>、<code>)</code>、<code>]</code>或<code>&#125;</code>中的一个）。举个例子，函数的左括号<code>&#123;</code>必须和<code>func</code>函数声明在同一行上，且位于末尾，不能独占一行，而在表达式<code>x + y</code>中，可在<code>+</code>后换行，不能在<code>+</code>前换行（以+结尾的话不会被插入分号分隔符，但是以x结尾的话则会被分号分隔符，从而导致编译错误）</p>
+</li>
+</ul>
+<h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><h3 id="go-clean"><a href="#go-clean" class="headerlink" title="go clean"></a><strong>go clean</strong></h3><p>go clean 命令是用来移除当前源码包里面编译生成的文件，这些文件包括</p>
+<ul>
+<li>_obj&#x2F; 旧的object目录，由Makefiles遗留</li>
+<li>_test&#x2F; 旧的test目录，由Makefiles遗留</li>
+<li>_testmain.go 旧的gotest文件，由Makefiles遗留</li>
+<li>test.out 旧的test记录，由Makefiles遗留</li>
+<li>build.out 旧的test记录，由Makefiles遗留</li>
+<li>*.[568ao] object文件，由Makefiles遗留</li>
+<li>DIR(.exe) 由 go build 产生</li>
+<li>DIR.test(.exe) 由 go test -c 产生</li>
+<li>MAINFILE(.exe) 由 go build MAINFILE.go产生</li>
+</ul>
+<h3 id="go-test"><a href="#go-test" class="headerlink" title="go test"></a><strong>go test</strong></h3><p>go test 命令，会自动读取源码目录下面名为*_test.go的文件，生成并运行测试用的可执行文件。默认的情况下，不需要任何的参数，它会自动把你源码包下面所有test文件测试完毕，当然你也可以带上参数，详情请参考go help testflag</p>
+<h3 id="go-doc"><a href="#go-doc" class="headerlink" title="go doc"></a><strong>go doc</strong></h3><p>go doc 命令其实就是一个很强大的文档工具。</p>
+<p>如何查看相应package的文档呢？ 例如builtin包，那么执行go doc builtin；如果是http包，那么执行go doc net&#x2F;http；查看某一个包里面的函数，那么执行go doc fmt Printf；也可以查看相应的代码，执行go doc -src fmt Printf；</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看net/http包</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go doc net/http</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看time包</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go doc time</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看某个包里的指定函数</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go doc <span class="built_in">fmt</span> Printf</span></span><br></pre></td></tr></table></figure>
+
+<p>通过命令在命令行执行 go doc -http&#x3D;:端口号，比如godoc -http&#x3D;:8080。然后在浏览器中打开127.0.0.1:8080，你将会看到一个golang.org的本地copy版本，通过它你可以查询pkg文档等其它内容。如果你设置了GOPATH，在pkg分类下，不但会列出标准包的文档，还会列出你本地GOPATH中所有项目的相关文档，这对于经常被限制访问的用户来说是一个不错的选择。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">godoc -http=:9527</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>go fix 用来修复以前老版本的代码到新版本，例如go1之前老版本的代码转化到go1</p>
+<p>go version 查看go当前的版本</p>
+<p>go env 查看当前go的环境变量</p>
+<p>go list 列出当前全部安装的package</p>
+<h2 id="gofmt和goimports的配置"><a href="#gofmt和goimports的配置" class="headerlink" title="gofmt和goimports的配置"></a><code>gofmt</code>和<code>goimports</code>的配置</h2><p>​		<em><strong>Go语言在代码格式上采取了很强硬的态度</strong></em>。<code>gofmt</code>工具把代码格式化为标准格式（这个格式化工具没有任何可以调整代码格式的参数，Go语言就是这么任性），并且<code>go</code>工具中的<code>fmt</code>子命令会对指定包，否则默认为当前目录中所有.go源文件应用<code>gofmt</code>命令。我们应该养成格式化自己的代码的习惯。以法令方式规定标准的代码格式可以避免无尽的无意义的琐碎争执导致了Go语言的<a href="https://baike.baidu.com/item/Tiobe/2830870?fr=aladdin"><code>TIOBE</code></a>排名较低，争议的话题较少。更重要的是，这样可以做多种自动源码转换，如果放任Go语言代码格式，这些转换就不大可能了。</p>
+<p>很多文本编辑器都可以配置为保存文件时自动执行<code>gofmt</code>，这样源代码总会被恰当地格式化，<code>gofmt</code>包含在标准的分发包中。还有个相关的工具，<code>goimports</code>，可以根据代码需要，自动地添加或删除<code>import</code>声明。这个工具并没有包含在标准的分发包中，可以用下面的命令在在<code>goland</code>中在任意一个项目的终端执行：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">$ <span class="keyword">go</span> get -v golang.org/x/tools/cmd/goimports</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/df0d744ab4bc4f0f9204e4f4d0eb0a90~tplv-k3u1fbpfcp-watermark.image" alt="image-20230513220732135.png"></p>
+<p>进入<code>GOPATH</code>(Go语言安装目录)，执行以下命令安装<code>goimports</code>,没有加版本号会报错</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">go</span> install golang.org/x/tools/cmd/goimports@latest</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cdc5eae7c83743338f84058f08c881ca~tplv-k3u1fbpfcp-watermark.image" alt="image-20230513221248033.png"></p>
+<p>至此，我们可以在 <code>GOPATH/bin </code>目录下看到 <code>goimports.exe</code></p>
+<p>然后在<code>goland</code>的设置中点击工具&gt;File Watcher</p>
+<p>添加<code>gofmt</code>和<code>goimports</code></p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2632d630f887491b9370e03f4b43b1ba~tplv-k3u1fbpfcp-watermark.image" alt="image-20230513221553805.png"></p>
+<p><code>goimports.exe</code>在<code>GOPATH/bin </code>目录下,其实<code>goland</code>能够自动找到它</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cc409d417dc34f17a299b7e35691e9d6~tplv-k3u1fbpfcp-watermark.image" alt="image-20230513221658244.png"></p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6c31c5998d814a3f9e30de7b2b7c91af~tplv-k3u1fbpfcp-watermark.image" alt="image-20230513221724453.png"></p>
+<p>点击确定，<code>gofmt</code>和<code>goimports</code>配置成功</p>
+<p>原文链接：<a href="https://juejin.cn/post/7232689996821495865">Go的基本介绍（附gofmt和goimports配置）|青训营笔记 - 掘金 (juejin.cn)</a></p>
+]]></content>
+      <categories>
+        <category>青训营</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>flask框架(1-2)</title>
+    <url>/2023/05/29/Flask/1/</url>
+    <content><![CDATA[<h2 id="Flask简介"><a href="#Flask简介" class="headerlink" title="Flask简介"></a>Flask简介</h2><p>​		Flask是一个轻量级的可定制框架，使用Python语言编写，较其他同类型框架更为灵活、轻便、安全且容易上手。它可以很好地结合<a href="https://baike.baidu.com/item/MVC%E6%A8%A1%E5%BC%8F/713147?fromModule=lemma_inlink">MVC模式</a>进行开发，开发人员分工合作，小型团队在短时间内就可以完成功能丰富的中小型网站或<a href="https://baike.baidu.com/item/Web%E6%9C%8D%E5%8A%A1/2837593?fromModule=lemma_inlink">Web服务</a>的实现。另外，Flask还有很强的定制性，用户可以根据自己的需求来添加相应的功能，在保持核心功能简单的同时实现功能的丰富与扩展，其强大的插件库可以让用户实现个性化的网站定制，开发出功能强大的网站。</p>
+<p>​		Flask是目前十分流行的web框架，采用Python编程语言来实现相关功能。它被称为微框架(microframework)，“微”并不是意味着把整个Web应用放入到一个Python文件，微框架中的“微”是指Flask旨在保持代码简洁且易于扩展，Flask框架的主要特征是核心构成比较简单，但具有很强的扩展性和兼容性，程序员可以使用Python语言快速实现一个网站或Web服务。一般情况下，它不会指定数据库和模板引擎等对象，用户可以根据需要自己选择各种数据库。Flask自身不会提供表单验证功能，在项目实施过程中可以自由配置，从而为应用程序开发提供数据库抽象层基础组件，支持进行表单数据合法性验证、文件上传处理、用户身份认证和数据库集成等功能。Flask主要包括Werkzeug和Jinja2两个核心函数库，它们分别负责业务处理和安全方面的功能，这些基础函数为web项目开发过程提供了丰富的基础组件。Werkzeug库十分强大，功能比较完善，支持URL路由请求集成，一次可以响应多个用户的访问请求；支持Cookie和会话管理，通过身份缓存数据建立长久连接关系，并提高用户访问速度；支持交互式Javascript调试，提高用户体验；可以处理HTTP基本事务，快速响应客户端推送过来的访问请求。Jinja2库支持自动HTML转义功能，能够很好控制外部黑客的脚本攻击。系统运行速度很快，页面加载过程会将源码进行编译形成Python字节码，从而实现模板的高效运行；模板继承机制可以对模板内容进行修改和维护，为不同需求的用户提供相应的模板。</p>
+<h2 id="路由和请求响应对象"><a href="#路由和请求响应对象" class="headerlink" title="路由和请求响应对象"></a>路由和请求响应对象</h2><ul>
+<li>装饰器其实就是将rule字符串跟视图函数进行了绑定，通过add_url_rule()实现的绑定。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/index&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;welcome everyone！&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>等效</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;welcome everyone！&#x27;</span></span><br><span class="line">app.add_url_rule(<span class="string">&#x27;/index&#x27;</span>, view_func=index)</span><br></pre></td></tr></table></figure>
+
+<h3 id="路由变量规则"><a href="#路由变量规则" class="headerlink" title="路由变量规则"></a>路由变量规则</h3><p>string  （缺省值） 接受任何不包含斜杠的文本   *<br>int      接受正整数  *<br>float    接受正浮点数<br>path     类似 string ，但可以包含斜杠<br>uuid     接受 UUID 字符串</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/index/&lt;path:p&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_path</span>(<span class="params">p</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;******&gt;&#x27;</span>, <span class="built_in">type</span>(p))  <span class="comment"># str类型</span></span><br><span class="line">    <span class="built_in">print</span>(p)</span><br><span class="line">    <span class="keyword">return</span> p</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/test/&lt;uuid:uid&gt;&#x27;</span></span>)  </span><span class="comment"># 必须传递uuid的格式，uuid模块， uuid.uuid4() ----&gt;UUID类型</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>(<span class="params">uid</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;#######&gt;&gt;&gt;&gt;&gt;&#x27;</span>, <span class="built_in">type</span>(uid))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;获取唯一的标识码&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 所有的路由搜索规则都是自上而下搜索，在写路由的是有定义的路由是唯一的。</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/projects&#x27;</span></span>)  </span><span class="comment"># 请求路由中如果添加了/：http://127.0.0.1:5000/about/  显示Not Found</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">about</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;The about page&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/projects/&#x27;</span></span>)  </span><span class="comment"># 路由中定义&#x27;/&#x27;，无论请求的URL是否带有/，都可以执行视图函数。如果请求的是有/，浏览器做了一次重定向</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">projects</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;The project page&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>返回值：其实返回值返回的都是一个响应对象。</p>
+<blockquote>
+<p>视图函数的返回值：<br>response响应：<br>1.str     自动转成response对象<br>2.dict    json<br>3.response对象  response对象<br>4.make_response()  response对象<br>5.redirect()   重定向  302状态码<br>6.render_template()  模板渲染 + 模板</p>
+</blockquote>
+<p>response响应对象</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(response.content_type)</span><br><span class="line"><span class="built_in">print</span>(response.headers)</span><br><span class="line"><span class="built_in">print</span>(response.status_code)  <span class="comment"># 200</span></span><br><span class="line"><span class="built_in">print</span>(response.status)  <span class="comment"># 200 OK</span></span><br><span class="line">response.set_cookie(<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;wxy&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>request请求对象：只需要导入，通过from flask import request<br>导入之后可以获取对象的属性和方法<br>属性：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.headers)  <span class="comment"># request对象 对象访问属性，也可以调用方法</span></span><br><span class="line"><span class="built_in">print</span>(request.path)</span><br><span class="line"><span class="built_in">print</span>(request.full_path)</span><br><span class="line"><span class="built_in">print</span>(request.base_url)</span><br><span class="line"><span class="built_in">print</span>(request.url)</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取提交的数据"><a href="#获取提交的数据" class="headerlink" title="获取提交的数据"></a>获取提交的数据</h4><p>跟请求方法相关的</p>
+<ul>
+<li><p>get：<br>request.args 底层是字典的形式   主要获取get提交的请求参数<br>如果是get请求格式是这个样子的：&#x2F;register2?username&#x3D;zhangsan&amp;address&#x3D;Beijing<br>此时的username是form表单中表单元素的name值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.args.get(<span class="string">&#x27;username&#x27;</span>))   <span class="comment"># 获取值</span></span><br><span class="line"><span class="built_in">print</span>(request.args.get(<span class="string">&#x27;address&#x27;</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>post:<br>request.form 底层是字典的形式   主要获取post提交的请求参数<br>注意post提交必须在路由中进行设置，通过methods &#x3D; [‘GET’,’POST’]<br>按照此种形式：<br>@app.route(‘&#x2F;register2’, methods&#x3D;[‘GET’, ‘POST’])<br>def register2():  # 获取页面提交的内容<br>…….  内容省略<br>获取数据：<br>print(request.form)  # 如果请求方法是post则需要通过request.form取值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.form.get(<span class="string">&#x27;username&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(request.form.get(<span class="string">&#x27;address&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>定制响应头</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">response = make_response(content)  <span class="comment"># 返回值就是一个response对象</span></span><br><span class="line">   <span class="comment"># 定制响应头</span></span><br><span class="line">   response.headers[<span class="string">&#x27;mytest&#x27;</span>] = <span class="string">&#x27;123abc&#x27;</span></span><br><span class="line">   response.headers[<span class="string">&#x27;myhello&#x27;</span>] = <span class="string">&#x27;hellohello&#x27;</span></span><br><span class="line">   <span class="comment"># 将定制好的response返回</span></span><br><span class="line">   <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Flask</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>大二自学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>电大软件测试～第二次作业</title>
+    <url>/2023/05/31/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test2/</url>
+    <content><![CDATA[<h2 id="第二次作业及参考答案"><a href="#第二次作业及参考答案" class="headerlink" title="第二次作业及参考答案"></a>第二次作业及参考答案</h2><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p> 在一个客户信息查询界面中，输入条件有“姓名”、“身份证号”、“手机”，采用正交表方式设计该界面查询功能的测试用例。</p>
+<p>答：</p>
+<p>针对本测试有3个输入条件，每个输入有2种取值情况，可以选择L₄(2³)正交表，其正交表值如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>实验数\列号</th>
+<th>姓名</th>
+<th>身份证号</th>
+<th>手机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>测试用例：</p>
+<table>
+<thead>
+<tr>
+<th>测试用例&#x2F;查询条件</th>
+<th>姓名</th>
+<th>身份证号</th>
+<th>手机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>测试用例1</td>
+<td>填写</td>
+<td>填写</td>
+<td>填写</td>
+</tr>
+<tr>
+<td>测试用例2</td>
+<td>填写</td>
+<td>空</td>
+<td>空</td>
+</tr>
+<tr>
+<td>测试用例3</td>
+<td>空</td>
+<td>填写</td>
+<td>空</td>
+</tr>
+<tr>
+<td>测试用例4</td>
+<td>空</td>
+<td>空</td>
+<td>填写</td>
+</tr>
+</tbody></table>
+<h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>根据如下图所示的程序流程图，分别使用语句覆盖测试、判定覆盖测试、条件覆盖测试和路径覆盖测试进行测试用例设计。</p>
+<p><img src="https://s2.loli.net/2023/05/31/YaGS6fzEgLuwdKp.png" alt="VD_MD_EUXLQ_O~DDYPO_G_R.png"></p>
+<p>答：</p>
+<p><em><strong>1）语句覆盖</strong></em></p>
+<p>设计测试用例，使得被测试程序中的每条可执行语句至少被执行一次。其测试用例表如下所示。</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖语句</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(X,Y)&#x3D;(1,11)</td>
+<td>(X,Y)&#x3D;(1,11)</td>
+<td>X&gt;0 AND Y&gt;10;Y&#x3D;Y&#x2F;X;X&lt;-10 OR Y&lt;0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(X,Y)&#x3D;(0,-1)</td>
+<td>(X,Y)&#x3D;(0,1)</td>
+<td>X&gt;0 AND Y&gt;10;X&lt;-10 OR Y&lt;0;Y&#x3D;-(Y+X)</td>
+</tr>
+</tbody></table>
+<p><em><strong>2）判定覆盖</strong></em></p>
+<p>设计测试用例,使得被测试程序中的每个判断的”真”、”假”分支至少被执行一次。设X&gt;0 AND Y&gt;10为判定条件M，X&lt;-10 OR Y&lt;0为判定条件N。<br>设计的判定覆盖测试用例如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖判定条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(X,Y)&#x3D;(1,11)</td>
+<td>(X,Y)&#x3D;(1,11)</td>
+<td>M为真，N为假</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(X,Y)&#x3D;(0,-1)</td>
+<td>(X,Y)&#x3D;(0,1)</td>
+<td>M为假，N为真</td>
+</tr>
+</tbody></table>
+<p><em><strong>3）条件覆盖</strong></em></p>
+<p>设计测试用例,使得被测试程序中分支判断语句中每个条件的可能值至少被满足一次。<br>设</p>
+<blockquote>
+<p>条件X&gt;0:<br>取真时为T1，取假时为F1<br>条件Y&gt;10:<br>取真时为T2，取假时为F2<br>条件x&lt;-10:<br>取真时为T3，取假时为F3<br>条件Y&lt;0:<br>取真时为T4,取假时为 F4</p>
+</blockquote>
+<p>设计的条件覆盖测试用例如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(X,Y)&#x3D;(1,-1)</td>
+<td>(X,Y)&#x3D;(1,0)</td>
+<td>T1，F2，F3，T4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(X,Y)&#x3D;(-11,11)</td>
+<td>(X,Y)&#x3D;(-11,0)</td>
+<td>F1，T2，T3，F4</td>
+</tr>
+</tbody></table>
+<p><em><strong>4）基本路径覆盖</strong></em></p>
+<p>设计测试用例,使得被测试程序中的基本路径至少被覆盖一次。依据该程序控制流图计算环路复杂度&#x3D;3（判断节点数目+1）,因此,该程序的基本路径有3条。</p>
+<p>设计的基本路径覆盖测试用例如下表所示</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(X,Y)&#x3D;(0,0)</td>
+<td>(X,Y)&#x3D;(0,0)</td>
+<td>ace</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(X,Y)&#x3D;(1,11)</td>
+<td>(X,Y)&#x3D;(1,11)</td>
+<td>abce</td>
+</tr>
+<tr>
+<td>3</td>
+<td>(X,Y)&#x3D;(-11,1)</td>
+<td>(X,Y)&#x3D;(-11,10)</td>
+<td>acde</td>
+</tr>
+<tr>
+<td>4</td>
+<td>不存在</td>
+<td>不存在</td>
+<td>abcde</td>
+</tr>
+</tbody></table>
+<h3 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h3><p>针对如下样本程序，分析该程序逻辑覆盖测试方法中的语句覆盖、判定覆盖、条件覆盖和基本路径覆盖，并说明哪种方法覆盖率高？为什么？</p>
+<p>被测样本程序</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Coverage</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;start main function:path a...&quot;</span>);</span><br><span class="line">  <span class="type">int</span> A=<span class="number">0</span>,B=<span class="number">0</span>,X=<span class="number">0</span>;</span><br><span class="line">  <span class="type">Scanner</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">  System.out.println(<span class="string">&quot;输入A：&quot;</span>);  A = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入B=&quot;</span>);  B = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入X=&quot;</span>);  X = s.nextInt();</span><br><span class="line">  s.close();  </span><br><span class="line">  <span class="keyword">if</span> (A&gt;<span class="number">1</span> &amp;&amp; B==<span class="number">0</span>) &#123;</span><br><span class="line">	X=X/A;</span><br><span class="line">	System.out.println(<span class="string">&quot;path c&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path b&quot;</span>);  &#125;</span><br><span class="line">  <span class="keyword">if</span> (A==<span class="number">2</span> || X&gt;<span class="number">1</span>) &#123;</span><br><span class="line">	X=X+<span class="number">1</span>;</span><br><span class="line">	System.out.println(<span class="string">&quot;path e&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path d&quot;</span>);  &#125;</span><br><span class="line">  System.out.println(<span class="string">&quot;end main function.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​	答：</p>
+<p>​	<u><em><strong>注：以下答案只参考了标准答案的一部分</strong></em></u></p>
+<p><img src="https://s2.loli.net/2023/05/31/P7NxLnZ9QhsHmyW.png" alt="VF1D1EJ2__LKYS_1_GPGJ5W.png"></p>
+<ol>
+<li><p>语句覆盖测试</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(A,B,X)&#x3D;(2,0,2)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
+<td>ace</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(A,B,X)&#x3D;(0,1,1)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
+<td>abd</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>判定覆盖测试</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(A,B,X)&#x3D;(2,0,2)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
+<td>ace</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(A,B,X)&#x3D;(0,1,1)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
+<td>abd</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>条件覆盖测试</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(A,B,X)&#x3D;(2,0,2)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
+<td>ace</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(A,B,X)&#x3D;(0,1,1)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
+<td>abd</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>基本路径覆盖测试</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(A,B,X)&#x3D;(2,0,2)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
+<td>ace</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(A,B,X)&#x3D;(0,1,1)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
+<td>abd</td>
+</tr>
+<tr>
+<td>3</td>
+<td>(A,B,X)&#x3D;(0,1,2)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path e，end main function.</td>
+<td>abe</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<p>综上所述，基本路径覆盖测试用的测试用例最多，覆盖的路径也最多，故基本路径覆盖的覆盖率最高。</p>
+<p><em><strong>注：<a href="https://blog.csdn.net/The_Azur/article/details/117936347">环形复杂度必定是基本路径个数的上限。</a></strong></em></p>
+<p><img src="https://s2.loli.net/2023/05/31/HtDjYwSso3WKVFn.png" alt="Snipaste_2023-05-31_21-48-19.png"></p>
+<h3 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h3><p>使用PMD代码分析工具针对如下被测程序，找出该程序存在的潜在缺陷，给出结果界面截图，并说明各个缺陷出现的原因。</p>
+<p>被测样本程序</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Coverage</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;start main function:path a...&quot;</span>);</span><br><span class="line">  <span class="type">int</span> A=<span class="number">0</span>,B=<span class="number">0</span>,X=<span class="number">0</span>;</span><br><span class="line">  <span class="type">Scanner</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">  System.out.println(<span class="string">&quot;输入A：&quot;</span>);  A = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入B=&quot;</span>);  B = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入X=&quot;</span>);  X = s.nextInt();</span><br><span class="line">  s.close();  </span><br><span class="line">  <span class="keyword">if</span> (A&gt;<span class="number">1</span> &amp;&amp; B==<span class="number">0</span>) &#123;</span><br><span class="line">	X=X/A;</span><br><span class="line">	System.out.println(<span class="string">&quot;path c&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path b&quot;</span>);  &#125;</span><br><span class="line">  <span class="keyword">if</span> (A==<span class="number">2</span> || X&gt;<span class="number">1</span>) &#123;</span><br><span class="line">	X=X+<span class="number">1</span>;</span><br><span class="line">	System.out.println(<span class="string">&quot;path e&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path d&quot;</span>);  &#125;</span><br><span class="line">  System.out.println(<span class="string">&quot;end main function.&quot;</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>答：</p>
+<p><u><em><strong>注：以下答案只参考了标准答案的一部分</strong></em></u></p>
+<p><a href="https://smms.app/image/5I4amZs2cXEldHv" target="_blank"><img src="https://s2.loli.net/2023/05/31/5I4amZs2cXEldHv.jpg" alt="Z__LBIY38___C`L5GCFZSVF.jpg"></a></p>
+<p>以下是可能的缺陷（感觉每个人做出来都不一样哈哈哈哈😆）：</p>
+<blockquote>
+<p>（1）VariableNamingConventions：</p>
+<p>​		①变量应以小写字符开头，’A’’B’’X’均以大写字符开头</p>
+<p>（2）UseUtilityClass：</p>
+<p>​		①所有方法都是静态的，可以考虑使用实用工具类，或添加一个私		有构造函数，或使类抽象来屏蔽这个警告</p>
+<p>（3）LocalVariableCouldBeFinal：</p>
+<p>​		①局部变量’s’可以声明为final</p>
+<p>（4）LocalVaraiableNamingConventions：</p>
+<p>​		①局部变量名’A’’B’’X’不匹配’[a-z][a-zA-Z0-9]*’</p>
+<p>（5）MethodArgumentCouldBeFinal：</p>
+<p>​		①参数’args’未赋值，可以声明为final</p>
+<p>（6）CommentRequired：</p>
+<p>​		①类注释是必需的</p>
+<p>​		②公共方法和构造函数的注释是必需的</p>
+<p>（7）OneDeclarationPerLine：</p>
+<p>​		①int A&#x3D;0,B&#x3D;0,X&#x3D;0; 每个声明为一行，可以增强代码的可读性</p>
+<p>（8）UnusedAssignment：</p>
+<p>​		①变量’B’的初始化式从未使用（后被重写）</p>
+<p>​		②变量’A’的初始化式从未使用（后被覆盖）</p>
+<p>​		③变量’X’的初始化式从未使用（后被覆盖）</p>
+<p>​		④ X&#x3D;X+1; 赋给变量’X’的值从未使用过</p>
+<p>（9）SystemPrintln：</p>
+<p>​		①使用System.out.println</p>
+<p>（10）ShortVariable：</p>
+<p>​		① Scanner s &#x3D; new Scanner(System.in); 避免使用像s这样名字较		短的变量</p>
+<p>​		②避免使用短名称的变量：如A,B,X</p>
+<p>（11）DataflowAnomalyAnalysis：</p>
+<p>​		①发现变量’A’的’DD’异常</p>
+<p>​			int A&#x3D;0,B&#x3D;0,X&#x3D;0;</p>
+<p>​			Scanner s &#x3D; new Scanner(System.in);</p>
+<p>​		    System.out.println(“输入A：”);A &#x3D; s.nextInt();</p>
+<p>​		②发现变量’X’的’DU’异常</p>
+<p>​		X&#x3D;X+1;</p>
+<p>​		System.out.println(“path e”);</p>
+<p>​	} else {</p>
+<p>​		System.out.println(“path d”);  }</p>
+<p>​		System.out.println(“end main function.”);</p>
+<p>​	}</p>
+<p>​		③发现变量’X’的’DD’异常</p>
+<p>​		int A&#x3D;0,B&#x3D;0,X&#x3D;0;</p>
+<p> ​		Scanner s &#x3D; new Scanner(System.in);</p>
+<p>​		System.out.println(“输入A：”);  A &#x3D; s.nextInt();</p>
+<p>​		 System.out.println(“输入B&#x3D;”);  B &#x3D; s.nextInt();</p>
+<p>​        System.out.println(“输入X&#x3D;”);  X &#x3D; s.nextInt();</p>
+<p>​		④发现变量’B’的’DD’异常</p>
+<p>​		int A&#x3D;0,B&#x3D;0,X&#x3D;0;</p>
+<p>​	Scanner s &#x3D; new Scanner(System.in);</p>
+<p>​	System.out.println(“输入A：”);  A &#x3D; s.nextInt();</p>
+<p>​	System.out.println(“输入B&#x3D;”);  B &#x3D; s.nextInt();</p>
+<p>（12）CloseResource：</p>
+<p>​		①Scanner s &#x3D; new Scanner(System.in); 确保像InputStream对象		这样的资源在使用后被关闭</p>
+</blockquote>
+<p><em><strong>声明：除特殊标注外（综合考虑其他同学的答案），答案来源均来自老师原版答案</strong></em></p>
+]]></content>
+      <categories>
+        <category>大二下期末复习</category>
+      </categories>
+      <tags>
+        <tag>软件测试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>电大软件测试～第一次作业</title>
     <url>/2023/05/31/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test1/</url>
     <content><![CDATA[<h2 id="第一次作业及参考答案"><a href="#第一次作业及参考答案" class="headerlink" title="第一次作业及参考答案"></a>第一次作业及参考答案</h2><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p>针对电子科技大学信息门户的“密码找回”界面的邮箱输入域进行验证， 采用等价划分法设计相应的测试用例，包括尽量多的无效等价类。</p>
@@ -366,12 +787,12 @@
 </thead>
 <tbody><tr>
 <td align="left">1</td>
-<td><a href="mailto:&#101;&#120;&#97;&#x6d;&#x70;&#108;&#101;&#x40;&#x75;&#101;&#115;&#x74;&#x63;&#46;&#101;&#x64;&#x75;&#46;&#x63;&#x6e;">&#101;&#120;&#97;&#x6d;&#x70;&#108;&#101;&#x40;&#x75;&#101;&#115;&#x74;&#x63;&#46;&#101;&#x64;&#x75;&#46;&#x63;&#x6e;</a></td>
+<td><a href="mailto:&#x65;&#x78;&#x61;&#109;&#112;&#x6c;&#101;&#x40;&#117;&#101;&#x73;&#116;&#99;&#46;&#x65;&#x64;&#x75;&#x2e;&#99;&#110;">&#x65;&#x78;&#x61;&#109;&#112;&#x6c;&#101;&#x40;&#117;&#101;&#x73;&#116;&#99;&#46;&#x65;&#x64;&#x75;&#x2e;&#99;&#110;</a></td>
 <td>(1)</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td>#<a href="mailto:&#x65;&#120;&#x61;&#109;&#112;&#x6c;&#101;&#x40;&#117;&#101;&#x73;&#x74;&#99;&#46;&#101;&#x64;&#x75;&#46;&#x63;&#110;">&#x65;&#120;&#x61;&#109;&#112;&#x6c;&#101;&#x40;&#117;&#101;&#x73;&#x74;&#99;&#46;&#101;&#x64;&#x75;&#46;&#x63;&#110;</a></td>
+<td>#<a href="mailto:&#x65;&#120;&#97;&#109;&#112;&#x6c;&#101;&#64;&#x75;&#101;&#x73;&#x74;&#99;&#x2e;&#101;&#100;&#117;&#x2e;&#99;&#x6e;">&#x65;&#120;&#97;&#109;&#112;&#x6c;&#101;&#64;&#x75;&#101;&#x73;&#x74;&#99;&#x2e;&#101;&#100;&#117;&#x2e;&#99;&#x6e;</a></td>
 <td>(2)</td>
 </tr>
 <tr>
@@ -1253,427 +1674,6 @@
       </categories>
       <tags>
         <tag>软件测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>电大软件测试～第二次作业</title>
-    <url>/2023/05/31/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test2/</url>
-    <content><![CDATA[<h2 id="第二次作业及参考答案"><a href="#第二次作业及参考答案" class="headerlink" title="第二次作业及参考答案"></a>第二次作业及参考答案</h2><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p> 在一个客户信息查询界面中，输入条件有“姓名”、“身份证号”、“手机”，采用正交表方式设计该界面查询功能的测试用例。</p>
-<p>答：</p>
-<p>针对本测试有3个输入条件，每个输入有2种取值情况，可以选择L₄(2³)正交表，其正交表值如下表所示：</p>
-<table>
-<thead>
-<tr>
-<th>实验数\列号</th>
-<th>姓名</th>
-<th>身份证号</th>
-<th>手机</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>2</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>3</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr>
-<td>4</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-</tbody></table>
-<p>测试用例：</p>
-<table>
-<thead>
-<tr>
-<th>测试用例&#x2F;查询条件</th>
-<th>姓名</th>
-<th>身份证号</th>
-<th>手机</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>测试用例1</td>
-<td>填写</td>
-<td>填写</td>
-<td>填写</td>
-</tr>
-<tr>
-<td>测试用例2</td>
-<td>填写</td>
-<td>空</td>
-<td>空</td>
-</tr>
-<tr>
-<td>测试用例3</td>
-<td>空</td>
-<td>填写</td>
-<td>空</td>
-</tr>
-<tr>
-<td>测试用例4</td>
-<td>空</td>
-<td>空</td>
-<td>填写</td>
-</tr>
-</tbody></table>
-<h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>根据如下图所示的程序流程图，分别使用语句覆盖测试、判定覆盖测试、条件覆盖测试和路径覆盖测试进行测试用例设计。</p>
-<p><img src="https://s2.loli.net/2023/05/31/YaGS6fzEgLuwdKp.png" alt="VD_MD_EUXLQ_O~DDYPO_G_R.png"></p>
-<p>答：</p>
-<p><em><strong>1）语句覆盖</strong></em></p>
-<p>设计测试用例，使得被测试程序中的每条可执行语句至少被执行一次。其测试用例表如下所示。</p>
-<table>
-<thead>
-<tr>
-<th>用例序号</th>
-<th>输入数据</th>
-<th>预期输出</th>
-<th>覆盖语句</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>(X,Y)&#x3D;(1,11)</td>
-<td>(X,Y)&#x3D;(1,11)</td>
-<td>X&gt;0 AND Y&gt;10;Y&#x3D;Y&#x2F;X;X&lt;-10 OR Y&lt;0</td>
-</tr>
-<tr>
-<td>2</td>
-<td>(X,Y)&#x3D;(0,-1)</td>
-<td>(X,Y)&#x3D;(0,1)</td>
-<td>X&gt;0 AND Y&gt;10;X&lt;-10 OR Y&lt;0;Y&#x3D;-(Y+X)</td>
-</tr>
-</tbody></table>
-<p><em><strong>2）判定覆盖</strong></em></p>
-<p>设计测试用例,使得被测试程序中的每个判断的”真”、”假”分支至少被执行一次。设X&gt;0 AND Y&gt;10为判定条件M，X&lt;-10 OR Y&lt;0为判定条件N。<br>设计的判定覆盖测试用例如下表所示。</p>
-<table>
-<thead>
-<tr>
-<th>用例序号</th>
-<th>输入数据</th>
-<th>预期输出</th>
-<th>覆盖判定条件</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>(X,Y)&#x3D;(1,11)</td>
-<td>(X,Y)&#x3D;(1,11)</td>
-<td>M为真，N为假</td>
-</tr>
-<tr>
-<td>2</td>
-<td>(X,Y)&#x3D;(0,-1)</td>
-<td>(X,Y)&#x3D;(0,1)</td>
-<td>M为假，N为真</td>
-</tr>
-</tbody></table>
-<p><em><strong>3）条件覆盖</strong></em></p>
-<p>设计测试用例,使得被测试程序中分支判断语句中每个条件的可能值至少被满足一次。<br>设</p>
-<blockquote>
-<p>条件X&gt;0:<br>取真时为T1，取假时为F1<br>条件Y&gt;10:<br>取真时为T2，取假时为F2<br>条件x&lt;-10:<br>取真时为T3，取假时为F3<br>条件Y&lt;0:<br>取真时为T4,取假时为 F4</p>
-</blockquote>
-<p>设计的条件覆盖测试用例如下表所示。</p>
-<table>
-<thead>
-<tr>
-<th>用例序号</th>
-<th>输入数据</th>
-<th>预期输出</th>
-<th>覆盖条件</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>(X,Y)&#x3D;(1,-1)</td>
-<td>(X,Y)&#x3D;(1,0)</td>
-<td>T1，F2，F3，T4</td>
-</tr>
-<tr>
-<td>2</td>
-<td>(X,Y)&#x3D;(-11,11)</td>
-<td>(X,Y)&#x3D;(-11,0)</td>
-<td>F1，T2，T3，F4</td>
-</tr>
-</tbody></table>
-<p><em><strong>4）基本路径覆盖</strong></em></p>
-<p>设计测试用例,使得被测试程序中的基本路径至少被覆盖一次。依据该程序控制流图计算环路复杂度&#x3D;3（判断节点数目+1）,因此,该程序的基本路径有3条。</p>
-<p>设计的基本路径覆盖测试用例如下表所示</p>
-<table>
-<thead>
-<tr>
-<th>用例序号</th>
-<th>输入数据</th>
-<th>预期输出</th>
-<th>覆盖路径</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>(X,Y)&#x3D;(0,0)</td>
-<td>(X,Y)&#x3D;(0,0)</td>
-<td>ace</td>
-</tr>
-<tr>
-<td>2</td>
-<td>(X,Y)&#x3D;(1,11)</td>
-<td>(X,Y)&#x3D;(1,11)</td>
-<td>abce</td>
-</tr>
-<tr>
-<td>3</td>
-<td>(X,Y)&#x3D;(-11,1)</td>
-<td>(X,Y)&#x3D;(-11,10)</td>
-<td>acde</td>
-</tr>
-<tr>
-<td>4</td>
-<td>不存在</td>
-<td>不存在</td>
-<td>abcde</td>
-</tr>
-</tbody></table>
-<h3 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h3><p>针对如下样本程序，分析该程序逻辑覆盖测试方法中的语句覆盖、判定覆盖、条件覆盖和基本路径覆盖，并说明哪种方法覆盖率高？为什么？</p>
-<p>被测样本程序</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Coverage</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;start main function:path a...&quot;</span>);</span><br><span class="line">  <span class="type">int</span> A=<span class="number">0</span>,B=<span class="number">0</span>,X=<span class="number">0</span>;</span><br><span class="line">  <span class="type">Scanner</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">  System.out.println(<span class="string">&quot;输入A：&quot;</span>);  A = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入B=&quot;</span>);  B = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入X=&quot;</span>);  X = s.nextInt();</span><br><span class="line">  s.close();  </span><br><span class="line">  <span class="keyword">if</span> (A&gt;<span class="number">1</span> &amp;&amp; B==<span class="number">0</span>) &#123;</span><br><span class="line">	X=X/A;</span><br><span class="line">	System.out.println(<span class="string">&quot;path c&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path b&quot;</span>);  &#125;</span><br><span class="line">  <span class="keyword">if</span> (A==<span class="number">2</span> || X&gt;<span class="number">1</span>) &#123;</span><br><span class="line">	X=X+<span class="number">1</span>;</span><br><span class="line">	System.out.println(<span class="string">&quot;path e&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path d&quot;</span>);  &#125;</span><br><span class="line">  System.out.println(<span class="string">&quot;end main function.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​	答：</p>
-<p>​	<u><em><strong>注：以下答案只参考了标准答案的一部分</strong></em></u></p>
-<p><img src="https://s2.loli.net/2023/05/31/P7NxLnZ9QhsHmyW.png" alt="VF1D1EJ2__LKYS_1_GPGJ5W.png"></p>
-<ol>
-<li><p>语句覆盖测试</p>
-<table>
-<thead>
-<tr>
-<th>用例序号</th>
-<th>输入数据</th>
-<th>预期输出</th>
-<th>覆盖路径</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>(A,B,X)&#x3D;(2,0,2)</td>
-<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
-<td>ace</td>
-</tr>
-<tr>
-<td>2</td>
-<td>(A,B,X)&#x3D;(0,1,1)</td>
-<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
-<td>abd</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>判定覆盖测试</p>
-<table>
-<thead>
-<tr>
-<th>用例序号</th>
-<th>输入数据</th>
-<th>预期输出</th>
-<th>覆盖路径</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>(A,B,X)&#x3D;(2,0,2)</td>
-<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
-<td>ace</td>
-</tr>
-<tr>
-<td>2</td>
-<td>(A,B,X)&#x3D;(0,1,1)</td>
-<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
-<td>abd</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>条件覆盖测试</p>
-<table>
-<thead>
-<tr>
-<th>用例序号</th>
-<th>输入数据</th>
-<th>预期输出</th>
-<th>覆盖路径</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>(A,B,X)&#x3D;(2,0,2)</td>
-<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
-<td>ace</td>
-</tr>
-<tr>
-<td>2</td>
-<td>(A,B,X)&#x3D;(0,1,1)</td>
-<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
-<td>abd</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>基本路径覆盖测试</p>
-<table>
-<thead>
-<tr>
-<th>用例序号</th>
-<th>输入数据</th>
-<th>预期输出</th>
-<th>覆盖路径</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>(A,B,X)&#x3D;(2,0,2)</td>
-<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
-<td>ace</td>
-</tr>
-<tr>
-<td>2</td>
-<td>(A,B,X)&#x3D;(0,1,1)</td>
-<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
-<td>abd</td>
-</tr>
-<tr>
-<td>3</td>
-<td>(A,B,X)&#x3D;(0,1,2)</td>
-<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path e，end main function.</td>
-<td>abe</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-<p>综上所述，基本路径覆盖测试用的测试用例最多，覆盖的路径也最多，故基本路径覆盖的覆盖率最高。</p>
-<p><em><strong>注：<a href="https://blog.csdn.net/The_Azur/article/details/117936347">环形复杂度必定是基本路径个数的上限。</a></strong></em></p>
-<p><img src="https://s2.loli.net/2023/05/31/HtDjYwSso3WKVFn.png" alt="Snipaste_2023-05-31_21-48-19.png"></p>
-<h3 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h3><p>使用PMD代码分析工具针对如下被测程序，找出该程序存在的潜在缺陷，给出结果界面截图，并说明各个缺陷出现的原因。</p>
-<p>被测样本程序</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Coverage</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;start main function:path a...&quot;</span>);</span><br><span class="line">  <span class="type">int</span> A=<span class="number">0</span>,B=<span class="number">0</span>,X=<span class="number">0</span>;</span><br><span class="line">  <span class="type">Scanner</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">  System.out.println(<span class="string">&quot;输入A：&quot;</span>);  A = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入B=&quot;</span>);  B = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入X=&quot;</span>);  X = s.nextInt();</span><br><span class="line">  s.close();  </span><br><span class="line">  <span class="keyword">if</span> (A&gt;<span class="number">1</span> &amp;&amp; B==<span class="number">0</span>) &#123;</span><br><span class="line">	X=X/A;</span><br><span class="line">	System.out.println(<span class="string">&quot;path c&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path b&quot;</span>);  &#125;</span><br><span class="line">  <span class="keyword">if</span> (A==<span class="number">2</span> || X&gt;<span class="number">1</span>) &#123;</span><br><span class="line">	X=X+<span class="number">1</span>;</span><br><span class="line">	System.out.println(<span class="string">&quot;path e&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path d&quot;</span>);  &#125;</span><br><span class="line">  System.out.println(<span class="string">&quot;end main function.&quot;</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>答：</p>
-<p><u><em><strong>注：以下答案只参考了标准答案的一部分</strong></em></u></p>
-<p><a href="https://smms.app/image/5I4amZs2cXEldHv" target="_blank"><img src="https://s2.loli.net/2023/05/31/5I4amZs2cXEldHv.jpg" alt="Z__LBIY38___C`L5GCFZSVF.jpg"></a></p>
-<p>以下是可能的缺陷（感觉每个人做出来都不一样哈哈哈哈😆）：</p>
-<blockquote>
-<p>（1）VariableNamingConventions：</p>
-<p>​		①变量应以小写字符开头，’A’’B’’X’均以大写字符开头</p>
-<p>（2）UseUtilityClass：</p>
-<p>​		①所有方法都是静态的，可以考虑使用实用工具类，或添加一个私		有构造函数，或使类抽象来屏蔽这个警告</p>
-<p>（3）LocalVariableCouldBeFinal：</p>
-<p>​		①局部变量’s’可以声明为final</p>
-<p>（4）LocalVaraiableNamingConventions：</p>
-<p>​		①局部变量名’A’’B’’X’不匹配’[a-z][a-zA-Z0-9]*’</p>
-<p>（5）MethodArgumentCouldBeFinal：</p>
-<p>​		①参数’args’未赋值，可以声明为final</p>
-<p>（6）CommentRequired：</p>
-<p>​		①类注释是必需的</p>
-<p>​		②公共方法和构造函数的注释是必需的</p>
-<p>（7）OneDeclarationPerLine：</p>
-<p>​		①int A&#x3D;0,B&#x3D;0,X&#x3D;0; 每个声明为一行，可以增强代码的可读性</p>
-<p>（8）UnusedAssignment：</p>
-<p>​		①变量’B’的初始化式从未使用（后被重写）</p>
-<p>​		②变量’A’的初始化式从未使用（后被覆盖）</p>
-<p>​		③变量’X’的初始化式从未使用（后被覆盖）</p>
-<p>​		④ X&#x3D;X+1; 赋给变量’X’的值从未使用过</p>
-<p>（9）SystemPrintln：</p>
-<p>​		①使用System.out.println</p>
-<p>（10）ShortVariable：</p>
-<p>​		① Scanner s &#x3D; new Scanner(System.in); 避免使用像s这样名字较		短的变量</p>
-<p>​		②避免使用短名称的变量：如A,B,X</p>
-<p>（11）DataflowAnomalyAnalysis：</p>
-<p>​		①发现变量’A’的’DD’异常</p>
-<p>​			int A&#x3D;0,B&#x3D;0,X&#x3D;0;</p>
-<p>​			Scanner s &#x3D; new Scanner(System.in);</p>
-<p>​		    System.out.println(“输入A：”);A &#x3D; s.nextInt();</p>
-<p>​		②发现变量’X’的’DU’异常</p>
-<p>​		X&#x3D;X+1;</p>
-<p>​		System.out.println(“path e”);</p>
-<p>​	} else {</p>
-<p>​		System.out.println(“path d”);  }</p>
-<p>​		System.out.println(“end main function.”);</p>
-<p>​	}</p>
-<p>​		③发现变量’X’的’DD’异常</p>
-<p>​		int A&#x3D;0,B&#x3D;0,X&#x3D;0;</p>
-<p> ​		Scanner s &#x3D; new Scanner(System.in);</p>
-<p>​		System.out.println(“输入A：”);  A &#x3D; s.nextInt();</p>
-<p>​		 System.out.println(“输入B&#x3D;”);  B &#x3D; s.nextInt();</p>
-<p>​        System.out.println(“输入X&#x3D;”);  X &#x3D; s.nextInt();</p>
-<p>​		④发现变量’B’的’DD’异常</p>
-<p>​		int A&#x3D;0,B&#x3D;0,X&#x3D;0;</p>
-<p>​	Scanner s &#x3D; new Scanner(System.in);</p>
-<p>​	System.out.println(“输入A：”);  A &#x3D; s.nextInt();</p>
-<p>​	System.out.println(“输入B&#x3D;”);  B &#x3D; s.nextInt();</p>
-<p>（12）CloseResource：</p>
-<p>​		①Scanner s &#x3D; new Scanner(System.in); 确保像InputStream对象		这样的资源在使用后被关闭</p>
-</blockquote>
-<p><em><strong>声明：除特殊标注外（综合考虑其他同学的答案），答案来源均来自老师原版答案</strong></em></p>
-]]></content>
-      <categories>
-        <category>大二下期末复习</category>
-      </categories>
-      <tags>
-        <tag>软件测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>flask框架(1-2)</title>
-    <url>/2023/05/29/Flask/1/</url>
-    <content><![CDATA[<h2 id="Flask简介"><a href="#Flask简介" class="headerlink" title="Flask简介"></a>Flask简介</h2><p>​		Flask是一个轻量级的可定制框架，使用Python语言编写，较其他同类型框架更为灵活、轻便、安全且容易上手。它可以很好地结合<a href="https://baike.baidu.com/item/MVC%E6%A8%A1%E5%BC%8F/713147?fromModule=lemma_inlink">MVC模式</a>进行开发，开发人员分工合作，小型团队在短时间内就可以完成功能丰富的中小型网站或<a href="https://baike.baidu.com/item/Web%E6%9C%8D%E5%8A%A1/2837593?fromModule=lemma_inlink">Web服务</a>的实现。另外，Flask还有很强的定制性，用户可以根据自己的需求来添加相应的功能，在保持核心功能简单的同时实现功能的丰富与扩展，其强大的插件库可以让用户实现个性化的网站定制，开发出功能强大的网站。</p>
-<p>​		Flask是目前十分流行的web框架，采用Python编程语言来实现相关功能。它被称为微框架(microframework)，“微”并不是意味着把整个Web应用放入到一个Python文件，微框架中的“微”是指Flask旨在保持代码简洁且易于扩展，Flask框架的主要特征是核心构成比较简单，但具有很强的扩展性和兼容性，程序员可以使用Python语言快速实现一个网站或Web服务。一般情况下，它不会指定数据库和模板引擎等对象，用户可以根据需要自己选择各种数据库。Flask自身不会提供表单验证功能，在项目实施过程中可以自由配置，从而为应用程序开发提供数据库抽象层基础组件，支持进行表单数据合法性验证、文件上传处理、用户身份认证和数据库集成等功能。Flask主要包括Werkzeug和Jinja2两个核心函数库，它们分别负责业务处理和安全方面的功能，这些基础函数为web项目开发过程提供了丰富的基础组件。Werkzeug库十分强大，功能比较完善，支持URL路由请求集成，一次可以响应多个用户的访问请求；支持Cookie和会话管理，通过身份缓存数据建立长久连接关系，并提高用户访问速度；支持交互式Javascript调试，提高用户体验；可以处理HTTP基本事务，快速响应客户端推送过来的访问请求。Jinja2库支持自动HTML转义功能，能够很好控制外部黑客的脚本攻击。系统运行速度很快，页面加载过程会将源码进行编译形成Python字节码，从而实现模板的高效运行；模板继承机制可以对模板内容进行修改和维护，为不同需求的用户提供相应的模板。</p>
-<h2 id="路由和请求响应对象"><a href="#路由和请求响应对象" class="headerlink" title="路由和请求响应对象"></a>路由和请求响应对象</h2><ul>
-<li>装饰器其实就是将rule字符串跟视图函数进行了绑定，通过add_url_rule()实现的绑定。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/index&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;welcome everyone！&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>等效</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;welcome everyone！&#x27;</span></span><br><span class="line">app.add_url_rule(<span class="string">&#x27;/index&#x27;</span>, view_func=index)</span><br></pre></td></tr></table></figure>
-
-<h3 id="路由变量规则"><a href="#路由变量规则" class="headerlink" title="路由变量规则"></a>路由变量规则</h3><p>string  （缺省值） 接受任何不包含斜杠的文本   *<br>int      接受正整数  *<br>float    接受正浮点数<br>path     类似 string ，但可以包含斜杠<br>uuid     接受 UUID 字符串</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/index/&lt;path:p&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_path</span>(<span class="params">p</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;******&gt;&#x27;</span>, <span class="built_in">type</span>(p))  <span class="comment"># str类型</span></span><br><span class="line">    <span class="built_in">print</span>(p)</span><br><span class="line">    <span class="keyword">return</span> p</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/test/&lt;uuid:uid&gt;&#x27;</span></span>)  </span><span class="comment"># 必须传递uuid的格式，uuid模块， uuid.uuid4() ----&gt;UUID类型</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>(<span class="params">uid</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;#######&gt;&gt;&gt;&gt;&gt;&#x27;</span>, <span class="built_in">type</span>(uid))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;获取唯一的标识码&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 所有的路由搜索规则都是自上而下搜索，在写路由的是有定义的路由是唯一的。</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/projects&#x27;</span></span>)  </span><span class="comment"># 请求路由中如果添加了/：http://127.0.0.1:5000/about/  显示Not Found</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">about</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;The about page&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/projects/&#x27;</span></span>)  </span><span class="comment"># 路由中定义&#x27;/&#x27;，无论请求的URL是否带有/，都可以执行视图函数。如果请求的是有/，浏览器做了一次重定向</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">projects</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;The project page&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>返回值：其实返回值返回的都是一个响应对象。</p>
-<blockquote>
-<p>视图函数的返回值：<br>response响应：<br>1.str     自动转成response对象<br>2.dict    json<br>3.response对象  response对象<br>4.make_response()  response对象<br>5.redirect()   重定向  302状态码<br>6.render_template()  模板渲染 + 模板</p>
-</blockquote>
-<p>response响应对象</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(response.content_type)</span><br><span class="line"><span class="built_in">print</span>(response.headers)</span><br><span class="line"><span class="built_in">print</span>(response.status_code)  <span class="comment"># 200</span></span><br><span class="line"><span class="built_in">print</span>(response.status)  <span class="comment"># 200 OK</span></span><br><span class="line">response.set_cookie(<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;wxy&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>request请求对象：只需要导入，通过from flask import request<br>导入之后可以获取对象的属性和方法<br>属性：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.headers)  <span class="comment"># request对象 对象访问属性，也可以调用方法</span></span><br><span class="line"><span class="built_in">print</span>(request.path)</span><br><span class="line"><span class="built_in">print</span>(request.full_path)</span><br><span class="line"><span class="built_in">print</span>(request.base_url)</span><br><span class="line"><span class="built_in">print</span>(request.url)</span><br></pre></td></tr></table></figure>
-
-<h4 id="获取提交的数据"><a href="#获取提交的数据" class="headerlink" title="获取提交的数据"></a>获取提交的数据</h4><p>跟请求方法相关的</p>
-<ul>
-<li><p>get：<br>request.args 底层是字典的形式   主要获取get提交的请求参数<br>如果是get请求格式是这个样子的：&#x2F;register2?username&#x3D;zhangsan&amp;address&#x3D;Beijing<br>此时的username是form表单中表单元素的name值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.args.get(<span class="string">&#x27;username&#x27;</span>))   <span class="comment"># 获取值</span></span><br><span class="line"><span class="built_in">print</span>(request.args.get(<span class="string">&#x27;address&#x27;</span>))</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>post:<br>request.form 底层是字典的形式   主要获取post提交的请求参数<br>注意post提交必须在路由中进行设置，通过methods &#x3D; [‘GET’,’POST’]<br>按照此种形式：<br>@app.route(‘&#x2F;register2’, methods&#x3D;[‘GET’, ‘POST’])<br>def register2():  # 获取页面提交的内容<br>…….  内容省略<br>获取数据：<br>print(request.form)  # 如果请求方法是post则需要通过request.form取值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(request.form.get(<span class="string">&#x27;username&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(request.form.get(<span class="string">&#x27;address&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>定制响应头</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">response = make_response(content)  <span class="comment"># 返回值就是一个response对象</span></span><br><span class="line">   <span class="comment"># 定制响应头</span></span><br><span class="line">   response.headers[<span class="string">&#x27;mytest&#x27;</span>] = <span class="string">&#x27;123abc&#x27;</span></span><br><span class="line">   response.headers[<span class="string">&#x27;myhello&#x27;</span>] = <span class="string">&#x27;hellohello&#x27;</span></span><br><span class="line">   <span class="comment"># 将定制好的response返回</span></span><br><span class="line">   <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Flask</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>大二自学</tag>
       </tags>
   </entry>
 </search>
