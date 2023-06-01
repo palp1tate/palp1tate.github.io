@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-05-31T15:42:05.945Z</updated>
+  <updated>2023-06-01T04:04:23.166Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -17,11 +17,86 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>go的编码规范</title>
+    <link href="https://uestcwxy.love/2023/06/01/Go/3/"/>
+    <id>https://uestcwxy.love/2023/06/01/Go/3/</id>
+    <published>2023-06-01T03:39:15.000Z</published>
+    <updated>2023-06-01T04:04:23.166Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
+    
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>go的基本介绍</title>
+    <link href="https://uestcwxy.love/2023/06/01/Go/2/"/>
+    <id>https://uestcwxy.love/2023/06/01/Go/2/</id>
+    <published>2023-06-01T03:16:42.000Z</published>
+    <updated>2023-06-01T03:53:42.366Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
+    
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习go的准备工作</title>
+    <link href="https://uestcwxy.love/2023/06/01/Go/1/"/>
+    <id>https://uestcwxy.love/2023/06/01/Go/1/</id>
+    <published>2023-06-01T02:33:26.000Z</published>
+    <updated>2023-06-01T03:46:19.558Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
+    
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+  </entry>
+  
+  <entry>
     <title>电大软件测试～第二次作业</title>
-    <link href="https://uestcwxy.love/2023/05/31/test2/"/>
-    <id>https://uestcwxy.love/2023/05/31/test2/</id>
+    <link href="https://uestcwxy.love/2023/05/31/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test2/"/>
+    <id>https://uestcwxy.love/2023/05/31/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test2/</id>
     <published>2023-05-31T12:59:09.000Z</published>
-    <updated>2023-05-31T15:42:05.945Z</updated>
+    <updated>2023-06-01T00:33:38.387Z</updated>
     
     
       
@@ -43,8 +118,8 @@
   
   <entry>
     <title>电大软件测试～第一次作业</title>
-    <link href="https://uestcwxy.love/2023/05/31/test1/"/>
-    <id>https://uestcwxy.love/2023/05/31/test1/</id>
+    <link href="https://uestcwxy.love/2023/05/31/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test1/"/>
+    <id>https://uestcwxy.love/2023/05/31/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test1/</id>
     <published>2023-05-31T09:27:57.000Z</published>
     <updated>2023-05-31T09:51:04.246Z</updated>
     
@@ -68,8 +143,8 @@
   
   <entry>
     <title>flask框架(1-2)</title>
-    <link href="https://uestcwxy.love/2023/05/29/flask/"/>
-    <id>https://uestcwxy.love/2023/05/29/flask/</id>
+    <link href="https://uestcwxy.love/2023/05/29/Flask/1/"/>
+    <id>https://uestcwxy.love/2023/05/29/Flask/1/</id>
     <published>2023-05-29T13:21:27.000Z</published>
     <updated>2023-05-31T03:51:24.304Z</updated>
     
