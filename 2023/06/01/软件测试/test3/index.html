@@ -1,0 +1,274 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>电大软件测试～第三次作业 | Eternity</title><meta name="author" content="珩,1939311091@qq.com"><meta name="copyright" content="珩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="第三次作业第一题采用JUnit软件测试框架进行测试程序编程，实现对下面java程序进行单元测试，找出其中缺陷。然后修改缺陷，直到通过单元测试，给出测试程序脚本和运行结果界面。 123456789101112public class getMax &amp;#123;   public int get_max(int x, int y, int z) &amp;#123;	int max;	if (x &gt;&#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电大软件测试～第三次作业">
+<meta property="og:url" content="https://uestcwxy.love/2023/06/01/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test3/index.html">
+<meta property="og:site_name" content="Eternity">
+<meta property="og:description" content="第三次作业第一题采用JUnit软件测试框架进行测试程序编程，实现对下面java程序进行单元测试，找出其中缺陷。然后修改缺陷，直到通过单元测试，给出测试程序脚本和运行结果界面。 123456789101112public class getMax &amp;#123;   public int get_max(int x, int y, int z) &amp;#123;	int max;	if (x &gt;&#x3D;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2023/06/01/p9zYu80.jpg">
+<meta property="article:published_time" content="2023-06-01T10:55:52.000Z">
+<meta property="article:modified_time" content="2023-06-01T12:29:13.255Z">
+<meta property="article:author" content="珩">
+<meta property="article:tag" content="软件测试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/06/01/p9zYu80.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://uestcwxy.love/2023/06/01/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 珩","link":"链接: ","source":"来源: Eternity","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '电大软件测试～第三次作业',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-01 20:29:13'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Eternity" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = 'hidden';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+
+preloader.initLoading()
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s1.ax1x.com/2023/06/01/p9zYu80.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Eternity"><span class="site-name">Eternity</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">电大软件测试～第三次作业</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-01T10:55:52.000Z" title="发表于 2023-06-01 18:55:52">2023-06-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-01T12:29:13.255Z" title="更新于 2023-06-01 20:29:13">2023-06-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">大二下期末复习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">855</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="电大软件测试～第三次作业"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="第三次作业"><a href="#第三次作业" class="headerlink" title="第三次作业"></a>第三次作业</h2><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p>采用JUnit软件测试框架进行测试程序编程，实现对下面java程序进行单元测试，找出其中缺陷。然后修改缺陷，直到通过单元测试，给出测试程序脚本和运行结果界面。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">getMax</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">get_max</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> z)</span> &#123;</span><br><span class="line">	<span class="type">int</span> max;</span><br><span class="line">	<span class="keyword">if</span> (x &gt;= y) </span><br><span class="line">		max = x;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		max = y;</span><br><span class="line">	<span class="keyword">if</span> (z &gt;= x)</span><br><span class="line">		max = z;</span><br><span class="line">	<span class="keyword">return</span> max;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>答：</p>
+<p>测试程序脚本：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.After;</span><br><span class="line"><span class="keyword">import</span> org.junit.Assert;</span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> junit.framework.TestCase;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">getMaxTest</span> <span class="keyword">extends</span> <span class="title class_">TestCase</span> &#123;</span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">       getMax Max=<span class="keyword">new</span> <span class="title class_">getMax</span>();</span><br><span class="line">       <span class="type">int</span> max= Max.get_max(<span class="number">7</span>,<span class="number">9</span>,<span class="number">8</span>);</span><br><span class="line">       Assert.assertEquals(<span class="number">9</span>,max);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Before</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@After</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">tearDown</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>以下是运行结果，发现代码有缺陷：z如果比x大，但比y小，程序会输出z，而实际情况是y最大。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9zYRRP"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s1.ax1x.com/2023/06/01/p9zYRRP.png" alt="p9zYRRP.png" border="0" /></a></p>
+<p>修改缺陷，以下是修改后的源程序：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">getMax</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">get_max</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> z)</span> &#123;</span><br><span class="line">	<span class="type">int</span> max;</span><br><span class="line">	<span class="keyword">if</span> (x &gt;= y) </span><br><span class="line">		max = x;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		max = y;</span><br><span class="line">	<span class="keyword">if</span> (z &gt;= max)</span><br><span class="line">		max = z;</span><br><span class="line">	<span class="keyword">return</span> max;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>其实就是将其中一个x改成max</strong></em></p>
+<p>以下是单元测试通过的界面：</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9zYoZQ"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s1.ax1x.com/2023/06/01/p9zYoZQ.png" alt="p9zYoZQ.png" border="0" /></a></p>
+<p>缺陷修改成功。</p>
+<h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>采用Postman接口测试软件对百度百科（<a target="_blank" rel="noopener" href="https://baike.baidu.com/%EF%BC%89%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E8%BF%9B%E8%A1%8C%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E3%80%82%E5%A6%82%E5%AF%B9%E8%AF%8D%E6%9D%A1%E2%80%9C%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E2%80%9D%E8%BF%94%E5%9B%9E%E9%A1%B5%E9%9D%A2%E5%86%85%E5%AE%B9%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95%E9%AA%8C%E8%AF%81%EF%BC%8C%E7%BB%99%E5%87%BA%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE%E3%80%81Tests%E8%84%9A%E6%9C%AC%E3%80%81Body%E5%93%8D%E5%BA%94%E7%BB%93%E6%9E%9C%E3%80%81Test">https://baike.baidu.com/）搜索引擎进行接口测试。如对词条“软件工程”返回页面内容进行测试验证，给出请求参数设置、Tests脚本、Body响应结果、Test</a> Results结果说明及运行界面。</p>
+<hr>
+<p>以下是笔者的分析过程：</p>
+<p>​	在百度百科页面搜索软件工程，得到的网址如下：</p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/25279?fromModule=lemma_search-box">https://baike.baidu.com/item/软件工程/25279?fromModule=lemma_search-box</a></p>
+<p>如果是常规的get请求（大多数项目开发者会这样设置)，在url里面应该有?word&#x3D;软件工程的字符串（不一定是word这个单词，举这个例子表示形如这个url），但是该链接并不如此。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9ztDS0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s1.ax1x.com/2023/06/01/p9ztDS0.png" alt="p9ztDS0.png" border="0" /></a></p>
+<p>​	于是猜测是post请求，F12打开开发者工具对输入框进行分析，发现它在form表单里，初步断定是post请求，但是这个表单不是向当前网址提交的，表单的action属性是&#x2F;seach&#x2F;word，所以请求的url应该是其对应的绝对路径（还得拐个弯🥺），为<a target="_blank" rel="noopener" href="https://baike.baidu.com/search/word%E3%80%82">https://baike.baidu.com/search/word。</a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9zUnPA"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s1.ax1x.com/2023/06/01/p9zUnPA.png" alt="p9zUnPA.png" border="0" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9zalWR"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s1.ax1x.com/2023/06/01/p9zalWR.png" alt="p9zalWR.png" border="0"></a></p>
+<p>​	还要注意到表单的method是GET方法，于是我大胆的猜测get方法也可以，经过postman测试，用get方法向<a target="_blank" rel="noopener" href="https://baike.baidu.com/search%E4%B9%9F%E5%8F%AF%E4%BB%A5%E8%BE%BE%E5%88%B0%E9%A2%84%E6%9C%9F%E7%9B%AE%E6%A0%87%E3%80%82">https://baike.baidu.com/search也可以达到预期目标。</a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9za3S1"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s1.ax1x.com/2023/06/01/p9za3S1.png" alt="p9za3S1.png" border="0"></a></p>
+<p>答：</p>
+<p>请求参数设置</p>
+<blockquote>
+<p>URL：<a target="_blank" rel="noopener" href="https://baike.baidu.com/search/word">https://baike.baidu.com/search/word</a></p>
+<p>Method: post</p>
+<p>Body：</p>
+<p>​	键：word	值：软件工程</p>
+</blockquote>
+<p>或者</p>
+<blockquote>
+<p>URL：<a target="_blank" rel="noopener" href="https://baike.baidu.com/search">https://baike.baidu.com/search</a></p>
+<p>Method：GET</p>
+<p>参数：</p>
+<p>​	键：word	值：软件工程</p>
+</blockquote>
+<p>Tests脚本</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pm.<span class="title function_">test</span>(<span class="string">&quot;Status code is 200&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    pm.<span class="property">response</span>.<span class="property">to</span>.<span class="property">have</span>.<span class="title function_">status</span>(<span class="number">200</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">pm.<span class="title function_">test</span>(<span class="string">&quot;Response body is not empty&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    pm.<span class="property">response</span>.<span class="property">to</span>.<span class="property">have</span>.<span class="title function_">body</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">pm.<span class="title function_">test</span>(<span class="string">&quot;The response contains the word &#x27;软件工程&#x27;&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    pm.<span class="title function_">expect</span>(pm.<span class="property">response</span>.<span class="title function_">text</span>()).<span class="property">to</span>.<span class="title function_">include</span>(<span class="string">&quot;软件工程&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Body响应结果</p>
+<p>把你操作界面的body复制下来就可以啦~内容有很多（毕竟是百度的程序员😎）</p>
+<p>Test Results结果</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9za5pn"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s1.ax1x.com/2023/06/01/p9za5pn.png" alt="p9za5pn.png" border="0"></a></p>
+<p>可以看到Status code is 200，Response body is not empty，The response contains the word ‘软件工程’，三次测试全部通过。</p>
+<p>运行界面</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9zaIlq"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s1.ax1x.com/2023/06/01/p9zaIlq.png" alt="p9zaIlq.png" border="0"></a></p>
+<p>但是为了图方便感觉用get直接向<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B">https://baike.baidu.com/item/软件工程</a>发请求也得行（这样子就少了很多分析啦~)</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://uestcwxy.love">珩</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://uestcwxy.love/2023/06/01/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test3/">https://uestcwxy.love/2023/06/01/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://uestcwxy.love" target="_blank">Eternity</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">软件测试</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2023/06/01/p9zYu80.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/06/01/Go/3/" title="go的编码规范"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">go的编码规范</div></div></a></div><div class="next-post pull-right"><a href="/2023/06/01/Go/4/" title="变量与常量"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">变量与常量</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/05/31/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test1/" title="电大软件测试～第一次作业"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/05/31/Y9dlUatN8SMB3ci.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-31</div><div class="title">电大软件测试～第一次作业</div></div></a></div><div><a href="/2023/05/31/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test2/" title="电大软件测试～第二次作业"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/05/31/xvcYjoS24sECZ98.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-31</div><div class="title">电大软件测试～第二次作业</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">珩</div><div class="author-info__description">等我苦尽甘来时，我给你讲讲来时走的路。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/uestc-wxy/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.facebook.com/profile.php?id=100092533320651" target="_blank" title="facebook"><i class="fab fa-facebook" style="color: #4a7dbe;"></i></a><a class="social-icon" href="mailto:1939311091@qq.com" target="_blank" title="email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/1907948898" target="_blank" title="b站"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/tiktok.jpg" target="_blank" title="抖音"><i class="fab fa-tiktok" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/weixin.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">刚建站不久，博客美化有待研究，部分页面也没时间弄，路过的你将就看啦~😊</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%BD%9C%E4%B8%9A"><span class="toc-number">1.</span> <span class="toc-text">第三次作业</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">第一题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">第二题</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/06/01/Go/4/" title="变量与常量"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="变量与常量"/></a><div class="content"><a class="title" href="/2023/06/01/Go/4/" title="变量与常量">变量与常量</a><time datetime="2023-06-01T13:33:05.000Z" title="发表于 2023-06-01 21:33:05">2023-06-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/01/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test3/" title="电大软件测试～第三次作业"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s1.ax1x.com/2023/06/01/p9zYu80.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电大软件测试～第三次作业"/></a><div class="content"><a class="title" href="/2023/06/01/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test3/" title="电大软件测试～第三次作业">电大软件测试～第三次作业</a><time datetime="2023-06-01T10:55:52.000Z" title="发表于 2023-06-01 18:55:52">2023-06-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/01/Go/3/" title="go的编码规范"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="go的编码规范"/></a><div class="content"><a class="title" href="/2023/06/01/Go/3/" title="go的编码规范">go的编码规范</a><time datetime="2023-06-01T03:39:15.000Z" title="发表于 2023-06-01 11:39:15">2023-06-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/01/Go/2/" title="go的基本介绍"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="go的基本介绍"/></a><div class="content"><a class="title" href="/2023/06/01/Go/2/" title="go的基本介绍">go的基本介绍</a><time datetime="2023-06-01T03:16:42.000Z" title="发表于 2023-06-01 11:16:42">2023-06-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/01/Go/1/" title="学习go的准备工作"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="学习go的准备工作"/></a><div class="content"><a class="title" href="/2023/06/01/Go/1/" title="学习go的准备工作">学习go的准备工作</a><time datetime="2023-06-01T02:33:26.000Z" title="发表于 2023-06-01 10:33:26">2023-06-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s1.ax1x.com/2023/06/01/p9zYu80.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 By 珩</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi,welcome to my <a href="https://uestcwxy.love/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

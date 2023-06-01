@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-06-01T04:04:23.166Z</updated>
+  <updated>2023-06-01T13:40:06.342Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>go的编码规范</title>
-    <link href="https://uestcwxy.love/2023/06/01/Go/3/"/>
-    <id>https://uestcwxy.love/2023/06/01/Go/3/</id>
-    <published>2023-06-01T03:39:15.000Z</published>
-    <updated>2023-06-01T04:04:23.166Z</updated>
+    <title>变量与常量</title>
+    <link href="https://uestcwxy.love/2023/06/01/Go/4/"/>
+    <id>https://uestcwxy.love/2023/06/01/Go/4/</id>
+    <published>2023-06-01T13:33:05.000Z</published>
+    <updated>2023-06-01T13:40:06.342Z</updated>
     
     
       
@@ -36,6 +36,60 @@
     
     <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
     
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>电大软件测试～第三次作业</title>
+    <link href="https://uestcwxy.love/2023/06/01/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test3/"/>
+    <id>https://uestcwxy.love/2023/06/01/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test3/</id>
+    <published>2023-06-01T10:55:52.000Z</published>
+    <updated>2023-06-01T12:29:13.255Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="大二下期末复习" scheme="https://uestcwxy.love/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+    <category term="软件测试" scheme="https://uestcwxy.love/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>go的编码规范</title>
+    <link href="https://uestcwxy.love/2023/06/01/Go/3/"/>
+    <id>https://uestcwxy.love/2023/06/01/Go/3/</id>
+    <published>2023-06-01T03:39:15.000Z</published>
+    <updated>2023-06-01T13:39:58.377Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
+    
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
@@ -46,7 +100,7 @@
     <link href="https://uestcwxy.love/2023/06/01/Go/2/"/>
     <id>https://uestcwxy.love/2023/06/01/Go/2/</id>
     <published>2023-06-01T03:16:42.000Z</published>
-    <updated>2023-06-01T03:53:42.366Z</updated>
+    <updated>2023-06-01T13:39:47.038Z</updated>
     
     
       
@@ -61,6 +115,8 @@
     
     <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
     
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
@@ -71,7 +127,7 @@
     <link href="https://uestcwxy.love/2023/06/01/Go/1/"/>
     <id>https://uestcwxy.love/2023/06/01/Go/1/</id>
     <published>2023-06-01T02:33:26.000Z</published>
-    <updated>2023-06-01T03:46:19.558Z</updated>
+    <updated>2023-06-01T13:39:38.354Z</updated>
     
     
       
@@ -87,6 +143,8 @@
     <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
     
     
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
   </entry>
@@ -96,7 +154,7 @@
     <link href="https://uestcwxy.love/2023/05/31/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test2/"/>
     <id>https://uestcwxy.love/2023/05/31/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test2/</id>
     <published>2023-05-31T12:59:09.000Z</published>
-    <updated>2023-06-01T00:33:38.387Z</updated>
+    <updated>2023-06-01T05:37:50.372Z</updated>
     
     
       
