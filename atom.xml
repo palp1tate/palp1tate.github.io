@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-06-01T13:40:06.342Z</updated>
+  <updated>2023-06-02T04:04:34.944Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -17,11 +17,65 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>条件语句与循环语句</title>
+    <link href="https://uestcwxy.love/2023/06/02/Go/6/"/>
+    <id>https://uestcwxy.love/2023/06/02/Go/6/</id>
+    <published>2023-06-02T02:13:06.000Z</published>
+    <updated>2023-06-02T04:04:34.944Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
+    
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据类型与输入输出</title>
+    <link href="https://uestcwxy.love/2023/06/02/Go/5/"/>
+    <id>https://uestcwxy.love/2023/06/02/Go/5/</id>
+    <published>2023-06-02T01:00:56.000Z</published>
+    <updated>2023-06-02T04:10:48.217Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
+    
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+  </entry>
+  
+  <entry>
     <title>变量与常量</title>
     <link href="https://uestcwxy.love/2023/06/01/Go/4/"/>
     <id>https://uestcwxy.love/2023/06/01/Go/4/</id>
     <published>2023-06-01T13:33:05.000Z</published>
-    <updated>2023-06-01T13:40:06.342Z</updated>
+    <updated>2023-06-02T04:10:59.388Z</updated>
     
     
       
@@ -73,7 +127,7 @@
     <link href="https://uestcwxy.love/2023/06/01/Go/3/"/>
     <id>https://uestcwxy.love/2023/06/01/Go/3/</id>
     <published>2023-06-01T03:39:15.000Z</published>
-    <updated>2023-06-01T13:39:58.377Z</updated>
+    <updated>2023-06-02T04:11:09.671Z</updated>
     
     
       
