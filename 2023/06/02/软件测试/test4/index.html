@@ -1,0 +1,784 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>软件测试临考总结 | Eternity</title><meta name="author" content="珩,1939311091@qq.com"><meta name="copyright" content="珩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="由于老师明确说不考概念记忆题😆，并且从我们这届开始改版全部是大题😤，所以就不要背那么多干巴巴的知识点啦~，但是一些必要的概念还是得大致知道啥意思吧，以下内容都基于老师发的PPT(●’◡’●) 第一章 引论软件测试(Software Testing）是一种检测软件的正确性、完整性、安全性和评估其质量的活动过程。换句话说，软件测试是一种以发现程序错误、衡量软件质量为目的，并对其是否满足用户需求进行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件测试临考总结">
+<meta property="og:url" content="https://uestcwxy.love/2023/06/02/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test4/index.html">
+<meta property="og:site_name" content="Eternity">
+<meta property="og:description" content="由于老师明确说不考概念记忆题😆，并且从我们这届开始改版全部是大题😤，所以就不要背那么多干巴巴的知识点啦~，但是一些必要的概念还是得大致知道啥意思吧，以下内容都基于老师发的PPT(●’◡’●) 第一章 引论软件测试(Software Testing）是一种检测软件的正确性、完整性、安全性和评估其质量的活动过程。换句话说，软件测试是一种以发现程序错误、衡量软件质量为目的，并对其是否满足用户需求进行">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/06/02/Vc5u6hKAzqFrDHx.webp">
+<meta property="article:published_time" content="2023-06-02T09:46:10.000Z">
+<meta property="article:modified_time" content="2023-06-02T09:54:59.132Z">
+<meta property="article:author" content="珩">
+<meta property="article:tag" content="软件测试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/06/02/Vc5u6hKAzqFrDHx.webp"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://uestcwxy.love/2023/06/02/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 珩","link":"链接: ","source":"来源: Eternity","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '软件测试临考总结',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-02 17:54:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Eternity" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = 'hidden';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+
+preloader.initLoading()
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2023/06/02/Vc5u6hKAzqFrDHx.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="Eternity"><span class="site-name">Eternity</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">软件测试临考总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-02T09:46:10.000Z" title="发表于 2023-06-02 17:46:10">2023-06-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-02T09:54:59.132Z" title="更新于 2023-06-02 17:54:59">2023-06-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">大二下期末复习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">10k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>33分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="软件测试临考总结"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>由于老师明确说不考概念记忆题😆，并且从我们这届开始改版全部是大题😤，所以就不要背那么多干巴巴的知识点啦~，但是一些必要的概念还是得大致知道啥意思吧，以下内容都基于老师发的PPT(●’◡’●)</p>
+<h2 id="第一章-引论"><a href="#第一章-引论" class="headerlink" title="第一章 引论"></a>第一章 引论</h2><p><strong>软件测试(Software Testing）</strong>是一种检测软件的正确性、完整性、安全性和评估其质量的活动过程。换句话说，软件测试是一种以发现程序错误、衡量软件质量为目的，并对其是否满足用户需求进行评估的活动过程。</p>
+<p><strong>软件质量保证（Software Quality Assurance，SQA）</strong>是指通过对软件产品进行有计划的评审与审计，来确保软件开发按照产品质量过程标准实施项目的管理活动。</p>
+<p>软件质量保证与软件测试的关系：</p>
+<blockquote>
+<p>SQA指导软件测试的计划与执行，监督测试工作结果的客观性、准确性与有效性，并协助软件测试的工作流程改进。</p>
+<p>软件测试是SQA工作落实的重要手段，它为SQA提供所需的质量数据，作为软件质量评价的客观依据。</p>
+<p>SQA是一项<em><strong>软件质量管理性工作</strong></em>，侧重于对软件开发流程进行评审与监控。</p>
+<p>软件测试是一项<em><strong>技术性工作</strong></em>，侧重于对软件质量特性进行检测与验证。</p>
+</blockquote>
+<p><strong>测试驱动开发(Test-Driven Development，简称TDD）</strong>是一种不同于传统软件开发流程的过程模型。它要求在编写某个功能的代码之前先编写测试代码，然后编写功能代码，通过测试来推动整个软件开发工作的进行。</p>
+<p>下面哪项活动不是软件测试范畴</p>
+<p>A．需求文档评审	B.设计评审	C.代码测试	D.过程评审</p>
+<blockquote>
+<p>过程评审是质量保证活动的一部分，用于评估软件开发过程是否符合既定标准和流程。</p>
+</blockquote>
+<p>编程完成后才进行测试存在哪些问题?</p>
+<blockquote>
+<p>测试的时间很有限，很难达到测试的覆盖率要求和测试的质量要求。同时，假如在项目开发的后期，发现一些软件需求阶段和概要设计阶段的错误和问题，修改这些缺陷导致的成本将是非常高的。</p>
+</blockquote>
+<h2 id="第二章-软件测试基本概念"><a href="#第二章-软件测试基本概念" class="headerlink" title="第二章 软件测试基本概念"></a>第二章 <strong>软件测试基本概念</strong></h2><p>**缺陷(Defect)**是指欠缺或不够完备的地方。因为缺陷是相对质量要求而存在的，任何违背了质量要求、违背了客户的意愿，不能满足用户的要求，都可以认为是缺陷。</p>
+<p>IEEE STD729关于<strong>软件质量</strong>定义:软件产品或服务满足用户需求的程度。</p>
+<blockquote>
+<p>①软件缺陷在开发早期出现的概率大，在早期进行缺陷修复的成本低。</p>
+<p>②软件在开发后期出现缺陷的概率小，但修复成本高。</p>
+<p>③软件测试工作应尽早开展。</p>
+</blockquote>
+<p><a href="https://smms.app/image/Oc54oYf2KPN81hg" target="_blank"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/02/Oc54oYf2KPN81hg.png" ></a></p>
+<p>在代码审查中，静态测试可发现如下编程缺陷:</p>
+<blockquote>
+<p>变量在初始化前使用、变量声明后未使用、变量在两次赋值之间从未使用</p>
+<p>数组访问越界</p>
+<p>存在不可到达代码</p>
+<p>循环中无条件分支</p>
+<p>接口参数类型或数目不匹配</p>
+<p>空指针或指针类型错误</p>
+<p>存在未被调用的函数和过程</p>
+</blockquote>
+<p>案例一</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;(<span class="type">int</span>)attributeList.length();i++)&#123;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果把判断条件放在for语句内，每一次判断都要重新计算length， 浪费资源</p>
+<p>正确代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> tmp_iListLength=attributeList.length()</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=O;i&lt;tmp_iListLength; i++)</span><br><span class="line">&#123;</span><br><span class="line">......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>案例二</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i ;</span><br><span class="line">...</span><br><span class="line">printf(<span class="string">&quot;i= %d \n&quot;</span>,i) ;</span><br></pre></td></tr></table></figure>
+
+<p>正确代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i=<span class="number">0</span> ;</span><br><span class="line">printf (<span class="string">&quot;i= %d \n&quot;</span>,i) ;</span><br></pre></td></tr></table></figure>
+
+<p>案例三</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArrayDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;</span><br><span class="line">        <span class="type">int</span> array[] = <span class="literal">null</span>; <span class="comment">//声明数组</span></span><br><span class="line">        array = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">3</span>];<span class="comment">//为数组开辟空间，大小为3</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;= array.length; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;array[&quot;</span> + i + <span class="string">&quot;]=&quot;</span> + array[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>缺陷应该是数组下标可能越界</p>
+<p>个人修改的代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArrayDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;</span><br><span class="line">        <span class="type">int</span> array[] = <span class="literal">null</span>; <span class="comment">//声明数组</span></span><br><span class="line">        array = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">3</span>];<span class="comment">//为数组开辟空间，大小为3</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;array[&quot;</span> + i + <span class="string">&quot;]=&quot;</span> + array[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>案例四</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ExceptionDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;**********计算开始***********&quot;</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;      <span class="comment">// 定义整型变量</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;      <span class="comment">//定义整型变量</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">str1</span> <span class="operator">=</span> args[<span class="number">0</span>];  <span class="comment">// 接收第一个参数</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">str2</span> <span class="operator">=</span> args[<span class="number">1</span>];  <span class="comment">// 接收第二个参数</span></span><br><span class="line">            i = Integer.parseInt(str1);<span class="comment">//将第一个参数由字符串变为整型</span></span><br><span class="line">            j = Integer.parseInt(str2);<span class="comment">//将第二个参数由字符串变为整型</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> i / j;           <span class="comment">//进行除法计算</span></span><br><span class="line">            System.out.println(<span class="string">&quot;两个数字相除的结果:&quot;</span> + temp);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ArithmeticException e) &#123;<span class="comment">// 捕获算术异常System.out.println(&quot;出现异常了: &quot; + e);</span></span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;**********计算结束***********&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可能的缺陷：</p>
+<blockquote>
+<ul>
+<li>在try块中，使用args数组来接收命令行参数。然而，没有对args数组的长度进行检查或验证。如果没有传递足够的参数，将会导致ArrayIndexOutOfBoundsException(数组索引越界异常)。</li>
+<li>在try块中，将args数组的元素作为字符串参数传递给parseInt()方法进行整数转换。然而，如果传递的参数无法解析为整数，将会导致NumberFormatException(数字格式异常)。</li>
+<li>在catch块中，捕获了ArithmeticException异常，但是该异常只能捕获除以0导致的算术异常。如果出现其他类型的异常，将无法被捕获和处理。</li>
+</ul>
+</blockquote>
+<p>正确代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ExceptionDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;********** 计算开始 ***********&quot;</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (args.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;缺少必要的参数&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> Integer.parseInt(args[<span class="number">0</span>]);</span><br><span class="line">            <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> Integer.parseInt(args[<span class="number">1</span>]);</span><br><span class="line">            </span><br><span class="line">            <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> i / j;</span><br><span class="line">            System.out.println(<span class="string">&quot;两个数字相除的结果: &quot;</span> + temp);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;参数格式错误: &quot;</span> + e);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ArithmeticException e) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;除数不能为0: &quot;</span> + e);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalArgumentException e) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;参数错误: &quot;</span> + e);</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;********** 计算结束 ***********&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>动态测试是通过运行被测软件程序，观察该程序在运行过程中的系统行为、变量结果、内存、堆栈等运行数据，来判断软件系统是否存在缺陷的测试活动。<br>动态测试可发现的主要缺陷:</p>
+<blockquote>
+<p>程序逻辑错误</p>
+<p>异常输入的功能失效</p>
+<p>空指针使用</p>
+<p>内存没有及时释放关闭的对象资源</p>
+<p>Session失效</p>
+<p>没有处理在空输入时点取Enter键情况</p>
+</blockquote>
+<p>案例一</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    String name; <span class="comment">// 声明姓名属性</span></span><br><span class="line">    <span class="type">int</span> age; <span class="comment">// 声明年龄属性</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">tell</span><span class="params">()</span> &#123; <span class="comment">// 取得信息</span></span><br><span class="line">        System.out.println(<span class="string">&quot;姓名: &quot;</span> + name + <span class="string">&quot;，年龄: &quot;</span> + age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ClassDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;</span><br><span class="line">        <span class="type">Person</span> <span class="variable">per</span> <span class="operator">=</span> <span class="literal">null</span>; <span class="comment">// 声明对象</span></span><br><span class="line">        per.name = <span class="string">&quot;张三&quot;</span>; <span class="comment">// 为姓名赋值</span></span><br><span class="line">        per.age = <span class="number">30</span>; <span class="comment">// 为年龄赋值</span></span><br><span class="line">        per.print(); <span class="comment">// 调用方法，打印信息</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在ClassDemo类的main方法中，创建了一个Person对象per，但没有实际实例化该对象，而是将其初始化为null。这意味着per对象没有被正确地创建和初始化，因此在尝试为per对象的name和age属性赋值时会导致NullPointerException(空指针异常)。<br>在Person类的tell()方法中，打印信息的语句使用了per.print()，但实际上应该调用的是per.tell()，因为tell()方法是定义在Person类r的。</p>
+</blockquote>
+<p>案例二</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">OutputStream os=<span class="literal">null</span>;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    os=<span class="keyword">new</span> <span class="title class_">OutputStream</span>();</span><br><span class="line">      <span class="comment">//Do something with os here.</span></span><br><span class="line">    os.close();</span><br><span class="line">&#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">        <span class="keyword">if</span>(os!=<span class="literal">null</span>)</span><br><span class="line">         os.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>正确代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">OutputStream os=<span class="literal">null</span>;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    os=<span class="keyword">new</span> <span class="title class_">OutputStream</span>();</span><br><span class="line">      <span class="comment">//Do something with os here.</span></span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(os!=<span class="literal">null</span>)</span><br><span class="line">     os.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改后的代码使用了 <code>finally</code> 块来确保在无论是否发生异常的情况下都能关闭输出流。</p>
+<p><strong>软件验证（(verification）</strong>是指在开发软件过程中，检验软件是否已正确地实现了产品规格说明书所定义的系统功能和特性。<br><strong>软件确认(validation）</strong>是指在开发软件完成后，检查软件产品是否符合用户的真实需求。</p>
+<blockquote>
+<p>验证:我们正确地构造了产品吗?</p>
+<p>确认:我们构造了正确的产品吗?</p>
+</blockquote>
+<p><em><strong>黑盒测试</strong></em>是指在测试中，把程序看作一个不能打开的黑盒子。在完全不考虑程序内部结构和内部特性的情况下，对程序功能进行测试，检查程序功能是否按照需求规格说明进行有效实现、是否能适当地接收输入数据而产生正确的输出信息。</p>
+<p>黑盒测试是从用户观点出发开展的测试，其目的是尽可能发现软件的外部行为错误。黑盒测试常用于发现以下缺陷:</p>
+<blockquote>
+<p>检测软件是否有错误的功能或有功能遗漏<br>不能正确地接收输入数据、输出错误的结果<br>功能操作不够方便<br>界面出错、扭曲或不美观<br>安装过程中出现问题，安装步骤不清晰、不灵活<br>系统初始化存在问题</p>
+</blockquote>
+<p><em><strong>白盒测试</strong></em>是指在了解被测程序内部逻辑结构情况下，对该程序的内部变量、逻辑结构、运行路径进行测试，检验被测程序的内部动作或运行功能是否符合设计规格要求。</p>
+<p>白盒测试常用于发现以下缺陷:</p>
+<blockquote>
+<p>程序逻辑错误<br>程序状态异常<br>程序路径无法跳转<br>变量遗漏初始化</p>
+</blockquote>
+<p><em><strong>单元测试</strong></em></p>
+<blockquote>
+<p>单元测试针对软件程序中的<strong>最小功能单元代码</strong>（类、函数、模块或组件)进行测试。<br>主要采用白盒测试方法，从程序的内部结构出发设计测试用例，检查单元程序已实现功能与设计规格是否一致、以及编码中是否存在逻辑错误。<br>单元测试一般由编程人员和测试人员共同完成，而以开发人员为主。通常需要编写<strong>驱动模块</strong>和<strong>桩模块</strong>。<br>单元测试还采用代码评审方法（走读、静态分析、评审）检查程序错误，代码评审可以发现程序**50%～70%**代码的缺陷。</p>
+</blockquote>
+<p><strong>集成测试</strong>（也称组装测试、联合测试）是一种在单元测试的基础上，将若干单元模块按照设计要求组装起来所进行的测试，其目标是发现模块接口相关问题。</p>
+<p><strong>系统测试</strong>是在集成测试之后，在系统层面所进行的功能特性测试和非功能特性测试。</p>
+<p><strong>验收测试</strong>是在软件提交用户前，在实际用户环境中，验证软件系统功能、性能及其它特性是否符合用户需求。</p>
+<ul>
+<li>α测试——软件公司在其产品推向市场前，采用实际运行环境和真实数据在软件公司内部进行的验收测试。</li>
+<li>β测试——软件公司在其产品推向市场前，还需要在公司外部用户中进行试用测试。通过收集试用户的反馈意见，对该版本软件进行修正与完善，最终得到正式发布的版本。</li>
+</ul>
+<h2 id="第三章-软件测试方法"><a href="#第三章-软件测试方法" class="headerlink" title="第三章 软件测试方法"></a>第三章 软件测试方法</h2><h3 id="基于直觉和经验的方法"><a href="#基于直觉和经验的方法" class="headerlink" title="基于直觉和经验的方法"></a>基于直觉和经验的方法</h3><blockquote>
+<p><strong>Ad-hoc测试方法</strong>强调测试人员更多根据自己的专业经验，不受测试用例约束，放开思路、灵活地进行各种测试。<br><strong>ALAC ( Act-like-a-customer，像客户那样做</strong>）测试方法是一种基于客户使用产品的经验知识进行系统测试，其出发点是应用帕累托(Pareto）二八法则进行重点测试。<br><strong>错误推测法</strong>是测试者根据自己的工作经验、专业知识和直觉来来推测出软件中可能存在的各种错误，从而对被测软件采用针对性的测试。</p>
+</blockquote>
+<h3 id="基于输入域方法（数据驱动测试）"><a href="#基于输入域方法（数据驱动测试）" class="headerlink" title="基于输入域方法（数据驱动测试）"></a>基于输入域方法（数据驱动测试）</h3><p><em><strong>等价类划分法：</strong></em></p>
+<p>一个程序P有两个整型输入变量I1、I2，输出变量为Out,其计算函数为Out&#x3D;P(l1,I2)，假定在字长32位计算机上运行。所有输入数据组合有多少?	<em><strong>2³²x 2³²&#x3D;2⁶⁴</strong></em></p>
+<p>例：采购收货单报表系统，要求用户输入处理报表的日期。假定日期限定在2000年1月1日到2023年12月30日。请设计“日期”输入数据验证的等价类。</p>
+<blockquote>
+<p>有效日期的等价类:2000年1月1日到2023年12月30日的日期值<br>无效日期的等价类:小于2000年1月1日的日期值<br>无效日期的等价类:大于2023年12月30日的日期值</p>
+</blockquote>
+<p>例：采购收货单报表系统，对于商品数量输入数据，应为大于0的整数，才能符合业务要求。请设计“数量”输入数据验证的等价类。</p>
+<blockquote>
+<p>有效“数量”字段输入等价类:大于0的整数。<br>无效“数量”字段输入等价类:小于等于0的整数。</p>
+</blockquote>
+<p>例：航班计划系统，对于某航班设定是否为往返航班，其输入数据应采用布尔数值，才能符合业务要求。请设计“来回程”输入数据验证的等价类。</p>
+<blockquote>
+<p>有效的“来回程”字段数据输入等价类:真&#x2F;假布尔值。<br>无效的“来回程”字段数据输入等价类:其它任何值。</p>
+</blockquote>
+<p>例：对于计算器软件的加法运算功能进行测试。请设计“+”功能测试的等价类。</p>
+<blockquote>
+<p>有效的数据输入等价类:整型数值<br>有效的数据输入等价类:实数数值<br>有效的数据输入等价类:负数数值<br>无效的数据输入等价类:非数字符号</p>
+</blockquote>
+<p>例:四川地税发票查询页面的发票金额字段输入检查功能测试。</p>
+<blockquote>
+<p>有效的“发票金额”字段数据输入等价类:大于0的数值数据。<br>无效的“发票金额”字段数据输入等价类:非数值数据。<br>无效的“发票金额”字段数据输入等价类:小于等于0的数值</p>
+</blockquote>
+<p><em><strong>边界值分析法</strong></em>就是在某个输入变量范围的边界上，输入一些特定数据，分析验证系统功能是否正常运行的测试方法。</p>
+<p>例：酒店预订系统业务规定客户最多可提前20天预订酒店客房。请按边界值分析法设计酒店搜索功能的测试用例。</p>
+<blockquote>
+<p>假定客人在2023-3-12进行订房操作，预订后面10到20天内入住客房，其测试边界值可设置为:2023-3-21、2023-3-31、2023-4-1</p>
+</blockquote>
+<p>等价类划分法和边界值分析法仅适用于单因素（单变量）输入的数据测试。</p>
+<h3 id="基于组合及其优化方法（多变量）"><a href="#基于组合及其优化方法（多变量）" class="headerlink" title="基于组合及其优化方法（多变量）"></a>基于组合及其优化方法（多变量）</h3><p><strong>判定表方法</strong>是一种借助表格方式完成多条件输入组合下测试用例设计，达至完全覆盖输出结果的测试方法。其表格组成样式如下:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>序号</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>条件</td>
+<td>正确输入年Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>条件</td>
+<td>正确输入月M</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>条件</td>
+<td>正确输入日D</td>
+<td>Y</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>动作</td>
+<td>函数运行成功</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>动作</td>
+<td>函数运行失败</td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody></table>
+<p><strong>因果图法</strong>是一种利用图解法分析输入的各种组合情况，从而设计测试用例的形式化方法。它适合于检查程序输入、输出错误，还能判定程序规范中的二义性、不完全性等错误。</p>
+<p>因果图PPT上面举了好几页例子，肯定很重要哒~</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/02/WxI9MwjJepmurfE.png" alt="Snipaste_2023-06-02_15-46-16.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/02/jCuF49rsNHEm1a5.png" alt="Snipaste_2023-06-02_15-46-38.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/02/GqM7ES6sPwaBRKt.png" alt="Snipaste_2023-06-02_15-46-47.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/02/1QmJtbZgpjdr5x7.png" alt="Snipaste_2023-06-02_15-46-56.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/02/t8moTlbkVwfOLN3.png" alt="Snipaste_2023-06-02_15-47-10.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/02/L9t3abT6hHxMXNJ.png" alt="Snipaste_2023-06-02_15-48-36.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/02/2n1okyQVmwI9RrF.png" alt="Snipaste_2023-06-02_15-49-01.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/02/NWK8wLlgq2Q5AEB.png" alt="Snipaste_2023-06-02_15-50-08.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/02/CiUFqs6Q2tdLbj4.png" alt="Snipaste_2023-06-02_15-50-14.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/02/YUzawnXV9oFRgex.png" alt="Snipaste_2023-06-02_15-50-20.png"></p>
+<p>当有多个输入变量、每个变量又有多个取值。若要执行全覆盖组合测试，其工作量非常大。为了有效地减少测试组合数，可以采用<strong>成对组合测试方法</strong>，其基本思想是每两个输入变量所有取值组合形成不同测试用例。</p>
+<p>例：</p>
+<p>测试一个登录页面在不同浏览器和语言下的功能正确性，其输入条件如下:</p>
+<p>1）输入项（账号、密码）</p>
+<p>2）浏览器（IE、chrome、FireFox、360）</p>
+<p>3）语言（中文、英文）</p>
+<p>成对组合测试用例表</p>
+<table>
+<thead>
+<tr>
+<th>用例</th>
+<th>账号</th>
+<th>密码</th>
+<th>浏览器</th>
+<th>语言</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>空值</td>
+<td>空值</td>
+<td>IE</td>
+<td>中文</td>
+</tr>
+<tr>
+<td>2</td>
+<td>空值</td>
+<td>有值</td>
+<td>chrome</td>
+<td>英文</td>
+</tr>
+<tr>
+<td>3</td>
+<td>有值</td>
+<td>空值</td>
+<td>FireFox</td>
+<td>中文</td>
+</tr>
+<tr>
+<td>4</td>
+<td>有值</td>
+<td>有值</td>
+<td>360</td>
+<td>英文</td>
+</tr>
+<tr>
+<td>5</td>
+<td>空值</td>
+<td>空值</td>
+<td>360</td>
+<td>中文</td>
+</tr>
+<tr>
+<td>6</td>
+<td>空值</td>
+<td>有值</td>
+<td>FireFox</td>
+<td>英文</td>
+</tr>
+<tr>
+<td>7</td>
+<td>有值</td>
+<td>空值</td>
+<td>chrome</td>
+<td>中文</td>
+</tr>
+<tr>
+<td>8</td>
+<td>有值</td>
+<td>有值</td>
+<td>IE</td>
+<td>英文</td>
+</tr>
+</tbody></table>
+<p><strong>正交实验测试法</strong>是一种依据伽罗华(Galois)理论，从大量实验数据中挑选适量的、具有代表性的数据进行实验，以达到降低实验成本的方法。</p>
+<p>正交表构成</p>
+<blockquote>
+<p>行数:正交表中的行个数，即实验的次数，也是我们通过正交实验法设计的测试用例个数。行数(即&gt;测试用例次数)&#x3D;∑(每列水平数-1)+1</p>
+<p>因素数:正交表中列的个数，即测试功能点的因子数。</p>
+<p>水平数:任何单个因素能够取值的个数。正交表中包含值为从0到“水平数-1”或从1到“水平数”。即要测试功能点的输入取值数。</p>
+<p>L代表正交表，它是运用数学理论在拉丁方和正交拉丁方基础上构造的规格化数据表格，常用的有L₈(2⁷)、L₉(3⁴)、L₁₆(4⁵)等。</p>
+</blockquote>
+<p>正交表特性</p>
+<blockquote>
+<p>1)每一列中各数字出现的次数都一样多;<br>2)任何两列所构成的各有序数对出现的次数都一样多。<br>例如在两水平正交表中，任何两列(同一横行内）有序对子共有4种:(1，1)、 (1，2)、(2，1)、 (2，2)。每种对数出现次数相等。在三水平情况下，任何两列(同一横行内）有序对共有9种，1.1、1.2、1.3、<br>2.1、2.2、2.3、<br>3.1、3.2、3.3，且每对出现数也均相等。</p>
+</blockquote>
+<p> 在一个客户信息查询界面中，输入条件有“姓名”、“身份证号”、“手机”，采用正交表方式设计该界面查询功能的测试用例。</p>
+<p>针对本测试有3个输入条件，每个输入有2种取值情况，可以选择L₄(2³)正交表，其正交表值如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>实验数\列号</th>
+<th>姓名</th>
+<th>身份证号</th>
+<th>手机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>测试用例：</p>
+<table>
+<thead>
+<tr>
+<th>测试用例&#x2F;查询条件</th>
+<th>姓名</th>
+<th>身份证号</th>
+<th>手机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>测试用例1</td>
+<td>填写</td>
+<td>填写</td>
+<td>填写</td>
+</tr>
+<tr>
+<td>测试用例2</td>
+<td>填写</td>
+<td>空</td>
+<td>空</td>
+</tr>
+<tr>
+<td>测试用例3</td>
+<td>空</td>
+<td>填写</td>
+<td>空</td>
+</tr>
+<tr>
+<td>测试用例4</td>
+<td>空</td>
+<td>空</td>
+<td>填写</td>
+</tr>
+</tbody></table>
+<h3 id="基于逻辑覆盖方法"><a href="#基于逻辑覆盖方法" class="headerlink" title="基于逻辑覆盖方法"></a>基于逻辑覆盖方法</h3><p><strong>语句覆盖法</strong>的基本思想是设计若干测试用例，使得被测程序中的每个可执行语句至少被执行一次。如果是顺序结构，就是让测试从头执行到尾。如果有分支、条件和循环，则需要执行足够的测试用例覆盖全部语句。</p>
+<p><strong>语句覆盖测试能解决的问题</strong>:发现程序中一些永远不能被执行的语句缺陷，但不能发现程序中语句逻辑错误。</p>
+<p>语句覆盖测试即使覆盖了程序中每个语句，但并不一定测试覆盖所有分支。试图覆盖程序中所有路径的测试方法称为<strong>路径覆盖</strong>。路径测试的最简单形式就是<strong>判定覆盖测试</strong>。<br><strong>判定覆盖测试基本思想</strong>:设计若干用例，运行被测程序，使得程序中每个判断语句的取真分支和取假分支至少执行一次，即判断真假值均可被满足。一个判定往往代表程序的一个分支，所以判定覆盖测试也称为<strong>分支覆盖测试</strong>。</p>
+<p>判定覆盖测试能发现程序中一些永远不能被执行的分支缺陷，可以发现部分逻辑缺陷。</p>
+<p><strong>条件覆盖</strong>的基本思想是设计若干测试用例，使其对被测程序进行测试，使每个判断中每个条件的可能取值至少满足一次。</p>
+<p>符合条件覆盖的测试用例并不一定满足判定覆盖要求，反之，符合判定覆盖的测试用例也不一定满足条件覆盖要求。因此，需要找出符合两者的测试用例交集，该方法称为<strong>判定-条件覆盖</strong>。</p>
+<p><strong>条件组合覆盖</strong>的基本思想是设计足够的测试用例，使得判断中每个条件的所有取值情况至少出现一次，并且每个判断本身的判定结果也至少出现一次。条件组合测试不一定能覆盖所有路径。</p>
+<p><strong>基本路径覆盖</strong>就是设计测试用例，覆盖程序中所有可能的基本分支路径。<br>基本路径覆盖局限:不能保证覆盖所有条件组合</p>
+<p>基本路径覆盖测试用例设计步骤:</p>
+<blockquote>
+<p>依据代码绘制流程图<br>确定流程图的环路复杂度<br>确定各个独立路径的基本集合<br>设计测试用例覆盖每条基本路径</p>
+</blockquote>
+<p>计算环路复杂度：</p>
+<blockquote>
+<p>（1）流图中的区域数等于环形复杂度。<br>（2）流图G的环形复杂度V(G)&#x3D;E-N+2，其中，E是流图中边的条数，N是结点数。<br>（3）流图G的环形复杂度V(G)&#x3D;P+1，其中，P是流图中判定结点的数目。</p>
+</blockquote>
+<h2 id="第四章-测试流程和规范"><a href="#第四章-测试流程和规范" class="headerlink" title="第四章  测试流程和规范"></a>第四章  测试流程和规范</h2><p>软件测试过程：<br>软件工程角度→需求评审→设计评审→单元测试→集成测试→系统测试→验收测试</p>
+<p>项目管理角度：<br>测试计划→测试设计→执行与监控→结果分析与评估→项目总结</p>
+<p><strong>敏捷测试</strong>（自动化测试）是一种遵从敏捷软件开发原则，支持敏捷软件开发实现质量控制的测试实践。<br><strong>TMap</strong> (Test Management Approach，测试管理方法)是一种业务驱动的、基于风险策略的、结构化的测试管理方法，其目标是尽早地发现缺陷，以最小的成本、有效地、彻底地完成测试任务，以减少软件发布后的支持成本。</p>
+<p><strong>基于脚本测试</strong>(Scripted Testing，ST），无论是手工测试，还是自动化测试，都需要先设计用例，生成测试脚本，然后执行脚本实施测试。<br><strong>探索式测试</strong>(Exploratory Testing，ET），不需要设计用例，一边思考，一边测试。<br><em><strong>在敏捷测试中，则主要采用探索式测试，基于脚本测试则作为补充</strong></em>;而在传统测试中，主要采用基于脚本测试，探索式测试作为补充。</p>
+<h2 id="第五章-单元测试与集成测试"><a href="#第五章-单元测试与集成测试" class="headerlink" title="第五章 单元测试与集成测试"></a>第五章 单元测试与集成测试</h2><p><strong>单元静态测试</strong>是指不运行被测程序本身，仅通过分析或检查源程序的语法、结构、过程、接口等来检查程序的正确性。主要采用互查、走查、评审方法进行测试，也可通过代码缺陷扫描工具进行分析处理。</p>
+<p>代码示例1：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 通过用户UI界面输入的用户名，传递到Action层，进行用户角色识别操作</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request HttpServletRequest对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> String 用户角色，如管理员/普通用户/...</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">getUserRole</span><span class="params">(HttpServletRequest request)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">userRole</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="type">String</span> <span class="variable">userName</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;userName&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (userName.equals(<span class="string">&quot;schadmin&quot;</span>)) &#123;</span><br><span class="line">        <span class="comment">// 这是系统初始化时默认的管理员账号，如果是，则进行以下验证操作...      </span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 非系统初始化的账号，进行以下验证操作...</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> userRole;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>userName可能会出现空指针情况</p>
+<p>修改：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 通过用户UI界面输入的用户名，传递到Action层，进行用户角色识别操作</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request HttpServletRequest对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> String 用户角色，如管理员/普通用户/...</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">getUserRole</span><span class="params">(HttpServletRequest request)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">userRole</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="type">String</span> <span class="variable">userName</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;userName&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&quot;schadmin&quot;</span>.equals(userName)) &#123;</span><br><span class="line">        <span class="comment">// 这是系统初始化时默认的管理员账号，如果是，则进行以下验证操作...      </span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 非系统初始化的账号，进行以下验证操作...</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> userRole;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码示例2</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 通过用户输入的年龄，转换为数值型</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request HttpServletRequest对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> Integer 用户年龄</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getUserAge</span><span class="params">(HttpServletRequest request)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">age</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">String</span> <span class="variable">userAge</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;userAge&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (userAge != <span class="literal">null</span>) &#123;</span><br><span class="line">        age = Integer.parseInt(userAge);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>userAge可能不是字符型数字。</p>
+<p>建议写一个Util工具类，实现一些常见的数据转换方法，以供调用:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 传入的字符串转换为整型</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> intStr String</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> Integer</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">getIntValue</span><span class="params">(String intStr)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">parseInt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (isNumeric(intStr)) &#123;</span><br><span class="line">        parseInt = Integer.parseInt(intStr);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> parseInt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例代码3</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 假设电话号码字符串设计的标准格式为: 国家编码-区位号码-电话号码-分机号</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> strPhoneNumber String</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> String 电话号码 (如: 例子中的2313222)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getPhoneNumber</span><span class="params">(String strPhoneNumber)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (strPhoneNumber == <span class="literal">null</span> || <span class="string">&quot;&quot;</span>.equals(strPhoneNumber)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    String[] arrPhone = strPhoneNumber.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> arrPhone[<span class="number">2</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可能出现数组越界错误。</p>
+<p>修改：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getPhoneNumber</span><span class="params">(String strPhoneNumber)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (strPhoneNumber == <span class="literal">null</span> || <span class="string">&quot;&quot;</span>.equals(strPhoneNumber)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    String[] arrPhone = strPhoneNumber.split(<span class="string">&quot;, &quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (arrPhone.length &gt; <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> arrPhone[<span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例代码4</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">writeString</span><span class="params">(File file, String writeContent, String encoding)</span> <span class="keyword">throws</span> FileOperatorException &#123;</span><br><span class="line">    <span class="type">FileOutputStream</span> <span class="variable">fos</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!file.exists()) &#123;</span><br><span class="line">            file.createNewFile();</span><br><span class="line">        &#125;</span><br><span class="line">        fos = <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(file);</span><br><span class="line">        fos.write(writeContent.getBytes(encoding));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">FileOperatorException</span>(ex);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">writeString</span><span class="params">(File file, String writeContent, String encoding)</span> <span class="keyword">throws</span> FileOperatorException &#123;</span><br><span class="line">    <span class="type">FileOutputStream</span> <span class="variable">fos</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!file.exists()) &#123;</span><br><span class="line">            file.createNewFile();</span><br><span class="line">        &#125;</span><br><span class="line">        fos = <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(file);</span><br><span class="line">        fos.write(writeContent.getBytes(encoding));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">FileOperatorException</span>(ex);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;<span class="comment">//如果没有finally下面的段语句，就无法释放文件资源</span></span><br><span class="line">         <span class="keyword">if</span> (fos != <span class="literal">null</span>)&#123;</span><br><span class="line">             <span class="keyword">try</span> &#123;</span><br><span class="line">                fos.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">FileOperatorException</span>(e);</span><br><span class="line">             &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为了确保代码在运行可靠、功能正确并且能够有良好的性能响应，仅仅进行静态测试是不够的，必须将该单元代码运行起来，验证代码业务逻辑合理性，并了解单元代码的实际表现，即对单元代码进行<strong>动态测试</strong>。</p>
+<p>动态测试实现原理</p>
+<blockquote>
+<p>驱动程序(Driver)<br>被测单元(Unit)<br>桩程序(Stub)</p>
+</blockquote>
+<p>桩模块和驱动模块的概念搞不清楚，那么下面来介绍这两个概念： </p>
+<blockquote>
+<p>　　假设现在项目组把任务分给了7个人，每个人负责实现一个模块。你负责的是B模块，你很优秀，第一个完成了编码工作，现在需要开展单元测试工作，先分析结构图：<br>　　1、由于B模块不是最顶层模块，所以它一定不包含main函数(A模块包含main函数)，也就不能独立运行。<br>　　2、B模块调用了D模块和E模块，而目前D模块和E模块都还没有开发好，那么想让B模块通过编译器的编译也是不可能的。<br>　　那么怎样才能测试B模块呢?需要做：<br>　　1、写两个模块Sd和Se分别代替D模块和E模块(函数名、返回值、传递的参数相同)，这样B模块就可以通过编译了。Sd模块和Se模块就是桩模块。<br>　　2、写一个模块Da用来代替A模块，里面包含main函数，可以在main函数中调用B模块，让B模块运行起来。Da模块就是驱动模块。<br>　　桩模块的使命除了使得程序能够编译通过之外，还需要模拟返回被代替的模块的各种可能返回值(什么时候返回什么值需要根据测试用例的情况来决定)。<br>　　驱动模块的使命就是根据测试用例的设计去调用被测试模块，并且判断被测试模块的返回值是否与测试用例的预期结果相符</p>
+</blockquote>
+<p>集成测试模式:</p>
+<blockquote>
+<p><strong>非渐增式集成测试</strong><br>先分别测试每个模块，再把所有模块按设计要求组装在一起，然后再进行集成程序的测试。<br><strong>渐增式集成测试</strong><br>把下一个待测试的模块同已经测试好的模块结合起来进行测试，测试完以后再把下一个待测试模块结合进来测试。</p>
+</blockquote>
+<p><a href="https://smms.app/image/rnOYwCVIDNeBuol" target="_blank"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/02/rnOYwCVIDNeBuol.png" alt="HU3PI_3`VKVH_46F9W_GL_4.png"></a></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/02/qkVeM75SoWYvXg4.png" alt="E_Y5_DZ_B7D_8_Y_B__R_Q8.png"></p>
+<p>以上两种测试模式都属于渐增式集成测试。</p>
+<p>针对叶节点模块进行单元测试，下面哪项不是必须的?<br>A.测试数据	B.被测单元	C.驱动程序	D.桩程序</p>
+<blockquote>
+<p>然而，对于叶节点模块的单元测试而言，通常不需要使用桩程序。叶节点模块是指在软件系统中没有其他依赖的最底层模块，也被称为叶子节点或叶子模块。由于它们不依赖其他模块或外部系统，所以不需要模拟或替代任何外部依赖项的行为。</p>
+</blockquote>
+<h2 id="第六章-系统测试"><a href="#第六章-系统测试" class="headerlink" title="第六章 系统测试"></a>第六章 系统测试</h2><p><strong>功能测试</strong>就是对软件系统的各功能进行验证，根据系统功能需求，逐项测试系统功能是否达到用户要求。</p>
+<p><strong>回归测试</strong>是指修改了源代码后，重新进行系统功能测试以确认修改没有引入新的错误或导致其他代码产生错误（<strong>回归缺陷</strong>）。</p>
+<p><strong>性能测试</strong>是一种为了发现系统性能问题或获取系统性能相关指标而进行的测试。一般在真实环境、特定负载条件下，通过测试工具模拟实际软件系统的运行及其操作，同时监控性能各项指标，最后对测试结果进行分析来确定系统的性能状况。</p>
+<p>常见系统性能问题</p>
+<blockquote>
+<p>资源耗尽:CPU使用率达到100%<br>资源泄露:内存泄露导致资源耗尽<br>资源瓶颈:缺少可用线程、DB连接资源</p>
+</blockquote>
+<p><strong>负载测试</strong>（Load Test）：负载测试是一种性能测试，指数据在超负荷环境中运行，程序是否能够承担。 关注点：how much</p>
+<p><strong>压力测试</strong>（Stress Test）： 压力测试（又叫强度测试）也是一种性能测试，它在系统资源特别低的情况下软件系统运行情况，目的是找到系统在哪里失效以及如何失效的地方。</p>
+<p><strong>容量测试</strong>(Volume Test)：确定系统可处理同时在线的最大用户数 关注点：how much（而不是how fast） 容量测试，通常和数据库有关，容量和负载的区别在于：容量关注的是大容量，而不需要关注使用中的实际表现。</p>
+<p>其中，容量测试、负载测试、压力测试的英文解释为：</p>
+<blockquote>
+<p>Volume Testing &#x3D; Large amounts of data<br>Load Testing &#x3D; Large amount of users<br>Stress Testing &#x3D; Too many users, too much data, too little time and too little room</p>
+</blockquote>
+<p>假设一个业务系统有1万个注册用户，每天有1半用户会在上班时间（8小时)访问该系统，平均在线时间为1个小时。那么访问该系统的上班时间平均每分钟在线用户数为多少?<br>5000×60&#x2F;(8×60)&#x3D;625</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/02/TSQZBrG6hRD1NCn.png" alt="Y_TBOAQ0UR1TJ27T2@S4SQY.png"></p>
+<p><strong>容错性测试</strong>是检查系统容错能力，即系统在异常条件下自身是否具有防护性的措施或者某种灾难性恢复的手段。</p>
+<p><strong>兼容性测试</strong>是指测试软件在特定的硬件平台上、不同的应用软件之间、不同的操纵系统平台上、不同的网络等环境中是否能够很友好的运行。</p>
+<p><strong>软件可靠性</strong>是指软件系统在规定时间内及规定环境条件下，完成特定功能的能力。</p>
+<p>软件可靠性评估：<br>MTTF (Mean Time To Failure)——系统平均无故障时间</p>
+<p>MTTR (Mean Time To Recover)——故障平均修复时间</p>
+<p>可用性度量&#x3D; MTTF &#x2F; (MTTF+MTTR）<br>例:如果系统每运行100个时间单位，会有1个时间单位无法提供服务，其系统的可用性是99%。</p>
+<p>下面哪项不是系统性能降低的原因?<br>A．资源耗尽	<em><strong>B．响应时间慢</strong></em>	C．内存泄漏	D．网络拥挤</p>
+<h2 id="第七章-验收测试"><a href="#第七章-验收测试" class="headerlink" title="第七章 验收测试"></a>第七章 验收测试</h2><p><strong>验收测试</strong>是在软件产品完成了系统测试之后、产品发布之前所进行的软件测试活动，它是软件测试的最后一个阶段，也称<strong>交付测试</strong>。</p>
+<p>有些内容在第二章说到啦！</p>
+<h2 id="第八章-软件本地化测试"><a href="#第八章-软件本地化测试" class="headerlink" title="第八章 软件本地化测试"></a>第八章 软件本地化测试</h2><p><strong>软件本地化</strong>是指将某软件产品的用户界面、文档资料、在线帮助等从其源语言向目标语言进行转化，使之适应目标语言及文化的处理过程。（）</p>
+<p><strong>软件国际化</strong>是指为保证所开发软件产品能适应国际市场需要，通过特定的系统架构设计、代码编程技术支持软件能在不同语言、不同文化的国家及地区使用，使其在进行本地化时不需要修改软件的程序代码。</p>
+<p><strong>软件本地化测试</strong>是根据软件本地化开发完成后，设计测试用例，并利用这些测试用例去运行被测试软件，以发现软件程序缺陷的过程。（含<strong>翻译验证</strong>）</p>
+<h2 id="第九章测试-自动化及其框架"><a href="#第九章测试-自动化及其框架" class="headerlink" title="第九章测试 自动化及其框架"></a>第九章测试 自动化及其框架</h2><p><strong>自动化测试</strong>是指采用测试工具实现程序驱动替代人驱动所开展的软件测试活动。测试自动化除包括自动化测试之外，还包括测试辅助工作的自动化。</p>
+<p>自动化测试不能完成下面哪项质量指标测试?</p>
+<p>A.正确性	B.可靠性	C.性能效率 	D.易用性</p>
+<p>自动化测试可以用于测试正确性、可靠性和性能效率等质量指标，但对于易用性的测试则相对有限。易用性通常涉及到用户界面的可操作性、用户体验和用户友好性等方面，这些特征难以完全通过自动化测试来覆盖和评估。易用性测试通常需要人工参与，通过用户实际操作和反馈来评估系统的易用性。</p>
+<p><strong>JUnit</strong>是一种白盒测试工具，因为它主要用于单元测试，可以直接访问和测试代码的内部结构和逻辑。它通常用于Java开发环境中，用于测试Java应用程序的各个单元和模块。<strong>UFT</strong>（Unified Functional Testing）是一种黑盒测试工具，用于功能测试和自动化测试。它主要用于测试应用程序的外部行为和用户界面，而不需要了解应用程序的内部实现。<br><strong>Load Runner</strong>是一种性能测试工具，用于测试应用程序在负载和压力条件下的性能表现。它通常用于模拟多个用户同时访问应用程序，以评估其性能和可靠性。<br><strong>Selenium</strong>是一种自动化测试工具，主要用于Web应用程序的功能测试和回归测试。它可以模拟用户操作和交互，并对应用程序的用户界面进行测试。由于它主要关注应用程序的外部行为，因此它也被归类为黑盒测试工具。</p>
+<h2 id="第十章-测试需求分析与测试计划"><a href="#第十章-测试需求分析与测试计划" class="headerlink" title="第十章 测试需求分析与测试计划"></a>第十章 测试需求分析与测试计划</h2><p>功能测试范围</p>
+<blockquote>
+<p>页面链接:页面是否存在、页面是否正确跳转<br>控件功能:按钮功能是否正确、列表内容是否正确、光标位置移动是否顺序正确<br>输入文本框:数据格式、数据类型、数据长度是否检查<br>Web图形测试:图片文字提示是否正确、图片链接是否正确、图片在不同分辨率下显示是否正确<br>表单测试:请求是否响应、脚本是否正确执行</p>
+</blockquote>
+<p>非功能测试范围。</p>
+<blockquote>
+<p>性能测试——响应时间、吞吐量等<br>安全测试——用户验证、授权访问、数据安全等<br>容错测试——部件损坏后系统仍正常运行能力<br>兼容性测试——硬件兼容性、操作系统兼容性、浏览器兼容性·可伸缩性测试——增加容量的能力<br>可用性测试——正常运行时间&#x2F;总运行时间</p>
+</blockquote>
+<h2 id="第十一章-软件质量保证"><a href="#第十一章-软件质量保证" class="headerlink" title="第十一章 软件质量保证"></a>第十一章 软件质量保证</h2><p><strong>软件度量</strong>是根据一定规则对软件项目、软件过程、软件产品进行数据定义、数据收集及量化处理，其目的是为了清晰地理解、预测、评估、控制和改善软件质量。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/02/sZKupSB7FxJXjwI.png" alt="NK38BB~K_`__MF0`3SH_VC9.png"></p>
+<p><a href="https://smms.app/image/VIRA859hNGcTP1H" target="_blank"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/02/VIRA859hNGcTP1H.png" alt="_RF_ABD_90`8@LYLXYP4R@A.png"></a></p>
+<p><a href="https://smms.app/image/1rZ85Mps9dmJN3z" target="_blank"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/02/1rZ85Mps9dmJN3z.png" alt="_Q1DGL`_SUS_P_RW~_TX6_N.png"></a></p>
+<p>再举个上机考试考的题吧，细思也不是不能出大题：</p>
+<p>针对如下Java程序进行单元测试，找出该程序的缺陷。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 对传入参数telCode（电话号码）进行处理，从中提取该电话号码的座机号码，并将其输出返回。 </span></span><br><span class="line"><span class="comment"> * 例如，输入电话号码为“86,28,83202112”， 返回值应为“83202112” */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">getPhoneNo</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> String <span class="title function_">getPhoneNumber</span><span class="params">(String telCode)</span> &#123; </span><br><span class="line">	  <span class="keyword">if</span> (telCode == <span class="literal">null</span> ) &#123; </span><br><span class="line">	    <span class="keyword">return</span> <span class="string">&quot;输入了空字符串&quot;</span>;&#125;</span><br><span class="line">      <span class="keyword">else</span> &#123;</span><br><span class="line">		String localPhone[] = telCode.split(<span class="string">&quot;,&quot;</span>); </span><br><span class="line">		<span class="keyword">return</span> localPhone[<span class="number">2</span>]; &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>设计单元测试用例表，在该表中填写测试用例的输入数据和预期结果数据。</p>
+<table>
+<thead>
+<tr>
+<th>用例</th>
+<th>telCode值</th>
+<th>预期结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>86,28,83202112</td>
+<td>83202112</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Null</td>
+<td>输入了空字符串</td>
+</tr>
+<tr>
+<td>3</td>
+<td>空格</td>
+<td>输入电话号码格式错误</td>
+</tr>
+<tr>
+<td>4</td>
+<td>86,83202112</td>
+<td>输入电话号码格式错误</td>
+</tr>
+<tr>
+<td>5</td>
+<td>86,28,83202112%</td>
+<td>输入电话号码格式错误</td>
+</tr>
+</tbody></table>
+<p>缺陷如下：</p>
+<ol>
+<li><p>电话号码为空时无法提示输入了空字符串。</p>
+</li>
+<li><p>电话号码输入为空格，或者其位数不符合要求，该程序报错而无法继续运行，应该提示输入电话号码格式错误。</p>
+</li>
+<li><p>当电话号码含有非法字符，该程序没有提示输入了非法字符，而是继续输出了非法字符，应该提示输入电话号码格式错误才对。</p>
+</li>
+</ol>
+<p>测试代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.After;</span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">getPhoneNoTest_83202112</span> &#123;</span><br><span class="line">    getPhoneNo getPhoneNo=<span class="keyword">new</span> <span class="title class_">getPhoneNo</span>();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@After</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">tearDown</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getPhoneNumber</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getPhoneNo1</span><span class="params">()</span> &#123;</span><br><span class="line">        String expectedResult=<span class="string">&quot;83202112&quot;</span>;</span><br><span class="line">        assertEquals(expectedResult,getPhoneNo.getPhoneNumber(<span class="string">&quot;86,28,83202112&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getPhoneNo2</span><span class="params">()</span> &#123;</span><br><span class="line">        String expectedResult=<span class="string">&quot;输入了空字符串&quot;</span>;</span><br><span class="line">        assertEquals(expectedResult,getPhoneNo.getPhoneNumber(<span class="literal">null</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getPhoneNo3</span><span class="params">()</span> &#123;</span><br><span class="line">        String expectedResult=<span class="string">&quot;输入电话号码格式错误&quot;</span>;</span><br><span class="line">        assertEquals(expectedResult,getPhoneNo.getPhoneNumber(<span class="string">&quot; &quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getPhoneNo4</span><span class="params">()</span> &#123;</span><br><span class="line">        String expectedResult=<span class="string">&quot;输入电话号码格式错误&quot;</span>;</span><br><span class="line">        assertEquals(expectedResult,getPhoneNo.getPhoneNumber(<span class="string">&quot;86,83202112&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getPhoneNo5</span><span class="params">()</span> &#123;</span><br><span class="line">        String expectedResult=<span class="string">&quot;输入电话号码格式错误&quot;</span>;</span><br><span class="line">        assertEquals(expectedResult,getPhoneNo.getPhoneNumber(<span class="string">&quot;86,28,83202112%&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改后的源程序：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">getPhoneNo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getPhoneNumber</span><span class="params">(String telCode)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (telCode == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;输入了空字符串&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            String localPhone[] = telCode.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (localPhone.length &lt; <span class="number">3</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;输入电话号码格式错误&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">String</span> <span class="variable">phoneNumber</span> <span class="operator">=</span> localPhone[<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; phoneNumber.length(); i++) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> phoneNumber.charAt(i);</span><br><span class="line">                <span class="keyword">if</span> (c &lt; <span class="string">&#x27;0&#x27;</span> ||c &gt; <span class="string">&#x27;9&#x27;</span>)&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="string">&quot;输入电话号码格式错误&quot;</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> phoneNumber;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://uestcwxy.love">珩</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://uestcwxy.love/2023/06/02/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test4/">https://uestcwxy.love/2023/06/02/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://uestcwxy.love" target="_blank">Eternity</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">软件测试</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2023/06/02/Vc5u6hKAzqFrDHx.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2023/06/02/Go/6/" title="条件语句与循环语句"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">条件语句与循环语句</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/05/31/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test1/" title="电大软件测试～第一次作业"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/05/31/Y9dlUatN8SMB3ci.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-31</div><div class="title">电大软件测试～第一次作业</div></div></a></div><div><a href="/2023/05/31/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test2/" title="电大软件测试～第二次作业"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/05/31/xvcYjoS24sECZ98.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-31</div><div class="title">电大软件测试～第二次作业</div></div></a></div><div><a href="/2023/06/01/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test3/" title="电大软件测试～第三次作业"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s1.ax1x.com/2023/06/01/p9zYu80.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-01</div><div class="title">电大软件测试～第三次作业</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">珩</div><div class="author-info__description">等我苦尽甘来时，我给你讲讲来时走的路。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/uestc-wxy/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.facebook.com/profile.php?id=100092533320651" target="_blank" title="facebook"><i class="fab fa-facebook" style="color: #4a7dbe;"></i></a><a class="social-icon" href="mailto:1939311091@qq.com" target="_blank" title="email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/1907948898" target="_blank" title="b站"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/tiktok.jpg" target="_blank" title="抖音"><i class="fab fa-tiktok" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/weixin.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">刚建站不久，博客美化有待研究，部分页面也没时间弄，路过的你将就看啦~😊</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BC%95%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">第一章 引论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">第二章 软件测试基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">第三章 软件测试方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%9B%B4%E8%A7%89%E5%92%8C%E7%BB%8F%E9%AA%8C%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">基于直觉和经验的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E8%BE%93%E5%85%A5%E5%9F%9F%E6%96%B9%E6%B3%95%EF%BC%88%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8%E6%B5%8B%E8%AF%95%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">基于输入域方法（数据驱动测试）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%BB%84%E5%90%88%E5%8F%8A%E5%85%B6%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%EF%BC%88%E5%A4%9A%E5%8F%98%E9%87%8F%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">基于组合及其优化方法（多变量）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E9%80%BB%E8%BE%91%E8%A6%86%E7%9B%96%E6%96%B9%E6%B3%95"><span class="toc-number">3.4.</span> <span class="toc-text">基于逻辑覆盖方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%E5%92%8C%E8%A7%84%E8%8C%83"><span class="toc-number">4.</span> <span class="toc-text">第四章  测试流程和规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E4%B8%8E%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95"><span class="toc-number">5.</span> <span class="toc-text">第五章 单元测试与集成测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E6%B5%8B%E8%AF%95"><span class="toc-number">6.</span> <span class="toc-text">第六章 系统测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E9%AA%8C%E6%94%B6%E6%B5%8B%E8%AF%95"><span class="toc-number">7.</span> <span class="toc-text">第七章 验收测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E6%9C%AC%E5%9C%B0%E5%8C%96%E6%B5%8B%E8%AF%95"><span class="toc-number">8.</span> <span class="toc-text">第八章 软件本地化测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0%E6%B5%8B%E8%AF%95-%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8F%8A%E5%85%B6%E6%A1%86%E6%9E%B6"><span class="toc-number">9.</span> <span class="toc-text">第九章测试 自动化及其框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%B5%8B%E8%AF%95%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E4%B8%8E%E6%B5%8B%E8%AF%95%E8%AE%A1%E5%88%92"><span class="toc-number">10.</span> <span class="toc-text">第十章 测试需求分析与测试计划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%BF%9D%E8%AF%81"><span class="toc-number">11.</span> <span class="toc-text">第十一章 软件质量保证</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/06/02/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test4/" title="软件测试临考总结"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/02/Vc5u6hKAzqFrDHx.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="软件测试临考总结"/></a><div class="content"><a class="title" href="/2023/06/02/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test4/" title="软件测试临考总结">软件测试临考总结</a><time datetime="2023-06-02T09:46:10.000Z" title="发表于 2023-06-02 17:46:10">2023-06-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/02/Go/6/" title="条件语句与循环语句"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="条件语句与循环语句"/></a><div class="content"><a class="title" href="/2023/06/02/Go/6/" title="条件语句与循环语句">条件语句与循环语句</a><time datetime="2023-06-02T02:13:06.000Z" title="发表于 2023-06-02 10:13:06">2023-06-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/02/Go/5/" title="数据类型与输入输出"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据类型与输入输出"/></a><div class="content"><a class="title" href="/2023/06/02/Go/5/" title="数据类型与输入输出">数据类型与输入输出</a><time datetime="2023-06-02T01:00:56.000Z" title="发表于 2023-06-02 09:00:56">2023-06-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/01/Go/4/" title="变量与常量"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="变量与常量"/></a><div class="content"><a class="title" href="/2023/06/01/Go/4/" title="变量与常量">变量与常量</a><time datetime="2023-06-01T13:33:05.000Z" title="发表于 2023-06-01 21:33:05">2023-06-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/01/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test3/" title="电大软件测试～第三次作业"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s1.ax1x.com/2023/06/01/p9zYu80.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电大软件测试～第三次作业"/></a><div class="content"><a class="title" href="/2023/06/01/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test3/" title="电大软件测试～第三次作业">电大软件测试～第三次作业</a><time datetime="2023-06-01T10:55:52.000Z" title="发表于 2023-06-01 18:55:52">2023-06-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2023/06/02/Vc5u6hKAzqFrDHx.webp')"><div id="footer-wrap"><div class="copyright">&copy;2023 By 珩</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi,welcome to my <a href="https://uestcwxy.love/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
