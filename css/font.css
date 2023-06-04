@@ -3,3 +3,13 @@
     font-display: swap;
     src: url('YeZiGongChangXiaoZhongShanXingKai-2.ttf') format("truetype");
 }
+@font-face {
+    font-family: 'abrks';
+    font-display: swap;
+    src: url('abrks.ttf') format("truetype");
+}
+@font-face {
+    font-family: 'jc';
+    font-display: swap;
+    src: url('jc.ttf') format("truetype");
+}
