@@ -1,6 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>学习go的准备工作</title>
+    <url>/2023/06/01/Go/1/</url>
+    <content><![CDATA[<h2 id="一-golang环境配置"><a href="#一-golang环境配置" class="headerlink" title="一.golang环境配置"></a>一.golang环境配置</h2><ol>
+<li><p><strong>下载SDK</strong></p>
+<p>由于我用的是goland专业版，可以直接在上面下载Go SDK，很方便也不需要解压</p>
+<p>也可以去官网安装，<strong><a href="https://golang.google.cn/dl/">https://golang.google.cn/dl/</a></strong></p>
+<p><em><strong>🤡其实sdk和下文Gopath路径简洁一点更加方便~</strong></em></p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2f0639cd12d544b5a19868c934ad34b4~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512213759389.png"></p>
+</li>
+<li><p><strong>将go的bin路径添加至Path环境变量中</strong></p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5390cc87df4744d9950fa570b1b99604~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512214558987.png"></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5e1571d984c048b9bdbcadf2ac0cd68d~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512214829533.png"></p>
+</li>
+<li><p><strong>新建工作目录go_workspace，测试环境</strong></p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2001ee1accac4628b96c8515a23edd46~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512215418478.png"></p>
+<p>​	在该目录里创建test.txt文件，代码如下</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123; </span><br><span class="line">    fmt.Println(<span class="string">&quot;Hello, world!&quot;</span>) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e8a01a5064104a60b490755a1b2f0fd2~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512215631547"></p>
+<p>​	将文件后缀名改为go</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0031456c4f894df5b7e1810e74d56e09~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512215705515"></p>
+<p>​	打开命令行，进入go_workspace的目录</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0af7b34cb1224a6dab550296b0f3ae83~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512220156250.png"></p>
+<p>​	输入以下命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go run test.go</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0af7b34cb1224a6dab550296b0f3ae83~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512220740795"></p>
+<p>​	输出Hello world!，证明环境配置成功</p>
+<ol start="4">
+<li><p><strong>设置模块代理</strong></p>
+<p>如果访问 github 速度比较慢，建议配置 go mod proxy，下载第三方依赖包的速度可以大大加快</p>
+</li>
+</ol>
+<blockquote>
+<ol>
+<li>打开“开始”并搜索“env” </li>
+<li>选择“编辑系统环境变量” </li>
+<li>点击“环境变量…”按钮 </li>
+<li>在“&lt;**你的用户名**&gt; 的用户变量”章节下（上半部分）</li>
+<li>点击“新建…”按钮</li>
+<li>选择“变量名”输入框并输入“GO111MODULE” </li>
+<li>选择“变量值”输入框并输入“on” </li>
+<li>点击“确定”按钮 </li>
+<li>点击“新建…”按钮 </li>
+<li>选择“变量名”输入框并输入“GOPROXY” </li>
+<li>选择“变量值”输入框并输入“<a href="https://goproxy.cn”/">https://goproxy.cn”</a> </li>
+<li>点击“确定”按钮</li>
+</ol>
+</blockquote>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2906b6d25e1743d08166f72c5fb8abdc~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230513094942468"></p>
+<p>或者打开终端并执行</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go <span class="built_in">env</span> -w GO111MODULE=on</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go <span class="built_in">env</span> -w GOPROXY=https://goproxy.cn,direct</span></span><br></pre></td></tr></table></figure>
+
+<p>如果不放心配置是否准确，当然也可以命令行输入go env检验</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7da62670712f41b487dfefbaa7be4a70~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230513100243945"></p>
+<p><em><strong>当然还可以设置自托管go模块代理</strong></em>，参照<a href="https://goproxy.cn/">https://goproxy.cn/</a></p>
+<p>​	以下列出自托管go模块代理的一些好处：</p>
+<ul>
+<li>在没有网络连接的情况下使用代码，因为代码和依赖项都在本地存储。</li>
+<li>更好地控制你的代码和依赖项，因为它们都在本地存储。</li>
+<li>更好地保护你的代码和依赖项，因为它们不会被外部访问。</li>
+<li>更快地构建和测试代码，因为它们不需要从远程服务器下载依赖项。</li>
+</ul>
+</li>
+</ol>
+<h2 id="二-goland配置"><a href="#二-goland配置" class="headerlink" title="二.goland配置"></a>二.goland配置</h2><p><strong>系统变量</strong>中新建GOROOT和GOPATH，GOROOT为go的安装路径（Go语言安装目录），GOPATH为go_workspace的路径</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/922f246f49bc482f805f451d9fcd1120~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512223852340.png"></p>
+<p>并将<strong>用户变量</strong>中的GOPATH改为go_workspace的路径</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/98d3ba81f6e9403eadd02764531eb944~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512224220984.png"></p>
+<p>命令行输入go env，配置成功</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f3da83af8fa14d5e95df99a62efabccf~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512224355670.png"></p>
+<p>新建go工程，GOROOT为go语言安装目录</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/309a90dc08704cb096f68bd1ba1003fd~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230513082400448.png"></p>
+<p>新建main目录，创建test.go文件，代码如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;Hello, world!&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>右键并单击运行</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9e97edf2697f44c9ac6989f149b432a6~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230513084354777.png"></p>
+<p>输出Hello world！配置成功</p>
+<h2 id="三-goland常用快捷键"><a href="#三-goland常用快捷键" class="headerlink" title="三.goland常用快捷键"></a>三.goland常用快捷键</h2><p>文件相关快捷键：</p>
+<blockquote>
+<p>CTRL+E，打开最近浏览过的文件。<br>CTRL+SHIFT+E，打开最近更改的文件。<br>CTRL+N，可以快速打开struct结构体。<br>CTRL+SHIFT+N，可以快速打开文件。</p>
+</blockquote>
+<p>代码格式化：</p>
+<blockquote>
+<p>CTRL+ALT+T，可以把代码包在一个块内，例如if{…}else{…}。<br>CTRL+ALT+L，格式化代码。<br>CTRL+空格，代码提示。<br>CTRL+&#x2F;，单行注释。CTRL+SHIFT+&#x2F;，进行多行注释。<br>CTRL+B，快速打开光标处的结构体或方法（跳转到定义处）。<br>CTRL+“+&#x2F;-”，可以将当前方法进行展开或折叠。</p>
+</blockquote>
+<p>查找和定位:</p>
+<blockquote>
+<p>CTRL+R，替换文本。<br>CTRL+F，查找文本。<br>CTRL+SHIFT+F，进行全局查找。<br>CTRL+G，快速定位到某行。</p>
+</blockquote>
+<p>代码编辑:</p>
+<blockquote>
+<p>ALT+Q，可以看到当前方法的声明。<br>CTRL+Backspace，按单词进行删除。<br>SHIFT+ENTER，可以向下插入新行，即使光标在当前行的中间。<br>CTRL+X，删除当前光标所在行。<br>CTRL+D，复制当前光标所在行。<br>ALT+SHIFT+UP&#x2F;DOWN，可以将光标所在行的代码上下移动。<br>CTRL+SHIFT+U，可以将选中内容进行大小写转化。</p>
+</blockquote>
+<p>原文链接：<a href="https://juejin.cn/post/7232459954580947000">Windows系统下golang和goland详细配置|青训营笔记 - 掘金 (juejin.cn)</a></p>
+]]></content>
+      <categories>
+        <category>青训营</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>大二自学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>方法与接口</title>
     <url>/2023/06/06/Go/10/</url>
     <content><![CDATA[<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="什么是方法"><a href="#什么是方法" class="headerlink" title="什么是方法"></a>什么是方法</h2><p>Go 语言中同时有函数和方法。一个方法就是一个包含了接受者的函数，接受者可以是命名类型或者结构体类型的一个值或者是一个指针。所有给定类型的方法属于该类型的方法集。</p>
@@ -125,112 +231,6 @@
 <p>如果Controller没有实现Something接口方法，则T要调用Something中方法，就要实现其所有方法。</p>
 <p>如果<code>something = new(test.Controller)</code>则调用的是Controller中的Get方法，T可以使用Controller结构体中定义的变量</p>
 <p>总之，接口对象不能调用接口实现对象的属性</p>
-]]></content>
-      <categories>
-        <category>青训营</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>大二自学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>学习go的准备工作</title>
-    <url>/2023/06/01/Go/1/</url>
-    <content><![CDATA[<h2 id="一-golang环境配置"><a href="#一-golang环境配置" class="headerlink" title="一.golang环境配置"></a>一.golang环境配置</h2><ol>
-<li><p><strong>下载SDK</strong></p>
-<p>由于我用的是goland专业版，可以直接在上面下载Go SDK，很方便也不需要解压</p>
-<p>也可以去官网安装，<strong><a href="https://golang.google.cn/dl/">https://golang.google.cn/dl/</a></strong></p>
-<p><em><strong>🤡其实sdk和下文Gopath路径简洁一点更加方便~</strong></em></p>
-<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2f0639cd12d544b5a19868c934ad34b4~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512213759389.png"></p>
-</li>
-<li><p><strong>将go的bin路径添加至Path环境变量中</strong></p>
-<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5390cc87df4744d9950fa570b1b99604~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512214558987.png"></p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5e1571d984c048b9bdbcadf2ac0cd68d~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512214829533.png"></p>
-</li>
-<li><p><strong>新建工作目录go_workspace，测试环境</strong></p>
-<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2001ee1accac4628b96c8515a23edd46~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512215418478.png"></p>
-<p>​	在该目录里创建test.txt文件，代码如下</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123; </span><br><span class="line">    fmt.Println(<span class="string">&quot;Hello, world!&quot;</span>) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e8a01a5064104a60b490755a1b2f0fd2~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512215631547"></p>
-<p>​	将文件后缀名改为go</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0031456c4f894df5b7e1810e74d56e09~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512215705515"></p>
-<p>​	打开命令行，进入go_workspace的目录</p>
-<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0af7b34cb1224a6dab550296b0f3ae83~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512220156250.png"></p>
-<p>​	输入以下命令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go run test.go</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0af7b34cb1224a6dab550296b0f3ae83~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512220740795"></p>
-<p>​	输出Hello world!，证明环境配置成功</p>
-<ol start="4">
-<li><p><strong>设置模块代理</strong></p>
-<p>如果访问 github 速度比较慢，建议配置 go mod proxy，下载第三方依赖包的速度可以大大加快</p>
-</li>
-</ol>
-<blockquote>
-<ol>
-<li>打开“开始”并搜索“env” </li>
-<li>选择“编辑系统环境变量” </li>
-<li>点击“环境变量…”按钮 </li>
-<li>在“&lt;**你的用户名**&gt; 的用户变量”章节下（上半部分）</li>
-<li>点击“新建…”按钮</li>
-<li>选择“变量名”输入框并输入“GO111MODULE” </li>
-<li>选择“变量值”输入框并输入“on” </li>
-<li>点击“确定”按钮 </li>
-<li>点击“新建…”按钮 </li>
-<li>选择“变量名”输入框并输入“GOPROXY” </li>
-<li>选择“变量值”输入框并输入“<a href="https://goproxy.cn”/">https://goproxy.cn”</a> </li>
-<li>点击“确定”按钮</li>
-</ol>
-</blockquote>
-<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2906b6d25e1743d08166f72c5fb8abdc~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230513094942468"></p>
-<p>或者打开终端并执行</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go <span class="built_in">env</span> -w GO111MODULE=on</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go <span class="built_in">env</span> -w GOPROXY=https://goproxy.cn,direct</span></span><br></pre></td></tr></table></figure>
-
-<p>如果不放心配置是否准确，当然也可以命令行输入go env检验</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7da62670712f41b487dfefbaa7be4a70~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230513100243945"></p>
-<p><em><strong>当然还可以设置自托管go模块代理</strong></em>，参照<a href="https://goproxy.cn/">https://goproxy.cn/</a></p>
-<p>​	以下列出自托管go模块代理的一些好处：</p>
-<ul>
-<li>在没有网络连接的情况下使用代码，因为代码和依赖项都在本地存储。</li>
-<li>更好地控制你的代码和依赖项，因为它们都在本地存储。</li>
-<li>更好地保护你的代码和依赖项，因为它们不会被外部访问。</li>
-<li>更快地构建和测试代码，因为它们不需要从远程服务器下载依赖项。</li>
-</ul>
-</li>
-</ol>
-<h2 id="二-goland配置"><a href="#二-goland配置" class="headerlink" title="二.goland配置"></a>二.goland配置</h2><p><strong>系统变量</strong>中新建GOROOT和GOPATH，GOROOT为go的安装路径（Go语言安装目录），GOPATH为go_workspace的路径</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/922f246f49bc482f805f451d9fcd1120~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512223852340.png"></p>
-<p>并将<strong>用户变量</strong>中的GOPATH改为go_workspace的路径</p>
-<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/98d3ba81f6e9403eadd02764531eb944~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512224220984.png"></p>
-<p>命令行输入go env，配置成功</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f3da83af8fa14d5e95df99a62efabccf~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230512224355670.png"></p>
-<p>新建go工程，GOROOT为go语言安装目录</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/309a90dc08704cb096f68bd1ba1003fd~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230513082400448.png"></p>
-<p>新建main目录，创建test.go文件，代码如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;Hello, world!&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>右键并单击运行</p>
-<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9e97edf2697f44c9ac6989f149b432a6~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image-20230513084354777.png"></p>
-<p>输出Hello world！配置成功</p>
-<h2 id="三-goland常用快捷键"><a href="#三-goland常用快捷键" class="headerlink" title="三.goland常用快捷键"></a>三.goland常用快捷键</h2><p>文件相关快捷键：</p>
-<blockquote>
-<p>CTRL+E，打开最近浏览过的文件。<br>CTRL+SHIFT+E，打开最近更改的文件。<br>CTRL+N，可以快速打开struct结构体。<br>CTRL+SHIFT+N，可以快速打开文件。</p>
-</blockquote>
-<p>代码格式化：</p>
-<blockquote>
-<p>CTRL+ALT+T，可以把代码包在一个块内，例如if{…}else{…}。<br>CTRL+ALT+L，格式化代码。<br>CTRL+空格，代码提示。<br>CTRL+&#x2F;，单行注释。CTRL+SHIFT+&#x2F;，进行多行注释。<br>CTRL+B，快速打开光标处的结构体或方法（跳转到定义处）。<br>CTRL+“+&#x2F;-”，可以将当前方法进行展开或折叠。</p>
-</blockquote>
-<p>查找和定位:</p>
-<blockquote>
-<p>CTRL+R，替换文本。<br>CTRL+F，查找文本。<br>CTRL+SHIFT+F，进行全局查找。<br>CTRL+G，快速定位到某行。</p>
-</blockquote>
-<p>代码编辑:</p>
-<blockquote>
-<p>ALT+Q，可以看到当前方法的声明。<br>CTRL+Backspace，按单词进行删除。<br>SHIFT+ENTER，可以向下插入新行，即使光标在当前行的中间。<br>CTRL+X，删除当前光标所在行。<br>CTRL+D，复制当前光标所在行。<br>ALT+SHIFT+UP&#x2F;DOWN，可以将光标所在行的代码上下移动。<br>CTRL+SHIFT+U，可以将选中内容进行大小写转化。</p>
-</blockquote>
-<p>原文链接：<a href="https://juejin.cn/post/7232459954580947000">Windows系统下golang和goland详细配置|青训营笔记 - 掘金 (juejin.cn)</a></p>
 ]]></content>
       <categories>
         <category>青训营</category>
@@ -390,6 +390,165 @@
 <p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6c31c5998d814a3f9e30de7b2b7c91af~tplv-k3u1fbpfcp-watermark.image" alt="image-20230513221724453.png"></p>
 <p>点击确定，<code>gofmt</code>和<code>goimports</code>配置成功</p>
 <p>原文链接：<a href="https://juejin.cn/post/7232689996821495865">Go的基本介绍（附gofmt和goimports配置）|青训营笔记 - 掘金 (juejin.cn)</a></p>
+]]></content>
+      <categories>
+        <category>青训营</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>大二自学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>go的编码规范</title>
+    <url>/2023/06/01/Go/3/</url>
+    <content><![CDATA[<h1 id="编码规范"><a href="#编码规范" class="headerlink" title="编码规范"></a>编码规范</h1><p>本规范旨在为日常Go项目开发提供一个代码的规范指导，方便团队形成一个统一的代码风格，提高代码的可读性，规范性和统一性。本规范将从命名规范，注释规范，代码风格和 Go 语言提供的常用的工具这几个方面做一个说明。该规范参考了 go 语言官方代码的风格制定。</p>
+<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>命名是代码规范中很重要的一部分，统一的命名规则有利于提高的代码的可读性，好的命名仅仅通过命名就可以获取到足够多的信息。</p>
+<p>Go在命名时以字母a到Z或a到Z或下划线开头，后面跟着零或更多的字母、下划线和数字(0到9)。Go不允许在命名时中使用@、$和%等标点符号。Go是一种区分大小写的编程语言。因此，Manpower和manpower是两个不同的命名。</p>
+<blockquote>
+<ol>
+<li>当命名（包括常量、变量、类型、函数名、结构字段等等）以一个大写字母开头，如：Group1，那么使用这种形式的标识符的对象就<strong>可以被外部包的代码所使用</strong>（客户端程序需要先导入这个包），这被称为导出（像面向对象语言中的 public）；</li>
+<li><strong>命名如果以小写字母开头，则对包外是不可见的，但是他们在整个包的内部是可见并且可用的</strong>（像面向对象语言中的 private ）</li>
+</ol>
+</blockquote>
+<h3 id="包命名：package"><a href="#包命名：package" class="headerlink" title="包命名：package"></a>包命名：package</h3><p>保持package的名字和目录保持一致，尽量采取有意义的包名，简短，有意义，尽量和标准库不要冲突。包名应该为<strong>小写</strong>单词，不要使用下划线或者混合大小写。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> demo</span><br><span class="line"><span class="keyword">package</span> main</span><br></pre></td></tr></table></figure>
+
+<h3 id="文件命名"><a href="#文件命名" class="headerlink" title="文件命名"></a>文件命名</h3><p>尽量采取有意义的文件名，简短，有意义，应该为<strong>小写</strong>单词，使用<strong>下划线</strong>分隔各个单词。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">my_test.<span class="keyword">go</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="结构体命名"><a href="#结构体命名" class="headerlink" title="结构体命名"></a>结构体命名</h3><ul>
+<li><p>采用驼峰命名法，首字母根据访问控制大写或者小写</p>
+</li>
+<li><p>struct 申明和初始化格式采用多行，例如下面：</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 多行申明</span></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span>&#123;</span><br><span class="line">    Username  <span class="type">string</span></span><br><span class="line">    Email     <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 多行初始化</span></span><br><span class="line">u := User&#123;</span><br><span class="line">    Username: <span class="string">&quot;astaxie&quot;</span>,</span><br><span class="line">    Email:    <span class="string">&quot;astaxie@gmail.com&quot;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="接口命名"><a href="#接口命名" class="headerlink" title="接口命名"></a>接口命名</h3><ul>
+<li>命名规则基本和上面的结构体类型保持一致。</li>
+<li>单个函数的结构名以 “er” 作为后缀，例如 Reader , Writer 。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Reader <span class="keyword">interface</span> &#123;</span><br><span class="line">        Read(p []<span class="type">byte</span>) (n <span class="type">int</span>, err <span class="type">error</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="变量命名"><a href="#变量命名" class="headerlink" title="变量命名"></a>变量命名</h3><ul>
+<li>和结构体类似，变量名称一般遵循驼峰法，首字母根据访问控制原则大写或者小写，但遇到特有名词时，需要遵循以下规则： <ul>
+<li>如果变量为私有，且特有名词为首个单词，则使用小写，如 apiClient</li>
+<li>其它情况都应当使用该名词原有的写法，如 APIClient、repoID、UserID</li>
+<li>错误示例：UrlArray，应该写成 urlArray 或者 URLArray</li>
+</ul>
+</li>
+<li>若变量类型为 bool 类型，则名称应以 has, is, can 或 allow 开头</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> isExist <span class="type">bool</span></span><br><span class="line"><span class="keyword">var</span> hasConflict <span class="type">bool</span></span><br><span class="line"><span class="keyword">var</span> canManage <span class="type">bool</span></span><br><span class="line"><span class="keyword">var</span> allowGitHook <span class="type">bool</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="常量命名"><a href="#常量命名" class="headerlink" title="常量命名"></a>常量命名</h3><p>常量均需使用全部大写字母组成，并使用下划线分词</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> APP_VER = <span class="string">&quot;1.0&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+<p>如果是枚举类型的常量，需要先创建相应类型：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Scheme <span class="type">string</span></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    HTTP  Scheme = <span class="string">&quot;http&quot;</span></span><br><span class="line">    HTTPS Scheme = <span class="string">&quot;https&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><p>下面的列表显示了Go中的保留字。这些保留字不能用作常量或变量或任何其他标识符名称。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/24fd930b2dd64516845b351960d1df8b~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="guanjianzi"></p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>Go提供C风格的<code>/* */</code>块注释和C ++风格的<code>//</code>行注释。行注释是常态；块注释主要显示为包注释，但在表达式中很有用或禁用大量代码。</p>
+<ul>
+<li>单行注释是最常见的注释形式，你可以在任何地方使用以 &#x2F;&#x2F; 开头的单行注释</li>
+<li>多行注释也叫块注释，均已以 &#x2F;* 开头，并以 *&#x2F; 结尾，且不可以嵌套使用，多行注释一般用于包的文档描述或注释成块的代码片段</li>
+</ul>
+<p>go 语言自带的 godoc 工具可以根据注释生成文档，生成可以自动生成对应的网站（ golang.org 就是使用 godoc 工具直接生成的），注释的质量决定了生成的文档的质量。每个包都应该有一个包注释，在package子句之前有一个块注释。对于多文件包，包注释只需要存在于一个文件中，任何一个都可以。包评论应该介绍包，并提供与整个包相关的信息。它将首先出现在<code>godoc</code>页面上，并应设置下面的详细文档。</p>
+<p>详细的如何写注释可以<br>参考：<a href="http://golang.org/doc/effective_go.html#commentary">http://golang.org/doc/effective_go.html#commentary</a></p>
+<h3 id="包注释"><a href="#包注释" class="headerlink" title="包注释"></a>包注释</h3><p>每个包都应该有一个包注释，一个位于package子句之前的块注释或行注释。包如果有多个go文件，只需要出现在一个go文件中（一般是和包同名的文件）即可。 包注释应该包含下面基本信息(请严格按照这个顺序，简介，创建人，创建时间）：</p>
+<ul>
+<li>包的基本简介（包名，简介）</li>
+<li>创建者，格式： 创建人： rtx 名</li>
+<li>创建时间，格式：创建时间： yyyyMMdd</li>
+</ul>
+<p>例如 util 包的注释示例如下</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// util 包， 该包包含了项目共用的一些常量，封装了项目中一些共用函数。</span></span><br><span class="line"><span class="comment">// 创建人： wxy</span></span><br><span class="line"><span class="comment">// 创建时间： 20230601</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="结构（接口）注释"><a href="#结构（接口）注释" class="headerlink" title="结构（接口）注释"></a>结构（接口）注释</h3><p>每个自定义的结构体或者接口都应该有注释说明，该注释对结构进行简要介绍，放在结构体定义的前一行，格式为： 结构体名， 结构体说明。同时结构体内的每个成员变量都要有说明，该说明放在成员变量的后面（注意对齐），实例如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// User ， 用户对象，定义了用户的基础信息</span></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span>&#123;</span><br><span class="line">    Username  <span class="type">string</span> <span class="comment">// 用户名</span></span><br><span class="line">    Email     <span class="type">string</span> <span class="comment">// 邮箱</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数（方法）注释"><a href="#函数（方法）注释" class="headerlink" title="函数（方法）注释"></a>函数（方法）注释</h3><p>每个函数，或者方法（结构体或者接口下的函数称为方法）都应该有注释说明，函数的注释应该包括三个方面（严格按照此顺序撰写）：</p>
+<ul>
+<li>简要说明，格式说明：以函数名开头，“，”分隔说明部分</li>
+<li>参数列表：每行一个参数，参数名开头，“，”分隔说明部分</li>
+<li>返回值： 每行一个返回值</li>
+</ul>
+<p>示例如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// NewtAttrModel ， 属性数据层操作类的工厂方法</span></span><br><span class="line"><span class="comment">// 参数：</span></span><br><span class="line"><span class="comment">//      ctx ： 上下文信息</span></span><br><span class="line"><span class="comment">// 返回值：</span></span><br><span class="line"><span class="comment">//      属性操作类指针</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewAttrModel</span><span class="params">(ctx *common.Context)</span></span> *AttrModel &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="代码逻辑注释"><a href="#代码逻辑注释" class="headerlink" title="代码逻辑注释"></a>代码逻辑注释</h3><p>对于一些关键位置的代码逻辑，或者局部较为复杂的逻辑，需要有相应的逻辑说明，方便其他开发者阅读该段代码，实例如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 从 Redis 中批量读取属性，对于没有读取到的 id ， 记录到一个数组里面，准备从 DB 中读取</span></span><br><span class="line">xxxxx</span><br><span class="line">xxxxxxx</span><br><span class="line">xxxxxxx</span><br></pre></td></tr></table></figure>
+
+<h3 id="注释风格"><a href="#注释风格" class="headerlink" title="注释风格"></a>注释风格</h3><p>统一使用中文注释，对于中英文字符之间严格使用空格分隔， 这个不仅仅是中文和英文之间，英文和中文标点之间也都要使用空格分隔，例如：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 从 Redis 中批量读取属性，对于没有读取到的 id ， 记录到一个数组里面，准备从 DB 中读取</span></span><br></pre></td></tr></table></figure>
+
+
+<p>上面 Redis 、 id 、 DB 和其他中文字符之间都是用了空格分隔。 </p>
+<ul>
+<li>建议全部使用单行注释</li>
+<li>和代码的规范一样，单行注释不要过长，禁止超过 120 字符。</li>
+</ul>
+<h2 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h2><h3 id="缩进和折行"><a href="#缩进和折行" class="headerlink" title="缩进和折行"></a>缩进和折行</h3><ul>
+<li>缩进直接使用 gofmt 工具格式化即可（gofmt 是使用 tab 缩进的）；</li>
+<li>折行方面，一行最长不超过120个字符，超过的请使用换行展示，尽量保持格式优雅。</li>
+</ul>
+<p>我们使用Goland开发工具，可以直接使用快捷键：ctrl+alt+L，即可。</p>
+<h3 id="语句的结尾"><a href="#语句的结尾" class="headerlink" title="语句的结尾"></a>语句的结尾</h3><p>Go语言中是不需要类似于Java需要冒号结尾，默认一行就是一条数据</p>
+<p>如果你打算将多个语句写在同一行，它们则必须使用 <strong>;</strong> </p>
+<h3 id="括号和空格"><a href="#括号和空格" class="headerlink" title="括号和空格"></a>括号和空格</h3><p>括号和空格方面，也可以直接使用 gofmt 工具格式化（go 会强制左大括号不换行，换行会报语法错误），所有的运算符和操作数之间要留空格。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 正确的方式</span></span><br><span class="line"><span class="keyword">if</span> a &gt; <span class="number">0</span> &#123;</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// 错误的方式</span></span><br><span class="line"><span class="keyword">if</span> a&gt;<span class="number">0</span>  <span class="comment">// a ，0 和 &gt; 之间应该空格</span></span><br><span class="line">&#123;       <span class="comment">// 左大括号不可以换行，会报语法错误</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="import-规范"><a href="#import-规范" class="headerlink" title="import 规范"></a>import 规范</h3><p>import在多行的情况下，goimports会自动帮你格式化，但是我们这里还是规范一下import的一些规范，如果你在一个文件里面引入了一个package，还是建议采用如下格式：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>如果你的包引入了三种类型的包，标准库包，程序内部包，第三方包，建议采用如下方式进行组织你的包：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;encoding/json&quot;</span></span><br><span class="line">    <span class="string">&quot;strings&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;myproject/models&quot;</span></span><br><span class="line">    <span class="string">&quot;myproject/controller&quot;</span></span><br><span class="line">    <span class="string">&quot;myproject/utils&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;github.com/astaxie/beego&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/go-sql-driver/mysql&quot;</span></span><br><span class="line">)   </span><br></pre></td></tr></table></figure>
+
+<p>有顺序的引入包，不同的类型采用空格分离，第一种是标准库，第二是项目包，第三是第三方包。</p>
+<p>在项目中不要使用相对路径引入包：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 这是不好的导入</span></span><br><span class="line"><span class="keyword">import</span> “../net”</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是正确的做法</span></span><br><span class="line"><span class="keyword">import</span> “github.com/repo/proj/src/net”</span><br></pre></td></tr></table></figure>
+
+<p>但是如果是引入本项目中的其他包，最好使用相对路径。</p>
+<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><ul>
+<li>错误处理的原则就是不能丢弃任何有返回err的调用，不要使用 _ 丢弃，必须全部处理。接收到错误，要么返回err，或者使用log记录下来</li>
+<li>尽早return：一旦有错误发生，马上返回</li>
+<li>尽量不要使用panic，除非你知道你在做什么</li>
+<li>错误描述如果是英文必须为小写，不需要标点结尾</li>
+<li>采用独立的错误流进行处理</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 错误写法</span></span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// error handling</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// normal code</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确写法</span></span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// error handling</span></span><br><span class="line">    <span class="keyword">return</span> <span class="comment">// or continue, etc.</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// normal code</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>单元测试文件名命名规范为 example_test.go<br>测试用例的函数名称必须以 Test 开头，例如：TestExample<br>每个重要的函数都要首先编写测试用例，测试用例和正规代码一起提交方便进行回归测试</p>
+<h2 id="常用工具"><a href="#常用工具" class="headerlink" title="常用工具"></a>常用工具</h2><p>上面提到了很过规范， go 语言本身在代码规范性这方面也做了很多努力，很多限制都是强制语法要求，例如左大括号不换行，引用的包或者定义的变量不使用会报错，此外 go 还是提供了很多好用的工具帮助我们进行代码的规范，</p>
+<p><strong>gofmt</strong><br>大部分的格式问题可以通过gofmt解决， gofmt 自动格式化代码，保证所有的 go 代码与官方推荐的格式保持一致，于是所有格式有关问题，都以 gofmt 的结果为准。</p>
+<p><strong>goimport</strong><br>我们强烈建议使用 goimport ，该工具在 gofmt 的基础上增加了自动删除和引入包.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go get golang.org/x/tools/cmd/goimports</span></span><br></pre></td></tr></table></figure>
+
+<p><em><strong>以上两种工具上一篇文章已经介绍过怎么配置</strong></em></p>
+<p><strong>go vet</strong><br>vet工具可以帮我们静态分析我们的源码存在的各种问题，例如多余的代码，提前return的逻辑，struct的tag是否符合标准等。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go get golang.org/x/tools/cmd/vet</span></span><br></pre></td></tr></table></figure>
+
+
+<p>使用如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go vet .</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ]]></content>
       <categories>
         <category>青训营</category>
@@ -800,165 +959,6 @@
 <p>通过调用<code>rand.Seed()</code>方法并传入一个不同的种子值，我们可以改变随机数生成器的起始点，从而产生不同的随机数序列。通常情况下，我们会使用当前时间的纳秒级时间戳作为种子，以确保每次运行程序时都能生成不同的随机数序列。</p>
 <p>在代码中，<code>rand.Seed(1000)</code>将种子设置为固定值1000，因此后续生成的随机数序列将始终相同。而<code>rand.Seed(time.Now().UnixNano())</code>使用当前时间的纳秒级时间戳作为种子，可以产生不同的随机数序列。</p>
 <p>但是<em><strong>自从Go 1.2 0以来,rand.Seed就已经被弃用了</strong></em>！</p>
-]]></content>
-      <categories>
-        <category>青训营</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>大二自学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>go的编码规范</title>
-    <url>/2023/06/01/Go/3/</url>
-    <content><![CDATA[<h1 id="编码规范"><a href="#编码规范" class="headerlink" title="编码规范"></a>编码规范</h1><p>本规范旨在为日常Go项目开发提供一个代码的规范指导，方便团队形成一个统一的代码风格，提高代码的可读性，规范性和统一性。本规范将从命名规范，注释规范，代码风格和 Go 语言提供的常用的工具这几个方面做一个说明。该规范参考了 go 语言官方代码的风格制定。</p>
-<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>命名是代码规范中很重要的一部分，统一的命名规则有利于提高的代码的可读性，好的命名仅仅通过命名就可以获取到足够多的信息。</p>
-<p>Go在命名时以字母a到Z或a到Z或下划线开头，后面跟着零或更多的字母、下划线和数字(0到9)。Go不允许在命名时中使用@、$和%等标点符号。Go是一种区分大小写的编程语言。因此，Manpower和manpower是两个不同的命名。</p>
-<blockquote>
-<ol>
-<li>当命名（包括常量、变量、类型、函数名、结构字段等等）以一个大写字母开头，如：Group1，那么使用这种形式的标识符的对象就<strong>可以被外部包的代码所使用</strong>（客户端程序需要先导入这个包），这被称为导出（像面向对象语言中的 public）；</li>
-<li><strong>命名如果以小写字母开头，则对包外是不可见的，但是他们在整个包的内部是可见并且可用的</strong>（像面向对象语言中的 private ）</li>
-</ol>
-</blockquote>
-<h3 id="包命名：package"><a href="#包命名：package" class="headerlink" title="包命名：package"></a>包命名：package</h3><p>保持package的名字和目录保持一致，尽量采取有意义的包名，简短，有意义，尽量和标准库不要冲突。包名应该为<strong>小写</strong>单词，不要使用下划线或者混合大小写。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> demo</span><br><span class="line"><span class="keyword">package</span> main</span><br></pre></td></tr></table></figure>
-
-<h3 id="文件命名"><a href="#文件命名" class="headerlink" title="文件命名"></a>文件命名</h3><p>尽量采取有意义的文件名，简短，有意义，应该为<strong>小写</strong>单词，使用<strong>下划线</strong>分隔各个单词。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">my_test.<span class="keyword">go</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="结构体命名"><a href="#结构体命名" class="headerlink" title="结构体命名"></a>结构体命名</h3><ul>
-<li><p>采用驼峰命名法，首字母根据访问控制大写或者小写</p>
-</li>
-<li><p>struct 申明和初始化格式采用多行，例如下面：</p>
-</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 多行申明</span></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span>&#123;</span><br><span class="line">    Username  <span class="type">string</span></span><br><span class="line">    Email     <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 多行初始化</span></span><br><span class="line">u := User&#123;</span><br><span class="line">    Username: <span class="string">&quot;astaxie&quot;</span>,</span><br><span class="line">    Email:    <span class="string">&quot;astaxie@gmail.com&quot;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="接口命名"><a href="#接口命名" class="headerlink" title="接口命名"></a>接口命名</h3><ul>
-<li>命名规则基本和上面的结构体类型保持一致。</li>
-<li>单个函数的结构名以 “er” 作为后缀，例如 Reader , Writer 。</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Reader <span class="keyword">interface</span> &#123;</span><br><span class="line">        Read(p []<span class="type">byte</span>) (n <span class="type">int</span>, err <span class="type">error</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="变量命名"><a href="#变量命名" class="headerlink" title="变量命名"></a>变量命名</h3><ul>
-<li>和结构体类似，变量名称一般遵循驼峰法，首字母根据访问控制原则大写或者小写，但遇到特有名词时，需要遵循以下规则： <ul>
-<li>如果变量为私有，且特有名词为首个单词，则使用小写，如 apiClient</li>
-<li>其它情况都应当使用该名词原有的写法，如 APIClient、repoID、UserID</li>
-<li>错误示例：UrlArray，应该写成 urlArray 或者 URLArray</li>
-</ul>
-</li>
-<li>若变量类型为 bool 类型，则名称应以 has, is, can 或 allow 开头</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> isExist <span class="type">bool</span></span><br><span class="line"><span class="keyword">var</span> hasConflict <span class="type">bool</span></span><br><span class="line"><span class="keyword">var</span> canManage <span class="type">bool</span></span><br><span class="line"><span class="keyword">var</span> allowGitHook <span class="type">bool</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="常量命名"><a href="#常量命名" class="headerlink" title="常量命名"></a>常量命名</h3><p>常量均需使用全部大写字母组成，并使用下划线分词</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> APP_VER = <span class="string">&quot;1.0&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-<p>如果是枚举类型的常量，需要先创建相应类型：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Scheme <span class="type">string</span></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    HTTP  Scheme = <span class="string">&quot;http&quot;</span></span><br><span class="line">    HTTPS Scheme = <span class="string">&quot;https&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><p>下面的列表显示了Go中的保留字。这些保留字不能用作常量或变量或任何其他标识符名称。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/24fd930b2dd64516845b351960d1df8b~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="guanjianzi"></p>
-<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>Go提供C风格的<code>/* */</code>块注释和C ++风格的<code>//</code>行注释。行注释是常态；块注释主要显示为包注释，但在表达式中很有用或禁用大量代码。</p>
-<ul>
-<li>单行注释是最常见的注释形式，你可以在任何地方使用以 &#x2F;&#x2F; 开头的单行注释</li>
-<li>多行注释也叫块注释，均已以 &#x2F;* 开头，并以 *&#x2F; 结尾，且不可以嵌套使用，多行注释一般用于包的文档描述或注释成块的代码片段</li>
-</ul>
-<p>go 语言自带的 godoc 工具可以根据注释生成文档，生成可以自动生成对应的网站（ golang.org 就是使用 godoc 工具直接生成的），注释的质量决定了生成的文档的质量。每个包都应该有一个包注释，在package子句之前有一个块注释。对于多文件包，包注释只需要存在于一个文件中，任何一个都可以。包评论应该介绍包，并提供与整个包相关的信息。它将首先出现在<code>godoc</code>页面上，并应设置下面的详细文档。</p>
-<p>详细的如何写注释可以<br>参考：<a href="http://golang.org/doc/effective_go.html#commentary">http://golang.org/doc/effective_go.html#commentary</a></p>
-<h3 id="包注释"><a href="#包注释" class="headerlink" title="包注释"></a>包注释</h3><p>每个包都应该有一个包注释，一个位于package子句之前的块注释或行注释。包如果有多个go文件，只需要出现在一个go文件中（一般是和包同名的文件）即可。 包注释应该包含下面基本信息(请严格按照这个顺序，简介，创建人，创建时间）：</p>
-<ul>
-<li>包的基本简介（包名，简介）</li>
-<li>创建者，格式： 创建人： rtx 名</li>
-<li>创建时间，格式：创建时间： yyyyMMdd</li>
-</ul>
-<p>例如 util 包的注释示例如下</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// util 包， 该包包含了项目共用的一些常量，封装了项目中一些共用函数。</span></span><br><span class="line"><span class="comment">// 创建人： wxy</span></span><br><span class="line"><span class="comment">// 创建时间： 20230601</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="结构（接口）注释"><a href="#结构（接口）注释" class="headerlink" title="结构（接口）注释"></a>结构（接口）注释</h3><p>每个自定义的结构体或者接口都应该有注释说明，该注释对结构进行简要介绍，放在结构体定义的前一行，格式为： 结构体名， 结构体说明。同时结构体内的每个成员变量都要有说明，该说明放在成员变量的后面（注意对齐），实例如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// User ， 用户对象，定义了用户的基础信息</span></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span>&#123;</span><br><span class="line">    Username  <span class="type">string</span> <span class="comment">// 用户名</span></span><br><span class="line">    Email     <span class="type">string</span> <span class="comment">// 邮箱</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="函数（方法）注释"><a href="#函数（方法）注释" class="headerlink" title="函数（方法）注释"></a>函数（方法）注释</h3><p>每个函数，或者方法（结构体或者接口下的函数称为方法）都应该有注释说明，函数的注释应该包括三个方面（严格按照此顺序撰写）：</p>
-<ul>
-<li>简要说明，格式说明：以函数名开头，“，”分隔说明部分</li>
-<li>参数列表：每行一个参数，参数名开头，“，”分隔说明部分</li>
-<li>返回值： 每行一个返回值</li>
-</ul>
-<p>示例如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// NewtAttrModel ， 属性数据层操作类的工厂方法</span></span><br><span class="line"><span class="comment">// 参数：</span></span><br><span class="line"><span class="comment">//      ctx ： 上下文信息</span></span><br><span class="line"><span class="comment">// 返回值：</span></span><br><span class="line"><span class="comment">//      属性操作类指针</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewAttrModel</span><span class="params">(ctx *common.Context)</span></span> *AttrModel &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="代码逻辑注释"><a href="#代码逻辑注释" class="headerlink" title="代码逻辑注释"></a>代码逻辑注释</h3><p>对于一些关键位置的代码逻辑，或者局部较为复杂的逻辑，需要有相应的逻辑说明，方便其他开发者阅读该段代码，实例如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 从 Redis 中批量读取属性，对于没有读取到的 id ， 记录到一个数组里面，准备从 DB 中读取</span></span><br><span class="line">xxxxx</span><br><span class="line">xxxxxxx</span><br><span class="line">xxxxxxx</span><br></pre></td></tr></table></figure>
-
-<h3 id="注释风格"><a href="#注释风格" class="headerlink" title="注释风格"></a>注释风格</h3><p>统一使用中文注释，对于中英文字符之间严格使用空格分隔， 这个不仅仅是中文和英文之间，英文和中文标点之间也都要使用空格分隔，例如：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 从 Redis 中批量读取属性，对于没有读取到的 id ， 记录到一个数组里面，准备从 DB 中读取</span></span><br></pre></td></tr></table></figure>
-
-
-<p>上面 Redis 、 id 、 DB 和其他中文字符之间都是用了空格分隔。 </p>
-<ul>
-<li>建议全部使用单行注释</li>
-<li>和代码的规范一样，单行注释不要过长，禁止超过 120 字符。</li>
-</ul>
-<h2 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h2><h3 id="缩进和折行"><a href="#缩进和折行" class="headerlink" title="缩进和折行"></a>缩进和折行</h3><ul>
-<li>缩进直接使用 gofmt 工具格式化即可（gofmt 是使用 tab 缩进的）；</li>
-<li>折行方面，一行最长不超过120个字符，超过的请使用换行展示，尽量保持格式优雅。</li>
-</ul>
-<p>我们使用Goland开发工具，可以直接使用快捷键：ctrl+alt+L，即可。</p>
-<h3 id="语句的结尾"><a href="#语句的结尾" class="headerlink" title="语句的结尾"></a>语句的结尾</h3><p>Go语言中是不需要类似于Java需要冒号结尾，默认一行就是一条数据</p>
-<p>如果你打算将多个语句写在同一行，它们则必须使用 <strong>;</strong> </p>
-<h3 id="括号和空格"><a href="#括号和空格" class="headerlink" title="括号和空格"></a>括号和空格</h3><p>括号和空格方面，也可以直接使用 gofmt 工具格式化（go 会强制左大括号不换行，换行会报语法错误），所有的运算符和操作数之间要留空格。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 正确的方式</span></span><br><span class="line"><span class="keyword">if</span> a &gt; <span class="number">0</span> &#123;</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// 错误的方式</span></span><br><span class="line"><span class="keyword">if</span> a&gt;<span class="number">0</span>  <span class="comment">// a ，0 和 &gt; 之间应该空格</span></span><br><span class="line">&#123;       <span class="comment">// 左大括号不可以换行，会报语法错误</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="import-规范"><a href="#import-规范" class="headerlink" title="import 规范"></a>import 规范</h3><p>import在多行的情况下，goimports会自动帮你格式化，但是我们这里还是规范一下import的一些规范，如果你在一个文件里面引入了一个package，还是建议采用如下格式：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p>如果你的包引入了三种类型的包，标准库包，程序内部包，第三方包，建议采用如下方式进行组织你的包：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;encoding/json&quot;</span></span><br><span class="line">    <span class="string">&quot;strings&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;myproject/models&quot;</span></span><br><span class="line">    <span class="string">&quot;myproject/controller&quot;</span></span><br><span class="line">    <span class="string">&quot;myproject/utils&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;github.com/astaxie/beego&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/go-sql-driver/mysql&quot;</span></span><br><span class="line">)   </span><br></pre></td></tr></table></figure>
-
-<p>有顺序的引入包，不同的类型采用空格分离，第一种是标准库，第二是项目包，第三是第三方包。</p>
-<p>在项目中不要使用相对路径引入包：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 这是不好的导入</span></span><br><span class="line"><span class="keyword">import</span> “../net”</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是正确的做法</span></span><br><span class="line"><span class="keyword">import</span> “github.com/repo/proj/src/net”</span><br></pre></td></tr></table></figure>
-
-<p>但是如果是引入本项目中的其他包，最好使用相对路径。</p>
-<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><ul>
-<li>错误处理的原则就是不能丢弃任何有返回err的调用，不要使用 _ 丢弃，必须全部处理。接收到错误，要么返回err，或者使用log记录下来</li>
-<li>尽早return：一旦有错误发生，马上返回</li>
-<li>尽量不要使用panic，除非你知道你在做什么</li>
-<li>错误描述如果是英文必须为小写，不需要标点结尾</li>
-<li>采用独立的错误流进行处理</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 错误写法</span></span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// error handling</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// normal code</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确写法</span></span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// error handling</span></span><br><span class="line">    <span class="keyword">return</span> <span class="comment">// or continue, etc.</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// normal code</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>单元测试文件名命名规范为 example_test.go<br>测试用例的函数名称必须以 Test 开头，例如：TestExample<br>每个重要的函数都要首先编写测试用例，测试用例和正规代码一起提交方便进行回归测试</p>
-<h2 id="常用工具"><a href="#常用工具" class="headerlink" title="常用工具"></a>常用工具</h2><p>上面提到了很过规范， go 语言本身在代码规范性这方面也做了很多努力，很多限制都是强制语法要求，例如左大括号不换行，引用的包或者定义的变量不使用会报错，此外 go 还是提供了很多好用的工具帮助我们进行代码的规范，</p>
-<p><strong>gofmt</strong><br>大部分的格式问题可以通过gofmt解决， gofmt 自动格式化代码，保证所有的 go 代码与官方推荐的格式保持一致，于是所有格式有关问题，都以 gofmt 的结果为准。</p>
-<p><strong>goimport</strong><br>我们强烈建议使用 goimport ，该工具在 gofmt 的基础上增加了自动删除和引入包.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go get golang.org/x/tools/cmd/goimports</span></span><br></pre></td></tr></table></figure>
-
-<p><em><strong>以上两种工具上一篇文章已经介绍过怎么配置</strong></em></p>
-<p><strong>go vet</strong><br>vet工具可以帮我们静态分析我们的源码存在的各种问题，例如多余的代码，提前return的逻辑，struct的tag是否符合标准等。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go get golang.org/x/tools/cmd/vet</span></span><br></pre></td></tr></table></figure>
-
-
-<p>使用如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">go vet .</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ]]></content>
       <categories>
         <category>青训营</category>
@@ -1593,12 +1593,12 @@
 </thead>
 <tbody><tr>
 <td align="left">1</td>
-<td><a href="mailto:&#x65;&#120;&#97;&#109;&#112;&#108;&#x65;&#x40;&#117;&#x65;&#115;&#x74;&#99;&#x2e;&#101;&#100;&#117;&#46;&#99;&#110;">&#x65;&#120;&#97;&#109;&#112;&#108;&#x65;&#x40;&#117;&#x65;&#115;&#x74;&#99;&#x2e;&#101;&#100;&#117;&#46;&#99;&#110;</a></td>
+<td><a href="mailto:&#x65;&#x78;&#97;&#x6d;&#x70;&#108;&#x65;&#64;&#x75;&#101;&#x73;&#116;&#x63;&#46;&#101;&#100;&#117;&#x2e;&#x63;&#x6e;">&#x65;&#x78;&#97;&#x6d;&#x70;&#108;&#x65;&#64;&#x75;&#101;&#x73;&#116;&#x63;&#46;&#101;&#100;&#117;&#x2e;&#x63;&#x6e;</a></td>
 <td>(1)</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td>#<a href="mailto:&#x65;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#64;&#x75;&#x65;&#x73;&#x74;&#x63;&#x2e;&#x65;&#x64;&#x75;&#x2e;&#x63;&#110;">&#x65;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#64;&#x75;&#x65;&#x73;&#x74;&#x63;&#x2e;&#x65;&#x64;&#x75;&#x2e;&#x63;&#110;</a></td>
+<td>#<a href="mailto:&#101;&#x78;&#97;&#109;&#112;&#x6c;&#x65;&#x40;&#x75;&#101;&#x73;&#116;&#x63;&#x2e;&#101;&#100;&#x75;&#x2e;&#x63;&#x6e;">&#101;&#x78;&#97;&#109;&#112;&#x6c;&#x65;&#x40;&#x75;&#101;&#x73;&#116;&#x63;&#x2e;&#101;&#100;&#x75;&#x2e;&#x63;&#x6e;</a></td>
 <td>(2)</td>
 </tr>
 <tr>
@@ -2474,6 +2474,449 @@
 </tr>
 </tbody></table>
 <p><em><strong>以上内容来自老师提供的原版答案，如有错误，欢迎批评指正</strong></em>😆</p>
+]]></content>
+      <categories>
+        <category>大二下期末复习</category>
+      </categories>
+      <tags>
+        <tag>软件测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>电大软件测试～第二次作业</title>
+    <url>/2023/05/31/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test2/</url>
+    <content><![CDATA[<h2 id="第二次作业及参考答案"><a href="#第二次作业及参考答案" class="headerlink" title="第二次作业及参考答案"></a>第二次作业及参考答案</h2><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p> 在一个客户信息查询界面中，输入条件有“姓名”、“身份证号”、“手机”，采用正交表方式设计该界面查询功能的测试用例。</p>
+<p>答：</p>
+<p>针对本测试有3个输入条件，每个输入有2种取值情况，可以选择L₄(2³)正交表，其正交表值如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>实验数\列号</th>
+<th>姓名</th>
+<th>身份证号</th>
+<th>手机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>测试用例：</p>
+<table>
+<thead>
+<tr>
+<th>测试用例&#x2F;查询条件</th>
+<th>姓名</th>
+<th>身份证号</th>
+<th>手机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>测试用例1</td>
+<td>填写</td>
+<td>填写</td>
+<td>填写</td>
+</tr>
+<tr>
+<td>测试用例2</td>
+<td>填写</td>
+<td>空</td>
+<td>空</td>
+</tr>
+<tr>
+<td>测试用例3</td>
+<td>空</td>
+<td>填写</td>
+<td>空</td>
+</tr>
+<tr>
+<td>测试用例4</td>
+<td>空</td>
+<td>空</td>
+<td>填写</td>
+</tr>
+</tbody></table>
+<h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>根据如下图所示的程序流程图，分别使用语句覆盖测试、判定覆盖测试、条件覆盖测试和路径覆盖测试进行测试用例设计。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/YaGS6fzEgLuwdKp.png"></p>
+<p>答：</p>
+<p><em><strong>1）语句覆盖</strong></em></p>
+<p>设计测试用例，使得被测试程序中的每条可执行语句至少被执行一次。其测试用例表如下所示。</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖语句</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(X,Y)&#x3D;(1,11)</td>
+<td>(X,Y)&#x3D;(1,11)</td>
+<td>X&gt;0 AND Y&gt;10;Y&#x3D;Y&#x2F;X;X&lt;-10 OR Y&lt;0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(X,Y)&#x3D;(0,-1)</td>
+<td>(X,Y)&#x3D;(0,1)</td>
+<td>X&gt;0 AND Y&gt;10;X&lt;-10 OR Y&lt;0;Y&#x3D;-(Y+X)</td>
+</tr>
+</tbody></table>
+<p><em><strong>2）判定覆盖</strong></em></p>
+<p>设计测试用例,使得被测试程序中的每个判断的”真”、”假”分支至少被执行一次。设X&gt;0 AND Y&gt;10为判定条件M，X&lt;-10 OR Y&lt;0为判定条件N。<br>设计的判定覆盖测试用例如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖判定条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(X,Y)&#x3D;(1,11)</td>
+<td>(X,Y)&#x3D;(1,11)</td>
+<td>M为真，N为假</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(X,Y)&#x3D;(0,-1)</td>
+<td>(X,Y)&#x3D;(0,1)</td>
+<td>M为假，N为真</td>
+</tr>
+</tbody></table>
+<p><em><strong>3）条件覆盖</strong></em></p>
+<p>设计测试用例,使得被测试程序中分支判断语句中每个条件的可能值至少被满足一次。<br>设</p>
+<blockquote>
+<p>条件X&gt;0:<br>取真时为T1，取假时为F1<br>条件Y&gt;10:<br>取真时为T2，取假时为F2<br>条件x&lt;-10:<br>取真时为T3，取假时为F3<br>条件Y&lt;0:<br>取真时为T4,取假时为 F4</p>
+</blockquote>
+<p>设计的条件覆盖测试用例如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(X,Y)&#x3D;(1,-1)</td>
+<td>(X,Y)&#x3D;(1,0)</td>
+<td>T1，F2，F3，T4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(X,Y)&#x3D;(-11,11)</td>
+<td>(X,Y)&#x3D;(-11,0)</td>
+<td>F1，T2，T3，F4</td>
+</tr>
+</tbody></table>
+<p><em><strong>4）基本路径覆盖</strong></em></p>
+<p>设计测试用例,使得被测试程序中的基本路径至少被覆盖一次。依据该程序控制流图计算环路复杂度&#x3D;3（判断节点数目+1）,因此,该程序的基本路径有3条。</p>
+<p>设计的基本路径覆盖测试用例如下表所示</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(X,Y)&#x3D;(0,0)</td>
+<td>(X,Y)&#x3D;(0,0)</td>
+<td>ace</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(X,Y)&#x3D;(1,11)</td>
+<td>(X,Y)&#x3D;(1,11)</td>
+<td>abce</td>
+</tr>
+<tr>
+<td>3</td>
+<td>(X,Y)&#x3D;(-11,1)</td>
+<td>(X,Y)&#x3D;(-11,10)</td>
+<td>acde</td>
+</tr>
+<tr>
+<td>4</td>
+<td>不存在</td>
+<td>不存在</td>
+<td>abcde</td>
+</tr>
+</tbody></table>
+<p>但是看这篇文章<a href="https://blog.csdn.net/dickdick111/article/details/90478058?ops_request_misc=&request_id=&biz_id=102&utm_term=%E7%8E%AF%E5%BD%A2%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%9A%84%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E5%9B%BE&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-90478058.142%5Ev88%5Econtrol_2,239%5Ev2%5Einsert_chatgpt&spm=1018.2226.3001.4187"> 软件测试——程序控制流图，McCabe环形复杂度_根据程序画出控制流图_Dic0k的博客-CSDN博客</a>，按照它的逻辑，环形复杂度应该有5条。（很奇怪）</p>
+<h3 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h3><p>针对如下样本程序，分析该程序逻辑覆盖测试方法中的语句覆盖、判定覆盖、条件覆盖和基本路径覆盖，并说明哪种方法覆盖率高？为什么？</p>
+<p>被测样本程序</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Coverage</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;start main function:path a...&quot;</span>);</span><br><span class="line">  <span class="type">int</span> A=<span class="number">0</span>,B=<span class="number">0</span>,X=<span class="number">0</span>;</span><br><span class="line">  <span class="type">Scanner</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">  System.out.println(<span class="string">&quot;输入A：&quot;</span>);  A = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入B=&quot;</span>);  B = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入X=&quot;</span>);  X = s.nextInt();</span><br><span class="line">  s.close();  </span><br><span class="line">  <span class="keyword">if</span> (A&gt;<span class="number">1</span> &amp;&amp; B==<span class="number">0</span>) &#123;</span><br><span class="line">	X=X/A;</span><br><span class="line">	System.out.println(<span class="string">&quot;path c&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path b&quot;</span>);  &#125;</span><br><span class="line">  <span class="keyword">if</span> (A==<span class="number">2</span> || X&gt;<span class="number">1</span>) &#123;</span><br><span class="line">	X=X+<span class="number">1</span>;</span><br><span class="line">	System.out.println(<span class="string">&quot;path e&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path d&quot;</span>);  &#125;</span><br><span class="line">  System.out.println(<span class="string">&quot;end main function.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​	答：</p>
+<p>​	<u><em><strong>注：以下答案只参考了标准答案的一部分</strong></em></u></p>
+<p><img src="https://s2.loli.net/2023/05/31/P7NxLnZ9QhsHmyW.png" alt="VF1D1EJ2__LKYS_1_GPGJ5W.png"></p>
+<ol>
+<li><p>语句覆盖测试</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(A,B,X)&#x3D;(2,0,2)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
+<td>ace</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(A,B,X)&#x3D;(0,1,1)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
+<td>abd</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>判定覆盖测试</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(A,B,X)&#x3D;(2,0,2)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
+<td>ace</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(A,B,X)&#x3D;(0,1,1)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
+<td>abd</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>条件覆盖测试</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(A,B,X)&#x3D;(2,0,2)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
+<td>ace</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(A,B,X)&#x3D;(0,1,1)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
+<td>abd</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>基本路径覆盖测试</p>
+<table>
+<thead>
+<tr>
+<th>用例序号</th>
+<th>输入数据</th>
+<th>预期输出</th>
+<th>覆盖路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(A,B,X)&#x3D;(2,0,2)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
+<td>ace</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(A,B,X)&#x3D;(0,1,1)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
+<td>abd</td>
+</tr>
+<tr>
+<td>3</td>
+<td>(A,B,X)&#x3D;(0,1,2)</td>
+<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path e，end main function.</td>
+<td>abe</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<p>综上所述，基本路径覆盖测试用的测试用例最多，覆盖的路径也最多，故基本路径覆盖的覆盖率最高。</p>
+<p><em><strong>注：<a href="https://blog.csdn.net/The_Azur/article/details/117936347">环形复杂度必定是基本路径个数的上限。</a></strong></em></p>
+<p><img src="https://s2.loli.net/2023/05/31/HtDjYwSso3WKVFn.png" alt="Snipaste_2023-05-31_21-48-19.png"></p>
+<h3 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h3><p>使用PMD代码分析工具针对如下被测程序，找出该程序存在的潜在缺陷，给出结果界面截图，并说明各个缺陷出现的原因。</p>
+<p>被测样本程序</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Coverage</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;start main function:path a...&quot;</span>);</span><br><span class="line">  <span class="type">int</span> A=<span class="number">0</span>,B=<span class="number">0</span>,X=<span class="number">0</span>;</span><br><span class="line">  <span class="type">Scanner</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">  System.out.println(<span class="string">&quot;输入A：&quot;</span>);  A = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入B=&quot;</span>);  B = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入X=&quot;</span>);  X = s.nextInt();</span><br><span class="line">  s.close();  </span><br><span class="line">  <span class="keyword">if</span> (A&gt;<span class="number">1</span> &amp;&amp; B==<span class="number">0</span>) &#123;</span><br><span class="line">	X=X/A;</span><br><span class="line">	System.out.println(<span class="string">&quot;path c&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path b&quot;</span>);  &#125;</span><br><span class="line">  <span class="keyword">if</span> (A==<span class="number">2</span> || X&gt;<span class="number">1</span>) &#123;</span><br><span class="line">	X=X+<span class="number">1</span>;</span><br><span class="line">	System.out.println(<span class="string">&quot;path e&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path d&quot;</span>);  &#125;</span><br><span class="line">  System.out.println(<span class="string">&quot;end main function.&quot;</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>答：</p>
+<p><u><em><strong>注：以下答案只参考了标准答案的一部分</strong></em></u></p>
+<p><a href="https://smms.app/image/5I4amZs2cXEldHv" target="_blank"><img src="https://s2.loli.net/2023/05/31/5I4amZs2cXEldHv.jpg" alt="Z__LBIY38___C`L5GCFZSVF.jpg"></a></p>
+<p>以下是可能的缺陷（感觉每个人做出来都不一样哈哈哈哈😆）：</p>
+<blockquote>
+<p>（1）VariableNamingConventions：</p>
+<p>​		①变量应以小写字符开头，’A’’B’’X’均以大写字符开头</p>
+<p>（2）UseUtilityClass：</p>
+<p>​		①所有方法都是静态的，可以考虑使用实用工具类，或添加一个私		有构造函数，或使类抽象来屏蔽这个警告</p>
+<p>（3）LocalVariableCouldBeFinal：</p>
+<p>​		①局部变量’s’可以声明为final</p>
+<p>（4）LocalVaraiableNamingConventions：</p>
+<p>​		①局部变量名’A’’B’’X’不匹配’[a-z][a-zA-Z0-9]*’</p>
+<p>（5）MethodArgumentCouldBeFinal：</p>
+<p>​		①参数’args’未赋值，可以声明为final</p>
+<p>（6）CommentRequired：</p>
+<p>​		①类注释是必需的</p>
+<p>​		②公共方法和构造函数的注释是必需的</p>
+<p>（7）OneDeclarationPerLine：</p>
+<p>​		①int A&#x3D;0,B&#x3D;0,X&#x3D;0; 每个声明为一行，可以增强代码的可读性</p>
+<p>（8）UnusedAssignment：</p>
+<p>​		①变量’B’的初始化式从未使用（后被重写）</p>
+<p>​		②变量’A’的初始化式从未使用（后被覆盖）</p>
+<p>​		③变量’X’的初始化式从未使用（后被覆盖）</p>
+<p>​		④ X&#x3D;X+1; 赋给变量’X’的值从未使用过</p>
+<p>（9）SystemPrintln：</p>
+<p>​		①使用System.out.println</p>
+<p>（10）ShortVariable：</p>
+<p>​		① Scanner s &#x3D; new Scanner(System.in); 避免使用像s这样名字较		短的变量</p>
+<p>​		②避免使用短名称的变量：如A,B,X</p>
+<p>（11）DataflowAnomalyAnalysis：</p>
+<p>​		①发现变量’A’的’DD’异常</p>
+<p>​			int A&#x3D;0,B&#x3D;0,X&#x3D;0;</p>
+<p>​			Scanner s &#x3D; new Scanner(System.in);</p>
+<p>​		    System.out.println(“输入A：”);A &#x3D; s.nextInt();</p>
+<p>​		②发现变量’X’的’DU’异常</p>
+<p>​		X&#x3D;X+1;</p>
+<p>​		System.out.println(“path e”);</p>
+<p>​	} else {</p>
+<p>​		System.out.println(“path d”);  }</p>
+<p>​		System.out.println(“end main function.”);</p>
+<p>​	}</p>
+<p>​		③发现变量’X’的’DD’异常</p>
+<p>​		int A&#x3D;0,B&#x3D;0,X&#x3D;0;</p>
+<p> ​		Scanner s &#x3D; new Scanner(System.in);</p>
+<p>​		System.out.println(“输入A：”);  A &#x3D; s.nextInt();</p>
+<p>​		 System.out.println(“输入B&#x3D;”);  B &#x3D; s.nextInt();</p>
+<p>​        System.out.println(“输入X&#x3D;”);  X &#x3D; s.nextInt();</p>
+<p>​		④发现变量’B’的’DD’异常</p>
+<p>​		int A&#x3D;0,B&#x3D;0,X&#x3D;0;</p>
+<p>​	Scanner s &#x3D; new Scanner(System.in);</p>
+<p>​	System.out.println(“输入A：”);  A &#x3D; s.nextInt();</p>
+<p>​	System.out.println(“输入B&#x3D;”);  B &#x3D; s.nextInt();</p>
+<p>（12）CloseResource：</p>
+<p>​		①Scanner s &#x3D; new Scanner(System.in); 确保像InputStream对象		这样的资源在使用后被关闭</p>
+</blockquote>
+<p>我感觉第四题应该不会考🙂</p>
+<p><em><strong>声明：除特殊标注外（综合考虑其他同学的答案），答案均为老师原版答案</strong></em></p>
+]]></content>
+      <categories>
+        <category>大二下期末复习</category>
+      </categories>
+      <tags>
+        <tag>软件测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>电大软件测试～第三次作业</title>
+    <url>/2023/06/01/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test3/</url>
+    <content><![CDATA[<h2 id="第三次作业"><a href="#第三次作业" class="headerlink" title="第三次作业"></a>第三次作业</h2><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p>采用JUnit软件测试框架进行测试程序编程，实现对下面java程序进行单元测试，找出其中缺陷。然后修改缺陷，直到通过单元测试，给出测试程序脚本和运行结果界面。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">getMax</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">get_max</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> z)</span> &#123;</span><br><span class="line">	<span class="type">int</span> max;</span><br><span class="line">	<span class="keyword">if</span> (x &gt;= y) </span><br><span class="line">		max = x;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		max = y;</span><br><span class="line">	<span class="keyword">if</span> (z &gt;= x)</span><br><span class="line">		max = z;</span><br><span class="line">	<span class="keyword">return</span> max;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>答：</p>
+<p>测试程序脚本：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.After;</span><br><span class="line"><span class="keyword">import</span> org.junit.Assert;</span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> junit.framework.TestCase;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">getMaxTest</span> <span class="keyword">extends</span> <span class="title class_">TestCase</span> &#123;</span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">       getMax Max=<span class="keyword">new</span> <span class="title class_">getMax</span>();</span><br><span class="line">       <span class="type">int</span> max= Max.get_max(<span class="number">7</span>,<span class="number">9</span>,<span class="number">8</span>);</span><br><span class="line">       Assert.assertEquals(<span class="number">9</span>,max);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Before</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@After</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">tearDown</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>以下是运行结果，发现代码有缺陷：z如果比x大，但比y小，程序会输出z，而实际情况是y最大。</p>
+<p><a href="https://imgse.com/i/p9zYRRP"><img src="https://s1.ax1x.com/2023/06/01/p9zYRRP.png" alt="p9zYRRP.png" border="0" /></a></p>
+<p>修改缺陷，以下是修改后的源程序：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">getMax</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">get_max</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> z)</span> &#123;</span><br><span class="line">	<span class="type">int</span> max;</span><br><span class="line">	<span class="keyword">if</span> (x &gt;= y) </span><br><span class="line">		max = x;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		max = y;</span><br><span class="line">	<span class="keyword">if</span> (z &gt;= max)</span><br><span class="line">		max = z;</span><br><span class="line">	<span class="keyword">return</span> max;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>其实就是将其中一个x改成max</strong></em></p>
+<p>以下是单元测试通过的界面：</p>
+<p><a href="https://imgse.com/i/p9zYoZQ"><img src="https://s1.ax1x.com/2023/06/01/p9zYoZQ.png" alt="p9zYoZQ.png" border="0" /></a></p>
+<p>缺陷修改成功。</p>
+<h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>采用Postman接口测试软件对百度百科<a href="https://baike.baidu.com/">https://baike.baidu.com/</a>搜索引擎进行接口测试。如对词条“软件工程”返回页面内容进行测试验证，给出请求参数设置、Tests脚本、Body响应结果、Test Results结果说明及运行界面。</p>
+<hr>
+<p>以下是笔者的分析过程：</p>
+<p>​	在百度百科页面搜索软件工程，得到的网址如下：</p>
+<p><a href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/25279?fromModule=lemma_search-box">https://baike.baidu.com/item/软件工程/25279?fromModule=lemma_search-box</a></p>
+<p>如果是常规的get请求（大多数项目开发者会这样设置)，在url里面应该有<u>?word&#x3D;软件工程</u>的字符串（不一定是word这个单词，举这个例子表示形如这个url），但是该链接并不如此。</p>
+<p>​	于是猜测是post请求，F12打开开发者工具对输入框进行分析，发现它在form表单里，初步断定是post请求，但是这个表单不是向当前网址提交的，表单的action属性是&#x2F;seach&#x2F;word，所以请求的url应该是其对应的绝对路径（还得拐个弯🥺），为<a href="https://baike.baidu.com/search/word">https://baike.baidu.com/search/word</a></p>
+<p><a href="https://imgse.com/i/p9zUnPA"><img src="https://s1.ax1x.com/2023/06/01/p9zUnPA.png" alt="p9zUnPA.png" border="0" /></a></p>
+<p><a href="https://imgse.com/i/p9zalWR"><img src="https://s1.ax1x.com/2023/06/01/p9zalWR.png" alt="p9zalWR.png" border="0"></a></p>
+<p>​	还要注意到表单的method是GET方法，于是我大胆的猜测get方法也可以，经过postman测试，用get方法向<a href="https://baike.baidu.com/search">https://baike.baidu.com/search</a>也可以达到预期目标。</p>
+<p><a href="https://imgse.com/i/p9za3S1"><img src="https://s1.ax1x.com/2023/06/01/p9za3S1.png" alt="p9za3S1.png" border="0"></a></p>
+<hr>
+<p>答：</p>
+<p>请求参数设置</p>
+<blockquote>
+<p>URL：<a href="https://baike.baidu.com/search/word">https://baike.baidu.com/search/word</a></p>
+<p>Method: post</p>
+<p>Body：</p>
+<p>​	键：word	值：软件工程</p>
+</blockquote>
+<p>或者</p>
+<blockquote>
+<p>URL：<a href="https://baike.baidu.com/search">https://baike.baidu.com/search</a></p>
+<p>Method：GET</p>
+<p>参数：</p>
+<p>​	键：word	值：软件工程</p>
+</blockquote>
+<p>Tests脚本</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">pm.<span class="title function_">test</span>(<span class="string">&quot;Status code is 200&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    pm.<span class="property">response</span>.<span class="property">to</span>.<span class="property">have</span>.<span class="title function_">status</span>(<span class="number">200</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">pm.<span class="title function_">test</span>(<span class="string">&quot;Response body is not empty&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    pm.<span class="property">response</span>.<span class="property">to</span>.<span class="property">have</span>.<span class="title function_">body</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">pm.<span class="title function_">test</span>(<span class="string">&quot;The response contains the word &#x27;软件工程&#x27;&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    pm.<span class="title function_">expect</span>(pm.<span class="property">response</span>.<span class="title function_">text</span>()).<span class="property">to</span>.<span class="title function_">include</span>(<span class="string">&quot;软件工程&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Body响应结果</p>
+<p>把你操作界面的body复制下来就可以啦~内容有很多（毕竟是百度的程序员😎）</p>
+<p>Test Results结果</p>
+<p><a href="https://imgse.com/i/p9za5pn"><img src="https://s1.ax1x.com/2023/06/01/p9za5pn.png" alt="p9za5pn.png" border="0"></a></p>
+<blockquote>
+<p>可以看到Status code is 200，Response body is not empty，The response contains the word ‘软件工程’，三次测试全部通过。</p>
+</blockquote>
+<p>运行界面</p>
+<p><a href="https://imgse.com/i/p9zaIlq"><img src="https://s1.ax1x.com/2023/06/01/p9zaIlq.png" alt="p9zaIlq.png" border="0"></a></p>
+<p>但是为了图方便感觉用get直接向<a href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B">https://baike.baidu.com/item/软件工程</a>发请求也得行（这样子就少了很多分析啦~)</p>
 ]]></content>
       <categories>
         <category>大二下期末复习</category>
@@ -3387,449 +3830,6 @@
       </categories>
       <tags>
         <tag>数据库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>电大软件测试～第三次作业</title>
-    <url>/2023/06/01/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test3/</url>
-    <content><![CDATA[<h2 id="第三次作业"><a href="#第三次作业" class="headerlink" title="第三次作业"></a>第三次作业</h2><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p>采用JUnit软件测试框架进行测试程序编程，实现对下面java程序进行单元测试，找出其中缺陷。然后修改缺陷，直到通过单元测试，给出测试程序脚本和运行结果界面。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">getMax</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">get_max</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> z)</span> &#123;</span><br><span class="line">	<span class="type">int</span> max;</span><br><span class="line">	<span class="keyword">if</span> (x &gt;= y) </span><br><span class="line">		max = x;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		max = y;</span><br><span class="line">	<span class="keyword">if</span> (z &gt;= x)</span><br><span class="line">		max = z;</span><br><span class="line">	<span class="keyword">return</span> max;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>答：</p>
-<p>测试程序脚本：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.After;</span><br><span class="line"><span class="keyword">import</span> org.junit.Assert;</span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> junit.framework.TestCase;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">getMaxTest</span> <span class="keyword">extends</span> <span class="title class_">TestCase</span> &#123;</span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">       getMax Max=<span class="keyword">new</span> <span class="title class_">getMax</span>();</span><br><span class="line">       <span class="type">int</span> max= Max.get_max(<span class="number">7</span>,<span class="number">9</span>,<span class="number">8</span>);</span><br><span class="line">       Assert.assertEquals(<span class="number">9</span>,max);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Before</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@After</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">tearDown</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>以下是运行结果，发现代码有缺陷：z如果比x大，但比y小，程序会输出z，而实际情况是y最大。</p>
-<p><a href="https://imgse.com/i/p9zYRRP"><img src="https://s1.ax1x.com/2023/06/01/p9zYRRP.png" alt="p9zYRRP.png" border="0" /></a></p>
-<p>修改缺陷，以下是修改后的源程序：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">getMax</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">get_max</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> z)</span> &#123;</span><br><span class="line">	<span class="type">int</span> max;</span><br><span class="line">	<span class="keyword">if</span> (x &gt;= y) </span><br><span class="line">		max = x;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		max = y;</span><br><span class="line">	<span class="keyword">if</span> (z &gt;= max)</span><br><span class="line">		max = z;</span><br><span class="line">	<span class="keyword">return</span> max;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><em><strong>其实就是将其中一个x改成max</strong></em></p>
-<p>以下是单元测试通过的界面：</p>
-<p><a href="https://imgse.com/i/p9zYoZQ"><img src="https://s1.ax1x.com/2023/06/01/p9zYoZQ.png" alt="p9zYoZQ.png" border="0" /></a></p>
-<p>缺陷修改成功。</p>
-<h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>采用Postman接口测试软件对百度百科<a href="https://baike.baidu.com/">https://baike.baidu.com/</a>搜索引擎进行接口测试。如对词条“软件工程”返回页面内容进行测试验证，给出请求参数设置、Tests脚本、Body响应结果、Test Results结果说明及运行界面。</p>
-<hr>
-<p>以下是笔者的分析过程：</p>
-<p>​	在百度百科页面搜索软件工程，得到的网址如下：</p>
-<p><a href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/25279?fromModule=lemma_search-box">https://baike.baidu.com/item/软件工程/25279?fromModule=lemma_search-box</a></p>
-<p>如果是常规的get请求（大多数项目开发者会这样设置)，在url里面应该有<u>?word&#x3D;软件工程</u>的字符串（不一定是word这个单词，举这个例子表示形如这个url），但是该链接并不如此。</p>
-<p>​	于是猜测是post请求，F12打开开发者工具对输入框进行分析，发现它在form表单里，初步断定是post请求，但是这个表单不是向当前网址提交的，表单的action属性是&#x2F;seach&#x2F;word，所以请求的url应该是其对应的绝对路径（还得拐个弯🥺），为<a href="https://baike.baidu.com/search/word">https://baike.baidu.com/search/word</a></p>
-<p><a href="https://imgse.com/i/p9zUnPA"><img src="https://s1.ax1x.com/2023/06/01/p9zUnPA.png" alt="p9zUnPA.png" border="0" /></a></p>
-<p><a href="https://imgse.com/i/p9zalWR"><img src="https://s1.ax1x.com/2023/06/01/p9zalWR.png" alt="p9zalWR.png" border="0"></a></p>
-<p>​	还要注意到表单的method是GET方法，于是我大胆的猜测get方法也可以，经过postman测试，用get方法向<a href="https://baike.baidu.com/search">https://baike.baidu.com/search</a>也可以达到预期目标。</p>
-<p><a href="https://imgse.com/i/p9za3S1"><img src="https://s1.ax1x.com/2023/06/01/p9za3S1.png" alt="p9za3S1.png" border="0"></a></p>
-<hr>
-<p>答：</p>
-<p>请求参数设置</p>
-<blockquote>
-<p>URL：<a href="https://baike.baidu.com/search/word">https://baike.baidu.com/search/word</a></p>
-<p>Method: post</p>
-<p>Body：</p>
-<p>​	键：word	值：软件工程</p>
-</blockquote>
-<p>或者</p>
-<blockquote>
-<p>URL：<a href="https://baike.baidu.com/search">https://baike.baidu.com/search</a></p>
-<p>Method：GET</p>
-<p>参数：</p>
-<p>​	键：word	值：软件工程</p>
-</blockquote>
-<p>Tests脚本</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">pm.<span class="title function_">test</span>(<span class="string">&quot;Status code is 200&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    pm.<span class="property">response</span>.<span class="property">to</span>.<span class="property">have</span>.<span class="title function_">status</span>(<span class="number">200</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">pm.<span class="title function_">test</span>(<span class="string">&quot;Response body is not empty&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    pm.<span class="property">response</span>.<span class="property">to</span>.<span class="property">have</span>.<span class="title function_">body</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">pm.<span class="title function_">test</span>(<span class="string">&quot;The response contains the word &#x27;软件工程&#x27;&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    pm.<span class="title function_">expect</span>(pm.<span class="property">response</span>.<span class="title function_">text</span>()).<span class="property">to</span>.<span class="title function_">include</span>(<span class="string">&quot;软件工程&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>Body响应结果</p>
-<p>把你操作界面的body复制下来就可以啦~内容有很多（毕竟是百度的程序员😎）</p>
-<p>Test Results结果</p>
-<p><a href="https://imgse.com/i/p9za5pn"><img src="https://s1.ax1x.com/2023/06/01/p9za5pn.png" alt="p9za5pn.png" border="0"></a></p>
-<blockquote>
-<p>可以看到Status code is 200，Response body is not empty，The response contains the word ‘软件工程’，三次测试全部通过。</p>
-</blockquote>
-<p>运行界面</p>
-<p><a href="https://imgse.com/i/p9zaIlq"><img src="https://s1.ax1x.com/2023/06/01/p9zaIlq.png" alt="p9zaIlq.png" border="0"></a></p>
-<p>但是为了图方便感觉用get直接向<a href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B">https://baike.baidu.com/item/软件工程</a>发请求也得行（这样子就少了很多分析啦~)</p>
-]]></content>
-      <categories>
-        <category>大二下期末复习</category>
-      </categories>
-      <tags>
-        <tag>软件测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>电大软件测试～第二次作业</title>
-    <url>/2023/05/31/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test2/</url>
-    <content><![CDATA[<h2 id="第二次作业及参考答案"><a href="#第二次作业及参考答案" class="headerlink" title="第二次作业及参考答案"></a>第二次作业及参考答案</h2><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p> 在一个客户信息查询界面中，输入条件有“姓名”、“身份证号”、“手机”，采用正交表方式设计该界面查询功能的测试用例。</p>
-<p>答：</p>
-<p>针对本测试有3个输入条件，每个输入有2种取值情况，可以选择L₄(2³)正交表，其正交表值如下表所示：</p>
-<table>
-<thead>
-<tr>
-<th>实验数\列号</th>
-<th>姓名</th>
-<th>身份证号</th>
-<th>手机</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>2</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>3</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr>
-<td>4</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-</tbody></table>
-<p>测试用例：</p>
-<table>
-<thead>
-<tr>
-<th>测试用例&#x2F;查询条件</th>
-<th>姓名</th>
-<th>身份证号</th>
-<th>手机</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>测试用例1</td>
-<td>填写</td>
-<td>填写</td>
-<td>填写</td>
-</tr>
-<tr>
-<td>测试用例2</td>
-<td>填写</td>
-<td>空</td>
-<td>空</td>
-</tr>
-<tr>
-<td>测试用例3</td>
-<td>空</td>
-<td>填写</td>
-<td>空</td>
-</tr>
-<tr>
-<td>测试用例4</td>
-<td>空</td>
-<td>空</td>
-<td>填写</td>
-</tr>
-</tbody></table>
-<h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>根据如下图所示的程序流程图，分别使用语句覆盖测试、判定覆盖测试、条件覆盖测试和路径覆盖测试进行测试用例设计。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/YaGS6fzEgLuwdKp.png"></p>
-<p>答：</p>
-<p><em><strong>1）语句覆盖</strong></em></p>
-<p>设计测试用例，使得被测试程序中的每条可执行语句至少被执行一次。其测试用例表如下所示。</p>
-<table>
-<thead>
-<tr>
-<th>用例序号</th>
-<th>输入数据</th>
-<th>预期输出</th>
-<th>覆盖语句</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>(X,Y)&#x3D;(1,11)</td>
-<td>(X,Y)&#x3D;(1,11)</td>
-<td>X&gt;0 AND Y&gt;10;Y&#x3D;Y&#x2F;X;X&lt;-10 OR Y&lt;0</td>
-</tr>
-<tr>
-<td>2</td>
-<td>(X,Y)&#x3D;(0,-1)</td>
-<td>(X,Y)&#x3D;(0,1)</td>
-<td>X&gt;0 AND Y&gt;10;X&lt;-10 OR Y&lt;0;Y&#x3D;-(Y+X)</td>
-</tr>
-</tbody></table>
-<p><em><strong>2）判定覆盖</strong></em></p>
-<p>设计测试用例,使得被测试程序中的每个判断的”真”、”假”分支至少被执行一次。设X&gt;0 AND Y&gt;10为判定条件M，X&lt;-10 OR Y&lt;0为判定条件N。<br>设计的判定覆盖测试用例如下表所示。</p>
-<table>
-<thead>
-<tr>
-<th>用例序号</th>
-<th>输入数据</th>
-<th>预期输出</th>
-<th>覆盖判定条件</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>(X,Y)&#x3D;(1,11)</td>
-<td>(X,Y)&#x3D;(1,11)</td>
-<td>M为真，N为假</td>
-</tr>
-<tr>
-<td>2</td>
-<td>(X,Y)&#x3D;(0,-1)</td>
-<td>(X,Y)&#x3D;(0,1)</td>
-<td>M为假，N为真</td>
-</tr>
-</tbody></table>
-<p><em><strong>3）条件覆盖</strong></em></p>
-<p>设计测试用例,使得被测试程序中分支判断语句中每个条件的可能值至少被满足一次。<br>设</p>
-<blockquote>
-<p>条件X&gt;0:<br>取真时为T1，取假时为F1<br>条件Y&gt;10:<br>取真时为T2，取假时为F2<br>条件x&lt;-10:<br>取真时为T3，取假时为F3<br>条件Y&lt;0:<br>取真时为T4,取假时为 F4</p>
-</blockquote>
-<p>设计的条件覆盖测试用例如下表所示。</p>
-<table>
-<thead>
-<tr>
-<th>用例序号</th>
-<th>输入数据</th>
-<th>预期输出</th>
-<th>覆盖条件</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>(X,Y)&#x3D;(1,-1)</td>
-<td>(X,Y)&#x3D;(1,0)</td>
-<td>T1，F2，F3，T4</td>
-</tr>
-<tr>
-<td>2</td>
-<td>(X,Y)&#x3D;(-11,11)</td>
-<td>(X,Y)&#x3D;(-11,0)</td>
-<td>F1，T2，T3，F4</td>
-</tr>
-</tbody></table>
-<p><em><strong>4）基本路径覆盖</strong></em></p>
-<p>设计测试用例,使得被测试程序中的基本路径至少被覆盖一次。依据该程序控制流图计算环路复杂度&#x3D;3（判断节点数目+1）,因此,该程序的基本路径有3条。</p>
-<p>设计的基本路径覆盖测试用例如下表所示</p>
-<table>
-<thead>
-<tr>
-<th>用例序号</th>
-<th>输入数据</th>
-<th>预期输出</th>
-<th>覆盖路径</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>(X,Y)&#x3D;(0,0)</td>
-<td>(X,Y)&#x3D;(0,0)</td>
-<td>ace</td>
-</tr>
-<tr>
-<td>2</td>
-<td>(X,Y)&#x3D;(1,11)</td>
-<td>(X,Y)&#x3D;(1,11)</td>
-<td>abce</td>
-</tr>
-<tr>
-<td>3</td>
-<td>(X,Y)&#x3D;(-11,1)</td>
-<td>(X,Y)&#x3D;(-11,10)</td>
-<td>acde</td>
-</tr>
-<tr>
-<td>4</td>
-<td>不存在</td>
-<td>不存在</td>
-<td>abcde</td>
-</tr>
-</tbody></table>
-<p>但是看这篇文章<a href="https://blog.csdn.net/dickdick111/article/details/90478058?ops_request_misc=&request_id=&biz_id=102&utm_term=%E7%8E%AF%E5%BD%A2%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%9A%84%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E5%9B%BE&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-90478058.142%5Ev88%5Econtrol_2,239%5Ev2%5Einsert_chatgpt&spm=1018.2226.3001.4187"> 软件测试——程序控制流图，McCabe环形复杂度_根据程序画出控制流图_Dic0k的博客-CSDN博客</a>，按照它的逻辑，环形复杂度应该有5条。（很奇怪）</p>
-<h3 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h3><p>针对如下样本程序，分析该程序逻辑覆盖测试方法中的语句覆盖、判定覆盖、条件覆盖和基本路径覆盖，并说明哪种方法覆盖率高？为什么？</p>
-<p>被测样本程序</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Coverage</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;start main function:path a...&quot;</span>);</span><br><span class="line">  <span class="type">int</span> A=<span class="number">0</span>,B=<span class="number">0</span>,X=<span class="number">0</span>;</span><br><span class="line">  <span class="type">Scanner</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">  System.out.println(<span class="string">&quot;输入A：&quot;</span>);  A = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入B=&quot;</span>);  B = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入X=&quot;</span>);  X = s.nextInt();</span><br><span class="line">  s.close();  </span><br><span class="line">  <span class="keyword">if</span> (A&gt;<span class="number">1</span> &amp;&amp; B==<span class="number">0</span>) &#123;</span><br><span class="line">	X=X/A;</span><br><span class="line">	System.out.println(<span class="string">&quot;path c&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path b&quot;</span>);  &#125;</span><br><span class="line">  <span class="keyword">if</span> (A==<span class="number">2</span> || X&gt;<span class="number">1</span>) &#123;</span><br><span class="line">	X=X+<span class="number">1</span>;</span><br><span class="line">	System.out.println(<span class="string">&quot;path e&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path d&quot;</span>);  &#125;</span><br><span class="line">  System.out.println(<span class="string">&quot;end main function.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​	答：</p>
-<p>​	<u><em><strong>注：以下答案只参考了标准答案的一部分</strong></em></u></p>
-<p><img src="https://s2.loli.net/2023/05/31/P7NxLnZ9QhsHmyW.png" alt="VF1D1EJ2__LKYS_1_GPGJ5W.png"></p>
-<ol>
-<li><p>语句覆盖测试</p>
-<table>
-<thead>
-<tr>
-<th>用例序号</th>
-<th>输入数据</th>
-<th>预期输出</th>
-<th>覆盖路径</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>(A,B,X)&#x3D;(2,0,2)</td>
-<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
-<td>ace</td>
-</tr>
-<tr>
-<td>2</td>
-<td>(A,B,X)&#x3D;(0,1,1)</td>
-<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
-<td>abd</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>判定覆盖测试</p>
-<table>
-<thead>
-<tr>
-<th>用例序号</th>
-<th>输入数据</th>
-<th>预期输出</th>
-<th>覆盖路径</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>(A,B,X)&#x3D;(2,0,2)</td>
-<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
-<td>ace</td>
-</tr>
-<tr>
-<td>2</td>
-<td>(A,B,X)&#x3D;(0,1,1)</td>
-<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
-<td>abd</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>条件覆盖测试</p>
-<table>
-<thead>
-<tr>
-<th>用例序号</th>
-<th>输入数据</th>
-<th>预期输出</th>
-<th>覆盖路径</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>(A,B,X)&#x3D;(2,0,2)</td>
-<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
-<td>ace</td>
-</tr>
-<tr>
-<td>2</td>
-<td>(A,B,X)&#x3D;(0,1,1)</td>
-<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
-<td>abd</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>基本路径覆盖测试</p>
-<table>
-<thead>
-<tr>
-<th>用例序号</th>
-<th>输入数据</th>
-<th>预期输出</th>
-<th>覆盖路径</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>(A,B,X)&#x3D;(2,0,2)</td>
-<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path c，path e，end main function.</td>
-<td>ace</td>
-</tr>
-<tr>
-<td>2</td>
-<td>(A,B,X)&#x3D;(0,1,1)</td>
-<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path d，end main function.</td>
-<td>abd</td>
-</tr>
-<tr>
-<td>3</td>
-<td>(A,B,X)&#x3D;(0,1,2)</td>
-<td>start main function:path a…，输入A：，输入B&#x3D;，输入X&#x3D;，path b，path e，end main function.</td>
-<td>abe</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-<p>综上所述，基本路径覆盖测试用的测试用例最多，覆盖的路径也最多，故基本路径覆盖的覆盖率最高。</p>
-<p><em><strong>注：<a href="https://blog.csdn.net/The_Azur/article/details/117936347">环形复杂度必定是基本路径个数的上限。</a></strong></em></p>
-<p><img src="https://s2.loli.net/2023/05/31/HtDjYwSso3WKVFn.png" alt="Snipaste_2023-05-31_21-48-19.png"></p>
-<h3 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h3><p>使用PMD代码分析工具针对如下被测程序，找出该程序存在的潜在缺陷，给出结果界面截图，并说明各个缺陷出现的原因。</p>
-<p>被测样本程序</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Coverage</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;start main function:path a...&quot;</span>);</span><br><span class="line">  <span class="type">int</span> A=<span class="number">0</span>,B=<span class="number">0</span>,X=<span class="number">0</span>;</span><br><span class="line">  <span class="type">Scanner</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">  System.out.println(<span class="string">&quot;输入A：&quot;</span>);  A = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入B=&quot;</span>);  B = s.nextInt();</span><br><span class="line">  System.out.println(<span class="string">&quot;输入X=&quot;</span>);  X = s.nextInt();</span><br><span class="line">  s.close();  </span><br><span class="line">  <span class="keyword">if</span> (A&gt;<span class="number">1</span> &amp;&amp; B==<span class="number">0</span>) &#123;</span><br><span class="line">	X=X/A;</span><br><span class="line">	System.out.println(<span class="string">&quot;path c&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path b&quot;</span>);  &#125;</span><br><span class="line">  <span class="keyword">if</span> (A==<span class="number">2</span> || X&gt;<span class="number">1</span>) &#123;</span><br><span class="line">	X=X+<span class="number">1</span>;</span><br><span class="line">	System.out.println(<span class="string">&quot;path e&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;path d&quot;</span>);  &#125;</span><br><span class="line">  System.out.println(<span class="string">&quot;end main function.&quot;</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>答：</p>
-<p><u><em><strong>注：以下答案只参考了标准答案的一部分</strong></em></u></p>
-<p><a href="https://smms.app/image/5I4amZs2cXEldHv" target="_blank"><img src="https://s2.loli.net/2023/05/31/5I4amZs2cXEldHv.jpg" alt="Z__LBIY38___C`L5GCFZSVF.jpg"></a></p>
-<p>以下是可能的缺陷（感觉每个人做出来都不一样哈哈哈哈😆）：</p>
-<blockquote>
-<p>（1）VariableNamingConventions：</p>
-<p>​		①变量应以小写字符开头，’A’’B’’X’均以大写字符开头</p>
-<p>（2）UseUtilityClass：</p>
-<p>​		①所有方法都是静态的，可以考虑使用实用工具类，或添加一个私		有构造函数，或使类抽象来屏蔽这个警告</p>
-<p>（3）LocalVariableCouldBeFinal：</p>
-<p>​		①局部变量’s’可以声明为final</p>
-<p>（4）LocalVaraiableNamingConventions：</p>
-<p>​		①局部变量名’A’’B’’X’不匹配’[a-z][a-zA-Z0-9]*’</p>
-<p>（5）MethodArgumentCouldBeFinal：</p>
-<p>​		①参数’args’未赋值，可以声明为final</p>
-<p>（6）CommentRequired：</p>
-<p>​		①类注释是必需的</p>
-<p>​		②公共方法和构造函数的注释是必需的</p>
-<p>（7）OneDeclarationPerLine：</p>
-<p>​		①int A&#x3D;0,B&#x3D;0,X&#x3D;0; 每个声明为一行，可以增强代码的可读性</p>
-<p>（8）UnusedAssignment：</p>
-<p>​		①变量’B’的初始化式从未使用（后被重写）</p>
-<p>​		②变量’A’的初始化式从未使用（后被覆盖）</p>
-<p>​		③变量’X’的初始化式从未使用（后被覆盖）</p>
-<p>​		④ X&#x3D;X+1; 赋给变量’X’的值从未使用过</p>
-<p>（9）SystemPrintln：</p>
-<p>​		①使用System.out.println</p>
-<p>（10）ShortVariable：</p>
-<p>​		① Scanner s &#x3D; new Scanner(System.in); 避免使用像s这样名字较		短的变量</p>
-<p>​		②避免使用短名称的变量：如A,B,X</p>
-<p>（11）DataflowAnomalyAnalysis：</p>
-<p>​		①发现变量’A’的’DD’异常</p>
-<p>​			int A&#x3D;0,B&#x3D;0,X&#x3D;0;</p>
-<p>​			Scanner s &#x3D; new Scanner(System.in);</p>
-<p>​		    System.out.println(“输入A：”);A &#x3D; s.nextInt();</p>
-<p>​		②发现变量’X’的’DU’异常</p>
-<p>​		X&#x3D;X+1;</p>
-<p>​		System.out.println(“path e”);</p>
-<p>​	} else {</p>
-<p>​		System.out.println(“path d”);  }</p>
-<p>​		System.out.println(“end main function.”);</p>
-<p>​	}</p>
-<p>​		③发现变量’X’的’DD’异常</p>
-<p>​		int A&#x3D;0,B&#x3D;0,X&#x3D;0;</p>
-<p> ​		Scanner s &#x3D; new Scanner(System.in);</p>
-<p>​		System.out.println(“输入A：”);  A &#x3D; s.nextInt();</p>
-<p>​		 System.out.println(“输入B&#x3D;”);  B &#x3D; s.nextInt();</p>
-<p>​        System.out.println(“输入X&#x3D;”);  X &#x3D; s.nextInt();</p>
-<p>​		④发现变量’B’的’DD’异常</p>
-<p>​		int A&#x3D;0,B&#x3D;0,X&#x3D;0;</p>
-<p>​	Scanner s &#x3D; new Scanner(System.in);</p>
-<p>​	System.out.println(“输入A：”);  A &#x3D; s.nextInt();</p>
-<p>​	System.out.println(“输入B&#x3D;”);  B &#x3D; s.nextInt();</p>
-<p>（12）CloseResource：</p>
-<p>​		①Scanner s &#x3D; new Scanner(System.in); 确保像InputStream对象		这样的资源在使用后被关闭</p>
-</blockquote>
-<p>我感觉第四题应该不会考🙂</p>
-<p><em><strong>声明：除特殊标注外（综合考虑其他同学的答案），答案均为老师原版答案</strong></em></p>
-]]></content>
-      <categories>
-        <category>大二下期末复习</category>
-      </categories>
-      <tags>
-        <tag>软件测试</tag>
       </tags>
   </entry>
   <entry>
