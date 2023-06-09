@@ -107,75 +107,6 @@
       </tags>
   </entry>
   <entry>
-    <title>补充函数与字符串</title>
-    <url>/2023/06/08/Go/11/</url>
-    <content><![CDATA[<p>补充关于闭包，递归，匿名函数，回调函数，strings包、strconv包的使用。</p>
-<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><p>go语言支持函数式编程：<br>支持将一个函数作为另一个函数的参数，也支持将一个函数作为另一个函数的返回值。</p>
-<p>闭包(closure)：<br> 一个外层函数中，有内层函数，该内层函数中，会操作外层函数的局部变量(外层函数中的参数，或者外层函数中直接定义的变量)，并且该外层函数的返回值就是这个内层函数。这个内层函数和外层函数的局部变量，统称为闭包结构。</p>
-<p>局部变量的生命周期会发生改变，正常的局部变量随着函数调用而创建，随着函数的结束而销毁。<br>但是闭包结构中的外层函数的局部变量并不会随着外层函数的结束而销毁，因为内层函数还要继续使用。</p>
-<p>示例代码：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">    res1 := increment()      <span class="comment">//res1 = fun</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;%T\n&quot;</span>, res1) <span class="comment">//func() int</span></span><br><span class="line">    fmt.Println(res1)</span><br><span class="line">    v1 := res1()</span><br><span class="line">    fmt.Println(v1) <span class="comment">//1</span></span><br><span class="line">    v2 := res1()</span><br><span class="line">    fmt.Println(v2) <span class="comment">//2</span></span><br><span class="line">    fmt.Println(res1())</span><br><span class="line">    fmt.Println(res1())</span><br><span class="line">    fmt.Println(res1())</span><br><span class="line">    fmt.Println(res1())</span><br><span class="line"></span><br><span class="line">    res2 := increment()</span><br><span class="line">    fmt.Println(res2)</span><br><span class="line">    v3 := res2()</span><br><span class="line">    fmt.Println(v3) <span class="comment">//1</span></span><br><span class="line">    fmt.Println(res2())</span><br><span class="line"></span><br><span class="line">    fmt.Println(res1())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">increment</span><span class="params">()</span></span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="type">int</span> &#123; <span class="comment">//外层函数</span></span><br><span class="line">    <span class="comment">//1.定义了一个局部变量</span></span><br><span class="line">    i := <span class="number">0</span></span><br><span class="line">    <span class="comment">//2.定义了一个匿名函数，给变量自增并返回</span></span><br><span class="line">    fun := <span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="type">int</span> &#123; <span class="comment">//内层函数</span></span><br><span class="line">       i++</span><br><span class="line">       <span class="keyword">return</span> i</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//3.返回该匿名函数</span></span><br><span class="line">    <span class="keyword">return</span> fun</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">func() int</span><br><span class="line">0xdbfd60</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">0xdbfd40</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">7</span><br></pre></td></tr></table></figure>
-
-<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><p>递归函数(recursion)：一个函数自己调用自己，就叫做递归函数。<br>一个函数自己调用自己，就叫做递归调用，一个递归函数一定要有出口，否则会陷入死循环。</p>
-<p>示例代码：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	sum := getSum(<span class="number">5</span>)</span><br><span class="line">	fmt.Println(sum)</span><br><span class="line"></span><br><span class="line">	res := getFibonacci(<span class="number">12</span>)</span><br><span class="line">	fmt.Println(res)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getFibonacci</span><span class="params">(n <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> n == <span class="number">1</span> || n == <span class="number">2</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> getFibonacci(n<span class="number">-1</span>) + getFibonacci(n<span class="number">-2</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getSum</span><span class="params">(n <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;**********&quot;</span>)</span><br><span class="line">	<span class="keyword">if</span> n == <span class="number">1</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> getSum(n<span class="number">-1</span>) + n</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">**********</span><br><span class="line">**********</span><br><span class="line">**********</span><br><span class="line">**********</span><br><span class="line">**********</span><br><span class="line">15</span><br><span class="line">144</span><br></pre></td></tr></table></figure>
-
-<h1 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h1><p>匿名：没有名字<br>匿名函数：没有名字的函数。</p>
-<p>定义一个匿名函数，直接进行调用。通常只能使用一次。也可以使用匿名函数赋值给某个函数变量，那么就可以调用多次了。</p>
-<p>匿名函数：<br>Go语言是支持函数式编程：</p>
-<p>将匿名函数作为另一个函数的参数，回调函数<br>将匿名函数作为另一个函数的返回值，可以形成闭包结构。</p>
-<p>示例代码：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fun1()</span><br><span class="line">	fun1()</span><br><span class="line">	fun2 := fun1</span><br><span class="line">	fun2()</span><br><span class="line"></span><br><span class="line">	<span class="comment">//匿名函数</span></span><br><span class="line">	<span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;我是一个匿名函数。。&quot;</span>)</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	fun3 := <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;我也是一个匿名函数。。&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	fun3()</span><br><span class="line">	fun3()</span><br><span class="line"></span><br><span class="line">	<span class="comment">//定义带参数的匿名函数</span></span><br><span class="line">	<span class="function"><span class="keyword">func</span><span class="params">(a, b <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">		fmt.Println(a, b)</span><br><span class="line">	&#125;(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//定义带返回值的匿名函数</span></span><br><span class="line">	res1 := <span class="function"><span class="keyword">func</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> a + b</span><br><span class="line">	&#125;(<span class="number">10</span>, <span class="number">20</span>) <span class="comment">//匿名函数调用了，将执行结果给res1</span></span><br><span class="line">	fmt.Println(res1)</span><br><span class="line"></span><br><span class="line">	res2 := <span class="function"><span class="keyword">func</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> a + b</span><br><span class="line">	&#125; <span class="comment">//将匿名函数的值，赋值给res2</span></span><br><span class="line">	fmt.Println(res2)</span><br><span class="line"></span><br><span class="line">	fmt.Println(res2(<span class="number">100</span>, <span class="number">200</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun1</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;我是fun1()函数。。&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我是fun1()函数。。</span><br><span class="line">我是fun1()函数。。</span><br><span class="line">我是fun1()函数。。</span><br><span class="line">我是一个匿名函数。。</span><br><span class="line">我也是一个匿名函数。。</span><br><span class="line">我也是一个匿名函数。。</span><br><span class="line">1 2</span><br><span class="line">30</span><br><span class="line">0x63e160</span><br><span class="line">300</span><br></pre></td></tr></table></figure>
-
-<h1 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h1><p>高阶函数：<br>根据go语言的数据类型的特点，可以将一个函数作为另一个函数的参数。</p>
-<p>fun1(),fun2()<br>将fun1函数作为了fun2这个函数的参数。</p>
-<p>fun2函数：就叫高阶函数<br>接收了一个函数作为参数的函数，高阶函数</p>
-<p>fun1函数：回调函数<br>作为另一个函数的参数的函数，叫做回调函数。</p>
-<p>示例代码：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//设计一个函数，用于求两个整数的加减乘除运算</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T\n&quot;</span>, add)  <span class="comment">//func(int, int) int</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T\n&quot;</span>, oper) <span class="comment">//func(int, int, func(int, int) int) int</span></span><br><span class="line"></span><br><span class="line">	res1 := add(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">	fmt.Println(res1)</span><br><span class="line"></span><br><span class="line">	res2 := oper(<span class="number">10</span>, <span class="number">20</span>, add)</span><br><span class="line">	fmt.Println(res2)</span><br><span class="line"></span><br><span class="line">	res3 := oper(<span class="number">5</span>, <span class="number">2</span>, sub)</span><br><span class="line">	fmt.Println(res3)</span><br><span class="line"></span><br><span class="line">	fun1 := <span class="function"><span class="keyword">func</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> a * b</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	res4 := oper(<span class="number">10</span>, <span class="number">4</span>, fun1)</span><br><span class="line">	fmt.Println(res4)</span><br><span class="line"></span><br><span class="line">	res5 := oper(<span class="number">100</span>, <span class="number">8</span>, <span class="function"><span class="keyword">func</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> b == <span class="number">0</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">&quot;除数不能为零&quot;</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> a / b</span><br><span class="line">	&#125;)</span><br><span class="line">	fmt.Println(res5)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">oper</span><span class="params">(a, b <span class="type">int</span>, fun <span class="keyword">func</span>(<span class="type">int</span>, <span class="type">int</span>)</span></span> <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	fmt.Println(a, b, fun) <span class="comment">//打印3个参数</span></span><br><span class="line">	res := fun(a, b)</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加法运算</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> a + b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 减法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sub</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> a - b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">func(int, int) int</span><br><span class="line">func(int, int, func(int, int) int) int</span><br><span class="line">3</span><br><span class="line">10 20 0xb8fc20</span><br><span class="line">30</span><br><span class="line">5 2 0xb8fc40</span><br><span class="line">3</span><br><span class="line">10 4 0xb8fc60</span><br><span class="line">40</span><br><span class="line">100 8 0xb8fc80</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
-
-<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><p>Go中的字符串是一个字节的切片。<br>可以通过将其内容封装在“”中来创建字符串。Go中的字符串是Unicode兼容的，并且是UTF-8编码的。</p>
-<p>字符串是一些字节的集合。理解为一个字符的序列。<br>每个字符都有固定的位置(索引，下标，index：从0开始，到长度减1)<br>示例代码：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//1.定义字符串</span></span><br><span class="line">	s1 := <span class="string">&quot;hello中国&quot;</span></span><br><span class="line">	s2 := <span class="string">`hello world`</span></span><br><span class="line">	fmt.Println(s1)</span><br><span class="line">	fmt.Println(s2)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//2.字符串的长度：返回的是字节的个数</span></span><br><span class="line">	fmt.Println(<span class="built_in">len</span>(s1))</span><br><span class="line">	fmt.Println(<span class="built_in">len</span>(s2))</span><br><span class="line"></span><br><span class="line">	<span class="comment">//3.获取某个字节</span></span><br><span class="line">	fmt.Println(s2[<span class="number">0</span>]) <span class="comment">//获取字符串中的第一个字节</span></span><br><span class="line">	a := <span class="string">&#x27;h&#x27;</span></span><br><span class="line">	b := <span class="number">104</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;%c,%c,%c\n&quot;</span>, s2[<span class="number">0</span>], a, b)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//4.字符串的遍历</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(s2); i++ &#123;</span><br><span class="line">		<span class="comment">//fmt.Println(s2[i])</span></span><br><span class="line">		fmt.Printf(<span class="string">&quot;%c\t&quot;</span>, s2[i])</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println()</span><br><span class="line"></span><br><span class="line">	<span class="comment">//for range</span></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> s2 &#123;</span><br><span class="line">		<span class="comment">//fmt.Println(i,v)</span></span><br><span class="line">		fmt.Printf(<span class="string">&quot;%c&quot;</span>, v)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println()</span><br><span class="line"></span><br><span class="line">	<span class="comment">//5.字符串是字节的集合</span></span><br><span class="line">	slice1 := []<span class="type">byte</span>&#123;<span class="number">65</span>, <span class="number">66</span>, <span class="number">67</span>, <span class="number">68</span>, <span class="number">69</span>&#125;</span><br><span class="line">	s3 := <span class="type">string</span>(slice1) <span class="comment">//根据一个字节切片，构建字符串</span></span><br><span class="line">	fmt.Println(s3)</span><br><span class="line"></span><br><span class="line">	s4 := <span class="string">&quot;abcdef&quot;</span></span><br><span class="line">	slice2 := []<span class="type">byte</span>(s4) <span class="comment">//根据字符串，获取对应的字节切片</span></span><br><span class="line">	fmt.Println(slice2)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//6.字符串不能修改</span></span><br><span class="line">	fmt.Println(s4)</span><br><span class="line">	<span class="comment">//s4[2] = &#x27;B&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hello中国</span><br><span class="line">hello world</span><br><span class="line">11</span><br><span class="line">11</span><br><span class="line">104</span><br><span class="line">h,h,h</span><br><span class="line">h       e       l       l       o               w       o       r       l      d</span><br><span class="line">hello world</span><br><span class="line">ABCDE</span><br><span class="line">[97 98 99 100 101 102]</span><br><span class="line">abcdef</span><br></pre></td></tr></table></figure>
-
-<h2 id="strings包"><a href="#strings包" class="headerlink" title="strings包"></a>strings包</h2><p>示例代码：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;strings&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	s1 := <span class="string">&quot;helloworld&quot;</span></span><br><span class="line">	<span class="comment">//1.是否包含指定的内容--&gt;bool</span></span><br><span class="line">	fmt.Println(strings.Contains(s1, <span class="string">&quot;abc&quot;</span>))</span><br><span class="line">	<span class="comment">//2.是否包含chars中任意的一个字符即可</span></span><br><span class="line">	fmt.Println(strings.ContainsAny(s1, <span class="string">&quot;abcd&quot;</span>))</span><br><span class="line">	<span class="comment">//3.统计substr在s中出现的次数</span></span><br><span class="line">	fmt.Println(strings.Count(s1, <span class="string">&quot;lloo&quot;</span>))</span><br><span class="line"></span><br><span class="line">	<span class="comment">//4.以xxx前缀开头，以xxx后缀结尾</span></span><br><span class="line">	s2 := <span class="string">&quot;20230525课堂笔记.txt&quot;</span></span><br><span class="line">	<span class="keyword">if</span> strings.HasPrefix(s2, <span class="string">&quot;202305&quot;</span>) &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;23年5月的文件。。&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> strings.HasSuffix(s2, <span class="string">&quot;.txt&quot;</span>) &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;文本文档。。&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//索引</span></span><br><span class="line">	<span class="comment">//helloworld</span></span><br><span class="line">	fmt.Println(strings.Index(s1, <span class="string">&quot;lloo&quot;</span>))     <span class="comment">//查找substr在s中的位置，如果不存在就返回-1</span></span><br><span class="line">	fmt.Println(strings.IndexAny(s1, <span class="string">&quot;abcdh&quot;</span>)) <span class="comment">//查找chars中任意的一个字符，出现在s中的位置</span></span><br><span class="line">	fmt.Println(strings.LastIndex(s1, <span class="string">&quot;l&quot;</span>))    <span class="comment">//查找substr在s中最后一次出现的位置</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//字符串的拼接</span></span><br><span class="line">	ss1 := []<span class="type">string</span>&#123;<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;world&quot;</span>, <span class="string">&quot;hello&quot;</span>, <span class="string">&quot;ruby&quot;</span>&#125;</span><br><span class="line">	s3 := strings.Join(ss1, <span class="string">&quot;-&quot;</span>)</span><br><span class="line">	fmt.Println(s3)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//切割</span></span><br><span class="line">	s4 := <span class="string">&quot;123,4563,aaa,49595,45&quot;</span></span><br><span class="line">	ss2 := strings.Split(s4, <span class="string">&quot;,&quot;</span>)	<span class="comment">//数组</span></span><br><span class="line">	<span class="comment">//fmt.Println(ss2)</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(ss2); i++ &#123;</span><br><span class="line">		fmt.Println(ss2[i])</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//重复，自己拼接自己count次</span></span><br><span class="line">	s5 := strings.Repeat(<span class="string">&quot;hello&quot;</span>, <span class="number">5</span>)</span><br><span class="line">	fmt.Println(s5)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//替换</span></span><br><span class="line">	<span class="comment">//helloworld</span></span><br><span class="line">	s6 := strings.Replace(s1, <span class="string">&quot;l&quot;</span>, <span class="string">&quot;*&quot;</span>, <span class="number">-1</span>)</span><br><span class="line">	fmt.Println(s6)</span><br><span class="line">	<span class="comment">//fmt.Println(strings.Repeat(&quot;hello&quot;,5))</span></span><br><span class="line"></span><br><span class="line">	s7 := <span class="string">&quot;heLLo WOrlD**123..&quot;</span></span><br><span class="line">	fmt.Println(strings.ToLower(s7))</span><br><span class="line">	fmt.Println(strings.ToUpper(s7))</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">		截取子串：</span></span><br><span class="line"><span class="comment">		substring(start,end)--&gt;substr</span></span><br><span class="line"><span class="comment">		str[start:end]--&gt;substr</span></span><br><span class="line"><span class="comment">			包含start，不包含end下标</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	fmt.Println(s1)</span><br><span class="line">	s8 := s1[:<span class="number">5</span>]</span><br><span class="line">	fmt.Println(s8)</span><br><span class="line">	fmt.Println(s1[<span class="number">5</span>:])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">false</span><br><span class="line">true</span><br><span class="line">0</span><br><span class="line">23年5月的文件。。</span><br><span class="line">文本文档。。</span><br><span class="line">-1</span><br><span class="line">0</span><br><span class="line">8</span><br><span class="line">abc-world-hello-ruby</span><br><span class="line">123</span><br><span class="line">4563</span><br><span class="line">aaa</span><br><span class="line">49595</span><br><span class="line">45</span><br><span class="line">hellohellohellohellohello</span><br><span class="line">he**owor*d</span><br><span class="line">hello world**123..</span><br><span class="line">HELLO WORLD**123..</span><br><span class="line">helloworld</span><br><span class="line">hello</span><br><span class="line">world</span><br></pre></td></tr></table></figure>
-
-<h2 id="strconv包"><a href="#strconv包" class="headerlink" title="strconv包"></a>strconv包</h2><p>示例代码：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;strconv&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//1.bool类型</span></span><br><span class="line">	s1 := <span class="string">&quot;true&quot;</span></span><br><span class="line">	b1, err := strconv.ParseBool(s1)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%t\n&quot;</span>, b1, b1)	<span class="comment">//%t是bool类型</span></span><br><span class="line"></span><br><span class="line">	ss1 := strconv.FormatBool(b1)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%s\n&quot;</span>, ss1, ss1)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//2.整数</span></span><br><span class="line">	s2 := <span class="string">&quot;100&quot;</span></span><br><span class="line">	i2, err := strconv.ParseInt(s2, <span class="number">2</span>, <span class="number">64</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%d\n&quot;</span>, i2, i2)</span><br><span class="line"></span><br><span class="line">	ss2 := strconv.FormatInt(i2, <span class="number">10</span>)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%s\n&quot;</span>, ss2, ss2)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//itoa(),atoi()</span></span><br><span class="line">	i3, err := strconv.Atoi(<span class="string">&quot;-42&quot;</span>) <span class="comment">//转为int类型</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%d\n&quot;</span>, i3, i3)</span><br><span class="line">	ss3 := strconv.Itoa(<span class="number">-42</span>)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%s\n&quot;</span>, ss3, ss3)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool,true</span><br><span class="line">string,true</span><br><span class="line">int64,4</span><br><span class="line">string,4</span><br><span class="line">int,-42</span><br><span class="line">string,-42</span><br></pre></td></tr></table></figure>
-
-<p>“strconv”用于进行字符串和基本类型之间的转换。在main函数中，首先演示了布尔类型的转换。使用strconv.ParseBool函数将s1转换为bool类型的变量b1。如果转换过程中出现错误，则会打印错误信息并返回。否则，使用fmt.Printf函数输出b1的类型和值。接下来，使用strconv.FormatBool函数将b1转换为字符串类型的变量ss1，演示了整数类型的转换，使用strconv.ParseInt函数将s2按照二进制解析为int64类型的变量i2。使用strconv.FormatInt函数将i2按照十进制转换为字符串类型的变量ss2，使用strconv.Atoi函数将字符串”-42”转换为int类型的变量i3，使用strconv.Itoa函数将整数-42转换为字符串类型的变量ss3。</p>
-]]></content>
-      <categories>
-        <category>青训营</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>大二自学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>方法与接口</title>
     <url>/2023/06/06/Go/10/</url>
     <content><![CDATA[<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="什么是方法"><a href="#什么是方法" class="headerlink" title="什么是方法"></a>什么是方法</h2><p>Go 语言中同时有函数和方法。一个方法就是一个包含了接受者的函数，接受者可以是命名类型或者结构体类型的一个值或者是一个指针。所有给定类型的方法属于该类型的方法集。</p>
@@ -682,6 +613,75 @@
       </tags>
   </entry>
   <entry>
+    <title>补充函数与字符串</title>
+    <url>/2023/06/08/Go/11/</url>
+    <content><![CDATA[<p>补充关于闭包，递归，匿名函数，回调函数，strings包、strconv包的使用。</p>
+<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><p>go语言支持函数式编程：<br>支持将一个函数作为另一个函数的参数，也支持将一个函数作为另一个函数的返回值。</p>
+<p>闭包(closure)：<br> 一个外层函数中，有内层函数，该内层函数中，会操作外层函数的局部变量(外层函数中的参数，或者外层函数中直接定义的变量)，并且该外层函数的返回值就是这个内层函数。这个内层函数和外层函数的局部变量，统称为闭包结构。</p>
+<p>局部变量的生命周期会发生改变，正常的局部变量随着函数调用而创建，随着函数的结束而销毁。<br>但是闭包结构中的外层函数的局部变量并不会随着外层函数的结束而销毁，因为内层函数还要继续使用。</p>
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">    res1 := increment()      <span class="comment">//res1 = fun</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;%T\n&quot;</span>, res1) <span class="comment">//func() int</span></span><br><span class="line">    fmt.Println(res1)</span><br><span class="line">    v1 := res1()</span><br><span class="line">    fmt.Println(v1) <span class="comment">//1</span></span><br><span class="line">    v2 := res1()</span><br><span class="line">    fmt.Println(v2) <span class="comment">//2</span></span><br><span class="line">    fmt.Println(res1())</span><br><span class="line">    fmt.Println(res1())</span><br><span class="line">    fmt.Println(res1())</span><br><span class="line">    fmt.Println(res1())</span><br><span class="line"></span><br><span class="line">    res2 := increment()</span><br><span class="line">    fmt.Println(res2)</span><br><span class="line">    v3 := res2()</span><br><span class="line">    fmt.Println(v3) <span class="comment">//1</span></span><br><span class="line">    fmt.Println(res2())</span><br><span class="line"></span><br><span class="line">    fmt.Println(res1())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">increment</span><span class="params">()</span></span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="type">int</span> &#123; <span class="comment">//外层函数</span></span><br><span class="line">    <span class="comment">//1.定义了一个局部变量</span></span><br><span class="line">    i := <span class="number">0</span></span><br><span class="line">    <span class="comment">//2.定义了一个匿名函数，给变量自增并返回</span></span><br><span class="line">    fun := <span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="type">int</span> &#123; <span class="comment">//内层函数</span></span><br><span class="line">       i++</span><br><span class="line">       <span class="keyword">return</span> i</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//3.返回该匿名函数</span></span><br><span class="line">    <span class="keyword">return</span> fun</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">func() int</span><br><span class="line">0xdbfd60</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">0xdbfd40</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">7</span><br></pre></td></tr></table></figure>
+
+<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><p>递归函数(recursion)：一个函数自己调用自己，就叫做递归函数。<br>一个函数自己调用自己，就叫做递归调用，一个递归函数一定要有出口，否则会陷入死循环。</p>
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	sum := getSum(<span class="number">5</span>)</span><br><span class="line">	fmt.Println(sum)</span><br><span class="line"></span><br><span class="line">	res := getFibonacci(<span class="number">12</span>)</span><br><span class="line">	fmt.Println(res)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getFibonacci</span><span class="params">(n <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> n == <span class="number">1</span> || n == <span class="number">2</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> getFibonacci(n<span class="number">-1</span>) + getFibonacci(n<span class="number">-2</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getSum</span><span class="params">(n <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;**********&quot;</span>)</span><br><span class="line">	<span class="keyword">if</span> n == <span class="number">1</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> getSum(n<span class="number">-1</span>) + n</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">**********</span><br><span class="line">**********</span><br><span class="line">**********</span><br><span class="line">**********</span><br><span class="line">**********</span><br><span class="line">15</span><br><span class="line">144</span><br></pre></td></tr></table></figure>
+
+<h1 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h1><p>匿名：没有名字<br>匿名函数：没有名字的函数。</p>
+<p>定义一个匿名函数，直接进行调用。通常只能使用一次。也可以使用匿名函数赋值给某个函数变量，那么就可以调用多次了。</p>
+<p>匿名函数：<br>Go语言是支持函数式编程：</p>
+<p>将匿名函数作为另一个函数的参数，回调函数<br>将匿名函数作为另一个函数的返回值，可以形成闭包结构。</p>
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fun1()</span><br><span class="line">	fun1()</span><br><span class="line">	fun2 := fun1</span><br><span class="line">	fun2()</span><br><span class="line"></span><br><span class="line">	<span class="comment">//匿名函数</span></span><br><span class="line">	<span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;我是一个匿名函数。。&quot;</span>)</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	fun3 := <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;我也是一个匿名函数。。&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	fun3()</span><br><span class="line">	fun3()</span><br><span class="line"></span><br><span class="line">	<span class="comment">//定义带参数的匿名函数</span></span><br><span class="line">	<span class="function"><span class="keyword">func</span><span class="params">(a, b <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">		fmt.Println(a, b)</span><br><span class="line">	&#125;(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//定义带返回值的匿名函数</span></span><br><span class="line">	res1 := <span class="function"><span class="keyword">func</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> a + b</span><br><span class="line">	&#125;(<span class="number">10</span>, <span class="number">20</span>) <span class="comment">//匿名函数调用了，将执行结果给res1</span></span><br><span class="line">	fmt.Println(res1)</span><br><span class="line"></span><br><span class="line">	res2 := <span class="function"><span class="keyword">func</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> a + b</span><br><span class="line">	&#125; <span class="comment">//将匿名函数的值，赋值给res2</span></span><br><span class="line">	fmt.Println(res2)</span><br><span class="line"></span><br><span class="line">	fmt.Println(res2(<span class="number">100</span>, <span class="number">200</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun1</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;我是fun1()函数。。&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我是fun1()函数。。</span><br><span class="line">我是fun1()函数。。</span><br><span class="line">我是fun1()函数。。</span><br><span class="line">我是一个匿名函数。。</span><br><span class="line">我也是一个匿名函数。。</span><br><span class="line">我也是一个匿名函数。。</span><br><span class="line">1 2</span><br><span class="line">30</span><br><span class="line">0x63e160</span><br><span class="line">300</span><br></pre></td></tr></table></figure>
+
+<h1 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h1><p>高阶函数：<br>根据go语言的数据类型的特点，可以将一个函数作为另一个函数的参数。</p>
+<p>fun1(),fun2()<br>将fun1函数作为了fun2这个函数的参数。</p>
+<p>fun2函数：就叫高阶函数<br>接收了一个函数作为参数的函数，高阶函数</p>
+<p>fun1函数：回调函数<br>作为另一个函数的参数的函数，叫做回调函数。</p>
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//设计一个函数，用于求两个整数的加减乘除运算</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T\n&quot;</span>, add)  <span class="comment">//func(int, int) int</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T\n&quot;</span>, oper) <span class="comment">//func(int, int, func(int, int) int) int</span></span><br><span class="line"></span><br><span class="line">	res1 := add(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">	fmt.Println(res1)</span><br><span class="line"></span><br><span class="line">	res2 := oper(<span class="number">10</span>, <span class="number">20</span>, add)</span><br><span class="line">	fmt.Println(res2)</span><br><span class="line"></span><br><span class="line">	res3 := oper(<span class="number">5</span>, <span class="number">2</span>, sub)</span><br><span class="line">	fmt.Println(res3)</span><br><span class="line"></span><br><span class="line">	fun1 := <span class="function"><span class="keyword">func</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> a * b</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	res4 := oper(<span class="number">10</span>, <span class="number">4</span>, fun1)</span><br><span class="line">	fmt.Println(res4)</span><br><span class="line"></span><br><span class="line">	res5 := oper(<span class="number">100</span>, <span class="number">8</span>, <span class="function"><span class="keyword">func</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> b == <span class="number">0</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">&quot;除数不能为零&quot;</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> a / b</span><br><span class="line">	&#125;)</span><br><span class="line">	fmt.Println(res5)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">oper</span><span class="params">(a, b <span class="type">int</span>, fun <span class="keyword">func</span>(<span class="type">int</span>, <span class="type">int</span>)</span></span> <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	fmt.Println(a, b, fun) <span class="comment">//打印3个参数</span></span><br><span class="line">	res := fun(a, b)</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加法运算</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> a + b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 减法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sub</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> a - b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">func(int, int) int</span><br><span class="line">func(int, int, func(int, int) int) int</span><br><span class="line">3</span><br><span class="line">10 20 0xb8fc20</span><br><span class="line">30</span><br><span class="line">5 2 0xb8fc40</span><br><span class="line">3</span><br><span class="line">10 4 0xb8fc60</span><br><span class="line">40</span><br><span class="line">100 8 0xb8fc80</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><p>Go中的字符串是一个字节的切片。<br>可以通过将其内容封装在“”中来创建字符串。Go中的字符串是Unicode兼容的，并且是UTF-8编码的。</p>
+<p>字符串是一些字节的集合。理解为一个字符的序列。<br>每个字符都有固定的位置(索引，下标，index：从0开始，到长度减1)<br>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//1.定义字符串</span></span><br><span class="line">	s1 := <span class="string">&quot;hello中国&quot;</span></span><br><span class="line">	s2 := <span class="string">`hello world`</span></span><br><span class="line">	fmt.Println(s1)</span><br><span class="line">	fmt.Println(s2)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//2.字符串的长度：返回的是字节的个数</span></span><br><span class="line">	fmt.Println(<span class="built_in">len</span>(s1))</span><br><span class="line">	fmt.Println(<span class="built_in">len</span>(s2))</span><br><span class="line"></span><br><span class="line">	<span class="comment">//3.获取某个字节</span></span><br><span class="line">	fmt.Println(s2[<span class="number">0</span>]) <span class="comment">//获取字符串中的第一个字节</span></span><br><span class="line">	a := <span class="string">&#x27;h&#x27;</span></span><br><span class="line">	b := <span class="number">104</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;%c,%c,%c\n&quot;</span>, s2[<span class="number">0</span>], a, b)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//4.字符串的遍历</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(s2); i++ &#123;</span><br><span class="line">		<span class="comment">//fmt.Println(s2[i])</span></span><br><span class="line">		fmt.Printf(<span class="string">&quot;%c\t&quot;</span>, s2[i])</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println()</span><br><span class="line"></span><br><span class="line">	<span class="comment">//for range</span></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> s2 &#123;</span><br><span class="line">		<span class="comment">//fmt.Println(i,v)</span></span><br><span class="line">		fmt.Printf(<span class="string">&quot;%c&quot;</span>, v)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println()</span><br><span class="line"></span><br><span class="line">	<span class="comment">//5.字符串是字节的集合</span></span><br><span class="line">	slice1 := []<span class="type">byte</span>&#123;<span class="number">65</span>, <span class="number">66</span>, <span class="number">67</span>, <span class="number">68</span>, <span class="number">69</span>&#125;</span><br><span class="line">	s3 := <span class="type">string</span>(slice1) <span class="comment">//根据一个字节切片，构建字符串</span></span><br><span class="line">	fmt.Println(s3)</span><br><span class="line"></span><br><span class="line">	s4 := <span class="string">&quot;abcdef&quot;</span></span><br><span class="line">	slice2 := []<span class="type">byte</span>(s4) <span class="comment">//根据字符串，获取对应的字节切片</span></span><br><span class="line">	fmt.Println(slice2)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//6.字符串不能修改</span></span><br><span class="line">	fmt.Println(s4)</span><br><span class="line">	<span class="comment">//s4[2] = &#x27;B&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hello中国</span><br><span class="line">hello world</span><br><span class="line">11</span><br><span class="line">11</span><br><span class="line">104</span><br><span class="line">h,h,h</span><br><span class="line">h       e       l       l       o               w       o       r       l      d</span><br><span class="line">hello world</span><br><span class="line">ABCDE</span><br><span class="line">[97 98 99 100 101 102]</span><br><span class="line">abcdef</span><br></pre></td></tr></table></figure>
+
+<h2 id="strings包"><a href="#strings包" class="headerlink" title="strings包"></a>strings包</h2><p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;strings&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	s1 := <span class="string">&quot;helloworld&quot;</span></span><br><span class="line">	<span class="comment">//1.是否包含指定的内容--&gt;bool</span></span><br><span class="line">	fmt.Println(strings.Contains(s1, <span class="string">&quot;abc&quot;</span>))</span><br><span class="line">	<span class="comment">//2.是否包含chars中任意的一个字符即可</span></span><br><span class="line">	fmt.Println(strings.ContainsAny(s1, <span class="string">&quot;abcd&quot;</span>))</span><br><span class="line">	<span class="comment">//3.统计substr在s中出现的次数</span></span><br><span class="line">	fmt.Println(strings.Count(s1, <span class="string">&quot;lloo&quot;</span>))</span><br><span class="line"></span><br><span class="line">	<span class="comment">//4.以xxx前缀开头，以xxx后缀结尾</span></span><br><span class="line">	s2 := <span class="string">&quot;20230525课堂笔记.txt&quot;</span></span><br><span class="line">	<span class="keyword">if</span> strings.HasPrefix(s2, <span class="string">&quot;202305&quot;</span>) &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;23年5月的文件。。&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> strings.HasSuffix(s2, <span class="string">&quot;.txt&quot;</span>) &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;文本文档。。&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//索引</span></span><br><span class="line">	<span class="comment">//helloworld</span></span><br><span class="line">	fmt.Println(strings.Index(s1, <span class="string">&quot;lloo&quot;</span>))     <span class="comment">//查找substr在s中的位置，如果不存在就返回-1</span></span><br><span class="line">	fmt.Println(strings.IndexAny(s1, <span class="string">&quot;abcdh&quot;</span>)) <span class="comment">//查找chars中任意的一个字符，出现在s中的位置</span></span><br><span class="line">	fmt.Println(strings.LastIndex(s1, <span class="string">&quot;l&quot;</span>))    <span class="comment">//查找substr在s中最后一次出现的位置</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//字符串的拼接</span></span><br><span class="line">	ss1 := []<span class="type">string</span>&#123;<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;world&quot;</span>, <span class="string">&quot;hello&quot;</span>, <span class="string">&quot;ruby&quot;</span>&#125;</span><br><span class="line">	s3 := strings.Join(ss1, <span class="string">&quot;-&quot;</span>)</span><br><span class="line">	fmt.Println(s3)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//切割</span></span><br><span class="line">	s4 := <span class="string">&quot;123,4563,aaa,49595,45&quot;</span></span><br><span class="line">	ss2 := strings.Split(s4, <span class="string">&quot;,&quot;</span>)	<span class="comment">//数组</span></span><br><span class="line">	<span class="comment">//fmt.Println(ss2)</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(ss2); i++ &#123;</span><br><span class="line">		fmt.Println(ss2[i])</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//重复，自己拼接自己count次</span></span><br><span class="line">	s5 := strings.Repeat(<span class="string">&quot;hello&quot;</span>, <span class="number">5</span>)</span><br><span class="line">	fmt.Println(s5)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//替换</span></span><br><span class="line">	<span class="comment">//helloworld</span></span><br><span class="line">	s6 := strings.Replace(s1, <span class="string">&quot;l&quot;</span>, <span class="string">&quot;*&quot;</span>, <span class="number">-1</span>)</span><br><span class="line">	fmt.Println(s6)</span><br><span class="line">	<span class="comment">//fmt.Println(strings.Repeat(&quot;hello&quot;,5))</span></span><br><span class="line"></span><br><span class="line">	s7 := <span class="string">&quot;heLLo WOrlD**123..&quot;</span></span><br><span class="line">	fmt.Println(strings.ToLower(s7))</span><br><span class="line">	fmt.Println(strings.ToUpper(s7))</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">		截取子串：</span></span><br><span class="line"><span class="comment">		substring(start,end)--&gt;substr</span></span><br><span class="line"><span class="comment">		str[start:end]--&gt;substr</span></span><br><span class="line"><span class="comment">			包含start，不包含end下标</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	fmt.Println(s1)</span><br><span class="line">	s8 := s1[:<span class="number">5</span>]</span><br><span class="line">	fmt.Println(s8)</span><br><span class="line">	fmt.Println(s1[<span class="number">5</span>:])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">false</span><br><span class="line">true</span><br><span class="line">0</span><br><span class="line">23年5月的文件。。</span><br><span class="line">文本文档。。</span><br><span class="line">-1</span><br><span class="line">0</span><br><span class="line">8</span><br><span class="line">abc-world-hello-ruby</span><br><span class="line">123</span><br><span class="line">4563</span><br><span class="line">aaa</span><br><span class="line">49595</span><br><span class="line">45</span><br><span class="line">hellohellohellohellohello</span><br><span class="line">he**owor*d</span><br><span class="line">hello world**123..</span><br><span class="line">HELLO WORLD**123..</span><br><span class="line">helloworld</span><br><span class="line">hello</span><br><span class="line">world</span><br></pre></td></tr></table></figure>
+
+<h2 id="strconv包"><a href="#strconv包" class="headerlink" title="strconv包"></a>strconv包</h2><p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;strconv&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//1.bool类型</span></span><br><span class="line">	s1 := <span class="string">&quot;true&quot;</span></span><br><span class="line">	b1, err := strconv.ParseBool(s1)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%t\n&quot;</span>, b1, b1)	<span class="comment">//%t是bool类型</span></span><br><span class="line"></span><br><span class="line">	ss1 := strconv.FormatBool(b1)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%s\n&quot;</span>, ss1, ss1)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//2.整数</span></span><br><span class="line">	s2 := <span class="string">&quot;100&quot;</span></span><br><span class="line">	i2, err := strconv.ParseInt(s2, <span class="number">2</span>, <span class="number">64</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%d\n&quot;</span>, i2, i2)</span><br><span class="line"></span><br><span class="line">	ss2 := strconv.FormatInt(i2, <span class="number">10</span>)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%s\n&quot;</span>, ss2, ss2)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//itoa(),atoi()</span></span><br><span class="line">	i3, err := strconv.Atoi(<span class="string">&quot;-42&quot;</span>) <span class="comment">//转为int类型</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%d\n&quot;</span>, i3, i3)</span><br><span class="line">	ss3 := strconv.Itoa(<span class="number">-42</span>)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%s\n&quot;</span>, ss3, ss3)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool,true</span><br><span class="line">string,true</span><br><span class="line">int64,4</span><br><span class="line">string,4</span><br><span class="line">int,-42</span><br><span class="line">string,-42</span><br></pre></td></tr></table></figure>
+
+<p>“strconv”用于进行字符串和基本类型之间的转换。在main函数中，首先演示了布尔类型的转换。使用strconv.ParseBool函数将s1转换为bool类型的变量b1。如果转换过程中出现错误，则会打印错误信息并返回。否则，使用fmt.Printf函数输出b1的类型和值。接下来，使用strconv.FormatBool函数将b1转换为字符串类型的变量ss1，演示了整数类型的转换，使用strconv.ParseInt函数将s2按照二进制解析为int64类型的变量i2。使用strconv.FormatInt函数将i2按照十进制转换为字符串类型的变量ss2，使用strconv.Atoi函数将字符串”-42”转换为int类型的变量i3，使用strconv.Itoa函数将整数-42转换为字符串类型的变量ss3。</p>
+]]></content>
+      <categories>
+        <category>青训营</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>大二自学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>变量与常量</title>
     <url>/2023/06/01/Go/4/</url>
     <content><![CDATA[<h1 id="基本语法——变量var"><a href="#基本语法——变量var" class="headerlink" title="基本语法——变量var"></a>基本语法——变量var</h1><h2 id="变量的使用"><a href="#变量的使用" class="headerlink" title="变量的使用"></a>变量的使用</h2><h3 id="什么是变量"><a href="#什么是变量" class="headerlink" title="什么是变量"></a>什么是变量</h3><p>变量是为存储特定类型的值而提供给内存位置的名称。在go中声明变量有多种语法。</p>
@@ -780,141 +780,6 @@
 <p>输出：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">initial 1 2 true 0 0</span><br><span class="line">initialfoo</span><br><span class="line">constant 500000000 6e+11 -0.28470407323754404 0.7591864109375384</span><br></pre></td></tr></table></figure>
 
-]]></content>
-      <categories>
-        <category>青训营</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>大二自学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据类型与输入输出</title>
-    <url>/2023/06/02/Go/5/</url>
-    <content><![CDATA[<h1 id="基本语法——数据类型"><a href="#基本语法——数据类型" class="headerlink" title="基本语法——数据类型"></a>基本语法——数据类型</h1><h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>以下是go中可用的基本数据类型</p>
-<p><a href="https://smms.app/image/mkKRra8JejXWM4V" target="_blank"><img src="https://s2.loli.net/2023/06/02/mkKRra8JejXWM4V.jpg" ></a></p>
-<h3 id="布尔型bool"><a href="#布尔型bool" class="headerlink" title="布尔型bool"></a>布尔型bool</h3><p>布尔型的值只可以是常量 true 或者 false。一个简单的例子：var b bool &#x3D; true</p>
-<h3 id="数值型"><a href="#数值型" class="headerlink" title="数值型"></a>数值型</h3><p><strong>1、</strong>整数型</p>
-<ul>
-<li><p>int8<br>有符号 8 位整型 (-128 到 127)<br>长度：8bit</p>
-</li>
-<li><p>int16<br>有符号 16 位整型 (-32768 到 32767)</p>
-</li>
-<li><p>int32<br>有符号 32 位整型 (-2147483648 到 2147483647)</p>
-</li>
-<li><p>int64<br>有符号 64 位整型 (-9223372036854775808 到 9223372036854775807)</p>
-</li>
-<li><p>uint8<br>无符号 8 位整型 (0 到 255)<br>8位都用于表示数值：</p>
-</li>
-<li><p>uint16<br>无符号 16 位整型 (0 到 65535)</p>
-</li>
-<li><p>uint32<br>无符号 32 位整型 (0 到 4294967295)</p>
-</li>
-<li><p>uint64<br>无符号 64 位整型 (0 到 18446744073709551615)</p>
-</li>
-</ul>
-<blockquote>
-<p>int和uint:根据底层平台，表示32或64位整数。除非需要使用特定大小的整数，否则通常应该使用int来表示整数。<br>大小:32位系统32位，64位系统64位。<br>范围:-2147483648到2147483647的32位系统和-9223372036854775808到9223372036854775807的64位系统。</p>
-</blockquote>
-<p><strong>2、浮点型</strong></p>
-<ul>
-<li><p>float32</p>
-<p>IEEE-754 32位浮点型数</p>
-</li>
-<li><p>float64</p>
-<p>IEEE-754 64位浮点型数</p>
-</li>
-<li><p>complex64</p>
-<p>32 位实数和虚数</p>
-</li>
-<li><p>complex128</p>
-<p>64 位实数和虚数</p>
-</li>
-</ul>
-<p><strong>3、其他</strong></p>
-<ul>
-<li><p>byte</p>
-<p>类似 uint8</p>
-</li>
-<li><p>rune</p>
-<p>类似 int32</p>
-</li>
-<li><p>uint</p>
-<p>32 或 64 位</p>
-</li>
-<li><p>int</p>
-<p>与 uint 一样大小</p>
-</li>
-<li><p>uintptr</p>
-<p>无符号整型，用于存放一个指针</p>
-</li>
-</ul>
-<h3 id="字符串型"><a href="#字符串型" class="headerlink" title="字符串型"></a>字符串型</h3><p>字符串就是一串固定长度的字符连接起来的字符序列。Go的字符串是由单个字节连接起来的。Go语言的字符串的字节使用UTF-8编码标识Unicode文本</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str <span class="type">string</span></span><br><span class="line">str = <span class="string">&quot;Hello World&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="数据类型转换：Type-Convert"><a href="#数据类型转换：Type-Convert" class="headerlink" title="数据类型转换：Type Convert"></a>数据类型转换：Type Convert</h3><p>语法格式：Type(Value)</p>
-<p>常数：在有需要的时候，会自动转型</p>
-<p>变量：需要手动转型	T(V)</p>
-<p>注意点：兼容类型可以转换</p>
-<h2 id="复合类型-派生类型"><a href="#复合类型-派生类型" class="headerlink" title="复合类型(派生类型)"></a>复合类型(派生类型)</h2><p>1、指针类型（Pointer）<br>2、数组类型<br>3、结构化类型(struct)<br>4、Channel 类型<br>5、函数类型<br>6、切片类型<br>7、接口类型（interface）<br>8、Map 类型</p>
-<h1 id="键盘输入和打印输出"><a href="#键盘输入和打印输出" class="headerlink" title="键盘输入和打印输出"></a>键盘输入和打印输出</h1><h2 id="打印输出"><a href="#打印输出" class="headerlink" title="打印输出"></a>打印输出</h2><h3 id="fmt包"><a href="#fmt包" class="headerlink" title="fmt包"></a>fmt包</h3><p>fmt包实现了类似C语言printf和scanf的格式化I&#x2F;O。格式化verb（’verb’）源自C语言但更简单。</p>
-<p>详见官网fmt的API：<a href="https://golang.google.cn/pkg/fmt/">https://golang.google.cn/pkg/fmt/</a></p>
-<h3 id="导入包"><a href="#导入包" class="headerlink" title="导入包"></a>导入包</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="常用打印函数"><a href="#常用打印函数" class="headerlink" title="常用打印函数"></a>常用打印函数</h3><p><strong>打印：</strong></p>
-<p><a href="https://golang.google.cn/pkg/fmt/#Print">func Print(a …interface{}) (n int, err error)</a></p>
-<p><strong>格式化打印：</strong></p>
-<p><a href="https://golang.google.cn/pkg/fmt/#Printf">func Printf(format string, a …interface{}) (n int, err error)</a></p>
-<p><strong>打印后换行</strong></p>
-<p><a href="https://golang.google.cn/pkg/fmt/#Println">func Println(a …interface{}) (n int, err error)</a></p>
-<p>格式化打印中的常用占位符：</p>
-<blockquote>
-<p>格式化打印占位符：<br>            %v,原样输出<br>            %T，打印类型<br>            %t,bool类型<br>            %s，字符串<br>            %f，浮点<br>            %d，10进制的整数<br>            %b，2进制的整数<br>            %o，8进制<br>            %x，%X，16进制<br>                %x：0-9，a-f<br>                %X：0-9，A-F<br>            %c，打印字符<br>            %p，打印地址</p>
-</blockquote>
-<p>示例代码：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := <span class="number">100</span>           <span class="comment">//int</span></span><br><span class="line">	b := <span class="number">3.14</span>          <span class="comment">//float64</span></span><br><span class="line">	c := <span class="literal">true</span>          <span class="comment">// bool</span></span><br><span class="line">	d := <span class="string">&quot;Hello World&quot;</span> <span class="comment">//string</span></span><br><span class="line">	e := <span class="string">`Ruby`</span>        <span class="comment">//string</span></span><br><span class="line">	f := <span class="string">&#x27;A&#x27;</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%b\n&quot;</span>, a, a)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%f\n&quot;</span>, b, b)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%t\n&quot;</span>, c, c)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%s\n&quot;</span>, d, d)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%s\n&quot;</span>, e, e)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%d,%c\n&quot;</span>, f, f, f)</span><br><span class="line">	fmt.Println(<span class="string">&quot;-----------------------&quot;</span>)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, a)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, b)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, c)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, d)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, e)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, f)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>运行结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int,1100100</span><br><span class="line">float64,3.140000</span><br><span class="line">bool,true</span><br><span class="line">string,Hello World</span><br><span class="line">string,Ruby</span><br><span class="line">int32,65,A</span><br><span class="line">-----------------------</span><br><span class="line">100</span><br><span class="line">3.14</span><br><span class="line">true</span><br><span class="line">Hello World</span><br><span class="line">Ruby</span><br><span class="line">65</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="键盘输入"><a href="#键盘输入" class="headerlink" title="键盘输入"></a>键盘输入</h2><h3 id="fmt包读取键盘输入"><a href="#fmt包读取键盘输入" class="headerlink" title="fmt包读取键盘输入"></a>fmt包读取键盘输入</h3><p>常用方法：</p>
-<ul>
-<li><a href="https://golang.google.cn/pkg/fmt/#Scan">func Scan(a …interface{}) (n int, err error)</a></li>
-</ul>
-<p>​		Scan 从标准输入扫描文本，读取由 <strong>空白符</strong> 分隔的值分别保存到本函数的参数中。（换行符也被视为空白符）</p>
-<ul>
-<li><p><a href="https://golang.google.cn/pkg/fmt/#Scanf">func Scanf(format string, a …interface{}) (n int, err error)</a></p>
-<p>Scanf从标准输入扫描文本，按照 format 参数指定的格式去读取由空白符分隔的值保存到传递给本函数的参数中。</p>
-</li>
-<li><p><a href="https://golang.google.cn/pkg/fmt/#Scanln">func Scanln(a …interface{}) (n int, err error)</a></p>
-<p>Scanln类似Scan，它在遇到换行时停止扫描。最后一个数据后面必须有换行或者到达结束位置。</p>
-</li>
-</ul>
-<p>示例代码：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> x <span class="type">int</span></span><br><span class="line">	<span class="keyword">var</span> y <span class="type">float64</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;请输入一个整数，一个浮点类型：&quot;</span>)</span><br><span class="line">	fmt.Scanln(&amp;x,&amp;y)<span class="comment">//读取键盘的输入，通过操作地址，赋值给x和y   阻塞式</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;x的数值：%d，y的数值：%f\n&quot;</span>,x,y)</span><br><span class="line"></span><br><span class="line">	fmt.Scanf(<span class="string">&quot;%d,%f&quot;</span>,&amp;x,&amp;y)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;x:%d,y:%f\n&quot;</span>,x,y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">请输入一个整数，一个浮点类型：</span><br><span class="line">100 3.14</span><br><span class="line">x的数值：100，y的数值：3.140000</span><br><span class="line">100,5.20</span><br><span class="line">x:100,y:5.200000</span><br></pre></td></tr></table></figure>
-
-<h3 id="bufio包读取"><a href="#bufio包读取" class="headerlink" title="bufio包读取"></a>bufio包读取</h3><p><a href="https://golang.google.cn/pkg/bufio/">https://golang.google.cn/pkg/bufio/</a></p>
-<p>bufio包中都是IO操作的方法：</p>
-<p>先创建Reader对象,然后就可以各种读取了。</p>
-<p>示例代码：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">	<span class="string">&quot;bufio&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;请输入一个字符串：&quot;</span>)</span><br><span class="line">	reader := bufio.NewReader(os.Stdin)</span><br><span class="line">	s1, _ := reader.ReadString(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;读到的数据：&quot;</span>, s1)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行效果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">请输入一个字符串：</span><br><span class="line">hello wxy</span><br><span class="line">读到的数据： hello wxy</span><br></pre></td></tr></table></figure>
-
-<p>解释：</p>
-<ul>
-<li><code>reader := bufio.NewReader(os.Stdin)</code>：这行代码创建了一个用于读取用户输入的读取器。<code>bufio.NewReader</code> 函数接受一个参数 <code>os.Stdin</code>，它表示标准输入（通常是键盘输入）。<code>reader</code> 是一个读取器对象，我们可以使用它来读取用户输入的字符串。</li>
-<li><code>s1, _ := reader.ReadString(&#39;\n&#39;)</code>：这行代码使用读取器 <code>reader</code> 从标准输入读取字符串，直到遇到换行符 (<code>&#39;\n&#39;</code>) 为止。它将读取的字符串赋值给变量 <code>s1</code>。注意，这里使用了 <code>_</code>（下划线）来忽略函数的第二个返回值（表示可能的错误），因为我们不关心错误处理。</li>
-</ul>
 ]]></content>
       <categories>
         <category>青训营</category>
@@ -1082,6 +947,141 @@
 <p>通过调用<code>rand.Seed()</code>方法并传入一个不同的种子值，我们可以改变随机数生成器的起始点，从而产生不同的随机数序列。通常情况下，我们会使用当前时间的纳秒级时间戳作为种子，以确保每次运行程序时都能生成不同的随机数序列。</p>
 <p>在代码中，<code>rand.Seed(1000)</code>将种子设置为固定值1000，因此后续生成的随机数序列将始终相同。而<code>rand.Seed(time.Now().UnixNano())</code>使用当前时间的纳秒级时间戳作为种子，可以产生不同的随机数序列。</p>
 <p>但是<em><strong>自从Go 1.2 0以来,rand.Seed就已经被弃用了</strong></em>！</p>
+]]></content>
+      <categories>
+        <category>青训营</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>大二自学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据类型与输入输出</title>
+    <url>/2023/06/02/Go/5/</url>
+    <content><![CDATA[<h1 id="基本语法——数据类型"><a href="#基本语法——数据类型" class="headerlink" title="基本语法——数据类型"></a>基本语法——数据类型</h1><h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>以下是go中可用的基本数据类型</p>
+<p><a href="https://smms.app/image/mkKRra8JejXWM4V" target="_blank"><img src="https://s2.loli.net/2023/06/02/mkKRra8JejXWM4V.jpg" ></a></p>
+<h3 id="布尔型bool"><a href="#布尔型bool" class="headerlink" title="布尔型bool"></a>布尔型bool</h3><p>布尔型的值只可以是常量 true 或者 false。一个简单的例子：var b bool &#x3D; true</p>
+<h3 id="数值型"><a href="#数值型" class="headerlink" title="数值型"></a>数值型</h3><p><strong>1、</strong>整数型</p>
+<ul>
+<li><p>int8<br>有符号 8 位整型 (-128 到 127)<br>长度：8bit</p>
+</li>
+<li><p>int16<br>有符号 16 位整型 (-32768 到 32767)</p>
+</li>
+<li><p>int32<br>有符号 32 位整型 (-2147483648 到 2147483647)</p>
+</li>
+<li><p>int64<br>有符号 64 位整型 (-9223372036854775808 到 9223372036854775807)</p>
+</li>
+<li><p>uint8<br>无符号 8 位整型 (0 到 255)<br>8位都用于表示数值：</p>
+</li>
+<li><p>uint16<br>无符号 16 位整型 (0 到 65535)</p>
+</li>
+<li><p>uint32<br>无符号 32 位整型 (0 到 4294967295)</p>
+</li>
+<li><p>uint64<br>无符号 64 位整型 (0 到 18446744073709551615)</p>
+</li>
+</ul>
+<blockquote>
+<p>int和uint:根据底层平台，表示32或64位整数。除非需要使用特定大小的整数，否则通常应该使用int来表示整数。<br>大小:32位系统32位，64位系统64位。<br>范围:-2147483648到2147483647的32位系统和-9223372036854775808到9223372036854775807的64位系统。</p>
+</blockquote>
+<p><strong>2、浮点型</strong></p>
+<ul>
+<li><p>float32</p>
+<p>IEEE-754 32位浮点型数</p>
+</li>
+<li><p>float64</p>
+<p>IEEE-754 64位浮点型数</p>
+</li>
+<li><p>complex64</p>
+<p>32 位实数和虚数</p>
+</li>
+<li><p>complex128</p>
+<p>64 位实数和虚数</p>
+</li>
+</ul>
+<p><strong>3、其他</strong></p>
+<ul>
+<li><p>byte</p>
+<p>类似 uint8</p>
+</li>
+<li><p>rune</p>
+<p>类似 int32</p>
+</li>
+<li><p>uint</p>
+<p>32 或 64 位</p>
+</li>
+<li><p>int</p>
+<p>与 uint 一样大小</p>
+</li>
+<li><p>uintptr</p>
+<p>无符号整型，用于存放一个指针</p>
+</li>
+</ul>
+<h3 id="字符串型"><a href="#字符串型" class="headerlink" title="字符串型"></a>字符串型</h3><p>字符串就是一串固定长度的字符连接起来的字符序列。Go的字符串是由单个字节连接起来的。Go语言的字符串的字节使用UTF-8编码标识Unicode文本</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str <span class="type">string</span></span><br><span class="line">str = <span class="string">&quot;Hello World&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="数据类型转换：Type-Convert"><a href="#数据类型转换：Type-Convert" class="headerlink" title="数据类型转换：Type Convert"></a>数据类型转换：Type Convert</h3><p>语法格式：Type(Value)</p>
+<p>常数：在有需要的时候，会自动转型</p>
+<p>变量：需要手动转型	T(V)</p>
+<p>注意点：兼容类型可以转换</p>
+<h2 id="复合类型-派生类型"><a href="#复合类型-派生类型" class="headerlink" title="复合类型(派生类型)"></a>复合类型(派生类型)</h2><p>1、指针类型（Pointer）<br>2、数组类型<br>3、结构化类型(struct)<br>4、Channel 类型<br>5、函数类型<br>6、切片类型<br>7、接口类型（interface）<br>8、Map 类型</p>
+<h1 id="键盘输入和打印输出"><a href="#键盘输入和打印输出" class="headerlink" title="键盘输入和打印输出"></a>键盘输入和打印输出</h1><h2 id="打印输出"><a href="#打印输出" class="headerlink" title="打印输出"></a>打印输出</h2><h3 id="fmt包"><a href="#fmt包" class="headerlink" title="fmt包"></a>fmt包</h3><p>fmt包实现了类似C语言printf和scanf的格式化I&#x2F;O。格式化verb（’verb’）源自C语言但更简单。</p>
+<p>详见官网fmt的API：<a href="https://golang.google.cn/pkg/fmt/">https://golang.google.cn/pkg/fmt/</a></p>
+<h3 id="导入包"><a href="#导入包" class="headerlink" title="导入包"></a>导入包</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="常用打印函数"><a href="#常用打印函数" class="headerlink" title="常用打印函数"></a>常用打印函数</h3><p><strong>打印：</strong></p>
+<p><a href="https://golang.google.cn/pkg/fmt/#Print">func Print(a …interface{}) (n int, err error)</a></p>
+<p><strong>格式化打印：</strong></p>
+<p><a href="https://golang.google.cn/pkg/fmt/#Printf">func Printf(format string, a …interface{}) (n int, err error)</a></p>
+<p><strong>打印后换行</strong></p>
+<p><a href="https://golang.google.cn/pkg/fmt/#Println">func Println(a …interface{}) (n int, err error)</a></p>
+<p>格式化打印中的常用占位符：</p>
+<blockquote>
+<p>格式化打印占位符：<br>            %v,原样输出<br>            %T，打印类型<br>            %t,bool类型<br>            %s，字符串<br>            %f，浮点<br>            %d，10进制的整数<br>            %b，2进制的整数<br>            %o，8进制<br>            %x，%X，16进制<br>                %x：0-9，a-f<br>                %X：0-9，A-F<br>            %c，打印字符<br>            %p，打印地址</p>
+</blockquote>
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := <span class="number">100</span>           <span class="comment">//int</span></span><br><span class="line">	b := <span class="number">3.14</span>          <span class="comment">//float64</span></span><br><span class="line">	c := <span class="literal">true</span>          <span class="comment">// bool</span></span><br><span class="line">	d := <span class="string">&quot;Hello World&quot;</span> <span class="comment">//string</span></span><br><span class="line">	e := <span class="string">`Ruby`</span>        <span class="comment">//string</span></span><br><span class="line">	f := <span class="string">&#x27;A&#x27;</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%b\n&quot;</span>, a, a)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%f\n&quot;</span>, b, b)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%t\n&quot;</span>, c, c)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%s\n&quot;</span>, d, d)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%s\n&quot;</span>, e, e)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%T,%d,%c\n&quot;</span>, f, f, f)</span><br><span class="line">	fmt.Println(<span class="string">&quot;-----------------------&quot;</span>)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, a)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, b)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, c)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, d)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, e)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, f)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int,1100100</span><br><span class="line">float64,3.140000</span><br><span class="line">bool,true</span><br><span class="line">string,Hello World</span><br><span class="line">string,Ruby</span><br><span class="line">int32,65,A</span><br><span class="line">-----------------------</span><br><span class="line">100</span><br><span class="line">3.14</span><br><span class="line">true</span><br><span class="line">Hello World</span><br><span class="line">Ruby</span><br><span class="line">65</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="键盘输入"><a href="#键盘输入" class="headerlink" title="键盘输入"></a>键盘输入</h2><h3 id="fmt包读取键盘输入"><a href="#fmt包读取键盘输入" class="headerlink" title="fmt包读取键盘输入"></a>fmt包读取键盘输入</h3><p>常用方法：</p>
+<ul>
+<li><a href="https://golang.google.cn/pkg/fmt/#Scan">func Scan(a …interface{}) (n int, err error)</a></li>
+</ul>
+<p>​		Scan 从标准输入扫描文本，读取由 <strong>空白符</strong> 分隔的值分别保存到本函数的参数中。（换行符也被视为空白符）</p>
+<ul>
+<li><p><a href="https://golang.google.cn/pkg/fmt/#Scanf">func Scanf(format string, a …interface{}) (n int, err error)</a></p>
+<p>Scanf从标准输入扫描文本，按照 format 参数指定的格式去读取由空白符分隔的值保存到传递给本函数的参数中。</p>
+</li>
+<li><p><a href="https://golang.google.cn/pkg/fmt/#Scanln">func Scanln(a …interface{}) (n int, err error)</a></p>
+<p>Scanln类似Scan，它在遇到换行时停止扫描。最后一个数据后面必须有换行或者到达结束位置。</p>
+</li>
+</ul>
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> x <span class="type">int</span></span><br><span class="line">	<span class="keyword">var</span> y <span class="type">float64</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;请输入一个整数，一个浮点类型：&quot;</span>)</span><br><span class="line">	fmt.Scanln(&amp;x,&amp;y)<span class="comment">//读取键盘的输入，通过操作地址，赋值给x和y   阻塞式</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;x的数值：%d，y的数值：%f\n&quot;</span>,x,y)</span><br><span class="line"></span><br><span class="line">	fmt.Scanf(<span class="string">&quot;%d,%f&quot;</span>,&amp;x,&amp;y)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;x:%d,y:%f\n&quot;</span>,x,y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">请输入一个整数，一个浮点类型：</span><br><span class="line">100 3.14</span><br><span class="line">x的数值：100，y的数值：3.140000</span><br><span class="line">100,5.20</span><br><span class="line">x:100,y:5.200000</span><br></pre></td></tr></table></figure>
+
+<h3 id="bufio包读取"><a href="#bufio包读取" class="headerlink" title="bufio包读取"></a>bufio包读取</h3><p><a href="https://golang.google.cn/pkg/bufio/">https://golang.google.cn/pkg/bufio/</a></p>
+<p>bufio包中都是IO操作的方法：</p>
+<p>先创建Reader对象,然后就可以各种读取了。</p>
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">	<span class="string">&quot;bufio&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;请输入一个字符串：&quot;</span>)</span><br><span class="line">	reader := bufio.NewReader(os.Stdin)</span><br><span class="line">	s1, _ := reader.ReadString(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;读到的数据：&quot;</span>, s1)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">请输入一个字符串：</span><br><span class="line">hello wxy</span><br><span class="line">读到的数据： hello wxy</span><br></pre></td></tr></table></figure>
+
+<p>解释：</p>
+<ul>
+<li><code>reader := bufio.NewReader(os.Stdin)</code>：这行代码创建了一个用于读取用户输入的读取器。<code>bufio.NewReader</code> 函数接受一个参数 <code>os.Stdin</code>，它表示标准输入（通常是键盘输入）。<code>reader</code> 是一个读取器对象，我们可以使用它来读取用户输入的字符串。</li>
+<li><code>s1, _ := reader.ReadString(&#39;\n&#39;)</code>：这行代码使用读取器 <code>reader</code> 从标准输入读取字符串，直到遇到换行符 (<code>&#39;\n&#39;</code>) 为止。它将读取的字符串赋值给变量 <code>s1</code>。注意，这里使用了 <code>_</code>（下划线）来忽略函数的第二个返回值（表示可能的错误），因为我们不关心错误处理。</li>
+</ul>
 ]]></content>
       <categories>
         <category>青训营</category>
@@ -1716,12 +1716,12 @@
 </thead>
 <tbody><tr>
 <td align="left">1</td>
-<td><a href="mailto:&#x65;&#x78;&#x61;&#109;&#x70;&#x6c;&#101;&#x40;&#117;&#x65;&#x73;&#x74;&#99;&#x2e;&#101;&#x64;&#x75;&#x2e;&#x63;&#x6e;">&#x65;&#x78;&#x61;&#109;&#x70;&#x6c;&#101;&#x40;&#117;&#x65;&#x73;&#x74;&#99;&#x2e;&#101;&#x64;&#x75;&#x2e;&#x63;&#x6e;</a></td>
+<td><a href="mailto:&#x65;&#x78;&#x61;&#109;&#112;&#108;&#101;&#x40;&#117;&#x65;&#115;&#x74;&#x63;&#x2e;&#x65;&#100;&#117;&#46;&#x63;&#110;">&#x65;&#x78;&#x61;&#109;&#112;&#108;&#101;&#x40;&#117;&#x65;&#115;&#x74;&#x63;&#x2e;&#x65;&#100;&#117;&#46;&#x63;&#110;</a></td>
 <td>(1)</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td>#<a href="mailto:&#101;&#x78;&#x61;&#x6d;&#x70;&#x6c;&#101;&#64;&#117;&#101;&#115;&#116;&#99;&#x2e;&#101;&#100;&#x75;&#46;&#x63;&#x6e;">&#101;&#x78;&#x61;&#x6d;&#x70;&#x6c;&#101;&#64;&#117;&#101;&#115;&#116;&#99;&#x2e;&#101;&#100;&#x75;&#46;&#x63;&#x6e;</a></td>
+<td>#<a href="mailto:&#x65;&#120;&#97;&#x6d;&#112;&#108;&#101;&#x40;&#117;&#x65;&#x73;&#x74;&#x63;&#46;&#x65;&#x64;&#117;&#46;&#99;&#x6e;">&#x65;&#120;&#97;&#x6d;&#112;&#108;&#101;&#x40;&#117;&#x65;&#x73;&#x74;&#x63;&#46;&#x65;&#x64;&#117;&#46;&#99;&#x6e;</a></td>
 <td>(2)</td>
 </tr>
 <tr>
@@ -2982,73 +2982,6 @@
       </tags>
   </entry>
   <entry>
-    <title>电大软件测试～第三次作业</title>
-    <url>/2023/06/01/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test3/</url>
-    <content><![CDATA[<h2 id="第三次作业"><a href="#第三次作业" class="headerlink" title="第三次作业"></a>第三次作业</h2><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p>采用JUnit软件测试框架进行测试程序编程，实现对下面java程序进行单元测试，找出其中缺陷。然后修改缺陷，直到通过单元测试，给出测试程序脚本和运行结果界面。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">getMax</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">get_max</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> z)</span> &#123;</span><br><span class="line">	<span class="type">int</span> max;</span><br><span class="line">	<span class="keyword">if</span> (x &gt;= y) </span><br><span class="line">		max = x;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		max = y;</span><br><span class="line">	<span class="keyword">if</span> (z &gt;= x)</span><br><span class="line">		max = z;</span><br><span class="line">	<span class="keyword">return</span> max;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>答：</p>
-<p>测试程序脚本：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.After;</span><br><span class="line"><span class="keyword">import</span> org.junit.Assert;</span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> junit.framework.TestCase;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">getMaxTest</span> <span class="keyword">extends</span> <span class="title class_">TestCase</span> &#123;</span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">       getMax Max=<span class="keyword">new</span> <span class="title class_">getMax</span>();</span><br><span class="line">       <span class="type">int</span> max= Max.get_max(<span class="number">7</span>,<span class="number">9</span>,<span class="number">8</span>);</span><br><span class="line">       Assert.assertEquals(<span class="number">9</span>,max);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Before</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@After</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">tearDown</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>以下是运行结果，发现代码有缺陷：z如果比x大，但比y小，程序会输出z，而实际情况是y最大。</p>
-<p><a href="https://imgse.com/i/p9zYRRP"><img src="https://s1.ax1x.com/2023/06/01/p9zYRRP.png" alt="p9zYRRP.png" border="0" /></a></p>
-<p>修改缺陷，以下是修改后的源程序：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">getMax</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">get_max</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> z)</span> &#123;</span><br><span class="line">	<span class="type">int</span> max;</span><br><span class="line">	<span class="keyword">if</span> (x &gt;= y) </span><br><span class="line">		max = x;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		max = y;</span><br><span class="line">	<span class="keyword">if</span> (z &gt;= max)</span><br><span class="line">		max = z;</span><br><span class="line">	<span class="keyword">return</span> max;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><em><strong>其实就是将其中一个x改成max</strong></em></p>
-<p>以下是单元测试通过的界面：</p>
-<p><a href="https://imgse.com/i/p9zYoZQ"><img src="https://s1.ax1x.com/2023/06/01/p9zYoZQ.png" alt="p9zYoZQ.png" border="0" /></a></p>
-<p>缺陷修改成功。</p>
-<h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>采用Postman接口测试软件对百度百科<a href="https://baike.baidu.com/">https://baike.baidu.com/</a>搜索引擎进行接口测试。如对词条“软件工程”返回页面内容进行测试验证，给出请求参数设置、Tests脚本、Body响应结果、Test Results结果说明及运行界面。</p>
-<hr>
-<p>以下是笔者的分析过程：</p>
-<p>​	在百度百科页面搜索软件工程，得到的网址如下：</p>
-<p><a href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/25279?fromModule=lemma_search-box">https://baike.baidu.com/item/软件工程/25279?fromModule=lemma_search-box</a></p>
-<p>如果是常规的get请求（大多数项目开发者会这样设置)，在url里面应该有<u>?word&#x3D;软件工程</u>的字符串（不一定是word这个单词，举这个例子表示形如这个url），但是该链接并不如此。</p>
-<p>​	于是猜测是post请求，F12打开开发者工具对输入框进行分析，发现它在form表单里，初步断定是post请求，但是这个表单不是向当前网址提交的，表单的action属性是&#x2F;seach&#x2F;word，所以请求的url应该是其对应的绝对路径（还得拐个弯🥺），为<a href="https://baike.baidu.com/search/word">https://baike.baidu.com/search/word</a></p>
-<p><a href="https://imgse.com/i/p9zUnPA"><img src="https://s1.ax1x.com/2023/06/01/p9zUnPA.png" alt="p9zUnPA.png" border="0" /></a></p>
-<p><a href="https://imgse.com/i/p9zalWR"><img src="https://s1.ax1x.com/2023/06/01/p9zalWR.png" alt="p9zalWR.png" border="0"></a></p>
-<p>​	还要注意到表单的method是GET方法，于是我大胆的猜测get方法也可以，经过postman测试，用get方法向<a href="https://baike.baidu.com/search">https://baike.baidu.com/search</a>也可以达到预期目标。</p>
-<p><a href="https://imgse.com/i/p9za3S1"><img src="https://s1.ax1x.com/2023/06/01/p9za3S1.png" alt="p9za3S1.png" border="0"></a></p>
-<hr>
-<p>答：</p>
-<p>请求参数设置</p>
-<blockquote>
-<p>URL：<a href="https://baike.baidu.com/search/word">https://baike.baidu.com/search/word</a></p>
-<p>Method: post</p>
-<p>Body：</p>
-<p>​	键：word	值：软件工程</p>
-</blockquote>
-<p>或者</p>
-<blockquote>
-<p>URL：<a href="https://baike.baidu.com/search">https://baike.baidu.com/search</a></p>
-<p>Method：GET</p>
-<p>参数：</p>
-<p>​	键：word	值：软件工程</p>
-</blockquote>
-<p>Tests脚本</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">pm.<span class="title function_">test</span>(<span class="string">&quot;Status code is 200&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    pm.<span class="property">response</span>.<span class="property">to</span>.<span class="property">have</span>.<span class="title function_">status</span>(<span class="number">200</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">pm.<span class="title function_">test</span>(<span class="string">&quot;Response body is not empty&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    pm.<span class="property">response</span>.<span class="property">to</span>.<span class="property">have</span>.<span class="title function_">body</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">pm.<span class="title function_">test</span>(<span class="string">&quot;The response contains the word &#x27;软件工程&#x27;&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    pm.<span class="title function_">expect</span>(pm.<span class="property">response</span>.<span class="title function_">text</span>()).<span class="property">to</span>.<span class="title function_">include</span>(<span class="string">&quot;软件工程&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>Body响应结果</p>
-<p>把你操作界面的body复制下来就可以啦~内容有很多（毕竟是百度的程序员😎）</p>
-<p>Test Results结果</p>
-<p><a href="https://imgse.com/i/p9za5pn"><img src="https://s1.ax1x.com/2023/06/01/p9za5pn.png" alt="p9za5pn.png" border="0"></a></p>
-<blockquote>
-<p>可以看到Status code is 200，Response body is not empty，The response contains the word ‘软件工程’，三次测试全部通过。</p>
-</blockquote>
-<p>运行界面</p>
-<p><a href="https://imgse.com/i/p9zaIlq"><img src="https://s1.ax1x.com/2023/06/01/p9zaIlq.png" alt="p9zaIlq.png" border="0"></a></p>
-<p>但是为了图方便感觉用get直接向<a href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B">https://baike.baidu.com/item/软件工程</a>发请求也得行（这样子就少了很多分析啦~)</p>
-]]></content>
-      <categories>
-        <category>大二下期末复习</category>
-      </categories>
-      <tags>
-        <tag>软件测试</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据库期末复习</title>
     <url>/2023/06/03/%E6%95%B0%E6%8D%AE%E5%BA%93/db1/</url>
     <content><![CDATA[<h2 id="第一章数据库系统概论"><a href="#第一章数据库系统概论" class="headerlink" title="第一章	数据库系统概论"></a>第一章	数据库系统概论</h2><ul>
@@ -3953,6 +3886,73 @@
       </categories>
       <tags>
         <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>电大软件测试～第三次作业</title>
+    <url>/2023/06/01/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/test3/</url>
+    <content><![CDATA[<h2 id="第三次作业"><a href="#第三次作业" class="headerlink" title="第三次作业"></a>第三次作业</h2><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p>采用JUnit软件测试框架进行测试程序编程，实现对下面java程序进行单元测试，找出其中缺陷。然后修改缺陷，直到通过单元测试，给出测试程序脚本和运行结果界面。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">getMax</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">get_max</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> z)</span> &#123;</span><br><span class="line">	<span class="type">int</span> max;</span><br><span class="line">	<span class="keyword">if</span> (x &gt;= y) </span><br><span class="line">		max = x;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		max = y;</span><br><span class="line">	<span class="keyword">if</span> (z &gt;= x)</span><br><span class="line">		max = z;</span><br><span class="line">	<span class="keyword">return</span> max;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>答：</p>
+<p>测试程序脚本：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.After;</span><br><span class="line"><span class="keyword">import</span> org.junit.Assert;</span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> junit.framework.TestCase;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">getMaxTest</span> <span class="keyword">extends</span> <span class="title class_">TestCase</span> &#123;</span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">       getMax Max=<span class="keyword">new</span> <span class="title class_">getMax</span>();</span><br><span class="line">       <span class="type">int</span> max= Max.get_max(<span class="number">7</span>,<span class="number">9</span>,<span class="number">8</span>);</span><br><span class="line">       Assert.assertEquals(<span class="number">9</span>,max);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Before</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@After</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">tearDown</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>以下是运行结果，发现代码有缺陷：z如果比x大，但比y小，程序会输出z，而实际情况是y最大。</p>
+<p><a href="https://imgse.com/i/p9zYRRP"><img src="https://s1.ax1x.com/2023/06/01/p9zYRRP.png" alt="p9zYRRP.png" border="0" /></a></p>
+<p>修改缺陷，以下是修改后的源程序：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">getMax</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">get_max</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> z)</span> &#123;</span><br><span class="line">	<span class="type">int</span> max;</span><br><span class="line">	<span class="keyword">if</span> (x &gt;= y) </span><br><span class="line">		max = x;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		max = y;</span><br><span class="line">	<span class="keyword">if</span> (z &gt;= max)</span><br><span class="line">		max = z;</span><br><span class="line">	<span class="keyword">return</span> max;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>其实就是将其中一个x改成max</strong></em></p>
+<p>以下是单元测试通过的界面：</p>
+<p><a href="https://imgse.com/i/p9zYoZQ"><img src="https://s1.ax1x.com/2023/06/01/p9zYoZQ.png" alt="p9zYoZQ.png" border="0" /></a></p>
+<p>缺陷修改成功。</p>
+<h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>采用Postman接口测试软件对百度百科<a href="https://baike.baidu.com/">https://baike.baidu.com/</a>搜索引擎进行接口测试。如对词条“软件工程”返回页面内容进行测试验证，给出请求参数设置、Tests脚本、Body响应结果、Test Results结果说明及运行界面。</p>
+<hr>
+<p>以下是笔者的分析过程：</p>
+<p>​	在百度百科页面搜索软件工程，得到的网址如下：</p>
+<p><a href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/25279?fromModule=lemma_search-box">https://baike.baidu.com/item/软件工程/25279?fromModule=lemma_search-box</a></p>
+<p>如果是常规的get请求（大多数项目开发者会这样设置)，在url里面应该有<u>?word&#x3D;软件工程</u>的字符串（不一定是word这个单词，举这个例子表示形如这个url），但是该链接并不如此。</p>
+<p>​	于是猜测是post请求，F12打开开发者工具对输入框进行分析，发现它在form表单里，初步断定是post请求，但是这个表单不是向当前网址提交的，表单的action属性是&#x2F;seach&#x2F;word，所以请求的url应该是其对应的绝对路径（还得拐个弯🥺），为<a href="https://baike.baidu.com/search/word">https://baike.baidu.com/search/word</a></p>
+<p><a href="https://imgse.com/i/p9zUnPA"><img src="https://s1.ax1x.com/2023/06/01/p9zUnPA.png" alt="p9zUnPA.png" border="0" /></a></p>
+<p><a href="https://imgse.com/i/p9zalWR"><img src="https://s1.ax1x.com/2023/06/01/p9zalWR.png" alt="p9zalWR.png" border="0"></a></p>
+<p>​	还要注意到表单的method是GET方法，于是我大胆的猜测get方法也可以，经过postman测试，用get方法向<a href="https://baike.baidu.com/search">https://baike.baidu.com/search</a>也可以达到预期目标。</p>
+<p><a href="https://imgse.com/i/p9za3S1"><img src="https://s1.ax1x.com/2023/06/01/p9za3S1.png" alt="p9za3S1.png" border="0"></a></p>
+<hr>
+<p>答：</p>
+<p>请求参数设置</p>
+<blockquote>
+<p>URL：<a href="https://baike.baidu.com/search/word">https://baike.baidu.com/search/word</a></p>
+<p>Method: post</p>
+<p>Body：</p>
+<p>​	键：word	值：软件工程</p>
+</blockquote>
+<p>或者</p>
+<blockquote>
+<p>URL：<a href="https://baike.baidu.com/search">https://baike.baidu.com/search</a></p>
+<p>Method：GET</p>
+<p>参数：</p>
+<p>​	键：word	值：软件工程</p>
+</blockquote>
+<p>Tests脚本</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">pm.<span class="title function_">test</span>(<span class="string">&quot;Status code is 200&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    pm.<span class="property">response</span>.<span class="property">to</span>.<span class="property">have</span>.<span class="title function_">status</span>(<span class="number">200</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">pm.<span class="title function_">test</span>(<span class="string">&quot;Response body is not empty&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    pm.<span class="property">response</span>.<span class="property">to</span>.<span class="property">have</span>.<span class="title function_">body</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">pm.<span class="title function_">test</span>(<span class="string">&quot;The response contains the word &#x27;软件工程&#x27;&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    pm.<span class="title function_">expect</span>(pm.<span class="property">response</span>.<span class="title function_">text</span>()).<span class="property">to</span>.<span class="title function_">include</span>(<span class="string">&quot;软件工程&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Body响应结果</p>
+<p>把你操作界面的body复制下来就可以啦~内容有很多（毕竟是百度的程序员😎）</p>
+<p>Test Results结果</p>
+<p><a href="https://imgse.com/i/p9za5pn"><img src="https://s1.ax1x.com/2023/06/01/p9za5pn.png" alt="p9za5pn.png" border="0"></a></p>
+<blockquote>
+<p>可以看到Status code is 200，Response body is not empty，The response contains the word ‘软件工程’，三次测试全部通过。</p>
+</blockquote>
+<p>运行界面</p>
+<p><a href="https://imgse.com/i/p9zaIlq"><img src="https://s1.ax1x.com/2023/06/01/p9zaIlq.png" alt="p9zaIlq.png" border="0"></a></p>
+<p>但是为了图方便感觉用get直接向<a href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B">https://baike.baidu.com/item/软件工程</a>发请求也得行（这样子就少了很多分析啦~)</p>
+]]></content>
+      <categories>
+        <category>大二下期末复习</category>
+      </categories>
+      <tags>
+        <tag>软件测试</tag>
       </tags>
   </entry>
   <entry>
