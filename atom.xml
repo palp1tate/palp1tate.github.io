@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-06-09T03:53:32.735Z</updated>
+  <updated>2023-06-10T14:36:21.962Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>文件详细操作</title>
+    <link href="https://uestcwxy.love/2023/06/10/Go/14/"/>
+    <id>https://uestcwxy.love/2023/06/10/Go/14/</id>
+    <published>2023-06-10T08:49:39.000Z</published>
+    <updated>2023-06-10T14:36:21.962Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
+    
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>包的使用和time包</title>
+    <link href="https://uestcwxy.love/2023/06/10/Go/13/"/>
+    <id>https://uestcwxy.love/2023/06/10/Go/13/</id>
+    <published>2023-06-10T00:40:22.000Z</published>
+    <updated>2023-06-10T03:28:44.808Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
+    
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>type关键字与错误处理</title>
