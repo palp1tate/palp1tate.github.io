@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-06-11T01:37:49.804Z</updated>
+  <updated>2023-06-12T06:59:45.785Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>断点续传与bufio包</title>
+    <link href="https://uestcwxy.love/2023/06/12/Go/15/"/>
+    <id>https://uestcwxy.love/2023/06/12/Go/15/</id>
+    <published>2023-06-12T01:22:12.000Z</published>
+    <updated>2023-06-12T06:59:45.785Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
+    
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>文件详细操作</title>
