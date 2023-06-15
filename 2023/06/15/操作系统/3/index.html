@@ -1,0 +1,486 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>操作系统期末复习之文件系统 | Eternity</title><meta name="author" content="珩,1939311091@qq.com"><meta name="copyright" content="珩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="文件系统​	文件系统是操作系统用于明确存储设备（常见的是磁盘）或分区上的文件的方法和数据结构；即在存储设备上组织文件的方法。操作系统中负责管理和存储文件信息的软件机构称为文件管理系统，简称文件系统。 文件系统概述文件系统的功能：  有效地管理文件的存储空间；管理文件目录；完成文件的读&#x2F;写操作；实现文件共享与保护；为用户提供交互式命令接口和程序调用接口。  ​	文件系统定义：操作系统中的各">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统期末复习之文件系统">
+<meta property="og:url" content="https://uestcwxy.love/2023/06/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/3/index.html">
+<meta property="og:site_name" content="Eternity">
+<meta property="og:description" content="文件系统​	文件系统是操作系统用于明确存储设备（常见的是磁盘）或分区上的文件的方法和数据结构；即在存储设备上组织文件的方法。操作系统中负责管理和存储文件信息的软件机构称为文件管理系统，简称文件系统。 文件系统概述文件系统的功能：  有效地管理文件的存储空间；管理文件目录；完成文件的读&#x2F;写操作；实现文件共享与保护；为用户提供交互式命令接口和程序调用接口。  ​	文件系统定义：操作系统中的各">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg">
+<meta property="article:published_time" content="2023-06-15T01:37:37.000Z">
+<meta property="article:modified_time" content="2023-06-15T08:59:54.056Z">
+<meta property="article:author" content="珩">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://uestcwxy.love/2023/06/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 珩","link":"链接: ","source":"来源: Eternity","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '操作系统期末复习之文件系统',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-15 16:59:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Eternity" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = 'hidden';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+
+preloader.initLoading()
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Eternity"><span class="site-name">Eternity</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">操作系统期末复习之文件系统</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-15T01:37:37.000Z" title="发表于 2023-06-15 09:37:37">2023-06-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-15T08:59:54.056Z" title="更新于 2023-06-15 16:59:54">2023-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">大二下期末复习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">12.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>37分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="操作系统期末复习之文件系统"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h1><p>​	文件系统是操作系统用于明确<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87/3340812?fromModule=lemma_inlink">存储设备</a>（常见的是磁盘）或分区上的文件的方法和<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1450?fromModule=lemma_inlink">数据结构</a>；即在存储设备上组织文件的方法。操作系统中负责管理和<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%AD%98%E5%82%A8%E6%96%87%E4%BB%B6/23734835?fromModule=lemma_inlink">存储文件</a>信息的软件机构称为<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/8164847?fromModule=lemma_inlink">文件管理系统</a>，简称文件系统。</p>
+<h2 id="文件系统概述"><a href="#文件系统概述" class="headerlink" title="文件系统概述"></a>文件系统概述</h2><p>文件系统的功能：</p>
+<blockquote>
+<p>有效地管理文件的存储空间；<br>管理文件目录；<br>完成文件的读&#x2F;写操作；<br>实现文件共享与保护；<br>为用户提供交互式命令接口和程序调用接口。</p>
+</blockquote>
+<p>​	文件系统定义：<strong>操作系统中的各类文件、管理文件的软件，以及管理文件所涉及到的数据结构等信息的集合</strong>。</p>
+<p>​	现代OS几乎都是通过文件系统来组织和管理在计算机中所存储的大量程序和数据的。文件系统的管理功能是通过把它所管理的程序和数据组织成一系列文件的方法来实现的。而文件则是指具有文件名的若干相关元素的集合<strong>。</strong>元素通常是记录，而记录是一组有意义的数据项的集合。可以把数据组成分为<strong>数据项、记录、文件</strong>。</p>
+<p>　① <strong>数据项</strong>，数据项是最低级数据组织形式。分为基本数据项（用于描述一个对象某种属性的字符集，是数据组织中可以命名的最小逻辑数据单位，即原子数据，又称为数据元素或字段）和组合数据项（由若干个基本数据项组成，简称组项）</p>
+<p>　② <strong>记录</strong>，是一组相关数据项的集合，用于描述一个对象在某方面的属性，为了能够唯一标识一个记录，需要在一个记录的各个数据项中确定一个或几个数据项，把他们的集合称为<em><strong>关键字</strong></em>，关键字是能够唯一标识一个记录的数据项。</p>
+<p>　③ <strong>文件</strong>，文件是具有文件名的一组相关元素的集合，分为有结构文件和无结构文件。有结构文件由若干个相关记录组成，无结构文件则被看成一个字符流。文件是文件系统的最大数据单位，它描述了一个对象集。</p>
+<p><em><strong>一个文件可对应若干个记录，一个记录可对应若干个数据项。</strong></em></p>
+<p>文件应该具有自己的属性，包括文件类型，文件长度，文件的物理位置，文件的建立时间。文件长度（文件的当前长度，也可能是最大允许长度），文件的物理位置（指示文件在哪一个设备上及在该设备的哪个位置的指针），文件的建立时间（文件最后一次修改时间）。</p>
+<p><strong>文件类型</strong></p>
+<ul>
+<li><p><em>按用途分类</em><br>(1)系统文件<br> 这是指由系统软件构成的文件。大多数的系统文件只允许用户调用，但不允许用户去读，更不允许修改；有的系统文件不直接对用户开放。<br>(2) 用户文件<br> 由用户的源代码、目标文件、可执行文件或数据等所构成的文件。<br>(3) 库文件<br> 这是由标准子例程及常用的例程等所构成的文件。这类文件允许用户调用，但不允许修改。　</p>
+</li>
+<li><p><em>按文件中数据的形式分类</em><br>(1)源文件<br>指由源程序和数据构成的文件。<br>(2) 目标文件<br>指把源程序经过相应语言的编译程序编译过，但尚未经过链接程序链接的目标代码所构成的文件。它属于二进制文件。<br>(3) 可执行文件<br>指把编译后所产生的目标代码再经过链接程序链接后所形成的文件。</p>
+</li>
+<li><p><em>按存取控制属性分类</em><br>根据系统管理员或用户所规定的存取控制属性，可将文件分为三类：<br>(1)只执行文件<br>该类文件只允许被核准的用户调用执行，既不允许读，更不允许写。<br>(2) 只读文件<br>该类文件只允许文件主及被核准的用户去读，但不允许写。<br>(3) 读写文件<br>这是指允许文件主和被核准的用户去读或写的文件。</p>
+</li>
+<li><p><em>按组织形式和处理方式分类</em></p>
+<p>分为普通文件，目录文件，特殊文件。</p>
+</li>
+</ul>
+<p><em><strong>文件系统模型</strong></em></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_10-13-38.png"></p>
+<p>​	文件系统管理的对象有：<strong>文件</strong>（作为文件管理的直接对象），<strong>目录</strong>（为了方便用户对文件的存取和检索，在文件系统中配置目录，每个目录项中，必须含有文件名及该文件所在的物理地址，对目录的组织和管理是方便用户和提高对文件存取速度的关键），<strong>磁盘（磁带）存储空间</strong>（文件和目录必定占用存储空间，对这部分空间的有效管理，不仅能提高外存的利用率，而且能提高对文件的存取速度）。</p>
+<p>​	为方便用户使用文件系统，文件系统通常向用户提供两种类型的接口：<br>(1) <strong>命令接口</strong>。这是指作为用户与文件系统交互的接口。 用户可通过键盘终端键入命令，取得文件系统的服务。<br>(2) <strong>程序接口</strong>。这是指作为用户程序与文件系统的接口。 用户程序可通过系统调用来取得文件系统的服务。</p>
+<p><em><strong>文件操作</strong></em></p>
+<p>​	用户通过文件系统提供的<strong>系统调用</strong>实施对文件的操作。最基本的文件操作有：创建文件、删除文件。读文件、写文件、截断文件和设置文件的读／写位置。</p>
+<p>　当前OS所提供的大多数对文件的操作，其过程大致都是这样两步：首先，检索文件目录来找到指定文件的属性及其在外存上的位置；然后，对文件实施相应的操作，如读&#x2F;写文件等，当用户要求对一个文件实施多次读&#x2F;写或其他操作时，每次都要从检索目录开始，为了避免多次重复地检索目录，在大多数OS中都引入了打开这一文件系统调用，当用户第一次请求对某文件系统进行操作时，先利用open系统调用将该文件打开。</p>
+<p>　<strong>打开是指系统将指名文件的属性（包括该文件在外存上的物理位置）从外存拷贝到内存打开文件表的一个表目中，并将该表目的编号（索引）返回给用户</strong>，以后，当用户再要求对该文件进行操作时，便可利用系统所返回的索引号向系统提出操作请求，系统便可直接利用该索引到打开文件表中去查找，从而避免了对该文件的再次检索，如果用户不再需要对该文件实施操作，可利用关闭系统调用来关闭此文件，OS将会把该文件从打开文件表中的表目上删除掉。</p>
+<p>文件操作实例（Linux）</p>
+<blockquote>
+<p>open：打开一个文件，并指定访问该文件的方式，调用成功后返回一个文件描述符。<br>creat：打开一个文件，如果该文件不存在，则创建它，调用成功后返回一个文件描述符。<br>close：关闭文件，进程对文件所加的锁全都被释放。<br>read：从文件描述符对应的文件中读取数据，调用成功后返回读出的字节数。<br>write：向文件描述符对应的文件中写入数据，调用成功后返回写入的字节数。</p>
+</blockquote>
+<h2 id="文件的物理结构"><a href="#文件的物理结构" class="headerlink" title="文件的物理结构"></a>文件的物理结构</h2><p>　对任何的文件，都存在以下两种形式的结构</p>
+<p>　① <strong>文件的逻辑结构</strong>，这是从用户观点出发所观察到的文件组织形式，是用户可以直接处理的数据及其结构，独立于文件的物理特性，又称为文件组织。文件逻辑结构的类型：顺序文件、索引文件、索引顺序文件。</p>
+<p>　② <strong>文件的物理结构</strong>，又称为文件的存储结构，是指文件在外存上的存储组织形式，不仅与存储介质的存储性能有关，还与外存分配方式有关。（分为顺序、链接及索引结构）</p>
+<p>​	文件的物理结构即文件的外存分配方式，是从系统的角度来看文件，从文件在物理介质上的存放方式来研究文件。要考虑的主要问题： 如何有效地利用外存空间、如何提高对文件的访问速度。<br>目前常用的外存分配方法：<br>（1）连续分配（顺序分配）－&gt; 顺序文件结构<br>（2）链接分配－&gt; 链接文件结构<br>（3）索引分配－&gt; 索引文件结构　</p>
+<h3 id="连续分配"><a href="#连续分配" class="headerlink" title="连续分配"></a>连续分配</h3><p>　连续分配要求为每个文件分配一组相邻接的盘块，一组盘块地址定义了磁盘上的一段线性地址。采用连续分配方式时，<strong>把逻辑文件中的数据顺序地存储到邻接的各物理盘块中，这样所形成的物理文件可以进行顺序存取</strong>。文件目录中为每个文件建立一个表项，其中记载文件的第一个数据块地址及文件长度。对于顺序文件，连续读&#x2F;写多个数据块内容时，性能较好。这种分配方式保证了逻辑文件中的记录顺序与存储器中文件占用盘块的顺序的一致性。下图为连续分配方式（假设记录与盘块一样大）。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_10-36-44.png">　　</p>
+<p>连续分配的优点如下：</p>
+<p>　① 顺序访问容易，可以随机存取, 能很快检索文件中的一个数据块。例如，如果一个文件的第一个数据块的序号为x，需要检索文件的第y块，则该数据块在外存中的位置为x+y-1。</p>
+<p>　② 顺序访问速度快，磁头移动距离短，效率最高。</p>
+<p>连续分配的缺点如下：</p>
+<p>　① 要求又连续的存储空间，要为每个文件分配一段连续的存储空间，这样，可能产生许多磁盘碎片，严重地降低了外存空间利用率。解决方法：系统定期或不定期采用紧凑技术，将小分区合并为大的、连续分区，将文件占用空间合并在一起。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_10-37-04.png"></p>
+<p>　② 必须事先知道文件的长度，事先知道文件的长度，然后根据其大小，在存储空间中找出一块其大小足够的存储区，将文件装入，对于动态增长的文件非常低效。<strong>空间利用率不高；不利于文件尺寸的动态增长。</strong></p>
+<h3 id="链接分配"><a href="#链接分配" class="headerlink" title="链接分配"></a>链接分配</h3><p>　如果将一个逻辑文件存储到外存上，并不要求为整个文件分配一块连续的空间，而是可以将文件装到多个离散的盘块中，采用链接分配方式，可通过在每个盘块上的链接指针，<strong>将同属于一个文件的多个离散盘块链接成一个链表</strong>，把这样形成的物理文件称为链接文件。链接分配采取离散分配方式，消除了外部碎片，故而显著地提高了外存空间的利用率，并且对文件的增、删、改、查十分方便。链接方式可分为<em><strong>隐式链接和显示链接</strong></em>两种形式。</p>
+<p>　① <strong>隐式链接</strong>， 在文件目录的每个目录项中，都须含有<strong>指向链接文件第一个盘块和最后一个盘块的指针</strong>。<strong>每个盘块中都含有一个指向下一个盘块的指针</strong>。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_10-37-35.png"></p>
+<p>　第9个盘块指向第16个盘块，第16个盘块指向第1个盘块，第1个盘块指向第10个盘块，第10个盘块指向第25个盘块（结束块）。　　</p>
+<p>　隐式链接分配的主要问题在于：其只适合于顺序访问，对随机访问的效率极其低效。如果要访问文件所在的第 i 个盘块，则必须先读出文件的第一个盘块……，就这样顺序地查找直至第 i 块。此外，其可靠性较差，任何一个指针出现问题，都会导致整个链的断开。可以将几个盘块组成一个簇，然后以簇为单位进行分配，会减少查找指定块的时间，但是会增加内部碎片。</p>
+<p>　② <strong>显示链接</strong>，把用于链接文件各物理块的指针，显式的放在内存的一张链接表中，在整个磁盘仅设置一张<strong>文件分配表</strong>（FAT）。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_11-01-31.png"></p>
+<p>　表的序号从0开始，直至N-1，N为盘块总数，在每个表项中存放链接指针，即下一个盘块号，在该表中，凡是属于某一文件的第一个盘块号，或者说是每一条链的链首指针所对应的盘块号，均作为文件地址被填入相应的文件的FCB(File Control Block)的<strong>物理地址</strong>字段中，由于查找记录的过程是在内存中进行的，因而提<strong>高了检索速度，减少了访问磁盘的次数</strong>，由于分配给文件的所有盘块号都在该表中，故把该表称为文件分配表FAT（File Allocation Table）。</p>
+<ul>
+<li>链接分配优点<br>1、无外部碎片，没有磁盘空间浪费<br>2、无需事先知道文件大小。文件动态增长时，可动态分配空闲盘块。对文件的增、删、改十分方便。</li>
+<li>缺点<br>  1、<em><strong>不能支持高效随机&#x2F;直接访问，仅适合于顺序存取</strong></em><br>  2、需为指针分配空间。（隐式链接）<br>  3、可靠性较低（指针丢失&#x2F;损坏）<br>  4、<em><strong>文件分配表FAT（显式链接），FAT需占用较大的内存空间</strong></em>。</li>
+</ul>
+<h3 id="索引分配"><a href="#索引分配" class="headerlink" title="索引分配"></a>索引分配</h3><p>​	事实上，在打开某个文件时，只需要把该文件占用的盘块号的编号调入内存即可，完全没有必要把整个FAT调入内存，为此，应该<strong>将每个文件所对应的盘块号集中地放在一起</strong>，索引分配方式就是基于这种想法所形成的一种分配方式。<em>其为每个文件分配一个索引块（表），再把分配给该文件的所有盘块号都记录在该索引块中，因而该索引块就是一个含有许多磁盘块号的数组</em>。在建立一个文件时，只需要在为之建立的目录项中填上指向该索引块的指针（单级索引）。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_11-02-23.png"></p>
+<p>　索引方式支持直接访问，可在索引块中直接找到第i个盘块，索引方式也不会产生外部碎片，当文件较大时，索引分配方式要优于链接分配方式。其主要问题在于：大文件索引项较多，可能使一个数据块容纳不了一个文件的所有分区的索引。可能需要花费较多的外存空间，每当建立一个文件时，便须为之分配一个索引块，将分配给该文件的所有盘块号记录其中。对于小文件而言，索引块的利用率非常低。</p>
+<p>　当文件太大，其一级索引块太多时，这种方法是低效的。此时，应为这些索引块再建立一级索引，形成<strong>两级索引分配</strong>方式。即系统再分配一个索引块，作为第一级索引的索引块，将第一块、第二块……等索引块的盘块号填入到此索引表中。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_11-02-32.png"></p>
+<p>　在二级索引分配方式下，若每个盘块的大小为1KB，每个盘块号占4个字节，则在一个索引块可以存放256个盘块号，这样，在两级索引时，最多可以包括存放文件的盘块号总数为64K(256 * 256)个盘块号，所允许文件最大长度为64MB，若盘块大小为4KB，则一级索引的最大文件大小为4MB，二级索引的最大文件大小为4GB。</p>
+<p>　④ <strong>混合索引分配方式</strong>，将多种索引分配方式相结合而形成的一种分配方式，如<strong>直接地址</strong>（在索引结点中设置10个直接地址项，每项中所存放的是该文件数据所在盘块的盘块号，假如每个盘块大小为4KB，当文件不大于40KB时，可以直接从索引结点中读出该文件的全部盘号），<strong>一次间接地址</strong>（利用索引结点中的地址项来提供一次间接地址，其实质就是一级索引分配方式，可存放1K个盘块号，允许最大文件为4MB），<strong>多次间接地址</strong>（当文件大于4MB + 40KB时，系统采用二次间址分配方式，其实质是两级索引分配方式，采用二次间址的最大文件大小为4GB，同理，可采用三次间接地址，允许文件最大大小为4TB）。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_11-31-01.png"></p>
+<h2 id="文件存储空间的管理"><a href="#文件存储空间的管理" class="headerlink" title="文件存储空间的管理"></a>文件存储空间的管理</h2><p>文件管理要解决的重要问题之一是如何为<strong>新创建的文件</strong>分配存储空间。<br>存储空间的<em><strong>基本分配单位是磁盘块</strong></em>。<br>其分配方法与内存的分配有许多相似之处，即同样可采取<em>连续分配方式或离散分配方式</em>。<br>系统应为分配存储空间而设置相应的数据结构；其次，系统应提供对存储空间进行分配和回收的手段。</p>
+<p>文件存储空间的管理方法：</p>
+<ul>
+<li>空闲分区表</li>
+<li>空闲链表法</li>
+<li>位示图</li>
+<li>成组链接法</li>
+</ul>
+<h3 id="空闲分区表"><a href="#空闲分区表" class="headerlink" title="空闲分区表"></a>空闲分区表</h3><p>　空闲表法属于<strong>连续分配方式</strong>，它与内存的动态分配方式雷同，它为每个文件分配一块连续的存储空间，即<strong>系统也为外存上所有空闲区建立一张空闲表，每个空闲区对应于一个空闲表项</strong>，其中包括表项序号、该空闲区的第一个盘块号、该区的空闲盘块号等信息，再将所有空闲区按其起始盘块号递增排列。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_11-39-03.png"></p>
+<p>　适合于<em><strong>可变大小分区的连续分配</strong></em>方式。为文件分配存储空间时，首先顺序查找空闲分<br>区表中的各个表项，直至找到第一个大小适合的空闲分区。可以采用首次适应分配算法、最佳适应分配算法等。然后，将该分区分配给文件，同时修改空闲分区表，删除相应表项。当删除文件释放出空间时，系统回收其存储空间，合并相邻空闲分区.系统在对用户所释放的存储空间进行回收时，也采取类似于内存回收的方法，即考虑回收区是否与空闲表中插入点的前区和后区相邻接，对相邻接者应该予以合并。<em><strong>对交换分区一般都采用连续分配方式。当文件较小时，采用连续分配方式，当文件较大时，可采用离散分配方式。</strong></em></p>
+<h3 id="空闲链表法"><a href="#空闲链表法" class="headerlink" title="空闲链表法"></a>空闲链表法</h3><p>　空闲链表法是将所有空闲盘区拉成一条空闲链。根据构成链所用基本元素的不同，把链表分成两种形式，空闲盘块链和空闲盘区链。</p>
+<p>　① 空闲盘块链，这是将磁盘上的所有空闲空间，<em><strong>以盘块为单位拉成一条链</strong></em>，当用户因创建文件而请求分配存储空间时，系统从链首开始，依次摘下适当数目的空闲盘块分配给用户，当删除文件而释放空间时，系统将回收的盘块依次插入空闲盘块链的末尾，其优点是用于分配和回收一个盘块的过程简单，但在为文件分配盘块时，可能要重复操作多次。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_11-40-19.png"></p>
+<p>　② 空闲盘区链，这是将磁盘上的所有空闲盘区（每个盘区可包含若干个盘块）拉成一条链，在每个盘区上除了含有只是下一个空闲盘区的指针外，还应有能指明本盘区大小（盘块数）的信息。盘区分配与内存的动态分配类似，可采用首次适应算法，在回收盘区时，同样也要将回收区和相邻接的空闲盘区相合并，在采用首次适应算法时，可以采用显式链接法提高检索速度，在内存中为空闲盘区建立一张链表。每个分区结点内容：起始盘块号、盘块数、指向下一个空闲盘区的指针。</p>
+<p>​	可能的问题：</p>
+<p>​	一段时间以后，可能会使空闲分区链表中包含太多小分区，使文件分配到的存储空间过分离散。删除一个由许多离散小分区组成的文件时，将回收的小分区链接到空闲分区链表中需要很长时间。若一个文件申请连续存储空间，则需要花费较长的时间查找相邻的空闲分区。因此，这种空闲空间组织方法<em><strong>适合于非连续存储</strong></em>文件。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_11-53-58.png"></p>
+<h3 id="位示图"><a href="#位示图" class="headerlink" title="位示图"></a>位示图</h3><p>　利用二进制的一位表示磁盘中的一个盘块的使用情况，当其值为0时，表示对应的盘块空闲，为1时，表示已经分配，磁盘上的所有盘块都有一个二进制位与之对应，这样，由所有盘块所对应的位构成一个集合，称为<strong>位示图</strong>，通常可用m×n个位数来构成位示图，并使m * n等于磁盘的总块数。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_11-39-38.png"></p>
+<p>　对于盘块的分配分为如下三步</p>
+<p>　① <strong>顺序扫描位示图</strong>，从中找出一个或一组值为0的二进制位。</p>
+<p>　② 将所找到的一个或一组二进制位转换成与之相应的盘块号。</p>
+<p>​	假定找到的其值为“0”的二进制位位于位示图的第i 行、第j列，则其相应的盘块号按式计算：b &#x3D; n( i - 1) + j</p>
+<p>　③ 修改位示图，令map[i,j]&#x3D;1。</p>
+<p>　对于盘块的回收分为如下两步</p>
+<p>　① 将回收盘块的盘块号转换成位示图中的行号和列号。转换公式为：</p>
+<p>​	i &#x3D; (b - 1)DIV n + 1<br>​	j &#x3D; (b - 1)MOD n + 1</p>
+<p>　② 修改位示图，令map[i,j] &#x3D;0。</p>
+<p>　此方法的优点在于从位示图中很容易找到一个或一组连续的空闲分区，例如，我们需要找到8个相邻接的空闲盘块，这只需在位示图中找出8个其值连续为“0”的位即可。<br>一个位示图需要占用的存储空间大小为：磁盘容量（字节数）&#x2F; （8 * 数据块大小）<br>由于位示图很小，占用空间少，因而可将其保存在内存中，进而使在每次进行盘区分配时，无需首先把盘区分配表读入内存，节省磁盘启动时间。</p>
+<p>​	但是，对于一个16GB的磁盘，若数据块大小为512字节，则位示图大小为4MB，大约需要占用8000个磁盘块的存储空间。很难一次性将该位示图全部装入内存。即使内存<br>足够大，可以存放全部或绝大部分位示图数据，搜索一个很大的位示图将会降低文件系统的性能。尤其当磁盘空间快用完，剩下的空闲磁盘块很少时，文件系统的性能将严重降低。</p>
+<h3 id="成组链接法"><a href="#成组链接法" class="headerlink" title="成组链接法"></a>成组链接法</h3><p>　空闲表法和空闲链表法都不适用于大型系统，因为这会使空闲表或空闲链表很长，在UNIX采用的成组链接法，结合上述两种方法。</p>
+<p>　① 空线盘块的组织，空闲盘块栈用来存放当前可用的一组空闲盘块的盘块号（最多含100个号），以及栈中尚有的空闲盘块号数N，顺便指出，N兼做栈顶指针使用，栈是临界资源，系统设置一把锁供进程互斥访问。其中，S.free(0)是栈底，栈满时栈顶为S.free(99)。</p>
+<p>　② 文件区中的所有空闲盘块被分成若干个组，如每100个盘块作为一组。</p>
+<p>　③ 将每一组含有的盘块总数N和该组所有的盘块号记入其前一组的第一个盘块S.free(0)~S.free(99)中，这样，由各组的第一个盘块可链接成一条链。</p>
+<p>　④ 将第一组的盘块总数和所有的盘块号记入空闲盘块号栈中，作为当前可供分配的空闲盘块号。</p>
+<p>　⑤ 最末一组只有99个盘块，其盘块号分别记入其前一组的S.free(1)~S.free(99)中，而在S.free(0)中则存放0，作为空闲盘块链的结束。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_13-12-13.png"></p>
+<p>　当系统要为用户分配文件所需的盘块时，须调用盘块分配过程来完成。该过程首先检查空闲盘块号栈是否上锁，如未上锁，便从栈顶取出一空闲盘块号，将与之对应的盘块分配给用户，然后将栈顶指针下移一格。若该盘块号已是栈底，即S.free(0)，这是当前栈中最后一个可分配的盘块号。由于在该盘块号所对应的盘块中记有下一组可用的盘块号，因此，须调用磁盘读过程，将栈底盘块号所对应盘块的内容读入栈中，作为新的盘块号栈的内容，并把<strong>原栈底对应的盘块分配出去</strong>(其中的有用数据已读入栈中)。然后，再分配一相应的缓冲区(作为该盘块的缓冲区)。最后，把栈中的空闲盘块数减1并返回。</p>
+<p>　在系统回收空闲盘块时，须调用盘块回收过程进行回收。它是将回收盘块的盘块号记入空闲盘块号栈的顶部，并执行空闲盘块数加1操作。当栈中空闲盘块号数目已达100时，表示栈已满，<strong>便将现有栈中的100个盘块号，记入新回收的盘块中，再将其盘块号作为新栈底</strong>。</p>
+<p>例：在  UNIX  系统中有空闲盘块栈如图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/6100690_1492936796345_072774B6B658B3603E1AA7198722775C.png"></p>
+<p>​    (1)    现有一个进程要释放4 个物理块，其块号为150＃、156＃、172 ＃、177＃，画出空闲盘块栈每次的变化情况。  </p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/6100690_1492936877377_072774B6B658B3603E1AA7198722775C.png"></p>
+<p>​    (2)   在（ 1 ）的基础上假定一个进程要求分配5 个空闲块，画出分配完成后的空闲盘块栈。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/6100690_1492936928232_072774B6B658B3603E1AA7198722775C.png"></p>
+<h2 id="文件目录"><a href="#文件目录" class="headerlink" title="文件目录"></a>文件目录</h2><p>　为了能够对文件实施有效的管理，必须对它们加以妥善组织，这主要是通过文件目录实现的，文件目录也是一种数据结构，用于标识系统中的文件及其物理地址，供检索时使用，对目录的管理要求如下：</p>
+<p>　① **实现”按名存取”**，即用户只须向系统提供所需访问的文件的名字，便能够快速准确地找到指定文件在外存上的存储位置，这是目录管理中最基本的功能。</p>
+<p>　② <strong>提高对目录检索速度</strong>，通过合理地组织目录结构的方法，可加快对目录的检索速度，从而提高对文件的存取速度。</p>
+<p>　③ <strong>文件共享</strong>，在多用户系统中，应该允许用户共享一个文件。</p>
+<p>　④ <strong>允许文件重名</strong>，系统应允许不同用户对不同文件采用相同的名字，以便用户按照自己的习惯给文件命名和使用文件。</p>
+<p><strong>文件控制块</strong></p>
+<p>　为了能对文件进行正确的存取，必须为文件设置<strong>用于描述和控制文件的数据结构</strong>，称之为文件控制块(FCB)，FCB是文件存在的标志。文件管理程序可借助于文件控制块中的信息，对文件施加各种操作，文件与文件控制块一一对应，而人们把<strong>文件控制块的有序集合称为文件目录</strong>，一个文件控制块就是一个文件目录项。为了实现对文件目录的管理，通常将<strong>文件目录以文件的形式保存在外存</strong>，这个文件就叫目录文件。</p>
+<p>FCB的内容：</p>
+<blockquote>
+<p>基本信息：文件名、文件类型等；<br>地址信息：卷（存储文件的设备）、起始地址（起始物理地址）、文件长度（以字节、字或块为单位）等。<br>访问控制信息：文件所有者、访问信息（用户名和口令等）、合法操作等；<br>使用信息：创建时间、创建者身份、当前状态、最近修改时间、最近访问时间等。</p>
+</blockquote>
+<p>　<strong>文件目录通常是存放在磁盘上的</strong>，当文件很多时，文件目录可能要占用大量的盘块，在查找的过程中，先将存放目录文件的第一个盘块中的目录调入内存，然后把用户所给定的文件名和目录项中的文件名逐一对比。若未找到指定文件，则再将下一个盘块中的目录项调入内存。在检索目录文件时，只用到了文件名，仅当找到一个目录项（即其中的文件名与指定要查找的文件名相匹配）时，才需要从该目录项中读出该文件的物理地址，而其他一些对该文件进行描述的信息，在检索目录时一概不用，显然，这些信息在检索目录时不需要调入内存。为此，在有的系统中，如UNIX系统，便采用了把文件名和文件描述信息分开的方法，亦即，使文件描述信息单独形成一个称为<strong>索引结点</strong>的数据结构，简称为i结点，在文件目录中的每个目录项由文件名和指向该文件所对应的i结点的指针所构成。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_14-28-08.png"></p>
+<p>　<strong>每个文件都有唯一的磁盘索引结点（磁盘索引结点信息与文件名等信息一起构成了FCB）</strong>	</p>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><p>　目录结构的组织，关系到文件系统的存取速度，也关系到文件的共享性和安全性，目前常用的目录结构形式有单级目录、两级目录、多级目录。</p>
+<p>　① <strong>单级目录结构</strong>，所有用户的全部文件目录保存在一张目录表中，每个文件的目录项占用一个表项。</p>
+<p>单级目录的优点是简单且能实现目录管理的基本功能——<strong>按名存取</strong><br>存在下述一些缺点：</p>
+<blockquote>
+<p>(1) 查找速度慢<br>(2) 不允许重名<br>(3) 不便于实现文件共享</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_14-37-20.png"></p>
+<p>② <strong>两级目录结构</strong>，为每个用户建立一个单独的<strong>用户文件目录UFD</strong>（User File Directory），这些文件目录具有相似的结构，由用户所有文件的文件控制块组成。此外，系统中还有一个<strong>主文件目录MFD</strong>（Master File Directory)，在主文件目录中，每个用户目录文件都占有一个目录项，其目录项包括<strong>用户名和指向用户目录文件的指针</strong>。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_14-38-57.png"></p>
+<p>　具有如下优点：<strong>提高了检索目录的速度</strong>（如果在主目录中有n个子目录，每个用户目录最多为m个目录项，则为查找一指定的目录项，最多只需要检索n+m个目录项）。<strong>在不同的用户目录中，可以使用相同的文件名</strong>（只要在用户自己的UFD中，每个文件名都是唯一的，不同用户可以有文件名相同的文件）。<strong>不同用户还可使用不同的文件名来访问系统中同一个共享文件</strong>。但在多个用户需要合作完成一个大任务时，不便于用户之间共享文件。</p>
+<p>　③ 多级目录结构，对于大型文件系统，通常采用三级或三级以上的目录结构，以提高对目录的检索速度和文件系统的性能。多级目录结构又称为树形目录结构，<strong>主目录被称为根目录</strong>，把<strong>数据文件称为树叶</strong>，<strong>其他的目录均作为树的结点</strong>。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_14-39-30.png"></p>
+<p>　方框代表目录文件，圆圈代表数据文件，主目录中有是哪个用户总目录A、B、C，在B用户的总目录B中，又包括三个分目录F、E、D，其中每个分目录中又包含多个文件，为提高系统的灵活性，<strong>应该允许在一个目录文件中的目录项既是作为目录文件的FCB，又是数据文件的FCB</strong>，这一信息可用目录项中的一位来指示。如用户A总目录中，目录项A是目录文件FCB，而目录项B和D则是数据文件的FCB。</p>
+<p>　在树形目录结构中，从根目录到任何数据文件，都只有一条唯一的通路，在该路径上从树的根开始，把全部目录文件名和数据文件名依次用”&#x2F;“连接起来，即构成该数据文件的路径名。<strong>系统中的每个文件都有唯一的路径名</strong>。例如，用户B访问文件J，则使用路径名&#x2F;B&#x2F;F&#x2F;J来访问。路径名：从树的根（即主目录）开始，把全部目录文件名与数据文件名，依次地用“&#x2F;”连接起来，即构成该数据文件的路径名（path name）。<strong>系统中的每一个文件都有惟一的路径名</strong>。当前目录：为每个进程设置一个“当前目录”，又称为“工作目录”，进程对各文件的访问都相对于“当前目录”而进行。<strong>把从当前目录开始的数据文件为止所构成的路径名称为相对路径名</strong>，而<strong>把从树根开始的路径名称为绝对路径名</strong>。</p>
+<p><em><strong>增加和删除目录</strong></em></p>
+<p>​	在树形目录结构中，用户可为自己建立UFD，并可再创建子目录，在用户要创建一个新文件时，只需要查看自己的UFD及其子目录中有无与新建文件相同的文件名，若无，便可在UFD或其某个子目录中增加一个新目录项。在树形目录中，如何删除一个目录，应该视情况而定，若要删除的目录为空，则简单地将其删除，使它在其上一级目录中所对应的目录项为空。若不为空，可采用如下方法：<strong>不删除非空目录</strong>（当目录不为空时，为了删除一个非空目录，必须先删除目录中所有的文件，使之称为空目录，然后再删除，如果目录中包含有子目录，则应该递归调用方式删除），<strong>可删除非空目录</strong>（将目录中的所有文件和子目录同时删除）。</p>
+<h3 id="目录查询技术"><a href="#目录查询技术" class="headerlink" title="目录查询技术"></a>目录查询技术</h3><p>　当用户要访问一个已存在的文件时，系统首先利用用户提供的文件名对目录进行查询，找出该文件的文件控制块或对应索引结点，然后，根据FCB或索引结点中所记录的文件物理地址（盘块号），换算出文件在磁盘上的物理位置，最后，再通过磁盘驱动程序，将所需文件读入内存。目前常用的方式有<strong>线性检索法</strong>和<strong>Hash方法。</strong></p>
+<p>　① <strong>线性检索法</strong>，其又称为顺序检索法，<em>在单级目录中</em>，利用用户提供的文件名，用顺序查找法直接从文件目录中找到指名文件的目录项。<em>在树形目录中</em>，用户提供的文件名是由多个文件分量名组成的路径名，此时须对多级目录进行查找，假定用户给定的文件路径名为&#x2F;usr&#x2F;ast&#x2F;mbox，则查找过程如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_14-59-42.png"></p>
+<p>　首先，系统应先读入第一个文件分量名usr，用它与根目录文件（或当前目录文件）中各目录项中的文件名顺序地进行比较，从中找到匹配者，并得到匹配项的索引结点号是6，再从6号索引结点中得到usr目录文件放在132号盘块中，将该盘块内容读入内存。接着，系统再将路径名中的第二个分量名ast读入，用它与放在132号盘块中的第二级目录文件中各目录项的文件名顺序进行比较，又找到匹配项，从中得到ast的目录文件放在26号索引结点中，再从26号索引结点中得知&#x2F;usr&#x2F;ast是存放在496号盘块中，再读入496号盘块。然后，将文件的第三个分量名mbox读入，用它与第三级目录文件&#x2F;usr&#x2F;ast中各目录项的文件名进行比较，最后得到&#x2F;usr&#x2F;ast&#x2F;mbox的索引结点号为60，即在60号索引结点中存放了指定文件的物理地址，目录查询操作到此结束，如果在顺序查找过程中发现有一个文件分量名没有找到，则停止查找，并返回文件未找到信息。</p>
+<p>　② <strong>Hash方法</strong>，系统利用用户提供的文件名并将它转换为文件目录的索引值，再利用该索引值到目录中去查找，这将提高检索速度。</p>
+<p>①在利用Hash值查找目录时，如果目录表中相应的目录项是空的，则表示系统中并无指定文件。<br>②如果目录项中的文件名与指定文件名相匹配，则表示该目录项正是所要寻找的文件所对应的目录项，故而可从中找到该文件所在的物理地址。<br>③如果在目录表的相应目录项中的文件名与指定文件名并不匹配，则表示发生了“Hash冲突”<br>解决Hash冲突的方法 ：将其Hash值再加上一个<strong>常数</strong>（该常数应与目录的长度值互质），形成新的索引值，再返回到第一步重o新开始查找。</p>
+<h2 id="文件共享和访问控制"><a href="#文件共享和访问控制" class="headerlink" title="文件共享和访问控制"></a>文件共享和访问控制</h2><p>文件共享的有效控制涉及两个方面：</p>
+<ul>
+<li>同时存取（Simultaneous Access）</li>
+<li>存取权限（Access Rights）</li>
+</ul>
+<p>​	允许多个用户同时读文件内容，但<strong>不允许同时修改</strong>，或<strong>同时读且修改文件内容</strong>。共享用户之一修改文件内容时，可以将整个文件作为<em>临界资源</em>，锁定整个文件，不允许其他共享用户同时读或写文件。也可以仅仅锁定指定的一条记录，允许其他共享用户读&#x2F;写该文件的其它记录。后者的并发性能更好。</p>
+<p>控制授权用户以合法的方式访问文件，包括：</p>
+<blockquote>
+<p>执行（Execution） — 用户可以装载并执行程序，但不允许拷贝程序内容。</p>
+<p>读（Reading）— 允许用户读文件内容，包括拷贝和执行文件。某些系统严格地将浏览文件内容和拷贝权限分开，可以控制文件只能被浏览（显示），不能被拷贝。</p>
+<p>追加（Appending）— 允许用户向文件添加数据，通常只能将数据添加到文件尾。但是，不能修改或删除文件内容。例如，超市收银员只能将新结帐的数据添加到文件中，不允许其修改或删除已有的数据。</p>
+<p>更新（Updating）— 允许用户修改、删除、增加文件内容。包括创建文件、重写文件的全部或部分内容、移动文件的全部或部分数据等操作。</p>
+<p>更改权限 (Changing protection) —一般只有文件主才能更改共享该文件的其他用户对该文件的存取权限。有的系统允许文件主将更改文件存取权限赋予其他某个用户，但必须限制授权用户更改的权限范围。</p>
+<p>删除 (Deletion) 允许用户删除文件</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_15-00-00.png"></p>
+<p>​	在树型结构的目录中，当有两个(或多个)用户要共享一个子目录或文件时，必须<em><strong>将共享文件或子目录链接到两个(或多个)用户的目录中</strong></em>，才能方便地找到该文件。此时该文件系统的目录结构已不再是树型结构，而是个<em><strong>有向非循环图</strong></em>。</p>
+<p>​	实现文件共享的<strong>实质</strong>就是可以<strong>从不同地方打开同一个文件</strong>。打开文件的首要步骤就是找到文件的目录项，读取文件在外存的起始地址。<br>实现文件共享的方式：</p>
+<ul>
+<li>利用链接目录项实现法</li>
+<li>利用索引节点实现法</li>
+<li>利用符号链实现法</li>
+</ul>
+<p><strong>利用链接目录项实现法</strong></p>
+<p>文件目录项中设置一个链接指针，用于指向共享文件的目录项。访问文件时，根据链接指针内容找到共享文件的目录项，读取该目录项中文件起始位置等信息，操作该文件。每当有用户（进程）共享文件时，共享文件目录项中的“共享计数”加1；当用户不再共享该文件，撤消链接指针时，“共享计数”减1。只有当共享文件用户数为1时，才能删除共享文件。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_15-00-27.png"></p>
+<p><strong>利用索引节点实现法</strong>（硬链接）</p>
+<p>​	文件的物理地址及其它的文件属性等信息，不再是放在目录项中，而是放在索引结点中。在文件目录中只设置文件名及指向相应索引结点的指针。由任何用户对文件进行Append 操作或修改，所引起的相应结点内容的改变(例如，增加了新的盘块号和文件长度等)，都是其他用户可见的，从而也就能提供给其他用户来共享。</p>
+<p>​	可以通过<em><strong>共享文件索引节点来共享文件</strong></em>，即当用户需要共享文件时，在自己的文件目录中新建一个目录项，为共享文件命名(也可用原名)，并将<em><strong>索引节点指针指向共享文件的索引节点</strong></em>。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_15-00-37.png"></p>
+<p>​	在索引结点中还应有一个链接计数count，用于表示链接到本索引结点(亦即文件)上的用户目录项的数目。当用户C创建一个新文件时，他便是该文件的所有者，此时将count 置1。当有用户B要共享此文件时，在用户B 的目录<br>中增加一目录项，并设置一指针指向该文件的索引结点，此时，文件主仍然是C，count&#x3D;2。<br>​	如果用户C 不再需要此文件，是否能将此文件删除呢？因为若删除了该文件，也必然删除了该文件的索引结点，这样便会便用户B的指针悬空，而用户B则可能正在此文件上执行写操作，此时用户B会无法访问到文件。因此用户C不能删除此文件，只是将该文件的count减1，然后删除自己目录中的相应目录项。用户B仍可以使用该文件。当count &#x3D;0时，表示没有用户使用该文件，系统将负责删除该文件。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-15_15-00-52.png"></p>
+<p><strong>利用符号链实现法</strong>（软链接）</p>
+<p>​	为使B能共享C的一个文件F，可以由系统<em><strong>创建一个LINK类型的新文件</strong></em>，也取名为F并将F写入B的目录中，以实现B的目录与文件F的链接；在新文件<em><strong>只<br>包含被创文件F的路径名</strong></em>。这样的链接方法被称为<strong>符号链接</strong>。新文件中的路径名，则只被看作是符号链。当B要访问被链接的文件F且正要读LINK类新文件时，<em><strong>将被OS截获， OS根据新文件中的路径名去读该文件</strong></em>，于是就实现了用户B对文件F的共享。<br>​	在利用符号链方式实现文件共享时，只是文件主才拥有指向其索引结点的指针,而共享该文件的其它用户，则只有该文件的路径名，并不拥有指向其索引结点的指针。</p>
+<p>符号链方式优点：能连接任何机器上的文件。每增加一个连接，就增加一个文件名，各用户使用自己的名字去共享文件。<br>缺点：备份可能会产生多个拷贝。这是因为每个用户都有自己的符号链接，而备份程序可能无法识别这些符号链接实际上指向同一个文件。因此，它可能会为每个符号链接创建一个单独的备份，从而导致多个拷贝。</p>
+<p><strong>利用URL实现文件共享</strong><br>    统一资源定位器URL (Uniform Resource Locator)是Internet上用来链接超文本文件的一种方法。它可以链接同一台计算机中的本地文件，也可链接Internet中任何主机上的远程文件。一个完整的URL包括访问文件的方法（协议）、文件所在的主机域名、目录路径名和文件名几部份。例如，<br><a target="_blank" rel="noopener" href="http://www.uestc.edu.cn/templates/index2k3/index.html">http://www.uestc.edu.cn/templates/index2k3/index.html</a></p>
+<p><strong>文件保护</strong></p>
+<p>​	不同对象允许实施的操作各不相同。例如，文件可施加读、写、执行等操作，信号量只能施加wait()和signal()操作。因此，<em><strong>系统为所有对象设置一个允许进程实施操作的操作集</strong></em>，任何对对象的操作必须符合操作集中的规定，防止未授权进程访问对象。</p>
+<p>例一：存放在某个磁盘上的文件系统，对于采用混合索引分配方式，其FCB中共有13项地址项，第0～9个地址项为直接地址，第10个地址项为一次间接地址，第11个地址项为二次 间接地址，第12个地址项为三次间接地址。如果每个盘块的大小为512字节，盘块号需要3个字节来描述，则每个盘块最多存放170个盘块地址。<br> (1) 该文件系统允许的最大长度是多少？<br> (2) 将文件的字节偏移量5000、15000、150000转换为物理块号和块内偏移量。<br> (3) 假设某文件的索引结点已在内存中，但其他信息均在外存，为了访问该文件中某个位置的内容，最多需要几次访 问磁盘？</p>
+<p>(1) 该文件系统中一个文件的最大长度可达:</p>
+<p>10+170+170×170+170×170×170&#x3D;4942080块,共4942080×512字节&#x3D;2471040KB</p>
+<p>(2)5000&#x2F;512得到商为9,余数为392,即字节偏移量5000对应的逻辑块号为9,块内偏移量为392。由于9&lt;10,故可直接从该文件的FCB的第9个地址项处得到物理盘块号,块内偏移量为392。</p>
+<p>15000&#x2F;512得到商为29,余数为152,即字节偏移量15000对应的逻辑块号为29,块内偏移量为152。由于10&lt; 29&lt; 10+170,而29-10&#x3D;19,故可从FCB的第10个地址项,即一次间址项中得到一次间址块的地址;并从一次间址块的第19项(即该块的第57~59这3个字节)中获得对应的物理盘块号,块内偏移量为152。</p>
+<p>150000&#x2F;512得到商为292,余数为496,即字节偏移量150000对应的逻辑块号为292,块内偏移量为496。由于10+170&lt; 292&lt; 10+170+170×170,而292-(10+170)&#x3D;112,112&#x2F;170得到商为0,余数为112,故可从FCB的第11个地址项,即二次间址项中得到二次间址块的地址,并从二次间址块的第0项中获得一个一次间址块的地址,再从这一次间址块的第112项中获得对应的物理盘块号,块内偏移量为496。</p>
+<p>(3) 由于文件的FCB己在内存，为了访问文件中某个位置的内容，最少需要1次访问磁盘(即可通过直接地址直接读文件盘块)，最多需要4次访问磁盘(第一次是读三次间址块,第二次是读二次间址块,第三次是读一次间址块,第四次是读文件盘块)。</p>
+<p>例二：有一个磁盘组共用10个盘面，每个盘面上有100个磁道，每个磁道有16个扇区，假定以扇区为单位，若使 用位示图管理磁盘空间，问位示图需要占多少空间？ 若空闲表的每个空闲表项占用5个字节，问什么时候空闲表大于位示图？</p>
+<p>​	磁盘组的总扇区数为10 * 100 * 16 &#x3D; 16000。因此，位示图需要占用16000位 &#x3D; 2000字节的空间。</p>
+<p>​	若空闲表的每个空闲表项占用5个字节，则当空闲表项数大于2000&#x2F;5&#x3D;400时，空闲表的大小将大于位示图。也就是说，当磁盘组中有超过400个连续的空闲扇区时，使用空闲表管理磁盘空间所需的存储空间将大于使用位示图所需的存储空间。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://uestcwxy.love">珩</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://uestcwxy.love/2023/06/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/3/">https://uestcwxy.love/2023/06/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://uestcwxy.love" target="_blank">Eternity</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2023/06/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/2/" title="操作系统期末复习之输入输出系统"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">操作系统期末复习之输入输出系统</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/06/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/2/" title="操作系统期末复习之输入输出系统"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-14</div><div class="title">操作系统期末复习之输入输出系统</div></div></a></div><div><a href="/2023/06/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1/" title="操作系统期末复习之存储器管理"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-14</div><div class="title">操作系统期末复习之存储器管理</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">珩</div><div class="author-info__description">等我苦尽甘来时，我给你讲讲来时走的路。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/uestc-wxy/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.facebook.com/profile.php?id=100092533320651" target="_blank" title="facebook"><i class="fab fa-facebook" style="color: #4a7dbe;"></i></a><a class="social-icon" href="mailto:1939311091@qq.com" target="_blank" title="email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/1907948898" target="_blank" title="b站"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/tiktok.jpg" target="_blank" title="抖音"><i class="fab fa-tiktok" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/weixin.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">刚建站不久，博客美化有待研究，部分页面也没时间弄，路过的你将就看啦~😊，图片没加载出来就是网络不佳噢~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">文件系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">文件系统概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.</span> <span class="toc-text">文件的物理结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E7%BB%AD%E5%88%86%E9%85%8D"><span class="toc-number">1.2.1.</span> <span class="toc-text">连续分配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5%E5%88%86%E9%85%8D"><span class="toc-number">1.2.2.</span> <span class="toc-text">链接分配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%88%86%E9%85%8D"><span class="toc-number">1.2.3.</span> <span class="toc-text">索引分配</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%9A%84%E7%AE%A1%E7%90%86"><span class="toc-number">1.3.</span> <span class="toc-text">文件存储空间的管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B2%E5%88%86%E5%8C%BA%E8%A1%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text">空闲分区表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B2%E9%93%BE%E8%A1%A8%E6%B3%95"><span class="toc-number">1.3.2.</span> <span class="toc-text">空闲链表法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E7%A4%BA%E5%9B%BE"><span class="toc-number">1.3.3.</span> <span class="toc-text">位示图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%90%E7%BB%84%E9%93%BE%E6%8E%A5%E6%B3%95"><span class="toc-number">1.3.4.</span> <span class="toc-text">成组链接法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95"><span class="toc-number">1.4.</span> <span class="toc-text">文件目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.1.</span> <span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E6%9F%A5%E8%AF%A2%E6%8A%80%E6%9C%AF"><span class="toc-number">1.4.2.</span> <span class="toc-text">目录查询技术</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E5%92%8C%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-number">1.5.</span> <span class="toc-text">文件共享和访问控制</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/06/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/3/" title="操作系统期末复习之文件系统"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统期末复习之文件系统"/></a><div class="content"><a class="title" href="/2023/06/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/3/" title="操作系统期末复习之文件系统">操作系统期末复习之文件系统</a><time datetime="2023-06-15T01:37:37.000Z" title="发表于 2023-06-15 09:37:37">2023-06-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/2/" title="操作系统期末复习之输入输出系统"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统期末复习之输入输出系统"/></a><div class="content"><a class="title" href="/2023/06/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/2/" title="操作系统期末复习之输入输出系统">操作系统期末复习之输入输出系统</a><time datetime="2023-06-14T14:47:05.000Z" title="发表于 2023-06-14 22:47:05">2023-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1/" title="操作系统期末复习之存储器管理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统期末复习之存储器管理"/></a><div class="content"><a class="title" href="/2023/06/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1/" title="操作系统期末复习之存储器管理">操作系统期末复习之存储器管理</a><time datetime="2023-06-14T10:55:40.000Z" title="发表于 2023-06-14 18:55:40">2023-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/14/Go/17/" title="Goroutine并发模型"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Goroutine并发模型"/></a><div class="content"><a class="title" href="/2023/06/14/Go/17/" title="Goroutine并发模型">Goroutine并发模型</a><time datetime="2023-06-14T00:06:35.000Z" title="发表于 2023-06-14 08:06:35">2023-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/13/Go/16/" title="ioutil包与并发编程初识"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ioutil包与并发编程初识"/></a><div class="content"><a class="title" href="/2023/06/13/Go/16/" title="ioutil包与并发编程初识">ioutil包与并发编程初识</a><time datetime="2023-06-13T00:36:49.000Z" title="发表于 2023-06-13 08:36:49">2023-06-13</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 By 珩</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><i class="fa-solid fa-cloud"></i><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>萌ICP备20230529号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="6614140207" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-mini="true"> </div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
