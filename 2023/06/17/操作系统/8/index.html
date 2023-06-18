@@ -1,0 +1,698 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>操作系统期末复习之经典大题 | Eternity</title><meta name="author" content="珩,1939311091@qq.com"><meta name="copyright" content="珩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="用四种方法解决哲学家就餐问题 123456789101112131415161718semaphore chopstick[5] &#x3D; &amp;#123;1, 1, 1, 1, 1&amp;#125;;semaphore num &#x3D; 4;void philosopher(int i) &amp;#123;    while (true) &amp;#123;        wait(num);        wait(chop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统期末复习之经典大题">
+<meta property="og:url" content="https://uestcwxy.love/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/8/index.html">
+<meta property="og:site_name" content="Eternity">
+<meta property="og:description" content="用四种方法解决哲学家就餐问题 123456789101112131415161718semaphore chopstick[5] &#x3D; &amp;#123;1, 1, 1, 1, 1&amp;#125;;semaphore num &#x3D; 4;void philosopher(int i) &amp;#123;    while (true) &amp;#123;        wait(num);        wait(chop">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg">
+<meta property="article:published_time" content="2023-06-17T12:04:46.000Z">
+<meta property="article:modified_time" content="2023-06-18T10:52:44.542Z">
+<meta property="article:author" content="珩">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://uestcwxy.love/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 珩","link":"链接: ","source":"来源: Eternity","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '操作系统期末复习之经典大题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-06-18 18:52:44'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Eternity" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = 'hidden';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+
+preloader.initLoading()
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Eternity"><span class="site-name">Eternity</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">操作系统期末复习之经典大题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-17T12:04:46.000Z" title="发表于 2023-06-17 20:04:46">2023-06-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-18T10:52:44.542Z" title="更新于 2023-06-18 18:52:44">2023-06-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">大二下期末复习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">7.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>26分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="操作系统期末复习之经典大题"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><hr>
+<p>用四种方法解决哲学家就餐问题</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">semaphore chopstick[<span class="number">5</span>] = &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;;</span><br><span class="line">semaphore num = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">philosopher</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        wait(num);</span><br><span class="line">        wait(chopstick[i]);</span><br><span class="line">        wait(chopstick[(i + <span class="number">1</span>) % <span class="number">5</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 进行进餐操作</span></span><br><span class="line"></span><br><span class="line">        signal(chopstick[i]);</span><br><span class="line">        signal(chopstick[(i + <span class="number">1</span>) % <span class="number">5</span>]);</span><br><span class="line">        signal(num);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 进行思考操作</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">semaphore chopstick[<span class="number">5</span>] = &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">philosopher</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(i%<span class="number">2</span>==<span class="number">1</span>)&#123;</span><br><span class="line">    wait(chopstick[i]);        <span class="comment">//等左侧的筷子</span></span><br><span class="line">    wait(chopstick[(i+<span class="number">1</span>) % <span class="number">5</span>]);<span class="comment">//等右侧的筷子</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">    wait(chopstick[(i+<span class="number">1</span>)%<span class="number">5</span>]); <span class="comment">//等待右侧的筷子</span></span><br><span class="line">    wait(chopstick[i]);        <span class="comment">//等左侧的筷子     </span></span><br><span class="line">    &#125;</span><br><span class="line">         …</span><br><span class="line">        eat</span><br><span class="line">         …</span><br><span class="line">    signal(chopstick[i]);    <span class="comment">//放下左侧</span></span><br><span class="line">    signal(chopstick[(i+<span class="number">1</span>) % <span class="number">5</span>]);<span class="comment">//放下右侧</span></span><br><span class="line">         …</span><br><span class="line">        think</span><br><span class="line">         …</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">semaphore chopstick[<span class="number">5</span>] = &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    think;</span><br><span class="line"></span><br><span class="line">    Sswait(chopstick[(i + <span class="number">1</span>) % <span class="number">5</span>], chopstick[i]);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Eat</span></span><br><span class="line"></span><br><span class="line">    Ssignal(chopstick[(i + <span class="number">1</span>) % <span class="number">5</span>], chopstick[i]);</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">while</span> (TRUE);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过互斥信号量 mutex 对 eat之前取左右两侧筷子的操作进行保护，可以防止死锁的出现</span></span><br><span class="line"></span><br><span class="line">semaphore chopstick[<span class="number">5</span>] = &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;;</span><br><span class="line">semaphore mutex = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">philosopher</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        wait(mutex);</span><br><span class="line">        wait(chopstick[i]);</span><br><span class="line">        wait(chopstick[(i + <span class="number">1</span>) % <span class="number">5</span>]);</span><br><span class="line">		signal(mutex)</span><br><span class="line">        <span class="comment">// 进行进餐操作</span></span><br><span class="line"></span><br><span class="line">        signal(chopstick[i]);</span><br><span class="line">        signal(chopstick[(i + <span class="number">1</span>) % <span class="number">5</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 进行思考操作</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>假定系统有3个并发进程get 、copy 和put共享缓冲器B1和B2。进程get负责从输入设备上读信息，每读出一条记录后放到B1中。进程copy从缓冲器B1中取出一条记录拷贝后存入B2。进程put取出B2中的记录打印输出。B1和B2每次只能存放一条记录。要求3个进程协调完成任务，使打印出来的与读入的记录个数、次序完全一样。请用记录型信号量写出并发程序。</p>
+<p>设置4个信号量，其中empty1对应空闲的缓冲区1，其初值为1；full1对应缓冲区1中的记录，其初值为0； empty2对应空闲的缓冲区2，其初值为1；full2对应缓冲区2中的记录，其初值为0。相应进程描述为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">get( )&#123;				</span><br><span class="line">	<span class="keyword">while</span>(ture)&#123;</span><br><span class="line">		从输入设备读入一条记录;</span><br><span class="line">		P(empty1);</span><br><span class="line">		将记录存入缓冲区<span class="number">1</span>；</span><br><span class="line">		V(full1);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">copy( )&#123;				</span><br><span class="line">	<span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">		P(full1);</span><br><span class="line">		从缓冲区<span class="number">1</span>中取出一条记录;</span><br><span class="line">		V(empty1);</span><br><span class="line">		P(empty2);</span><br><span class="line">		将取出的记录存入缓冲区<span class="number">2</span> ；</span><br><span class="line">		V(full2);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">put( )&#123;				</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		 P(full2);</span><br><span class="line">		从缓冲区<span class="number">2</span>中取出一条记录;</span><br><span class="line">		 V(empty2);</span><br><span class="line">		将取出的记录打印出来；</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Main( )&#123;</span><br><span class="line">     parbegin(get,copy,put);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>这是一个从键盘输入到打印机输出的数据处理流图,其中键盘输入进程通过缓冲区buf1 把输入数据传送给计算进程,计算进程把处理结果通过缓冲buf2 传送给打印进程。buf1 和buf2 为临界资源,试写出键盘输入进程,计算进程及打印进程间的同步算法。(10分)</p>
+<p>输入进程→ buf1 →计算进程→ buf2 →打印进程</p>
+<p>解答:从键盘输入到打印机输出的数据传送过程,可以看作是由键盘输入进程到计算进程,以及由计算进程到打印输出进程这两个数据传送进程所组成。其中,对键盘输入进程而言,计算进程是消费者进程;而对打印输出进程而言,计算进程又是生产者进程。据此可将它们之间的同步问题描述如下:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">var:mutex1,mutex2,empty1,empty2,full1,full2:=<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">IP:begin</span><br><span class="line">repeat</span><br><span class="line"><span class="title function_">P</span><span class="params">(empty1)</span>;</span><br><span class="line">P(mutex1);</span><br><span class="line">input a charcter from keyboard;</span><br><span class="line">Add to buffer;</span><br><span class="line">V(mutex1);</span><br><span class="line">V(full1);</span><br><span class="line">until <span class="literal">false</span></span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">CP:begin</span><br><span class="line">repeat</span><br><span class="line"><span class="title function_">P</span><span class="params">(full1)</span>;</span><br><span class="line">P(mutex1);</span><br><span class="line">Take a charactor form buffer1;</span><br><span class="line">Add to ch1;</span><br><span class="line">V(mutex1);</span><br><span class="line">V(empty1);</span><br><span class="line">P(empty2);</span><br><span class="line">P(mutex2);</span><br><span class="line">Take a charactor form ch1;</span><br><span class="line">Add to buffer2;</span><br><span class="line">V(mutex2);</span><br><span class="line">V(full2);</span><br><span class="line">until <span class="literal">false</span></span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">OP:begin</span><br><span class="line">repeat</span><br><span class="line"><span class="title function_">p</span><span class="params">(full2)</span>;</span><br><span class="line">P(mutex2);</span><br><span class="line">Take a charactor from buffer2;</span><br><span class="line">Add to printer controler;</span><br><span class="line">start printer;</span><br><span class="line">V(mutex2);</span><br><span class="line">V(empty2);</span><br><span class="line">until <span class="literal">false</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>一台计算机有10台磁带机被n个进程竞争，每个进程最多需要3台磁带机，那么n最多为(4)时，系统没有死锁的危险？</p>
+<p>补充：关于死锁的公式：当一个系统有N个并发进程，每个进程都需要M个同类资源，那么最少需要多少资源才能避免死锁的出现？  （M-1）*N+1    注：每个进程分配M-1个资源，然后再加上一个资源，该资源无论给哪个进程都可以保证当前系统不会出现死锁。</p>
+<hr>
+<p>在银行家算法中，若出现下述的资源分配情况：</p>
+<table>
+<thead>
+<tr>
+<th>Process</th>
+<th>Max</th>
+<th>Allocation</th>
+<th>Available</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P0</td>
+<td>0 0 4 4</td>
+<td>0 0 3 2</td>
+<td>1 6 2 2</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>2 7 5 0</td>
+<td>1 0 0 0</td>
+<td></td>
+</tr>
+<tr>
+<td>P2</td>
+<td>3 6 10 10</td>
+<td>1 3 5 4</td>
+<td></td>
+</tr>
+<tr>
+<td>P3</td>
+<td>0 9 8 4</td>
+<td>0 3 3 2</td>
+<td></td>
+</tr>
+<tr>
+<td>P4</td>
+<td>0 6 6 10</td>
+<td>0 0 1 4</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>1）该状态是否安全？</p>
+<p>2）若进程P2提出请求Request（1，2，2，2）后，系统能否将资源分配给它？</p>
+<p>3）如果系统立即满足P2的上述请求，系统是否立即进入死锁状态？</p>
+<p>解：</p>
+<p>1）利用安全性算法对上面的状态进行分析（如下表所示），找到了一个安全序列{P0，P3，P4，P1，P2}或{P0，P3，P1，P4， P2}，故系统是安全的。</p>
+<p>2）P2发出请求向量Request（1，2，2，2）后，系统按照银行家算法进行检查：Request2（1，2，2，2）≤Need2（2，3，5，6）；	Request2（1，2，2，2）≤Available（1，6，2，2）；系统先假定可为P2分配资源，并修改Available，Allocation2和Need2向量：Availabe&#x3D;（0，4，0，0）Allocation2&#x3D;（2，5，7，6）Need2&#x3D;(1,1,3,4) ，进行安全性检查：此时对所有进程，条件Needi≦ Available（0，4，0，0）都不成立，即Available不能满足任何进程的请求，故系统进入不安全状态。因此，当进程P2提出请求Request（1，2，2，2）后，系统不能将资源分配给它。</p>
+<p>3）系统立即满足进程P2的请求（1，2，2，2）后，并没有马上进入死锁状态。因为，此时上述进程并没有申请新的资源，并未因得不到资源而进入阻塞状态。只有当上述进程提出新的请求，并导致所有没执行完的多个进程因得不到资源而阻塞时，系统才进入死锁状态。	</p>
+<hr>
+<p>已知某分页系统，用户空间有64个页面，主存容量为32KB，页面大小为1KB，对一个4页大的作业，其0、1、2、3页分别被分配到主存的2、4、6、7块中。</p>
+<p>（1）将十进制的逻辑地址1023、2500、3500、4500转换成物理地址？</p>
+<p>（2）以十进制的逻辑地址1023为例画出地址变换过程图？</p>
+<p>逻辑地址位数      64*1K&#x3D;2^16 	16位</p>
+<p>物理地址位数     32K&#x3D;2^15          15位</p>
+<p>每个块大小：1KB</p>
+<p>①逻辑地址1023：1023&#x2F;1K，得页号为0，页内地址为1023，查页表找到对应的物理块号为2，故物理地址为2×1K+1023&#x3D;3071</p>
+<p>②逻辑地址2500：2500&#x2F;1K，得页号为2，页内地址为452，查页表找到对应的物理块号为6，故物理地址为6×1K+452&#x3D;6596</p>
+<p>③逻辑地址3500：3500&#x2F;1K，得页号为3，页内地址为428，查页表找到对应的物理块号为7，故物理地址为7×1K+428&#x3D;7596</p>
+<p>④逻辑地址4500：4500&#x2F;1K，得页号为4，页内地址为404，因页号大于页表长度，故产生越界中断。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-17_21-39-26.png"></p>
+<hr>
+<p>对访问串：1，2，3，4，1，2，5，1，2，3，4，5，指出在驻留集大小分别为3，4时，使用FIFO和LRU替换算法的缺页次数。结果说明了什么？</p>
+<p>首先采用FIFO，当m&#x3D;3时，缺页次数＝9，当m&#x3D;4时，缺页次数＝10。采用LRU算法，当m&#x3D;3时，缺页次数＝10；当m&#x3D;4时，缺页次数＝8。结果说明：FIFO有Belady奇异现象，即不满足驻留集增大，缺页次数一定减小的规律；另外在m&#x3D;3时，LRU的缺页次数比FIFO要多，所以LRU算法并不总优于FIFO，还要看当前访问串的特点。</p>
+<hr>
+<p>一台计算机有四个页框，装入时间、上次引用时间、它们的R（读）与M（修改）位如下表所示（时间单位：嘀嗒），请问NRU、FIFO、LRU算法将替换哪一页？</p>
+<table>
+<thead>
+<tr>
+<th>页</th>
+<th>装入时间</th>
+<th>上次引用时间</th>
+<th>R</th>
+<th>M</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>126</td>
+<td>279</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>230</td>
+<td>260</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>120</td>
+<td>272</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>160</td>
+<td>280</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>FIFO算法在需要淘汰某一页时，淘汰最先进入内存的页。在题述条件下，第2页是最先进入内存的页。故FIFO算法将淘汰第2页。</p>
+<p>LRU算法在需要淘汰某一页时，淘汰最近最久未使用的页面。在题述条件下，第1页是最近最久未使用的页面。故LRU算法将淘汰第1页。</p>
+<p>NRU算法在需要淘汰某一页时，从那些最近一个时期内未被访问的页中任选一页淘汰。在题述条件下，只有第0页是最近一个时期内未被访问的页。故NRU算法将淘汰第0页。</p>
+<hr>
+<p>一个磁盘系统，平均寻道时间为12ms，转速为10000转&#x2F;分，每个磁道有18个扇区，每个扇区512个字节。请问要读取一个扇区所花的时间是多少？</p>
+<p>TS &#x3D; 12ms</p>
+<p>TR &#x3D; 1&#x2F;2r &#x3D; 60÷10000×0.5 &#x3D; 3ms （因为不知道扇区具体在哪按半圈算）</p>
+<p>TA&#x3D;b&#x2F;rN &#x3D; 512÷[(10000&#x2F;60) ×(18×512)]&#x3D; 0.33ms </p>
+<p>TT &#x3D; TS + TR + TA &#x3D;12 + 3 + 0.33 &#x3D; 15.33ms</p>
+<p>答：读取一个扇区所花的时间是15.33ms。</p>
+<hr>
+<p>假定盘块的大小为1KB,硬盘的大小为500MB,采用显示链接分配方式时,其FAT需占用多少存储空间（FAT表项占2.5个字节）?如果文件A占用硬盘的11, 12 , 16, 14四个盘块,试画出文件A中各盘块在FAT表中的链接情况.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-18_09-00-27.png"></p>
+<hr>
+<p>存放在某个磁盘上的文件系统，对于采用混合索引分配方式，其 FCB 中共有 13 项地址项，第 0～9 个地址项为直接地址，第 10 个地址项为一次间接地址，第 11 个地址项为二次 间接地址，第 12 个地址项为三次间接地址。如果每个盘块的大小为 512 字节，盘块号需要 3 个字节来描述，则每个盘块最多存放 170 个盘块地址。<br>(1) 该文件系统允许的最大长度是多少？<br>(2) 将文件的字节偏移量 5000、15000、150000 转换为物理块号和块内偏移量。<br>(3) 假设某文件的索引结点已在内存中，但其他信息均在外存，为了访问该文件中某个位置的内容，最多需要几次访 问磁盘？</p>
+<p>(1) 该文件系统中一个文件的最大长度可达:</p>
+<p>10+170+170×170+170×170×170&#x3D;4942080 块，共 4942080×512 字节 &#x3D; 2471040KB</p>
+<p>(2) 5000&#x2F;512 得到商为 9, 余数为 392, 即字节偏移量 5000 对应的逻辑块号为 9, 块内偏移量为 392。由于 9&lt;10, 故可直接从该文件的 FCB 的第 9 个地址项处得到物理盘块号，块内偏移量为 392。</p>
+<p>15000&#x2F;512 得到商为 29, 余数为 152, 即字节偏移量 15000 对应的逻辑块号为 29, 块内偏移量为 152。由于 10&lt;29&lt; 10+170, 而 29-10&#x3D;19, 故可从 FCB 的第 10 个地址项，即一次间址项中得到一次间址块的地址；并从一次间址块的第 19 项 (即该块的第 57~59 这 3 个字节) 中获得对应的物理盘块号，块内偏移量为 152。</p>
+<p>150000&#x2F;512得商为292，余数为496。即逻辑块号为292，块内偏移为496。由于10+170≤292，故可从FCB的第11个地址项，即二次间址项中获得<strong>第1个</strong>一次间址块；并从该一次间址块的112项中获得对应的物理盘块号，块内偏移为496。<em>（150000&#x2F;512 得到商为 292, 余数为 496, 即字节偏移量 150000 对应的逻辑块号为 292, 块内偏移量为 496。由于 10+170&lt;292&lt; 10+170+170×170, 而 292-(10+170)&#x3D;112,112&#x2F;170 得到商为 0, 余数为 112, 故可从 FCB 的第 11 个地址项，即二次间址项中得到二次间址块的地址，并从二次间址块的第 0 项中获得一个一次间址块的地址，再从这一次间址块的第 112 项中获得对应的物理盘块号，块内偏移量为 496。）</em></p>
+<p>(3) 由于文件的 FCB 己在内存，为了访问文件中某个位置的内容，最少需要 1 次访问磁盘 (即可通过直接地址直接读文件盘块)，最多需要 4 次访问磁盘 (第一次是读三次间址块，第二次是读二次间址块，第三次是读一次间址块，第四次是读文件盘块)。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-18_09-23-50.png"></p>
+<p>1）分配过程线形检索得：i1&#x3D;2，j1&#x3D;2； i2&#x3D;3，j2&#x3D;6。计算空闲盘块号： b1&#x3D;i1×16+j1+1&#x3D;2×16+2+1&#x3D;35 </p>
+<p>b2&#x3D;i2×16+j2+1&#x3D;3×16+6+1&#x3D;55修改位示图：</p>
+<p> 令map[2，2]&#x3D;map[3，6]&#x3D;1，并将对应块35，55分配出去。</p>
+<p>2）释放过程计算出第300块所对应的二进制行号i和j</p>
+<p>i&#x3D;（300-1）&#x2F;16&#x3D;18</p>
+<p>j&#x3D; （300-1）% 16&#x3D;11</p>
+<p>修改位示图： 令map[18，11]&#x3D;0。</p>
+<p>（注意行号和列号不是从1开始编号）</p>
+<hr>
+<p>设正在处理器上执行的一个进程的页表如下表所示,表中的虚页号和物理块号是十进制数,起始页号(块号)均为0。所有的地址均是存储器字节地址。页的大小为1024字节。(10分)</p>
+<p> ① 详述在设有快表的请求分页存储管理系统中,一个虚地址转换成物理内存地址的过程。</p>
+<p> ② 下列虚地址对应于什么物理地址:5499,2221。</p>
+<table>
+<thead>
+<tr>
+<th>虚页号</th>
+<th>状态位</th>
+<th>访问位</th>
+<th>修改位</th>
+<th>物理块号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>7</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p>①</p>
+<ol>
+<li>首先，虚地址被分为两部分：页号和页内偏移量。</li>
+<li>系统会检查快表（TLB），看看虚拟页号是否在快表中。如果在，快表会返回相应的物理页框号。</li>
+<li>如果虚拟页号不在快表中，系统会查询页表，找到相应的物理页框号。如果该虚拟页没有分配物理页框，则会发生缺页中断，由操作系统负责分配物理页框并更新页表。</li>
+<li>一旦找到物理页框号，系统会将其与虚地址的页内偏移量组合起来，形成物理内存地址。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-18_11-05-45.png"></p>
+<p>②</p>
+<table>
+<thead>
+<tr>
+<th>虚地址（虚页号，页内地址）</th>
+<th>物理地址 （物理块号，块内地址）</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5499&#x3D;1024*5+379</td>
+<td>（5，379）</td>
+<td>（0,379）</td>
+</tr>
+<tr>
+<td>2221&#x3D;1024*2+173</td>
+<td>（2,173）</td>
+<td>（不在内存）</td>
+</tr>
+</tbody></table>
+<hr>
+<p>请求分页管理系统中,假设某进程的页表内容如下表所示。 </p>
+<table>
+<thead>
+<tr>
+<th>进程</th>
+<th>页框(Page Frame)号</th>
+<th>有效位(存在位)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>101H</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>254H</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>页面大小为4KB,一次内存的访问时间是100ns,一次快表(TLB)的访问时间是10ns,处理一次缺页的平均时间为108ns(已含更新TLB和页表的时间),进程的驻留集大小固定为2,采用最近最少使用置换算法(LRU)和局部淘汰策略。假设</p>
+<p>①TLB初始为空;</p>
+<p>②地址转换时先访问TLB,若TLB未命中,再访问页表</p>
+<p>(忽略访问页表之后的TLB更新时间);</p>
+<p>③有效位为0表示页面不在内存,产生缺页中断,缺页中断处理后,返回到产生缺页中断的指令处重新执行。设有虚地址访问序列2362H、1565H、25A5H,请问:</p>
+<p>(1) 依次访问上述三个虚地址,各需多少时间?</p>
+<p>(2) 基于上述访问序列,虚地址1565H的 物理地址是多少?请说明理由。</p>
+<p>1)由于页面大小为4KB&#x3D;212KB，故逻辑地址末尾12位表示页内偏移W，前4位表示页号P。 </p>
+<p>对于逻辑地址2362H，其表示的页号为2，访问次序依次为：访问TLB未命中(10ns)； 访问页表命中2号页面，并将页表项副本放入TLB（100ns）,得到物理地址，访问内存（100ns）。</p>
+<p>故逻辑地址2362H的访问时间为：EAT&#x3D;10+100+100&#x3D;210ns;<br>对于逻辑地址1565H，其表示的页号为1，访问次序依次为，访问TLB未命中(10ns)；访问页表未命中(100ns)；发生缺页中断(108ns)；访问TLB命中1号页面(10ns)；得到物理地址访问内存(100ns)。此时驻留集已满(0号页面和2号页面)</p>
+<p>故逻辑地址1565H的访问时间为：<br>EAT&#x3D;108+2×(100+10)&#x3D;328ns。<br>对于逻辑地址25A5H，其表示的页号为2，访问次序依次为：访问TLB命中二号页面(10ns)；得到物理地址访问内存(100ns)。</p>
+<p>故逻辑地址25A5H的访问时间为:EAT&#x3D;a+t&#x3D;10+100&#x3D;110ns;<br>2） 访问逻辑地址1565H时由于驻留集已满(0号页面和2号页面)。故应从页表中淘汰一个页面，根据LRU算法，2号页面刚被使用过，故淘汰0号页面，将1号页面调入获得内存块号101H。则地址由内存块号和页内偏移量拼接得到物理地址为：101565H。</p>
+<hr>
+<p>设系统有三种类型的资源,数量为(4,2,2),系统中有进程A,B,C按如下顺序请求资源:</p>
+<p>进程A申请(3,2,1)</p>
+<p>进程B申请(1,0,1)</p>
+<p>进程A申请(0,1,0)</p>
+<p>进程C申请(2,0,0)</p>
+<p>请你给出一和防止死锁的资源剥夺分配策略,完成上述请求序列,并列出资源分配过程,指明哪些进程需要等待,哪些资源被剥夺。(10分)</p>
+<p>解:(10分)</p>
+<p>① 分配策略为:当进程Pi申请ri类资源时,检查ri中有无可分配的资源:有则分配给Pi;否则将Pi占有的资源全部释放而进入等待状态。(Pi等待原占有的所有资源和新申请的资源)</p>
+<p>② 资源分配过程: 剩余资源</p>
+<p>进程A:(3,2,1) (1,0,1)</p>
+<p>进程B:(1,0,1) (0,0,0)</p>
+<p>进程A:(0,1,0)(不满足) (3,2,1)</p>
+<p>A的所有资源被剥夺,A处于等待</p>
+<p>进程C:(2,0,0) (1,2,1)</p>
+<p>C,B完成之后,A可完成。</p>
+<hr>
+<p>设公共汽车上,司机和售票员的活动分别是:</p>
+<p>司机的活动:启动车辆;正常行车;到站停车。</p>
+<p>售票员的活动:关车门;售票;开车门。</p>
+<p>在汽车不断的到站、停站、行驶过程中,试用信号量和P,V操作实现司机和售票员的同步。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Semaphore run=<span class="number">0</span>; <span class="comment">//是否允许司机启动汽车</span></span><br><span class="line">Semaphore stop=<span class="number">0</span>; <span class="comment">//是否允许售票员开门</span></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">    cobegin</span><br><span class="line">        <span class="title function_">driver</span><span class="params">()</span>;</span><br><span class="line">    	busman();</span><br><span class="line">    coend</span><br><span class="line">&#125;</span><br><span class="line">driver()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span>(TRUE)</span><br><span class="line">    &#123;</span><br><span class="line">        p(run);</span><br><span class="line">        启动公交车，开车，到站停车；</span><br><span class="line">        V(stop);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">busman()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span>(TRUE)</span><br><span class="line">    &#123;	</span><br><span class="line">        关车门</span><br><span class="line">        V(run);</span><br><span class="line">        售票；</span><br><span class="line">        P(stop);</span><br><span class="line">        开车门，上下乘客</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>某虚拟存储器的用户编程空间共 32 个页面，每页为 1KB ，内存为 16KB 。假定某时刻一用户进程的页表中已调入内存的页面的页号和物理块号的对照表如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/6100690_1492922396105_072774B6B658B3603E1AA7198722775C.png"></p>
+<p>（ 1 ）此时，指令中逻辑地址至少需要多少位？</p>
+<p>（2）逻辑地址0A 5C（十六进制）所对应的物理地址是什么（用十六进制表示）？给出计算过程。</p>
+<p>页式存储管理的逻辑地址分为两部分：页号和页内地址。由已知条件“用户编程空间共32个页面”，可知页号部分占5位；由“每页为1KB”，1K&#x3D;210，可知内页地址占10位，则指令中逻辑地址至少需要15位。<br>逻辑地址0A5C（H）所对应的二进制表示形式是：000 1010 0101 1100 ，根据上面的分析，10 0101 1100 为页内地址，编码 “000 10” 为页号，表示该逻辑地址对应的页号为2。查页表，得到物理块号是4（十进制），即物理块地址为：01 00 ，拼接页内地址10 0101 1100，得01 0010 0101 1100，即125C（H）。</p>
+<hr>
+<p>进程A1、A2、…Anl通过m个缓冲区向进程B1、B2、…Bn2不断地发送消息。发送和接收工作遵循如下规则：</p>
+<p>(1)每个发送进程一次发送一个消息，写入一个缓冲区，缓冲区大小与消息长度一样。</p>
+<p>(2)对于每一个消息，B1、B2、…Bn2都需各接收一次，读入自己的数据区内。</p>
+<p>(3)m个缓冲区都满时，发送进程等待；没有可读的消息时，接收进程等待。 试用wait、signal操作描述它们的同步关系。</p>
+<p>每个缓冲区只要写一次但要读n2次，因此，可以看成n2组缓冲区，每个发送者要同时写n2个缓冲区，而每个接收者只要读它自己的缓冲区。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">mutex=<span class="number">1</span>; <span class="comment">//多进程互斥使用缓冲区</span></span><br><span class="line">empty[<span class="number">0</span>,<span class="number">1</span>,……n2]=&#123;m,m,……m&#125;;</span><br><span class="line">full[<span class="number">0</span>,<span class="number">1</span>,…..n2]=&#123;<span class="number">0</span>,<span class="number">0</span>,……<span class="number">0</span>&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)<span class="comment">//写进程</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i&lt; n2; i++)&#123;</span><br><span class="line">	P(empty[i]);</span><br><span class="line">	&#125;</span><br><span class="line">P(mutex);</span><br><span class="line">消息放入缓冲区；</span><br><span class="line">V(mutex);</span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i&lt; n2; i++)&#123;</span><br><span class="line">	V(full[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)<span class="comment">//读进程</span></span><br><span class="line">&#123;</span><br><span class="line">P(full[i]);</span><br><span class="line">P(mutex);</span><br><span class="line">读取缓冲区；</span><br><span class="line">V(mutex);</span><br><span class="line">V(empty[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>一个进程的大小为5个页面,为它分配了4个物理块。当前每个块的情况如下表所示(都为十进制数,且从0开始计数)。当虚页4发生缺页时,使用下列的页面置换算法,哪一个物理块将被换出?并解释原因。</p>
+<table>
+<thead>
+<tr>
+<th>页号</th>
+<th>块号</th>
+<th>加载时间</th>
+<th>访问时间</th>
+<th>访问位R</th>
+<th>修改位M</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>0</td>
+<td>60</td>
+<td>161</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>130</td>
+<td>160</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>2</td>
+<td>26</td>
+<td>162</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>20</td>
+<td>163</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>(1) FIFO算法;</p>
+<p>(2) LRU算法;</p>
+<p>(3) CLOCK算法;</p>
+<p>(4) 当页面的访问串为:“4,0,0,0,2,4,2,1,0,3,2”的OPT算法。</p>
+<p>解:(1) 换出第3号虚页,因为它加载的时间最早;</p>
+<p>(2) 换出第1号虚页,因为它最近最久没被访问;</p>
+<p>(3) 换出第1号虚页,因为它最近既没被访问,又没被修改;</p>
+<p>(4) 换出第3号虚页,因为它离访问点最远。</p>
+<hr>
+<p>设某程序大小为460字,并且它有下面的存储访问序列:</p>
+<p>10,11,104,170,73,309,185,245,246,434,458,364</p>
+<p>设页面大小是100字,请给出该访问序列的页面走向.又设该程序基本可用内存是200字,采用先进先出置换算法(FIFO),求出其缺页率.如果采用最佳置换算法(OPT),其缺页率又是多少?(注:缺页率&#x3D;缺页次数&#x2F;访问页面总数)</p>
+<p>根据已知条件页面大小是100字,将页面访问序列简化为:</p>
+<p>0,0,1,1,0,3,1,2,2,4,4,3 (2分)</p>
+<p>又因为该程序基本可用内存是200字,可知内存块数为2.</p>
+<p>采用先进先出置换算法(FIFO),总共有6次缺页,缺页率为6&#x2F;12&#x3D;50%</p>
+<p>采用最佳置换算法(OPT),总共有5次缺页,缺页率为5&#x2F;12&#x3D;41.7%</p>
+<hr>
+<p>有一个大学只有一个澡堂，门口上有一块牌子，如果有一个男生进去洗澡，他就会把牌子转到“男”字样，这样只有男生会进去，女生就不会进去了；如果澡堂没人，一个女生先进了澡堂，她就会把牌子转到“女”字样，那么女生就可以进去了；请用PV操作描述这个事件，避免男女生同时出现在澡堂。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">Semphore  boymutex=<span class="number">1</span>, girlmutex=<span class="number">1</span>,mutex=<span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> boycount=<span class="number">0</span>;  </span><br><span class="line"><span class="type">int</span> girlcount=<span class="number">0</span>;</span><br><span class="line">Parbegin </span><br><span class="line"></span><br><span class="line"><span class="title function_">Boy</span><span class="params">()</span></span><br><span class="line">begin</span><br><span class="line">  repeat</span><br><span class="line">    <span class="title function_">wait</span><span class="params">(boymutex)</span>; </span><br><span class="line">    <span class="keyword">if</span> boycount ==<span class="number">0</span> then wait(mutex);</span><br><span class="line">	boycount = boycount +<span class="number">1</span>; </span><br><span class="line">    signal(boymutex); </span><br><span class="line">    洗澡；</span><br><span class="line">    wait(boymutex); </span><br><span class="line">    boycount = boycount <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">if</span> boycount ==<span class="number">0</span> then signal(mutex);</span><br><span class="line">signal(boymutex);</span><br><span class="line">until <span class="literal">false</span>;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">Girl()</span><br><span class="line">begin </span><br><span class="line">  repeat </span><br><span class="line">    <span class="title function_">wait</span><span class="params">(girlmutex)</span>; </span><br><span class="line">	<span class="keyword">if</span> girlcount ==<span class="number">0</span> then wait(mutex);</span><br><span class="line">	girlcount = girlcount +<span class="number">1</span>; </span><br><span class="line">    signal(girlmutex); </span><br><span class="line">    洗澡；</span><br><span class="line">    wait(girlmutex); </span><br><span class="line">    girlcount = girlcount <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">if</span> girlcount ==<span class="number">0</span> then signal(mutex);</span><br><span class="line">	signal(girlmutex);</span><br><span class="line">until <span class="literal">false</span>;</span><br><span class="line">end;</span><br><span class="line">Parend</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>若程序PA和PB单独执行时分别用TA&#x3D;1小时,TB&#x3D;1.5小时,其中处理器工作时间 TA&#x3D;18分钟 T&#x3D;27分钟,如果采用多道程序设计方法,让PA、PB并行工作,假定处理器利率达到50%,另加15分钟系统开销,请问系统效率能提高多少?</p>
+<p>答：单道系统下程序一个执行完再执行另一个,所以CPU执行PA和PB加起来的时间为 60+90&#x3D;150分钟</p>
+<p>多道系统下PA和PB同时在内存中,当一个程序开始I&#x2F;O时,OS调用另一个执行,所以它们只占用了CPU时间18+27&#x3D;45分钟</p>
+<p>又因为CPU利用率为50%,除了执行PA和PB,还需要维持OS的运行;另一方面在PA和PB间切换也花了15分钟, 因此实际的CPU运行时间为(18+27)&#x2F;50%+15&#x3D;90+15&#x3D;105分钟</p>
+<p>所以系统效率提高:[(60+90)-(90+15)]&#x2F;(60+90)&#x3D;30%</p>
+<hr>
+<p>某单处理器系统中采用多道程序设计，现有10个进程存在，则处于“运行”，“阻塞”、“就绪”状态的进程数量最小和最大值分别可能是多少？</p>
+<p>答：在一个单处理器系统中，采用多道程序设计，现有10个进程存在。在任何时刻，只能有一个进程处于“运行”状态，因为只有一个处理器。处于“阻塞”状态的进程数量最小值为0，最大值为10，因为所有进程都可能在等待某些事件发生。处于“就绪”状态的进程数量最小值为0，最大值为9，因为除了正在运行的进程外，其他所有进程都可能处于就绪状态。因此，在这个系统中，处于“运行”状态的进程数量最小值和最大值都是1；处于“阻塞”状态的进程数量最小值为0，最大值为10；处于“就绪”状态的进程数量最小值为0，最大值为9。</p>
+<hr>
+<p>桌上有一空盘,只允许存放一个水果。爸爸可向盘中放苹果,也可向盘中放桔子。儿子专等吃盘中的桔子,女儿专等吃盘中的苹果。规定当盘中空时一次只能放一只水果供吃者取用,请用 P、V原语实现爸爸、儿子、女儿三个并发进程的同步。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">semaphore empty = <span class="number">1</span>;</span><br><span class="line">semaphore apple = <span class="number">0</span>;</span><br><span class="line">semaphore orange = <span class="number">0</span>;</span><br><span class="line">semaphore mutex = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">father</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        P(empty);</span><br><span class="line">        P(mutex);</span><br><span class="line">        <span class="comment">// 向盘中放苹果或桔子</span></span><br><span class="line">        <span class="keyword">if</span> (放苹果) &#123;</span><br><span class="line">            V(apple);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (放桔子) &#123;</span><br><span class="line">            V(orange);</span><br><span class="line">        &#125;</span><br><span class="line">        V(mutex);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">son</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        P(orange);</span><br><span class="line">        P(mutex);</span><br><span class="line">        <span class="comment">// 从盘中取桔子</span></span><br><span class="line">        V(mutex);</span><br><span class="line">        V(empty);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">daughter</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        P(apple);</span><br><span class="line">        P(mutex);</span><br><span class="line">        <span class="comment">// 从盘中取苹果</span></span><br><span class="line">        V(mutex);</span><br><span class="line">        V(empty);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>桌上有一空盘，最多允许存放一只水果。爸爸只向盘中放一个苹果，妈妈只向盘中放一个桔子，儿子专等吃盘中的桔子，女儿专等吃苹果。用wait、signal操作实现爸爸、妈妈、儿子、女儿四个并发进程的同步。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">semaphore empty=<span class="number">1</span>,nutex=<span class="number">1</span>,apple=<span class="number">0</span>,orange=<span class="number">0</span>;  <span class="comment">//为四个信号量赋初值</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">father</span><span class="params">()</span>&#123;</span><br><span class="line">     <span class="keyword">do</span>&#123;</span><br><span class="line">           wait(empty);    <span class="comment">//等待盘子为空</span></span><br><span class="line">           wait(metux);    <span class="comment">//等待获取对盘子的操作</span></span><br><span class="line">            爸爸向盘中放一个苹果;</span><br><span class="line">           signal(mutex);   <span class="comment">//释放对盘子的操作</span></span><br><span class="line">           signal(apple);   <span class="comment">//通知女儿可以来盘子中取苹果</span></span><br><span class="line">    &#125;<span class="keyword">while</span>(TRUE);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">mather</span><span class="params">()</span>&#123;               <span class="comment">//与父亲进程雷同</span></span><br><span class="line">     <span class="keyword">do</span>&#123;</span><br><span class="line">           wait(empty);</span><br><span class="line">           wait(metux);</span><br><span class="line">            妈妈向盘中放一个桔子;</span><br><span class="line">           signal(mutex);</span><br><span class="line">           signal(orange);</span><br><span class="line">    &#125;<span class="keyword">while</span>(TRUE);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">son</span><span class="params">()</span>&#123;                        </span><br><span class="line">     <span class="keyword">do</span>&#123;</span><br><span class="line">           wait(orange);       <span class="comment">//判断盘子中是否有桔子</span></span><br><span class="line">           wait(metux);        <span class="comment">//等待获取对盘子的操作</span></span><br><span class="line">            儿子取出盘中的桔子;</span><br><span class="line">           signal(mutex);      <span class="comment">//释放对盘子的操作</span></span><br><span class="line">           signal(empty);      <span class="comment">//盘子空了，可以继续放水果了</span></span><br><span class="line">    &#125;<span class="keyword">while</span>(TRUE);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">daugther</span><span class="params">()</span>&#123;               <span class="comment">//与儿子进程雷同</span></span><br><span class="line">     <span class="keyword">do</span>&#123;</span><br><span class="line">           wait(apple);</span><br><span class="line">           wait(metux);</span><br><span class="line">            女儿取出盘中的苹果;</span><br><span class="line">           signal(mutex);</span><br><span class="line">           signal(empty);</span><br><span class="line">    &#125;<span class="keyword">while</span>(TRUE);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span> &#123;               <span class="comment">//四个并发进程的同步执行</span></span><br><span class="line">	cobegin</span><br><span class="line">	   <span class="title function_">father</span><span class="params">()</span>;mather();son();daugther();</span><br><span class="line">	coend</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>在某页式虚拟系统中,假定访问内存的时间是10ms,平均缺页中断处理为25ms,平均缺页中断率为5%,试计算在该虚存系统中,平均有效访问时间是多少?</p>
+<p>答：若要访问的页面在内存中,一次访问的时间是:10ms+10ms&#x3D;20ms;如果不在内存,所花的时间是:10ms(问内存页表)+25ms(中断处理)+10ms(访问内存页表)+10ms(访问内存)&#x3D;55ms。所以平均有效访问时间为: 20ms× (1-5%)+55ms×5%&#x3D;21.75ms</p>
+<hr>
+<p>若是一个磁盘容量是64MB，磁盘盘块大小为1KB，若是采用显式链接的方式，需要多大的FAT表；若是用索引结构，需要用几级索引，为什么？</p>
+<p>答：64MB&#x2F;1KB&#x3D;64K(块)，需16位地址标识，需对于FAT表的一表项，则占2字节，2B×64K&#x3D;128KB。</p>
+<p>一个盘块可以放1KB&#x2F;2B&#x3D;512项，一级索引肯定不够，512*512&gt;64K，所以需要二级索引。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://uestcwxy.love">珩</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://uestcwxy.love/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/8/">https://uestcwxy.love/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://uestcwxy.love" target="_blank">Eternity</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/7/" title="操作系统期末复习之shell编程"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">操作系统期末复习之shell编程</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/06/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/2/" title="操作系统期末复习之输入输出系统"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-14</div><div class="title">操作系统期末复习之输入输出系统</div></div></a></div><div><a href="/2023/06/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1/" title="操作系统期末复习之存储器管理"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-14</div><div class="title">操作系统期末复习之存储器管理</div></div></a></div><div><a href="/2023/06/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/3/" title="操作系统期末复习之文件系统"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-15</div><div class="title">操作系统期末复习之文件系统</div></div></a></div><div><a href="/2023/06/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6/" title="操作系统期末复习之处理机调度与死锁"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-16</div><div class="title">操作系统期末复习之处理机调度与死锁</div></div></a></div><div><a href="/2023/06/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/5/" title="操作系统期末复习之进程管理"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-15</div><div class="title">操作系统期末复习之进程管理</div></div></a></div><div><a href="/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/7/" title="操作系统期末复习之shell编程"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-17</div><div class="title">操作系统期末复习之shell编程</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">珩</div><div class="author-info__description">等我苦尽甘来时，我给你讲讲来时走的路。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/uestc-wxy/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.facebook.com/profile.php?id=100092533320651" target="_blank" title="facebook"><i class="fab fa-facebook" style="color: #4a7dbe;"></i></a><a class="social-icon" href="mailto:1939311091@qq.com" target="_blank" title="email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/1907948898" target="_blank" title="b站"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/tiktok.jpg" target="_blank" title="抖音"><i class="fab fa-tiktok" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/weixin.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">刚建站不久，博客美化有待研究，部分页面也没时间弄，路过的你将就看啦~😊，图片没加载出来就是网络不佳噢~</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/8/" title="操作系统期末复习之经典大题"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统期末复习之经典大题"/></a><div class="content"><a class="title" href="/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/8/" title="操作系统期末复习之经典大题">操作系统期末复习之经典大题</a><time datetime="2023-06-17T12:04:46.000Z" title="发表于 2023-06-17 20:04:46">2023-06-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/7/" title="操作系统期末复习之shell编程"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统期末复习之shell编程"/></a><div class="content"><a class="title" href="/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/7/" title="操作系统期末复习之shell编程">操作系统期末复习之shell编程</a><time datetime="2023-06-17T02:54:38.000Z" title="发表于 2023-06-17 10:54:38">2023-06-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6/" title="操作系统期末复习之处理机调度与死锁"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统期末复习之处理机调度与死锁"/></a><div class="content"><a class="title" href="/2023/06/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6/" title="操作系统期末复习之处理机调度与死锁">操作系统期末复习之处理机调度与死锁</a><time datetime="2023-06-16T08:26:15.000Z" title="发表于 2023-06-16 16:26:15">2023-06-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/5/" title="操作系统期末复习之进程管理"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统期末复习之进程管理"/></a><div class="content"><a class="title" href="/2023/06/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/5/" title="操作系统期末复习之进程管理">操作系统期末复习之进程管理</a><time datetime="2023-06-15T13:57:52.000Z" title="发表于 2023-06-15 21:57:52">2023-06-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/4/" title="操作系统期末复习之操作系统引论"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统期末复习之操作系统引论"/></a><div class="content"><a class="title" href="/2023/06/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/4/" title="操作系统期末复习之操作系统引论">操作系统期末复习之操作系统引论</a><time datetime="2023-06-15T09:55:02.000Z" title="发表于 2023-06-15 17:55:02">2023-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 By 珩</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><i class="fa-solid fa-cloud"></i><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>萌ICP备20230529号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="6614140207" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-mini="true"> </div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
