@@ -1,0 +1,803 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>计网期末复习之应用层 | Eternity</title><meta name="author" content="珩,1939311091@qq.com"><meta name="copyright" content="珩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1、网络应用程序部署 （1）部署在端系统上（2）没有应用程序软件运行在网络核心设备上 2、网络应用程序体系结构 （1）C&#x2F;S体系结构	Server：具有固定的、众所周知的IP地址；总是打开的主机；主机群集；	Client：可以间断的同服务器连接；拥有动态IP地址；客户机相互之间不直接通信 （2）P2P体系结构	没有总是打开的服务器；任意一对主机直接相互通信；对等方间歇连接并且可以改变IP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计网期末复习之应用层">
+<meta property="og:url" content="https://uestcwxy.love/2023/06/21/%E8%AE%A1%E7%BD%91/2/index.html">
+<meta property="og:site_name" content="Eternity">
+<meta property="og:description" content="1、网络应用程序部署 （1）部署在端系统上（2）没有应用程序软件运行在网络核心设备上 2、网络应用程序体系结构 （1）C&#x2F;S体系结构	Server：具有固定的、众所周知的IP地址；总是打开的主机；主机群集；	Client：可以间断的同服务器连接；拥有动态IP地址；客户机相互之间不直接通信 （2）P2P体系结构	没有总是打开的服务器；任意一对主机直接相互通信；对等方间歇连接并且可以改变IP">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png">
+<meta property="article:published_time" content="2023-06-21T04:33:08.000Z">
+<meta property="article:modified_time" content="2023-06-21T11:37:15.416Z">
+<meta property="article:author" content="珩">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://uestcwxy.love/2023/06/21/%E8%AE%A1%E7%BD%91/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 珩","link":"链接: ","source":"来源: Eternity","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计网期末复习之应用层',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-06-21 19:37:15'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Eternity" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = 'hidden';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+
+preloader.initLoading()
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Eternity"><span class="site-name">Eternity</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计网期末复习之应用层</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-21T04:33:08.000Z" title="发表于 2023-06-21 12:33:08">2023-06-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-21T11:37:15.416Z" title="更新于 2023-06-21 19:37:15">2023-06-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">大二下期末复习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>22分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计网期末复习之应用层"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>1、网络应用程序部署</p>
+<p>（1）部署在端系统上（2）没有应用程序软件运行在网络核心设备上</p>
+<p>2、网络应用程序体系结构</p>
+<p>（1）C&#x2F;S体系结构	Server：具有固定的、众所周知的IP地址；总是打开的主机；主机群集；	Client：可以间断的同服务器连接；拥有动态IP地址；客户机相互之间不直接通信</p>
+<p>（2）P2P体系结构	没有总是打开的服务器；任意一对主机直接相互通信；对等方间歇连接并且可以改变IP地址；自扩展性；难以管理</p>
+<p>（3）C&#x2F;S和P2P混合的体系结构	中心服务器记录对等方内容（用户注册、文件存储信息等），供用户搜索；</p>
+<p>3、进程通信</p>
+<p>（1）同一主机上运行的进程之间进程间通信机制进行通信，由操作系统提供。</p>
+<p>（2）不同主机上运行的进程间交换报文进行通信。进程间通信利用socket发送&#x2F;接收消息实现。</p>
+<p>具有P2P体系结构的应用程序既有客户进程（发起通信的进程）和服务器进程（发起通信的进程）。</p>
+<p>4、如何寻址进程？</p>
+<p>（1）不同主机上的进程间通信，那么每个进程必须拥有标识符（ IP地址、端口号）（2）常用网络程序的端口号：Web服务：80；邮件服务：25</p>
+<p>5、常见应用的传输服务需求</p>
+<table>
+<thead>
+<tr>
+<th><strong>应用</strong></th>
+<th><strong>数据丢失</strong></th>
+<th><strong>带宽</strong></th>
+<th><strong>时间敏感</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>文件传输</td>
+<td>不能丢失</td>
+<td>弹性</td>
+<td>不</td>
+</tr>
+<tr>
+<td>电子邮件</td>
+<td>不能丢失</td>
+<td>弹性</td>
+<td>不</td>
+</tr>
+<tr>
+<td>Web</td>
+<td>不能丢失</td>
+<td>弹性</td>
+<td>不</td>
+</tr>
+<tr>
+<td>实时音频&#x2F;视频</td>
+<td>容忍丢失</td>
+<td>音频: 几kbps-1Mbps</td>
+<td>是,100 msec</td>
+</tr>
+<tr>
+<td>存储音频&#x2F;视频</td>
+<td>容忍丢失</td>
+<td>视频:10kbps-5Mbps</td>
+<td>是, 几秒</td>
+</tr>
+<tr>
+<td>交互式游戏</td>
+<td>容忍丢失</td>
+<td>视频:10kbps-5Mbps</td>
+<td>是, 100 msec</td>
+</tr>
+<tr>
+<td>即时讯息</td>
+<td>不能丢失</td>
+<td>几 kbps 以上 ，弹性</td>
+<td>是和不是</td>
+</tr>
+</tbody></table>
+<p>6、因特网运输层提供的服务</p>
+<p>（1）TCP服务：面向连接、可靠数据传输、流量控制、拥塞控制；无时延和带宽保证</p>
+<p>（2）UDP服务：不提供建立连接，可靠性，流量控制，拥塞控制，时延和带宽保证。</p>
+<p>面向连接：必须在建立连接前确认双方链路可达，并已准备好才开始通信，提供可靠或者不可靠的服务。</p>
+<p>无连接：发送端在开始通信前不去询问接收端是否可达和是否已准备好接收数据，提供不可靠的服务。</p>
+<p>7、因特网应用：应用层协议，传输协议</p>
+<table>
+<thead>
+<tr>
+<th><strong>应用</strong></th>
+<th><strong>应用层协议</strong></th>
+<th><strong>下面的传输协议</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>电子邮件</td>
+<td>SMTP [RFC 2821]</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>远程终端访问</td>
+<td>Telnet [RFC 854]</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>Web</td>
+<td>HTTP [RFC 2616]</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>文件传输</td>
+<td>FTP [RFC 959]</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>流媒体</td>
+<td>通常专用(e.g. RealNetworks)</td>
+<td>TCP or UDP</td>
+</tr>
+<tr>
+<td>因特网电话</td>
+<td>通常专用(e.g., Skype)</td>
+<td>典型用 UDP</td>
+</tr>
+</tbody></table>
+<p>8、网页（Web页，或称文档）由许多对象组成，每个对象被一个URL(Uniform Resource Locator统一资源定位符)寻址（<strong>协议名、主机名、路径名</strong>）。多数网页由单个基本<strong>HTML</strong>文件和若干个所引用的对象构成。</p>
+<p>比如：<a target="_blank" rel="noopener" href="http://www.someschool.edu/someDept/pic.gif">http://www.someschool.edu/someDept/pic.gif</a></p>
+<p>9、HTTP: 超文本传输协议（Web的应用层协议）</p>
+<p>（1）client&#x2F;server模式：客户端浏览器请求+ Web服务器响应</p>
+<p>（2）工作过程：</p>
+<ul>
+<li>客户初始化一个与HTTP服务器80端口的TCP连接 (创建套接字)</li>
+<li>HTTP服务器接受来自客户的TCP连接请求, 建立连接</li>
+<li>Browser (HTTP client)和Web服务器 (HTTP server) 交换HTTP消息(应用层协议消息)包括HTTP请求和响应消息</li>
+<li>最后结束(或叫关闭)TCP连接</li>
+</ul>
+<p>（3）HTTP是一个无状态的协议：HTTP服务器不维护客户先前的状态信息</p>
+<p>10、HTTP持久连接和非持久连接</p>
+<p><strong>非持久HTTP连接</strong>：每个TCP连接上只传送一个对象，下载多个对象需要建立多个TCP连接，HTTP&#x2F;1.0使用非持久HTTP连接</p>
+<p><strong>持久HTTP连接</strong>：一个TCP连接上可以传送多个对象，HTTP&#x2F;1.1默认使用持久HTTP连接</p>
+<p>例：假设该页面含有一个HTML基本文件和10个JPEG图形， 并且这11个对象位于同一台服务器上。</p>
+<p>进一步假设该HTML文件的URL为：<a target="_blank" rel="noopener" href="http://www.someschool.edu/someDepartment/home.index">http://www.someSchool.edu/someDepartment/home.index</a></p>
+<p>(1) HTTP客户进程在端口号80发起一个到服务器 <a target="_blank" rel="noopener" href="http://www.someschool.edu/">www.someSchool.edu</a> 的TCP连接，该端口号是HTTP的默认端口。在客户和服务器上分别有一个套接字与该连接相关联。</p>
+<p>(2) HTTP客户经它的套接字向该服务器发送一个HTTP请求报文。请求报文中包含了路径名&#x2F;someDepartment&#x2F;home.index。</p>
+<p>(3) HTTP服务器进程经它的套接字接收该请求报文，从其存储器(RAM或磁盘)中检索出对象 <a target="_blank" rel="noopener" href="http://www.someschool.edu/someDepartment/home.index">www.someSchool.edu/someDepartment/home.index</a> ，在一个HTTP响应报文中封装对象，并通过其套接字向客户发送响应报文。</p>
+<p>(4)HTTP服务器进程通知TCP断开该TCP连接。</p>
+<p>(5)HTTP客户接收响应报文，TCP连接关闭。该报文指出封装的对象件，客户从响应报文中提取出该文件，检查该HTML文件，得到对10个JPEG图形的引用。</p>
+<p>(6) 对每个引用的JPEG图形对象重复前4个步骤。</p>
+<p><strong>不带流水线的持久HTTP连接</strong>：客户先前响应消息收到,才发出新的请求消息，每个引用对象经历1个RTT</p>
+<p>**带流水线的持久HTTP连接 **：HTTP&#x2F;1.1默认使用客户遇到1个引用对象就发送请求消息，所有引用对象只经历1个RTT</p>
+<p>11、HTTP报文格式:请求报文request, 响应报文response（常见命令和状态码）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-21_13-50-36.png"></p>
+<p>假设有HTTP请求报文：</p>
+<p>GET &#x2F;somedir&#x2F;page.html HTTP&#x2F;1.1</p>
+<p>其中，&#x2F;somedir&#x2F;page.html被称为（）URI 或Uniform Resource Identifiers 或统一资源标识符</p>
+<p>HTTP&#x2F;1.0</p>
+<ul>
+<li>GET</li>
+<li>POST</li>
+<li>HEAD<ul>
+<li>服务器收到请求时，用HTTP报文进行响应，但不返回请求对象</li>
+</ul>
+</li>
+</ul>
+<p>HTTP&#x2F;1.1</p>
+<ul>
+<li><p>GET, POST, HEAD</p>
+</li>
+<li><p>PUT</p>
+<ul>
+<li>文件在实体主体中被上载到URL字段指定的路径</li>
+</ul>
+</li>
+<li><p>DELETE</p>
+<ul>
+<li>删除URL字段指定的文件</li>
+</ul>
+</li>
+</ul>
+<p><em><strong>上载表单（各字段）输入值</strong></em></p>
+<p>Post方法:网页时常包含表单输入，输入值在请求报文的实体主体中被上载到服务器</p>
+<p>URL方法:使用GET方法，表单(各字段)输入值被上载,以URL请求行的字段: <a target="_blank" rel="noopener" href="http://www.somesite.com/animalsearch?monkeys&banana">www.somesite.com/animalsearch?monkeys&amp;banana</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-21_13-57-34.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-21_13-58-04.png"></p>
+<p>12、 Cookies作用，如何实现</p>
+<p>（1）Cookies: 跟踪用户，提高用户和服务器的交互性</p>
+<p>（2）cookie头部行在HTTP请求消息（或响应消息）中</p>
+<p>（3）cookie文件 保存在<strong>用户主机</strong>中并被<strong>用户浏览器</strong>管理</p>
+<p>（4）cookie也保存在Web站点的<strong>后端数据库</strong></p>
+<p>（5）应用场景：身份认证&#x2F;虚拟购物车&#x2F;推荐广告&#x2F;用户会话状态</p>
+<p>（6）优点：cookies允许网站更加了解你，你可以提供名字和e-mail给网站 ，广告公司通过网站获得信息，Cookies不适合游动用户</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-21_14-06-53.png"></p>
+<p>13、Web 缓存 (代理服务器)，如何实现，条件GET方法</p>
+<p>目标:在不访问服务器的前提下满足客户端的HTTP请求。</p>
+<p><strong>Web缓存&#x2F;代理服务器</strong></p>
+<ul>
+<li><p>用户设定浏览器通过缓存进行Web访问</p>
+</li>
+<li><p>浏览器向缓存&#x2F;代理服务器发送所有的HTTP请求</p>
+<ul>
+<li>如果所请求对象在缓存中，缓存器返回对象</li>
+<li>否则缓存器向起始服务器发出请求，接收对象后转发给客户机</li>
+</ul>
+</li>
+<li><p>缓存既充当客户端，也充当服务器</p>
+</li>
+<li><p>一般由ISP(Internet服务提供商)架设</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-21_14-13-20.png"></p>
+<p>为什么需要Web缓存器?</p>
+<blockquote>
+<p>减少对客户机请求的响应时间</p>
+<p>减少内部网络与接入链路上的通信量</p>
+<p>能从整体上大大降低因特网上的Web流量</p>
+</blockquote>
+<p>条件GET方法</p>
+<p>目的: 证实缓存器中的对象是否为最新</p>
+<p>缓存器：在请求报文中包含对象最后修改时间 If-modified-since: &lt;date&gt;</p>
+<p>服务器: 如果对象是最新的则响应报文中不包含对象: HTTP&#x2F;1.0 304 Not Modified</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-21_14-16-54.png"></p>
+<p>14、用户代理user agents、邮件服务器mail servers、简单邮件传送协议和邮件接收协议的作用</p>
+<p>用户代理：</p>
+<ul>
+<li><p>允许用户阅读,回复,转发,保存,编辑邮件消息 </p>
+</li>
+<li><p>发送, 接收邮件消息到&#x2F;从服务器</p>
+</li>
+</ul>
+<p>邮件服务器 </p>
+<ul>
+<li>邮箱mailbox存放用户接收的邮件消息</li>
+<li>外出报文队列outgoing message queue</li>
+</ul>
+<p>SMTP协议</p>
+<ul>
+<li><p>运行邮件<strong>服务器之间</strong>传递消息所使用的协议</p>
+</li>
+<li><p>客户端：发送消息的服务器</p>
+</li>
+<li><p>服务器：接收消息的服务器</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-21_14-17-44.png"></p>
+<p>15、电子邮件协议（SMTP&#x2F;POP3、IMAP、HTTP）各自端口号</p>
+<p><strong>SMTP</strong></p>
+<ul>
+<li>客户使用TCP来可靠传输邮件消息到服务器端口号<strong>25</strong></li>
+<li>传输的3个阶段：握手 (问候)、邮件消息的传输、结束</li>
+<li>发送服务器到接收服务器采用直接传送</li>
+<li>使用持久连接</li>
+<li>命令&#x2F;应答的交互，服务器使用<strong>CRLF.CRLF</strong> 来判断邮件消息的结束<ul>
+<li>命令: ASCII文本格式</li>
+<li>应答: 状态码及其短语</li>
+</ul>
+</li>
+<li>邮件消息必须是7-bit ASCII</li>
+<li>与HTTP协议比较<ul>
+<li>HTTP是拉协议（把信息拉下来），SMTP是推协议（把信息送出去）</li>
+<li>HTTP的每个对象封装在它各自的HTTP响应消息中发送；SMTP一个邮件内各个对象置于同一个邮件消息的多目部分发送</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-21_14-38-09.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-21_14-38-48.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-21_14-42-16.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-21_14-42-38.png"></p>
+<p><strong>POP3</strong></p>
+<ul>
+<li><p>Post Office Protocol 邮局协议[RFC 1939]<strong>110</strong>端口号</p>
+</li>
+<li><p>身份认证 (代理 &lt;–&gt;服务器) </p>
+<ul>
+<li><p>客户命令: </p>
+<ul>
+<li>user username</li>
+<li>pass password</li>
+</ul>
+</li>
+<li><p>服务器响应</p>
+<ul>
+<li>+OK</li>
+<li>-ERR</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>下载邮件消息</p>
+<ul>
+<li>list: 列出邮件编号</li>
+<li>retr: 按编号取邮件</li>
+<li>dele: 删除</li>
+<li>quit</li>
+</ul>
+</li>
+<li><p>POP3的会话是<strong>无状态的</strong></p>
+</li>
+</ul>
+<p><strong>IMAP</strong></p>
+<ul>
+<li>所有邮件消息保存在一个位置: 服务器</li>
+<li>允许用户利用文件夹组织管理邮件消息</li>
+<li>IMAP支持跨会话(Session)的用户状态:<ul>
+<li>文件夹的名字</li>
+<li>邮件消息IDs和文件夹的映射</li>
+</ul>
+</li>
+</ul>
+<p>16、DNS的功能、特点</p>
+<p>DNS服务器提供的功能：</p>
+<ul>
+<li><p>主机名到IP地址的转换</p>
+</li>
+<li><p>主机别名：一个主机可以有一个规范主机名和多个主机别名</p>
+</li>
+<li><p>邮件服务器别名</p>
+</li>
+<li><p>负载分配</p>
+<ul>
+<li>DNS实现冗余服务器：一个IP地址集合可以对应于同一个规范主机名。</li>
+</ul>
+</li>
+</ul>
+<p>DNS（Domain Name System:域名系统）特点</p>
+<ul>
+<li>分布式数据库：一个由分层DNS服务器实现的分布式数据库</li>
+<li>应用层协议：DNS服务器实现域名转换 (域名&#x2F;地址转换)</li>
+</ul>
+<p>为什么不集中式DNS?</p>
+<blockquote>
+<p>单点故障</p>
+<p>巨大访问量</p>
+<p>远距离集中式数据库</p>
+<p>维护</p>
+<p>不可扩展!</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-21_15-10-46.png"></p>
+<p>客户机怎样决定主机名<a target="_blank" rel="noopener" href="http://www.amazon.com/">www.amazon.com</a> 的IP地址？</p>
+<blockquote>
+<p>客户机查询根服务器得到com DNS服务器</p>
+<p>客户机查询com DNS服务器得到amazon.comDNS服务器</p>
+<p>客户机查询amazon.comDNS服务器得到<a target="_blank" rel="noopener" href="http://www.amazon.com/">www.amazon.com</a> 的IP地址</p>
+</blockquote>
+<p><strong>顶级域服务器</strong>（top-level domain servers）：负责顶级域名 com, org, net, edu, etc（用途域名或者类别域名）, 和所有国家的顶级域名 uk, fr, ca, jp.</p>
+<p><strong>权威DNS服务器</strong>(authoritative DNS servers): 在因特网上具有公共可访问主机（如Web服务器和邮件服务器）的每个组织机构必须提供公共可访问的DNS记录，这些记录将这些主机的名字映射为IP地址。组织机构的权威DNS服务器负责保存这些DNS记录。多数大学和公司维护它们的基本权威DNS服务器</p>
+<p>本地DNS服务器(Local DNS name server)</p>
+<ul>
+<li>严格来说不属于该服务器的层次结构</li>
+<li>每个ISP（如居民区ISP、公司、大学）都有一个本地DNS，也叫默认服务器</li>
+<li>当主机发出DNS请求时，该请求被发往本地DNS服务器。起着代理的作用，转发请求到层次结构中</li>
+</ul>
+<p>17、DNS的查询方法</p>
+<p> 问题：Cis.poly.edu的主机想获得gaia.cs.umass.edu的IP地址</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-21_15-24-12.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-21_15-24-20.png">假设用一个全新的浏览器（第一次启动的那种），访问百度（<a target="_blank" rel="noopener" href="http://www.baidu.com/">http://www.baidu.com/</a> )，在敲入网址并按下回车之后：</p>
+<p>1、<strong>获得IP地址</strong></p>
+<p>（1）首先搜索浏览器的 DNS 缓存，缓存中维护一张域名与 IP 地址的对应表（2）若没有命中，则继续搜索操作系统的 DNS 缓存（Linux,&#x2F;etc&#x2F;hosts; Windows, C:\WINDOWS\system32\drivers\etc\hosts）</p>
+<p>（3）若仍然没有命中，则操作系统将域名发送至本地域名服务器，本地域名服务器采用递归查询自己的 DNS 缓存，查找成功则返回结果</p>
+<p>（4）若本地域名服务器的 DNS 缓存没有命中，则本地域名服务器向上级域名服务器进行迭代查询       </p>
+<p>本地域名服务器向根域名服务器发起请求，根域名服务器返回顶级域名服务器地址给本地服务器       </p>
+<p>本地域名服务器拿到顶级域名服务器地址后，向其发起请求，获取权威域名服务器地址       </p>
+<p>本地域名服务器根据权威域名服务器地址，向其发起请求，得到该域名对应的 IP 地址      </p>
+<p>本地域名服务器将得到的 IP 地址返回给操作系统，同时自己将 IP 地址缓存起来</p>
+<p>（5）操作系统将 IP 地址返回给浏览器，同时自己也将 IP 地址缓存。浏览器得到域名对应的 IP 地址，并将 IP 地址缓存（<strong>缓存时间</strong>）。</p>
+<p>2、和起始服务器（或者Web缓存&#x2F;代理服务器），建立TCP连接   得到百度的IP，下一步是使用TCP协议，建立TCP连接。</p>
+<p>3、向起始服务器（或者Web缓存&#x2F;代理服务器）发送请求报文，用HTTP协议请求网页内容</p>
+<p>4、浏览器收到响应报文，并解析。</p>
+<p>18、DNS记录，创建一个“网络乌托邦”公司，如何搭建权威服务器</p>
+<p><strong>DNS</strong>: 存储资源记录(<strong>RR</strong>，Resource Records)的分布式数据库</p>
+<p><strong>RR 格式: (name, value, type,ttl)</strong></p>
+<p>Type&#x3D;A（Address）</p>
+<ul>
+<li>name &#x3D; 主机名</li>
+<li>value &#x3D; IP地址</li>
+</ul>
+<p>Type&#x3D;CNAME（canonical）</p>
+<ul>
+<li><p>name &#x3D; 主机别名 </p>
+<p> <a target="_blank" rel="noopener" href="http://www.ibm.com/">www.ibm.com</a> 的真名为	servereast.backup2.ibm.com</p>
+</li>
+<li><p>value &#x3D; 真实的规范主机名</p>
+</li>
+</ul>
+<p>Type&#x3D;NS（ name server ）</p>
+<ul>
+<li>name &#x3D; 域名（如foo.com） </li>
+<li>value &#x3D; 该域权威名字服务器的主机名</li>
+</ul>
+<p>Type&#x3D;MX（mail exchange）</p>
+<ul>
+<li>name &#x3D;邮件服务器的主机别名</li>
+<li>value &#x3D;邮件服务器的真实规范主机名</li>
+</ul>
+<p>例子：刚刚创建一个“网络乌托邦”公司</p>
+<p>在域名管理机构(如Network Solutions)注册域名networkutopia.com</p>
+<ul>
+<li>需要提供你自己的基本权威DNS服务器的名字和IP地址</li>
+<li>该注册登记机构将下列两条资源记录插入注册机构的DNS系统中： <ul>
+<li>(networkutopia.com, dns1.networkutopia.com,NS)</li>
+<li>(dns1.networkutopia.com, 212.212.212.1, A)</li>
+</ul>
+</li>
+</ul>
+<p>在权威域名解析服务器中为<a target="_blank" rel="noopener" href="http://www.networkuptopia.com/">www.networkuptopia.com</a> （真实机器名web1. networkuptopia.com, IP地址212.212.212.2）加入Type A记录，为mail.networkutopia.com(真实机器名mx1.mxmail. networkuptopia.com,IP地址212.212.212.3)加入Type MX记录</p>
+<ul>
+<li>（ <a target="_blank" rel="noopener" href="http://www.networkuptopia.com/">www.networkuptopia.com</a> , web1. networkuptopia.com,CNAME） </li>
+<li>（web1. networkuptopia.com,212.212.212.2, A)</li>
+<li>（ mail.networkutopia.com, mx1.mxmail. networkuptopia.com, MX）</li>
+<li>（mx1.mxmail. networkuptopia.com,212.212.212.3,A）</li>
+</ul>
+<p>网站主机名是<a target="_blank" rel="noopener" href="http://www.foo.com/">www.foo.com</a> ， 真实的规范主机名是servereast.backup1.foo.com，IP地址：112.147.11.30。邮件主机名mail.foo.com,真实的规范主机名servereast.backup2.foo.com，IP地址：112.147.11.40。在权威服务器中需要的RR？</p>
+<ul>
+<li>(<a target="_blank" rel="noopener" href="http://www.foo.com/">www.foo.com</a> , servereast.backup1.foo.com, CNAME）</li>
+<li>(servereast.backup1.foo.com ,12.147.11.30, A ）</li>
+<li>(mail.foo.com, servereast.backup2.foo.com, MX ）</li>
+<li>(servereast.backup2.foo.com, 112.147.11.40, A)</li>
+</ul>
+<p>19、DNS协议、消息</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-21_15-26-34.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-21_15-26-42.png"></p>
+<p>20、DNS安全</p>
+<ul>
+<li><p>DDoS攻击：对根域名服务器或顶级域名服务器发起拒绝服务攻击</p>
+</li>
+<li><p>重定向攻击：中间人攻击、DNS中毒攻击（发送欺骗的域名解析结果给DNS服务器）</p>
+</li>
+<li><p>利用DNS实现DDoS攻击： DNS反弹式拒绝服务攻击(DNS reflector attacks，又称DNS amplification attacks)。伪造客户地址向大量的dns服务器发出请求，导致客户无法访问dns服务器进行域名解析。</p>
+</li>
+<li><p>个人用户：本机Host文件被篡改&#x2F;DNS劫持&#x2F;DNS污染</p>
+</li>
+</ul>
+<p>21、CDN的作用和实现过程</p>
+<p>挑战: 如何从海量的视频中，挑选出某些内容，采用流的方式发送给成千上万的用户？</p>
+<p>选项1: 使用单点，庞大的服务器</p>
+<ul>
+<li><p>单点故障</p>
+</li>
+<li><p>单点网络拥塞</p>
+</li>
+<li><p>远距离用户的访问路径很长</p>
+</li>
+<li><p>输出链路上发送同一视频的多份重复拷贝….</p>
+</li>
+</ul>
+<p>很显然: 这种方案<strong>不具有可扩展性</strong></p>
+<p>选项2: 将多份拷贝存储在地理上分散的不同站点来提供服务（CDN）</p>
+<ul>
+<li>深入: 将CDN服务器部署在众多的接入网络中 <ul>
+<li>靠近用户</li>
+<li>Akamai首创, 使用了1700多个位置</li>
+</ul>
+</li>
+<li>邀请做客: 在少量(例如10个)靠近接入网的关键位置(例如IXP)，建造大集群，邀请到ISP做客<ul>
+<li>Limelight等使用</li>
+</ul>
+</li>
+</ul>
+<p>CDN: 将内容的拷贝存储在CDN节点中<br>用户向CDN请求内容</p>
+<ul>
+<li>被定向到附近的拷贝，取得内容</li>
+<li>如果网络路径拥塞，则可能选择其他的拷贝</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-21_15-28-26.png"></p>
+<hr>
+<p>如果客户机请求一个html页面，在该页面包括了7个gif图片的引用，且所有对象都在一台服务器上。（1）当采用非持续连接时，客户机需要与web服务器建立（    8    ）个TCP连接。（2）使用非流水线的持久HTTP连接使用的TCP连接数为（   1     ），总共需要（ 9   ）个RTT才能完成整个网页的获取。（3）在持久的带流水线HTTP连接中，客户端最少需要使用（   3   ）个RTT才能完成整个网页的获取。</p>
+<p>在浏览器和初始服务器之间使用<em>非持续连接</em>的话，一个TCP报文段是可能携带两个不同的HTTP服务请求报文的。（×）</p>
+<p>两个不同的Web页面（例如，<a target="_blank" rel="noopener" href="http://www.uestc.edu.cn/index.html">www.uestc.edu.cn/index.html</a> 和mail.uestc.edu.cn&#x2F;index.html）可以使用一个持久连接发送。（ ×  ）不属于同一个域名，位于同一个Web服务器上的多个页面可以通过同一条持续TCP连接发送给客户端。</p>
+<p>在HTTP响应报文中的Date：首部指出了该响应中对象最后一次修改的时间。（x）响应报文中首部行的Date只记录服务器产生并且发送该响应报文的日期和时间。Last——modified才是记录了对象创建或者是最后一次修改的时间。</p>
+<p>HTTP响应报文绝不会具有空的报文体。（x） head方法的响应报文是空报文体</p>
+<p>以下所示HTTP报文头部的请求行或者状态行中，格式正确的是(   C     )</p>
+<p>A、200 HTTP&#x2F;1.1 OK		     	</p>
+<p>B、PUT HTTP&#x2F;1.0 404 NOT FOUND</p>
+<p>C、GET &#x2F;star&#x2F;abc.htm HTTP&#x2F;1.1             </p>
+<p>D、200 GET HTTP&#x2F;1.1 OK</p>
+<p>假设用户A使用IE浏览器用基于Web的电子邮件账户向B发送邮件，B使用Foxmail作为用户代理来接收邮件，使用的协议可能是以下哪种情形? (   C    )。	</p>
+<p>A、IMAP 、SMTP、POP3      </p>
+<p>B、HTTP、MIME、POP3  	</p>
+<p>C、HTTP、SMTP、POP3        </p>
+<p>D、SMTP、SMTP、IMAP</p>
+<p>假设用户A用浏览器登录电子邮箱给用户B发送邮件，同时，用户B也用浏览器登录电子邮箱接收邮件，邮件从用户A的主机到用户B的主机，使用了哪些应用层协议？如果用户A和B使用了Foxmail等邮件客户端呢？</p>
+<p>用户A使用浏览器登录邮箱，使用了http协议访问发送方邮箱服务器，从发送方邮箱服务器到接收方邮箱服务器只能使用SMTP（Simple Mail Transfer Protocol）协议，用户B使用浏览器登录邮箱还是用的http协议。<strong>如果A使用了邮件客户端登录邮箱发送邮件，那么使用的是SMTP协议</strong>，用户B使用邮件客户端登录邮箱取邮件则使用的是POP3协议。<br>SMTP协议是面向ASCII编码的，那么它使用（  D    ）支持非ASCII的数据传输。	</p>
+<p>A、MAIL    B、POP3    C、IMAP     D、MIME</p>
+<p>SMTP协议和POP3协议分别是基于运输层的（D     ）。	</p>
+<p>A、UDP协议和UDP协议   </p>
+<p>B、UDP协议和TCP协议	</p>
+<p>C、TCP协议和UDP协议   </p>
+<p>D、TCP协议和TCP协议</p>
+<p>电子邮件系统中，用户代理把邮件发往发送发邮件服务器、发送方邮件服务器把邮件发往接收方邮件服务器以及用户使用用户代理从接收方邮件服务器上读取邮件时，使用的协议可能是以下的哪种情形? (D   )	</p>
+<p>A、IMAP 、SMTP、POP3 </p>
+<p>B、MIME、SMTP、POP3	</p>
+<p>C、SMTP、IMAP、POP3   </p>
+<p>D、SMTP、SMTP、IMAP</p>
+<p><strong>SMTP：</strong> 只能发送7比特 ASCII 码格式，而互联网邮件扩充 MIME 可以发送二进制文件。MIME 并没有改动或者取代 SMTP，而是增加邮件主体的结构，定义了非 ASCII 码的编码规则。 <strong>POP3</strong>的特点是只要用户从服务器上读取了邮件，就把该邮件删除。 <strong>IMAP 协议</strong>中客户端和服务器上的邮件保持同步，如果不手动删除邮件，那么服务器上的邮件也不会被删除。IMAP 这种做法可以让用户随时随地从任何一台机器去访问服务器上的邮件。</p>
+<p>SMTP：发件人用户代理 —-发送邮件—&gt; 发送方邮件服务器 、发送方邮件服务器 —-发送邮件—&gt; 接收方邮件服务器 </p>
+<p> POP3&#x2F;IMAP：接受方邮件服务器—-读取邮件—&gt;   收件人用户代理</p>
+<p>在使用浏览器打开某个网页时，用户输入网址后，浏览器首先要进行( B      )。</p>
+<p>A、和服务器建立TCP连接    </p>
+<p>B、域名到IP地址的解析</p>
+<p>C、发送UDP分组到服务器    </p>
+<p>D、发出GET的HTTP命令来获得网页内容</p>
+<p>Internet中域名解析依赖于由域名服务器组成的逻辑树。请问在域名解析过程中，主机上请求域名解析的软件不需要知道以下哪些信息？ (  C   )。</p>
+<p>①本地域名服务器的端口号  ②本地域名服务器父结点的IP  ③域名服务器树根结点的IP</p>
+<p>A、①②    B、①②③    C、②③     D、①②③</p>
+<p>主机上请求域名解析的软件只需要知道本地域名服务器的IP地址和端口号，然后向本地域名服务器发送DNS查询请求。本地域名服务器会根据自己的缓存和配置，返回查询结果或者将查询请求转发给其他域名服务器（包括根域名服务器、顶级域名服务器）。</p>
+<p>关于DNS描述错误的是(  D   )。</p>
+<p>A、将主机名转换为IP地址</p>
+<p>B、所有的DNS请求和回答报文使用的是53端口发送</p>
+<p>C、在因特网上DNS功能的实现采用的是分布式、层次数据库</p>
+<p>D、DNS的请求和回答报文采用的是TCP协议进行传输的</p>
+<p>DNS使用UDP协议进行传输，所有的DNS请求和回答报文都使用53端口发送。</p>
+<p>查询链中的DNS服务器如果不是某主机名的权威服务器，对于该主机名，它必将包含对应的两种类型记录，分别为（  C     ）。</p>
+<p>A、CNAME和A    B、MX和NS      C、NS和A     D、NS和MX</p>
+<p>当查询链中的DNS服务器不是某主机名的权威服务器时，它可能包含NS记录和A记录。NS记录（Name Server Record）是一种DNS记录类型，用于指定某个域名的权威服务器。例如，如果查询链中的DNS服务器不是<a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> 的权威服务器，那么它可能包含一条NS记录，指定<a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> 的权威服务器为dns1.example.com。A记录（Address Record）是一种DNS记录类型，用于将域名映射到IPv4地址。例如，如果查询链中的DNS服务器不是<a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> 的权威服务器，那么它可能包含一条A记录，将<a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> 映射到对应的IP地址。</p>
+<p>HTTP 协议中，接收方如何区分首部行和数据部分（C  ）</p>
+<p>A.报文中首部行长度字段 		</p>
+<p>B. 报文中使用 DATA 指令指示首部行结束 </p>
+<p>C. 报文中首部行结束时添加空行 	</p>
+<p>D. 报文中首部行结束时增加“.”作为分隔行</p>
+<p>DNS 实现的功能不包括（D ） </p>
+<p>A.主机名和 IP 地址映射 	B. 别名处理 	C. 负载分配 	D. 路由选择</p>
+<p>DNS并不负责路由选择，这一功能由路由器等网络设备实现。</p>
+<p>假定你在浏览器中点击一条超链接获得Web页面。相关联的URL的IP地址没有缓存在本地主机上,因此必须使用DNS lookup以获得该IP地址。如果主机从DNS得到IP地址之前已经访问了n个DNS服务器；相继产生的RTT依次为RTT1、…、RTTn。进一步假定与链路相关的Web页面只包含一个对象，即由少量的HTML文本组成。令RTT0表示本地主机和包含对象的服务器之间的RTT值。假定该对象传输时间为零，则从该客户点击该超链接到它接收到该对象需要多长时间？</p>
+<p><em><strong>RTT1+…+RTTn+ 2RTT0</strong></em>（解析ip地址的时间+建立tcp连接和请求得到web页面的时间）</p>
+<p>参照上题,假定在同一服务器上某HTML文件引用了 8个非常小的对象。忽略发送时间，在下列情况下需要多长时间：</p>
+<p>(1)没有并行TCP连接的非持续HTTP。</p>
+<p><em><strong>RTT1+…+RTTn+ 18RTT0</strong></em></p>
+<p>(2)配置有5个并行连接的非持续HTTP。</p>
+<p><em><strong>RTT1+…+RTTn+ 6RTT0</strong></em></p>
+<p>(3)持续HTTP.</p>
+<p><em><strong>流水    ：RTT1+…+RTTn+ 3RTT0</strong></em></p>
+<p><em><strong>非流水： RTT1+…+RTTn+ 10RTT0</strong></em></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://uestcwxy.love">珩</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://uestcwxy.love/2023/06/21/%E8%AE%A1%E7%BD%91/2/">https://uestcwxy.love/2023/06/21/%E8%AE%A1%E7%BD%91/2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://uestcwxy.love" target="_blank">Eternity</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2023/06/20/%E8%AE%A1%E7%BD%91/1/" title="计网期末复习之计算机网络与因特网"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计网期末复习之计算机网络与因特网</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/06/20/%E8%AE%A1%E7%BD%91/1/" title="计网期末复习之计算机网络与因特网"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-20</div><div class="title">计网期末复习之计算机网络与因特网</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">珩</div><div class="author-info__description">等我苦尽甘来时，我给你讲讲来时走的路。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/uestc-wxy/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.facebook.com/profile.php?id=100092533320651" target="_blank" title="facebook"><i class="fab fa-facebook" style="color: #4a7dbe;"></i></a><a class="social-icon" href="mailto:1939311091@qq.com" target="_blank" title="email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/1907948898" target="_blank" title="b站"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/tiktok.jpg" target="_blank" title="抖音"><i class="fab fa-tiktok" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/weixin.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">刚建站不久，博客美化有待研究，部分页面也没时间弄，路过的你将就看啦~😊，图片没加载出来就是网络不佳噢~</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/06/21/%E8%AE%A1%E7%BD%91/2/" title="计网期末复习之应用层"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计网期末复习之应用层"/></a><div class="content"><a class="title" href="/2023/06/21/%E8%AE%A1%E7%BD%91/2/" title="计网期末复习之应用层">计网期末复习之应用层</a><time datetime="2023-06-21T04:33:08.000Z" title="发表于 2023-06-21 12:33:08">2023-06-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/20/%E8%AE%A1%E7%BD%91/1/" title="计网期末复习之计算机网络与因特网"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计网期末复习之计算机网络与因特网"/></a><div class="content"><a class="title" href="/2023/06/20/%E8%AE%A1%E7%BD%91/1/" title="计网期末复习之计算机网络与因特网">计网期末复习之计算机网络与因特网</a><time datetime="2023-06-20T04:59:56.000Z" title="发表于 2023-06-20 12:59:56">2023-06-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/8/" title="操作系统期末复习之经典大题"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统期末复习之经典大题"/></a><div class="content"><a class="title" href="/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/8/" title="操作系统期末复习之经典大题">操作系统期末复习之经典大题</a><time datetime="2023-06-17T12:04:46.000Z" title="发表于 2023-06-17 20:04:46">2023-06-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/7/" title="操作系统期末复习之shell编程"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统期末复习之shell编程"/></a><div class="content"><a class="title" href="/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/7/" title="操作系统期末复习之shell编程">操作系统期末复习之shell编程</a><time datetime="2023-06-17T02:54:38.000Z" title="发表于 2023-06-17 10:54:38">2023-06-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6/" title="操作系统期末复习之处理机调度与死锁"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统期末复习之处理机调度与死锁"/></a><div class="content"><a class="title" href="/2023/06/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6/" title="操作系统期末复习之处理机调度与死锁">操作系统期末复习之处理机调度与死锁</a><time datetime="2023-06-16T08:26:15.000Z" title="发表于 2023-06-16 16:26:15">2023-06-16</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png')"><div id="footer-wrap"><div class="copyright">&copy;2023 By 珩</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><i class="fa-solid fa-cloud"></i><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>萌ICP备20230529号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="6614140207" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-mini="true"> </div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
