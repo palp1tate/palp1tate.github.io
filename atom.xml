@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-06-18T10:52:44.542Z</updated>
+  <updated>2023-06-21T03:36:27.894Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>操作系统期末复习之经典大题</title>
-    <link href="https://uestcwxy.love/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/8/"/>
-    <id>https://uestcwxy.love/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/8/</id>
-    <published>2023-06-17T12:04:46.000Z</published>
-    <updated>2023-06-18T10:52:44.542Z</updated>
+    <title>计网期末复习之计算机网络与因特网</title>
+    <link href="https://uestcwxy.love/2023/06/20/%E8%AE%A1%E7%BD%91/1/"/>
+    <id>https://uestcwxy.love/2023/06/20/%E8%AE%A1%E7%BD%91/1/</id>
+    <published>2023-06-20T04:59:56.000Z</published>
+    <updated>2023-06-21T03:36:27.894Z</updated>
     
     
       
@@ -31,6 +31,25 @@
     <summary type="html"></summary>
         
       
+    
+    
+    
+    <category term="大二下期末复习" scheme="https://uestcwxy.love/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+    <category term="计算机网络" scheme="https://uestcwxy.love/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>操作系统期末复习之经典大题</title>
+    <link href="https://uestcwxy.love/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/8/"/>
+    <id>https://uestcwxy.love/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/8/</id>
+    <published>2023-06-17T12:04:46.000Z</published>
+    <updated>2023-06-18T11:07:19.649Z</updated>
+    
+    
+    <summary type="html">假定系统有3个并发进程get 、copy 和put共享缓冲器B1和B2。进程get负责从输入设备上读信息，每读出一条记录后放到B1中。</summary>
     
     
     
@@ -508,33 +527,6 @@
     
     
     <category term="数据库" scheme="https://uestcwxy.love/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数组&amp;切片&amp;集合&amp;字符串</title>
-    <link href="https://uestcwxy.love/2023/06/03/Go/7/"/>
-    <id>https://uestcwxy.love/2023/06/03/Go/7/</id>
-    <published>2023-06-03T01:13:26.000Z</published>
-    <updated>2023-06-03T03:14:38.032Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
-    
-    
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
