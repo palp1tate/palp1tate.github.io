@@ -1,0 +1,1140 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>计网期末复习之网络层 | Eternity</title><meta name="author" content="珩,1939311091@qq.com"><meta name="copyright" content="珩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1、网络层提供的功能 （1）报文段封装和解封（数据报）  发送方主机、接收方主机、路由器  （2）转发（数据平面） 	  路由器根据路由表，将分组从路由器的输入端口转移到正确的路由器输出端口  （3）路由(控制平面)	  确定分组从发送方传输到接收方(目的主机)所经过的路径(或路由)  （4)连接建立（ATM） 2、什么样的服务模型可以用于将数据报从发送方传输到接收方 （1）网络层可能提供的服务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计网期末复习之网络层">
+<meta property="og:url" content="https://uestcwxy.love/2023/06/23/%E8%AE%A1%E7%BD%91/4/index.html">
+<meta property="og:site_name" content="Eternity">
+<meta property="og:description" content="1、网络层提供的功能 （1）报文段封装和解封（数据报）  发送方主机、接收方主机、路由器  （2）转发（数据平面） 	  路由器根据路由表，将分组从路由器的输入端口转移到正确的路由器输出端口  （3）路由(控制平面)	  确定分组从发送方传输到接收方(目的主机)所经过的路径(或路由)  （4)连接建立（ATM） 2、什么样的服务模型可以用于将数据报从发送方传输到接收方 （1）网络层可能提供的服务">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png">
+<meta property="article:published_time" content="2023-06-23T01:20:05.000Z">
+<meta property="article:modified_time" content="2023-06-23T12:42:08.971Z">
+<meta property="article:author" content="珩">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://uestcwxy.love/2023/06/23/%E8%AE%A1%E7%BD%91/4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 珩","link":"链接: ","source":"来源: Eternity","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计网期末复习之网络层',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-06-23 20:42:08'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Eternity" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = 'hidden';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+
+preloader.initLoading()
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Eternity"><span class="site-name">Eternity</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计网期末复习之网络层</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-23T01:20:05.000Z" title="发表于 2023-06-23 09:20:05">2023-06-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-23T12:42:08.971Z" title="更新于 2023-06-23 20:42:08">2023-06-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">大二下期末复习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">8.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>29分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计网期末复习之网络层"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>1、网络层提供的功能</p>
+<p>（1）报文段封装和解封（数据报）</p>
+<ul>
+<li>发送方主机、接收方主机、路由器</li>
+</ul>
+<p>（2）转发（数据平面） 	</p>
+<ul>
+<li>路由器根据路由表，将分组从路由器的输入端口转移到正确的路由器输出端口</li>
+</ul>
+<p>（3）路由(控制平面)	</p>
+<ul>
+<li>确定分组从发送方传输到接收方(目的主机)所经过的路径(或路由)</li>
+</ul>
+<p>（4)连接建立（ATM）</p>
+<p>2、什么样的服务模型可以用于将数据报从发送方传输到接收方</p>
+<p>（1）网络层可能提供的服务	</p>
+<ul>
+<li>确保交付、具有时延上界的确保交付、有序分组交付、确保最小带宽、确保最大时延抖动</li>
+</ul>
+<p>（2）因特网的网络层提供的服务	</p>
+<ul>
+<li>单一服务，即尽力而为服务；分组间的定时不能被保证；</li>
+<li>分组的接收顺序与发送顺序不一定相同；传送的分组不能保证最终交付</li>
+</ul>
+<p>3、虚电路和数据报网络</p>
+<p>任何网络中的网络层只提供两种服务之一，不会同时提供。</p>
+<p>（1）虚电路网络	</p>
+<ul>
+<li>提供网络层的<strong>连接</strong>服务；面向连接服务在端系统及网络核心的路由器中实现；</li>
+</ul>
+<p>（2）数据报网络</p>
+<ul>
+<li>提供网络层的<strong>无连接</strong>服务；</li>
+<li>路由器不需要维护端到端连接的状态，使用目的主机的地址进行分组转发；</li>
+<li>对于给定的目的地址，使用<strong>最长地址前缀匹配</strong>来完成输出端口的查找；</li>
+<li>一个端系统发送给另一个端系统的一批分组可能在网络中选择不同的路径，到达的顺序可能不一致；</li>
+<li>特点：<ul>
+<li>网络层服务模型简单；</li>
+<li>端系统功能复杂：按序传送、可靠数据传输、拥塞控制与DNS名字解析</li>
+<li>因特网服务模型提供的服务保证最少，对网络层的需求最小，使得链路层技术变得更加容易。</li>
+</ul>
+</li>
+</ul>
+<p>传输层：面向连接服务在网络边缘的<strong>端系统</strong>中实现。</p>
+<p>网络层：面向连接服务在<strong>端系统及网络核心的路由器</strong>中实现。</p>
+<p>4、路由器的两个核心功能</p>
+<ul>
+<li>运行路由算法&#x2F;协议(OSPF, RIP, BGP)</li>
+<li>将分组从路由器的输入链路传送到正确的输出链路。</li>
+</ul>
+<p>5、路由器的整体结构</p>
+<p><strong>输入端口</strong>：</p>
+<p>线路端接模块：将一条物理链路端接到路由器的物理层；</p>
+<p>数据链路处理模块：实现路由器的数据链路层功能；</p>
+<p>查找与转发模块：实现查找与转发功能，以便分组通过路由器交换结构转发到适当的输出端口；如果数据报到达输入端口的速度快于输入端口将数据报转发到交换结构的速度，就会发生<strong>排队</strong>。</p>
+<p><strong>选路处理器</strong>：计算转发表，给<strong>每个输入端口存放一份转发表拷贝</strong></p>
+<p><strong>分布式交换</strong>：</p>
+<p>（1）内存交换：选路处理器完成输入端口与输出端口之间的交换；交换速度受总线带宽的速度限制 (每个分组穿过两次总线)</p>
+<p>（2）总线交换：输入端口通过一条<strong>共享总线</strong>将分组直接传送到输出端口，不需要选路处理器的干预;交换带宽受总线速率限制</p>
+<p>（3）交换矩阵交换：到达输入端口的分组沿<strong>水平总线穿行</strong>，直至与所希望的<strong>输出端口的垂直总线交叉点</strong>，若该条垂直总线<strong>空闲</strong>，则分组被传送到输出端口，否则<strong>阻塞排队</strong>。</p>
+<p><strong>输出端口</strong>：	</p>
+<ul>
+<li>取出存放在输出端口内存中的分组，并将其传输到输出链路上；	</li>
+<li>当交换结构将分组交付给<strong>输出端口的速率超过输出链路速率</strong>，就需要排队与缓存管理功能。当输出端口的缓冲区溢出时，就会出现延时和丢包。</li>
+</ul>
+<p>6、IP 数据报格式（IPv4）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_09-47-01.png"></p>
+<p>IP数据报分片和重组</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_09-49-53.png"></p>
+<p>7、IP地址</p>
+<ul>
+<li><p>分配给主机或路由器接口的标识符</p>
+<ul>
+<li>主机&#x2F;路由器与物理链路之间的边界&#x2F;连接</li>
+<li>路由器有多个接口，主机可以有多个接口</li>
+</ul>
+</li>
+<li><p>IP地址有两种：IPV4和IPV6</p>
+<ul>
+<li><p>IPV4：32个二进制位长（4字节），常用<strong>点分十进制</strong>表示；将4个字节中的<strong>每一个字节分别用十进制数</strong>来表示，4个十进制数之间用 “.” 分隔。</p>
+<p>例如：223.1.1.1 &#x3D; 11011111 00000001 00000001 00000001</p>
+<p>根据不同的取值范围，早期将<strong>IP地址分为五类</strong>。IP地址中前5位用于标识IP地址的类别，A类地址的第一位为“0”（主机号24位），B类地址的前两位为“10”（主机号16位），C类地址的前三位为“110”（主机号8位），D类地址的前四位为“1110”，E类地址的前五位为“11110”。其中，A类、B类与C类地址为基本的IP地址。</p>
+</li>
+<li><p>IPV6：128个二进制位长（16字节）常用<strong>冒号分隔</strong>表示</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>8、IP地址结构</p>
+<ul>
+<li><p>IP地址</p>
+<table>
+<thead>
+<tr>
+<th>网络号</th>
+<th>主机号</th>
+</tr>
+</thead>
+</table>
+<p>网络号：指明主机所在网络的编号。</p>
+<p>主机号：主机在网络中的编号。</p>
+</li>
+<li><p>IP子网（subnet）</p>
+<ul>
+<li>划分子网的方法是<strong>从主机号借用若干个比特作为子网号，剩下的主机位为主机号</strong>。</li>
+<li>IP地址具有相同网络号的设备接口 </li>
+<li><strong>不跨越路由器</strong>（第三及以上层网络设备）可以<strong>彼此物理联通</strong>的接口</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_10-03-59.png"></p>
+<p>9、特殊IP地址段</p>
+<p>（1）<strong>本地回环地址</strong>： 127.0.0.1-127.255.255.254，用来识别主机本身的地址。也叫做“localhost”，一般用来测试。</p>
+<p>（2）<strong>私有地址</strong>（Private address）：10.x.x.x,  172.16.x.x-172.31.x.x,  192.168.x.x ，局域网所使用的地址段。</p>
+<p>（3）<strong>0.0.0.0</strong>：用来标识不清楚的网络和主机</p>
+<p>（4）<strong>255.255.255.255</strong>：广播地址</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/tsip.png"></p>
+<p>分类的ip地址</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_11-06-44.png"></p>
+<p>10、互联网中的IP地址</p>
+<ul>
+<li><p><strong>同一局域网上</strong>的主机或路由器的IP地址中的<strong>网络号必须相同</strong> </p>
+</li>
+<li><p>交换机互连的网络仍然是一个局域网，只能有一个网络号。 </p>
+</li>
+<li><p>路由器总是具有两个或两个以上IP地址。 </p>
+</li>
+<li><p>当两个路由器直接相连时，在连线两端的接口处，可以指明IP地址也可以不指明IP地址。</p>
+</li>
+</ul>
+<p>11、子网划分</p>
+<p>分类的IP地址的弱点:</p>
+<ul>
+<li>lP地址空间的利用率有时很低。</li>
+<li>两级lP地址不够灵活。</li>
+</ul>
+<p>网络号相同的IP地址属于同一个网络。而网络还可以划分为若干子网（subnet）。划分子网的方法是<strong>从主机号借用若干个比特作为子网号，剩下的主机位为主机号</strong>。在同一子网中，数据帧不跨越路由器，物理上能够相互到达。</p>
+<p>为什么子网号能全0或者全1：因为CIDR编址<br>为什么主机号不能全0或者全1：因为全0代表本网络，全1代表广播分组</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_11-36-15.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_11-35-30.png"></p>
+<p>12、<strong>子网掩码</strong>用来确定网络地址（网络号+子网号）和主机地址的长度。子网掩码长为32位比特，其中的1对应于IP地址中的网络号和子网号，而子网掩码中的0对应于主机号。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_10-19-35.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_11-43-27.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_11-49-37.png"></p>
+<p>虽然两个子网掩码得到的网络地址结果一样，但是后者的主机位更多，能容纳更多主机。</p>
+<p>例：某主机的IP为180.80.77.55,子网掩码为255.255.252.0,若该主机向其所在子网发送广播分组,则目的地址为（）</p>
+<p>子网掩码255.255.252.0（11111111.11111111.11111100.00000000），网络号和子网号为连续的1，那么主机位为连续的0，也就是10位，然后题目要发送广播分组，所以求的是广播地址，广播地址的主机位也是全为1，所以主机180.80.77.55所在的广播地址就是 180.80.010011（11.11111111），括号里面的是主机号，主机号全为1就是广播地址，即180.80.79.255</p>
+<p>有一个C类网段193.160.80.0，要将他划分6个子网，如何指定他的子网掩码？每个子网的子网号(地址)是多少？主机号(地址)是多少？</p>
+<p>要划分六个子网。则需要借主机位3位。所以呢子网掩码是255.255.255.224.所以每个子网的主机数是2^5&#x3D;32.有效的主机数是32-2.全0是网络号，全1是广播地址。<br>子网1：192.168.80.33到192.168.80.62 网络号是192.168.80.32<br>子网2：192.168.80.65到192.168.80.94网络号是192.168.80.64<br>子网3：192.168.80.97到192.168.80.1276网络号是192.168.80.96<br>子网4：192.168.80.129到192.168.80.158网络号是192.168.80.128<br>子网5：192.168.80.161到192.168.80.190 网络号是192.168.80.160<br>子网6：192.168.80.193到192.168.80.222 网络号是192.168.80.192</p>
+<p>注意：<strong>对某个子网来说，主机号全0的地址不能用，它被用做表示该子网的子网号；主机号全1的也不能用，它用于本子网的广播。因此每个子网所能容纳的主机数是2^N-2，N是主机号位数</strong>。</p>
+<p>13、子网地址、主机地址范围、广播地址</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_10-19-56.png"></p>
+<p>14、无分类域间路由CIDR</p>
+<ul>
+<li>CIDR消除了传统的A类、B类和C类地址的概念。  </li>
+<li>融合子网地址与子网掩码，方便子网划分。</li>
+<li>使用斜线记法，又称为CIDR记法来区分<strong>网络前缀和主机号</strong>，即在IP地址后面加上一个斜线“&#x2F;”，斜线后面用一个数字指定网络前缀的长度。  </li>
+<li>CIDR将网络前缀都相同的连续的IP地址组成“CIDR地址块”。</li>
+</ul>
+<p>地址格式：a.b.c.d&#x2F;x，其中x为前缀长度</p>
+<table>
+<thead>
+<tr>
+<th>网络前缀</th>
+<th>主机号</th>
+</tr>
+</thead>
+</table>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_12-46-12.png"></p>
+<p>15、路由聚合（route aggregation）</p>
+<p>一个CIDR地址块可以表示分类IP的多个分类地址，这种地址的聚合称为路由聚合，又称为<strong>构造超网</strong>。</p>
+<p>方法：将网络前缀缩短（所有网络地址取交集）。</p>
+<p>划分子网是少→多</p>
+<p>构成超网是多→少</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_13-00-43.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_13-33-10.png"></p>
+<p>如果R1，R2，R3，都不匹配，则选R4，转发到默认路由，再转发到另外一个路由器</p>
+<p>【例】某单位从 ISP 处购买了一个 IP 地址块 113.54.70.0&#x2F;24。如果该单位有 3 个部门，第 1 个 部门 100 台计算机，第 2 个和第 3 个部门各有 60 台计算机，请你为 3 个部门划分子网，并给出 各部门的网络号、子网掩码和主机可分配的 IP 地址范围。</p>
+<p>部门2和部门3可对调</p>
+<table>
+<thead>
+<tr>
+<th>部门</th>
+<th>网络地址</th>
+<th>子网掩码</th>
+<th>最小可分配IP地址</th>
+<th>最大可分配IP地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>113.54.70.0</td>
+<td>255.255.255.128</td>
+<td>113.54.70.1</td>
+<td>113.54.70.126</td>
+</tr>
+<tr>
+<td>2</td>
+<td>113.54.70.128</td>
+<td>255.255.255.192</td>
+<td>113.54.70.129</td>
+<td>113.54.70.190</td>
+</tr>
+<tr>
+<td>3</td>
+<td>113.54.70.192</td>
+<td>255.255.255.192</td>
+<td>113.54.70.193</td>
+<td>113.54.70.254</td>
+</tr>
+</tbody></table>
+<p>其他参考答案：</p>
+<table>
+<thead>
+<tr>
+<th>部门</th>
+<th>网络地址</th>
+<th>子网掩码</th>
+<th>最小可分配IP地址</th>
+<th>最大可分配IP地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>113.54.70.128</td>
+<td>255.255.255.128</td>
+<td>113.54.70.129</td>
+<td>113.54.70.254</td>
+</tr>
+<tr>
+<td>2</td>
+<td>113.54.70.0</td>
+<td>255.255.255.192</td>
+<td>113.54.70.1</td>
+<td>113.54.70.62</td>
+</tr>
+<tr>
+<td>3</td>
+<td>113.54.70.64</td>
+<td>255.255.255.192</td>
+<td>113.54.70.65</td>
+<td>113.54.70.126</td>
+</tr>
+</tbody></table>
+<p>16.动态主机配置协议（DHCP）不考</p>
+<p>（1）获得IP地址，还可以获得</p>
+<ul>
+<li>客户的第一跳路由器的地址（网关）</li>
+<li>DNS服务器的IP地址或域名</li>
+<li>子网掩码</li>
+</ul>
+<p>（2）<strong>DHCP是应用层协议</strong></p>
+<ul>
+<li>请求报文封装到UDP数据报中</li>
+<li>IP广播</li>
+<li>链路层广播 (e.g. 以太网广播)</li>
+</ul>
+<p>（3）报文种类</p>
+<ul>
+<li>主机广播 “DHCP DISCOVER” （发现报文）</li>
+<li>DHCP 服务器用 “DHCP OFFER” （提供报文）进行响应</li>
+<li>主机请求IP地址: “DHCP REQUEST” （请求报文）</li>
+<li>DHCP 服务器分配IP地址 “DHCP ACK&#x2F;NACK” （确认报文）</li>
+<li>DHCP 终止租用期”DHCP RELEASE”（终止报文）</li>
+</ul>
+<p>（4） DHCP 协议的工作过程</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_14-16-49.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_14-17-28.png"></p>
+<p>17、如何实现私有网络访问互联网？（NAT）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_11-25-03.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_14-17-40.png"></p>
+<p>18、ICMP (Internet Control Message Protocol，因特网控制报文协议)</p>
+<p>用于主机路由器之间彼此交流网络层信息</p>
+<p>差错报告（5种）</p>
+<ul>
+<li>目的（主机、网络、协议、端口）不可达</li>
+<li>源抑制(Source Quench) :路由器缓存已满</li>
+<li>超时&#x2F;超期</li>
+<li>参数问题</li>
+<li>重定向:路由器收到数据报，不应该由自己转发，则向源主机发送重定向报文，重新定向到其他网关</li>
+</ul>
+<p>网络探询(2种）</p>
+<ul>
+<li>回声(Echo)请求与应答报文(Reply)：ping </li>
+<li>时间戳请求与应答报文：tracerouter</li>
+</ul>
+<p>19、IPV6</p>
+<ul>
+<li>初始动机：32-bit IPv4地址空间即将用尽 </li>
+<li>其他动机：快速处理&#x2F;转发数据报；支持QoS（服务质量）</li>
+<li>IPv6 数据报格式 ：固定长度的 40 字节基本首部 ；不允许分片</li>
+</ul>
+<p>20、路由基本概念</p>
+<p><strong>默认路由器</strong>：与主机直接相连的路由器，又叫<strong>第一跳路由器</strong>。每当主机发送一个分组时，都先传送给它的默认路由器。		</p>
+<ul>
+<li>源路由器：源主机的默认路由器。		</li>
+<li>目的路由器：目的主机的默认路由器。		</li>
+<li>从源主机到目的主机的选路归结为<strong>从源路由器到目的路由器的选路</strong>。</li>
+</ul>
+<p>	</p>
+<p><strong>路由算法</strong>：是确定一个分组从源路由器到目的路由器所经路径的算法</p>
+<p>路由算法的关键：在给定的一组路由器以及连接路由器的链路中，找到一条从源路由器到目的路由器的“好”路径（具有“最低费用”的路径）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_14-47-15.png"></p>
+<p>21、链路状态选路算法LS和距离向量路由算法DV（必考）</p>
+<p><strong>链路状态选路算法</strong></p>
+<p>术语定义</p>
+<ul>
+<li><p>c(x,y)：表示从节点x到y的链路费用;                  </p>
+<p>&#x3D; ∞ 如果不是直接邻居</p>
+</li>
+<li><p>D(v)：表示从源节点到目的节点v的当前路径的费用；</p>
+</li>
+<li><p>p(v)：表示从源节点到目的节点v的路径上的前驱节点；</p>
+</li>
+<li><p>N’：表示已经找到最低费用路径的节点集合。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1  初始化: </span><br><span class="line">2    N&#x27; = &#123;u&#125; </span><br><span class="line">3    对所有节点v </span><br><span class="line">4      if v 临近 u </span><br><span class="line">5          then D(v) = c(u,v) </span><br><span class="line">6      else D(v) = ∞ </span><br><span class="line">7</span><br><span class="line">8   Loop </span><br><span class="line">9     找出w不在N’中使得D(w)最小 </span><br><span class="line">10    将w加入N&#x27; </span><br><span class="line">11    对于所有v临近w并不在N’中，更新D(v): </span><br><span class="line">12       D(v) = min( D(v), D(w) + c(w,v) ) </span><br><span class="line">13    /* 到v的新费用或是到v的老费用或到w加上从w到v的已知最短路费用*/ </span><br><span class="line">15  until 所有节点在 N’中 </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_15-00-59.png"></p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>N’</th>
+<th>D(v),p(v)</th>
+<th>D(w),p(w)</th>
+<th>D(x),p(x)</th>
+<th>D(y),p(y)</th>
+<th>D(z),p(z)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>u</td>
+<td>2，u</td>
+<td>5，u</td>
+<td>1，u</td>
+<td>∞</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>1</td>
+<td>ux</td>
+<td>2，u</td>
+<td>4，x</td>
+<td></td>
+<td>2，x</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>2</td>
+<td>uxy</td>
+<td>2，u</td>
+<td>3，y</td>
+<td></td>
+<td></td>
+<td>4，y</td>
+</tr>
+<tr>
+<td>3</td>
+<td>uxyv</td>
+<td></td>
+<td>3，y</td>
+<td></td>
+<td></td>
+<td>4，y</td>
+</tr>
+<tr>
+<td>4</td>
+<td>uxyvw</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>4，y</td>
+</tr>
+<tr>
+<td>5</td>
+<td>uxyvwz</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>（有两个最小就随便选一个，此答案选的y）</p>
+<p>根据<strong>目的节点找出顺序和其费用以及前驱节点</strong>，可以画出源节点u到所有目的节点的最低费用路径树。根据得到的所有目的节点的完整路径，或<strong>最低费用路径树</strong>，可以生成源节点的<strong>转发表</strong>。</p>
+<p><strong>转发表</strong>：存放从源节点到每个目的节点的最低费用路径上的下一跳节点。即指出对于发往某个目的节点的分组，从该节点发出后的<strong>下一个节点</strong>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_15-23-31.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_15-27-37.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_15-28-01.png"></p>
+<p><strong>距离向量路由算法</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_16-03-26.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_16-02-08.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_16-03-08.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_17-00-47.png"></p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_16-40-46.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_16-38-56.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_16-40-34.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_16-39-26.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_16-40-07.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_16-42-57.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_16-43-04.png"></p>
+<p>22、自治系统间(Inter-AS)路由</p>
+<p>(1)转发表根据AS内和AS间选路算法而配置</p>
+<ul>
+<li>AS域内的选路项用于目的端在域内的选路。</li>
+<li>AS域内和AS域间的选路项用于目的端在域外的选路</li>
+</ul>
+<p>(2)在多个自治系统中选择	</p>
+<ul>
+<li>热土豆选路: 把分组送到两个路由器中最近的一个</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_17-39-22.png"></p>
+<p>23、 OSPF: 开放式最短路径优先</p>
+<ul>
+<li>用链路状态算法 <ul>
+<li>分发LS 分组（ OSPF通告）</li>
+<li>每个路由器构造完整的网络（AS）拓扑图</li>
+<li>路由器本地运行 Dijkstra算法</li>
+</ul>
+</li>
+<li>每个路由器都广播OSPF通告，OSPF通告里为每个邻居路由器设一个表项（记录每个邻居的链路特征和费用）。</li>
+<li>通告会散布到整个自治系统 (通过洪泛法) <ul>
+<li>OSPF报文直接封装到IP数据报中 (不是 TCP 或 UDP）</li>
+</ul>
+</li>
+<li>优点：<ul>
+<li>安全: 所有OSPF 消息需要认证 (防止恶意入侵) </li>
+<li>允许多个相同开销的路径 (在 RIP中只有一条路径)</li>
+<li>对于每个链路, 有多个消费尺度用于不同的服务类型TOS (例如在尽力转发时卫星链路代价设置为 “低” ，而对实时应用设置为高)</li>
+<li>单播和多播综合支持: 多播 OSPF (MOSPF) 使用和 OSPF同样的链路数据库</li>
+<li>OSPF支持对大规模AS分层</li>
+</ul>
+</li>
+</ul>
+<p>24、 Internet 域间选路: BGP</p>
+<ul>
+<li>BGP (Border Gateway Protocol)：事实上的标准域间路由协议，将Internet “粘合”为一个整体的关键</li>
+<li>BGP 为每个 AS 提供了一种手段:</li>
+<li>eBGP：从相邻AS获取子网可达信息</li>
+<li>iBGP：向该AS内部的所有路由器传播这些子网的可达信息</li>
+<li>基于该可达信息和AS策略，决定到达子网的“好”路由</li>
+<li>允许一个子网向Internet的其他部分通告它的存在 “I am here”</li>
+<li>路径属性<ul>
+<li>AS-PATH: 包含了前缀的通告已经通告过的那些AS,如 AS 67 AS 17 </li>
+<li>NEXT-HOP: 指出到达下一个AS的具体AS间边界路由器（可能存在多条从当前AS到达下一个AS的链路）</li>
+</ul>
+</li>
+<li>BGP 路由选择<ul>
+<li>当网关路由器接收到路由通告时，使用输入策略来决定接收&#x2F;舍弃该通告。e.g., 从不将流量路由到AS x </li>
+<li>路由器可能知道到相同前缀的多条路由，路由器基于以下准则选择（排除规则，应用排除规则直到有一条留下）<ul>
+<li>本地偏好值属性: 具有最高偏好值的路由被选择</li>
+<li>最短AS-PATH的路由</li>
+<li>最靠近 NEXT-HOP路由器的路由 : 热土豆路由</li>
+<li>其他标准</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_17-44-53.png"></p>
+<p>25、SDN的流表(flow table)、控制平面&#x2F;数据平面、openflow</p>
+<p>SDN的核心思想是建立一个通用转发体系  </p>
+<ul>
+<li>每个交换设备包含一个流表(flow table). 流表由一个逻辑上中心化的控制器（远程控制器）来计算和分发</li>
+<li>首部字段值：入分组与之匹配，匹配不上分组被丢弃或发往远程控制器。首部字段包括链路层、网络层、传输层首部字段。</li>
+<li>计数器：分组与流表项匹配时更新。包含已经匹配分组数量，以及上次更新以来的时间</li>
+<li>动作：分组匹配表项时的动作（转发、丢弃、复制、分发到多个端口）</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_17-45-11.png"></p>
+<p>SDN体系结构及特征</p>
+<p><em>特征</em></p>
+<ul>
+<li>基于流的转发：基于<strong>首部字段值</strong>进行转发</li>
+<li>数据平面与控制平面分离：数据平面网络交换机组成，控制平面由服务器和管理流表软件构成。</li>
+<li>网络控制功能：位于数据平面交换机外部，包括SDN控制器和若干网络控制程序。</li>
+<li>可编程的网络：调用API定义和控制网络设备的数据平面。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_17-45-36.png"></p>
+<p>SDN控制器的组件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_17-45-49.png"></p>
+<hr>
+<p>在英特网中，IP数据报的传输需要经由源主机和中途路由器到达目的主机，下面说法正确的是（  D  ）。</p>
+<p>A、源主机和中途路由器都知道IP数据报到达目的主机需要经过的完整路径。</p>
+<p>B、源主机知道IP数据报到达目的主机需要经过的完整路径，而中途路由器不知道。</p>
+<p>C、源主机不知道IP数据报到达目的主机需要经过的完整路径，而中途路由器知道。</p>
+<p>D、源主机和中途路由器都不知道IP数据报到达目的主机需要经过的完整路径。</p>
+<p>对于 IP 网络，是采用数据报方式，因此对于源主机和中途路由器都不会知道数据报经过的完整路径，<strong>路由器仅知道到达目的地址的下一跳地址</strong>，主机仅知道到达本地网络的路径，到达其他网络的数据报均转发到网关的地址，也就是路由器，因此源主机和中途路由器都不知道 IP 数据报到达目的主机需要经过的完整路径。</p>
+<p>采用（     C    ）的交换结构可以并行发送多个分组。</p>
+<p>A、经内存交换        B、经总线交换     C、经互联网络交换    D、以上都可以 </p>
+<p><strong>经内存交换</strong>. 分组从输入端口处被复制到处理器内存中. 处理器从其首部中提取目的地址, 在转发表中找出适当的输出端口, 并把该分组复制到该输出端口的缓存中.</p>
+<p><strong>经总线交换</strong>. 分组从输入端口经过总线发送到所有输出端口, 只有与该分组匹配的输出端口会把分组留下来.</p>
+<p><strong>经互联网络交换</strong>. 交换机由2N条总线组成互联网络, 连接N个输入口和N个输出口. 通过控制网络中的交点使分组到达对应的输出端口. 这种纵横式网络能够并行发送多个分组.</p>
+<p>在一个高性能的路由器中，转发表的影子副本保存在（    A   ）中，以避免集中式处理的瓶颈。</p>
+<p>A、输入端口     B、输出端口     C、交换结构     D、以上都有</p>
+<p>假设一个路由器有N个有同样线路速度的输入端口和N个有同样线路速度的输出端口，并且，输出端口的线路速度至少是输入端口的线路速度的N倍。同时假定交换结构的速率至少是输入的线路速度的N倍，则（  A     ）。</p>
+<p>A、在路由器中不会有排队时延        </p>
+<p> B、排队会发生在交换结构</p>
+<p>C、排队会发生在输入端口                </p>
+<p>D、排队会发生在输出端口</p>
+<p>提示：考虑最坏情况：N个输入端口的分组通过交换结构被传到同一个输出端口上，输出端口同样不会发生排队。</p>
+<p>路由器中发现TTL值为0的分组，将进行的处理是（ D   ）。</p>
+<p>A、返回发送方   B、继续转发   C、本地提交  D、丢弃 </p>
+<p><strong>TTL:(Time To Live)生存时间;指定数据包被路由器丢弃之前允许通过的网段数量</strong>。TTL是由发送主机设置的,以防止数据包不断在IP互联网络上永不终止地循环。转发IP数据包时,要求路由器至少将TTL减小1。当路由器发现TTL值为0的分组时则丢弃该分组。</p>
+<p>假定主机A向主机B发送一个封装在IP数据报中的TCP报文段，当主机B接收到该数据报后，它的网络层将通过（   D  ）字段的信息，知道它应该将封装在该IP数据报中的报文段递交给运算层的TCP协议，而不是UDP协议的。</p>
+<p>A、端口号    B、服务类型    C、区分服务     D、上层协议</p>
+<p>IP协议的首部中有上层协议字段。</p>
+<p>IP数据报中的检验和字段检验的范围是（ B    ）</p>
+<p>A、整个IP数据报        </p>
+<p>B、仅检查数据报首部   </p>
+<p>C、仅检查数据部分     </p>
+<p>D、根据网络情况的不同而不同</p>
+<p>IP数据报中的检验和字段只检查IP数据报的首部，不包括数据部分。在发送方，先把IP数据报首部划分为许多16位字的序列，并把检验和字段置为0，用反码算术运算把所有16位字相加，将得到的和的反码写入检验和字段。</p>
+<p>一个UDP数据报的数据部分长度为8192字节，那么通过MTU为1500字节的链路来传输该UDP数据报时，最后一个分片的数据长度是（ C    ）。</p>
+<p>A、1500   B、1480   C、800  D、600</p>
+<p>UDP头部长为8字节，因此该UDP数据报总长度为8200字节，以太网帧的最大数据域为1500，再减去20的IP头部，得到每个IP分片的最大数据域长度应该是1480，则最后一个数据分片的长度应该是(8200-5×1480&#x3D;)800字节。</p>
+<p>假定一个应用程序每秒中产生160字节的数据块，每个数据块封装入一个TCP报文段，然后再封装入IP数据报中。每个数据报中应用层数据的比例是（   D   ）？   </p>
+<p>A.20%     B.40%   C. 60%    D.80%</p>
+<p>一个TCP的头部长度是20字节,一个IP头部的长度是20字节,再加上160字节的数据,一个IP数据报的总长度为200字节,其中应用层数据占80%。</p>
+<p>下列地址中，属于单播地址的是（ B    ）</p>
+<p>A、10.3.2.255&#x2F;24          </p>
+<p>B.172.31.129.255&#x2F;18</p>
+<p>C、192.168.24.59&#x2F;30     </p>
+<p>D、224.100.57.211 </p>
+<p>解析：选项A“10.3.2.232&#x2F;24”所表示的子网掩码是(11111111 11111111 11111111 00000000)，其表示主机部分的二进制数形式是11111111，由此可知10.3.2.255&#x2F;24是子网10.3.2.0的一个广播地址。 选项B“172.31.129.255&#x2F;18”，其中172.31.129.255的二进制数形式是(10100100 00011111 1000000 111111111)，由于子网掩码是(11111111 11111111 11000000 00000000)，其表示主机部分的二进制数形式是000001 11111111，由此可知172.31.129.255&#x2F;18是一个单播IP地址。 选项C“192.168.24.59&#x2F;30”，其中192.168.24.59的二进制数形式是(11000000 10101000 00011000 00111011)，由于子网掩码是(11111111 11111111 11111111 11111100)，其表示主机部分的二进制数形式是11，由此可知192.168.24.59&#x2F;30属于192.168.24.56子网的广播地址。 选项D“224.100.57.211”是一个组播地址(D类IP地址，前四位1110)。</p>
+<p>ISP分配给某公司的地址块为199.34.76.64&#x2F;28，则该公司可用于分配的地址数是（ B ）A、8    B、14  C、16   D、30</p>
+<p>设有4台主机①、②、③和④，都处在一个物理网络中，它们的IP地址分别为：192.155.28.112、192.155.28.120、192.155.28.135和192.155.28.202，子网掩码都是255.255.255.224,这4台主机中可以直接通信的主机有（  ）。  </p>
+<p> A、①②③④    B、①③④  C、②③④   D、①② </p>
+<p>子网掩码255.255.255.224的二进制表示为11111111.11111111.11111111.11100000，这意味着网络前缀长度为27位。因此，可以计算出每台主机所在的子网：</p>
+<ul>
+<li>192.155.28.112的子网地址为192.155.28.96</li>
+<li>192.155.28.120的子网地址为192.155.28.96</li>
+<li>192.155.28.135的子网地址为192.155.28.128</li>
+<li>192.155.28.202的子网地址为192.155.28.192</li>
+</ul>
+<p>根据以上计算结果，可以得出主机①和主机②在同一个子网中，它们之间可以直接通信。而主机③和主机④分别位于不同的子网中，它们之间不能直接通信。因此，正确答案是D、①②。</p>
+<p>某接口IP地址为172.16.7.131&#x2F;26，该IP地址所在网络的广播地址是（  C  ）</p>
+<p>A、172.16.7.255    B、172.16.7.129  C、172.16.7.191   D、172.16.7.252</p>
+<p>对分片后的数据报进行重组的是（A ）。</p>
+<p>A.目的端系统  B.中间主机 C.核心路由器  D.下一跳路由器</p>
+<p>数据报被分片后，每个分片都将被尽力而为地独立传输到目的地，期间可能会经过不同的路径，因此，分片的重组工作只能在目的端系统进行。</p>
+<p>路由表错误和软件故障都可能使得网络中形成数据传输环路，解决该问题的方法是（C）A.报文分片   B.增加校验和  C.设定寿命   D.增加选项字段</p>
+<p>解决该问题的方法是设定寿命（TTL）字段。TTL是IP数据包中的一个字段，它指定了数据包可以经过的最大路由器数。当数据包到达一个路由器时，该路由器会将TTL减1。如果TTL减为0，则该数据包被丢弃。这样可以确保数据包不会在网络中无限循环。</p>
+<p>路由器中计算路由信息的是（D ）</p>
+<p>A.输入队列       B.输出队列     C.交换结构    D.路由选择处理机</p>
+<p>路由选择处理机的任务是根据所选定的路由选择协议构造出路由表，同时经常或定期地和相邻路由器交换路由信息而不断地更新和维护路由表。</p>
+<p>在虚电路网络中，分组交换涉及虚电路的建立，每个分组交换知道经过它的VC号。（√）</p>
+<blockquote>
+<p><strong>一条虚电路(VC)的组成如下:</strong></p>
+<p><strong>①源和目的主机之间的路径(即一系列链路和路由器);</strong></p>
+<p><strong>②VC 号，沿着该路径的每段链路一个号码;</strong></p>
+<p><strong>③沿着该路径的每台路由器中的转发表表项。</strong></p>
+<p>属于一条虚电路的分组将在它的首部携带一个 VC 号。因为一条虚电路在每条链路上可能具有不同的VC号，所以每台中间路由器必须用一个新的VC号替代每个传输分组的VC号。 这个新的 VC 号从转发表中获得。</p>
+</blockquote>
+<p>在数据报网络中，每个分组携带有目的地主机的地址。（√）</p>
+<p>在同一个IP网络中，每台主机的IP地址的网络部分都是相同的。（√）</p>
+<p>关于IP提供的服务，下列说法中正确的是（C）</p>
+<p>A.IP提供可靠的数据报传送服务，因此数据报传送可以受到保障</p>
+<p>B.IP提供不可靠的数据报传送服务，因此它可以随意丢弃数据报</p>
+<p>C.IP提供不可靠的数据报传送服务，因此数据报传送不能受到保障</p>
+<p>D.IP提供可靠的数据传送服务，因此它不能随意丢弃报文</p>
+<p>‎在以下几个IP地址中，（C）是一个内部IP地址‏</p>
+<p>A.202.13.0.1</p>
+<p>B.202.113.0.1</p>
+<p>C.192.168.0.1</p>
+<p>D.1.1.0.1</p>
+<p>把网络192.134.11.0划分为多个子网（子网掩码是255.255.255.128），则全部的子网中可用的主机地址总数是（B）</p>
+<p>A.128	B.252	C.12	D.254</p>
+<p>c类地址，申请了一位来划分子网，每个子网2^7-2&#x3D;126个主机地址</p>
+<p>为了解决IP地址耗尽的问题，可以采用以下的一些措施，其中治本的是（D）</p>
+<p>A.采用无类别编址CIDR</p>
+<p>B.采用网络地址转换NAT</p>
+<p>C.划分子网</p>
+<p>D.采用IPv6</p>
+<p>下列属于域间路由协议的是（）</p>
+<p>‍A.RIP	B.BGP	C.IP	D.OSPF</p>
+<p>RIP和OSPF是域内路由选择协议，而BGP是域间路由选择协议，其着眼点不在于发现和计算路由，而在于控制路由的传播和选择最佳路由。</p>
+<p>IPv6不具有的特性是（D）</p>
+<p>‎A.具有优先级标识</p>
+<p>B.固定的首部长度</p>
+<p>C.更大的IP地址空间</p>
+<p>D.可以进行分片</p>
+<p>考虑如图1示的网络。</p>
+<p>‌a.假定网络是一个数据报网络。显示路由器A中的转发表，其中所有指向主机H3的流量通过接口3转发。</p>
+<p>‌b.假定网络是一个数据报网络。你能写出路由器A中的转发表吗?其中所有从H1指向主机H3的流量通过接口3转发，而所有从H2指向主机H3的流量通过接口4转发。(提示：这是一个技巧问题。)</p>
+<p>‌c.现在假定网络是虚电路网络，在H1和H3之间有一个进行中的呼叫，H2和H3之间有另一个进行中的呼叫。写出路由器A中的转发表，其中所有从H1指向主机H3的流量通过接口3转发，而所有H2指向主机H3的流量通过接口4转发。</p>
+<p>‌d.假设场景与(c)中相同，写出在结点B、C和D中的转发表。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_19-51-24.png"></p>
+<p>a）通过接口3转发发送到主机H3的数据，路由器A的转发表为: </p>
+<table>
+<thead>
+<tr>
+<th>目的地址</th>
+<th>输出接口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>H3</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<p> b) 在数据报网络中，路由器的转发表是根据目的地址来转发分组的，而不是根据源地址。因此，无法仅根据源地址来确定分组的转发接口。所以，无法写出路由器A中的转发表，使得所有从H1指向主机H3的流量通过接口3转发，而所有从H2指向主机H3的流量通过接口4转发。</p>
+<p>c) 一种可能的配置为: </p>
+<table>
+<thead>
+<tr>
+<th>接入端口</th>
+<th>进入的VC号</th>
+<th>输出端口</th>
+<th>输出VC号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>12</td>
+<td>3</td>
+<td>22</td>
+</tr>
+<tr>
+<td>2</td>
+<td>63</td>
+<td>4</td>
+<td>18</td>
+</tr>
+</tbody></table>
+<p>d)一种可能的配置为:</p>
+<p>路由器B:</p>
+<table>
+<thead>
+<tr>
+<th>接入端口</th>
+<th>进入的VC号</th>
+<th>输出端口</th>
+<th>输出VC号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>22</td>
+<td>2</td>
+<td>24</td>
+</tr>
+</tbody></table>
+<p>路由器C:</p>
+<table>
+<thead>
+<tr>
+<th>接入端口</th>
+<th>进入的VC号</th>
+<th>输出端口</th>
+<th>输出VC号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>18</td>
+<td>2</td>
+<td>50</td>
+</tr>
+</tbody></table>
+<p>路由器D:</p>
+<table>
+<thead>
+<tr>
+<th>接入端口</th>
+<th>进入的VC号</th>
+<th>输出端口</th>
+<th>输出VC号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>24</td>
+<td>3</td>
+<td>70</td>
+</tr>
+<tr>
+<td>2</td>
+<td>50</td>
+<td>3</td>
+<td>76</td>
+</tr>
+</tbody></table>
+<p>考虑使用8比特主机地址的某数据报网络。假定一台路由器使用最长前缀匹配并具有如下表所示的转发表，对这4个接口中的每个，给出响应的目的主机地址的范围和在该范围中的地址数量。</p>
+<table>
+<thead>
+<tr>
+<th>Prefix Match</th>
+<th>Interface</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>00</td>
+<td>0</td>
+</tr>
+<tr>
+<td>010</td>
+<td>1</td>
+</tr>
+<tr>
+<td>011</td>
+<td>2</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2</td>
+</tr>
+<tr>
+<td>11</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>目的主机地址范围</th>
+<th>链路接口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>00000000-00111111</td>
+<td>0</td>
+</tr>
+<tr>
+<td>01000000-01011111</td>
+<td>1</td>
+</tr>
+<tr>
+<td>01100000-01111111</td>
+<td>2</td>
+</tr>
+<tr>
+<td>10000000-10111111</td>
+<td>2</td>
+</tr>
+<tr>
+<td>11000000-11111111</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<p>对于接口0的地址数量为: 2^6&#x3D;64。</p>
+<p>对于接口1的地址数量为: 2^5&#x3D;32。</p>
+<p>对于接口2的地址数量为: 2^6+2^5&#x3D;64+32&#x3D;96</p>
+<p>对于接口3的地址数量为: 2^5&#x3D;32。</p>
+<p>基于Dijkstra算法计算路由器A的算法表。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_20-11-51.png"></p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>N’</th>
+<th>D(B),p(B)</th>
+<th>D(C),p(C)</th>
+<th>D(D),p(D)</th>
+<th>D(E),p(E)</th>
+<th>D(F),p(F)</th>
+<th>D(G),p(G)</th>
+<th>D(H),p(H)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>A</td>
+<td>4,A</td>
+<td>∞</td>
+<td>∞</td>
+<td>1,A</td>
+<td>3,A</td>
+<td>∞</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>1</td>
+<td>AE</td>
+<td>4,A</td>
+<td>∞</td>
+<td>∞</td>
+<td></td>
+<td>3,A</td>
+<td>∞</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>2</td>
+<td>AEF</td>
+<td>4,A</td>
+<td>∞</td>
+<td>8,F</td>
+<td></td>
+<td></td>
+<td>6,F</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>3</td>
+<td>AEFB</td>
+<td></td>
+<td>7,B</td>
+<td>8,F</td>
+<td></td>
+<td></td>
+<td>5,B</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>4</td>
+<td>AEFBG</td>
+<td></td>
+<td>6,G</td>
+<td>8,F</td>
+<td></td>
+<td></td>
+<td></td>
+<td>7,G</td>
+</tr>
+<tr>
+<td>5</td>
+<td>AEFBGC</td>
+<td></td>
+<td></td>
+<td>8,F</td>
+<td></td>
+<td></td>
+<td></td>
+<td>7,G</td>
+</tr>
+<tr>
+<td>6</td>
+<td>AEFBGCH</td>
+<td></td>
+<td></td>
+<td>8,F</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>AEFBGCHD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://uestcwxy.love">珩</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://uestcwxy.love/2023/06/23/%E8%AE%A1%E7%BD%91/4/">https://uestcwxy.love/2023/06/23/%E8%AE%A1%E7%BD%91/4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://uestcwxy.love" target="_blank">Eternity</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2023/06/21/%E8%AE%A1%E7%BD%91/3/" title="计网期末复习之传输层"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计网期末复习之传输层</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/06/21/%E8%AE%A1%E7%BD%91/2/" title="计网期末复习之应用层"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-21</div><div class="title">计网期末复习之应用层</div></div></a></div><div><a href="/2023/06/21/%E8%AE%A1%E7%BD%91/3/" title="计网期末复习之传输层"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-21</div><div class="title">计网期末复习之传输层</div></div></a></div><div><a href="/2023/06/20/%E8%AE%A1%E7%BD%91/1/" title="计网期末复习之计算机网络与因特网"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-20</div><div class="title">计网期末复习之计算机网络与因特网</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">珩</div><div class="author-info__description">等我苦尽甘来时，我给你讲讲来时走的路。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/uestc-wxy/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.facebook.com/profile.php?id=100092533320651" target="_blank" title="facebook"><i class="fab fa-facebook" style="color: #4a7dbe;"></i></a><a class="social-icon" href="mailto:1939311091@qq.com" target="_blank" title="email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/1907948898" target="_blank" title="b站"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/tiktok.jpg" target="_blank" title="抖音"><i class="fab fa-tiktok" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/weixin.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">刚建站不久，博客美化有待研究，部分页面也没时间弄，路过的你将就看啦~😊，图片没加载出来就是网络不佳噢~</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/06/23/%E8%AE%A1%E7%BD%91/4/" title="计网期末复习之网络层"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计网期末复习之网络层"/></a><div class="content"><a class="title" href="/2023/06/23/%E8%AE%A1%E7%BD%91/4/" title="计网期末复习之网络层">计网期末复习之网络层</a><time datetime="2023-06-23T01:20:05.000Z" title="发表于 2023-06-23 09:20:05">2023-06-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/21/%E8%AE%A1%E7%BD%91/3/" title="计网期末复习之传输层"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计网期末复习之传输层"/></a><div class="content"><a class="title" href="/2023/06/21/%E8%AE%A1%E7%BD%91/3/" title="计网期末复习之传输层">计网期末复习之传输层</a><time datetime="2023-06-21T11:54:05.000Z" title="发表于 2023-06-21 19:54:05">2023-06-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/21/%E8%AE%A1%E7%BD%91/2/" title="计网期末复习之应用层"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计网期末复习之应用层"/></a><div class="content"><a class="title" href="/2023/06/21/%E8%AE%A1%E7%BD%91/2/" title="计网期末复习之应用层">计网期末复习之应用层</a><time datetime="2023-06-21T04:33:08.000Z" title="发表于 2023-06-21 12:33:08">2023-06-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/20/%E8%AE%A1%E7%BD%91/1/" title="计网期末复习之计算机网络与因特网"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计网期末复习之计算机网络与因特网"/></a><div class="content"><a class="title" href="/2023/06/20/%E8%AE%A1%E7%BD%91/1/" title="计网期末复习之计算机网络与因特网">计网期末复习之计算机网络与因特网</a><time datetime="2023-06-20T04:59:56.000Z" title="发表于 2023-06-20 12:59:56">2023-06-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/8/" title="操作系统期末复习之经典大题"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/czxt.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统期末复习之经典大题"/></a><div class="content"><a class="title" href="/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/8/" title="操作系统期末复习之经典大题">操作系统期末复习之经典大题</a><time datetime="2023-06-17T12:04:46.000Z" title="发表于 2023-06-17 20:04:46">2023-06-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png')"><div id="footer-wrap"><div class="copyright">&copy;2023 By 珩</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><i class="fa-solid fa-cloud"></i><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>萌ICP备20230529号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="6614140207" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-mini="true"> </div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
