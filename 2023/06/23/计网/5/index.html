@@ -1,0 +1,698 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>计网期末复习之链路层 | Eternity</title><meta name="author" content="珩,1939311091@qq.com"><meta name="copyright" content="珩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="链路层的术语  主机和路由器: 节点(nodes) 沿着通信路径连接相邻节点的通信信道：链路(links) 有线链路(wired links) 无线链路(wireless links)   第二层的分组:数据帧(frame), 它是封装了的数据报  数据链路层的职责是将数据报从一个节点传送到与该节点直接有物理链路相连的另一个节点。 数据报可以在不同的链路上，通过不同的链路层协议发送： e.g.,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计网期末复习之链路层">
+<meta property="og:url" content="https://uestcwxy.love/2023/06/23/%E8%AE%A1%E7%BD%91/5/index.html">
+<meta property="og:site_name" content="Eternity">
+<meta property="og:description" content="链路层的术语  主机和路由器: 节点(nodes) 沿着通信路径连接相邻节点的通信信道：链路(links) 有线链路(wired links) 无线链路(wireless links)   第二层的分组:数据帧(frame), 它是封装了的数据报  数据链路层的职责是将数据报从一个节点传送到与该节点直接有物理链路相连的另一个节点。 数据报可以在不同的链路上，通过不同的链路层协议发送： e.g.,">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png">
+<meta property="article:published_time" content="2023-06-23T13:27:39.000Z">
+<meta property="article:modified_time" content="2023-06-24T05:43:25.796Z">
+<meta property="article:author" content="珩">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://uestcwxy.love/2023/06/23/%E8%AE%A1%E7%BD%91/5/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 珩","link":"链接: ","source":"来源: Eternity","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计网期末复习之链路层',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-06-24 13:43:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Eternity" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = 'hidden';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+
+preloader.initLoading()
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Eternity"><span class="site-name">Eternity</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计网期末复习之链路层</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-23T13:27:39.000Z" title="发表于 2023-06-23 21:27:39">2023-06-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-24T05:43:25.796Z" title="更新于 2023-06-24 13:43:25">2023-06-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">大二下期末复习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">7.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>24分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计网期末复习之链路层"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><em>链路层的术语</em></p>
+<ul>
+<li>主机和路由器: <strong>节点</strong>(nodes)</li>
+<li>沿着通信路径连接相邻节点的通信信道：<strong>链路</strong>(links)<ul>
+<li>有线链路(wired links)</li>
+<li>无线链路(wireless links)</li>
+</ul>
+</li>
+<li>第二层的分组:<strong>数据帧</strong>(frame), 它是封装了的数据报</li>
+</ul>
+<p><strong>数据链路层</strong>的职责是<strong>将数据报从一个节点传送到与该节点直接有物理链路相连的另一个节点</strong>。</p>
+<p>数据报可以在不同的链路上，通过不同的链路层协议发送：</p>
+<p>e.g., Ethernet on first link, frame relay on intermediate links, 802.11 on last link</p>
+<p>每个链路层协议提供不同的服务：</p>
+<p>e.g., 可以提供&#x2F;也可以不提供可靠数据传输服务</p>
+<p>1、链路层提供哪些服务</p>
+<ul>
+<li>封装成帧，链路接入：<ul>
+<li>封装数据报为数据帧，增加头部，尾部信息</li>
+<li>如果是共享链路，接入链路</li>
+<li>在数据帧头部中，用MAC地址来标识源目的MAC地址（不同于IP地址）</li>
+</ul>
+</li>
+<li>在相邻节点之间可靠传输数据帧</li>
+<li>流量控制</li>
+<li>差错检查</li>
+<li>错误纠正</li>
+<li>半双工和全双工：在半双工模式，链路的两个节点都可以发送数据，但是不能同时发送。</li>
+</ul>
+<p>链路层在主机和网络设备(路由器)上实现</p>
+<ul>
+<li>在主机上，链路层的主体部分是在<strong>网络适配器</strong>上实现的(称为网卡)</li>
+</ul>
+<p>2、三种主要差错检测技术特点，要会计算</p>
+<ul>
+<li><strong>奇偶校验</strong>：最基本的方法。<ul>
+<li>1维奇偶校验：可以查出任意奇数个错误，但不能发现偶数个错误</li>
+<li>2维奇偶校验：可以检测并纠正单个比特差错（数据或校验位中） ；能够检测(但不能纠正)分组中任意两个比特的差错</li>
+</ul>
+</li>
+<li><strong>Internet校验和</strong>：常用于<em><strong>运输层</strong></em>。<ul>
+<li>分组<strong>开销小</strong>：检查和位数比较少；</li>
+<li>差错<strong>检测能力弱</strong>差错检测用软件实现</li>
+</ul>
+</li>
+<li><strong>循环冗余检测</strong>：常用于<em><strong>链路层</strong></em>。<ul>
+<li>能检测小于 r+1 位的突发差错、任何奇数个差错</li>
+</ul>
+</li>
+</ul>
+<p><strong>一比特奇偶校验</strong></p>
+<p>发送方：</p>
+<ul>
+<li>在要发送的信息D（d位）后面附加一个奇偶校验位</li>
+<li>使“1”的个数是奇数（奇校验）或偶数（偶校验）</li>
+<li>一起传输发送（d+1位）。</li>
+</ul>
+<p>接收方：</p>
+<ul>
+<li>检测收到的信息（d+1位）中“1”的个数。</li>
+<li>偶校验：发现奇数个“1”，至少有一个比特发生差错（奇数个比特差错）。</li>
+<li>奇校验：发现偶数个“1”，至少有一个比特发生差错。</li>
+</ul>
+<p>可以查出任意奇数个错误，但不能发现偶数个错误（如果数据中发生了偶数个错误，那么这些错误将抵消彼此）。若比特差错概率很小，差错独立发生，一比特奇偶校验可满足要求。若差错集中一起“突发”（突发差错），一帧中未检测到的差错的概率达到50%。</p>
+<p><strong>二维奇偶校验</strong></p>
+<p>基本思想：</p>
+<ul>
+<li>将要传信息D（d比特）划分为**i行j 列(i 个组，每组j位)**；</li>
+<li>对每行和每列分别计算奇偶值；</li>
+<li>结果的<strong>i+j+1</strong>个奇偶比特构成了帧的差错检测比特。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_22-39-50.png"></p>
+<p>要发送的数据比特10101 11110 01110，划分3组，每组5个比特。进行<strong>行、列偶</strong>校验</p>
+<p>特点：</p>
+<ul>
+<li>可以<strong>检测并纠正单个比特差错</strong>（数据或校验位中）。</li>
+<li>能够<strong>检测(但不能纠正)分组中任意两个比特的差错</strong>。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-23_22-40-10.png"></p>
+<p><strong>Internet校验和方法</strong></p>
+<p>发送方：</p>
+<ul>
+<li>将数据的每两个字节当作一个16位的整数，可分成若干整数；</li>
+<li>将所有16 位的整数求和；</li>
+<li>对得到的和逐位取反，作为检查和，放在报文段首部，一起发送。</li>
+</ul>
+<p>接收方：对接收到的信息 (包括检查和)按与发送方相同的方法求和。</p>
+<ul>
+<li>全“1”：收到的数据无差错；</li>
+<li>其中有“0”：收到的数据出现差错。</li>
+</ul>
+<p><strong>循环冗余检测</strong></p>
+<p>循环冗余检测CRC (cyclic redundancy check)编码：即<strong>多项式编码</strong>，把要发送的比特串看作为系数是0或1的一个多项式，对比特串的操作看作为多项式运算。</p>
+<p>10111→ x⁴+x²+x+1</p>
+<p>基本思想：设发送节点要把数据D（<strong>d 比特</strong>）发送给接收节点。发送方和接收方先共同选定一个<strong>生成多项式 G（r+1比特），最高有效位 (最左边)是1</strong>。</p>
+<p><em><strong>发送方</strong></em>：</p>
+<ul>
+<li>计算出一个r位附加比特R，添加到D的后面产生DR（d+r 比特）</li>
+<li>DR能被生成多项式G模2运算整除，一起发送。</li>
+</ul>
+<p><em><strong>接收方</strong></em>：</p>
+<ul>
+<li>用生成多项式G去除接收到的DR（d+r比特）<ul>
+<li>余数非0：传输发生差错；</li>
+<li>余数为0：传输正确，去掉尾部r位，得所需数据D。</li>
+</ul>
+</li>
+</ul>
+<p><em><strong>模2运算</strong></em></p>
+<p><strong>加法不进位，减法不借位</strong>，即操作数按位异或 (XOR)</p>
+<p>1011  XOR  0101&#x3D;1110；   1011-0101&#x3D;1110     </p>
+<p>1001  XOR  1101&#x3D;0100    ；   1001-1101&#x3D;0100</p>
+<p><strong>乘法和除法与二进制运算类似</strong>，其中加法或减法没有进位或借位。</p>
+<p><strong>乘以2^r，即比特模式左移r 个位置</strong>。</p>
+<p>D×2^r  XOR  R &#x3D; D <strong>00…00</strong>  XOR  R &#x3D; DR  (d+r 比特)</p>
+<p><em><strong>计算R（CRC比特）</strong></em></p>
+<ul>
+<li><p>DR能被G模2运算整除：即                             </p>
+<p>D×2^r  XOR  R &#x3D; nG</p>
+</li>
+<li><p>等式两边都用R异或，得到                             </p>
+<p>D×2^r &#x3D; nG  XOR  R     </p>
+</li>
+<li><p>即用G来除D×2^r，余数值刚好为R。</p>
+</li>
+<li><p><strong>R的计算：将数据D后面添加r个0，除以给定的生成多项式G，所得余数即为R</strong>（r位）。</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-24_09-11-07.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-24_09-12-39.png"></p>
+<p>3、多路访问链路协议（也称多址访问协议）</p>
+<p>目的：协调多个节点在共享广播信道上的传输。</p>
+<p>冲突（collide）：两个以上的节点同时传输帧，使接收方收不到正确的帧（所有冲突的帧都受损丢失）。</p>
+<ul>
+<li><strong>信道划分协议</strong>: TDMA、FDMA、CDMA（时分，频分，码分）<ul>
+<li>把信道划分为小“片” (时隙)；给节点分配专用的小“片”</li>
+</ul>
+</li>
+<li><strong>随机访问协议</strong>: ALOHA(纯ALOHA，时隙ALOHA)、CSMA、CSMA&#x2F;CD（以太网）、CSMA&#x2F;CA（无线局域网）<ul>
+<li>不划分信道，允许冲突；能从冲突中“恢复”</li>
+</ul>
+</li>
+<li><strong>轮流协议</strong>：轮询（来自中心站）、令牌通过轮流访问信道避免冲突，要发送的节点越多轮流时间越长</li>
+</ul>
+<p>4、以太网CSMA&#x2F;CD的运行机制</p>
+<p>(1) 适配器从网络层得到分组, 创建帧</p>
+<p>(2)如果适配器侦听到信道空闲,开始传送帧。如果信道忙, 它会等到信道空闲才传送帧</p>
+<p>(3)如果适配器传送整个帧时，都没有检测到其它传输, 则完成该帧的传送</p>
+<p>(4)如果适配器在发送中检测到其它传送,就放弃传送，并发送一个拥塞信号</p>
+<p>(5)放弃传送后，适配器进入指数回退阶段，即该帧经过n次冲突后，适配器在{0,1,2,…,2m-1}中随机选取一个K值 ，其中m&#x3D;min(n,10),然后等待K*512比特时间后,回到第2步</p>
+<p>5、链路层寻址</p>
+<p>每个节点有网络层地址和链路层地址。</p>
+<p><strong>网络层地址</strong>：节点在网络中分配的一个唯一地址（IP地址）。用于把分组送到目的IP网络。长度为32比特（IPv4）。</p>
+<p><strong>链路层地址</strong>：又叫做MAC地址或物理地址、局域网地址。</p>
+<ul>
+<li>用于把数据帧从一个节点传送到另一个节点(同一网络中)。</li>
+</ul>
+<p>MAC地址（LAN地址、物理地址）：</p>
+<ul>
+<li>节点“网卡”本身所带的地址（唯一）。MAC地址长度通常为6字节(48比特)，共2⁴⁸个。例如：<font color=red>1A-2F-BB-76-09-AD</font></li>
+<li>6字节地址用<strong>16进制表示</strong>，每个字节表示为一对16进制数</li>
+<li>网卡的MAC地址是<strong>永久的</strong>（生产时固化在其ROM里）</li>
+</ul>
+<p><strong>局域网中每个网卡都有唯一的局域网地址</strong></p>
+<p><em><strong>MAC地址分配</strong></em></p>
+<p>由专门机构IEEE管理物理地址空间</p>
+<ul>
+<li>负责分配六个字节中的<strong>前三个字节</strong>（高24位，<strong>地址块</strong>），后三个字节厂家自行分配。</li>
+</ul>
+<p><em>MAC 地址是平面结构</em></p>
+<ul>
+<li><strong>带有同一网卡的节点，在任何网络中都有同样的MAC地址</strong>。</li>
+</ul>
+<p><em>IP地址具有层次结构</em></p>
+<ul>
+<li>当节点移动到不同网络时，节点的IP地址发生改变。</li>
+</ul>
+<p><em><strong>节点的3种不同地址表示</strong></em></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-24_09-50-28.png"></p>
+<p><em>地址之间的转换</em></p>
+<p>通信时，需要进行地址转换：       </p>
+<p><strong>主机名→ IP地址→ MAC地址</strong></p>
+<p>DNS域名系统：将<strong>主机名解析到IP地址</strong>。</p>
+<ul>
+<li>DNS为在因特网中任何地方的主机解析主机名。</li>
+</ul>
+<p>ARP地址解析协议：将<strong>IP地址解析到MAC地址</strong>。</p>
+<ul>
+<li>ARP只为在<strong>同一个LAN</strong>上的节点解析IP地址。</li>
+</ul>
+<p>6、 ARP地址解析协议（同一个子网或不同子网）</p>
+<p>（1）<strong>ARP表</strong>: 局域网上的每个节点(主机、路由器)都有这个表，为某些局域网节点进行IP&#x2F;MAC地址映射：     </p>
+<p><strong>&lt; IP address; MAC address; TTL&gt;</strong></p>
+<p>TTL (存活时间): 地址映射将被删除的时间（通常为20分钟）</p>
+<p>（2）两个主机位于同一个局域网</p>
+<ul>
+<li>主机A希望发送数据报给主机B<ul>
+<li>B的MAC地址不在A的ARP映射表中</li>
+</ul>
+</li>
+<li>主机A 广播 ARP查询分组, 其中包含<strong>B的IP地址</strong> <ul>
+<li>目的MAC地址 &#x3D; FF-FF-FF-FF-FF-FF</li>
+<li>局域网中所有节点收到ARP查询分组</li>
+</ul>
+</li>
+<li>主机B收到ARP查询分组，返回B的MAC地址给主机A<ul>
+<li>利用单播帧向A发送应答</li>
+</ul>
+</li>
+<li>主机A在它的ARP表中缓存<strong>IP-to-MAC</strong> 地址对，直到信息 <ul>
+<li>软状态：信息超时会被删除，除非有新的更新消息</li>
+</ul>
+</li>
+</ul>
+<p>（3）发送数据报到子网以外</p>
+<ul>
+<li><p>主机A构建IP数据报，源地址是A的IP地址，目的地址是B的IP地址。</p>
+</li>
+<li><p>主机A构建链路层数据帧，其中源MAC地址是A的MAC地址，目的MAC地址是第一跳路由器<strong>接口的MAC地址</strong>，封装A到B的IP数据报。</p>
+</li>
+<li><p>数据帧从主机A发送到路由器R</p>
+</li>
+<li><p>路由器R收到数据帧，抽取出数据报递交到IP层</p>
+</li>
+<li><p>路由器R转发数据报，源地址为A的IP地址，目的地址为B的IP地址</p>
+</li>
+<li><p>路由器R将该数据报封装成链路层帧，目的MAC地址为主机B的MAC地址</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-24_09-51-01.png">7、以太网帧格式、不可靠的无连接服务</p>
+<p>到目前为止，以太网是最为著名的有线局域网技术。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-24_09-53-00.png"></p>
+<p>发送方：发送适配器将<strong>IP数据报封装</strong>成以太网帧，并传递到<strong>物理层</strong>。</p>
+<p>接收方：接收适配器从物理层收到该帧，<strong>取出IP数据报</strong>，并传递给<strong>网络层</strong>。</p>
+<p><em><strong>前同步码（8字节）</strong></em></p>
+<ul>
+<li>前7字节是“10101010”，最后一个字节是“10101011”。</li>
+<li>使接收方和发送方的<strong>时钟同步</strong>，接收方一旦收到连续的8字节前同步码，可确定有帧传过来。</li>
+<li><strong>前同步码是“无效信号”，接收方收到后删除，不向上层传</strong>。</li>
+<li>CRC的校验范围不包括前同步码。</li>
+</ul>
+<p><em><strong>源、目的MAC地址(各6字节)</strong></em></p>
+<p>例，同一以太网LAN中两台主机通信。主机A向主机B发送一个IP数据报。</p>
+<p>主机A适配器的MAC地址：XX-XX-XX-XX-XX-XX</p>
+<p>主机B适配器的MAC地址：YY-YY-YY-YY-YY-YY</p>
+<p>适配器B<strong>只接收目的地址与其MAC地址匹配或广播地址的帧</strong>，并将数据字段的内容传递给网络层。否则，丢弃该帧。</p>
+<p><em><strong>类型字段：</strong></em></p>
+<ul>
+<li>以太网可以<strong>“多路复用”（支持）多种网络层</strong>协议（如IP协议、Novell IPX） 。通过“类型”字段区分。</li>
+<li>发送方填入<strong>网络层协议</strong>“类型” 编号；接收适配器根据“类型”字段，将数据字段传递给相应的网络层协议。</li>
+</ul>
+<p><strong>数据字段（46～1500 字节）：携带网络层传来的IP数据报</strong></p>
+<ul>
+<li>以太网的最大传输单元MTU是1500字节：若IP数据报超过1500字节，必须将该数据报分段。</li>
+<li>最小长度是46字节：如果IP数据报小于46字节，<strong>必须填充为46字节</strong>。接收方网络层去除填充内容。</li>
+</ul>
+<p><em><strong>循环冗余检测CRC(4字节)</strong></em></p>
+<p>检测数据帧中是否出现<strong>比特差错（翻转）</strong>。</p>
+<ul>
+<li>发送主机计算CRC：范围包括目的地址、源地址、类型、数据字段的比特，结果放入帧CRC字段。</li>
+<li>接收主机进行CRC校验：接收主机对收到的帧进行同样计算，并校验结果是否和CRC字段的内容相等。若<strong>计算结果不等于CRC字段的值</strong>(CRC校验失败)，该帧有差错。</li>
+</ul>
+<p><em><strong>以太网: 不可靠的无连接服务</strong></em></p>
+<p>以太网向网络层提供的服务。</p>
+<ul>
+<li>无连接服务：通信时，<strong>发送方适配器不需要先和接收方适配器“握手”</strong>。</li>
+<li>不可靠的服务：接收到的<strong>帧可能包含比特差错</strong>。<ul>
+<li>收到正确帧，<strong>不发确认帧</strong>；</li>
+<li>收到出错帧，丢弃该帧，<strong>不发否定帧</strong>。</li>
+<li>发送适配器不会重发出错帧。</li>
+<li>丢弃数据的恢复是通过终端<strong>传输层</strong>的可靠数据传输机制来实现的</li>
+</ul>
+</li>
+<li>以太网的MAC协议：<strong>使用无时隙的CSMA&#x2F;CD协议（二进制指数回退）</strong></li>
+</ul>
+<p>8、链路层交换机如何构建转发表</p>
+<p>链路层设备</p>
+<ul>
+<li><p>存储转发数据帧</p>
+</li>
+<li><p>检查达到的数据帧的MAC地址，有选择的转发数据帧到一个或多个输出链路转发帧</p>
+</li>
+<li><p>当数据帧被转发到一个共享网段时，使用CSMA&#x2F;CD来访问共享链路</p>
+</li>
+</ul>
+<p>透明</p>
+<ul>
+<li>主机不关心是否存在交换机</li>
+</ul>
+<p>即插即用和自学习       </p>
+<ul>
+<li>交换机不需要手工配置</li>
+</ul>
+<p>交换机：支持多节点同时传输</p>
+<ul>
+<li><p>每个主机由单独的链路直接连到交换机端口</p>
+</li>
+<li><p>交换机可以缓存数据帧</p>
+</li>
+<li><p>以太网协议在每个输入链路使用，无碰撞，且可以全双工</p>
+<ul>
+<li>每条链路自身是一个碰撞域</li>
+</ul>
+</li>
+<li><p>交换机： A-to-A’和B-to-B’可以同时传输，而不会发生碰撞</p>
+</li>
+</ul>
+<p>转发表</p>
+<ul>
+<li>每个交换机有一个交换机转发表，其中每个条目：(主机的MAC地址，到达主机的端口，时戳)</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-24_10-21-33.png"></p>
+<p>自学习</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-24_10-22-39.png"></p>
+<p><em><strong>交换机：数据帧的过滤&#x2F;转发</strong></em></p>
+<p>当交换机收到数据帧:</p>
+<ol>
+<li>记录到达链路和发送主机的MAC地址</li>
+<li>使用数据帧的目的MAC地址，在转发表中检索</li>
+<li>如果在转发表条目中找到对应的MAC地址</li>
+<li>执行{	如果 目的MAC地址对应的端口与数据帧的达到端口相同	则 丢弃该数据帧	否则 转发该数据帧到条目指定的端口}</li>
+<li>否则，向除到达端口之外的所有端口转发(flood)</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-24_10-31-05.png"></p>
+<p>问题：C发送数据帧给I——S1是怎么知道要把数据帧先转发到S4和S3的？</p>
+<p>回答：<strong>泛洪和自学习</strong></p>
+<p>9、三层交换含义</p>
+<ul>
+<li><p>传统的交换技术是在OSI网络参考模型中的第二层（即数据链路层）进行操作的，通常称做“二层交换机”。</p>
+</li>
+<li><p>三层交换技术能够在网络模型中的第三层实现数据包的高速转发。</p>
+</li>
+<li><p>简单地说，<strong>三层交换技术就是二层交换技术+三层转发技术</strong>，三层交换机就是“<strong>二层交换机+基于硬件的路由器</strong>”</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_scjhj.png"></p>
+<p>一次路由，多次交换。</p>
+<p>发送站点A在开始发送时，把自己的IP地址与B站的IP地址比较，判断B站是否与自己在同一子网内。</p>
+<p>(1)若目的站B与发送站A在同一子网内，则进行二层的转发。</p>
+<p>(2)若两个站点不在同一子网内，则发送站A要向“<strong>缺省网关</strong>”发出ARP请求，请求获得B的MAC地址。</p>
+<p>(3)如果三层交换机知道B的MAC地址，则向A回复B的MAC地址。否则三层交换机根据路由信息向B站广播一个ARP请求，B站得到此ARP请求后向三层交换机回复其MAC地址，三层交换机将B站的MAC地址，三层交换机将B站的MAC地址保存到二层交换引擎的MAC地址表中，并回复给发送站A。</p>
+<p>(4)A直接用B的MAC地址封装数据帧，三层交换机接收到数据后直接进行<strong>二层交换</strong>。</p>
+<p>10、VLAN含义</p>
+<p>利用支持VLAN的交换机，可以在一个实际的物理局域网内，定义多个虚拟的局域网。</p>
+<p><strong>基于端口的VLAN</strong>:</p>
+<ul>
+<li>利用交换机内置的管理软件，将端口分组，使得一个单独的交换机，像多个交换机那样工作</li>
+</ul>
+<p><strong>跨越多个交换机的 VLAN</strong></p>
+<ul>
+<li>干线端口（ trunk port ）承载定义在多个物理交换机之上的VLAN间的流量</li>
+<li>某一个VLAN内的流量帧，如果要跨域物理的交换机，需使用802.1q格式（带有VLAN ID 信息）802.1q协议的作用：对干线端口之间传输的帧，添加&#x2F;移除额外的头部字段</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-24_09-53-51.png"></p>
+<hr>
+<p>局域网的协议结构一般不包括（B）。</p>
+<p>‏A.物理层	B.网络层	C.介质访问控制层	D.数据链路层</p>
+<p>IEEE 802局域网参考模型对应OSI参考模型的数据链路层与物理层，它将数据链路层分为逻辑链路控制子层和介质访问控制子层。所以局域网的协议结构一般不包括网络层。</p>
+<p>下列关于二维奇偶校验的说法，正确的是（D）。</p>
+<p>A.可以检测单比特差错但无法纠正</p>
+<p>B.无法检测双比特差错</p>
+<p>C.可以检测和纠正双比特差错</p>
+<p>D.可以检测和纠正单比特差错</p>
+<p>二维奇偶校验可以检测并纠正单个比特差错，可以检测但不能纠正分组中任意两个比特的差错。</p>
+<p>就交换技术而言，局域网中的以太网采用的是（A）。</p>
+<p>‌A.分组交换技术</p>
+<p>B.电路交换技术</p>
+<p>C.报文交换技术</p>
+<p>D.分组交换与电路交换结合技术</p>
+<p>在路由器互联的多个局域网中，通常要求每个局域网的（D）</p>
+<p>A.数据链路层协议和物理层协议都必须相同</p>
+<p>B.数据链路层协议必须相同，而物理层协议可以不同</p>
+<p>C.数据链路层协议可以不同，而物理层协议必须相同</p>
+<p>D.数据链路层协议和物理层协议都可以不同</p>
+<p>路由器是在网络层上实现多个网络互联的设备。由路由器互联的局域网中，每个局域网<strong>只要求网络层及以上高层协议相同，数据链路层与物理层协议可以是不同的</strong>。</p>
+<p>设CRC生成多项式为G(x) &#x3D; x^4 + x + 1，数据帧1010 1100的CRC校验码为（D）。</p>
+<p>A.110	B.011	C.1001	D.0011</p>
+<p>在以太网802.3协议中规定的链路层多路访问协议是（B）。</p>
+<p>‍A.时隙ALOHA</p>
+<p>B.CSMA&#x2F;CD</p>
+<p>C.轮询</p>
+<p>D.纯ALOHA</p>
+<p>CSMA&#x2F;CD（Carrier Sense Multiple Access with Collision Detection）是一种链路层多路访问协议，它被用于以太网802.3协议中。CSMA&#x2F;CD协议的工作原理是，在发送数据之前，设备会先监听信道，检测是否有其他设备正在发送数据。如果信道空闲，设备就可以开始发送数据。如果信道忙碌，设备会等待一段随机时间后再次尝试发送数据。</p>
+<p>在以太网链路层中使用的差错检查技术是（D）。</p>
+<p>‍A.校验和</p>
+<p>B.二维奇偶校验</p>
+<p>C.1比特奇偶校验</p>
+<p>D.CRC循环冗余码</p>
+<p>如果一台PC机A要发送数据报给另一台PC机B，如果他只知道B主机的IP地址，而不知道B主机的MAC地址，就需要通过ARP协议查询B主机的MAC地址，这时PC机A构造一个ARP查询分组，该分组的目的IP地址是B主机的IP地址，目的MAC地址是（FF-FF-FF-FF-FF-FF）。</p>
+<p>解析：PC机A需要向PC机B发送数据，但它只知道PC机B的IP地址。因此，PC机A会构造一个ARP查询分组，该分组包含PC机A的IP地址和MAC地址以及PC机B的IP地址。然后，PC机A会将该分组发送到局域网中的所有设备（使用广播地址FF-FF-FF-FF-FF-FF作为目的MAC地址）。当PC机B收到该ARP查询分组时，它会检查分组中的目的IP地址是否与自己的IP地址匹配。如果匹配，PC机B就会构造一个ARP响应分组，该分组包含PC机B的IP地址和MAC地址以及PC机A的IP地址。然后，PC机B会将该分组发送回PC机A。当PC机A收到该ARP响应分组时，它就能够获得PC机B的MAC地址，并将其存储在ARP缓存中以备将来使用。这样，PC机A就能够使用PC机B的MAC地址来向其发送数据了。</p>
+<p>链路层的信道类型主要分为两类：（点对点）链路和（广播）链路，其中802.11wifi使用的信道类型是（广播）链路。</p>
+<p>点对点链路是指两个设备之间的直接连接，它们之间可以直接传输数据。这种类型的链路通常用于电话网络、专线网络和点对点协议（PPP）等场景。广播链路是指多个设备共享同一个信道，它们之间可以通过广播的方式传输数据。这种类型的链路通常用于局域网（LAN）和无线局域网（WLAN）等场景。802.11 Wi-Fi是一种无线局域网技术，它使用的信道类型是广播链路。在802.11 Wi-Fi网络中，多个设备可以共享同一个无线信道，并通过广播的方式进行通信。</p>
+<p>载波监听多路访问&#x2F;冲突检测的原理可以概括为先听后发，（边听边发），冲突停发，随机重发。</p>
+<p>在发送数据之前，设备会先监听信道，检测是否有其他设备正在发送数据。如果信道空闲，设备就可以开始发送数据。如果信道忙碌，设备会等待一段随机时间后再次尝试发送数据。在数据传输过程中，设备会持续监听信道，检测是否发生了冲突（即两个或多个设备同时发送数据）。如果发生了冲突，设备会检测到冲突并停止发送数据。然后，设备会等待一段随机时间后再次尝试发送数据。CSMA&#x2F;CD协议能够有效地减少冲突的发生，并且能够在冲突发生时快速恢复，从而提高了网络的性能。</p>
+<p>在一个IP网络中负责主机IP地址与主机名称之间的转换协议称为DNS协议，负责IP地址与MAC地址之间的转换协议称为（ARP）。</p>
+<p>假设结点A、B、C都连接到同一个广播局域网上。如果A向B发送IP数据报，每个封装帧都有B的MAC地址，C的适配器（会）（会&#x2F;不会）处理这些帧吗？如果会，C的适配器将会把数据帧中的IP数据报传递给C的网络层吗？（不会）（会&#x2F;不会），如果A用MAC 广播地址来发送这些帧，你的回答将有怎样的变化呢？</p>
+<p>当A向B发送IP数据报时，每个封装帧都有B的MAC地址。由于A、B和C都连接到同一个广播局域网上，因此当A发送数据帧时，所有连接到该广播局域网上的设备都会接收到这些帧（这是因为广播局域网使用了广播传输方式。在广播传输方式中，当一个设备发送数据帧时，该帧会被发送到局域网中的所有设备）。<strong>C的适配器会处理这些帧，因为它需要检查每个帧的目的MAC地址，以确定该帧是否是发送给C的</strong>。如果目的MAC地址与C的MAC地址匹配，C的适配器就会把数据帧中的IP数据报传递给C的网络层。否则，C的适配器会丢弃该帧。如果A用MAC广播地址来发送这些帧，C的适配器同时处理帧并将数据报传递到网络层。</p>
+<p>假设网络的拓扑结构如下图所示，如果PC1需要给PC3发送一个数据报文，假设PC1的ARP高速缓存中有路由器端口1的MAC地址，PC1发出的数据帧的源IP地址是（192.168.1.1）、目的IP地址是（192.168.2.1）、源MAC地址是（11-11-11-11-11-11）、目的MAC地址是（44-44-44-44-44-44）。PC3收到的数据帧的源IP地址是（192.168.1.1）、目的IP地址是（192.168.2.1）、源MAC地址是（55-55-55-55-55-55）、目的MAC地址是（AA-BB-CC-DD-EE-FF）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/65BD8F40248575FD537466D257525368.png"></p>
+<p>注意源IP和目的IP</p>
+<p>假定网络拓扑结构如下图所示，为了使网络中所有的PC机能相互通信，需要手动给路由器R1和R2添加路由表，路由器R1需要添加的路由是（192.168.4.0&#x2F;24via192.168.3.2）和（192.168.5.0&#x2F;24via192.168.3.2），R2需要添加的路由是（192.168.1.0&#x2F;24via192.168.3.1）和（192.168.2.0&#x2F;24via192.168.3.1）。（例如192.168.4.1&#x2F;24via192.168.3.3、192.168.5.1&#x2F;24via192.168.3.3、192.168.4.1&#x2F;24via192.168.3.3、192.168.5.1&#x2F;24via192.168.3.3）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/2542E72D0E1CA6EEFC4520DD2F4046B4.jpg"></p>
+<p>‏在某网络中标识为A到E的5个结点以星形与一台交换机连接，考虑在该网络环境中某个正在学习的交换机的运行情况。假定：该交换机表初始为空。B向E发送一个帧，此时交换机将该数据帧转发到（a,c,d,e）端口，当E收到数据帧以后，返回一个数据帧给B，则当数据帧到达交换机后，该数据帧将被转发到（b）端口。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-24_12-58-05.png"></p>
+<p>B向E发送一个帧；<strong>交换机记录B的MAC地址与到达的端口；由于交换机表为空，故向A、C、D、E、F 都发送此帧</strong>。E向B回答一个帧；<strong>交换机记录B的MAC地址与到达的端口；由于交换机表有B的MAC地址，故只向B转发</strong></p>
+<p>‌有如图所示的拓扑结构：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-24_12-58-21.png"></p>
+<p>①主机E向主机B发送一个IP数据报，假设所有主机的ARP缓存表和交换机转发表都是最新的，则E发出的数据帧的目的MAC地址和目的IP地址分别是（88-88-88-88-88-8）和（192.168.1.003），源MAC地址和源IP地址分别是（77-77-77-77-77-77）和（192.168.3.001）；Router2收到数据帧以后，将继续转发该数据帧，转发的数据帧的目的MAC地址和目的IP地址分别是（33-33-33-33-33-33）和（192.168.1.003），源MAC地址和源IP地址分别是（55-55-55-55-55-55）和（192.168.3.001）；Router1收到该数据帧以后将继续转发该数据帧给主机B，Router1转发的数据帧的目的MAC地址和目的IP地址分别是（11-11-11-11-11-11）和（192.168.1.003），源MAC地址和源IP地址分别是（22-22-22-22-22-22）和（192.168.3.001）。</p>
+<p>②假设主机E发送IP数据报给主机F，主机E将请求路由器Router2帮助转发该数据报吗？（不会）（会&#x2F;不会），这是因为（主机E和主机F在同一个局域网内，主机E可以直接将数据帧发送到局域网中，然后由局域网中的交换机或集线器将数据帧转发给主机F）。E发出的数据帧的目的MAC地址是（99-99-99-99-99-99）。</p>
+<p>③假设主机E向主机D发送IP数据报，主机E的ARP缓存表中没有主机D的MAC地址，E将执行ARP查询来发现D的MAC地址吗？（不会）（会&#x2F;不会），这是因为（主机E和主机D不在同一个局域网内，它们之间的通信需要经过路由器。主机E会将数据报发送给它的默认网关，即连接到它所在局域网的路由器，然后由路由器根据路由表将数据报转发到目标网络）。Router2收到的数据帧的目的MAC地址是（88-88-88-88-88-88）。</p>
+<p>主机C发送IP数据报给主机D，C的ARP缓存不包含D的MAC地址，D的ARP缓存不包含C的MAC地址，进一步假设与C、D相连的交换机的转发表只包含D和路由器R2的表项，因此C将广播一个ARP请求报文。中间的交换机收到C的ARP请求报文，将执行的操作是（广播操作，即将该数据帧转发给除了到达端口之外的<strong>所有端口</strong>），这个请求报文会到达路由器Router2吗？（会）（会&#x2F;不会），Router2会继续转发该报文到右边的交换机吗？（不会）（会&#x2F;不会），这是因为（ARP协议只在单个局域网内有效），主机D收到ARP请求报文后，会返回一个ARP响应报文给主机C，它需要发送一个ARP请求报文来获得C的MAC地址吗？（不需要）（需要&#x2F;不需要），这是因为（D已经根据来自C的ARP请求报文的数据帧的源MAC地址知道了C的MAC地址），中间交换机收到ARP响应报文的数据帧后，将直接转发该数据帧给主机C，这是因为（交换机已经在收到C的ARP请求报文的数据帧时，通过自学习”学习”到主机C的MAC地址对应的到达端口）。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://uestcwxy.love">珩</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://uestcwxy.love/2023/06/23/%E8%AE%A1%E7%BD%91/5/">https://uestcwxy.love/2023/06/23/%E8%AE%A1%E7%BD%91/5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://uestcwxy.love" target="_blank">Eternity</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2023/06/23/%E8%AE%A1%E7%BD%91/4/" title="计网期末复习之网络层"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计网期末复习之网络层</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/06/20/%E8%AE%A1%E7%BD%91/1/" title="计网期末复习之计算机网络与因特网"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-20</div><div class="title">计网期末复习之计算机网络与因特网</div></div></a></div><div><a href="/2023/06/21/%E8%AE%A1%E7%BD%91/2/" title="计网期末复习之应用层"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-21</div><div class="title">计网期末复习之应用层</div></div></a></div><div><a href="/2023/06/21/%E8%AE%A1%E7%BD%91/3/" title="计网期末复习之传输层"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-21</div><div class="title">计网期末复习之传输层</div></div></a></div><div><a href="/2023/06/23/%E8%AE%A1%E7%BD%91/4/" title="计网期末复习之网络层"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-23</div><div class="title">计网期末复习之网络层</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">珩</div><div class="author-info__description">等我苦尽甘来时，我给你讲讲来时走的路。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/uestc-wxy/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.facebook.com/profile.php?id=100092533320651" target="_blank" title="facebook"><i class="fab fa-facebook" style="color: #4a7dbe;"></i></a><a class="social-icon" href="mailto:1939311091@qq.com" target="_blank" title="email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/1907948898" target="_blank" title="b站"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/tiktok.jpg" target="_blank" title="抖音"><i class="fab fa-tiktok" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/weixin.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">刚建站不久，博客美化有待研究，部分页面也没时间弄，路过的你将就看啦~😊，图片没加载出来就是网络不佳噢~</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/06/23/%E8%AE%A1%E7%BD%91/5/" title="计网期末复习之链路层"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计网期末复习之链路层"/></a><div class="content"><a class="title" href="/2023/06/23/%E8%AE%A1%E7%BD%91/5/" title="计网期末复习之链路层">计网期末复习之链路层</a><time datetime="2023-06-23T13:27:39.000Z" title="发表于 2023-06-23 21:27:39">2023-06-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/23/%E8%AE%A1%E7%BD%91/4/" title="计网期末复习之网络层"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计网期末复习之网络层"/></a><div class="content"><a class="title" href="/2023/06/23/%E8%AE%A1%E7%BD%91/4/" title="计网期末复习之网络层">计网期末复习之网络层</a><time datetime="2023-06-23T01:20:05.000Z" title="发表于 2023-06-23 09:20:05">2023-06-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/21/%E8%AE%A1%E7%BD%91/3/" title="计网期末复习之传输层"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计网期末复习之传输层"/></a><div class="content"><a class="title" href="/2023/06/21/%E8%AE%A1%E7%BD%91/3/" title="计网期末复习之传输层">计网期末复习之传输层</a><time datetime="2023-06-21T11:54:05.000Z" title="发表于 2023-06-21 19:54:05">2023-06-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/21/%E8%AE%A1%E7%BD%91/2/" title="计网期末复习之应用层"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计网期末复习之应用层"/></a><div class="content"><a class="title" href="/2023/06/21/%E8%AE%A1%E7%BD%91/2/" title="计网期末复习之应用层">计网期末复习之应用层</a><time datetime="2023-06-21T04:33:08.000Z" title="发表于 2023-06-21 12:33:08">2023-06-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/20/%E8%AE%A1%E7%BD%91/1/" title="计网期末复习之计算机网络与因特网"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计网期末复习之计算机网络与因特网"/></a><div class="content"><a class="title" href="/2023/06/20/%E8%AE%A1%E7%BD%91/1/" title="计网期末复习之计算机网络与因特网">计网期末复习之计算机网络与因特网</a><time datetime="2023-06-20T04:59:56.000Z" title="发表于 2023-06-20 12:59:56">2023-06-20</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png')"><div id="footer-wrap"><div class="copyright">&copy;2023 By 珩</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><i class="fa-solid fa-cloud"></i><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>萌ICP备20230529号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="6614140207" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-mini="true"> </div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
