@@ -1,0 +1,654 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>电子科大计网期末复习之经典大题 | Eternity</title><meta name="author" content="珩,1939311091@qq.com"><meta name="copyright" content="珩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="试将TCP&#x2F;IP与ISO&#x2F;OSI七层模型相比较  相同点: 都是独立的协议栈的概念；层的功能大体相似。  不同点: ①ISO&#x2F;OSI参考模型将服务、接口与协议的概念明确化，因此比 TCP／IP 具有更好的隐藏性，能够比较容易地进行替换;TCP&#x2F;IP参考模型在服务、接口与协议的区别上不很清楚。 ②ISO&#x2F;OSI参考模型先有层的划分,后有各层协议;T">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电子科大计网期末复习之经典大题">
+<meta property="og:url" content="https://uestcwxy.love/2023/06/25/%E8%AE%A1%E7%BD%91/7/index.html">
+<meta property="og:site_name" content="Eternity">
+<meta property="og:description" content="试将TCP&#x2F;IP与ISO&#x2F;OSI七层模型相比较  相同点: 都是独立的协议栈的概念；层的功能大体相似。  不同点: ①ISO&#x2F;OSI参考模型将服务、接口与协议的概念明确化，因此比 TCP／IP 具有更好的隐藏性，能够比较容易地进行替换;TCP&#x2F;IP参考模型在服务、接口与协议的区别上不很清楚。 ②ISO&#x2F;OSI参考模型先有层的划分,后有各层协议;T">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png">
+<meta property="article:published_time" content="2023-06-25T11:18:30.000Z">
+<meta property="article:modified_time" content="2023-06-25T14:35:42.313Z">
+<meta property="article:author" content="珩">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://uestcwxy.love/2023/06/25/%E8%AE%A1%E7%BD%91/7/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 珩","link":"链接: ","source":"来源: Eternity","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '电子科大计网期末复习之经典大题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-06-25 22:35:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Eternity" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = 'hidden';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+
+preloader.initLoading()
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Eternity"><span class="site-name">Eternity</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">电子科大计网期末复习之经典大题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-25T11:18:30.000Z" title="发表于 2023-06-25 19:18:30">2023-06-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-25T14:35:42.313Z" title="更新于 2023-06-25 22:35:42">2023-06-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">大二下期末复习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="电子科大计网期末复习之经典大题"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>试将TCP&#x2F;IP与ISO&#x2F;OSI七层模型相比较</p>
+</blockquote>
+<p>相同点:</p>
+<p>都是独立的协议栈的概念；层的功能大体相似。 </p>
+<p>不同点:</p>
+<p>①ISO&#x2F;OSI参考模型将服务、接口与协议的概念明确化，因此比 TCP／IP 具有更好的隐藏性，能够比较容易地进行替换;TCP&#x2F;IP参考模型在服务、接口与协议的区别上不很清楚。</p>
+<p>②ISO&#x2F;OSI参考模型先有层的划分,后有各层协议;TCP&#x2F;IP参考模型先有协议,后有层的划分。</p>
+<p>③ISO&#x2F;OSI参考模型划分为7层;TCP&#x2F;IP参考模型划分为4层，没有会话层和表示层</p>
+<p>④ISO&#x2F;OSI的网络层支持无连接和面向连接的通信,传输层只支持面向连接的通信;TCP&#x2F;IP的网络层只支持无连接的通信,传输层提供无连接和面向连接的通信。</p>
+<blockquote>
+<p>TCP与UDP区别</p>
+</blockquote>
+<p>1、TCP是面向连接服务的；UDP是无连接的<br>2、TCP提供可靠的传输服务；UDP尽最大努力交付，即不保证可靠交付<br>3、TCP面向字节流；UDP是面向报文段的<br>4、UDP首部开销比较小，只有8字节，TCP最少首部为20字节，主要因为它实现的功能比较多，拥塞控制、流量控制等等。</p>
+<blockquote>
+<p>在使用TCP传送数据时,如果有一个确认报文段丢失了,也不一定会引起与该确认报文段对应的数据的重传。试说明理由。</p>
+</blockquote>
+<p>只要在超时重传到达之前，有后续的确认报文段到达，并通过批量（累积）确认对此报文段进行确认，即不需要重传。（对方还未来得及重传,就收到了对更高序号的确认,相当于对连同被丢失确认的报文段一并确认。）</p>
+<blockquote>
+<p>简要描述有线局域网和无线局域网在媒体访问控制协议上的异同点。</p>
+</blockquote>
+<p>CSMA&#x2F;CD协议用于有线以太网。它的工作原理是，在发送数据之前，节点会侦听信道，检查是否有其他节点正在发送数据。如果信道空闲，节点就开始发送数据。如果发生冲突，即两个或多个节点同时发送数据，节点会停止发送并等待一段随机时间后再次尝试发送。</p>
+<p>CSMA&#x2F;CA协议用于无线网络。由于无线信道的特殊性质，无线节点无法在发送数据时检测到冲突。因此，CSMA&#x2F;CA协议采用了一种不同的方法来避免冲突。在发送数据之前，节点会执行一系列的步骤，包括侦听信道、等待一段时间和发送RTS（请求发送）帧等。如果接收到CTS（清除发送）帧，则开始发送数据。</p>
+<p>CSMA&#x2F;CD和CSMA&#x2F;CA都是为了解决多个节点共享信道时的冲突问题。它们的主要区别在于，CSMA&#x2F;CD通过<strong>检测冲突</strong>并重新发送来解决冲突，而CSMA&#x2F;CA则通过<strong>避免冲突</strong>来解决问题。</p>
+<blockquote>
+<p>考虑使用32bit主机地址的数据报网络，假定一台主机具有4条线路，编号0到3，分组能被转发到链路接口，情况如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>目的地址范围</th>
+<th>链路接口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>11100000 00000000 00000000 00000000 到 11100000 11111111 11111111 11111111</td>
+<td>0</td>
+</tr>
+<tr>
+<td>11100001 00000000 00000000 00000000 到 11100001 00000000 11111111 11111111</td>
+<td>1</td>
+</tr>
+<tr>
+<td>11100001 00000001 00000000 00000000 到 11100001 11111111 11111111 11111111</td>
+<td>2</td>
+</tr>
+<tr>
+<td>其它</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<p>a&gt;提供一个具有4项的转发表，使用最长地址匹配，转发分组到正确的链路接口</p>
+<p>b&gt;根据转发表，对下列目的地址应该转发到哪个链路接口：</p>
+<p>1100100 100100001 01010001 01010101</p>
+<p>11100001 00000000 11000011 00111100</p>
+<p>11100001 10000000 00010001 01110111</p>
+</blockquote>
+<p>a)</p>
+<table>
+<thead>
+<tr>
+<th>目标网络</th>
+<th>接口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>224.0.0.0&#x2F;8</td>
+<td>0</td>
+</tr>
+<tr>
+<td>225.0.0.0&#x2F;16</td>
+<td>1</td>
+</tr>
+<tr>
+<td>225.0.0.0&#x2F;8</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Default</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<p>评分标准：少1行，扣1分</p>
+<p>注：目标网络不能只填写网络号部分，必须是完整的，否则视为错误</p>
+<p>b)1100100 100100001 01010001 01010101 从3号接口走</p>
+<p>11100001 00000000 11000011 00111100 从1号接口走</p>
+<p>11100001 10000000 00010001 01110111 从2号接口走</p>
+<blockquote>
+<p>考虑在具有Q段链路的路径上发送一个包含F bit比特数据的分组。每段链路以R bit&#x2F;sec速率传输。该网络负载轻，因此没有排队时延。传播时延可忽略不计。</p>
+<p>a）假定该网是一个分组交换虚电路网络。VC建链时间为ts sec，假定发送层对每个分组增加总计h比特的首部。从源到目的地发送该文件需要多长时间？</p>
+<p>b）假定该网络是一个分组交换数据报网络，使用无连接服务。现在假定每个分组具有2h比特的首部。发送该分组需要多长时间？</p>
+<p>c）最后，假定该网络是电路交换网。进一步假定源和目的地之间的传输速率是R bit&#x2F;s。假定ts为建链时间，h比特的首部附加在整个文件上，发送该分组需要多长时间？</p>
+</blockquote>
+<p>a） ts+Q（F+h）&#x2F;R</p>
+<p>b） Q（F+2h）&#x2F;R</p>
+<p>c） ts+（F+h）&#x2F;R</p>
+<p>电路交换网络中的电路是专用的，建立电路后，源和目的地之间的传输速率是R bit&#x2F;s。这意味着，无论路径上有多少段链路，整个文件都将以R bit&#x2F;s的速率从源到目的地传输。因此，在计算传输时间时，不需要考虑Q段链路。相反，在分组交换网络中，每个分组都需要在每段链路上单独传输，所以需要考虑Q段链路。</p>
+<blockquote>
+<p>应用层协议能够为解决各种网络应用提供服务，试回答下面和应用层协议有关的问题：</p>
+<p>1、使用HTTP协议获取网页时，为何经常会设置Web缓存（代理服务器）？</p>
+<p>2、简要描述比较C&#x2F;S和P2P两种体系结构。</p>
+<p>3、简要描述电子邮件的工作过程及所用到的协议的功能。</p>
+</blockquote>
+<p>1、Web缓存器可以减少对客户的响应时间、避免不必要的网络请求，减少服务器负载，从而能从整体上降低因特网上的web流量。</p>
+<p>2、**C&#x2F;S体系结构	**</p>
+<p>Server：具有固定的、众所周知的IP地址；总是打开的主机；主机群集；	</p>
+<p>Client：可以间断的同服务器连接；拥有动态IP地址；客户机相互之间不直接通信</p>
+<p><strong>P2P体系结构</strong>	</p>
+<p>没有总是打开的服务器；任意一对主机直接相互通信；对等方间歇连接并且可以改变IP地址；自扩展性；难以管理</p>
+<p>（在传统的“服务器&#x2F;客户端”应用系统中,客户端与服务器有明确的分界,而使用P2P技术实现的每个计算机节点既是客户端,也是服务器。）</p>
+<p>3、当用户撰写一封电子邮件并点击发送按钮时，邮件客户端会使用SMTP（简单邮件传输协议）将邮件发送到SMTP服务器。SMTP服务器负责将邮件传输到收件人的邮件服务器。收件人的邮件服务器会将邮件存储在收件人的邮箱中。当收件人检查邮箱时，他的邮件客户端会使用POP3（邮局协议）或IMAP（互联网消息访问协议）从邮件服务器获取邮件。POP3允许用户从邮件服务器下载邮件到本地计算机，并在本地计算机上阅读和管理邮件。IMAP则允许用户在邮件服务器上直接管理邮件，支持离线阅读和多设备同步等功能。</p>
+<blockquote>
+<p>考虑图2所示网络。对于表明的链路费用，用Dijkstra的最短路径算法计算出从x到所有网络节点的最短路径。（给出计算步骤）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-25_21-59-23.png"></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>步 骤</td>
+<td>N’</td>
+<td>D(s), P(s)</td>
+<td>D(t), P(t)</td>
+<td>D(u), P(u)</td>
+<td>D(v), P(v)</td>
+<td>D(w), P(w)</td>
+<td>D(y), P(y)</td>
+<td>D(z), P(z)</td>
+</tr>
+<tr>
+<td>0</td>
+<td>x</td>
+<td>∞</td>
+<td>∞</td>
+<td>∞</td>
+<td>3,x</td>
+<td>1,x</td>
+<td>6,x</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>1</td>
+<td>xw</td>
+<td>∞</td>
+<td>∞</td>
+<td>4,w</td>
+<td>2,w</td>
+<td></td>
+<td>6,x</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>2</td>
+<td>xwv</td>
+<td>∞</td>
+<td>11,v</td>
+<td>3,v</td>
+<td></td>
+<td></td>
+<td>3,v</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>3</td>
+<td>xwvu</td>
+<td>7,u</td>
+<td>5,u</td>
+<td></td>
+<td></td>
+<td></td>
+<td>3,v</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>4</td>
+<td>xwvuy</td>
+<td>7,u</td>
+<td>5,u</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>17,y</td>
+</tr>
+<tr>
+<td>5</td>
+<td>xwvuyt</td>
+<td>6,t</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>7,t</td>
+</tr>
+<tr>
+<td>6</td>
+<td>xwvuyts</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>7,t</td>
+</tr>
+<tr>
+<td>7</td>
+<td>xwvuytsz</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>或</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>步 骤</td>
+<td>N’</td>
+<td>D(s), P(s)</td>
+<td>D(t), P(t)</td>
+<td>D(u), P(u)</td>
+<td>D(v), P(v)</td>
+<td>D(w), P(w)</td>
+<td>D(y), P(y)</td>
+<td>D(z), P(z)</td>
+</tr>
+<tr>
+<td>0</td>
+<td>x</td>
+<td>∞</td>
+<td>∞</td>
+<td>∞</td>
+<td>3,x</td>
+<td>1,x</td>
+<td>6,x</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>1</td>
+<td>xw</td>
+<td>∞</td>
+<td>∞</td>
+<td>4,w</td>
+<td>2,w</td>
+<td></td>
+<td>6,x</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>2</td>
+<td>xwv</td>
+<td>∞</td>
+<td>11,v</td>
+<td>3,v</td>
+<td></td>
+<td></td>
+<td>3,v</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>3</td>
+<td>xwvy</td>
+<td>∞</td>
+<td>7,v</td>
+<td>3,v</td>
+<td></td>
+<td></td>
+<td></td>
+<td>17,y</td>
+</tr>
+<tr>
+<td>4</td>
+<td>xwvyu</td>
+<td>7,u</td>
+<td>5,u</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>17,y</td>
+</tr>
+<tr>
+<td>5</td>
+<td>xwvyut</td>
+<td>6,t</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>7,t</td>
+</tr>
+<tr>
+<td>6</td>
+<td>xwvyuts</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>7,t</td>
+</tr>
+<tr>
+<td>7</td>
+<td>xwvyutsz</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>浏览网页的时候，请运用TCP&#x2F;IP、DNS、HTTP、HTML、URL、MIME等术语描述浏览网页的整个逻辑过程。</p>
+</blockquote>
+<p>使用浏览器浏览网页的过程如下。</p>
+<p>(1)在地址栏输入要访问的URL地址。</p>
+<p>(2)浏览器从URL地址中，分离出要访问服务器的域名。</p>
+<p>(3)浏览器调用DNS协议对分离出的域名进行解析，过程如下。<br>①首先查找本机DNS高速缓存，如果有以前访问的记录，将域名对应的IP返回给浏览器;如果没有记录，转②;<br>②向本地授权DNS服务器提交解析请求，如果解析成功，将IP提交给浏览器﹔如果本地授权DNS服务器不能解析，就将该解析请求转发给根DNS服务器，转③;<br>③若外部DNS解析成功，则将IP返回给浏览器﹔否则向浏览器报告DNS解析失败。</p>
+<p>(4)浏览器使用DNS解析出的IP地址，与网页服务器建立TCP连接。</p>
+<p>(5)基于建立的TCP连接，浏览器从URL中分离出要访问的网页资源在服务器上的路径信息，构造HTTP请求报文，向服务器发出请求。<br>( 6 ) 服务器根据请求网页的路径在本地查找，网页以HTML标记语言形式编写。如果找到要访问的网页，使用HTTP响应报文向浏览器传递网页数据；否则，在HTTP响应报文中给出错误信息。<br>(7）浏览器根据收到的响应报文中的状态码判断网页请求是否成功。如果请求成功，就按HTML中标记指示的格式在窗口中显示内容;如果请求失败，则在窗口中显示相应的错误信息。<br>(8 )如果访问的资源不是静态的HTML文档，而是活动网页，就需要使用MIME对非文本的内容进行处理。<br>整个访问过程的数据传输由TCP&#x2F;IP协议栈来实现。</p>
+<blockquote>
+<p>某一网络的一台主机产生了一个P数据报，头部长度为20字节，数据部分长度为2000字节。该数据报需要经过两个网络到达目的主机，这两个网络所允许的最大传输单位MTU分别为1500字节和576字节。请问原IP数据报到达目的主机时分成了几个IP小报文？每个报文的数据部分长度分别是多少?</p>
+</blockquote>
+<p>在IP层下面的每一种数据链路层都有自己的帧格式，其中包括帧格式中的数据字段的最大长度，这称为最大传输单位MTU。1500-20&#x3D;1480,2000-1480&#x3D;520。所以原IP数据报经过第1个网络后分成了两个IP小报文，第一个报文的数据部分长度是1480B,第二个报文的数据部分长度是520B。<br>所有报片（除最后一个报片）的有效载荷都是8B的倍数。576-20&#x3D;556,但556不能被8整除.所以分片时的数据部分最大只能取552。第一个报文经过第2个网络后1480-552x2&#x3D;376&lt;576，变成数据长度分别为552B、552B、376B的3个P小报文;第2个报文520&lt;552，故不用分片。因此到达目的主机时，原2000B的数据被分成数据长度分别为552B、552B、376B、520B四个小报文。</p>
+<blockquote>
+<p>在访问网页的时候，经常会看到一些指向其他网站的链接。若用户在访问某网页的时候，发现这个网页有一个指向<a target="_blank" rel="noopener" href="http://www.126.com/">www.126.com</a> 的链接。请你解释一下，当用户点击这个键按以后友生了什么事件?</p>
+</blockquote>
+<p>用户单击鼠标之后，发生了以下事件。<br>①浏览器分析超链接指向的页面的URL(假设URL为<a target="_blank" rel="noopener" href="http://www.126.com/index.html">www.126.com/index.html</a>  ) </p>
+<p>②浏览器向DNS请求解析域名<a target="_blank" rel="noopener" href="http://www.126.com/">www.126.com</a> 的IP地址。</p>
+<p>③域名系统DNS解析出网易服务器的P地址。</p>
+<p>④浏览器利用域名系统DNS解析到的IP地址，与<a target="_blank" rel="noopener" href="http://www.126.com/">www.126.com</a> 的服务器建立TCP连接。</p>
+<p>⑤浏览器发出读取index.htm取文件命令的HTTP请求：GET &#x2F;index.html。</p>
+<p>⑥服务器给出响应，把文件index.html返回给浏览器。</p>
+<p>⑦TCP连接释放。</p>
+<p>⑧浏览器对index.html文档进行解释，并把结果显示在浏览器上，供用户查看。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://uestcwxy.love">珩</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://uestcwxy.love/2023/06/25/%E8%AE%A1%E7%BD%91/7/">https://uestcwxy.love/2023/06/25/%E8%AE%A1%E7%BD%91/7/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://uestcwxy.love" target="_blank">Eternity</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2023/06/24/%E8%AE%A1%E7%BD%91/6/" title="计网期末复习之套接字编程"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计网期末复习之套接字编程</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/06/20/%E8%AE%A1%E7%BD%91/1/" title="计网期末复习之计算机网络与因特网"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-20</div><div class="title">计网期末复习之计算机网络与因特网</div></div></a></div><div><a href="/2023/06/21/%E8%AE%A1%E7%BD%91/2/" title="计网期末复习之应用层"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-21</div><div class="title">计网期末复习之应用层</div></div></a></div><div><a href="/2023/06/23/%E8%AE%A1%E7%BD%91/4/" title="计网期末复习之网络层"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-23</div><div class="title">计网期末复习之网络层</div></div></a></div><div><a href="/2023/06/23/%E8%AE%A1%E7%BD%91/5/" title="计网期末复习之链路层"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-23</div><div class="title">计网期末复习之链路层</div></div></a></div><div><a href="/2023/06/24/%E8%AE%A1%E7%BD%91/6/" title="计网期末复习之套接字编程"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-24</div><div class="title">计网期末复习之套接字编程</div></div></a></div><div><a href="/2023/06/21/%E8%AE%A1%E7%BD%91/3/" title="计网期末复习之传输层"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-21</div><div class="title">计网期末复习之传输层</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">珩</div><div class="author-info__description">等我苦尽甘来时，我给你讲讲来时走的路。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/uestc-wxy/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.facebook.com/profile.php?id=100092533320651" target="_blank" title="facebook"><i class="fab fa-facebook" style="color: #4a7dbe;"></i></a><a class="social-icon" href="mailto:1939311091@qq.com" target="_blank" title="email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/1907948898" target="_blank" title="b站"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/tiktok.jpg" target="_blank" title="抖音"><i class="fab fa-tiktok" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/weixin.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">刚建站不久，博客美化有待研究，部分页面也没时间弄，路过的你将就看啦~😊，图片没加载出来就是网络不佳噢~</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/06/25/%E8%AE%A1%E7%BD%91/7/" title="电子科大计网期末复习之经典大题"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大计网期末复习之经典大题"/></a><div class="content"><a class="title" href="/2023/06/25/%E8%AE%A1%E7%BD%91/7/" title="电子科大计网期末复习之经典大题">电子科大计网期末复习之经典大题</a><time datetime="2023-06-25T11:18:30.000Z" title="发表于 2023-06-25 19:18:30">2023-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/24/%E8%AE%A1%E7%BD%91/6/" title="计网期末复习之套接字编程"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计网期末复习之套接字编程"/></a><div class="content"><a class="title" href="/2023/06/24/%E8%AE%A1%E7%BD%91/6/" title="计网期末复习之套接字编程">计网期末复习之套接字编程</a><time datetime="2023-06-24T06:44:16.000Z" title="发表于 2023-06-24 14:44:16">2023-06-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/23/%E8%AE%A1%E7%BD%91/5/" title="计网期末复习之链路层"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计网期末复习之链路层"/></a><div class="content"><a class="title" href="/2023/06/23/%E8%AE%A1%E7%BD%91/5/" title="计网期末复习之链路层">计网期末复习之链路层</a><time datetime="2023-06-23T13:27:39.000Z" title="发表于 2023-06-23 21:27:39">2023-06-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/23/%E8%AE%A1%E7%BD%91/4/" title="计网期末复习之网络层"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计网期末复习之网络层"/></a><div class="content"><a class="title" href="/2023/06/23/%E8%AE%A1%E7%BD%91/4/" title="计网期末复习之网络层">计网期末复习之网络层</a><time datetime="2023-06-23T01:20:05.000Z" title="发表于 2023-06-23 09:20:05">2023-06-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/21/%E8%AE%A1%E7%BD%91/3/" title="计网期末复习之传输层"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计网期末复习之传输层"/></a><div class="content"><a class="title" href="/2023/06/21/%E8%AE%A1%E7%BD%91/3/" title="计网期末复习之传输层">计网期末复习之传输层</a><time datetime="2023-06-21T11:54:05.000Z" title="发表于 2023-06-21 19:54:05">2023-06-21</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png')"><div id="footer-wrap"><div class="copyright">&copy;2023 By 珩</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><i class="fa-solid fa-cloud"></i><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>萌ICP备20230529号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="6614140207" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-mini="true"> </div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
