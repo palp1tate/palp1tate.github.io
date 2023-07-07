@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-07-06T12:27:24.967Z</updated>
+  <updated>2023-07-07T08:39:50.277Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>channel通道</title>
+    <link href="https://uestcwxy.love/2023/07/07/Go/20/"/>
+    <id>https://uestcwxy.love/2023/07/07/Go/20/</id>
+    <published>2023-07-07T02:05:17.000Z</published>
+    <updated>2023-07-07T08:39:50.277Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>sync包</title>
@@ -468,33 +493,6 @@
     <id>https://uestcwxy.love/2023/06/13/Go/16/</id>
     <published>2023-06-13T00:36:49.000Z</published>
     <updated>2023-06-13T01:50:00.428Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
-    
-    
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>断点续传与bufio包</title>
-    <link href="https://uestcwxy.love/2023/06/12/Go/15/"/>
-    <id>https://uestcwxy.love/2023/06/12/Go/15/</id>
-    <published>2023-06-12T01:22:12.000Z</published>
-    <updated>2023-06-12T06:59:45.785Z</updated>
     
     
       
