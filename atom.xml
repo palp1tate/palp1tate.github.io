@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-07-07T08:39:50.277Z</updated>
+  <updated>2023-07-08T12:41:04.033Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -17,11 +17,115 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>channel通道</title>
+    <title>Go实现在线词典翻译(三种翻译接口，结合sync)</title>
+    <link href="https://uestcwxy.love/2023/07/08/Go/24/"/>
+    <id>https://uestcwxy.love/2023/07/08/Go/24/</id>
+    <published>2023-07-08T12:09:55.000Z</published>
+    <updated>2023-07-08T12:41:04.033Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
+    
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>猜谜游戏(Go实现)</title>
+    <link href="https://uestcwxy.love/2023/07/08/Go/23/"/>
+    <id>https://uestcwxy.love/2023/07/08/Go/23/</id>
+    <published>2023-07-08T03:41:54.000Z</published>
+    <updated>2023-07-08T12:10:39.874Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
+    
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>反射详解</title>
+    <link href="https://uestcwxy.love/2023/07/07/Go/22/"/>
+    <id>https://uestcwxy.love/2023/07/07/Go/22/</id>
+    <published>2023-07-07T13:58:41.000Z</published>
+    <updated>2023-07-08T03:08:56.403Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>select语句与CSP模型</title>
+    <link href="https://uestcwxy.love/2023/07/07/Go/21/"/>
+    <id>https://uestcwxy.love/2023/07/07/Go/21/</id>
+    <published>2023-07-07T09:00:16.000Z</published>
+    <updated>2023-07-07T13:58:31.593Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>channel通道详解</title>
     <link href="https://uestcwxy.love/2023/07/07/Go/20/"/>
     <id>https://uestcwxy.love/2023/07/07/Go/20/</id>
     <published>2023-07-07T02:05:17.000Z</published>
-    <updated>2023-07-07T08:39:50.277Z</updated>
+    <updated>2023-07-07T08:59:49.905Z</updated>
     
     
       
@@ -407,110 +511,6 @@
     
     
     <category term="操作系统" scheme="https://uestcwxy.love/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统期末复习之输入输出系统</title>
-    <link href="https://uestcwxy.love/2023/06/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/2/"/>
-    <id>https://uestcwxy.love/2023/06/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/2/</id>
-    <published>2023-06-14T14:47:05.000Z</published>
-    <updated>2023-06-18T00:52:01.262Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="大二下期末复习" scheme="https://uestcwxy.love/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
-    
-    
-    <category term="操作系统" scheme="https://uestcwxy.love/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统期末复习之存储器管理</title>
-    <link href="https://uestcwxy.love/2023/06/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1/"/>
-    <id>https://uestcwxy.love/2023/06/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1/</id>
-    <published>2023-06-14T10:55:40.000Z</published>
-    <updated>2023-06-18T06:55:38.967Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="大二下期末复习" scheme="https://uestcwxy.love/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
-    
-    
-    <category term="操作系统" scheme="https://uestcwxy.love/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Goroutine并发模型</title>
-    <link href="https://uestcwxy.love/2023/06/14/Go/17/"/>
-    <id>https://uestcwxy.love/2023/06/14/Go/17/</id>
-    <published>2023-06-14T00:06:35.000Z</published>
-    <updated>2023-07-06T04:04:57.873Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
-    
-    
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ioutil包与并发编程初识</title>
-    <link href="https://uestcwxy.love/2023/06/13/Go/16/"/>
-    <id>https://uestcwxy.love/2023/06/13/Go/16/</id>
-    <published>2023-06-13T00:36:49.000Z</published>
-    <updated>2023-06-13T01:50:00.428Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
-    
-    
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
