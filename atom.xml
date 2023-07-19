@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-07-18T08:12:18.402Z</updated>
+  <updated>2023-07-19T11:12:45.787Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>部署开源项目 Casdoor 身份认证管理系统到本地</title>
-    <link href="https://uestcwxy.love/2023/07/18/Go/casdoor/"/>
-    <id>https://uestcwxy.love/2023/07/18/Go/casdoor/</id>
-    <published>2023-07-18T07:37:05.000Z</published>
-    <updated>2023-07-18T08:12:18.402Z</updated>
+    <title>Gin+Gorm练手小项目bubble清单企业级结构剖析</title>
+    <link href="https://uestcwxy.love/2023/07/19/Go/28/"/>
+    <id>https://uestcwxy.love/2023/07/19/Go/28/</id>
+    <published>2023-07-19T11:08:06.000Z</published>
+    <updated>2023-07-19T11:12:45.787Z</updated>
     
     
       
@@ -35,11 +35,36 @@
     
     
     
-    <category term="前端" scheme="https://uestcwxy.love/tags/%E5%89%8D%E7%AB%AF/"/>
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
+  </entry>
+  
+  <entry>
+    <title>部署开源项目 Casdoor 身份认证管理系统到本地</title>
+    <link href="https://uestcwxy.love/2023/07/18/Go/casdoor/"/>
+    <id>https://uestcwxy.love/2023/07/18/Go/casdoor/</id>
+    <published>2023-07-18T07:37:05.000Z</published>
+    <updated>2023-07-19T11:11:47.333Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="前端" scheme="https://uestcwxy.love/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -62,18 +87,18 @@
     
     
     
-    <category term="前端" scheme="https://uestcwxy.love/tags/%E5%89%8D%E7%AB%AF/"/>
-    
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="前端" scheme="https://uestcwxy.love/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
   <entry>
-    <title>深入浅出Gorm</title>
+    <title>深入浅出Gorm（结合官方文档）</title>
     <link href="https://uestcwxy.love/2023/07/16/Go/27/"/>
     <id>https://uestcwxy.love/2023/07/16/Go/27/</id>
     <published>2023-07-16T12:49:16.000Z</published>
-    <updated>2023-07-18T07:52:19.889Z</updated>
+    <updated>2023-07-19T06:40:26.241Z</updated>
     
     
       
@@ -87,9 +112,9 @@
     
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -112,9 +137,9 @@
     
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -139,9 +164,9 @@
     <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -160,9 +185,9 @@
     <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -181,9 +206,9 @@
     <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -206,9 +231,9 @@
     
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -231,9 +256,9 @@
     
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -256,9 +281,9 @@
     
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -281,9 +306,9 @@
     
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -306,9 +331,9 @@
     
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -484,25 +509,6 @@
     
     
     <category term="计算机网络" scheme="https://uestcwxy.love/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统期末复习之经典大题</title>
-    <link href="https://uestcwxy.love/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/8/"/>
-    <id>https://uestcwxy.love/2023/06/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/8/</id>
-    <published>2023-06-17T12:04:46.000Z</published>
-    <updated>2023-06-18T11:07:19.649Z</updated>
-    
-    
-    <summary type="html">假定系统有3个并发进程get 、copy 和put共享缓冲器B1和B2。进程get负责从输入设备上读信息，每读出一条记录后放到B1中。</summary>
-    
-    
-    
-    <category term="大二下期末复习" scheme="https://uestcwxy.love/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
-    
-    
-    <category term="操作系统" scheme="https://uestcwxy.love/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
