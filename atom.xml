@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-07-19T11:12:45.787Z</updated>
+  <updated>2023-07-20T13:39:26.608Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第一次对github项目提PR请求——以修改casdoor项目的swagger文档为例</title>
+    <link href="https://uestcwxy.love/2023/07/20/Go/29/"/>
+    <id>https://uestcwxy.love/2023/07/20/Go/29/</id>
+    <published>2023-07-20T08:56:41.000Z</published>
+    <updated>2023-07-20T13:39:26.608Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>Gin+Gorm练手小项目bubble清单企业级结构剖析</title>
@@ -468,31 +491,6 @@
     <id>https://uestcwxy.love/2023/06/21/%E8%AE%A1%E7%BD%91/2/</id>
     <published>2023-06-21T04:33:08.000Z</published>
     <updated>2023-06-24T14:36:26.270Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="大二下期末复习" scheme="https://uestcwxy.love/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
-    
-    
-    <category term="计算机网络" scheme="https://uestcwxy.love/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计网期末复习之计算机网络与因特网</title>
-    <link href="https://uestcwxy.love/2023/06/20/%E8%AE%A1%E7%BD%91/1/"/>
-    <id>https://uestcwxy.love/2023/06/20/%E8%AE%A1%E7%BD%91/1/</id>
-    <published>2023-06-20T04:59:56.000Z</published>
-    <updated>2023-06-24T11:04:38.769Z</updated>
     
     
       
