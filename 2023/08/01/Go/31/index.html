@@ -1,0 +1,564 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Go语言性能优化建议与pprof性能调优详解 | Palp1tate</title><meta name="author" content="珩,1939311091@qq.com"><meta name="copyright" content="珩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="性能优化建议简介：  性能优化的前提是满足正确可靠、简洁清晰等质量因素 性能优化是综合评估，有时候时间效率和空间效率可能对立 针对Go语言特性，介绍Go相关的性能优化建议  Benchmark的使用性能表现需要实际数据衡量，Go语言提供了支持基准性能测试的benchmark工具。 示例： 123456789&#x2F;&#x2F;fib.gopackage mainfunc Fib(n int) int &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go语言性能优化建议与pprof性能调优详解">
+<meta property="og:url" content="https://uestcwxy.love/2023/08/01/Go/31/index.html">
+<meta property="og:site_name" content="Palp1tate">
+<meta property="og:description" content="性能优化建议简介：  性能优化的前提是满足正确可靠、简洁清晰等质量因素 性能优化是综合评估，有时候时间效率和空间效率可能对立 针对Go语言特性，介绍Go相关的性能优化建议  Benchmark的使用性能表现需要实际数据衡量，Go语言提供了支持基准性能测试的benchmark工具。 示例： 123456789&#x2F;&#x2F;fib.gopackage mainfunc Fib(n int) int &amp;#123;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/IMG_20230801_114856.jpg">
+<meta property="article:published_time" content="2023-08-01T03:44:06.000Z">
+<meta property="article:modified_time" content="2023-08-01T13:52:44.822Z">
+<meta property="article:author" content="珩">
+<meta property="article:tag" content="大二自学">
+<meta property="article:tag" content="Go">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/IMG_20230801_114856.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://uestcwxy.love/2023/08/01/Go/31/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 珩","link":"链接: ","source":"来源: Palp1tate","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Go语言性能优化建议与pprof性能调优详解',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-01 21:52:44'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Palp1tate" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">55</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/IMG_20230801_114856.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Palp1tate"><span class="site-name">Palp1tate</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Go语言性能优化建议与pprof性能调优详解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-08-01T03:44:06.000Z" title="发表于 2023-08-01 11:44:06">2023-08-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-01T13:52:44.822Z" title="更新于 2023-08-01 21:52:44">2023-08-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/">青训营</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>26分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Go语言性能优化建议与pprof性能调优详解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="性能优化建议"><a href="#性能优化建议" class="headerlink" title="性能优化建议"></a>性能优化建议</h1><p>简介：</p>
+<ul>
+<li>性能优化的前提是满足正确可靠、简洁清晰等质量因素</li>
+<li>性能优化是综合评估，有时候时间效率和空间效率可能对立</li>
+<li>针对Go语言特性，介绍Go相关的性能优化建议</li>
+</ul>
+<h2 id="Benchmark的使用"><a href="#Benchmark的使用" class="headerlink" title="Benchmark的使用"></a>Benchmark的使用</h2><p>性能表现需要实际数据衡量，Go语言提供了支持基准性能测试的benchmark工具。</p>
+<p>示例：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//fib.go</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Fib</span><span class="params">(n <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">2</span> &#123;</span><br><span class="line">       <span class="keyword">return</span> n</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Fib(n<span class="number">-1</span>) + Fib(n<span class="number">-2</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//fib_test.go</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;testing&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkFib10</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">       Fib(<span class="number">10</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>benchmark 和普通的单元测试用例一样，都位于 <code>_test.go</code> 文件中。</li>
+<li>函数名以 <code>Benchmark</code> 开头，参数是 <code>b *testing.B</code>。和普通的单元测试用例很像，单元测试函数名以 <code>Test</code> 开头，参数是 <code>t *testing.T</code>。</li>
+</ul>
+<p>运行示例：</p>
+<ul>
+<li>运行当前 package 内的用例：<code>go test .</code></li>
+<li>运行子 package 内的用例： <code>go test ./&lt;package name&gt;</code></li>
+<li>如果想递归测试当前目录下的所有的 package：<code>go test ./...</code></li>
+</ul>
+<p><code>go test</code> 命令默认不运行 benchmark 用例的，如果我们想运行 benchmark 用例，需要加上 <code>-bench</code> 参数。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ go <span class="built_in">test</span> -bench .</span><br><span class="line">goos: windows</span><br><span class="line">goarch: amd64</span><br><span class="line">pkg: GoProject1</span><br><span class="line">cpu: 11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz</span><br><span class="line">BenchmarkFib10-16        5496252               212.5 ns/op</span><br><span class="line">PASS</span><br><span class="line">ok      GoProject1      1.454s</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>goos: windows</code>：这行显示运行基准测试的操作系统，此处为 Windows。</li>
+<li><code>goarch: amd64</code>：这行显示运行基准测试的机器架构，此处为 64 位 AMD 架构。</li>
+<li><code>pkg: GoProject1</code>：这行显示包含基准测试代码的包名，此处为 “GoProject1”。</li>
+<li><code>cpu: 11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz</code>：这行显示运行基准测试的机器 CPU 信息，包括 CPU 型号和时钟频率。</li>
+<li><code>PASS</code>：这行表示所有的测试，包括基准测试，都已成功通过。</li>
+<li><code>ok GoProject1 1.454s</code>：这行显示所有测试，包括基准测试，的整体执行时间。在这种情况下，整个测试套件执行时间大约为 1.454 秒。</li>
+</ol>
+<p><code>BenchmarkFib10-16 </code>是测试函数名，<code>-16</code>表示<code>GOMAXPROCS</code>的值为16，<code>GOMAXPROCS 1.5</code>版本后，默认值为<code>CPU</code>核数 。<code>5496252</code> 表示一共执行<code>5496252</code> 次，即<code>b.N</code>的值。<code>212.5 ns/op</code>表示每次执行花费<code>212.5ns</code>。</p>
+<h2 id="slice优化"><a href="#slice优化" class="headerlink" title="slice优化"></a>slice优化</h2><h3 id="预分配内存"><a href="#预分配内存" class="headerlink" title="预分配内存"></a>预分配内存</h3><p>接下来看两个函数：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NoPreAlloc</span><span class="params">(size <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	data := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">	<span class="keyword">for</span> k := <span class="number">0</span>; k &lt; size; k++ &#123;</span><br><span class="line">		data = <span class="built_in">append</span>(data, k)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">PreAlloc</span><span class="params">(size <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	data := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>, size)</span><br><span class="line">	<span class="keyword">for</span> k := <span class="number">0</span>; k &lt; size; k++ &#123;</span><br><span class="line">		data = <span class="built_in">append</span>(data, k)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>分别为它们编写基准测试：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkNoPreAlloc</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">		NoPreAlloc(<span class="number">1000000</span>)</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkPreAlloc</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">		PreAlloc(<span class="number">1000000</span>)</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ go <span class="built_in">test</span> -bench .</span><br><span class="line">goos: windows</span><br><span class="line">goarch: amd64</span><br><span class="line">pkg: GoProject1</span><br><span class="line">cpu: 11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz</span><br><span class="line">BenchmarkNoPreAlloc-16               193           5968006 ns/op</span><br><span class="line">BenchmarkPreAlloc-16                1498            825965 ns/op</span><br><span class="line">PASS</span><br><span class="line">ok      GoProject1      3.164s</span><br></pre></td></tr></table></figure>
+
+<p>可以看到预分配内存后，性能更好。因此应尽可能在使用make()初始化切片时提供容量信息。</p>
+<h3 id="大内存未释放"><a href="#大内存未释放" class="headerlink" title="大内存未释放"></a>大内存未释放</h3><p>当我们在已有切片基础上创建新的切片时，新切片并不会创建一个新的底层数组。相反，它会共享同一个底层数组。这种情况下，如果我们从一个大切片中截取出一个小切片，并且在代码中保留对大切片的引用，那么原底层数组将会一直存在于内存中，得不到释放，即使大切片的内容对我们来说已经不再需要了。</p>
+<p>举例说明： 假设有一个名为<code>bigSlice</code>的大切片，其底层数组非常大。然后我们基于<code>bigSlice</code>创建一个新的小切片<code>smallSlice</code>，并且在代码中保留对<code>bigSlice</code>的引用。这样一来，即使我们只使用<code>smallSlice</code>，底层数组也不会被释放，导致占用大量的内存。</p>
+<p>优化建议：使用copy替代re-slice 为了避免上述陷阱，我们可以使用copy操作来创建一个新的切片，而不是在已有切片基础上使用re-slice。copy操作会将源切片的内容复制到一个新的底层数组中，这样就不会和原始切片共享底层数组，避免了底层数组无法释放的问题。</p>
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">goCopy codebigSlice := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">1000000</span>) <span class="comment">// 假设bigSlice是一个非常大的切片</span></span><br><span class="line"><span class="comment">// 使用re-slice，smallSlice和bigSlice共享同一个底层数组</span></span><br><span class="line">smallSlice := bigSlice[:<span class="number">100</span>] </span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用copy，创建一个新的切片，底层数组得到释放</span></span><br><span class="line">smallSlice = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">100</span>)</span><br><span class="line"><span class="built_in">copy</span>(smallSlice, bigSlice[:<span class="number">100</span>])</span><br></pre></td></tr></table></figure>
+
+<p>通过使用copy操作，我们可以避免因为底层数组无法释放而导致的内存浪费问题。</p>
+<h2 id="map优化"><a href="#map优化" class="headerlink" title="map优化"></a>map优化</h2><p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NoPreAlloc</span><span class="params">(size <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    data := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)</span><br><span class="line">    <span class="keyword">for</span> k := <span class="number">0</span>; k &lt; size; k++ &#123;</span><br><span class="line">       data[k] = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">PreAlloc</span><span class="params">(size <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    data := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>, size)</span><br><span class="line">    <span class="keyword">for</span> k := <span class="number">0</span>; k &lt; size; k++ &#123;</span><br><span class="line">       data[k] = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkNoPreAlloc</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> n := <span class="number">0</span>; n &lt; b.N; n++ &#123;</span><br><span class="line">		NoPreAlloc(<span class="number">1000000</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkPreAlloc</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> n := <span class="number">0</span>; n &lt; b.N; n++ &#123;</span><br><span class="line">		PreAlloc(<span class="number">1000000</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行测试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ go <span class="built_in">test</span> -bench .</span><br><span class="line">goos: windows</span><br><span class="line">goarch: amd64</span><br><span class="line">pkg: GoProject1</span><br><span class="line">cpu: 11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz</span><br><span class="line">BenchmarkNoPreAlloc-16                12          90044942 ns/op</span><br><span class="line">BenchmarkPreAlloc-16                  26          50461700 ns/op</span><br><span class="line">PASS</span><br><span class="line">ok      GoProject1      2.637s</span><br></pre></td></tr></table></figure>
+
+<p>可以发现map预分配内存后效果更好。</p>
+<p>分析：</p>
+<ul>
+<li>不断向map中添加元素的操作会触发map的扩容</li>
+<li>提前分配好空间可以减少内存拷贝和Rehash的消耗。</li>
+<li>建议根据实际需求提前预估好需要的空间</li>
+</ul>
+<h2 id="字符串处理优化"><a href="#字符串处理优化" class="headerlink" title="字符串处理优化"></a>字符串处理优化</h2><p>使用<code>strings.Builder</code>、预分配内存。</p>
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Plus</span><span class="params">(n <span class="type">int</span>, str <span class="type">string</span>)</span></span> <span class="type">string</span> &#123;</span><br><span class="line">    s := <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">       s += str</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">StrBuilder</span><span class="params">(n <span class="type">int</span>, str <span class="type">string</span>)</span></span> <span class="type">string</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> builder strings.Builder</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">       builder.WriteString(str)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> builder.String()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ByteBuffer</span><span class="params">(n <span class="type">int</span>, str <span class="type">string</span>)</span></span> <span class="type">string</span> &#123;</span><br><span class="line">    buf := <span class="built_in">new</span>(bytes.Buffer)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">       buf.WriteString(str)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> buf.String()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">PreStrBuilder</span><span class="params">(n <span class="type">int</span>, str <span class="type">string</span>)</span></span> <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">var</span> builder strings.Builder</span><br><span class="line">	builder.Grow(n * <span class="built_in">len</span>(str))</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">		builder.WriteString(str)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> builder.String()</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">PreStrByteBuffer</span><span class="params">(n <span class="type">int</span>, str <span class="type">string</span>)</span></span> <span class="type">string</span> &#123;</span><br><span class="line">	buf := <span class="built_in">new</span>(bytes.Buffer)</span><br><span class="line">	buf.Grow(n * <span class="built_in">len</span>(str))</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">		buf.WriteString(str)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> buf.String()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkPlus</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">		Plus(<span class="number">100000</span>, <span class="string">&quot;wxy&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkStrBuilder</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">		StrBuilder(<span class="number">100000</span>, <span class="string">&quot;wxy&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkByteBuffer</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">		ByteBuffer(<span class="number">100000</span>, <span class="string">&quot;wxy&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkPreStrBuilder</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">		PreStrBuilder(<span class="number">100000</span>, <span class="string">&quot;wxy&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkPreByteBuffer</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">		PreStrByteBuffer(<span class="number">100000</span>, <span class="string">&quot;wxy&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ go <span class="built_in">test</span> -bench .</span><br><span class="line">goos: windows</span><br><span class="line">goarch: amd64</span><br><span class="line">pkg: GoProject1</span><br><span class="line">cpu: 11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz</span><br><span class="line">BenchmarkPlus-16                       1        1126084200 ns/op</span><br><span class="line">BenchmarkStrBuilder-16              3982            284773 ns/op</span><br><span class="line">BenchmarkByteBuffer-16              2947            485091 ns/op</span><br><span class="line">BenchmarkPreStrBuilder-16           4771            278961 ns/op</span><br><span class="line">BenchmarkPreByteBuffer-16           3310            364676 ns/op</span><br><span class="line">PASS</span><br><span class="line">ok      GoProject1      6.457s</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用<code>＋</code>拼接性能最差，<code>strings.Builder</code>，<code>bytes.Buffer</code>相近，<code>strings.Builder</code>更快</li>
+<li>字符串在Go语言中是不可变类型，占用内存大小是固定的</li>
+<li>使用<code>＋</code>每次都会重新分配内存</li>
+<li><code>strings.Builder</code>， <code>bytes.Buffer</code>底层都是[]byte数组。内存扩容策略，不需要每次拼接重新分配内存</li>
+<li>预分配内存后，<code>strings.Builder</code>， <code>bytes.Buffer</code>性能都有所提升</li>
+</ul>
+<h2 id="结构体优化"><a href="#结构体优化" class="headerlink" title="结构体优化"></a>结构体优化</h2><p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">EmptyStructMap</span><span class="params">(n <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="keyword">struct</span>&#123;&#125;)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">       m[i] = <span class="keyword">struct</span>&#123;&#125;&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BoolMap</span><span class="params">(n <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">       m[i] = <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkEmptyStructMap</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">       EmptyStructMap(<span class="number">100000000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkBoolMap</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">       BoolMap(<span class="number">100000000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ go <span class="built_in">test</span> -bench .</span><br><span class="line">goos: windows</span><br><span class="line">goarch: amd64</span><br><span class="line">pkg: GoProject1</span><br><span class="line">cpu: 11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz</span><br><span class="line">BenchmarkEmptyStructMap-16             1        13943515100 ns/op</span><br><span class="line">BenchmarkBoolMap-16                    1        14002905100 ns/op</span><br><span class="line">PASS</span><br><span class="line">ok      GoProject1      28.215s</span><br></pre></td></tr></table></figure>
+
+<p>可以发现使用空结构体性能较好。</p>
+<p>使用空结构体节省内存：</p>
+<ul>
+<li>空结构体struct{}实例不占据任何的内存空间</li>
+<li>可作为各种场景下的占位符使用</li>
+<li>节省资源</li>
+<li>空结构体本身具备很强的语义，即这里不需要任何值，仅作为占位符</li>
+</ul>
+<h2 id="atomic包"><a href="#atomic包" class="headerlink" title="atomic包"></a>atomic包</h2><p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> atomicCounter <span class="keyword">struct</span> &#123;</span><br><span class="line">    i <span class="type">int32</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">AtomicAddOne</span><span class="params">(c *atomicCounter)</span></span> &#123;</span><br><span class="line">    atomic.AddInt32(&amp;c.i, <span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> mutexCounter <span class="keyword">struct</span> &#123;</span><br><span class="line">    i <span class="type">int32</span></span><br><span class="line">    m sync.Mutex</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">MutexAddOne</span><span class="params">(c *mutexCounter)</span></span> &#123;</span><br><span class="line">    c.m.Lock()</span><br><span class="line">    c.i++</span><br><span class="line">    c.m.Unlock()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkAtomicAddOne</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> c atomicCounter</span><br><span class="line">    b.ResetTimer()</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">       AtomicAddOne(&amp;c)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkMutexAddOne</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> c mutexCounter</span><br><span class="line">    b.ResetTimer()</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">       MutexAddOne(&amp;c)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ go <span class="built_in">test</span> -bench .</span><br><span class="line">goos: windows</span><br><span class="line">goarch: amd64</span><br><span class="line">pkg: GoProject1</span><br><span class="line">cpu: 11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz</span><br><span class="line">BenchmarkAtomicAddOne-16        255736488                4.565 ns/op</span><br><span class="line">BenchmarkMutexAddOne-16         99685160                13.66 ns/op</span><br><span class="line">PASS</span><br><span class="line">ok      GoProject1      3.101s</span><br></pre></td></tr></table></figure>
+
+<p>使用atomic包：</p>
+<ul>
+<li>锁的实现是通过操作系统来实现，属于系统调用</li>
+<li>atomic操作是通过硬件实现，效率比锁高</li>
+<li>sync.Mutex应该用来保护一段逻辑，不仅仅用于保护一个变量</li>
+<li>对于非数值操作，可以使用atomic.Value，能承载一个interface{}</li>
+</ul>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>避免常见的性能陷阱可以保证大部分程序的性能</li>
+<li>普通应用代码，不要一味地追求程序的性能</li>
+<li>越高级的性能优化手段越容易出现问题</li>
+<li>在满足正确可靠、简洁清晰的质量要求的前提下提高程序性能</li>
+</ul>
+<h1 id="pprof性能调优"><a href="#pprof性能调优" class="headerlink" title="pprof性能调优"></a>pprof性能调优</h1><p>在计算机性能调试领域里，profiling 是指对应用程序的画像，画像就是应用程序使用 CPU 和内存的情况。 Go语言是一个对性能特别看重的语言，因此语言中自带了 profiling 的库。</p>
+<p>Go语言项目中的性能优化主要有以下几个方面：</p>
+<ul>
+<li>CPU profile：报告程序的 CPU 使用情况，按照一定频率去采集应用程序在 CPU 和寄存器上面的数据</li>
+<li>Memory Profile（Heap Profile）：报告程序的内存使用情况</li>
+<li>Block Profiling：报告 goroutines 不在运行状态的情况，可以用来分析和查找死锁等性能瓶颈</li>
+<li>Goroutine Profiling：报告 goroutines 的使用情况，有哪些 goroutine，它们的调用关系是怎样的</li>
+</ul>
+<h2 id="采集性能数据"><a href="#采集性能数据" class="headerlink" title="采集性能数据"></a>采集性能数据</h2><p>Go语言内置了获取程序的运行数据的工具，包括以下两个标准库：</p>
+<ul>
+<li><code>runtime/pprof</code>：采集工具型应用运行数据进行分析</li>
+<li><code>net/http/pprof</code>：采集服务型应用运行时数据进行分析</li>
+</ul>
+<p>pprof开启后，每隔一段时间（10ms）就会收集下当前的堆栈信息，获取各个函数占用的CPU以及内存资源；最后通过对这些采样数据进行分析，形成一个性能分析报告。</p>
+<p>注意，我们只应该在性能测试的时候才在代码中引入pprof。</p>
+<p>本篇文章只对服务型应用进行性能分析。</p>
+<h2 id="服务型应用"><a href="#服务型应用" class="headerlink" title="服务型应用"></a>服务型应用</h2><p>如果你的应用程序是一直运行的，比如 web 应用，那么可以使用<code>net/http/pprof</code>库，它能够在提供 HTTP 服务进行分析。</p>
+<p>如果使用了默认的<code>http.DefaultServeMux</code>（通常是代码直接使用 http.ListenAndServe(“0.0.0.0:8000”, nil)），只需要在你的web server端代码中按如下方式导入<code>net/http/pprof</code></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> _ <span class="string">&quot;net/http/pprof&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果你使用自定义的 Mux，则需要手动注册一些路由规则：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r.HandleFunc(<span class="string">&quot;/debug/pprof/&quot;</span>, pprof.Index)</span><br><span class="line">r.HandleFunc(<span class="string">&quot;/debug/pprof/cmdline&quot;</span>, pprof.Cmdline)</span><br><span class="line">r.HandleFunc(<span class="string">&quot;/debug/pprof/profile&quot;</span>, pprof.Profile)</span><br><span class="line">r.HandleFunc(<span class="string">&quot;/debug/pprof/symbol&quot;</span>, pprof.Symbol)</span><br><span class="line">r.HandleFunc(<span class="string">&quot;/debug/pprof/trace&quot;</span>, pprof.Trace)</span><br></pre></td></tr></table></figure>
+
+<p>如果你使用的是gin框架，那么推荐使用<a target="_blank" rel="noopener" href="https://github.com/gin-contrib/pprof">github.com&#x2F;gin-contrib&#x2F;pprof</a>，在代码中通过以下命令注册pprof相关路由。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pprof.Register(router)</span><br></pre></td></tr></table></figure>
+
+<p>不管哪种方式，你的 HTTP 服务都会多出<code>http://host:port/debug/pprof</code> ，访问它会得到类似下面的内容：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/image-20230801142327134.png"></p>
+<p>这个路径下还有几个子页面：</p>
+<ul>
+<li>&#x2F;debug&#x2F;pprof&#x2F;profile：访问这个链接会自动进行 CPU profiling，持续 30s，并生成一个文件供下载</li>
+<li>&#x2F;debug&#x2F;pprof&#x2F;heap： Memory Profiling 的路径，访问这个链接会得到一个内存 Profiling 结果的文件</li>
+<li>&#x2F;debug&#x2F;pprof&#x2F;block：block Profiling 的路径</li>
+<li>&#x2F;debug&#x2F;pprof&#x2F;goroutines：运行的 goroutines 列表，以及调用关系</li>
+</ul>
+<p>下面是详细的解释：</p>
+<blockquote>
+<p>Allocs: 过去所有内存分配的抽样</p>
+<p>Block: 导致同步原语阻塞的堆栈跟踪</p>
+<p>Cmdline: 当前程序的命令行调用</p>
+<p>Goroutine: 所有当前 goroutine 的堆栈跟踪。使用 debug &#x3D; 2作为查询参数，以与未恢复的惊慌相同的格式导出。</p>
+<p>Heap: 活动对象的内存分配的抽样。在获取堆示例之前，可以指定 gc GET 参数来运行 GC。</p>
+<p>Mutex: 对争用的互斥对象的持有者进行跟踪堆栈</p>
+<p>profile: CPU 配置文件。可以在秒 GET 参数中指定持续时间。获得概要文件之后，使用 go 工具 pprof 命令调查概要文件。</p>
+<p>Threadcreate: 导致创建新操作系统线程的堆栈跟踪</p>
+<p>Trace: 当前程序执行的跟踪。可以在秒 GET 参数中指定持续时间。获得跟踪文件后，使用 go tool trace 命令调查跟踪。</p>
+</blockquote>
+<h2 id="go-tool-pprof命令"><a href="#go-tool-pprof命令" class="headerlink" title="go tool pprof命令"></a>go tool pprof命令</h2><p>不管是工具型应用还是服务型应用，我们使用相应的pprof库获取数据之后，下一步的都要对这些数据进行分析，我们可以使用<code>go tool pprof</code>命令行工具。</p>
+<p><code>go tool pprof</code>最简单的使用方式为:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go tool pprof [binary] [<span class="built_in">source</span>]</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li>binary 是应用的二进制文件，用来解析各种符号；</li>
+<li>source 表示 profile 数据的来源，可以是本地的文件，也可以是 http 地址。</li>
+</ul>
+<p><strong>注意事项：</strong> 获取的 Profiling 数据是动态的，要想获得有效的数据，请保证应用处于较大的负载（比如正在生成中运行的服务，或者通过其他工具模拟访问压力）。否则如果应用处于空闲状态，得到的结果可能没有任何意义。</p>
+<h2 id="项目调优分析"><a href="#项目调优分析" class="headerlink" title="项目调优分析"></a>项目调优分析</h2><p>本案例使用了blob项目——类似博客的管理系统，用beego实现，源码我已经放到了github仓库里：<a target="_blank" rel="noopener" href="https://github.com/uestc-wxy/blob">https://github.com/uestc-wxy/blob</a>，里面也有详细的使用说明。</p>
+<h3 id="修改main-go"><a href="#修改main-go" class="headerlink" title="修改main.go"></a>修改<code>main.go</code></h3><p>为了能对这个项目进行调优分析，需要在<code>main.go</code>文件里添加几行代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;net/http&quot;</span></span><br><span class="line">    _ <span class="string">&quot;net/http/pprof&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">       http.ListenAndServe(<span class="string">&quot;localhost:8080&quot;</span>, <span class="literal">nil</span>)</span><br><span class="line">    &#125;()</span><br></pre></td></tr></table></figure>
+
+<p>下面是修改后的<code>main.go</code>（只需要修改这一个文件）：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    _ <span class="string">&quot;blob/models&quot;</span></span><br><span class="line">    _ <span class="string">&quot;blob/routers&quot;</span></span><br><span class="line">    <span class="string">&quot;blob/utils&quot;</span></span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/beego/beego/v2/client/orm&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/beego/beego/v2/server/web&quot;</span></span><br><span class="line">    _ <span class="string">&quot;github.com/go-sql-driver/mysql&quot;</span></span><br><span class="line">    <span class="string">&quot;net/http&quot;</span></span><br><span class="line">    _ <span class="string">&quot;net/http/pprof&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">    username, _ := web.AppConfig.String(<span class="string">&quot;username&quot;</span>)</span><br><span class="line">    password, _ := web.AppConfig.String(<span class="string">&quot;password&quot;</span>)</span><br><span class="line">    host, _ := web.AppConfig.String(<span class="string">&quot;host&quot;</span>)</span><br><span class="line">    port, _ := web.AppConfig.String(<span class="string">&quot;port&quot;</span>)</span><br><span class="line">    database, _ := web.AppConfig.String(<span class="string">&quot;database&quot;</span>)</span><br><span class="line"></span><br><span class="line">    datasource := fmt.Sprintf(<span class="string">&quot;%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&amp;loc=Local&quot;</span>, username, password, host, port, database)</span><br><span class="line">    err := orm.RegisterDataBase(<span class="string">&quot;default&quot;</span>, <span class="string">&quot;mysql&quot;</span>, datasource)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">       fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    err = orm.RunSyncdb(<span class="string">&quot;default&quot;</span>, <span class="literal">false</span>, <span class="literal">true</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">       fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    web.InsertFilter(<span class="string">&quot;/cms/index/*&quot;</span>, web.BeforeRouter, utils.CmsLoginFilter)</span><br><span class="line">    orm.RunCommand()</span><br><span class="line">    <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">       http.ListenAndServe(<span class="string">&quot;localhost:8080&quot;</span>, <span class="literal">nil</span>)</span><br><span class="line">    &#125;()</span><br><span class="line">    web.Run()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装go-wrk"><a href="#安装go-wrk" class="headerlink" title="安装go-wrk"></a>安装go-wrk</h3><p>为了使数据直观便于分析，需要使用压测工具。</p>
+<p>推荐使用：<a target="_blank" rel="noopener" href="https://github.com/wg/wrk">https://github.com/wg/wrk</a> 或 <a target="_blank" rel="noopener" href="https://github.com/adjust/go-wrk">https://github.com/adjust/go-wrk</a>，由于我是Windows系统，于是选择了后者，因为前者对Windows并不是很友好，虽然它的star数还要多些。</p>
+<p>在<code>GOPATH/src</code>路径终端依次运行下列命令，注意是<code>GOPATH/src</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/adjust/go-wrk.git</span><br><span class="line"><span class="built_in">cd</span> go-wrk</span><br><span class="line">go mod init</span><br><span class="line">go mod tidy</span><br><span class="line">go build</span><br></pre></td></tr></table></figure>
+
+<p>这时你会发现<code>go-wrk</code>项目里会多出<code>go-wrk.exe</code>文件，为了方便使用我选择把它放在（也就是复制粘贴过去）<code>GOPATH/bin</code>目录下，当然你得把<code>GOPATH/bin</code>放在环境变量里面，至于为什么将<code>go-wrk.exe</code>放在<code>$GOPATH/bin</code> 里面，这似乎是一种规范。我的其他文章也有提到过。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/e4b7edba08a04999aa3486868bb2018f.png"></p>
+<p>通过上述操作就可以在任何地方使用<code>go-wrk</code>命令了。</p>
+<h3 id="命令行交互界面"><a href="#命令行交互界面" class="headerlink" title="命令行交互界面"></a>命令行交互界面</h3><p>首先需要保证我们的项目需要在本地跑起来。在项目根目录终端运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">go build</span><br><span class="line">./blob</span><br></pre></td></tr></table></figure>
+
+<p>当然也可以使用<code>bee run</code>命令，毕竟这是beego项目特有的运行方式。</p>
+<p>然后在该路径下再开一个终端，用来跑压测，执行命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go-wrk -n 50000 http://localhost:8080/</span><br></pre></td></tr></table></figure>
+
+<p>执行上面的代码会进入交互界面如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">(base) PS F:\GolandProjects\beegoProject\blob&gt; go-wrk -n 50000 http://localhost:8080/</span><br><span class="line">==========================BENCHMARK==========================</span><br><span class="line">URL:                            http://localhost:8080/</span><br><span class="line"></span><br><span class="line">Used Connections:               100</span><br><span class="line">Used Threads:                   1</span><br><span class="line">Total number of calls:          50000</span><br><span class="line"></span><br><span class="line">===========================TIMINGS===========================</span><br><span class="line">Total time passed:              22.95s</span><br><span class="line">Avg time per request:           45.76ms</span><br><span class="line">Requests per second:            2179.05</span><br><span class="line">Median time per request:        45.14ms</span><br><span class="line">99th percentile time:           53.77ms</span><br><span class="line">Slowest time for request:       119.00ms</span><br><span class="line"></span><br><span class="line">=============================DATA=============================</span><br><span class="line">Total response body sizes:              251100000</span><br><span class="line">Avg response body per request:          5022.00 Byte</span><br><span class="line">Transfer rate per second:               10943208.24 Byte/s (10.94 MByte/s)</span><br><span class="line">==========================RESPONSES==========================</span><br><span class="line">20X Responses:          50000   (100.00%)</span><br><span class="line">30X Responses:          0       (0.00%)</span><br><span class="line">40X Responses:          0       (0.00%)</span><br><span class="line">50X Responses:          0       (0.00%)</span><br><span class="line">Errors:                 0       (0.00%)</span><br></pre></td></tr></table></figure>
+
+<p>接着再开一个终端，以使用<code>pprof</code>来分析。</p>
+<p>执行命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go tool pprof http://127.0.0.1:8080/debug/pprof/profile</span><br></pre></td></tr></table></figure>
+
+<p>执行上面的代码会进入交互界面如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(base) PS F:\GolandProjects\beegoProject\blob&gt; go tool pprof http://127.0.0.1:8080/debug/pprof/profile</span><br><span class="line">Fetching profile over HTTP from http://127.0.0.1:8080/debug/pprof/profile</span><br><span class="line">Saved profile in C:\Users\19393\pprof\pprof.blob.exe.samples.cpu.004.pb.gz</span><br><span class="line">File: blob.exe</span><br><span class="line">Build ID: F:\GolandProjects\beegoProject\blob\blob.exe2023-08-01 16:06:16.7719208 +0800 CST   </span><br><span class="line">Type: cpu</span><br><span class="line">Time: Aug 1, 2023 at 4:10pm (CST)</span><br><span class="line">Duration: 30s, Total samples = 44.41s (148.02%)</span><br><span class="line">Entering interactive mode (type &quot;help&quot; for commands, &quot;o&quot; for options)</span><br><span class="line">(pprof)</span><br></pre></td></tr></table></figure>
+
+<p>我们可以在交互界面输入<code>top5</code>来查看程序中占用CPU前5位的函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(pprof) top5</span><br><span class="line">Showing nodes accounting for 27510ms, 61.95% of 44410ms total</span><br><span class="line">Dropped 859 nodes (cum &lt;= 222.05ms)</span><br><span class="line">Showing top 5 nodes out of 246</span><br><span class="line">      flat  flat%   sum%        cum   cum%</span><br><span class="line">   21960ms 49.45% 49.45%    22080ms 49.72%  runtime.cgocall</span><br><span class="line">    2010ms  4.53% 53.97%     5980ms 13.47%  runtime.scanobject</span><br><span class="line">    1410ms  3.17% 57.15%     1740ms  3.92%  runtime.greyobject</span><br><span class="line">    1340ms  3.02% 60.17%     1730ms  3.90%  runtime.findObject</span><br><span class="line">     790ms  1.78% 61.95%      790ms  1.78%  runtime.stdcall2</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li>flat：当前函数占用CPU的耗时</li>
+<li>flat：:当前函数占用CPU的耗时百分比</li>
+<li>sun%：函数占用CPU的耗时累计百分比</li>
+<li>cum：当前函数加上调用当前函数的函数占用CPU的总耗时</li>
+<li>cum%：当前函数加上调用当前函数的函数占用CPU的总耗时百分比</li>
+<li>最后一列：函数名称</li>
+</ul>
+<p>我们发现上面并没有我们自己写的函数，所以本项目的性能还是不错的。在大多数的情况下，我们可以通过分析这五列得出一个应用程序的运行情况，并对程序进行优化。</p>
+<p>我们还可以使用<code>list 函数名</code>命令查看具体的函数分析，例如执行<code>list cgocall</code>查看我们编写的函数的详细分析。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">(pprof) list cgocall</span><br><span class="line">Total: 44.41s</span><br><span class="line">ROUTINE ======================== runtime.cgocall in F:\Users\19393\sdk\go1.20.4\src\runtime\cgocall.go</span><br><span class="line">    21.96s     22.08s (flat, cum) 49.72% of Total</span><br><span class="line">         .          .    123:func cgocall(fn, arg unsafe.Pointer) int32 &#123;</span><br><span class="line">         .          .    124:   if !iscgo &amp;&amp; GOOS != &quot;solaris&quot; &amp;&amp; GOOS != &quot;illumos&quot; &amp;&amp; GOOS != &quot;windows&quot; &#123;</span><br><span class="line">         .          .    125:           throw(&quot;cgocall unavailable&quot;)</span><br><span class="line">         .          .    126:   &#125;</span><br><span class="line">         .          .    127:</span><br><span class="line">         .          .    128:   if fn == nil &#123;</span><br><span class="line">         .          .    129:           throw(&quot;cgocall nil&quot;)</span><br><span class="line">         .          .    130:   &#125;</span><br><span class="line">         .          .    131:</span><br><span class="line">         .          .    132:   if raceenabled &#123;</span><br><span class="line">         .          .    133:           racereleasemerge(unsafe.Pointer(&amp;racecgosync))        </span><br><span class="line">         .          .    134:   &#125;</span><br><span class="line">         .          .    135:</span><br><span class="line">         .          .    136:   mp := getg().m</span><br><span class="line">         .          .    137:   mp.ncgocall++</span><br><span class="line">         .          .    138:   mp.ncgo++</span><br><span class="line">         .          .    139:</span><br><span class="line">         .          .    140:   // Reset traceback.</span><br><span class="line">         .          .    141:   mp.cgoCallers[0] = 0</span><br><span class="line">         .          .    142:</span><br><span class="line">         .          .    143:   // Announce we are entering a system call</span><br><span class="line">         .          .    144:   // so that the scheduler knows to create another</span><br><span class="line">         .          .    145:   // M to run goroutines while we are in the</span><br><span class="line">         .          .    146:   // foreign code.</span><br><span class="line">         .          .    147:   //</span><br><span class="line">         .          .    148:   // The call to asmcgocall is guaranteed not to</span><br><span class="line">         .          .    149:   // grow the stack and does not allocate memory,</span><br><span class="line">         .          .    150:   // so it is safe to call while &quot;in a system call&quot;, outside    </span><br><span class="line">         .          .    151:   // the $GOMAXPROCS accounting.</span><br><span class="line">         .          .    152:   //</span><br><span class="line">         .          .    153:   // fn may call back into Go code, in which case we&#x27;ll exit the</span><br><span class="line">         .          .    154:   // &quot;system call&quot;, run the Go code (which may grow the stack), </span><br><span class="line">         .          .    155:   // and then re-enter the &quot;system call&quot; reusing the PC and SP  </span><br><span class="line">         .          .    156:   // saved by entersyscall here.</span><br><span class="line">    21.94s     21.94s    157:   entersyscall()</span><br><span class="line">         .          .    158:</span><br><span class="line">         .          .    159:   // Tell asynchronous preemption that we&#x27;re entering external  </span><br><span class="line">         .          .    168:</span><br><span class="line">         .          .    169:   // Update accounting before exitsyscall because exitsyscall may</span><br><span class="line">         .          .    170:   // reschedule us on to a different M.</span><br><span class="line">         .          .    171:   mp.incgo = false</span><br><span class="line">         .          .    172:   mp.ncgo--</span><br><span class="line">         .          .    173:</span><br><span class="line">      20ms       40ms    174:   osPreemptExtExit(mp)</span><br><span class="line">         .          .    175:</span><br><span class="line">         .      100ms    176:   exitsyscall()</span><br><span class="line">         .          .    177:</span><br><span class="line">         .          .    178:   // Note that raceacquire must be called only after exitsyscall has</span><br><span class="line">         .          .    179:   // wired this M to a P.</span><br><span class="line">         .          .    180:   if raceenabled &#123;</span><br><span class="line">         .          .    181:           raceacquire(unsafe.Pointer(&amp;racecgosync))</span><br></pre></td></tr></table></figure>
+
+<p>通过分析发现大部分CPU资源被157行占用，耗时21.94s。</p>
+<h3 id="图形化"><a href="#图形化" class="headerlink" title="图形化"></a>图形化</h3><p>或者可以直接输入web，通过svg图的方式查看程序中详细的CPU占用情况。 想要查看图形化的界面首先需要安装<a target="_blank" rel="noopener" href="https://graphviz.gitlab.io/">graphviz</a>图形化工具。由于我是Windows系统，进入官网下载graphviz：<a target="_blank" rel="noopener" href="https://graphviz.gitlab.io/download/">https://graphviz.gitlab.io/download/</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/image-20230801162336635.png"></p>
+<p>下载完后打开<code>exe</code>文件进行安装。</p>
+<p>这里勾选第二个，自动帮你配置环境变量。后面快捷方式我选择不创建。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/image-20230801162838369.png"></p>
+<p>安装完毕后打开终端运行<code>dot -v</code>检查是否安装成功，安装成功应该会显示以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(base) PS C:\Users\19393&gt; dot -v</span><br><span class="line">dot - graphviz version 8.1.0 (20230707.0739)</span><br><span class="line">libdir = &quot;F:\Program Files\Graphviz\bin&quot;</span><br><span class="line">Activated plugin library: gvplugin_dot_layout.dll</span><br><span class="line">Using layout: dot:dot_layout</span><br><span class="line">Activated plugin library: gvplugin_core.dll</span><br><span class="line">Using render: dot:core</span><br><span class="line">Using device: dot:dot:core</span><br><span class="line">The plugin configuration file:</span><br><span class="line">        F:\Program Files\Graphviz\bin\config6</span><br><span class="line">                was successfully loaded.</span><br><span class="line">    render      :  cairo dot dot_json fig gdiplus json json0 map mp pic pov ps svg tk xdot xdot_json</span><br><span class="line">    layout      :  circo dot fdp neato nop nop1 nop2 osage patchwork sfdp twopi</span><br><span class="line">    textlayout  :  textlayout</span><br><span class="line">    device      :  bmp canon cmap cmapx cmapx_np dot dot_json emf emfplus eps fig gif gv imap imap_np ismap jpe jpeg jpg json json0 metafile mp pdf pic plain plain-ext png pov ps ps2 svg tif tiff tk xdot xdot1.2 xdot1.4 xdot_json</span><br><span class="line">    loadimage   :  (lib) bmp eps gif jpe jpeg jpg png ps svg</span><br></pre></td></tr></table></figure>
+
+<p>输入web前确认<code>graphviz</code>安装目录下的bin文件夹有无被添加到Path环境变量（我添加的系统变量）中。</p>
+<p>接下来我们尝试用图形化的界面来进行分析。</p>
+<p>先保证自己的<code>beego</code>项目运行在本地上，再开一个终端跑压测：<code>go-wrk -n 50000 http://localhost:8080/</code>，另外再来一个和终端跑<code>pprof</code>，执行命令：<code>go tool pprof http://127.0.0.1:8080/debug/pprof/profile</code>。</p>
+<p>跑<code>pprof</code>的终端如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(base) PS F:\GolandProjects\beegoProject\blob&gt; go tool pprof http://127.0.0.1:8080/debug/pprof/profile</span><br><span class="line">Fetching profile over HTTP from http://127.0.0.1:8080/debug/pprof/profile</span><br><span class="line">Saved profile in C:\Users\19393\pprof\pprof.blob.exe.samples.cpu.008.pb.gz</span><br><span class="line">File: blob.exe</span><br><span class="line">Build ID: F:\GolandProjects\beegoProject\blob\blob.exe2023-08-01 16:06:16.7719208 +0800 CST</span><br><span class="line">Type: cpu</span><br><span class="line">Time: Aug 1, 2023 at 7:02pm (CST)</span><br><span class="line">Duration: 30s, Total samples = 44.25s (147.48%)</span><br><span class="line">Entering interactive mode (type &quot;help&quot; for commands, &quot;o&quot; for options)</span><br><span class="line">(pprof) web</span><br><span class="line">(pprof)</span><br></pre></td></tr></table></figure>
+
+<p>由于输入了web命令，浏览器会自动弹出查看<code>svg</code>的页面：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/image-20230801190806595.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/image-20230801190826155.png"></p>
+<p>关于图形的说明： 每个框代表一个函数，理论上框的越大表示占用的CPU资源越多。 方框之间的线条代表函数之间的调用关系。 线条上的数字表示函数调用的时间。 方框中的第一行数字表示当前函数占用CPU的百分比，第二行数字表示当前函数累计占用CPU的百分比。</p>
+<p>除了分析CPU性能数据，pprof也支持分析内存性能数据。比如，使用下面的命令分析http服务的heap性能数据，查看当前程序的内存占用以及热点内存对象使用的情况。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看内存占用数据</span></span><br><span class="line">go tool pprof -inuse_space http://127.0.0.1:8080/debug/pprof/heap</span><br><span class="line">go tool pprof -inuse_objects http://127.0.0.1:8080/debug/pprof/heap</span><br><span class="line"><span class="comment"># 查看临时内存分配数据</span></span><br><span class="line">go tool pprof -alloc_space http://127.0.0.1:8080/debug/pprof/heap</span><br><span class="line">go tool pprof -alloc_objects http://127.0.0.1:8080/debug/pprof/heap</span><br></pre></td></tr></table></figure>
+
+<p>以下是查看内存占用数据的示例：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/image-20230801191312749.png"></p>
+<h3 id="火焰图"><a href="#火焰图" class="headerlink" title="火焰图"></a>火焰图</h3><p>火焰图（Flame Graph）是 Bredan Gregg 创建的一种性能分析图表，因为它的样子近似 🔥而得名。</p>
+<p>可以通过如下方式来打开火焰图：</p>
+<ol>
+<li>先把压测跑上：<code>go-wrk -n 50000 http://localhost:8080/</code></li>
+<li>项目根目录新开一个终端，运行<code>go tool pprof -http=:5200 http://127.0.0.1:8080/debug/pprof/profile</code>，30s后，浏览器会自动跳出新界面：<a target="_blank" rel="noopener" href="http://localhost:5200/ui/">http://localhost:5200/ui/</a>，如下：</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/image-20230801210039574.png"></p>
+<ol start="3">
+<li>跟之前的图形化界面差不多，接下来点击下图中图示任一个便能看到火焰图。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/image-20230801210150456.png"></p>
+<p>老版火焰图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/image-20230801210344921.png"></p>
+<p>新版火焰图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/image-20230801210420366.png"></p>
+<p>火焰图的优点是它是动态的：可以通过点击每个方块来 分析它下面的内容。</p>
+<p>火焰图的调用顺序从上到下，每个方块代表一个函数，它下面一层表示这个函数会调用哪些函数，方块的大小代表了占用 CPU 使用的长短。火焰图的配色并没有特殊的意义，默认的红、黄配色是为了更像火焰而已。</p>
+<p>火焰图的y轴表示cpu调用方法的先后，x轴表示在每个采样调用时间内，方法所占的时间百分比，越宽代表占据cpu时间越多。通过火焰图我们就可以更清楚的找出耗时长的函数调用，然后不断的修正代码，重新采样，不断优化。</p>
+<p>此外还可以借助火焰图分析内存性能数据：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">go tool pprof -http=:5200 -inuse_space http://127.0.0.1:8080/debug/pprof/heap</span><br><span class="line">go tool pprof -http=:5200 -inuse_objects http://127.0.0.1:8080/debug/pprof/heap</span><br><span class="line">go tool pprof -http=:5200 -alloc_space http://127.0.0.1:8080/debug/pprof/heap</span><br><span class="line">go tool pprof -http=:5200 -alloc_objects http://127.0.0.1:8080/debug/pprof/heap</span><br></pre></td></tr></table></figure>
+
+<p>内存性能火焰图示例：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/image-20230801211052678.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://uestcwxy.love">珩</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://uestcwxy.love/2023/08/01/Go/31/">https://uestcwxy.love/2023/08/01/Go/31/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://uestcwxy.love" target="_blank">Palp1tate</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/">大二自学</a><a class="post-meta__tags" href="/tags/Go/">Go</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/IMG_20230801_114856.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/07/31/%E6%95%B0%E6%8D%AE%E5%BA%93/2/" title="Windows安装配置Redis教程"><img class="cover" src="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Windows安装配置Redis教程</div></div></a></div><div class="next-post pull-right"><a href="/2023/08/01/gitlab/" title="Ubuntu安装部署Gitlab详细教程"><img class="cover" src="https://s2.loli.net/2023/05/31/TREyA8hgqS7JnfV.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Ubuntu安装部署Gitlab详细教程</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/06/01/Go/1/" title="学习go的准备工作"><img class="cover" src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-01</div><div class="title">学习go的准备工作</div></div></a></div><div><a href="/2023/06/06/Go/10/" title="方法与接口"><img class="cover" src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-06</div><div class="title">方法与接口</div></div></a></div><div><a href="/2023/06/09/Go/12/" title="type关键字与错误处理"><img class="cover" src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-09</div><div class="title">type关键字与错误处理</div></div></a></div><div><a href="/2023/06/10/Go/13/" title="包的使用和time包"><img class="cover" src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-10</div><div class="title">包的使用和time包</div></div></a></div><div><a href="/2023/06/08/Go/11/" title="补充函数与字符串"><img class="cover" src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-08</div><div class="title">补充函数与字符串</div></div></a></div><div><a href="/2023/06/14/Go/17/" title="Goroutine并发模型"><img class="cover" src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-14</div><div class="title">Goroutine并发模型</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">珩</div><div class="author-info__description">等我苦尽甘来时，我给你讲讲来时走的路。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">55</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/uestc-wxy/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.facebook.com/profile.php?id=100092533320651" target="_blank" title="facebook"><i class="fab fa-facebook" style="color: #4a7dbe;"></i></a><a class="social-icon" href="mailto:1939311091@qq.com" target="_blank" title="email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/1907948898" target="_blank" title="b站"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/tiktok.jpg" target="_blank" title="抖音"><i class="fab fa-tiktok" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/weixin.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">刚建站不久，博客美化有待研究，部分页面也没时间弄，路过的你将就看啦~😊，图片没加载出来就是网络不佳噢~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.</span> <span class="toc-text">性能优化建议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Benchmark%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.1.</span> <span class="toc-text">Benchmark的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#slice%E4%BC%98%E5%8C%96"><span class="toc-number">1.2.</span> <span class="toc-text">slice优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98"><span class="toc-number">1.2.1.</span> <span class="toc-text">预分配内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E5%86%85%E5%AD%98%E6%9C%AA%E9%87%8A%E6%94%BE"><span class="toc-number">1.2.2.</span> <span class="toc-text">大内存未释放</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#map%E4%BC%98%E5%8C%96"><span class="toc-number">1.3.</span> <span class="toc-text">map优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E4%BC%98%E5%8C%96"><span class="toc-number">1.4.</span> <span class="toc-text">字符串处理优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E4%BC%98%E5%8C%96"><span class="toc-number">1.5.</span> <span class="toc-text">结构体优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#atomic%E5%8C%85"><span class="toc-number">1.6.</span> <span class="toc-text">atomic包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">1.7.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pprof%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98"><span class="toc-number">2.</span> <span class="toc-text">pprof性能调优</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%87%E9%9B%86%E6%80%A7%E8%83%BD%E6%95%B0%E6%8D%AE"><span class="toc-number">2.1.</span> <span class="toc-text">采集性能数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%9E%8B%E5%BA%94%E7%94%A8"><span class="toc-number">2.2.</span> <span class="toc-text">服务型应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#go-tool-pprof%E5%91%BD%E4%BB%A4"><span class="toc-number">2.3.</span> <span class="toc-text">go tool pprof命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E8%B0%83%E4%BC%98%E5%88%86%E6%9E%90"><span class="toc-number">2.4.</span> <span class="toc-text">项目调优分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9main-go"><span class="toc-number">2.4.1.</span> <span class="toc-text">修改main.go</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85go-wrk"><span class="toc-number">2.4.2.</span> <span class="toc-text">安装go-wrk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BA%A4%E4%BA%92%E7%95%8C%E9%9D%A2"><span class="toc-number">2.4.3.</span> <span class="toc-text">命令行交互界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E5%8C%96"><span class="toc-number">2.4.4.</span> <span class="toc-text">图形化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%81%AB%E7%84%B0%E5%9B%BE"><span class="toc-number">2.4.5.</span> <span class="toc-text">火焰图</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/08/01/gitlab/" title="Ubuntu安装部署Gitlab详细教程"><img src="https://s2.loli.net/2023/05/31/TREyA8hgqS7JnfV.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu安装部署Gitlab详细教程"/></a><div class="content"><a class="title" href="/2023/08/01/gitlab/" title="Ubuntu安装部署Gitlab详细教程">Ubuntu安装部署Gitlab详细教程</a><time datetime="2023-08-01T13:57:40.000Z" title="发表于 2023-08-01 21:57:40">2023-08-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/01/Go/31/" title="Go语言性能优化建议与pprof性能调优详解"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/IMG_20230801_114856.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Go语言性能优化建议与pprof性能调优详解"/></a><div class="content"><a class="title" href="/2023/08/01/Go/31/" title="Go语言性能优化建议与pprof性能调优详解">Go语言性能优化建议与pprof性能调优详解</a><time datetime="2023-08-01T03:44:06.000Z" title="发表于 2023-08-01 11:44:06">2023-08-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/31/%E6%95%B0%E6%8D%AE%E5%BA%93/2/" title="Windows安装配置Redis教程"><img src="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Windows安装配置Redis教程"/></a><div class="content"><a class="title" href="/2023/07/31/%E6%95%B0%E6%8D%AE%E5%BA%93/2/" title="Windows安装配置Redis教程">Windows安装配置Redis教程</a><time datetime="2023-07-31T09:30:06.000Z" title="发表于 2023-07-31 17:30:06">2023-07-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/20/Go/30/" title="beego框架开发文档"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/4d287328613d2f4952a70edb9192044037dd5e22.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="beego框架开发文档"/></a><div class="content"><a class="title" href="/2023/07/20/Go/30/" title="beego框架开发文档">beego框架开发文档</a><time datetime="2023-07-20T13:44:47.000Z" title="发表于 2023-07-20 21:44:47">2023-07-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/20/Go/29/" title="第一次对github项目提PR请求——以修改casdoor项目的swagger文档为例"><img src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第一次对github项目提PR请求——以修改casdoor项目的swagger文档为例"/></a><div class="content"><a class="title" href="/2023/07/20/Go/29/" title="第一次对github项目提PR请求——以修改casdoor项目的swagger文档为例">第一次对github项目提PR请求——以修改casdoor项目的swagger文档为例</a><time datetime="2023-07-20T08:56:41.000Z" title="发表于 2023-07-20 16:56:41">2023-07-20</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/IMG_20230801_114856.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 By 珩</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><i class="fa-solid fa-cloud"></i><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>萌ICP备20230529号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="6614140207" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-mini="true"> </div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
