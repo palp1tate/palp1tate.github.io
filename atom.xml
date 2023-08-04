@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-08-01T14:15:31.245Z</updated>
+  <updated>2023-08-04T03:48:30.364Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Ubuntu安装部署Gitlab详细教程</title>
-    <link href="https://uestcwxy.love/2023/08/01/gitlab/"/>
-    <id>https://uestcwxy.love/2023/08/01/gitlab/</id>
-    <published>2023-08-01T13:57:40.000Z</published>
-    <updated>2023-08-01T14:15:31.245Z</updated>
+    <title>giterr</title>
+    <link href="https://uestcwxy.love/2023/08/04/giterr/"/>
+    <id>https://uestcwxy.love/2023/08/04/giterr/</id>
+    <published>2023-08-04T03:44:28.000Z</published>
+    <updated>2023-08-04T03:48:30.364Z</updated>
     
     
       
@@ -34,6 +34,58 @@
     
     
     
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RPC与gRPC详解</title>
+    <link href="https://uestcwxy.love/2023/08/04/Go/32/"/>
+    <id>https://uestcwxy.love/2023/08/04/Go/32/</id>
+    <published>2023-08-04T03:43:59.000Z</published>
+    <updated>2023-08-04T10:21:58.501Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
+    
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu安装部署Gitlab详细教程</title>
+    <link href="https://uestcwxy.love/2023/08/01/gitlab/"/>
+    <id>https://uestcwxy.love/2023/08/01/gitlab/</id>
+    <published>2023-08-01T13:57:40.000Z</published>
+    <updated>2023-08-04T03:46:40.223Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -58,9 +110,9 @@
     <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -106,9 +158,9 @@
     
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -154,9 +206,9 @@
     
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -179,11 +231,11 @@
     
     
     
-    <category term="前端" scheme="https://uestcwxy.love/tags/%E5%89%8D%E7%AB%AF/"/>
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    <category term="前端" scheme="https://uestcwxy.love/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -206,9 +258,9 @@
     
     
     
-    <category term="前端" scheme="https://uestcwxy.love/tags/%E5%89%8D%E7%AB%AF/"/>
-    
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="前端" scheme="https://uestcwxy.love/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -231,9 +283,9 @@
     
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -256,9 +308,9 @@
     
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -283,9 +335,9 @@
     <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -304,9 +356,9 @@
     <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -325,9 +377,9 @@
     <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -350,9 +402,9 @@
     
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -375,9 +427,9 @@
     
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -400,9 +452,9 @@
     
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -425,9 +477,9 @@
     
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
@@ -450,59 +502,9 @@
     
     
     
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
-  </entry>
-  
-  <entry>
-    <title>电子科大计网期末复习之经典大题</title>
-    <link href="https://uestcwxy.love/2023/06/25/%E8%AE%A1%E7%BD%91/7/"/>
-    <id>https://uestcwxy.love/2023/06/25/%E8%AE%A1%E7%BD%91/7/</id>
-    <published>2023-06-25T11:18:30.000Z</published>
-    <updated>2023-06-26T14:00:20.969Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="大二下期末复习" scheme="https://uestcwxy.love/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
-    
-    
-    <category term="计算机网络" scheme="https://uestcwxy.love/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计网期末复习之套接字编程</title>
-    <link href="https://uestcwxy.love/2023/06/24/%E8%AE%A1%E7%BD%91/6/"/>
-    <id>https://uestcwxy.love/2023/06/24/%E8%AE%A1%E7%BD%91/6/</id>
-    <published>2023-06-24T06:44:16.000Z</published>
-    <updated>2023-06-24T12:25:31.551Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="大二下期末复习" scheme="https://uestcwxy.love/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
-    
-    
-    <category term="计算机网络" scheme="https://uestcwxy.love/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
