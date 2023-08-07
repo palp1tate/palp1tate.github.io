@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-08-04T03:48:30.364Z</updated>
+  <updated>2023-08-07T07:27:53.962Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>giterr</title>
+    <title>Xorm开发详细文档</title>
+    <link href="https://uestcwxy.love/2023/08/07/Go/33/"/>
+    <id>https://uestcwxy.love/2023/08/07/Go/33/</id>
+    <published>2023-08-07T05:44:17.000Z</published>
+    <updated>2023-08-07T07:27:53.962Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>完美解决git报错fatal unable to access ‘https://github.com/.../.git‘:Recv failure Connection was reset</title>
     <link href="https://uestcwxy.love/2023/08/04/giterr/"/>
     <id>https://uestcwxy.love/2023/08/04/giterr/</id>
     <published>2023-08-04T03:44:28.000Z</published>
-    <updated>2023-08-04T03:48:30.364Z</updated>
+    <updated>2023-08-07T07:35:30.756Z</updated>
     
     
       
@@ -60,9 +85,9 @@
     <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
     
     
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
   </entry>
   
@@ -110,9 +135,9 @@
     <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
     
     
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
   </entry>
   
@@ -158,9 +183,9 @@
     
     
     
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
   </entry>
   
@@ -206,9 +231,9 @@
     
     
     
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
   </entry>
   
@@ -231,9 +256,9 @@
     
     
     
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
     <category term="前端" scheme="https://uestcwxy.love/tags/%E5%89%8D%E7%AB%AF/"/>
     
@@ -283,9 +308,9 @@
     
     
     
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
   </entry>
   
@@ -308,9 +333,9 @@
     
     
     
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
   </entry>
   
@@ -335,9 +360,9 @@
     <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
     
     
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
   </entry>
   
@@ -356,9 +381,9 @@
     <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
     
     
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
   </entry>
   
@@ -377,9 +402,9 @@
     <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
     
     
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
   </entry>
   
@@ -402,9 +427,9 @@
     
     
     
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
   </entry>
   
@@ -427,9 +452,9 @@
     
     
     
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
   </entry>
   
@@ -452,9 +477,9 @@
     
     
     
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
   </entry>
   
@@ -477,34 +502,9 @@
     
     
     
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
-  </entry>
-  
-  <entry>
-    <title>runtime包与临界资源</title>
-    <link href="https://uestcwxy.love/2023/07/06/Go/18/"/>
-    <id>https://uestcwxy.love/2023/07/06/Go/18/</id>
-    <published>2023-07-06T02:59:28.000Z</published>
-    <updated>2023-07-06T11:40:17.301Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   

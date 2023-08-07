@@ -1,0 +1,1660 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Xorm开发详细文档 | Palp1tate</title><meta name="author" content="珩,1939311091@qq.com"><meta name="copyright" content="珩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="介绍xorm是一个简单而强大的Go语言ORM库. 通过它可以使数据库操作非常简便。xorm的目标并不是让你完全不去学习SQL，我们认为SQL并不会为ORM所替代，但是ORM将可以解决绝大部分的简单SQL需求。xorm支持两种风格的混用。 特性 支持Struct和数据库表之间的灵活映射，并支持自动同步 事务支持 同时支持原始SQL语句和ORM操作的混合执行 使用连写来简化调用 支持使用Id, In,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Xorm开发详细文档">
+<meta property="og:url" content="https://uestcwxy.love/2023/08/07/Go/33/index.html">
+<meta property="og:site_name" content="Palp1tate">
+<meta property="og:description" content="介绍xorm是一个简单而强大的Go语言ORM库. 通过它可以使数据库操作非常简便。xorm的目标并不是让你完全不去学习SQL，我们认为SQL并不会为ORM所替代，但是ORM将可以解决绝大部分的简单SQL需求。xorm支持两种风格的混用。 特性 支持Struct和数据库表之间的灵活映射，并支持自动同步 事务支持 同时支持原始SQL语句和ORM操作的混合执行 使用连写来简化调用 支持使用Id, In,">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/4d287328613d2f4952a70edb9192044037dd5e22.jpg">
+<meta property="article:published_time" content="2023-08-07T05:44:17.000Z">
+<meta property="article:modified_time" content="2023-08-07T07:27:53.962Z">
+<meta property="article:author" content="珩">
+<meta property="article:tag" content="大二自学">
+<meta property="article:tag" content="Go">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/4d287328613d2f4952a70edb9192044037dd5e22.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://uestcwxy.love/2023/08/07/Go/33/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 珩","link":"链接: ","source":"来源: Palp1tate","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Xorm开发详细文档',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-07 15:27:53'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Palp1tate" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/4d287328613d2f4952a70edb9192044037dd5e22.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Palp1tate"><span class="site-name">Palp1tate</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Xorm开发详细文档</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-08-07T05:44:17.000Z" title="发表于 2023-08-07 13:44:17">2023-08-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-07T07:27:53.962Z" title="更新于 2023-08-07 15:27:53">2023-08-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">14.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>59分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Xorm开发详细文档"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>xorm是一个简单而强大的Go语言ORM库. 通过它可以使数据库操作非常简便。xorm的目标并不是让你完全不去学习SQL，我们认为SQL并不会为ORM所替代，但是ORM将可以解决绝大部分的简单SQL需求。xorm支持两种风格的混用。</p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>支持Struct和数据库表之间的灵活映射，并支持自动同步</li>
+<li>事务支持</li>
+<li>同时支持原始SQL语句和ORM操作的混合执行</li>
+<li>使用连写来简化调用</li>
+<li>支持使用Id, In, Where, Limit, Join, Having, Table, SQL, Cols等函数和结构体等方式作为条件</li>
+<li>支持级联加载Struct</li>
+<li>Schema支持（仅Postgres）</li>
+<li>支持缓存</li>
+<li>支持根据数据库自动生成xorm的结构体</li>
+<li>支持记录版本（即乐观锁）</li>
+<li>内置SQL Builder支持</li>
+<li>通过EngineGroup支持读写分离和负载均衡</li>
+</ul>
+<h2 id="支持的数据库"><a href="#支持的数据库" class="headerlink" title="支持的数据库"></a>支持的数据库</h2><ul>
+<li>Mysql: <a target="_blank" rel="noopener" href="https://github.com/go-sql-driver/mysql">github.com&#x2F;go-sql-driver&#x2F;mysql</a></li>
+<li>MyMysql: <a target="_blank" rel="noopener" href="https://github.com/ziutek/mymysql/godrv">github.com&#x2F;ziutek&#x2F;mymysql&#x2F;godrv</a></li>
+<li>Postgres: <a target="_blank" rel="noopener" href="https://github.com/lib/pq">github.com&#x2F;lib&#x2F;pq</a></li>
+<li>Tidb: <a target="_blank" rel="noopener" href="https://github.com/pingcap/tidb">github.com&#x2F;pingcap&#x2F;tidb</a></li>
+<li>SQLite: <a target="_blank" rel="noopener" href="https://github.com/mattn/go-sqlite3">github.com&#x2F;mattn&#x2F;go-sqlite3</a></li>
+<li>MsSql: <a target="_blank" rel="noopener" href="https://github.com/denisenkom/go-mssqldb">github.com&#x2F;denisenkom&#x2F;go-mssqldb</a></li>
+<li>MsSql: <a target="_blank" rel="noopener" href="https://github.com/lunny/godbc">github.com&#x2F;lunny&#x2F;godbc</a></li>
+<li>Oracle: <a target="_blank" rel="noopener" href="https://github.com/mattn/go-oci8">github.com&#x2F;mattn&#x2F;go-oci8</a> (试验性支持)</li>
+<li>ql: <a target="_blank" rel="noopener" href="https://github.com/cznic/ql">github.com&#x2F;cznic&#x2F;ql</a> (试验性支持)</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get xorm.io/xorm</span><br></pre></td></tr></table></figure>
+
+<h1 id="创建-Engine"><a href="#创建-Engine" class="headerlink" title="创建 Engine"></a>创建 Engine</h1><p>所有操作均需要事先创建并配置 ORM 引擎才可以进行。XORM 支持两种 ORM 引擎，即 Engine 引擎和 Engine Group 引擎。一个 Engine 引擎用于对单个数据库进行操作，一个 Engine Group 引擎用于对读写分离的数据库或者负载均衡的数据库进行操作。Engine 引擎和 EngineGroup 引擎的API基本相同，所有适用于 Engine 的 API 基本上都适用于 EngineGroup，并且可以比较容易的从 Engine 引擎迁移到 EngineGroup 引擎。</p>
+<h2 id="单引擎"><a href="#单引擎" class="headerlink" title="单引擎"></a>单引擎</h2><p>单个ORM引擎，也称为Engine。一个 APP 可以同时存在多个 Engine 引擎，一个Engine一般只对应一个数据库。Engine 通过调用 <code>xorm.NewEngine</code> 生成，如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    _ <span class="string">&quot;github.com/go-sql-driver/mysql&quot;</span></span><br><span class="line">    <span class="string">&quot;xorm.io/xorm&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> engine *xorm.Engine</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> err <span class="type">error</span></span><br><span class="line">    engine, err = xorm.NewEngine(<span class="string">&quot;mysql&quot;</span>, <span class="string">&quot;root:123@/test?charset=utf8&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或者：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    _ <span class="string">&quot;github.com/mattn/go-sqlite3&quot;</span></span><br><span class="line">    <span class="string">&quot;xorm.io/xorm&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> engine *xorm.Engine</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> err <span class="type">error</span></span><br><span class="line">    engine, err = xorm.NewEngine(<span class="string">&quot;sqlite3&quot;</span>, <span class="string">&quot;./test.db&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>你也可以用 <code>NewEngineWithParams</code>, <code>NewEngineWithDB</code> 和 <code>NewEngineWithDialectAndDB</code> 来创建引擎。</p>
+<p>一般情况下如果只操作一个数据库，只需要创建一个 <code>engine</code> 即可。<code>engine</code> 是 GoRoutine 安全的。</p>
+<p>创建完成 <code>engine</code> 之后，并没有立即连接数据库，此时可以通过 <code>engine.Ping()</code> 或者 <code>engine.PingContext()</code> 来进行数据库的连接测试是否可以连接到数据库。另外对于某些数据库有连接超时设置的，可以通过起一个定期Ping的Go程来保持连接鲜活。</p>
+<p>对于有大量数据并且需要分区的应用，也可以根据规则来创建多个Engine，比如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> err <span class="type">error</span></span><br><span class="line"><span class="keyword">for</span> i:=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++ &#123;</span><br><span class="line">    engines[i], err = xorm.NewEngine(<span class="string">&quot;sqlite3&quot;</span>, fmt.Sprintf(<span class="string">&quot;./test%d.db&quot;</span>, i))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>engine 可以通过 engine.Close 来手动关闭，但是一般情况下可以不用关闭，在程序退出时会自动关闭。</p>
+<p>NewEngine 传入的参数和<code>sql.Open</code>传入的参数完全相同，因此，在使用某个驱动前，请查看此驱动中关于传入参数的说明文档。以下为各个驱动的连接符对应的文档链接：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://pkg.go.dev/github.com/mattn/go-sqlite3#SQLiteDriver.Open">sqlite3</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/go-sql-driver/mysql#dsn-data-source-name">mysql dsn</a></li>
+<li><a target="_blank" rel="noopener" href="https://pkg.go.dev/github.com/ziutek/mymysql/godrv#Driver.Open">mymysql</a></li>
+<li><a target="_blank" rel="noopener" href="https://pkg.go.dev/github.com/lib/pq">postgres</a></li>
+</ul>
+<h3 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h3><p>日志是一个接口，通过设置日志，可以显示SQL，警告以及错误等，默认的显示级别为 INFO。</p>
+<ul>
+<li><code>engine.ShowSQL(true)</code>，则会在控制台打印出生成的SQL语句；</li>
+<li><code>engine.Logger().SetLevel(log.LOG_DEBUG)</code>，则会在控制台打印调试及以上的信息；</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	_ <span class="string">&quot;github.com/go-sql-driver/mysql&quot;</span></span><br><span class="line">	<span class="string">&quot;xorm.io/xorm&quot;</span></span><br><span class="line">	<span class="string">&quot;xorm.io/xorm/log&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> engine *xorm.Engine</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	engine, _ = xorm.NewEngine(<span class="string">&quot;mysql&quot;</span>, <span class="string">&quot;root:@/test?charset=utf8mb4&quot;</span>)</span><br><span class="line">	engine.ShowSQL(<span class="literal">true</span>)</span><br><span class="line">	engine.Logger().SetLevel(log.LOG_DEBUG)</span><br><span class="line">	engine.Close()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果希望将信息不仅打印到控制台，而是保存为文件，那么可以通过类似如下的代码实现，<code>NewSimpleLogger(w io.Writer)</code>接收一个io.Writer接口来将数据写入到对应的设施中。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">f, err := os.Create(<span class="string">&quot;sql.log&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="built_in">println</span>(err.Error())</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line">engine.SetLogger(log.NewSimpleLogger(f))</span><br></pre></td></tr></table></figure>
+
+<p>当然，如果希望将日志记录到 syslog 中，也可以如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">logWriter, err := syslog.New(syslog.LOG_DEBUG, <span class="string">&quot;rest-xorm-example&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">	log.Fatalf(<span class="string">&quot;Fail to create xorm system logger: %v\n&quot;</span>, err)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">logger := log.NewSimpleLogger(logWriter)</span><br><span class="line">logger.ShowSQL(<span class="literal">true</span>)</span><br><span class="line">engine.SetLogger(logger)</span><br></pre></td></tr></table></figure>
+
+<p>你也可以自定义自己的接口，可通过日志接口中包含的 <code>context</code> 进行更详细的跟踪。</p>
+<h3 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a>连接池</h3><p>engine内部支持连接池接口和对应的函数。</p>
+<ul>
+<li>如果需要设置连接池的空闲数大小，可以使用 <code>engine.SetMaxIdleConns()</code> 来实现。</li>
+<li>如果需要设置最大打开连接数，则可以使用 <code>engine.SetMaxOpenConns()</code> 来实现。</li>
+<li>如果需要设置连接的最大生存时间，则可以使用 <code>engine.SetConnMaxLifetime()</code> 来实现。</li>
+</ul>
+<h2 id="引擎组"><a href="#引擎组" class="headerlink" title="引擎组"></a>引擎组</h2><p>通过创建引擎组 EngineGroup 来实现对从数据库 (Master&#x2F;Slave) 读写分离的支持。在创建引擎章节中，我们已经介绍过了，在 xorm 里面，可以同时存在多个 Orm 引擎，一个 Orm 引擎称为 Engine，一个 Engine 一般只对应一个数据库，而 EngineGroup 一般则对应一组数据库。EngineGroup 通过调用 xorm.NewEngineGroup 生成，如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    _ <span class="string">&quot;github.com/lib/pq&quot;</span></span><br><span class="line">    <span class="string">&quot;xorm.io/xorm&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> eg *xorm.EngineGroup</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	conns := []<span class="type">string</span>&#123;</span><br><span class="line">		<span class="string">&quot;postgres://postgres:root@localhost:5432/test?sslmode=disable;&quot;</span>, <span class="comment">// 第一个默认是master</span></span><br><span class="line">		<span class="string">&quot;postgres://postgres:root@localhost:5432/test1?sslmode=disable;&quot;</span>, <span class="comment">// 第二个开始都是slave</span></span><br><span class="line">		<span class="string">&quot;postgres://postgres:root@localhost:5432/test2?sslmode=disable&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> err <span class="type">error</span></span><br><span class="line">	eg, err = xorm.NewEngineGroup(<span class="string">&quot;postgres&quot;</span>, conns)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    _ <span class="string">&quot;github.com/lib/pq&quot;</span></span><br><span class="line">    <span class="string">&quot;xorm.io/xorm&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> eg *xorm.EngineGroup</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> err <span class="type">error</span></span><br><span class="line">    master, err := xorm.NewEngine(<span class="string">&quot;postgres&quot;</span>, <span class="string">&quot;postgres://postgres:root@localhost:5432/test?sslmode=disable&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    slave1, err := xorm.NewEngine(<span class="string">&quot;postgres&quot;</span>, <span class="string">&quot;postgres://postgres:root@localhost:5432/test1?sslmode=disable&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    slave2, err := xorm.NewEngine(<span class="string">&quot;postgres&quot;</span>, <span class="string">&quot;postgres://postgres:root@localhost:5432/test2?sslmode=disable&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">   	slaves := []*xorm.Engine&#123;slave1, slave2&#125;</span><br><span class="line">	eg, err = xorm.NewEngineGroup(master, slaves)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建完成 EngineGroup 之后，并没有立即连接数据库，此时可以通过 eg.Ping() 来进行数据库的连接测试是否可以连接到数据库，该方法会依次调用引擎组中每个Engine的Ping方法。另外对于某些数据库有连接超时设置的，可以通过起一个定期Ping的Go程来保持连接鲜活。EngineGroup 可以通过 eg.Close() 来手动关闭，但是一般情况下可以不用关闭，在程序退出时会自动关闭。</p>
+<ul>
+<li>NewEngineGroup方法</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewEngineGroup</span><span class="params">(args1 <span class="keyword">interface</span>&#123;&#125;, args2 <span class="keyword">interface</span>&#123;&#125;, policies ...GroupPolicy)</span></span> (*EngineGroup, <span class="type">error</span>)</span><br></pre></td></tr></table></figure>
+
+<p>前两个参数的使用示例如上，有两种模式。</p>
+<ul>
+<li><p>模式一：通过给定 DriverName，DataSourceName 来创建引擎组，每个引擎使用相同的Driver。每个引擎的 DataSourceNames 是 []string 类型，第一个元素是 Master 的 DataSourceName，之后的元素是 Slave的DataSourceName 。</p>
+</li>
+<li><p>模式二：通过给定*xorm.Engine，<code>[]*xorm.Engine</code> 来创建引擎组，每个引擎可以使用不同的 Driver。第一个参数为 Master 的 *xorm.Engine，第二个参数为 Slave 的 []*xorm.Engine。 NewEngineGroup 方法，第三个参数为 policies，为 Slave 设定负载策略，该参数将在负载策略章节详细介绍，如示例中未指定，则默认为轮询负载策略。</p>
+</li>
+<li><p>Master方法</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(eg *EngineGroup)</span></span> Master() *Engine</span><br></pre></td></tr></table></figure>
+
+<p>返回Master数据库引擎</p>
+<ul>
+<li>Slave方法</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(eg *EngineGroup)</span></span> Slave() *Engine</span><br></pre></td></tr></table></figure>
+
+<p>依据给定的负载策略返回一个Slave数据库引擎</p>
+<ul>
+<li>Slaves方法</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(eg *EngineGroup)</span></span> Slaves() []*Engine</span><br></pre></td></tr></table></figure>
+
+<p>返回所以 Slave 数据库引擎</p>
+<ul>
+<li>SetPolicy方法</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(eg *EngineGroup)</span></span> SetPolicy(policy GroupPolicy) *EngineGroup</span><br></pre></td></tr></table></figure>
+
+<h2 id="引擎组策略"><a href="#引擎组策略" class="headerlink" title="引擎组策略"></a>引擎组策略</h2><h3 id="负载策略"><a href="#负载策略" class="headerlink" title="负载策略"></a>负载策略</h3><p>通过 xorm.NewEngineGroup 创建 EngineGroup 时，第三个参数为 policies，我们可以通过该参数来指定 Slave 访问的负载策略。如创建EngineGroup 时未指定，则默认使用轮询的负载策略。</p>
+<p>xorm 中内置五种负载策略，分别为随机访问负载策略，权重随机访问负载策略，轮询访问负载策略，权重轮询访问负载策略和最小连接数访问负载策略。开发者也可以通过实现 GroupPolicy 接口，来实现自定义负载策略。</p>
+<ul>
+<li>随机访问负载策略</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">  _ <span class="string">&quot;github.com/lib/pq&quot;</span></span><br><span class="line">  <span class="string">&quot;xorm.io/xorm&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> eg *xorm.EngineGroup</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  conns := []<span class="type">string</span>&#123;</span><br><span class="line">    <span class="string">&quot;postgres://postgres:root@localhost:5432/test?sslmode=disable;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;postgres://postgres:root@localhost:5432/test1?sslmode=disable;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;postgres://postgres:root@localhost:5432/test2?sslmode=disable&quot;</span>,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> err <span class="type">error</span></span><br><span class="line">  eg, err = xorm.NewEngineGroup(<span class="string">&quot;postgres&quot;</span>, conns, xorm.RandomPolicy())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>权重随机访问负载策略</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    _ <span class="string">&quot;github.com/lib/pq&quot;</span></span><br><span class="line">    <span class="string">&quot;xorm.io/xorm&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> eg *xorm.EngineGroup</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  conns := []<span class="type">string</span>&#123;</span><br><span class="line">		<span class="string">&quot;postgres://postgres:root@localhost:5432/test?sslmode=disable;&quot;</span>,</span><br><span class="line">		<span class="string">&quot;postgres://postgres:root@localhost:5432/test1?sslmode=disable;&quot;</span>,</span><br><span class="line">		<span class="string">&quot;postgres://postgres:root@localhost:5432/test2?sslmode=disable&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> err <span class="type">error</span></span><br><span class="line">  <span class="comment">//此时设置的test1数据库和test2数据库的随机访问权重为2和3</span></span><br><span class="line">	eg, err = xorm.NewEngineGroup(<span class="string">&quot;postgres&quot;</span>, conns, xorm.WeightRandomPolicy([]<span class="type">int</span>&#123;<span class="number">2</span>, <span class="number">3</span>&#125;))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>轮询访问负载策略</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    _ <span class="string">&quot;github.com/lib/pq&quot;</span></span><br><span class="line">    <span class="string">&quot;xorm.io/xorm&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> eg *xorm.EngineGroup</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    conns := []<span class="type">string</span>&#123;</span><br><span class="line">		<span class="string">&quot;postgres://postgres:root@localhost:5432/test?sslmode=disable;&quot;</span>,</span><br><span class="line">		<span class="string">&quot;postgres://postgres:root@localhost:5432/test1?sslmode=disable;&quot;</span>,</span><br><span class="line">		<span class="string">&quot;postgres://postgres:root@localhost:5432/test2?sslmode=disable&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> err <span class="type">error</span></span><br><span class="line">	eg, err = xorm.NewEngineGroup(<span class="string">&quot;postgres&quot;</span>, conns, xorm.RoundRobinPolicy())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>权重轮询访问负载策略</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    _ <span class="string">&quot;github.com/lib/pq&quot;</span></span><br><span class="line">    <span class="string">&quot;xorm.io/xorm&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> eg *xorm.EngineGroup</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  conns := []<span class="type">string</span>&#123;</span><br><span class="line">		<span class="string">&quot;postgres://postgres:root@localhost:5432/test?sslmode=disable;&quot;</span>,</span><br><span class="line">		<span class="string">&quot;postgres://postgres:root@localhost:5432/test1?sslmode=disable;&quot;</span>,</span><br><span class="line">		<span class="string">&quot;postgres://postgres:root@localhost:5432/test2?sslmode=disable&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> err <span class="type">error</span></span><br><span class="line">  <span class="comment">//此时设置的test1数据库和test2数据库的轮询访问权重为2和3</span></span><br><span class="line">	eg, err = xorm.NewEngineGroup(<span class="string">&quot;postgres&quot;</span>, conns, xorm.WeightRoundRobinPolicy([]<span class="type">int</span>&#123;<span class="number">2</span>, <span class="number">3</span>&#125;))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>最小连接数访问负载策略</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    _ <span class="string">&quot;github.com/lib/pq&quot;</span></span><br><span class="line">    <span class="string">&quot;xorm.io/xorm&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> eg *xorm.EngineGroup</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    conns := []<span class="type">string</span>&#123;</span><br><span class="line">		<span class="string">&quot;postgres://postgres:root@localhost:5432/test?sslmode=disable;&quot;</span>,</span><br><span class="line">		<span class="string">&quot;postgres://postgres:root@localhost:5432/test1?sslmode=disable;&quot;</span>,</span><br><span class="line">		<span class="string">&quot;postgres://postgres:root@localhost:5432/test2?sslmode=disable&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> err <span class="type">error</span></span><br><span class="line">	eg, err = xorm.NewEngineGroup(<span class="string">&quot;postgres&quot;</span>, conns, xorm.LeastConnPolicy())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>自定义负载策略</li>
+</ul>
+<p>你也可以通过实现 GroupPolicy 接口来实现自定义负载策略。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> GroupPolicy <span class="keyword">interface</span> &#123;</span><br><span class="line">	Slave(*EngineGroup) *Engine</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="定义表结构体"><a href="#定义表结构体" class="headerlink" title="定义表结构体"></a>定义表结构体</h1><h2 id="各种映射规则"><a href="#各种映射规则" class="headerlink" title="各种映射规则"></a>各种映射规则</h2><p>跟名称相关的函数包含在 <code>xorm.io/xorm/names</code> 下。名称映射规则主要负责结构体名称到表名和结构体 field 到表字段的名称映射。由 <code>names.Mapper</code> 接口的实现者来管理，xorm 内置了三种 <code>Mapper</code> 实现：<code>names.SnakeMapper</code> ， <code>names.SameMapper</code>和<code>names.GonicMapper</code>。</p>
+<ul>
+<li>SnakeMapper 支持struct为驼峰式命名，表结构为下划线命名之间的转换，这个是默认的Maper；</li>
+<li>SameMapper 支持结构体名称和对应的表名称以及结构体field名称与对应的表字段名称相同的命名；</li>
+<li>GonicMapper 和SnakeMapper很类似，但是对于特定词支持更好，比如ID会翻译成id而不是i_d。</li>
+</ul>
+<p>当前 SnakeMapper 为默认值，如果需要改变时，在 engine 创建完成后使用</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">engine.SetMapper(names.GonicMapper&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>同时需要注意的是：</p>
+<ul>
+<li>如果你使用了别的命名规则映射方案，也可以自己实现一个 Mapper。</li>
+<li>表名称和字段名称的映射规则默认是相同的，当然也可以设置为不同，如：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">engine.SetTableMapper(names.SameMapper&#123;&#125;)</span><br><span class="line">engine.SetColumnMapper(names.SnakeMapper&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>当结构体自动转换为对应的数据库类型时，下面的表显示了转换关系：</p>
+<table>
+<thead>
+<tr>
+<th>go type’s kind</th>
+<th>value method</th>
+<th>xorm type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>implemented Conversion</td>
+<td>Conversion.ToDB &#x2F; Conversion.FromDB</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>int, int8, int16, int32, uint, uint8, uint16, uint32</td>
+<td></td>
+<td>Int</td>
+</tr>
+<tr>
+<td>int64, uint64</td>
+<td></td>
+<td>BigInt</td>
+</tr>
+<tr>
+<td>float32</td>
+<td></td>
+<td>Float</td>
+</tr>
+<tr>
+<td>float64</td>
+<td></td>
+<td>Double</td>
+</tr>
+<tr>
+<td>complex64, complex128</td>
+<td>json.Marshal &#x2F; json.UnMarshal</td>
+<td>Varchar(64)</td>
+</tr>
+<tr>
+<td>[]uint8</td>
+<td></td>
+<td>Blob</td>
+</tr>
+<tr>
+<td>array, slice, map except []uint8</td>
+<td>json.Marshal &#x2F; json.UnMarshal</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>1 or 0</td>
+<td>Bool</td>
+</tr>
+<tr>
+<td>string</td>
+<td></td>
+<td>Varchar(255)</td>
+</tr>
+<tr>
+<td>time.Time</td>
+<td></td>
+<td>DateTime</td>
+</tr>
+<tr>
+<td>cascade struct</td>
+<td>primary key field value</td>
+<td>BigInt</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>struct</td>
+<td>json.Marshal &#x2F; json.UnMarshal</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>Others</td>
+<td></td>
+<td>Text</td>
+</tr>
+</tbody></table>
+<h2 id="前缀映射，后缀映射和缓存映射"><a href="#前缀映射，后缀映射和缓存映射" class="headerlink" title="前缀映射，后缀映射和缓存映射"></a>前缀映射，后缀映射和缓存映射</h2><ul>
+<li>通过 <code>names.NewPrefixMapper(names.SnakeMapper&#123;&#125;, &quot;prefix&quot;)</code> 可以创建一个在 SnakeMapper 的基础上在命名中添加统一的前缀，当然也可以把 SnakeMapper{} 换成 SameMapper 或者你自定义的 Mapper。</li>
+</ul>
+<p>例如，如果希望所有的表名都在结构体自动命名的基础上加一个前缀而字段名不加前缀，则可以在 engine 创建完成后执行以下语句：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tbMapper := names.NewPrefixMapper(names.SnakeMapper&#123;&#125;, <span class="string">&quot;prefix_&quot;</span>)</span><br><span class="line">engine.SetTableMapper(tbMapper)</span><br></pre></td></tr></table></figure>
+
+<p>执行之后，结构体 <code>type User struct</code> 默认对应的表名就变成了 <code>prefix_user</code> 了，而之前默认的是 <code>user</code></p>
+<ul>
+<li>通过 <code>names.NewSuffixMapper(names.SnakeMapper&#123;&#125;, &quot;suffix&quot;)</code> 可以创建一个在 SnakeMapper 的基础上在命名中添加统一的后缀，当然也可以把SnakeMapper换成SameMapper或者你自定义的Mapper。</li>
+<li>通过 <code>names.NewCacheMapper(names.SnakeMapper&#123;&#125;)</code> 可以创建一个组合了其它的映射规则，起到在内存中缓存曾经映射过的命名映射。</li>
+</ul>
+<h2 id="使用-Table-和-Tag-改变名称映射"><a href="#使用-Table-和-Tag-改变名称映射" class="headerlink" title="使用 Table 和 Tag 改变名称映射"></a>使用 Table 和 Tag 改变名称映射</h2><p>如果所有的命名都是按照 Mapper 的映射来操作的，那当然是最理想的。但是如果碰到某个表名或者某个字段名跟映射规则不匹配时，我们就需要别的机制来改变。xorm 提供了如下几种方式来进行：</p>
+<ul>
+<li>如果结构体拥有 <code>TableName() string</code> 的成员方法，那么此方法的返回值即是该结构体对应的数据库表名。</li>
+<li>通过 <code>engine.Table()</code> 方法可以改变 struct 对应的数据库表的名称，通过 sturct 中 field 对应的 Tag 中使用 <code>xorm:&quot;&#39;column_name&#39;&quot;</code>可以使该 field 对应的 Column 名称为指定名称。这里使用两个单引号将 Column 名称括起来是为了防止名称冲突，因为我们在Tag中还可以对这个Column进行更多的定义。如果名称不冲突的情况，单引号也可以不使用。</li>
+</ul>
+<p>到此名称映射的所有方法都给出了，一共三种方式，这三种是有优先级顺序的。</p>
+<ul>
+<li>表名的优先级顺序如下：<ul>
+<li><code>engine.Table()</code> 指定的临时表名优先级最高</li>
+<li><code>TableName() string</code> 其次</li>
+<li><code>Mapper</code> 自动映射的表名优先级最后</li>
+</ul>
+</li>
+<li>字段名的优先级顺序如下：<ul>
+<li>结构体tag指定的字段名优先级较高</li>
+<li><code>Mapper</code> 自动映射的表名优先级较低</li>
+</ul>
+</li>
+</ul>
+<h2 id="Column-属性定义"><a href="#Column-属性定义" class="headerlink" title="Column 属性定义"></a>Column 属性定义</h2><p>我们在 field 对应的 Tag 中对 Column 的一些属性进行定义，定义的方法基本和我们写SQL定义表结构类似，比如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    Id   <span class="type">int64</span></span><br><span class="line">    Name <span class="type">string</span>  <span class="string">`xorm:&quot;varchar(25) notnull unique &#x27;usr_name&#x27; comment(&#x27;姓名&#x27;)&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于不同的数据库系统，数据类型其实是有些差异的。因此xorm中对数据类型有自己的定义，基本的原则是尽量兼容各种数据库的字段类型，具体的字段对应关系可以查看<a target="_blank" rel="noopener" href="https://xorm.io/zh/docs/chapter-02/4.columns/5.types.md">字段类型对应表</a>。对于使用者，一般只要使用自己熟悉的数据库字段定义即可。</p>
+<p>具体的 Tag 规则如下，另 Tag 中的关键字均不区分大小写，但字段名根据不同的数据库是区分大小写：</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>当前field对应的字段的名称，可选，如不写，则自动根据field名字和转换规则命名，如与其它关键字冲突，请使用单引号括起来。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pk</td>
+<td>是否是Primary Key，如果在一个struct中有多个字段都使用了此标记，则这多个字段构成了复合主键，单主键当前支持int32,int,int64,uint32,uint,uint64,string这7种Go的数据类型，复合主键支持这7种Go的数据类型的组合。</td>
+</tr>
+<tr>
+<td>当前支持30多种字段类型，详情参见本文最后一个表格</td>
+<td>字段类型</td>
+</tr>
+<tr>
+<td>autoincr</td>
+<td>是否是自增</td>
+</tr>
+<tr>
+<td>[not ]null 或 notnull</td>
+<td>是否可以为空</td>
+</tr>
+<tr>
+<td>unique或unique(uniquename)</td>
+<td>是否是唯一，如不加括号则该字段不允许重复；如加上括号，则括号中为联合唯一索引的名字，此时如果有另外一个或多个字段和本unique的uniquename相同，则这些uniquename相同的字段组成联合唯一索引</td>
+</tr>
+<tr>
+<td>index或index(indexname)</td>
+<td>是否是索引，如不加括号则该字段自身为索引，如加上括号，则括号中为联合索引的名字，此时如果有另外一个或多个字段和本index的indexname相同，则这些indexname相同的字段组成联合索引</td>
+</tr>
+<tr>
+<td>extends</td>
+<td>应用于一个匿名成员结构体或者非匿名成员结构体之上，表示此结构体的所有成员也映射到数据库中，extends可加载无限级</td>
+</tr>
+<tr>
+<td>-</td>
+<td>这个Field将不进行字段映射</td>
+</tr>
+<tr>
+<td>-&gt;</td>
+<td>这个Field将只写入到数据库而不从数据库读取</td>
+</tr>
+<tr>
+<td>&lt;-</td>
+<td>这个Field将只从数据库读取，而不写入到数据库</td>
+</tr>
+<tr>
+<td>created</td>
+<td>这个Field将在Insert时自动赋值为当前时间</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>这个Field将在Insert或Update时自动赋值为当前时间</td>
+</tr>
+<tr>
+<td>deleted</td>
+<td>这个Field将在Delete时设置为当前时间，并且当前记录不删除</td>
+</tr>
+<tr>
+<td>version</td>
+<td>这个Field将会在insert时默认为1，每次更新自动加1</td>
+</tr>
+<tr>
+<td>default 0或default(0)</td>
+<td>设置默认值，紧跟的内容如果是Varchar等需要加上单引号</td>
+</tr>
+<tr>
+<td>json</td>
+<td>表示内容将先转成Json格式，然后存储到数据库中，数据库中的字段类型可以为Text或者二进制</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>设置字段的注释（当前仅支持mysql）</td>
+</tr>
+</tbody></table>
+<p>另外有如下几条自动映射的规则：</p>
+<ul>
+<li>1.如果field名称为<code>Id</code>而且类型为<code>int64</code>并且没有定义tag，则会被xorm视为主键，并且拥有自增属性。如果想用<code>Id</code>以外的名字或非int64类型做为主键名，必须在对应的Tag上加上<code>xorm:&quot;pk&quot;</code>来定义主键，加上<code>xorm:&quot;autoincr&quot;</code>作为自增。这里需要注意的是，有些数据库并不允许非主键的自增属性。</li>
+<li>2.string类型默认映射为<code>varchar(255)</code>，如果需要不同的定义，可以在tag中自定义，如：<code>varchar(1024)</code></li>
+<li>3.支持<code>type MyString string</code>等自定义的field，支持Slice, Map等field成员，这些成员默认存储为Text类型，并且默认将使用Json格式来序列化和反序列化。也支持数据库字段类型为Blob类型。如果是Blob类型，则先使用Json格式序列化再转成[]byte格式。如果是[]byte或者[]uint8，则不做转换二十直接以二进制方式存储。具体参见 <a target="_blank" rel="noopener" href="https://xorm.io/zh/docs/chapter-02/4.columns/chapter-02/5.types.md">Go与字段类型对应表</a></li>
+<li>4.实现了Conversion接口的类型或者结构体，将根据接口的转换方式在类型和数据库记录之间进行相互转换，这个接口的优先级是最高的。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Conversion <span class="keyword">interface</span> &#123;</span><br><span class="line">    FromDB([]<span class="type">byte</span>) <span class="type">error</span></span><br><span class="line">    ToDB() ([]<span class="type">byte</span>, <span class="type">error</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>5.如果一个结构体包含一个 Conversion 的接口类型，那么在获取数据时，必须要预先设置一个实现此接口的struct或者struct的指针。此时可以在此struct中实现<code>BeforeSet(name string, cell xorm.Cell)</code>方法来进行预先给Conversion赋值。例子参见 <a target="_blank" rel="noopener" href="https://gitea.com/xorm/tests/blob/master/base.go#L1826">testConversion</a></li>
+</ul>
+<p>下表为xorm类型和各个数据库类型的对应表：</p>
+<table>
+<thead>
+<tr>
+<th>xorm</th>
+<th>mysql</th>
+<th>sqlite3</th>
+<th>postgres</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BIT</td>
+<td>BIT</td>
+<td>INTEGER</td>
+<td>BIT</td>
+<td></td>
+</tr>
+<tr>
+<td>TINYINT</td>
+<td>TINYINT</td>
+<td>INTEGER</td>
+<td>SMALLINT</td>
+<td></td>
+</tr>
+<tr>
+<td>SMALLINT</td>
+<td>SMALLINT</td>
+<td>INTEGER</td>
+<td>SMALLINT</td>
+<td></td>
+</tr>
+<tr>
+<td>MEDIUMINT</td>
+<td>MEDIUMINT</td>
+<td>INTEGER</td>
+<td>INTEGER</td>
+<td></td>
+</tr>
+<tr>
+<td>INT</td>
+<td>INT</td>
+<td>INTEGER</td>
+<td>INTEGER</td>
+<td></td>
+</tr>
+<tr>
+<td>INTEGER</td>
+<td>INTEGER</td>
+<td>INTEGER</td>
+<td>INTEGER</td>
+<td></td>
+</tr>
+<tr>
+<td>BIGINT</td>
+<td>BIGINT</td>
+<td>INTEGER</td>
+<td>BIGINT</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>CHAR</td>
+<td>CHAR</td>
+<td>TEXT</td>
+<td>CHAR</td>
+<td></td>
+</tr>
+<tr>
+<td>VARCHAR</td>
+<td>VARCHAR</td>
+<td>TEXT</td>
+<td>VARCHAR</td>
+<td></td>
+</tr>
+<tr>
+<td>TINYTEXT</td>
+<td>TINYTEXT</td>
+<td>TEXT</td>
+<td>TEXT</td>
+<td></td>
+</tr>
+<tr>
+<td>TEXT</td>
+<td>TEXT</td>
+<td>TEXT</td>
+<td>TEXT</td>
+<td></td>
+</tr>
+<tr>
+<td>MEDIUMTEXT</td>
+<td>MEDIUMTEXT</td>
+<td>TEXT</td>
+<td>TEXT</td>
+<td></td>
+</tr>
+<tr>
+<td>LONGTEXT</td>
+<td>LONGTEXT</td>
+<td>TEXT</td>
+<td>TEXT</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>BINARY</td>
+<td>BINARY</td>
+<td>BLOB</td>
+<td>BYTEA</td>
+<td></td>
+</tr>
+<tr>
+<td>VARBINARY</td>
+<td>VARBINARY</td>
+<td>BLOB</td>
+<td>BYTEA</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DATE</td>
+<td>DATE</td>
+<td>NUMERIC</td>
+<td>DATE</td>
+<td></td>
+</tr>
+<tr>
+<td>DATETIME</td>
+<td>DATETIME</td>
+<td>NUMERIC</td>
+<td>TIMESTAMP</td>
+<td></td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>TIME</td>
+<td>NUMERIC</td>
+<td>TIME</td>
+<td></td>
+</tr>
+<tr>
+<td>TIMESTAMP</td>
+<td>TIMESTAMP</td>
+<td>NUMERIC</td>
+<td>TIMESTAMP</td>
+<td></td>
+</tr>
+<tr>
+<td>TIMESTAMPZ</td>
+<td>TEXT</td>
+<td>TEXT</td>
+<td>TIMESTAMP with zone</td>
+<td>timestamp with zone info</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>REAL</td>
+<td>REAL</td>
+<td>REAL</td>
+<td>REAL</td>
+<td></td>
+</tr>
+<tr>
+<td>FLOAT</td>
+<td>FLOAT</td>
+<td>REAL</td>
+<td>REAL</td>
+<td></td>
+</tr>
+<tr>
+<td>DOUBLE</td>
+<td>DOUBLE</td>
+<td>REAL</td>
+<td>DOUBLE PRECISION</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DECIMAL</td>
+<td>DECIMAL</td>
+<td>NUMERIC</td>
+<td>DECIMAL</td>
+<td></td>
+</tr>
+<tr>
+<td>NUMERIC</td>
+<td>NUMERIC</td>
+<td>NUMERIC</td>
+<td>NUMERIC</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>TINYBLOB</td>
+<td>TINYBLOB</td>
+<td>BLOB</td>
+<td>BYTEA</td>
+<td></td>
+</tr>
+<tr>
+<td>BLOB</td>
+<td>BLOB</td>
+<td>BLOB</td>
+<td>BYTEA</td>
+<td></td>
+</tr>
+<tr>
+<td>MEDIUMBLOB</td>
+<td>MEDIUMBLOB</td>
+<td>BLOB</td>
+<td>BYTEA</td>
+<td></td>
+</tr>
+<tr>
+<td>LONGBLOB</td>
+<td>LONGBLOB</td>
+<td>BLOB</td>
+<td>BYTEA</td>
+<td></td>
+</tr>
+<tr>
+<td>BYTEA</td>
+<td>BLOB</td>
+<td>BLOB</td>
+<td>BYTEA</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>BOOL</td>
+<td>TINYINT</td>
+<td>INTEGER</td>
+<td>BOOLEAN</td>
+<td></td>
+</tr>
+<tr>
+<td>SERIAL</td>
+<td>INT</td>
+<td>INTEGER</td>
+<td>SERIAL</td>
+<td>auto increment</td>
+</tr>
+<tr>
+<td>BIGSERIAL</td>
+<td>BIGINT</td>
+<td>INTEGER</td>
+<td>BIGSERIAL</td>
+<td>auto increment</td>
+</tr>
+</tbody></table>
+<h2 id="Go与字段类型对应表"><a href="#Go与字段类型对应表" class="headerlink" title="Go与字段类型对应表"></a>Go与字段类型对应表</h2><p>如果不使用 tag 来定义 field 对应的数据库字段类型，那么系统会自动给出一个默认的字段类型，对应表如下：</p>
+<table>
+<thead>
+<tr>
+<th>go type’s kind</th>
+<th>value method</th>
+<th>xorm type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>implemented Conversion</td>
+<td>Conversion.ToDB &#x2F; Conversion.FromDB</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>int, int8, int16, int32, uint, uint8, uint16, uint32</td>
+<td></td>
+<td>Int</td>
+</tr>
+<tr>
+<td>int64, uint64</td>
+<td></td>
+<td>BigInt</td>
+</tr>
+<tr>
+<td>float32</td>
+<td></td>
+<td>Float</td>
+</tr>
+<tr>
+<td>float64</td>
+<td></td>
+<td>Double</td>
+</tr>
+<tr>
+<td>complex64, complex128</td>
+<td>json.Marshal &#x2F; json.UnMarshal</td>
+<td>Varchar(64)</td>
+</tr>
+<tr>
+<td>[]uint8</td>
+<td></td>
+<td>Blob</td>
+</tr>
+<tr>
+<td>array, slice, map except []uint8</td>
+<td>json.Marshal &#x2F; json.UnMarshal</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>1 or 0</td>
+<td>Bool</td>
+</tr>
+<tr>
+<td>string</td>
+<td></td>
+<td>Varchar(255)</td>
+</tr>
+<tr>
+<td>time.Time</td>
+<td></td>
+<td>DateTime</td>
+</tr>
+<tr>
+<td>cascade struct</td>
+<td>primary key field value</td>
+<td>BigInt</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>struct</td>
+<td>json.Marshal &#x2F; json.UnMarshal</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>Others</td>
+<td></td>
+<td>Text</td>
+</tr>
+</tbody></table>
+<h1 id="表结构操作"><a href="#表结构操作" class="headerlink" title="表结构操作"></a>表结构操作</h1><p>xorm 提供了一些动态获取和修改表结构的方法，通过这些方法可以动态同步数据库结构，导出数据库结构，导入数据库结构。</p>
+<h2 id="获取数据库信息"><a href="#获取数据库信息" class="headerlink" title="获取数据库信息"></a>获取数据库信息</h2><ul>
+<li>DBMetas()</li>
+</ul>
+<p>xorm支持获取表结构信息，通过调用 <code>engine.DBMetas()</code> 可以获取到数据库中所有的表，字段，索引的信息。</p>
+<ul>
+<li>TableInfo()</li>
+</ul>
+<p>根据传入的结构体指针及其对应的Tag，提取出模型对应的表结构信息。这里不是数据库当前的表结构信息，而是我们通过struct建模时希望数据库的表的结构信息。</p>
+<h2 id="表操作"><a href="#表操作" class="headerlink" title="表操作"></a>表操作</h2><ul>
+<li>CreateTables()</li>
+</ul>
+<p>创建表使用<code>engine.CreateTables()</code>，参数为一个或多个空的对应Struct的指针。同时可用的方法有Charset()和StoreEngine()，如果对应的数据库支持，这两个方法可以在创建表时指定表的字符编码和使用的引擎。Charset()和StoreEngine()当前仅支持Mysql数据库。</p>
+<ul>
+<li>IsTableEmpty()</li>
+</ul>
+<p>判断表是否为空，参数和CreateTables相同</p>
+<ul>
+<li>IsTableExist()</li>
+</ul>
+<p>判断表是否存在</p>
+<ul>
+<li>DropTables()</li>
+</ul>
+<p>删除表使用<code>engine.DropTables()</code>，参数为一个或多个空的对应Struct的指针或者表的名字。如果为string传入，则只删除对应的表，如果传入的为Struct，则删除表的同时还会删除对应的索引。</p>
+<h2 id="创建索引和唯一索引"><a href="#创建索引和唯一索引" class="headerlink" title="创建索引和唯一索引"></a>创建索引和唯一索引</h2><ul>
+<li>CreateIndexes</li>
+</ul>
+<p>根据struct中的tag来创建索引</p>
+<ul>
+<li>CreateUniques</li>
+</ul>
+<p>根据struct中的tag来创建唯一索引</p>
+<h2 id="同步数据库结构"><a href="#同步数据库结构" class="headerlink" title="同步数据库结构"></a>同步数据库结构</h2><p>同步能够部分智能的根据结构体的变动检测表结构的变动，并自动同步。目前有两个实现：</p>
+<ul>
+<li>Sync</li>
+</ul>
+<p>Sync将进行如下的同步操作：</p>
+<ul>
+<li>自动检测和创建表，这个检测是根据表的名字</li>
+<li>自动检测和新增表中的字段，这个检测是根据字段名</li>
+<li>自动检测和创建索引和唯一索引，这个检测是根据索引的一个或多个字段名，而不根据索引名称</li>
+</ul>
+<p>调用方法如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">err := engine.Sync(<span class="built_in">new</span>(User), <span class="built_in">new</span>(Group))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Sync2</li>
+</ul>
+<p>Sync2对Sync进行了改进，目前推荐使用Sync2。Sync2函数将进行如下的同步操作：</p>
+<ul>
+<li>自动检测和创建表，这个检测是根据表的名字</li>
+<li>自动检测和新增表中的字段，这个检测是根据字段名，同时对表中多余的字段给出警告信息</li>
+<li>自动检测，创建和删除索引和唯一索引，这个检测是根据索引的一个或多个字段名，而不根据索引名称。因此这里需要注意，如果在一个有大量数据的表中引入新的索引，数据库可能需要一定的时间来建立索引。</li>
+<li>自动转换varchar字段类型到text字段类型，自动警告其它字段类型在模型和数据库之间不一致的情况。</li>
+<li>自动警告字段的默认值，是否为空信息在模型和数据库之间不匹配的情况</li>
+</ul>
+<p>以上这些警告信息需要将<code>engine.ShowWarn</code> 设置为 <code>true</code> 才会显示。</p>
+<p>调用方法和Sync一样：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">err := engine.Sync2(<span class="built_in">new</span>(User), <span class="built_in">new</span>(Group))</span><br></pre></td></tr></table></figure>
+
+<h2 id="导出导入SQL脚本"><a href="#导出导入SQL脚本" class="headerlink" title="导出导入SQL脚本"></a>导出导入SQL脚本</h2><h3 id="Dump数据库结构和数据"><a href="#Dump数据库结构和数据" class="headerlink" title="Dump数据库结构和数据"></a>Dump数据库结构和数据</h3><p>如果需要在程序中Dump数据库的结构和数据可以调用</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">engine.DumpAll(w io.Writer)</span><br></pre></td></tr></table></figure>
+
+<p>和</p>
+<p><code>engine.DumpAllToFile(fpath string)</code>。</p>
+<p>DumpAll方法接收一个io.Writer接口来保存Dump出的数据库结构和数据的SQL语句，这个方法导出的SQL语句并不能通用。只针对当前engine所对应的数据库支持的SQL。</p>
+<p>例如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line"></span><br><span class="line">	_ <span class="string">&quot;github.com/go-sql-driver/mysql&quot;</span></span><br><span class="line">	<span class="string">&quot;xorm.io/xorm&quot;</span></span><br><span class="line">	<span class="string">&quot;xorm.io/xorm/log&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	engine, err := xorm.NewEngine(<span class="string">&quot;mysql&quot;</span>, <span class="string">&quot;root:123@/weblog?charset=utf8mb4&quot;</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	engine.ShowSQL(<span class="literal">true</span>)</span><br><span class="line">	engine.Logger().SetLevel(log.LOG_DEBUG)</span><br><span class="line"></span><br><span class="line">	f, err := os.Create(<span class="string">&quot;dump.sql&quot;</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	engine.DumpAll(f)</span><br><span class="line">	f.Close()</span><br><span class="line">	engine.Close()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Import-执行数据库SQL脚本"><a href="#Import-执行数据库SQL脚本" class="headerlink" title="Import 执行数据库SQL脚本"></a>Import 执行数据库SQL脚本</h3><p>如果你需要将保存在文件或者其它存储设施中的SQL脚本执行，那么可以调用</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">engine.Import(r io.Reader)</span><br></pre></td></tr></table></figure>
+
+<p>和</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">engine.ImportFile(fpath <span class="type">string</span>)</span><br></pre></td></tr></table></figure>
+
+<p>同样，这里需要对应的数据库的SQL语法支持。</p>
+<h1 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h1><p>插入数据使用Insert方法，Insert方法的参数可以是一个或多个Struct的指针，一个或多个Struct的Slice的指针。</p>
+<p>如果传入的是Slice并且当数据库支持批量插入时，Insert会使用批量插入的方式进行插入。</p>
+<ul>
+<li>插入一条数据，此时可以用Insert或者InsertOne</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">user := <span class="built_in">new</span>(User)</span><br><span class="line">user.Name = <span class="string">&quot;myname&quot;</span></span><br><span class="line">affected, err := engine.Insert(user)</span><br><span class="line"><span class="comment">// INSERT INTO user (name) values (?)</span></span><br></pre></td></tr></table></figure>
+
+<p>在插入单条数据成功后，如果该结构体有自增字段(设置为autoincr)，则自增字段会被自动赋值为数据库中的id。这里需要注意的是，如果插入的结构体中，自增字段已经赋值，则该字段会被作为非自增字段插入。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(user.Id)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>插入同一个表的多条数据，此时如果数据库支持批量插入，那么会进行批量插入，但是这样每条记录就无法被自动赋予id值。如果数据库不支持批量插入，那么就会一条一条插入。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">users := <span class="built_in">make</span>([]User, <span class="number">1</span>)</span><br><span class="line">users[<span class="number">0</span>].Name = <span class="string">&quot;name0&quot;</span></span><br><span class="line">...</span><br><span class="line">affected, err := engine.Insert(&amp;users)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用指针Slice插入多条记录，同上</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">users := <span class="built_in">make</span>([]*User, <span class="number">1</span>)</span><br><span class="line">users[<span class="number">0</span>] = <span class="built_in">new</span>(User)</span><br><span class="line">users[<span class="number">0</span>].Name = <span class="string">&quot;name0&quot;</span></span><br><span class="line">...</span><br><span class="line">affected, err := engine.Insert(&amp;users)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>插入多条记录并且不使用批量插入，此时实际生成多条插入语句，每条记录均会自动赋予Id值。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">users := <span class="built_in">make</span>([]*User, <span class="number">1</span>)</span><br><span class="line">users[<span class="number">0</span>] = <span class="built_in">new</span>(User)</span><br><span class="line">users[<span class="number">0</span>].Name = <span class="string">&quot;name0&quot;</span></span><br><span class="line">...</span><br><span class="line">affected, err := engine.Insert(users)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>插入不同表的一条记录</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">user := <span class="built_in">new</span>(User)</span><br><span class="line">user.Name = <span class="string">&quot;myname&quot;</span></span><br><span class="line">question := <span class="built_in">new</span>(Question)</span><br><span class="line">question.Content = <span class="string">&quot;whywhywhwy?&quot;</span></span><br><span class="line">affected, err := engine.Insert(user, question)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>插入不同表的多条记录</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">users := <span class="built_in">make</span>([]User, <span class="number">1</span>)</span><br><span class="line">users[<span class="number">0</span>].Name = <span class="string">&quot;name0&quot;</span></span><br><span class="line">...</span><br><span class="line">questions := <span class="built_in">make</span>([]Question, <span class="number">1</span>)</span><br><span class="line">questions[<span class="number">0</span>].Content = <span class="string">&quot;whywhywhwy?&quot;</span></span><br><span class="line">affected, err := engine.Insert(&amp;users, &amp;questions)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>插入不同表的一条或多条记录</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">user := <span class="built_in">new</span>(User)</span><br><span class="line">user.Name = <span class="string">&quot;myname&quot;</span></span><br><span class="line">...</span><br><span class="line">questions := <span class="built_in">make</span>([]Question, <span class="number">1</span>)</span><br><span class="line">questions[<span class="number">0</span>].Content = <span class="string">&quot;whywhywhwy?&quot;</span></span><br><span class="line">affected, err := engine.Insert(user, &amp;questions)</span><br></pre></td></tr></table></figure>
+
+<p>这里需要注意以下几点：</p>
+<ul>
+<li>这里虽然支持同时插入，但这些插入并没有事务关系。因此有可能在中间插入出错后，后面的插入将不会继续。此时前面的插入已经成功，如果需要回滚，请开启事务。</li>
+<li>批量插入会自动生成<code>Insert into table values (),(),()</code>的语句，因此各个数据库对SQL语句有长度限制，因此这样的语句有一个最大的记录数，根据经验测算在150条左右。大于150条后，生成的sql语句将太长可能导致执行失败。因此在插入大量数据时，目前需要自行分割成每150条插入一次。</li>
+</ul>
+<h2 id="创建时间Created"><a href="#创建时间Created" class="headerlink" title="创建时间Created"></a>创建时间Created</h2><p>Created可以让您在数据插入到数据库时自动将对应的字段设置为当前时间，需要在xorm标记中使用created标记，如下所示进行标记，对应的字段可以为time.Time或者自定义的time.Time或者int,int64等int类型。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    Id <span class="type">int64</span></span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    CreatedAt time.Time <span class="string">`xorm:&quot;created&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> JsonTime time.Time</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(j JsonTime)</span></span> MarshalJSON() ([]<span class="type">byte</span>, <span class="type">error</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> []<span class="type">byte</span>(<span class="string">`&quot;`</span>+time.Time(j).Format(<span class="string">&quot;2006-01-02 15:04:05&quot;</span>)+<span class="string">`&quot;`</span>), <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    Id <span class="type">int64</span></span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    CreatedAt JsonTime <span class="string">`xorm:&quot;created&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    Id <span class="type">int64</span></span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    CreatedAt <span class="type">int64</span> <span class="string">`xorm:&quot;created&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在Insert()或InsertOne()方法被调用时，created标记的字段将会被自动更新为当前时间或者当前时间的秒数（对应为time.Unix())，如下所示：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> user User</span><br><span class="line">engine.Insert(&amp;user)</span><br><span class="line"><span class="comment">// INSERT user (created...) VALUES (?...)</span></span><br></pre></td></tr></table></figure>
+
+<p>最后一个值得注意的是时区问题，默认xorm采用Local时区，所以默认调用的time.Now()会先被转换成对应的时区。要改变xorm的时区，可以使用：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">engine.TZLocation, _ = time.LoadLocation(<span class="string">&quot;Asia/Shanghai&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="查询和统计数据"><a href="#查询和统计数据" class="headerlink" title="查询和统计数据"></a>查询和统计数据</h1><p>所有的查询条件不区分调用顺序，但必须在调用Get，Exist, Sum, Find，Count, Iterate, Rows这几个函数之前调用。同时需要注意的一点是，在调用的参数中，如果采用默认的<code>SnakeMapper</code>所有的字符字段名均为映射后的数据库的字段名，而不是field的名字。</p>
+<h3 id="查询条件方法"><a href="#查询条件方法" class="headerlink" title="查询条件方法"></a>查询条件方法</h3><p>查询和统计主要使用<code>Get</code>, <code>Find</code>, <code>Count</code>, <code>Rows</code>, <code>Iterate</code>这几个方法，同时大部分函数在调用<code>Update</code>, <code>Delete</code>时也是可用的。在进行查询时可以使用多个方法来形成查询条件，条件函数如下：</p>
+<ul>
+<li>Alias(string)</li>
+</ul>
+<p>给Table设定一个别名</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">engine.Alias(<span class="string">&quot;o&quot;</span>).Where(<span class="string">&quot;o.name = ?&quot;</span>, name).Get(&amp;order)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>And(string, …interface{})</li>
+</ul>
+<p>和Where函数中的条件基本相同，作为条件</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">engine.Where(...).And(...).Get(&amp;order)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Asc(…string)</li>
+</ul>
+<p>指定字段名正序排序，可以组合</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">engine.Asc(<span class="string">&quot;id&quot;</span>).Find(&amp;orders)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Desc(…string)</li>
+</ul>
+<p>指定字段名逆序排序，可以组合</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">engine.Asc(<span class="string">&quot;id&quot;</span>).Desc(<span class="string">&quot;time&quot;</span>).Find(&amp;orders)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ID(interface{})</li>
+</ul>
+<p>传入一个主键字段的值，作为查询条件，如</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> user User</span><br><span class="line">engine.ID(<span class="number">1</span>).Get(&amp;user)</span><br><span class="line"><span class="comment">// SELECT * FROM user Where id = 1</span></span><br></pre></td></tr></table></figure>
+
+<p>如果是复合主键，则可以</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">engine.ID(schemas.PK&#123;<span class="number">1</span>, <span class="string">&quot;name&quot;</span>&#125;).Get(&amp;user)</span><br><span class="line"><span class="comment">// SELECT * FROM user Where id =1 AND name= &#x27;name&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>传入的两个参数按照struct中pk标记字段出现的顺序赋值。</p>
+<ul>
+<li>Or(interface{}, …interface{})</li>
+</ul>
+<p>和Where函数中的条件基本相同，作为条件</p>
+<ul>
+<li>OrderBy(string)</li>
+</ul>
+<p>按照指定的顺序进行排序</p>
+<ul>
+<li>Select(string)</li>
+</ul>
+<p>指定select语句的字段部分内容，例如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">engine.Select(<span class="string">&quot;a.*, (select name from b limit 1) as name&quot;</span>).Find(&amp;beans)</span><br><span class="line"></span><br><span class="line">engine.Select(<span class="string">&quot;a.*, (select name from b limit 1) as name&quot;</span>).Get(&amp;bean)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>SQL(string, …interface{})</li>
+</ul>
+<p>执行指定的Sql语句，并把结果映射到结构体。有时，当选择内容或者条件比较复杂时，可以直接使用Sql，例如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">engine.SQL(<span class="string">&quot;select * from table&quot;</span>).Find(&amp;beans)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Where(string, …interface{})</li>
+</ul>
+<p>和SQL中Where语句中的条件基本相同，作为条件</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">engine.Where(<span class="string">&quot;a = ? AND b = ?&quot;</span>, <span class="number">1</span>, <span class="number">2</span>).Find(&amp;beans)</span><br><span class="line"></span><br><span class="line">engine.Where(builder.Eq&#123;<span class="string">&quot;a&quot;</span>:<span class="number">1</span>, <span class="string">&quot;b&quot;</span>: <span class="number">2</span>&#125;).Find(&amp;beans)</span><br><span class="line"></span><br><span class="line">engine.Where(builder.Eq&#123;<span class="string">&quot;a&quot;</span>:<span class="number">1</span>&#125;.Or(builder.Eq&#123;<span class="string">&quot;b&quot;</span>: <span class="number">2</span>&#125;)).Find(&amp;beans)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>In(string, …interface{})</li>
+</ul>
+<p>某字段在一些值中，这里需要注意必须是[]interface{}才可以展开，由于Go语言的限制，[]int64等不可以直接展开，而是通过传递一个slice。第二个参数也可以是一个*builder.Builder 指针。示例代码如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// select from table where column in (1,2,3)</span></span><br><span class="line">engine.In(<span class="string">&quot;cloumn&quot;</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>).Find()</span><br><span class="line"></span><br><span class="line"><span class="comment">// select from table where column in (1,2,3)</span></span><br><span class="line">engine.In(<span class="string">&quot;column&quot;</span>, []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;).Find()</span><br><span class="line"></span><br><span class="line"><span class="comment">// select from table where column in (select column from table2 where a = 1)</span></span><br><span class="line">engine.In(<span class="string">&quot;column&quot;</span>, builder.Select(<span class="string">&quot;column&quot;</span>).From(<span class="string">&quot;table2&quot;</span>).Where(builder.Eq&#123;<span class="string">&quot;a&quot;</span>:<span class="number">1</span>&#125;)).Find()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Cols(…string)</li>
+</ul>
+<p>只查询或更新某些指定的字段，默认是查询所有映射的字段或者根据Update的第一个参数来判断更新的字段。例如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">engine.Cols(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;name&quot;</span>).Get(&amp;usr)</span><br><span class="line"><span class="comment">// SELECT age, name FROM user limit 1</span></span><br><span class="line">engine.Cols(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;name&quot;</span>).Find(&amp;users)</span><br><span class="line"><span class="comment">// SELECT age, name FROM user</span></span><br><span class="line">engine.Cols(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;name&quot;</span>).Update(&amp;user)</span><br><span class="line"><span class="comment">// UPDATE user SET age=? AND name=?</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>AllCols()</li>
+</ul>
+<p>查询或更新所有字段，一般与Update配合使用，因为默认Update只更新非0，非””，非bool的字段。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">engine.AllCols().ID(<span class="number">1</span>).Update(&amp;user)</span><br><span class="line"><span class="comment">// UPDATE user SET name = ?, age =?, gender =? WHERE id = 1</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>MustCols(…string)</li>
+</ul>
+<p>某些字段必须更新，一般与Update配合使用。</p>
+<ul>
+<li>Omit(…string)</li>
+</ul>
+<p>和cols相反，此函数指定排除某些指定的字段。注意：此方法和Cols方法不可同时使用。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 例1：</span></span><br><span class="line">engine.Omit(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;gender&quot;</span>).Update(&amp;user)</span><br><span class="line"><span class="comment">// UPDATE user SET name = ? AND department = ?</span></span><br><span class="line"><span class="comment">// 例2：</span></span><br><span class="line">engine.Omit(<span class="string">&quot;age, gender&quot;</span>).Insert(&amp;user)</span><br><span class="line"><span class="comment">// INSERT INTO user (name) values (?) // 这样的话age和gender会给默认值</span></span><br><span class="line"><span class="comment">// 例3：</span></span><br><span class="line">engine.Omit(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;gender&quot;</span>).Find(&amp;users)</span><br><span class="line"><span class="comment">// SELECT name FROM user //只select除age和gender字段的其它字段</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Distinct(…string)</li>
+</ul>
+<p>按照参数中指定的字段归类结果。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">engine.Distinct(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;department&quot;</span>).Find(&amp;users)</span><br><span class="line"><span class="comment">// SELECT DISTINCT age, department FROM user</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：当开启了缓存时，此方法的调用将在当前查询中禁用缓存。因为缓存系统当前依赖Id，而此时无法获得Id</p>
+<ul>
+<li>Table(nameOrStructPtr interface{})</li>
+</ul>
+<p>传入表名称或者结构体指针，如果传入的是结构体指针，则按照IMapper的规则提取出表名</p>
+<ul>
+<li>Limit(int, …int)</li>
+</ul>
+<p>限制获取的数目，第一个参数为条数，第二个参数表示开始位置，如果不传则为0</p>
+<ul>
+<li>Top(int)</li>
+</ul>
+<p>相当于Limit(int, 0)</p>
+<ul>
+<li>Join(string,interface{},string)</li>
+</ul>
+<p>第一个参数为连接类型，当前支持INNER, LEFT OUTER, CROSS中的一个值， 第二个参数为string类型的表名，表对应的结构体指针或者为两个值的[]string，表示表名和别名， 第三个参数为连接条件</p>
+<ul>
+<li>GroupBy(string)</li>
+</ul>
+<p>Groupby的参数字符串</p>
+<ul>
+<li>Having(string)</li>
+</ul>
+<p>Having的参数字符串</p>
+<h3 id="临时开关方法"><a href="#临时开关方法" class="headerlink" title="临时开关方法"></a>临时开关方法</h3><ul>
+<li>NoAutoTime()</li>
+</ul>
+<p>如果此方法执行，则此次生成的语句中Created和Updated字段将不自动赋值为当前时间</p>
+<ul>
+<li>NoCache()</li>
+</ul>
+<p>如果此方法执行，则此次生成的语句则在非缓存模式下执行</p>
+<ul>
+<li>NoAutoCondition()</li>
+</ul>
+<p>禁用自动根据结构体中的值来生成条件</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">engine.Where(<span class="string">&quot;name = ?&quot;</span>, <span class="string">&quot;lunny&quot;</span>).Get(&amp;User&#123;Id:<span class="number">1</span>&#125;)</span><br><span class="line"><span class="comment">// SELECT * FROM user where name=&#x27;lunny&#x27; AND id = 1 LIMIT 1</span></span><br><span class="line">engine.Where(<span class="string">&quot;name = ?&quot;</span>, <span class="string">&quot;lunny&quot;</span>).NoAutoCondition().Get(&amp;User&#123;Id:<span class="number">1</span>&#125;)</span><br><span class="line"><span class="comment">// SELECT * FROM user where name=&#x27;lunny&#x27; LIMIT 1</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>UseBool(…string)</li>
+</ul>
+<p>当从一个struct来生成查询条件或更新字段时，xorm会判断struct的field是否为0,””,nil，如果为以上则不当做查询条件或者更新内容。因为bool类型只有true和false两种值，因此默认所有bool类型不会作为查询条件或者更新字段。如果可以使用此方法，如果默认不传参数，则所有的bool字段都将会被使用，如果参数不为空，则参数中指定的为字段名，则这些字段对应的bool值将被使用。</p>
+<ul>
+<li>NoCascade()</li>
+</ul>
+<p>是否自动关联查询field中的数据，如果struct的field也是一个struct并且映射为某个Id，则可以在查询时自动调用Get方法查询出对应的数据。</p>
+<h3 id="Get方法"><a href="#Get方法" class="headerlink" title="Get方法"></a>Get方法</h3><p>查询单条数据使用<code>Get</code>方法，在调用Get方法时需要传入一个对应结构体的指针，同时结构体中的非空field自动成为查询的条件和前面的方法条件组合在一起查询。</p>
+<p>如：</p>
+<ol>
+<li>根据Id来获得单条数据:</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">user := <span class="built_in">new</span>(User)</span><br><span class="line">has, err := engine.ID(id).Get(user)</span><br><span class="line"><span class="comment">// 复合主键的获取方法</span></span><br><span class="line"><span class="comment">// has, errr := engine.ID(xorm.PK&#123;1,2&#125;).Get(user)</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>根据Where来获得单条数据：</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user := <span class="built_in">new</span>(User)</span><br><span class="line">has, err := engine.Where(<span class="string">&quot;name=?&quot;</span>, <span class="string">&quot;xlw&quot;</span>).Get(user)</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>根据user结构体中已有的非空数据来获得单条数据：</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user := &amp;User&#123;Id:<span class="number">1</span>&#125;</span><br><span class="line">has, err := engine.Get(user)</span><br></pre></td></tr></table></figure>
+
+<p>或者其它条件</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user := &amp;User&#123;Name:<span class="string">&quot;xlw&quot;</span>&#125;</span><br><span class="line">has, err := engine.Get(user)</span><br></pre></td></tr></table></figure>
+
+<p>返回的结果为两个参数，一个<code>has</code>为该条记录是否存在，第二个参数<code>err</code>为是否有错误。不管err是否为nil，has都有可能为true或者false。</p>
+<h3 id="Find方法"><a href="#Find方法" class="headerlink" title="Find方法"></a>Find方法</h3><p>查询多条数据使用<code>Find</code>方法，Find方法的第一个参数为<code>slice</code>的指针或<code>Map</code>指针，即为查询后返回的结果，第二个参数可选，为查询的条件struct的指针。</p>
+<ol>
+<li>传入Slice用于返回数据</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">everyone := <span class="built_in">make</span>([]Userinfo, <span class="number">0</span>)</span><br><span class="line">err := engine.Find(&amp;everyone)</span><br><span class="line"></span><br><span class="line">pEveryOne := <span class="built_in">make</span>([]*Userinfo, <span class="number">0</span>)</span><br><span class="line">err := engine.Find(&amp;pEveryOne)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>传入Map用户返回数据，map必须为<code>map[int64]Userinfo</code>的形式，map的key为id，因此对于复合主键无法使用这种方式。</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">users := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int64</span>]Userinfo)</span><br><span class="line">err := engine.Find(&amp;users)</span><br><span class="line"></span><br><span class="line">pUsers := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int64</span>]*Userinfo)</span><br><span class="line">err := engine.Find(&amp;pUsers)</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>也可以加入各种条件</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">users := <span class="built_in">make</span>([]Userinfo, <span class="number">0</span>)</span><br><span class="line">err := engine.Where(<span class="string">&quot;age &gt; ? or name = ?&quot;</span>, <span class="number">30</span>, <span class="string">&quot;xlw&quot;</span>).Limit(<span class="number">20</span>, <span class="number">10</span>).Find(&amp;users)</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>如果只选择单个字段，也可使用非结构体的Slice</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ints []<span class="type">int64</span></span><br><span class="line">err := engine.Table(<span class="string">&quot;user&quot;</span>).Cols(<span class="string">&quot;id&quot;</span>).Find(&amp;ints)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Count方法"><a href="#Count方法" class="headerlink" title="Count方法"></a>Count方法</h3><p>统计数据使用<code>Count</code>方法，Count方法的参数为struct的指针并且成为查询条件。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user := <span class="built_in">new</span>(User)</span><br><span class="line">total, err := engine.Where(<span class="string">&quot;id &gt;?&quot;</span>, <span class="number">1</span>).Count(user)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Exist系列方法"><a href="#Exist系列方法" class="headerlink" title="Exist系列方法"></a>Exist系列方法</h3><p>判断某个记录是否存在可以使用<code>Exist</code>, 相比<code>Get</code>，<code>Exist</code>性能更好。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">has, err := testEngine.Exist(<span class="built_in">new</span>(RecordExist))</span><br><span class="line"><span class="comment">// SELECT * FROM record_exist LIMIT 1</span></span><br><span class="line">has, err = testEngine.Exist(&amp;RecordExist&#123;</span><br><span class="line">		Name: <span class="string">&quot;test1&quot;</span>,</span><br><span class="line">	&#125;)</span><br><span class="line"><span class="comment">// SELECT * FROM record_exist WHERE name = ? LIMIT 1</span></span><br><span class="line">has, err = testEngine.Where(<span class="string">&quot;name = ?&quot;</span>, <span class="string">&quot;test1&quot;</span>).Exist(&amp;RecordExist&#123;&#125;)</span><br><span class="line"><span class="comment">// SELECT * FROM record_exist WHERE name = ? LIMIT 1</span></span><br><span class="line">has, err = testEngine.SQL(<span class="string">&quot;select * from record_exist where name = ?&quot;</span>, <span class="string">&quot;test1&quot;</span>).Exist()</span><br><span class="line"><span class="comment">// select * from record_exist where name = ?</span></span><br><span class="line">has, err = testEngine.Table(<span class="string">&quot;record_exist&quot;</span>).Exist()</span><br><span class="line"><span class="comment">// SELECT * FROM record_exist LIMIT 1</span></span><br><span class="line">has, err = testEngine.Table(<span class="string">&quot;record_exist&quot;</span>).Where(<span class="string">&quot;name = ?&quot;</span>, <span class="string">&quot;test1&quot;</span>).Exist()</span><br><span class="line"><span class="comment">// SELECT * FROM record_exist WHERE name = ? LIMIT 1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="与Get的区别"><a href="#与Get的区别" class="headerlink" title="与Get的区别"></a>与Get的区别</h4><p>Get与Exist方法返回值都为bool和error，如果查询到实体存在，则Get方法会将查到的实体赋值给参数</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">user := &amp;User&#123;Id:<span class="number">1</span>&#125;</span><br><span class="line">has,err := testEngine.Get(user)	<span class="comment">// 执行结束后，user会被赋值为数据库中Id为1的实体</span></span><br><span class="line">has,err = testEngine.Exist(user)	<span class="comment">// user中仍然是初始声明的user，不做改变</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h4><p>如果你的需求是：判断某条记录是否存在，若存在，则返回这条记录。</p>
+<p>建议直接使用Get方法。</p>
+<p>如果仅仅判断某条记录是否存在，则使用Exist方法，Exist的执行效率要比Get更高。</p>
+<h3 id="Iterate方法"><a href="#Iterate方法" class="headerlink" title="Iterate方法"></a>Iterate方法</h3><p>Iterate方法提供逐条执行查询到的记录的方法，它所能使用的条件和Find方法完全相同</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">err := engine.Where(<span class="string">&quot;age &gt; ? or name=?)&quot;</span>, <span class="number">30</span>, <span class="string">&quot;xlw&quot;</span>).Iterate(<span class="built_in">new</span>(Userinfo), <span class="function"><span class="keyword">func</span><span class="params">(i <span class="type">int</span>, bean <span class="keyword">interface</span>&#123;&#125;)</span></span><span class="type">error</span>&#123;</span><br><span class="line">    user := bean.(*Userinfo)</span><br><span class="line">    <span class="comment">//do somthing use i and user</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Join的使用"><a href="#Join的使用" class="headerlink" title="Join的使用"></a>Join的使用</h3><ul>
+<li>Join(string,interface{},string)</li>
+</ul>
+<p>第一个参数为连接类型，当前支持INNER, LEFT OUTER, CROSS中的一个值， 第二个参数为string类型的表名，表对应的结构体指针或者为两个值的[]string，表示表名和别名， 第三个参数为连接条件。</p>
+<p>以下将通过示例来讲解具体的用法：</p>
+<p>假如我们拥有两个表user和group，每个User只在一个Group中，那么我们可以定义对应的struct</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Group <span class="keyword">struct</span> &#123;</span><br><span class="line">	Id <span class="type">int64</span></span><br><span class="line">	Name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">	Id <span class="type">int64</span></span><br><span class="line">	Name <span class="type">string</span></span><br><span class="line">	GroupId <span class="type">int64</span> <span class="string">`xorm:&quot;index&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>问题来了，我们现在需要列出所有的User，并且列出对应的GroupName。利用extends和Join我们可以比较优雅的解决这个问题。代码如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> UserGroup <span class="keyword">struct</span> &#123;</span><br><span class="line">    User <span class="string">`xorm:&quot;extends&quot;`</span></span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(UserGroup)</span></span> TableName() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;user&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">users := <span class="built_in">make</span>([]UserGroup, <span class="number">0</span>)</span><br><span class="line">engine.Join(<span class="string">&quot;INNER&quot;</span>, <span class="string">&quot;group&quot;</span>, <span class="string">&quot;group.id = user.group_id&quot;</span>).Find(&amp;users)</span><br></pre></td></tr></table></figure>
+
+<p>这里我们将User这个匿名结构体加了xorm的extends标记（实际上也可以是非匿名的结构体，只要有extends标记即可），这样就减少了重复代码的书写。实际上这里我们直接用Sql函数也是可以的，并不一定非要用Join。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">users := <span class="built_in">make</span>([]UserGroup, <span class="number">0</span>)</span><br><span class="line">engine.Sql(<span class="string">&quot;select user.*, group.name from user, group where user.group_id = group.id&quot;</span>).Find(&amp;users)</span><br></pre></td></tr></table></figure>
+
+<p>然后，我们忽然发现，我们还需要显示Group的Id，因为我们需要链接到Group页面。这样又要加一个字段，算了，不如我们把Group也加个extends标记吧，代码如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> UserGroup <span class="keyword">struct</span> &#123;</span><br><span class="line">    User <span class="string">`xorm:&quot;extends&quot;`</span></span><br><span class="line">    Group <span class="string">`xorm:&quot;extends&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(UserGroup)</span></span> TableName() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;user&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">users := <span class="built_in">make</span>([]UserGroup, <span class="number">0</span>)</span><br><span class="line">engine.Join(<span class="string">&quot;INNER&quot;</span>, <span class="string">&quot;group&quot;</span>, <span class="string">&quot;group.id = user.group_id&quot;</span>).Find(&amp;users)</span><br></pre></td></tr></table></figure>
+
+<p>这次，我们把两个表的所有字段都查询出来了，并且赋值到对应的结构体上了。</p>
+<p>这里要注意，User和Group分别有Id和Name，这个是重名的，但是xorm是可以区分开来的，不过需要特别注意UserGroup中User和Group的顺序，如果顺序反了，则有可能会赋值错误，但是程序不会报错。</p>
+<p>这里的顺序应遵循如下原则：</p>
+<blockquote>
+<p>结构体中extends标记对应的结构顺序应和最终生成SQL中对应的表出现的顺序相同。</p>
+</blockquote>
+<p>还有一点需要注意的，如果在模板中使用这个UserGroup结构体，对于字段名重复的必须加匿名引用，如：</p>
+<p>对于不重复字段，可以<code>&#123;&#123;.GroupId&#125;&#125;</code>，对于重复字段<code>&#123;&#123;.User.Id&#125;&#125;</code>和<code>&#123;&#123;.Group.Id&#125;&#125;</code></p>
+<p>这是2个表的用法，3个或更多表用法类似，如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Type <span class="keyword">struct</span> &#123;</span><br><span class="line">	Id <span class="type">int64</span></span><br><span class="line">	Name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> UserGroupType <span class="keyword">struct</span> &#123;</span><br><span class="line">    User <span class="string">`xorm:&quot;extends&quot;`</span></span><br><span class="line">    Group <span class="string">`xorm:&quot;extends&quot;`</span></span><br><span class="line">    Type <span class="string">`xorm:&quot;extends&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">users := <span class="built_in">make</span>([]UserGroupType, <span class="number">0</span>)</span><br><span class="line">engine.Table(<span class="string">&quot;user&quot;</span>).Join(<span class="string">&quot;INNER&quot;</span>, <span class="string">&quot;group&quot;</span>, <span class="string">&quot;group.id = user.group_id&quot;</span>).</span><br><span class="line">	Join(<span class="string">&quot;INNER&quot;</span>, <span class="string">&quot;type&quot;</span>, <span class="string">&quot;type.id = user.type_id&quot;</span>).</span><br><span class="line">	Find(&amp;users)</span><br></pre></td></tr></table></figure>
+
+<p>同时，在使用Join时，也可同时使用Where和Find的第二个参数作为条件，Find的第二个参数同时也允许为各种bean来作为条件。Where里可以是各个表的条件，Find的第二个参数只是被关联表的条件。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">engine.Table(<span class="string">&quot;user&quot;</span>).Join(<span class="string">&quot;INNER&quot;</span>, <span class="string">&quot;group&quot;</span>, <span class="string">&quot;group.id = user.group_id&quot;</span>).</span><br><span class="line">	Join(<span class="string">&quot;INNER&quot;</span>, <span class="string">&quot;type&quot;</span>, <span class="string">&quot;type.id = user.type_id&quot;</span>).</span><br><span class="line">	Where(<span class="string">&quot;user.name like ?&quot;</span>, <span class="string">&quot;%&quot;</span>+name+<span class="string">&quot;%&quot;</span>).Find(&amp;users, &amp;User&#123;Name:name&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>当然，如果表名字太长，我们可以使用别名：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">engine.Table(<span class="string">&quot;user&quot;</span>).Alias(<span class="string">&quot;u&quot;</span>).</span><br><span class="line">	Join(<span class="string">&quot;INNER&quot;</span>, []<span class="type">string</span>&#123;<span class="string">&quot;group&quot;</span>, <span class="string">&quot;g&quot;</span>&#125;, <span class="string">&quot;g.id = u.group_id&quot;</span>).</span><br><span class="line">	Join(<span class="string">&quot;INNER&quot;</span>, <span class="string">&quot;type&quot;</span>, <span class="string">&quot;type.id = u.type_id&quot;</span>).</span><br><span class="line">	Where(<span class="string">&quot;u.name like ?&quot;</span>, <span class="string">&quot;%&quot;</span>+name+<span class="string">&quot;%&quot;</span>).Find(&amp;users, &amp;User&#123;Name:name&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Rows方法"><a href="#Rows方法" class="headerlink" title="Rows方法"></a>Rows方法</h3><p>Rows方法和Iterate方法类似，提供逐条执行查询到的记录的方法，不过Rows更加灵活好用。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">user := <span class="built_in">new</span>(User)</span><br><span class="line">rows, err := engine.Where(<span class="string">&quot;id &gt;?&quot;</span>, <span class="number">1</span>).Rows(user)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">defer</span> rows.Close()</span><br><span class="line"><span class="keyword">for</span> rows.Next() &#123;</span><br><span class="line">    err = rows.Scan(user)</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Sum系列方法"><a href="#Sum系列方法" class="headerlink" title="Sum系列方法"></a>Sum系列方法</h3><p>求和数据可以使用<code>Sum</code>, <code>SumInt</code>, <code>Sums</code> 和 <code>SumsInt</code> 四个方法，Sums系列方法的参数为struct的指针并且成为查询条件。</p>
+<ul>
+<li>Sum 求某个字段的和，返回float64</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> SumStruct <span class="keyword">struct</span> &#123;</span><br><span class="line">    Id <span class="type">int64</span></span><br><span class="line">    Money <span class="type">int</span></span><br><span class="line">    Rate <span class="type">float32</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ss := <span class="built_in">new</span>(SumStruct)</span><br><span class="line">total, err := engine.Where(<span class="string">&quot;id &gt;?&quot;</span>, <span class="number">1</span>).Sum(ss, <span class="string">&quot;money&quot;</span>)</span><br><span class="line">fmt.Printf(<span class="string">&quot;money is %d&quot;</span>, <span class="type">int</span>(total))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>SumInt 求某个字段的和，返回int64</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> SumStruct <span class="keyword">struct</span> &#123;</span><br><span class="line">    Id <span class="type">int64</span></span><br><span class="line">    Money <span class="type">int</span></span><br><span class="line">    Rate <span class="type">float32</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ss := <span class="built_in">new</span>(SumStruct)</span><br><span class="line">total, err := engine.Where(<span class="string">&quot;id &gt;?&quot;</span>, <span class="number">1</span>).SumInt(ss, <span class="string">&quot;money&quot;</span>)</span><br><span class="line">fmt.Printf(<span class="string">&quot;money is %d&quot;</span>, total)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Sums 求某几个字段的和， 返回float64的Slice</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ss := <span class="built_in">new</span>(SumStruct)</span><br><span class="line">totals, err := engine.Where(<span class="string">&quot;id &gt;?&quot;</span>, <span class="number">1</span>).Sums(ss, <span class="string">&quot;money&quot;</span>, <span class="string">&quot;rate&quot;</span>)</span><br><span class="line"></span><br><span class="line">fmt.Printf(<span class="string">&quot;money is %d, rate is %.2f&quot;</span>, <span class="type">int</span>(total[<span class="number">0</span>]), total[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>SumsInt 求某几个字段的和， 返回int64的Slice</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ss := <span class="built_in">new</span>(SumStruct)</span><br><span class="line">totals, err := engine.Where(<span class="string">&quot;id &gt;?&quot;</span>, <span class="number">1</span>).SumsInt(ss, <span class="string">&quot;money&quot;</span>)</span><br><span class="line"></span><br><span class="line">fmt.Printf(<span class="string">&quot;money is %d&quot;</span>, total[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<h2 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h2><p>更新数据使用<code>Update</code>方法，Update方法的第一个参数为需要更新的内容，可以为一个结构体指针或者一个Map[string]interface{}类型。当传入的为结构体指针时，只有非空和0的field才会被作为更新的字段。当传入的为Map类型时，key为数据库Column的名字，value为要更新的内容。</p>
+<p><code>Update</code>方法将返回两个参数，第一个为 更新的记录数，需要注意的是 <code>SQLITE</code> 数据库返回的是根据更新条件查询的记录数而不是真正受更新的记录数。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">user := <span class="built_in">new</span>(User)</span><br><span class="line">user.Name = <span class="string">&quot;myname&quot;</span></span><br><span class="line">affected, err := engine.ID(id).Update(user)</span><br></pre></td></tr></table></figure>
+
+<p>这里需要注意，Update会自动从user结构体中提取非0和非nil得值作为需要更新的内容，因此，如果需要更新一个值为0，则此种方法将无法实现，因此有两种选择：</p>
+<ul>
+<li>通过添加Cols函数指定需要更新结构体中的哪些值，未指定的将不更新，指定了的即使为0也会更新。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">affected, err := engine.ID(id).Cols(<span class="string">&quot;age&quot;</span>).Update(&amp;user)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过传入map[string]interface{}来进行更新，但这时需要额外指定更新到哪个表，因为通过map是无法自动检测更新哪个表的。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">affected, err := engine.Table(<span class="built_in">new</span>(User)).ID(id).Update(<span class="keyword">map</span>[<span class="type">string</span>]<span class="keyword">interface</span>&#123;&#125;&#123;<span class="string">&quot;age&quot;</span>:<span class="number">0</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>有时候希望能够指定必须更新某些字段，而其它字段根据值的情况自动判断，可以使用 <code>MustCols</code> 来组合 <code>Update</code> 使用。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">affected, err := engine.ID(id).MustCols(<span class="string">&quot;age&quot;</span>).Update(&amp;user)</span><br></pre></td></tr></table></figure>
+
+<p>另外，如果需要更新所有的字段，可以使用 <code>AllCols()</code>。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">affected, err := engine.ID(id).AllCols().Update(&amp;user)</span><br></pre></td></tr></table></figure>
+
+<h3 id="乐观锁Version"><a href="#乐观锁Version" class="headerlink" title="乐观锁Version"></a>乐观锁Version</h3><p>要使用乐观锁，需要使用version标记</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    Id <span class="type">int64</span></span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Version <span class="type">int</span> <span class="string">`xorm:&quot;version&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在Insert时，version标记的字段将会被设置为1，在Update时，Update的内容必须包含version原来的值。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> user User</span><br><span class="line">engine.ID(<span class="number">1</span>).Get(&amp;user)</span><br><span class="line"><span class="comment">// SELECT * FROM user WHERE id = ?</span></span><br><span class="line">engine.ID(<span class="number">1</span>).Update(&amp;user)</span><br><span class="line"><span class="comment">// UPDATE user SET ..., version = version + 1 WHERE id = ? AND version = ?</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="更新时间Updated"><a href="#更新时间Updated" class="headerlink" title="更新时间Updated"></a>更新时间Updated</h3><p>Updated可以让您在记录插入或每次记录更新时自动更新数据库中的标记字段为当前时间，需要在xorm标记中使用updated标记，如下所示进行标记，对应的字段可以为time.Time或者自定义的time.Time或者int,int64等int类型。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    Id <span class="type">int64</span></span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    UpdatedAt time.Time <span class="string">`xorm:&quot;updated&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在Insert(), InsertOne(), Update()方法被调用时，updated标记的字段将会被自动更新为当前时间，如下所示：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> user User</span><br><span class="line">engine.ID(<span class="number">1</span>).Get(&amp;user)</span><br><span class="line"><span class="comment">// SELECT * FROM user WHERE id = ?</span></span><br><span class="line">engine.ID(<span class="number">1</span>).Update(&amp;user)</span><br><span class="line"><span class="comment">// UPDATE user SET ..., updaetd_at = ? WHERE id = ?</span></span><br></pre></td></tr></table></figure>
+
+<p>如果你希望临时不自动插入时间，则可以组合NoAutoTime()方法：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">engine.NoAutoTime().Insert(&amp;user)</span><br></pre></td></tr></table></figure>
+
+<p>这个在从一张表拷贝字段到另一张表时比较有用。</p>
+<h2 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h2><p>删除数据用 <code>Delete</code>方法，参数为struct的指针并且成为查询条件。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user := <span class="built_in">new</span>(User)</span><br><span class="line">affected, err := engine.ID(id).Delete(user)</span><br></pre></td></tr></table></figure>
+
+<p><code>Delete</code>的返回值第一个参数为删除的记录数，第二个参数为错误。</p>
+<p>注意1：</p>
+<p>当删除时，如果user中包含有bool,float64或者float32类型，有可能会使删除失败。</p>
+<p>注意2：必须至少包含一个条件才能够进行删除，这意味着直接用</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">engine.Delete(<span class="built_in">new</span>(User))</span><br></pre></td></tr></table></figure>
+
+<p>将会报一个保护性的错误，如果你真的希望将整个表删除，你可以</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">engine.Where(<span class="string">&quot;1=1&quot;</span>).Delete(<span class="built_in">new</span>(User))</span><br></pre></td></tr></table></figure>
+
+<h3 id="软删除Deleted"><a href="#软删除Deleted" class="headerlink" title="软删除Deleted"></a>软删除Deleted</h3><p>Deleted可以让您不真正的删除数据，而是标记一个删除时间。使用此特性需要在xorm标记中使用deleted标记，如下所示进行标记，对应的字段可以为time.Time, type MyTime time.Time，int 或者 int64类型。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    Id <span class="type">int64</span></span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    DeletedAt time.Time <span class="string">`xorm:&quot;deleted&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在Delete()时，deleted标记的字段将会被自动更新为当前时间而不是去删除该条记录，如下所示：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> user User</span><br><span class="line">engine.ID(<span class="number">1</span>).Get(&amp;user)</span><br><span class="line"><span class="comment">// SELECT * FROM user WHERE id = ?</span></span><br><span class="line">engine.ID(<span class="number">1</span>).Delete(&amp;user)</span><br><span class="line"><span class="comment">// UPDATE user SET ..., deleted_at = ? WHERE id = ?</span></span><br><span class="line">engine.ID(<span class="number">1</span>).Get(&amp;user)</span><br><span class="line"><span class="comment">// 再次调用Get，此时将返回false, nil，即记录不存在</span></span><br><span class="line">engine.ID(<span class="number">1</span>).Delete(&amp;user)</span><br><span class="line"><span class="comment">// 再次调用删除会返回0, nil，即记录不存在</span></span><br></pre></td></tr></table></figure>
+
+<p>那么如果记录已经被标记为删除后，要真正的获得该条记录或者真正的删除该条记录，需要启用Unscoped，如下所示：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> user User</span><br><span class="line">engine.ID(<span class="number">1</span>).Unscoped().Get(&amp;user)</span><br><span class="line"><span class="comment">// 此时将可以获得记录</span></span><br><span class="line">engine.ID(<span class="number">1</span>).Unscoped().Delete(&amp;user)</span><br><span class="line"><span class="comment">// 此时将可以真正的删除记录</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="执行SQL查询"><a href="#执行SQL查询" class="headerlink" title="执行SQL查询"></a>执行SQL查询</h1><h2 id="Query"><a href="#Query" class="headerlink" title="Query"></a>Query</h2><p>也可以直接执行一个SQL查询，即Select命令。在Postgres中支持原始SQL语句中使用 &#96; 和 ? 符号。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sql := <span class="string">&quot;select * from userinfo&quot;</span></span><br><span class="line">results, err := engine.Query(sql)</span><br></pre></td></tr></table></figure>
+
+<p>当调用 <code>Query</code> 时，第一个返回值 <code>results</code> 为 <code>[]map[string][]byte</code> 的形式。</p>
+<p><code>Query</code> 的参数也允许传入 <code>*builder.Buidler</code> 对象</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SELECT * FROM table</span></span><br><span class="line">results, err := engine.Query(builder.Select(<span class="string">&quot;*&quot;</span>).From(<span class="string">&quot;table&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h2 id="QueryInterface"><a href="#QueryInterface" class="headerlink" title="QueryInterface"></a>QueryInterface</h2><p>和 <code>Query</code> 类似，但是返回值为 <code>[]map[string]interface&#123;&#125;</code></p>
+<h2 id="QueryString"><a href="#QueryString" class="headerlink" title="QueryString"></a>QueryString</h2><p>和 <code>Query</code> 类似，但是返回值为 <code>[]map[string]string</code></p>
+<h1 id="执行SQL命令"><a href="#执行SQL命令" class="headerlink" title="执行SQL命令"></a>执行SQL命令</h1><p>也可以直接执行一个SQL命令，即执行Insert， Update， Delete 等操作。此时不管数据库是何种类型，都可以使用 &#96; 和 ? 符号。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sql = <span class="string">&quot;update `userinfo` set username=? where id=?&quot;</span></span><br><span class="line">res, err := engine.Exec(sql, <span class="string">&quot;xiaolun&quot;</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="事务处理"><a href="#事务处理" class="headerlink" title="事务处理"></a>事务处理</h1><p>当使用事务处理时，需要创建 Session 对象。在进行事务处理时，可以混用 ORM 方法和 RAW 方法，如下代码所示：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">MyTransactionOps</span><span class="params">()</span></span> <span class="type">error</span> &#123;</span><br><span class="line">    session := engine.NewSession()</span><br><span class="line">    <span class="keyword">defer</span> session.Close()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// add Begin() before any action</span></span><br><span class="line">    <span class="keyword">if</span> err := session.Begin(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> err</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    user1 := Userinfo&#123;Username: <span class="string">&quot;xiaoxiao&quot;</span>, Departname: <span class="string">&quot;dev&quot;</span>, Alias: <span class="string">&quot;lunny&quot;</span>, Created: time.Now()&#125;</span><br><span class="line">    <span class="keyword">if</span> _, err := session.Insert(&amp;user1); err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> err</span><br><span class="line">    &#125;</span><br><span class="line">    user2 := Userinfo&#123;Username: <span class="string">&quot;yyy&quot;</span>&#125;</span><br><span class="line">    <span class="keyword">if</span> _, err = session.Where(<span class="string">&quot;id = ?&quot;</span>, <span class="number">2</span>).Update(&amp;user2); err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> err</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> _, err = session.Exec(<span class="string">&quot;delete from userinfo where username = ?&quot;</span>, user2.Username); err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> err</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// add Commit() after all actions</span></span><br><span class="line">    <span class="keyword">return</span> session.Commit()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注意如果您使用的是 mysql，数据库引擎为 innodb 事务才有效，myisam 引擎是不支持事务的。</li>
+</ul>
+<h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1><p>xorm 内置了一致性缓存支持，不过默认并没有开启。要开启缓存，需要在 engine 创建完后进行配置。缓存相关的 内容存放在 xorm.io&#x2F;xorm&#x2F;caches 这个包中：</p>
+<p>启用一个全局的内存缓存</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cacher := caches.NewLRUCacher(caches.NewMemoryStore(), <span class="number">1000</span>)</span><br><span class="line">engine.SetDefaultCacher(cacher)</span><br></pre></td></tr></table></figure>
+
+<p>上述代码采用了LRU算法的一个缓存，缓存方式是存放到内存中，缓存struct的记录数为1000条，缓存针对的范围是所有具有主键的表，没有主键的表中的数据将不会被缓存。 如果只想针对部分表，则：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cacher := caches.NewLRUCacher(caches.NewMemoryStore(), <span class="number">1000</span>)</span><br><span class="line">engine.MapCacher(&amp;user, cacher)</span><br></pre></td></tr></table></figure>
+
+<p>如果要禁用某个表的缓存，则：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">engine.MapCacher(&amp;user, <span class="literal">nil</span>)</span><br></pre></td></tr></table></figure>
+
+<p>设置完之后，其它代码基本上就不需要改动了，缓存系统已经在后台运行。</p>
+<p>当前实现了内存存储的CacheStore接口MemoryStore，如果需要采用其它设备存储，可以实现CacheStore接口。</p>
+<p>不过需要特别注意不适用缓存或者需要手动编码的地方：</p>
+<ol>
+<li>当使用了<code>Distinct</code>,<code>Having</code>,<code>GroupBy</code>方法将不会使用缓存</li>
+<li>在<code>Get</code>或者<code>Find</code>时使用了<code>Cols</code>,<code>Omit</code>方法，则在开启缓存后此方法无效，系统仍旧会取出这个表中的所有字段。</li>
+<li>在使用Exec方法执行了方法之后，可能会导致缓存与数据库不一致的地方。因此如果启用缓存，尽量避免使用Exec。如果必须使用，则需要在使用了Exec之后调用ClearCache手动做缓存清除的工作。比如：</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">engine.Exec(<span class="string">&quot;update user set name = ? where id = ?&quot;</span>, <span class="string">&quot;xlw&quot;</span>, <span class="number">1</span>)</span><br><span class="line">engine.ClearCache(<span class="built_in">new</span>(User))</span><br></pre></td></tr></table></figure>
+
+<p>缓存的实现原理如下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/cache_design.png"></p>
+<h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><p>xorm 支持两种方式的事件，一种是在 Struct中的特定方法来作为事件的方法，一种是在执行语句的过程中执行事件。</p>
+<p>在Struct中作为成员方法的事件如下：</p>
+<ul>
+<li><code>BeforeInsert()</code></li>
+</ul>
+<p>在将此struct插入到数据库之前执行</p>
+<ul>
+<li><code>BeforeUpdate()</code></li>
+</ul>
+<p>在将此struct更新到数据库之前执行</p>
+<ul>
+<li><code>BeforeDelete()</code></li>
+</ul>
+<p>在将此struct对应的条件数据从数据库删除之前执行</p>
+<ul>
+<li><code>func BeforeSet(name string, cell xorm.Cell)</code></li>
+</ul>
+<p>在 Get 或 Find 方法中，当数据已经从数据库查询出来，而在设置到结构体之前调用，name为数据库字段名称，cell为数据库中的字段值。</p>
+<ul>
+<li><code>func AfterSet(name string, cell xorm.Cell)</code></li>
+</ul>
+<p>在 Get 或 Find 方法中，当数据已经从数据库查询出来，而在设置到结构体之后调用，name为数据库字段名称，cell为数据库中的字段值。</p>
+<ul>
+<li><code>AfterLoad()</code></li>
+</ul>
+<p>在 Get 或 Find 方法中，当数据已经从数据库查询出来，而在设置到结构体之后调用。</p>
+<ul>
+<li><code>AfterLoad(*xorm.Session)</code></li>
+</ul>
+<p>在 Get 或 Find 方法中，当数据已经从数据库查询出来，而在设置到结构体之后调用，并传递<code>xorm.Session</code>参数。</p>
+<ul>
+<li><code>AfterInsert()</code></li>
+</ul>
+<p>在将此struct成功插入到数据库之后执行</p>
+<ul>
+<li><code>AfterUpdate()</code></li>
+</ul>
+<p>在将此struct成功更新到数据库之后执行</p>
+<ul>
+<li><code>AfterDelete()</code></li>
+</ul>
+<p>在将此struct对应的条件数据成功从数据库删除之后执行</p>
+<p>在语句执行过程中的事件方法为：</p>
+<ul>
+<li><code>Before(beforeFunc interface&#123;&#125;)</code></li>
+</ul>
+<p>临时执行某个方法之前执行</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">before := <span class="function"><span class="keyword">func</span><span class="params">(bean <span class="keyword">interface</span>&#123;&#125;)</span></span>&#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;before&quot;</span>, bean)</span><br><span class="line">&#125;</span><br><span class="line">engine.Before(before).Insert(&amp;obj)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>After(afterFunc interface{})</li>
+</ul>
+<p>临时执行某个方法之后执行</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">after := <span class="function"><span class="keyword">func</span><span class="params">(bean <span class="keyword">interface</span>&#123;&#125;)</span></span>&#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;after&quot;</span>, bean)</span><br><span class="line">&#125;</span><br><span class="line">engine.After(after).Insert(&amp;obj)</span><br></pre></td></tr></table></figure>
+
+<p>其中beforeFunc和afterFunc的原型为func(bean interface{}).</p>
+<h1 id="Builder"><a href="#Builder" class="headerlink" title="Builder"></a>Builder</h1><p>Builder 是一个 XORM 内置的轻量级快速 SQL 构建引擎。</p>
+<p>请注意此包为独立安装，请确保你的 Go 版本在 1.8+ 以上可以如下安装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get xorm.io/builder</span><br></pre></td></tr></table></figure>
+
+<h2 id="Insert"><a href="#Insert" class="headerlink" title="Insert"></a>Insert</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sql, args, err := builder.Insert(Eq&#123;<span class="string">&quot;c&quot;</span>: <span class="number">1</span>, <span class="string">&quot;d&quot;</span>: <span class="number">2</span>&#125;).Into(<span class="string">&quot;table1&quot;</span>).ToSQL()</span><br><span class="line"></span><br><span class="line"><span class="comment">// INSERT INTO table1 SELECT * FROM table2</span></span><br><span class="line">sql, err := builder.Insert().Into(<span class="string">&quot;table1&quot;</span>).Select().From(<span class="string">&quot;table2&quot;</span>).ToBoundSQL()</span><br><span class="line"></span><br><span class="line"><span class="comment">// INSERT INTO table1 (a, b) SELECT b, c FROM table2</span></span><br><span class="line">sql, err = builder.Insert(<span class="string">&quot;a, b&quot;</span>).Into(<span class="string">&quot;table1&quot;</span>).Select(<span class="string">&quot;b, c&quot;</span>).From(<span class="string">&quot;table2&quot;</span>).ToBoundSQL()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Select"><a href="#Select" class="headerlink" title="Select"></a>Select</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Simple Query</span></span><br><span class="line">sql, args, err := Select(<span class="string">&quot;c, d&quot;</span>).From(<span class="string">&quot;table1&quot;</span>).Where(Eq&#123;<span class="string">&quot;a&quot;</span>: <span class="number">1</span>&#125;).ToSQL()</span><br><span class="line"><span class="comment">// With join</span></span><br><span class="line">sql, args, err = Select(<span class="string">&quot;c, d&quot;</span>).From(<span class="string">&quot;table1&quot;</span>).LeftJoin(<span class="string">&quot;table2&quot;</span>, Eq&#123;<span class="string">&quot;table1.id&quot;</span>: <span class="number">1</span>&#125;.And(Lt&#123;<span class="string">&quot;table2.id&quot;</span>: <span class="number">3</span>&#125;)).</span><br><span class="line">		RightJoin(<span class="string">&quot;table3&quot;</span>, <span class="string">&quot;table2.id = table3.tid&quot;</span>).Where(Eq&#123;<span class="string">&quot;a&quot;</span>: <span class="number">1</span>&#125;).ToSQL()</span><br><span class="line"><span class="comment">// From sub query</span></span><br><span class="line">sql, args, err := Select(<span class="string">&quot;sub.id&quot;</span>).From(Select(<span class="string">&quot;c&quot;</span>).From(<span class="string">&quot;table1&quot;</span>).Where(Eq&#123;<span class="string">&quot;a&quot;</span>: <span class="number">1</span>&#125;), <span class="string">&quot;sub&quot;</span>).Where(Eq&#123;<span class="string">&quot;b&quot;</span>: <span class="number">1</span>&#125;).ToSQL()</span><br><span class="line"><span class="comment">// From union query</span></span><br><span class="line">sql, args, err = Select(<span class="string">&quot;sub.id&quot;</span>).From(</span><br><span class="line">	Select(<span class="string">&quot;id&quot;</span>).From(<span class="string">&quot;table1&quot;</span>).Where(Eq&#123;<span class="string">&quot;a&quot;</span>: <span class="number">1</span>&#125;).Union(<span class="string">&quot;all&quot;</span>, Select(<span class="string">&quot;id&quot;</span>).From(<span class="string">&quot;table1&quot;</span>).Where(Eq&#123;<span class="string">&quot;a&quot;</span>: <span class="number">2</span>&#125;)),<span class="string">&quot;sub&quot;</span>).</span><br><span class="line">	Where(Eq&#123;<span class="string">&quot;b&quot;</span>: <span class="number">1</span>&#125;).ToSQL()</span><br><span class="line"><span class="comment">// With order by</span></span><br><span class="line">sql, args, err = Select(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>).From(<span class="string">&quot;table1&quot;</span>).Where(Eq&#123;<span class="string">&quot;f1&quot;</span>: <span class="string">&quot;v1&quot;</span>, <span class="string">&quot;f2&quot;</span>: <span class="string">&quot;v2&quot;</span>&#125;).</span><br><span class="line">		OrderBy(<span class="string">&quot;a ASC&quot;</span>).ToSQL()</span><br><span class="line"><span class="comment">// With limit.</span></span><br><span class="line"><span class="comment">// Be careful! You should set up specific dialect for builder before performing a query with LIMIT</span></span><br><span class="line">sql, args, err = Dialect(MYSQL).Select(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>).From(<span class="string">&quot;table1&quot;</span>).OrderBy(<span class="string">&quot;a ASC&quot;</span>).</span><br><span class="line">		Limit(<span class="number">5</span>, <span class="number">10</span>).ToSQL()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql, args, err := Update(Eq&#123;<span class="string">&quot;a&quot;</span>: <span class="number">2</span>&#125;).From(<span class="string">&quot;table1&quot;</span>).Where(Eq&#123;<span class="string">&quot;a&quot;</span>: <span class="number">1</span>&#125;).ToSQL()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql, args, err := Delete(Eq&#123;<span class="string">&quot;a&quot;</span>: <span class="number">1</span>&#125;).From(<span class="string">&quot;table1&quot;</span>).ToSQL()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Union"><a href="#Union" class="headerlink" title="Union"></a>Union</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sql, args, err := Select(<span class="string">&quot;*&quot;</span>).From(<span class="string">&quot;a&quot;</span>).Where(Eq&#123;<span class="string">&quot;status&quot;</span>: <span class="string">&quot;1&quot;</span>&#125;).</span><br><span class="line">		Union(<span class="string">&quot;all&quot;</span>, Select(<span class="string">&quot;*&quot;</span>).From(<span class="string">&quot;a&quot;</span>).Where(Eq&#123;<span class="string">&quot;status&quot;</span>: <span class="string">&quot;2&quot;</span>&#125;)).</span><br><span class="line">		Union(<span class="string">&quot;distinct&quot;</span>, Select(<span class="string">&quot;*&quot;</span>).From(<span class="string">&quot;a&quot;</span>).Where(Eq&#123;<span class="string">&quot;status&quot;</span>: <span class="string">&quot;3&quot;</span>&#125;)).</span><br><span class="line">		Union(<span class="string">&quot;&quot;</span>, Select(<span class="string">&quot;*&quot;</span>).From(<span class="string">&quot;a&quot;</span>).Where(Eq&#123;<span class="string">&quot;status&quot;</span>: <span class="string">&quot;4&quot;</span>&#125;)).</span><br><span class="line">		ToSQL()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Conditions"><a href="#Conditions" class="headerlink" title="Conditions"></a>Conditions</h2><ul>
+<li><code>Eq</code> is a redefine of a map, you can give one or more conditions to <code>Eq</code></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> . <span class="string">&quot;xorm.io/builder&quot;</span></span><br><span class="line"></span><br><span class="line">sql, args, _ := ToSQL(Eq&#123;<span class="string">&quot;a&quot;</span>:<span class="number">1</span>&#125;)</span><br><span class="line"><span class="comment">// a=? [1]</span></span><br><span class="line">sql, args, _ := ToSQL(Eq&#123;<span class="string">&quot;b&quot;</span>:<span class="string">&quot;c&quot;</span>&#125;.And(Eq&#123;<span class="string">&quot;c&quot;</span>: <span class="number">0</span>&#125;))</span><br><span class="line"><span class="comment">// b=? AND c=? [&quot;c&quot;, 0]</span></span><br><span class="line">sql, args, _ := ToSQL(Eq&#123;<span class="string">&quot;b&quot;</span>:<span class="string">&quot;c&quot;</span>, <span class="string">&quot;c&quot;</span>:<span class="number">0</span>&#125;)</span><br><span class="line"><span class="comment">// b=? AND c=? [&quot;c&quot;, 0]</span></span><br><span class="line">sql, args, _ := ToSQL(Eq&#123;<span class="string">&quot;b&quot;</span>:<span class="string">&quot;c&quot;</span>&#125;.Or(Eq&#123;<span class="string">&quot;b&quot;</span>:<span class="string">&quot;d&quot;</span>&#125;))</span><br><span class="line"><span class="comment">// b=? OR b=? [&quot;c&quot;, &quot;d&quot;]</span></span><br><span class="line">sql, args, _ := ToSQL(Eq&#123;<span class="string">&quot;b&quot;</span>: []<span class="type">string</span>&#123;<span class="string">&quot;c&quot;</span>, <span class="string">&quot;d&quot;</span>&#125;&#125;)</span><br><span class="line"><span class="comment">// b IN (?,?) [&quot;c&quot;, &quot;d&quot;]</span></span><br><span class="line">sql, args, _ := ToSQL(Eq&#123;<span class="string">&quot;b&quot;</span>: <span class="number">1</span>, <span class="string">&quot;c&quot;</span>:[]<span class="type">int</span>&#123;<span class="number">2</span>, <span class="number">3</span>&#125;&#125;)</span><br><span class="line"><span class="comment">// b=? AND c IN (?,?) [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Neq</code> is the same to <code>Eq</code></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> . <span class="string">&quot;xorm.io/builder&quot;</span></span><br><span class="line"></span><br><span class="line">sql, args, _ := ToSQL(Neq&#123;<span class="string">&quot;a&quot;</span>:<span class="number">1</span>&#125;)</span><br><span class="line"><span class="comment">// a&lt;&gt;? [1]</span></span><br><span class="line">sql, args, _ := ToSQL(Neq&#123;<span class="string">&quot;b&quot;</span>:<span class="string">&quot;c&quot;</span>&#125;.And(Neq&#123;<span class="string">&quot;c&quot;</span>: <span class="number">0</span>&#125;))</span><br><span class="line"><span class="comment">// b&lt;&gt;? AND c&lt;&gt;? [&quot;c&quot;, 0]</span></span><br><span class="line">sql, args, _ := ToSQL(Neq&#123;<span class="string">&quot;b&quot;</span>:<span class="string">&quot;c&quot;</span>, <span class="string">&quot;c&quot;</span>:<span class="number">0</span>&#125;)</span><br><span class="line"><span class="comment">// b&lt;&gt;? AND c&lt;&gt;? [&quot;c&quot;, 0]</span></span><br><span class="line">sql, args, _ := ToSQL(Neq&#123;<span class="string">&quot;b&quot;</span>:<span class="string">&quot;c&quot;</span>&#125;.Or(Neq&#123;<span class="string">&quot;b&quot;</span>:<span class="string">&quot;d&quot;</span>&#125;))</span><br><span class="line"><span class="comment">// b&lt;&gt;? OR b&lt;&gt;? [&quot;c&quot;, &quot;d&quot;]</span></span><br><span class="line">sql, args, _ := ToSQL(Neq&#123;<span class="string">&quot;b&quot;</span>: []<span class="type">string</span>&#123;<span class="string">&quot;c&quot;</span>, <span class="string">&quot;d&quot;</span>&#125;&#125;)</span><br><span class="line"><span class="comment">// b NOT IN (?,?) [&quot;c&quot;, &quot;d&quot;]</span></span><br><span class="line">sql, args, _ := ToSQL(Neq&#123;<span class="string">&quot;b&quot;</span>: <span class="number">1</span>, <span class="string">&quot;c&quot;</span>:[]<span class="type">int</span>&#123;<span class="number">2</span>, <span class="number">3</span>&#125;&#125;)</span><br><span class="line"><span class="comment">// b&lt;&gt;? AND c NOT IN (?,?) [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Gt</code>, <code>Gte</code>, <code>Lt</code>, <code>Lte</code></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> . <span class="string">&quot;xorm.io/builder&quot;</span></span><br><span class="line"></span><br><span class="line">sql, args, _ := ToSQL(Gt&#123;<span class="string">&quot;a&quot;</span>, <span class="number">1</span>&#125;.And(Gte&#123;<span class="string">&quot;b&quot;</span>, <span class="number">2</span>&#125;))</span><br><span class="line"><span class="comment">// a&gt;? AND b&gt;=? [1, 2]</span></span><br><span class="line">sql, args, _ := ToSQL(Lt&#123;<span class="string">&quot;a&quot;</span>, <span class="number">1</span>&#125;.Or(Lte&#123;<span class="string">&quot;b&quot;</span>, <span class="number">2</span>&#125;))</span><br><span class="line"><span class="comment">// a&lt;? OR b&lt;=? [1, 2]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Like</code></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> . <span class="string">&quot;xorm.io/builder&quot;</span></span><br><span class="line"></span><br><span class="line">sql, args, _ := ToSQL(Like&#123;<span class="string">&quot;a&quot;</span>, <span class="string">&quot;c&quot;</span>&#125;)</span><br><span class="line"><span class="comment">// a LIKE ? [%c%]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Expr</code> you can customerize your sql with <code>Expr</code></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> . <span class="string">&quot;xorm.io/builder&quot;</span></span><br><span class="line"></span><br><span class="line">sql, args, _ := ToSQL(Expr(<span class="string">&quot;a = ? &quot;</span>, <span class="number">1</span>))</span><br><span class="line"><span class="comment">// a = ? [1]</span></span><br><span class="line">sql, args, _ := ToSQL(Eq&#123;<span class="string">&quot;a&quot;</span>: Expr(<span class="string">&quot;select id from table where c = ?&quot;</span>, <span class="number">1</span>)&#125;)</span><br><span class="line"><span class="comment">// a=(select id from table where c = ?) [1]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>In</code> and <code>NotIn</code></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> . <span class="string">&quot;xorm.io/builder&quot;</span></span><br><span class="line"></span><br><span class="line">sql, args, _ := ToSQL(In(<span class="string">&quot;a&quot;</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>))</span><br><span class="line"><span class="comment">// a IN (?,?,?) [1,2,3]</span></span><br><span class="line">sql, args, _ := ToSQL(In(<span class="string">&quot;a&quot;</span>, []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;))</span><br><span class="line"><span class="comment">// a IN (?,?,?) [1,2,3]</span></span><br><span class="line">sql, args, _ := ToSQL(NotIn(<span class="string">&quot;a&quot;</span>, Expr(<span class="string">&quot;select id from b where c = ?&quot;</span>, <span class="number">1</span>))))</span><br><span class="line"><span class="comment">// a NOT IN (select id from b where c = ?) [1]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Exists</code> and <code>NotExists</code></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> . <span class="string">&quot;xorm.io/builder&quot;</span></span><br><span class="line"></span><br><span class="line">sql, args, _ := ToSQL(Exists(Select(<span class="string">&quot;a&quot;</span>).From(<span class="string">&quot;table&quot;</span>)))</span><br><span class="line"><span class="comment">// EXISTS (SELECT a FROM table)</span></span><br><span class="line">sql, args, _ := ToSQL(NotExists(Select(<span class="string">&quot;a&quot;</span>).From(<span class="string">&quot;table&quot;</span>)))</span><br><span class="line"><span class="comment">// NOT EXISTS (SELECT a FROM table)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>IsNull</code> and <code>NotNull</code></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> . <span class="string">&quot;xorm.io/builder&quot;</span></span><br><span class="line"></span><br><span class="line">sql, args, _ := ToSQL(IsNull&#123;<span class="string">&quot;a&quot;</span>&#125;)</span><br><span class="line"><span class="comment">// a IS NULL []</span></span><br><span class="line">sql, args, _ := ToSQL(NotNull&#123;<span class="string">&quot;b&quot;</span>&#125;)</span><br><span class="line">	<span class="comment">// b IS NOT NULL []</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>And(conds ...Cond)</code>, And can connect one or more conditions via And</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> . <span class="string">&quot;xorm.io/builder&quot;</span></span><br><span class="line"></span><br><span class="line">sql, args, _ := ToSQL(And(Eq&#123;<span class="string">&quot;a&quot;</span>:<span class="number">1</span>&#125;, Like&#123;<span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>&#125;, Neq&#123;<span class="string">&quot;d&quot;</span>, <span class="number">2</span>&#125;))</span><br><span class="line"><span class="comment">// a=? AND b LIKE ? AND d&lt;&gt;? [1, %c%, 2]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Or(conds ...Cond)</code>, Or can connect one or more conditions via Or</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> . <span class="string">&quot;xorm.io/builder&quot;</span></span><br><span class="line"></span><br><span class="line">sql, args, _ := ToSQL(Or(Eq&#123;<span class="string">&quot;a&quot;</span>:<span class="number">1</span>&#125;, Like&#123;<span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>&#125;, Neq&#123;<span class="string">&quot;d&quot;</span>, <span class="number">2</span>&#125;))</span><br><span class="line"><span class="comment">// a=? OR b LIKE ? OR d&lt;&gt;? [1, %c%, 2]</span></span><br><span class="line">sql, args, _ := ToSQL(Or(Eq&#123;<span class="string">&quot;a&quot;</span>:<span class="number">1</span>&#125;, And(Like&#123;<span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>&#125;, Neq&#123;<span class="string">&quot;d&quot;</span>, <span class="number">2</span>&#125;)))</span><br><span class="line"><span class="comment">// a=? OR (b LIKE ? AND d&lt;&gt;?) [1, %c%, 2]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Between</code></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> . <span class="string">&quot;xorm.io/builder&quot;</span></span><br><span class="line"></span><br><span class="line">sql, args, _ := ToSQL(Between&#123;<span class="string">&quot;a&quot;</span>, <span class="number">1</span>, <span class="number">2</span>&#125;)</span><br><span class="line"><span class="comment">// a BETWEEN 1 AND 2</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Define yourself conditions</li>
+</ul>
+<p>Since <code>Cond</code> is an interface.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Cond <span class="keyword">interface</span> &#123;</span><br><span class="line">	WriteTo(Writer) <span class="type">error</span></span><br><span class="line">	And(...Cond) Cond</span><br><span class="line">	Or(...Cond) Cond</span><br><span class="line">	IsValid() <span class="type">bool</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>You can define yourself conditions and compose with other <code>Cond</code>.</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://uestcwxy.love">珩</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://uestcwxy.love/2023/08/07/Go/33/">https://uestcwxy.love/2023/08/07/Go/33/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://uestcwxy.love" target="_blank">Palp1tate</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/">大二自学</a><a class="post-meta__tags" href="/tags/Go/">Go</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/4d287328613d2f4952a70edb9192044037dd5e22.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2023/08/04/giterr/" title="完美解决git报错fatal unable to access ‘https://github.com/.../.git‘:Recv failure Connection was reset"><img class="cover" src="https://s2.loli.net/2023/05/31/UuGQIvw8HNBrZsp.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">完美解决git报错fatal unable to access ‘https://github.com/.../.git‘:Recv failure Connection was reset</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/06/01/Go/1/" title="学习go的准备工作"><img class="cover" src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-01</div><div class="title">学习go的准备工作</div></div></a></div><div><a href="/2023/06/06/Go/10/" title="方法与接口"><img class="cover" src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-06</div><div class="title">方法与接口</div></div></a></div><div><a href="/2023/06/08/Go/11/" title="补充函数与字符串"><img class="cover" src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-08</div><div class="title">补充函数与字符串</div></div></a></div><div><a href="/2023/06/09/Go/12/" title="type关键字与错误处理"><img class="cover" src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-09</div><div class="title">type关键字与错误处理</div></div></a></div><div><a href="/2023/06/11/Go/14/" title="文件详细操作"><img class="cover" src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-11</div><div class="title">文件详细操作</div></div></a></div><div><a href="/2023/06/10/Go/13/" title="包的使用和time包"><img class="cover" src="https://s2.loli.net/2023/06/01/a4okGxJeW3smrcQ.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-10</div><div class="title">包的使用和time包</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">珩</div><div class="author-info__description">等我苦尽甘来时，我给你讲讲来时走的路。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/uestc-wxy/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.facebook.com/profile.php?id=100092533320651" target="_blank" title="facebook"><i class="fab fa-facebook" style="color: #4a7dbe;"></i></a><a class="social-icon" href="mailto:1939311091@qq.com" target="_blank" title="email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/1907948898" target="_blank" title="b站"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/tiktok.jpg" target="_blank" title="抖音"><i class="fab fa-tiktok" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/weixin.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">刚建站不久，博客美化有待研究，部分页面也没时间弄，路过的你将就看啦~😊，图片没加载出来就是网络不佳噢~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.2.</span> <span class="toc-text">支持的数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.</span> <span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-Engine"><span class="toc-number">2.</span> <span class="toc-text">创建 Engine</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%BC%95%E6%93%8E"><span class="toc-number">2.1.</span> <span class="toc-text">单引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97"><span class="toc-number">2.1.1.</span> <span class="toc-text">日志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="toc-number">2.1.2.</span> <span class="toc-text">连接池</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E7%BB%84"><span class="toc-number">2.2.</span> <span class="toc-text">引擎组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E7%BB%84%E7%AD%96%E7%95%A5"><span class="toc-number">2.3.</span> <span class="toc-text">引擎组策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E7%AD%96%E7%95%A5"><span class="toc-number">2.3.1.</span> <span class="toc-text">负载策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E8%A1%A8%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-number">3.</span> <span class="toc-text">定义表结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E6%98%A0%E5%B0%84%E8%A7%84%E5%88%99"><span class="toc-number">3.1.</span> <span class="toc-text">各种映射规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BC%80%E6%98%A0%E5%B0%84%EF%BC%8C%E5%90%8E%E7%BC%80%E6%98%A0%E5%B0%84%E5%92%8C%E7%BC%93%E5%AD%98%E6%98%A0%E5%B0%84"><span class="toc-number">3.2.</span> <span class="toc-text">前缀映射，后缀映射和缓存映射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Table-%E5%92%8C-Tag-%E6%94%B9%E5%8F%98%E5%90%8D%E7%A7%B0%E6%98%A0%E5%B0%84"><span class="toc-number">3.3.</span> <span class="toc-text">使用 Table 和 Tag 改变名称映射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Column-%E5%B1%9E%E6%80%A7%E5%AE%9A%E4%B9%89"><span class="toc-number">3.4.</span> <span class="toc-text">Column 属性定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Go%E4%B8%8E%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B%E5%AF%B9%E5%BA%94%E8%A1%A8"><span class="toc-number">3.5.</span> <span class="toc-text">Go与字段类型对应表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%A8%E7%BB%93%E6%9E%84%E6%93%8D%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text">表结构操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BF%A1%E6%81%AF"><span class="toc-number">4.1.</span> <span class="toc-text">获取数据库信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="toc-number">4.2.</span> <span class="toc-text">表操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95%E5%92%8C%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95"><span class="toc-number">4.3.</span> <span class="toc-text">创建索引和唯一索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%93%E6%9E%84"><span class="toc-number">4.4.</span> <span class="toc-text">同步数据库结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E5%AF%BC%E5%85%A5SQL%E8%84%9A%E6%9C%AC"><span class="toc-number">4.5.</span> <span class="toc-text">导出导入SQL脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dump%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%93%E6%9E%84%E5%92%8C%E6%95%B0%E6%8D%AE"><span class="toc-number">4.5.1.</span> <span class="toc-text">Dump数据库结构和数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Import-%E6%89%A7%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%BA%93SQL%E8%84%9A%E6%9C%AC"><span class="toc-number">4.5.2.</span> <span class="toc-text">Import 执行数据库SQL脚本</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">5.</span> <span class="toc-text">插入数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%97%B6%E9%97%B4Created"><span class="toc-number">5.1.</span> <span class="toc-text">创建时间Created</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%BB%9F%E8%AE%A1%E6%95%B0%E6%8D%AE"><span class="toc-number">6.</span> <span class="toc-text">查询和统计数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6%E6%96%B9%E6%B3%95"><span class="toc-number">6.0.1.</span> <span class="toc-text">查询条件方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E5%BC%80%E5%85%B3%E6%96%B9%E6%B3%95"><span class="toc-number">6.0.2.</span> <span class="toc-text">临时开关方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Get%E6%96%B9%E6%B3%95"><span class="toc-number">6.0.3.</span> <span class="toc-text">Get方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Find%E6%96%B9%E6%B3%95"><span class="toc-number">6.0.4.</span> <span class="toc-text">Find方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Count%E6%96%B9%E6%B3%95"><span class="toc-number">6.0.5.</span> <span class="toc-text">Count方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exist%E7%B3%BB%E5%88%97%E6%96%B9%E6%B3%95"><span class="toc-number">6.0.6.</span> <span class="toc-text">Exist系列方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8EGet%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">6.0.6.1.</span> <span class="toc-text">与Get的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%BA%E8%AE%AE"><span class="toc-number">6.0.6.2.</span> <span class="toc-text">建议</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Iterate%E6%96%B9%E6%B3%95"><span class="toc-number">6.0.7.</span> <span class="toc-text">Iterate方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Join%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">6.0.8.</span> <span class="toc-text">Join的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rows%E6%96%B9%E6%B3%95"><span class="toc-number">6.0.9.</span> <span class="toc-text">Rows方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sum%E7%B3%BB%E5%88%97%E6%96%B9%E6%B3%95"><span class="toc-number">6.0.10.</span> <span class="toc-text">Sum系列方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE"><span class="toc-number">6.1.</span> <span class="toc-text">更新数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%90%E8%A7%82%E9%94%81Version"><span class="toc-number">6.1.1.</span> <span class="toc-text">乐观锁Version</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E6%97%B6%E9%97%B4Updated"><span class="toc-number">6.1.2.</span> <span class="toc-text">更新时间Updated</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="toc-number">6.2.</span> <span class="toc-text">删除数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E5%88%A0%E9%99%A4Deleted"><span class="toc-number">6.2.1.</span> <span class="toc-text">软删除Deleted</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%A7%E8%A1%8CSQL%E6%9F%A5%E8%AF%A2"><span class="toc-number">7.</span> <span class="toc-text">执行SQL查询</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Query"><span class="toc-number">7.1.</span> <span class="toc-text">Query</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#QueryInterface"><span class="toc-number">7.2.</span> <span class="toc-text">QueryInterface</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#QueryString"><span class="toc-number">7.3.</span> <span class="toc-text">QueryString</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%A7%E8%A1%8CSQL%E5%91%BD%E4%BB%A4"><span class="toc-number">8.</span> <span class="toc-text">执行SQL命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86"><span class="toc-number">9.</span> <span class="toc-text">事务处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%93%E5%AD%98"><span class="toc-number">10.</span> <span class="toc-text">缓存</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-number">11.</span> <span class="toc-text">事件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Builder"><span class="toc-number">12.</span> <span class="toc-text">Builder</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Insert"><span class="toc-number">12.1.</span> <span class="toc-text">Insert</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Select"><span class="toc-number">12.2.</span> <span class="toc-text">Select</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Update"><span class="toc-number">12.3.</span> <span class="toc-text">Update</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Delete"><span class="toc-number">12.4.</span> <span class="toc-text">Delete</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Union"><span class="toc-number">12.5.</span> <span class="toc-text">Union</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conditions"><span class="toc-number">12.6.</span> <span class="toc-text">Conditions</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/08/07/Go/33/" title="Xorm开发详细文档"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/4d287328613d2f4952a70edb9192044037dd5e22.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Xorm开发详细文档"/></a><div class="content"><a class="title" href="/2023/08/07/Go/33/" title="Xorm开发详细文档">Xorm开发详细文档</a><time datetime="2023-08-07T05:44:17.000Z" title="发表于 2023-08-07 13:44:17">2023-08-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/04/giterr/" title="完美解决git报错fatal unable to access ‘https://github.com/.../.git‘:Recv failure Connection was reset"><img src="https://s2.loli.net/2023/05/31/UuGQIvw8HNBrZsp.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="完美解决git报错fatal unable to access ‘https://github.com/.../.git‘:Recv failure Connection was reset"/></a><div class="content"><a class="title" href="/2023/08/04/giterr/" title="完美解决git报错fatal unable to access ‘https://github.com/.../.git‘:Recv failure Connection was reset">完美解决git报错fatal unable to access ‘https://github.com/.../.git‘:Recv failure Connection was reset</a><time datetime="2023-08-04T03:44:28.000Z" title="发表于 2023-08-04 11:44:28">2023-08-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/04/Go/32/" title="RPC与gRPC详解"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/IMG_20230801_114856.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RPC与gRPC详解"/></a><div class="content"><a class="title" href="/2023/08/04/Go/32/" title="RPC与gRPC详解">RPC与gRPC详解</a><time datetime="2023-08-04T03:43:59.000Z" title="发表于 2023-08-04 11:43:59">2023-08-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/01/gitlab/" title="Ubuntu安装部署Gitlab详细教程"><img src="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu安装部署Gitlab详细教程"/></a><div class="content"><a class="title" href="/2023/08/01/gitlab/" title="Ubuntu安装部署Gitlab详细教程">Ubuntu安装部署Gitlab详细教程</a><time datetime="2023-08-01T13:57:40.000Z" title="发表于 2023-08-01 21:57:40">2023-08-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/01/Go/31/" title="Go语言性能优化建议与pprof性能调优详解"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/IMG_20230801_114856.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Go语言性能优化建议与pprof性能调优详解"/></a><div class="content"><a class="title" href="/2023/08/01/Go/31/" title="Go语言性能优化建议与pprof性能调优详解">Go语言性能优化建议与pprof性能调优详解</a><time datetime="2023-08-01T03:44:06.000Z" title="发表于 2023-08-01 11:44:06">2023-08-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/4d287328613d2f4952a70edb9192044037dd5e22.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 By 珩</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><i class="fa-solid fa-cloud"></i><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>萌ICP备20230529号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="6614140207" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-mini="true"> </div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
