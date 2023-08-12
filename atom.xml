@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-08-11T04:03:22.048Z</updated>
+  <updated>2023-08-12T03:34:09.328Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu详细配置Golang开发环境</title>
+    <link href="https://uestcwxy.love/2023/08/12/Go/35/"/>
+    <id>https://uestcwxy.love/2023/08/12/Go/35/</id>
+    <published>2023-08-12T03:10:30.000Z</published>
+    <updated>2023-08-12T03:34:09.328Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+  </entry>
   
   <entry>
     <title>学习后端之路</title>
@@ -469,31 +494,6 @@
     
     
     <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
-    
-    
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>反射详解</title>
-    <link href="https://uestcwxy.love/2023/07/07/Go/22/"/>
-    <id>https://uestcwxy.love/2023/07/07/Go/22/</id>
-    <published>2023-07-07T13:58:41.000Z</published>
-    <updated>2023-07-08T03:08:56.403Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
     
     
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
