@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-08-12T03:34:09.328Z</updated>
+  <updated>2023-08-13T10:38:52.403Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>大厂程序员使用Redis案例——连续签到</title>
+    <link href="https://uestcwxy.love/2023/08/13/Go/37/"/>
+    <id>https://uestcwxy.love/2023/08/13/Go/37/</id>
+    <published>2023-08-13T10:11:25.000Z</published>
+    <updated>2023-08-13T10:38:52.403Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
+    
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>完美解决Github提交PR后报错:File is not gofumpt-ed (gofumpt)</title>
+    <link href="https://uestcwxy.love/2023/08/13/Go/36/"/>
+    <id>https://uestcwxy.love/2023/08/13/Go/36/</id>
+    <published>2023-08-13T05:44:16.000Z</published>
+    <updated>2023-08-13T06:16:40.731Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu详细配置Golang开发环境</title>
@@ -42,11 +94,11 @@
   </entry>
   
   <entry>
-    <title>学习后端之路</title>
+    <title>字节资深程序员经验分享——学习后端之路</title>
     <link href="https://uestcwxy.love/2023/08/11/load/"/>
     <id>https://uestcwxy.love/2023/08/11/load/</id>
     <published>2023-08-11T03:49:38.000Z</published>
-    <updated>2023-08-11T04:03:22.048Z</updated>
+    <updated>2023-08-12T12:56:31.115Z</updated>
     
     
       
@@ -448,48 +500,6 @@
     <summary type="html"></summary>
         
       
-    
-    
-    
-    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
-    
-    
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Go实现在线词典翻译(三种翻译接口，结合sync)</title>
-    <link href="https://uestcwxy.love/2023/07/08/Go/24/"/>
-    <id>https://uestcwxy.love/2023/07/08/Go/24/</id>
-    <published>2023-07-08T12:09:55.000Z</published>
-    <updated>2023-07-18T07:51:13.616Z</updated>
-    
-    
-    <summary type="html">运用goroutine，结合sync包，同时实现彩云翻译和百度翻译。可对输入的内容自动检测，完成英译汉，汉译英。</summary>
-    
-    
-    
-    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
-    
-    
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>猜谜游戏(Go实现)</title>
-    <link href="https://uestcwxy.love/2023/07/08/Go/23/"/>
-    <id>https://uestcwxy.love/2023/07/08/Go/23/</id>
-    <published>2023-07-08T03:41:54.000Z</published>
-    <updated>2023-07-18T07:54:40.405Z</updated>
-    
-    
-    <summary type="html">首先，代码导入了一些需要使用的包，包括 &quot;bufio&quot;、&quot;fmt&quot;、&quot;math/rand&quot;、&quot;os&quot;、&quot;strconv&quot; 和 &quot;strings&quot;，这些包提供了处理输入输出、生成随机数和字符串处理的功能。接下来，在 main 函数中，定义了一个变量 maxNum，它表示可猜测的最大数字。然后使用 rand.Seed(time.Now().UnixNano()) 设置随机数生成器的种子，以确保每次程序运行时生成的随机数是不同的。然后使用 rand.Intn(maxNum) 生成一个介于 0 和 maxNum 之间的随机整数作为秘密数字。</summary>
     
     
     
