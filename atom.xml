@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-08-13T10:38:52.403Z</updated>
+  <updated>2023-08-16T14:44:51.096Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用PicGo+Github搭建免费图床</title>
+    <link href="https://uestcwxy.love/2023/08/16/imgbed/"/>
+    <id>https://uestcwxy.love/2023/08/16/imgbed/</id>
+    <published>2023-08-16T09:03:01.000Z</published>
+    <updated>2023-08-16T14:44:51.096Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>大厂程序员使用Redis案例——连续签到</title>
@@ -477,33 +500,6 @@
       
     
     
-    
-    
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Go实现socks5代理服务器</title>
-    <link href="https://uestcwxy.love/2023/07/09/Go/25/"/>
-    <id>https://uestcwxy.love/2023/07/09/Go/25/</id>
-    <published>2023-07-09T02:45:39.000Z</published>
-    <updated>2023-07-24T08:12:02.686Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
     
     
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
