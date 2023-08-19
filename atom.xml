@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-08-16T14:44:51.096Z</updated>
+  <updated>2023-08-19T04:40:55.884Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决[GIN-debug] redirecting request 307和301并允许跨域请求</title>
+    <link href="https://uestcwxy.love/2023/08/19/Go/38/"/>
+    <id>https://uestcwxy.love/2023/08/19/Go/38/</id>
+    <published>2023-08-19T04:39:37.000Z</published>
+    <updated>2023-08-19T04:40:55.884Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
+    
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+  </entry>
   
   <entry>
     <title>使用PicGo+Github搭建免费图床</title>
@@ -464,31 +491,6 @@
     <id>https://uestcwxy.love/2023/07/16/Go/27/</id>
     <published>2023-07-16T12:49:16.000Z</published>
     <updated>2023-07-19T06:40:26.241Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gin框架详解</title>
-    <link href="https://uestcwxy.love/2023/07/09/Go/26/"/>
-    <id>https://uestcwxy.love/2023/07/09/Go/26/</id>
-    <published>2023-07-09T08:21:23.000Z</published>
-    <updated>2023-07-18T07:51:30.442Z</updated>
     
     
       
