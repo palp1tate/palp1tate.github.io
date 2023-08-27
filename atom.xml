@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-08-20T06:49:53.847Z</updated>
+  <updated>2023-08-27T09:20:00.194Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从入门到渐入佳境——记我的第六届字节青训营经历</title>
+    <link href="https://uestcwxy.love/2023/08/27/qingxun/"/>
+    <id>https://uestcwxy.love/2023/08/27/qingxun/</id>
+    <published>2023-08-27T09:18:42.000Z</published>
+    <updated>2023-08-27T09:20:00.194Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
+    
+    
+    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+  </entry>
   
   <entry>
     <title>Gin+微服务实现视频上传到七牛云</title>
@@ -480,31 +507,6 @@
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
-    <category term="前端" scheme="https://uestcwxy.love/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>npm和yarn换成淘宝源仍报错npm ERR! code ETIMEDOUT和info There appears to be trouble with your network......</title>
-    <link href="https://uestcwxy.love/2023/07/18/%E5%89%8D%E7%AB%AF/npmerror/"/>
-    <id>https://uestcwxy.love/2023/07/18/%E5%89%8D%E7%AB%AF/npmerror/</id>
-    <published>2023-07-18T06:03:46.000Z</published>
-    <updated>2023-07-18T08:13:52.117Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
     <category term="前端" scheme="https://uestcwxy.love/tags/%E5%89%8D%E7%AB%AF/"/>
     
