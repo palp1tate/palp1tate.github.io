@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-09-06T06:53:56.685Z</updated>
+  <updated>2023-09-07T09:27:44.317Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>栈、队列、双向队列</title>
+    <link href="https://uestcwxy.love/2023/09/06/%E7%AE%97%E6%B3%95/3/"/>
+    <id>https://uestcwxy.love/2023/09/06/%E7%AE%97%E6%B3%95/3/</id>
+    <published>2023-09-06T07:25:37.000Z</published>
+    <updated>2023-09-07T09:27:44.317Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="算法" scheme="https://uestcwxy.love/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>数组、链表、列表</title>
     <link href="https://uestcwxy.love/2023/09/04/%E7%AE%97%E6%B3%95/2/"/>
     <id>https://uestcwxy.love/2023/09/04/%E7%AE%97%E6%B3%95/2/</id>
     <published>2023-09-04T02:33:01.000Z</published>
-    <updated>2023-09-06T06:53:56.685Z</updated>
+    <updated>2023-09-06T11:23:01.961Z</updated>
     
     
       
@@ -472,33 +497,6 @@
     
     
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Go语言性能优化建议与pprof性能调优详解</title>
-    <link href="https://uestcwxy.love/2023/08/01/Go/31/"/>
-    <id>https://uestcwxy.love/2023/08/01/Go/31/</id>
-    <published>2023-08-01T03:44:06.000Z</published>
-    <updated>2023-08-01T13:52:44.822Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
-    
-    
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
     
   </entry>
   
