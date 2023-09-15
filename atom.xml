@@ -6,22 +6,97 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-09-12T10:26:20.601Z</updated>
+  <updated>2023-09-15T07:54:16.186Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
-    <name>珩</name>
+    <name>Palp1tate</name>
     <email>1939311091@qq.com</email>
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>排序</title>
+    <link href="https://uestcwxy.love/2023/09/14/%E7%AE%97%E6%B3%95/9/"/>
+    <id>https://uestcwxy.love/2023/09/14/%E7%AE%97%E6%B3%95/9/</id>
+    <published>2023-09-14T07:30:08.000Z</published>
+    <updated>2023-09-15T07:54:16.186Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="算法" scheme="https://uestcwxy.love/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>q3</title>
+    <link href="https://uestcwxy.love/2023/09/13/%E7%AE%97%E6%B3%95/q3/"/>
+    <id>https://uestcwxy.love/2023/09/13/%E7%AE%97%E6%B3%95/q3/</id>
+    <published>2023-09-13T05:12:21.000Z</published>
+    <updated>2023-09-15T11:31:19.356Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="算法" scheme="https://uestcwxy.love/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搜索</title>
+    <link href="https://uestcwxy.love/2023/09/13/%E7%AE%97%E6%B3%95/8/"/>
+    <id>https://uestcwxy.love/2023/09/13/%E7%AE%97%E6%B3%95/8/</id>
+    <published>2023-09-13T01:20:08.000Z</published>
+    <updated>2023-09-15T11:32:29.839Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="算法" scheme="https://uestcwxy.love/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>图</title>
     <link href="https://uestcwxy.love/2023/09/12/%E7%AE%97%E6%B3%95/7/"/>
     <id>https://uestcwxy.love/2023/09/12/%E7%AE%97%E6%B3%95/7/</id>
     <published>2023-09-12T06:44:02.000Z</published>
-    <updated>2023-09-12T10:26:20.601Z</updated>
+    <updated>2023-09-15T11:32:12.989Z</updated>
     
     
       
@@ -46,7 +121,7 @@
     <link href="https://uestcwxy.love/2023/09/11/%E7%AE%97%E6%B3%95/q2/"/>
     <id>https://uestcwxy.love/2023/09/11/%E7%AE%97%E6%B3%95/q2/</id>
     <published>2023-09-11T13:05:18.000Z</published>
-    <updated>2023-09-11T14:02:58.906Z</updated>
+    <updated>2023-09-15T11:31:13.540Z</updated>
     
     
       
@@ -71,7 +146,7 @@
     <link href="https://uestcwxy.love/2023/09/10/%E7%AE%97%E6%B3%95/q1/"/>
     <id>https://uestcwxy.love/2023/09/10/%E7%AE%97%E6%B3%95/q1/</id>
     <published>2023-09-10T06:22:16.000Z</published>
-    <updated>2023-09-10T08:44:04.812Z</updated>
+    <updated>2023-09-15T11:31:02.380Z</updated>
     
     
       
@@ -96,7 +171,7 @@
     <link href="https://uestcwxy.love/2023/09/10/%E7%AE%97%E6%B3%95/6/"/>
     <id>https://uestcwxy.love/2023/09/10/%E7%AE%97%E6%B3%95/6/</id>
     <published>2023-09-10T04:35:39.000Z</published>
-    <updated>2023-09-12T06:39:02.337Z</updated>
+    <updated>2023-09-15T11:32:07.388Z</updated>
     
     
       
@@ -121,7 +196,7 @@
     <link href="https://uestcwxy.love/2023/09/09/%E7%AE%97%E6%B3%95/5/"/>
     <id>https://uestcwxy.love/2023/09/09/%E7%AE%97%E6%B3%95/5/</id>
     <published>2023-09-09T08:16:39.000Z</published>
-    <updated>2023-09-12T06:37:25.041Z</updated>
+    <updated>2023-09-15T11:32:02.569Z</updated>
     
     
       
@@ -146,7 +221,7 @@
     <link href="https://uestcwxy.love/2023/09/08/%E7%AE%97%E6%B3%95/4/"/>
     <id>https://uestcwxy.love/2023/09/08/%E7%AE%97%E6%B3%95/4/</id>
     <published>2023-09-08T06:18:22.000Z</published>
-    <updated>2023-09-12T06:35:46.950Z</updated>
+    <updated>2023-09-15T11:31:57.420Z</updated>
     
     
       
@@ -171,7 +246,7 @@
     <link href="https://uestcwxy.love/2023/09/06/%E7%AE%97%E6%B3%95/3/"/>
     <id>https://uestcwxy.love/2023/09/06/%E7%AE%97%E6%B3%95/3/</id>
     <published>2023-09-06T07:25:37.000Z</published>
-    <updated>2023-09-12T06:33:54.250Z</updated>
+    <updated>2023-09-15T11:31:51.737Z</updated>
     
     
       
@@ -196,7 +271,7 @@
     <link href="https://uestcwxy.love/2023/09/04/%E7%AE%97%E6%B3%95/2/"/>
     <id>https://uestcwxy.love/2023/09/04/%E7%AE%97%E6%B3%95/2/</id>
     <published>2023-09-04T02:33:01.000Z</published>
-    <updated>2023-09-12T06:32:11.934Z</updated>
+    <updated>2023-09-15T11:31:45.934Z</updated>
     
     
       
@@ -221,7 +296,7 @@
     <link href="https://uestcwxy.love/2023/08/30/axure/"/>
     <id>https://uestcwxy.love/2023/08/30/axure/</id>
     <published>2023-08-30T05:33:06.000Z</published>
-    <updated>2023-08-30T06:46:40.290Z</updated>
+    <updated>2023-09-15T11:24:08.014Z</updated>
     
     
       
@@ -242,7 +317,7 @@
     <link href="https://uestcwxy.love/2023/08/29/%E7%AE%97%E6%B3%95/1/"/>
     <id>https://uestcwxy.love/2023/08/29/%E7%AE%97%E6%B3%95/1/</id>
     <published>2023-08-29T03:13:04.000Z</published>
-    <updated>2023-09-12T06:31:56.618Z</updated>
+    <updated>2023-09-15T11:31:32.708Z</updated>
     
     
       
@@ -267,7 +342,7 @@
     <link href="https://uestcwxy.love/2023/08/28/githubreset/"/>
     <id>https://uestcwxy.love/2023/08/28/githubreset/</id>
     <published>2023-08-28T14:19:15.000Z</published>
-    <updated>2023-08-28T14:28:37.692Z</updated>
+    <updated>2023-09-15T11:24:38.597Z</updated>
     
     
       
@@ -288,7 +363,7 @@
     <link href="https://uestcwxy.love/2023/08/28/ubuntuerror/"/>
     <id>https://uestcwxy.love/2023/08/28/ubuntuerror/</id>
     <published>2023-08-28T01:12:18.000Z</published>
-    <updated>2023-08-28T01:29:20.608Z</updated>
+    <updated>2023-09-15T11:25:45.215Z</updated>
     
     
       
@@ -309,7 +384,7 @@
     <link href="https://uestcwxy.love/2023/08/27/qingxun/"/>
     <id>https://uestcwxy.love/2023/08/27/qingxun/</id>
     <published>2023-08-27T09:18:42.000Z</published>
-    <updated>2023-08-27T09:20:00.194Z</updated>
+    <updated>2023-09-15T11:25:26.489Z</updated>
     
     
       
@@ -336,7 +411,7 @@
     <link href="https://uestcwxy.love/2023/08/20/Go/39/"/>
     <id>https://uestcwxy.love/2023/08/20/Go/39/</id>
     <published>2023-08-20T05:50:43.000Z</published>
-    <updated>2023-08-20T06:49:53.847Z</updated>
+    <updated>2023-09-15T11:30:44.930Z</updated>
     
     
       
@@ -361,7 +436,7 @@
     <link href="https://uestcwxy.love/2023/08/19/Go/38/"/>
     <id>https://uestcwxy.love/2023/08/19/Go/38/</id>
     <published>2023-08-19T04:39:37.000Z</published>
-    <updated>2023-08-20T06:17:45.187Z</updated>
+    <updated>2023-09-15T11:30:33.016Z</updated>
     
     
       
@@ -388,7 +463,7 @@
     <link href="https://uestcwxy.love/2023/08/16/imgbed/"/>
     <id>https://uestcwxy.love/2023/08/16/imgbed/</id>
     <published>2023-08-16T09:03:01.000Z</published>
-    <updated>2023-08-16T14:44:51.096Z</updated>
+    <updated>2023-09-15T11:24:55.586Z</updated>
     
     
       
@@ -411,7 +486,7 @@
     <link href="https://uestcwxy.love/2023/08/13/Go/37/"/>
     <id>https://uestcwxy.love/2023/08/13/Go/37/</id>
     <published>2023-08-13T10:11:25.000Z</published>
-    <updated>2023-09-08T12:42:18.826Z</updated>
+    <updated>2023-09-15T11:30:26.679Z</updated>
     
     
       
@@ -430,77 +505,6 @@
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
     
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>完美解决Github提交PR后报错:File is not gofumpt-ed (gofumpt)</title>
-    <link href="https://uestcwxy.love/2023/08/13/Go/36/"/>
-    <id>https://uestcwxy.love/2023/08/13/Go/36/</id>
-    <published>2023-08-13T05:44:16.000Z</published>
-    <updated>2023-08-13T06:16:40.731Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu详细配置Golang开发环境</title>
-    <link href="https://uestcwxy.love/2023/08/12/Go/35/"/>
-    <id>https://uestcwxy.love/2023/08/12/Go/35/</id>
-    <published>2023-08-12T03:10:30.000Z</published>
-    <updated>2023-08-12T03:34:09.328Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>字节资深程序员经验分享——学习后端之路</title>
-    <link href="https://uestcwxy.love/2023/08/11/load/"/>
-    <id>https://uestcwxy.love/2023/08/11/load/</id>
-    <published>2023-08-11T03:49:38.000Z</published>
-    <updated>2023-08-12T12:56:31.115Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
     
   </entry>
   

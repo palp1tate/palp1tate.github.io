@@ -1,17 +1,17 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>计网期末复习之传输层 | Palp1tate</title><meta name="author" content="珩,1939311091@qq.com"><meta name="copyright" content="珩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1、传输层：两个进程之间的逻辑通信，网络层: 两个主机之间的逻辑通信  传输层协议运行在端系统  发送方: 将应用程序报文分成报文段传递给网络层,  接受方: 将报文段重新组装成报文传递到应用层   传输层可以为应用提供多种协议(因特网: TCP 和 UDP) 可靠按序递交 (TCP)：拥塞控制&#x2F;流量控制&#x2F;连接建立 不可靠的无序传递: UDP“尽力传递” IP的直接扩展 两种服">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>计网期末复习之传输层 | Palp1tate</title><meta name="author" content="Palp1tate,1939311091@qq.com"><meta name="copyright" content="Palp1tate"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1、传输层：两个进程之间的逻辑通信，网络层: 两个主机之间的逻辑通信  传输层协议运行在端系统  发送方: 将应用程序报文分成报文段传递给网络层,  接受方: 将报文段重新组装成报文传递到应用层   传输层可以为应用提供多种协议(因特网: TCP 和 UDP) 可靠按序递交 (TCP)：拥塞控制&#x2F;流量控制&#x2F;连接建立 不可靠的无序传递: UDP“尽力传递” IP的直接扩展 两种服">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计网期末复习之传输层">
 <meta property="og:url" content="https://uestcwxy.love/2023/06/21/%E8%AE%A1%E7%BD%91/3/index.html">
 <meta property="og:site_name" content="Palp1tate">
 <meta property="og:description" content="1、传输层：两个进程之间的逻辑通信，网络层: 两个主机之间的逻辑通信  传输层协议运行在端系统  发送方: 将应用程序报文分成报文段传递给网络层,  接受方: 将报文段重新组装成报文传递到应用层   传输层可以为应用提供多种协议(因特网: TCP 和 UDP) 可靠按序递交 (TCP)：拥塞控制&#x2F;流量控制&#x2F;连接建立 不可靠的无序传递: UDP“尽力传递” IP的直接扩展 两种服">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/82b824685df6df454395916e44474501.png">
 <meta property="article:published_time" content="2023-06-21T11:54:05.000Z">
-<meta property="article:modified_time" content="2023-06-26T10:02:46.260Z">
-<meta property="article:author" content="珩">
+<meta property="article:modified_time" content="2023-09-15T11:33:51.666Z">
+<meta property="article:author" content="Palp1tate">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://uestcwxy.love/2023/06/21/%E8%AE%A1%E7%BD%91/3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/82b824685df6df454395916e44474501.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://uestcwxy.love/2023/06/21/%E8%AE%A1%E7%BD%91/3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
   localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
@@ -35,7 +35,7 @@
     day: '天前',
     month: '个月前'
   },
-  copyright: {"limitCount":50,"languages":{"author":"作者: 珩","link":"链接: ","source":"来源: Palp1tate","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  copyright: {"limitCount":50,"languages":{"author":"作者: Palp1tate","link":"链接: ","source":"来源: Palp1tate","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
   lightbox: 'fancybox',
   Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
   source: {
@@ -58,7 +58,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-06-26 18:02:46'
+  postUpdate: '2023-09-15 19:33:51'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -203,7 +203,7 @@
     document.addEventListener('pjax:send', () => { preloader.initLoading() })
     document.addEventListener('pjax:complete', () => { preloader.endLoading() })
   }
-})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">80</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Palp1tate"><span class="site-name">Palp1tate</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计网期末复习之传输层</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-21T11:54:05.000Z" title="发表于 2023-06-21 19:54:05">2023-06-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-26T10:02:46.260Z" title="更新于 2023-06-26 18:02:46">2023-06-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">大二下期末复习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">14.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>45分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计网期末复习之传输层"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>1、传输层：两个进程之间的<strong>逻辑通信</strong>，网络层: 两个<strong>主机</strong>之间的逻辑通信</p>
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">83</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/82b824685df6df454395916e44474501.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Palp1tate"><span class="site-name">Palp1tate</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计网期末复习之传输层</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-21T11:54:05.000Z" title="发表于 2023-06-21 19:54:05">2023-06-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-15T11:33:51.666Z" title="更新于 2023-09-15 19:33:51">2023-09-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">大二下期末复习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">14.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>45分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计网期末复习之传输层"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>1、传输层：两个进程之间的<strong>逻辑通信</strong>，网络层: 两个<strong>主机</strong>之间的逻辑通信</p>
 <ul>
 <li>传输层协议运行在端系统 <ul>
 <li><strong>发送方</strong>: 将应用程序报文分成报文段传递给网络层, </li>
@@ -220,7 +220,7 @@
 <p>2、多路复用&#x2F;多路分解工作原理</p>
 <p>在发送主机多路复用:从多个套接字收集数据, 用首部封装数据，然后将报文段传递到网络层(多路复用）</p>
 <p>在接收主机多路分解:将接收到的数据段传递到正确的套接字（多路分解）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_08-40-33.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_08-40-33.png"></p>
 <p>多路复用&#x2F;分解如何工作?（报文段头部字段实现）</p>
 <ul>
 <li><p>主机收到IP数据报</p>
@@ -233,21 +233,21 @@
 <li><p>主机用<strong>IP地址和端口号</strong>指明报文段属于哪个合适的套接字</p>
 </li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_08-40-51.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_08-40-51.png"></p>
 <p>3、无连接多路分解（ UDP 套接字：目的IP地址, 目的端口号）</p>
 <ul>
 <li>当主机收到UDP报文段：检查报文段中的目的端口号、用<strong>端口号</strong>指示UDP报文段属于哪个套接字</li>
 <li>来自不同的源IP地址且&#x2F;或源端口号的IP报文报，导向同一个的套接字</li>
 <li><strong>SP 提供“返回地址”</strong></li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_08-53-15.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_08-53-15.png"></p>
 <p>4、面向连接的多路分解（TCP套接字：源IP地址、源端口号、目的IP地址、目的端口号）</p>
 <ul>
 <li>服务器主机支持很多同时的TCP 套接字:每个套接字用4部分来表示 </li>
 <li>Web服务器对每个连接的客户都有不同的套接字：非持久 HTTP 将对每个请求有一个不同的套接字</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_08-53-37.png"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_08-53-53.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_08-53-37.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_08-53-53.png"></p>
 <p>5、 UDP用户数据报协议</p>
 <p>UDP 是<strong>面向报文</strong>的</p>
 <p><strong>基于Internet IP协议</strong></p>
@@ -272,7 +272,7 @@
 <p>**常用于流式多媒体应用：丢包容忍&#x2F;速率敏感 **<br>其他UDP应用：DNS&#x2F;SNMP&#x2F;RTP</p>
 <p><strong>经UDP的可靠传输</strong> : 在应用层增加可靠性&#x2F;应用程序特定的差错恢复！</p>
 <p>6、UDP报文格式（8字节）每个字段含义</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_09-11-16.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_09-11-16.png"></p>
 <p>7、UDP是面向报文的传输方式</p>
 <p>面向报文的传输方式是应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。因此，应用程序必须选择合适大小的报文。若报文太长，则IP层需要分片，降低效率。若太短，会是IP太小。UDP对应用层交下来的报文，既不合并，也不拆分，而是保留这些报文的边界。即<strong>应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文</strong>。</p>
 <p>思考大的视频文件如何利用UDP传输：</p>
@@ -289,18 +289,18 @@
 </li>
 </ul>
 <p>9、UDP首部的<strong>校验和</strong>计算</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_09-08-11.png"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_09-08-35.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_09-08-11.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_09-08-35.png"></p>
 <p>（1）将UDP伪头部、UDP头部和数据部分全部用16进制数表示。</p>
 <p>（2）将第一个16进制数与第二个16进制数相加。求和时产生的进位必须回卷加到结果上。</p>
 <p>（3）将上一步得到的16位数与第三个16进制的数相加，重复第二步，直到累加完所有的16进制数，并且得到的结果为16进制数。</p>
 <p>（4）将累加最后得到的16进制数取反，得到校验和。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_09-10-17.png"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_09-26-04.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_09-10-17.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_09-26-04.png"></p>
 <p>发送方对校验和进行了反码操作，并放入了校验和字段 发送给了接受方 等接收方对其他字段进行了二进制的加法，其中就有校验和字段，就会变成原码和反码的加法，就都变成1了，如果不是都是1的话 那就说明其中的字段和发送方的字段不一样，肯定就是错误的，就把包丢了。</p>
 <p>10、可靠数据传输原理rdt1.0-rdt3.0的工作场景（no loss、lost packet、lost ack、timeout）</p>
 <p>Rdt1.0: 完全可靠信道上的可靠数据传输</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_10-18-04.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_10-18-04.png"></p>
 <p>Rdt2.0: 具有bit错误的信道</p>
 <ul>
 <li>下层信道可能让传输分组中的bit受损：利用校验和检测bit位错误</li>
@@ -318,7 +318,7 @@
 </li>
 </ul>
 <p>停等协议:发送方发送一个报文，然后等待接受方的响应</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_10-18-42.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_10-18-42.png"></p>
 <p><strong>rdt2.0: 缺陷</strong></p>
 <p>如果ACK&#x2F;NAK发生错误&#x2F;被破坏(corrupted)会怎么样？</p>
 <ul>
@@ -332,8 +332,8 @@
 <li>序列号(Sequence number): 发送方给每个分组增加序列号</li>
 <li>接收方丢弃重复分组</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/rdt2.1.png"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_10-27-30.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/rdt2.1.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_10-27-30.png"></p>
 <p><strong>rdt2.2: 无NAK的消息协议</strong></p>
 <p>我们真的需要两种确认消息(ACK + NAK)吗？</p>
 <ul>
@@ -348,7 +348,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_10-27-48.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_10-27-48.png"></p>
 <p><strong>rdt3.0: 具有出错和丢失的信道</strong></p>
 <p>新假设: 下层信道还要丢失报文 (数据或者 ACKs)</p>
 <p>校验和, 序号, 确认, 重发将会有帮助，但是不够</p>
@@ -362,23 +362,23 @@
 </li>
 <li>要求<strong>倒计时定时器</strong>：只有在定时器超时时才触发重发</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_10-28-16.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_10-28-16.png"></p>
 <p><strong>rdt3.0的性能分析</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_11-15-06.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_11-15-06.png"></p>
 <p>流水线: 发送方允许发送多个 “在路上的”, 还没有确认的报文</p>
 <ul>
 <li>序号数目的范围必须增加</li>
 <li>在发送方&#x2F;接收方必须有缓冲区</li>
 </ul>
 <p>流水线技术的两个通用形式: <em><strong>go-Back-N</strong></em>,*** 选择重传***</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_10-28-44.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_10-28-44.png"></p>
 <p>11、GBN协议</p>
 <p><strong>Go-Back-N(GBN)协议: 发送方</strong></p>
 <ul>
 <li>分组头部包含k-bit序列号</li>
 <li>窗口尺寸为N，最多允许N个分组未确认</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_11-16-47.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_11-16-47.png"></p>
 <ul>
 <li>ACK(n): 确认到序列号n(包含n)的分组均已被正确接收<ul>
 <li>可能收到重复ACK</li>
@@ -398,14 +398,14 @@
 <li>丢弃 (不缓存) -&gt; <strong>没有接收缓冲区</strong>!</li>
 <li>重新确认具有按序的分组</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_12-35-57.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_12-35-57.png"></p>
 <p>12、SR协议</p>
 <ul>
 <li>接收方分别确认已经收到的分组:必要时，缓冲报文, 最后按序提交给上层</li>
 <li>发送者只重发没有收到确认的分组:对每个没有确认的报文发送者都要启动一个定时器(每个未被确认的报文都有一个定时器)</li>
 <li>发送窗口:N 个连续序号&#x2F;限制被发送的未确认的分组数量</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_11-17-24.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_11-17-24.png"></p>
 <p><strong>发送方</strong></p>
 <ul>
 <li>从上层收到数据 ：如果下一个可用的序号在发送方窗口内，则将数据打包并发送,启动定时器</li>
@@ -436,7 +436,7 @@
 <li><p>其他：忽略</p>
 </li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_11-18-28.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_11-18-28.png"></p>
 <p>选择性重传: 两难选择</p>
 <p>例子: </p>
 <p>序号: 0, 1, 2, 3</p>
@@ -444,7 +444,7 @@
 <p>在两种情况下接收方没有感觉到差别!</p>
 <p>Q: 窗口大小和序号大小有什么关系?</p>
 <p>A: 窗口小于或等于序号空间大小的一半</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_11-18-55.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_11-18-55.png"></p>
 <p><strong>可靠数据传输机制及用途总结</strong></p>
 <table>
 <thead>
@@ -495,7 +495,7 @@
 <li>TCP 拥塞和流量控制设置窗口大小</li>
 </ul>
 </li>
-<li><p>收发缓冲区<br><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_11-19-16.png"></p>
+<li><p>收发缓冲区<br><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_11-19-16.png"></p>
 </li>
 <li><p>全双工数据:</p>
 <ul>
@@ -523,7 +523,7 @@
 <p>数据定长：规定固定长度的数据，实际数据少的则需要进行补位</p>
 <p>在应用层头部定义数据长度（例如http协议，先取头部，再根据头部中的数据长度取出数据）</p>
 <p>14、TCP报文格式（字段含义&#x2F;用途）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_11-19-52.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_11-19-52.png"></p>
 <p>15、 TCP 往返时延的估计和超时</p>
 <p>设置超时</p>
 <ul>
@@ -590,7 +590,7 @@
 <td>立即发送 ACK, 证实缝隙低端的报文段已经收到</td>
 </tr>
 </tbody></table>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_11-21-16.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_11-21-16.png"></p>
 <p><strong>超时间隔加倍</strong></p>
 <ul>
 <li><p>TCP每次重传，都会把下一次的超时间隔设置为先前值的两倍。</p>
@@ -609,7 +609,7 @@
 <li>启动<strong>快速重传</strong>: 在定时器超时之前重发丢失的报文段</li>
 </ul>
 <p>17、 TCP 流量控制机制</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_11-21-33.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_11-21-33.png"></p>
 <p>(假设 TCP 接收方丢弃失序的报文段)</p>
 <ul>
 <li><p>缓冲区的剩余空间&#x3D; RcvWindow&#x3D; RcvBuffer-[LastByteRcvd - LastByteRead]</p>
@@ -621,7 +621,7 @@
 <li><p>Receiver告知Sender，RcvWindow&#x3D;0,会出现什么情况？</p>
 </li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_11-22-48.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_11-22-48.png"></p>
 <p>18、 TCP连接管理（序号、确认序号）</p>
 <p><strong>建立连接</strong></p>
 <p>回忆: TCP在交换数据报文段之前在发送方和接收方之间建立连接</p>
@@ -638,14 +638,14 @@
 <p>-服务器分配缓冲区</p>
 <p>-指定服务器的初始序号</p>
 <p>Step 3: 客户接收 SYN&#x2F;ACK, 回复 ACK 报文段, 可能包含数据</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_11-23-01.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_11-23-01.png"></p>
 <p><strong>关闭连接</strong></p>
 <p>客户关闭套接字: clientSocket.close	</p>
 <p>Step 1: 客户发送 TCP FIN 控制报文段到服务器 </p>
 <p>Step 2: 服务器接收 FIN, 回复 ACK. 进入半关闭连接状态； </p>
 <p>Step 3: 服务器发送FIN到客户，客户接收 FIN, 回复 ACK，进入 “time wait”状态等待结束时释放连接资源</p>
 <p>Step 4: 服务器接收 ACK.  连接关闭. </p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_11-23-12.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_11-23-12.png"></p>
 <p>19、拥塞控制的方法</p>
 <p>根据网路层是否为运输层拥塞控制提供了显示帮助，来区分拥塞控制方法。分为两类方法:</p>
 <p>端到端拥塞控制:</p>
@@ -687,7 +687,7 @@
 <li>加性递增: 每个RTT内如果没有丢失事件发生，拥塞窗口增加1个MSS（拥塞避免）</li>
 <li>乘性递减: 发生丢包事件后将拥塞窗口减半</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_11-24-05.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_11-24-05.png"></p>
 <p><strong>TCP 慢启动（slow  start）</strong></p>
 <ul>
 <li><p>连接开始的时候, CongWin &#x3D; 1 MSS</p>
@@ -713,7 +713,7 @@
 <li>当CongWin达到ssthresh时。</li>
 <li>每收到1个ACK, CongWin &#x3D;CongWin + (MSS&#x2F; CongWin)*MSS</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_11-24-39.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_11-24-39.png"></p>
 <p><strong>对拥塞事件的反应</strong></p>
 <ul>
 <li>当超时事件发生时:<ul>
@@ -739,8 +739,8 @@
 <li>对于引起TCP进入快速恢复状态的<strong>缺失报文段</strong>，每收到一个冗余的ACK，CongWin的值增加一个MSS。</li>
 <li>最终，当对丢失的报文段的一个ACK到达时，TCP在降低 CongWin（cwnd &#x3D; ssthresh）后，进入<strong>拥塞避免</strong>状态。</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_11-24-39.png"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-22_11-25-51.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_11-24-39.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-22_11-25-51.png"></p>
 <hr>
 <p>UDP 报文实现差错检测时，不需要在网络上传输的部分是（A ） </p>
 <p>A. 伪首部 	B. 首部 		C. 数据 		D. 校验和</p>
@@ -930,10 +930,10 @@
 <p>b） 如果第一段在第二段之前到达，则在对第一段的确认中到达段，确认号为207，源端口号为80并且目的地端口号是302。</p>
 <p>c） 如果第二段在第一段之前到达，则在对第一个到达的段，确认号码是127，表明它仍然是等待字节127及以后。</p>
 <p>d）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-25_11-30-33.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-25_11-30-33.png"></p>
 <blockquote>
 <p>假设TCP Reno是一个经历如上所示行为的协议，回答下列问题。在各种情况中，简要地论证你的回答。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/yskztt1.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/yskztt1.png"></p>
 <p>（1）指出TCP慢启动运行时的时间间隔。</p>
 <p>（2）指出TCP拥塞避免运行时的时间间隔。</p>
 <p>（3）在第16个传输轮回之后，报文段的丢失是根据3个冗余ACK还是根据超时检测岀来的？</p>
@@ -990,21 +990,21 @@
 <p><em><strong>补充关于选择重传的过程</strong></em>：</p>
 <p><strong>窗口下界：最左边第一个窗口对应的序号</strong></p>
 <p>假设发送窗口和接收窗口都为4，发送方发送0帧，接收方收到0帧，并回复0帧确认，由于0帧是接收窗口下界，于是移动窗口使得窗口下界为第一个未被接收的帧（1号帧），同时把新加入帧（4号帧）的状态置为可接收状态：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-25_15-56-21.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-25_15-56-21.png"></p>
 <p>发送方发送1帧，接收方收到1帧，并回复1帧确认，由于1帧是接收窗口下界，于是移动窗口使得窗口下界为第一个未被接收的帧（2号帧），同时把新加入帧（5号帧）的状态置为可接收状态：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-25_15-56-30.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-25_15-56-30.png"></p>
 <p>发送方发送2帧，但是2帧丢失，接收方未收到2帧：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-25_15-56-44.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-25_15-56-44.png"></p>
 <p>发送方发送3帧，接收方收到3帧，缓存三帧，发送ACK3：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-25_15-56-52.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-25_15-56-52.png"></p>
 <p>发送方收到ACK0，由于窗口下限被确认，所以窗口右移一个，发送4帧，接收方收到4帧，缓存，发送ACK4：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-25_15-57-20.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-25_15-57-20.png"></p>
 <p>发送方收到ACK1，由于窗口下界被确认，所以窗口右移1个，发送5帧，接收方接收5帧，缓存，发送ACK5：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-25_15-57-27.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-25_15-57-27.png"></p>
 <p>发送方2帧超时未收到2帧确认，重新传2帧，这次接收方收到了，2-5帧交付（发送给上层网络层），发送ACK2：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/Snipaste_2023-06-25_15-57-36.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/Snipaste_2023-06-25_15-57-36.png"></p>
 <p>发送方收到ACK3，但是无帧可发，等待，一直到ACK2到达，窗口下界被确认，窗口右移1个。</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://uestcwxy.love">珩</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://uestcwxy.love/2023/06/21/%E8%AE%A1%E7%BD%91/3/">https://uestcwxy.love/2023/06/21/%E8%AE%A1%E7%BD%91/3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://uestcwxy.love" target="_blank">Palp1tate</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/06/21/%E8%AE%A1%E7%BD%91/2/" title="计网期末复习之应用层"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计网期末复习之应用层</div></div></a></div><div class="next-post pull-right"><a href="/2023/06/23/%E8%AE%A1%E7%BD%91/4/" title="计网期末复习之网络层"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计网期末复习之网络层</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/06/20/%E8%AE%A1%E7%BD%91/1/" title="计网期末复习之计算机网络与因特网"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-20</div><div class="title">计网期末复习之计算机网络与因特网</div></div></a></div><div><a href="/2023/06/21/%E8%AE%A1%E7%BD%91/2/" title="计网期末复习之应用层"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-21</div><div class="title">计网期末复习之应用层</div></div></a></div><div><a href="/2023/06/23/%E8%AE%A1%E7%BD%91/4/" title="计网期末复习之网络层"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-23</div><div class="title">计网期末复习之网络层</div></div></a></div><div><a href="/2023/06/24/%E8%AE%A1%E7%BD%91/6/" title="计网期末复习之套接字编程"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-24</div><div class="title">计网期末复习之套接字编程</div></div></a></div><div><a href="/2023/06/23/%E8%AE%A1%E7%BD%91/5/" title="计网期末复习之链路层"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-23</div><div class="title">计网期末复习之链路层</div></div></a></div><div><a href="/2023/06/25/%E8%AE%A1%E7%BD%91/7/" title="电子科大计网期末复习之经典大题"><img class="cover" src="https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-25</div><div class="title">电子科大计网期末复习之经典大题</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">珩</div><div class="author-info__description">等我苦尽甘来时，我给你讲讲来时走的路。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">80</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/uestc-wxy/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.facebook.com/profile.php?id=100092533320651" target="_blank" title="facebook"><i class="fab fa-facebook" style="color: #4a7dbe;"></i></a><a class="social-icon" href="mailto:1939311091@qq.com" target="_blank" title="email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/1907948898" target="_blank" title="b站"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/tiktok.jpg" target="_blank" title="抖音"><i class="fab fa-tiktok" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/weixin.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">刚建站不久，博客美化有待研究，部分页面也没时间弄，路过的你将就看啦~😊，图片没加载出来就是网络不佳噢~</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/09/12/%E7%AE%97%E6%B3%95/7/" title="图"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/ImgPicGo/img/1284.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="图"/></a><div class="content"><a class="title" href="/2023/09/12/%E7%AE%97%E6%B3%95/7/" title="图">图</a><time datetime="2023-09-12T06:44:02.000Z" title="发表于 2023-09-12 14:44:02">2023-09-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/11/%E7%AE%97%E6%B3%95/q2/" title="q2"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/ImgPicGo/img/1284.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="q2"/></a><div class="content"><a class="title" href="/2023/09/11/%E7%AE%97%E6%B3%95/q2/" title="q2">q2</a><time datetime="2023-09-11T13:05:18.000Z" title="发表于 2023-09-11 21:05:18">2023-09-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/10/%E7%AE%97%E6%B3%95/q1/" title="LeetCode 热题 100——两数之和、字母异位词分组、最长连续序列"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/ImgPicGo/img/1284.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LeetCode 热题 100——两数之和、字母异位词分组、最长连续序列"/></a><div class="content"><a class="title" href="/2023/09/10/%E7%AE%97%E6%B3%95/q1/" title="LeetCode 热题 100——两数之和、字母异位词分组、最长连续序列">LeetCode 热题 100——两数之和、字母异位词分组、最长连续序列</a><time datetime="2023-09-10T06:22:16.000Z" title="发表于 2023-09-10 14:22:16">2023-09-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/10/%E7%AE%97%E6%B3%95/6/" title="堆"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/ImgPicGo/img/1284.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="堆"/></a><div class="content"><a class="title" href="/2023/09/10/%E7%AE%97%E6%B3%95/6/" title="堆">堆</a><time datetime="2023-09-10T04:35:39.000Z" title="发表于 2023-09-10 12:35:39">2023-09-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/09/%E7%AE%97%E6%B3%95/5/" title="树"><img src="https://cdn.jsdelivr.net/gh/uestc-wxy/ImgPicGo/img/1284.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="树"/></a><div class="content"><a class="title" href="/2023/09/09/%E7%AE%97%E6%B3%95/5/" title="树">树</a><time datetime="2023-09-09T08:16:39.000Z" title="发表于 2023-09-09 16:16:39">2023-09-09</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/uestc-wxy/blog_img/img/82b824685df6df454395916e44474501.png')"><div id="footer-wrap"><div class="copyright">&copy;2023 By 珩</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><i class="fa-solid fa-cloud"></i><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>萌ICP备20230529号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://uestcwxy.love">Palp1tate</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://uestcwxy.love/2023/06/21/%E8%AE%A1%E7%BD%91/3/">https://uestcwxy.love/2023/06/21/%E8%AE%A1%E7%BD%91/3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://uestcwxy.love" target="_blank">Palp1tate</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/82b824685df6df454395916e44474501.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/06/21/%E8%AE%A1%E7%BD%91/2/" title="计网期末复习之应用层"><img class="cover" src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/82b824685df6df454395916e44474501.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计网期末复习之应用层</div></div></a></div><div class="next-post pull-right"><a href="/2023/06/23/%E8%AE%A1%E7%BD%91/4/" title="计网期末复习之网络层"><img class="cover" src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/82b824685df6df454395916e44474501.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计网期末复习之网络层</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/06/20/%E8%AE%A1%E7%BD%91/1/" title="计网期末复习之计算机网络与因特网"><img class="cover" src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-20</div><div class="title">计网期末复习之计算机网络与因特网</div></div></a></div><div><a href="/2023/06/23/%E8%AE%A1%E7%BD%91/4/" title="计网期末复习之网络层"><img class="cover" src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-23</div><div class="title">计网期末复习之网络层</div></div></a></div><div><a href="/2023/06/21/%E8%AE%A1%E7%BD%91/2/" title="计网期末复习之应用层"><img class="cover" src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-21</div><div class="title">计网期末复习之应用层</div></div></a></div><div><a href="/2023/06/23/%E8%AE%A1%E7%BD%91/5/" title="计网期末复习之链路层"><img class="cover" src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-23</div><div class="title">计网期末复习之链路层</div></div></a></div><div><a href="/2023/06/24/%E8%AE%A1%E7%BD%91/6/" title="计网期末复习之套接字编程"><img class="cover" src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-24</div><div class="title">计网期末复习之套接字编程</div></div></a></div><div><a href="/2023/06/25/%E8%AE%A1%E7%BD%91/7/" title="电子科大计网期末复习之经典大题"><img class="cover" src="https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/82b824685df6df454395916e44474501.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-25</div><div class="title">电子科大计网期末复习之经典大题</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Palp1tate</div><div class="author-info__description">等我苦尽甘来时，我给你讲讲来时走的路。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">83</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/palp1tate/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.facebook.com/profile.php?id=100092533320651" target="_blank" title="facebook"><i class="fab fa-facebook" style="color: #4a7dbe;"></i></a><a class="social-icon" href="mailto:1939311091@qq.com" target="_blank" title="email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/1907948898" target="_blank" title="b站"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/tiktok.jpg" target="_blank" title="抖音"><i class="fab fa-tiktok" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/weixin.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">刚建站不久，博客美化有待研究，部分页面也没时间弄，路过的你将就看啦~😊，图片没加载出来就是网络不佳噢~</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/09/14/%E7%AE%97%E6%B3%95/9/" title="排序"><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1284.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="排序"/></a><div class="content"><a class="title" href="/2023/09/14/%E7%AE%97%E6%B3%95/9/" title="排序">排序</a><time datetime="2023-09-14T07:30:08.000Z" title="发表于 2023-09-14 15:30:08">2023-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/13/%E7%AE%97%E6%B3%95/q3/" title="q3"><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1284.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="q3"/></a><div class="content"><a class="title" href="/2023/09/13/%E7%AE%97%E6%B3%95/q3/" title="q3">q3</a><time datetime="2023-09-13T05:12:21.000Z" title="发表于 2023-09-13 13:12:21">2023-09-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/13/%E7%AE%97%E6%B3%95/8/" title="搜索"><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1284.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="搜索"/></a><div class="content"><a class="title" href="/2023/09/13/%E7%AE%97%E6%B3%95/8/" title="搜索">搜索</a><time datetime="2023-09-13T01:20:08.000Z" title="发表于 2023-09-13 09:20:08">2023-09-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/12/%E7%AE%97%E6%B3%95/7/" title="图"><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1284.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="图"/></a><div class="content"><a class="title" href="/2023/09/12/%E7%AE%97%E6%B3%95/7/" title="图">图</a><time datetime="2023-09-12T06:44:02.000Z" title="发表于 2023-09-12 14:44:02">2023-09-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/11/%E7%AE%97%E6%B3%95/q2/" title="q2"><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1284.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="q2"/></a><div class="content"><a class="title" href="/2023/09/11/%E7%AE%97%E6%B3%95/q2/" title="q2">q2</a><time datetime="2023-09-11T13:05:18.000Z" title="发表于 2023-09-11 21:05:18">2023-09-11</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/palp1tate/blog_img/img/82b824685df6df454395916e44474501.png')"><div id="footer-wrap"><div class="copyright">&copy;2023 By Palp1tate</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><i class="fa-solid fa-cloud"></i><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>萌ICP备20230529号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
