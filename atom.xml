@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-09-21T12:09:18.762Z</updated>
+  <updated>2023-09-23T11:17:25.683Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>十小时开源了一个加密算法仓库，功能强大，后端开发人员狂喜！</title>
+    <link href="https://uestcwxy.love/2023/09/23/Go/42/"/>
+    <id>https://uestcwxy.love/2023/09/23/Go/42/</id>
+    <published>2023-09-23T10:54:48.000Z</published>
+    <updated>2023-09-23T11:17:25.683Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>分别用Python和Go实现对文件夹及其子文件夹里的文件进行批量重命名</title>
@@ -459,7 +484,7 @@
     <link href="https://uestcwxy.love/2023/08/27/qingxun/"/>
     <id>https://uestcwxy.love/2023/08/27/qingxun/</id>
     <published>2023-08-27T09:18:42.000Z</published>
-    <updated>2023-09-22T02:51:48.438Z</updated>
+    <updated>2023-09-22T03:11:42.059Z</updated>
     
     
       
@@ -473,31 +498,6 @@
     
     
     <category term="青训营" scheme="https://uestcwxy.love/categories/%E9%9D%92%E8%AE%AD%E8%90%A5/"/>
-    
-    
-    <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
-    
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gin+微服务实现视频上传到七牛云</title>
-    <link href="https://uestcwxy.love/2023/08/20/Go/39/"/>
-    <id>https://uestcwxy.love/2023/08/20/Go/39/</id>
-    <published>2023-08-20T05:50:43.000Z</published>
-    <updated>2023-09-15T11:30:44.930Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
     
     
     <category term="大二自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%BA%8C%E8%87%AA%E5%AD%A6/"/>
