@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-09-27T14:35:57.439Z</updated>
+  <updated>2023-10-05T02:05:13.858Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何用go获取IPv4地址，WLAN的IPv4地址，本机公网IP地址</title>
+    <link href="https://uestcwxy.love/2023/10/05/Go/44/"/>
+    <id>https://uestcwxy.love/2023/10/05/Go/44/</id>
+    <published>2023-10-05T01:41:38.000Z</published>
+    <updated>2023-10-05T02:05:13.858Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>加密算法仓库更新完成！支持18种算法！</title>
@@ -468,27 +493,6 @@
     <id>https://uestcwxy.love/2023/08/28/githubreset/</id>
     <published>2023-08-28T14:19:15.000Z</published>
     <updated>2023-09-15T11:24:38.597Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>完美解决Ubuntu网络故障，有线连接异常，IP地址一直显示127.0.0.1</title>
-    <link href="https://uestcwxy.love/2023/08/28/ubuntuerror/"/>
-    <id>https://uestcwxy.love/2023/08/28/ubuntuerror/</id>
-    <published>2023-08-28T01:12:18.000Z</published>
-    <updated>2023-09-15T11:25:45.215Z</updated>
     
     
       
