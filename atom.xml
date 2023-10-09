@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-10-05T02:05:13.858Z</updated>
+  <updated>2023-10-07T04:45:56.328Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>如何用go获取IPv4地址，WLAN的IPv4地址，本机公网IP地址</title>
+    <title>如何用go获取IPv4地址，WLAN的IPv4地址，本机公网IP地址，本机空闲端口</title>
     <link href="https://uestcwxy.love/2023/10/05/Go/44/"/>
     <id>https://uestcwxy.love/2023/10/05/Go/44/</id>
     <published>2023-10-05T01:41:38.000Z</published>
-    <updated>2023-10-05T02:05:13.858Z</updated>
+    <updated>2023-10-07T04:45:56.328Z</updated>
     
     
       
