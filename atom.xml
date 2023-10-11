@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-10-07T04:45:56.328Z</updated>
+  <updated>2023-10-11T07:24:16.638Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决linux终端启动后不能自动加载环境变量配置(个人配置文件)详解</title>
+    <link href="https://uestcwxy.love/2023/10/11/linux/profile/"/>
+    <id>https://uestcwxy.love/2023/10/11/linux/profile/</id>
+    <published>2023-10-11T06:37:08.000Z</published>
+    <updated>2023-10-11T07:24:16.638Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="linux" scheme="https://uestcwxy.love/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>如何用go获取IPv4地址，WLAN的IPv4地址，本机公网IP地址，本机空闲端口</title>
@@ -484,27 +509,6 @@
     <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
     <category term="算法" scheme="https://uestcwxy.love/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git使用——GitHub项目回退版本</title>
-    <link href="https://uestcwxy.love/2023/08/28/githubreset/"/>
-    <id>https://uestcwxy.love/2023/08/28/githubreset/</id>
-    <published>2023-08-28T14:19:15.000Z</published>
-    <updated>2023-09-15T11:24:38.597Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
     
   </entry>
   
