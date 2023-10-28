@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-10-23T09:08:24.976Z</updated>
+  <updated>2023-10-28T06:05:54.709Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用docker安装MySQL，Redis，Nacos，Consul</title>
+    <link href="https://uestcwxy.love/2023/10/28/docker/2/"/>
+    <id>https://uestcwxy.love/2023/10/28/docker/2/</id>
+    <published>2023-10-28T05:42:14.000Z</published>
+    <updated>2023-10-28T06:05:54.709Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="docker" scheme="https://uestcwxy.love/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu安装docker，并换镜像源详细教程</title>
+    <link href="https://uestcwxy.love/2023/10/28/docker/1/"/>
+    <id>https://uestcwxy.love/2023/10/28/docker/1/</id>
+    <published>2023-10-28T05:04:26.000Z</published>
+    <updated>2023-10-28T05:40:59.642Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="linux" scheme="https://uestcwxy.love/tags/linux/"/>
+    
+    <category term="docker" scheme="https://uestcwxy.love/tags/docker/"/>
+    
+  </entry>
   
   <entry>
     <title>手把手教你用gin+gorm+mysql实现多级评论</title>
@@ -463,52 +515,6 @@
     <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
     <category term="算法" scheme="https://uestcwxy.love/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数组、链表、列表</title>
-    <link href="https://uestcwxy.love/2023/09/04/%E7%AE%97%E6%B3%95/2/"/>
-    <id>https://uestcwxy.love/2023/09/04/%E7%AE%97%E6%B3%95/2/</id>
-    <published>2023-09-04T02:33:01.000Z</published>
-    <updated>2023-09-15T11:31:45.934Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
-    
-    <category term="算法" scheme="https://uestcwxy.love/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>永久免费使用Axure最新版教程</title>
-    <link href="https://uestcwxy.love/2023/08/30/axure/"/>
-    <id>https://uestcwxy.love/2023/08/30/axure/</id>
-    <published>2023-08-30T05:33:06.000Z</published>
-    <updated>2023-09-15T11:24:08.014Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
     
   </entry>
   
