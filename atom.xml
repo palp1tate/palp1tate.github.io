@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-12-02T08:46:20.991Z</updated>
+  <updated>2023-12-14T11:09:17.095Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>提高写作水平——怎样在Typora中使用快捷键实现快速改变字体颜色详解</title>
+    <link href="https://uestcwxy.love/2023/12/14/typora-color/"/>
+    <id>https://uestcwxy.love/2023/12/14/typora-color/</id>
+    <published>2023-12-14T10:01:59.000Z</published>
+    <updated>2023-12-14T11:09:17.095Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>q9</title>
+    <link href="https://uestcwxy.love/2023/12/07/%E7%AE%97%E6%B3%95/q9/"/>
+    <id>https://uestcwxy.love/2023/12/07/%E7%AE%97%E6%B3%95/q9/</id>
+    <published>2023-12-07T06:51:30.000Z</published>
+    <updated>2023-12-07T08:14:56.968Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="算法" scheme="https://uestcwxy.love/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>从零开始部署一个网站详细图文教程——腾讯云的服务器、SSL证书，阿里云的域名，七牛云的对象存储、CDN等</title>
@@ -240,7 +288,7 @@
     <link href="https://uestcwxy.love/2023/10/28/docker/2/"/>
     <id>https://uestcwxy.love/2023/10/28/docker/2/</id>
     <published>2023-10-28T05:42:14.000Z</published>
-    <updated>2023-11-28T12:35:02.197Z</updated>
+    <updated>2023-12-02T08:47:09.576Z</updated>
     
     
       
@@ -459,56 +507,6 @@
     <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode链表必刷题——移除链表元素、设计链表、反转链表、两两交换链表中的节点、删除链表的倒数第 N 个结点、相交链表、环形链表、环形链表 II</title>
-    <link href="https://uestcwxy.love/2023/09/18/%E7%AE%97%E6%B3%95/q2/"/>
-    <id>https://uestcwxy.love/2023/09/18/%E7%AE%97%E6%B3%95/q2/</id>
-    <published>2023-09-18T10:46:55.000Z</published>
-    <updated>2023-11-18T13:42:50.058Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
-    
-    <category term="算法" scheme="https://uestcwxy.love/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode哈希表必刷题——有效的字母异位词、两个数组的交集、快乐数、两数之和、四数相加 II、赎金信、三数之和、四数之和</title>
-    <link href="https://uestcwxy.love/2023/09/18/%E7%AE%97%E6%B3%95/q4/"/>
-    <id>https://uestcwxy.love/2023/09/18/%E7%AE%97%E6%B3%95/q4/</id>
-    <published>2023-09-18T10:46:55.000Z</published>
-    <updated>2023-11-18T13:43:13.822Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
-    
-    <category term="算法" scheme="https://uestcwxy.love/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
