@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-12-14T11:09:17.095Z</updated>
+  <updated>2023-12-19T11:28:27.090Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>电子科大软件系统架构设计——用户界面设计</title>
+    <link href="https://uestcwxy.love/2023/12/19/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/7/"/>
+    <id>https://uestcwxy.love/2023/12/19/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/7/</id>
+    <published>2023-12-19T11:27:01.000Z</published>
+    <updated>2023-12-19T11:28:27.090Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="软件系统架构设计" scheme="https://uestcwxy.love/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>提高写作水平——怎样在Typora中使用快捷键实现快速改变字体颜色详解</title>
@@ -466,31 +491,6 @@
     <id>https://uestcwxy.love/2023/09/21/Go/41/</id>
     <published>2023-09-21T11:45:18.000Z</published>
     <updated>2023-09-21T12:09:18.762Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
-    
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Go语言的单元测试与基准测试</title>
-    <link href="https://uestcwxy.love/2023/09/19/Go/40/"/>
-    <id>https://uestcwxy.love/2023/09/19/Go/40/</id>
-    <published>2023-09-19T02:26:26.000Z</published>
-    <updated>2023-09-19T06:00:15.116Z</updated>
     
     
       

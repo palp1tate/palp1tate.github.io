@@ -1,0 +1,727 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>电子科大软件系统架构设计——用户界面设计 | Palp1tate</title><meta name="author" content="Palp1tate,1939311091@qq.com"><meta name="copyright" content="Palp1tate"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="用户界面设计用户界面设计概述用户界面定义用户界面(User Interface)泛指用户与系统之间进行交互所采用的方式、途径、内容、布局及结构的总称。它是系统和用户之间进行交互和信息交换的媒介。 用户界面作用 用户界面作为信息系统软件的表示层构件,它们的基本作用是实现系统功能控制操作、数据输入&#x2F;输出。 用户界面使得用户与系统之间实现人机交互,并将信息进行表达与展现。  用户界面类型 良好">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电子科大软件系统架构设计——用户界面设计">
+<meta property="og:url" content="https://uestcwxy.love/2023/12/19/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/7/index.html">
+<meta property="og:site_name" content="Palp1tate">
+<meta property="og:description" content="用户界面设计用户界面设计概述用户界面定义用户界面(User Interface)泛指用户与系统之间进行交互所采用的方式、途径、内容、布局及结构的总称。它是系统和用户之间进行交互和信息交换的媒介。 用户界面作用 用户界面作为信息系统软件的表示层构件,它们的基本作用是实现系统功能控制操作、数据输入&#x2F;输出。 用户界面使得用户与系统之间实现人机交互,并将信息进行表达与展现。  用户界面类型 良好">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg">
+<meta property="article:published_time" content="2023-12-19T11:27:01.000Z">
+<meta property="article:modified_time" content="2023-12-19T11:28:27.090Z">
+<meta property="article:author" content="Palp1tate">
+<meta property="article:tag" content="大三自学">
+<meta property="article:tag" content="软件系统架构设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://uestcwxy.love/2023/12/19/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/7/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Palp1tate","link":"链接: ","source":"来源: Palp1tate","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '电子科大软件系统架构设计——用户界面设计',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-19 19:28:27'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Palp1tate" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Palp1tate"><span class="site-name">Palp1tate</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">电子科大软件系统架构设计——用户界面设计</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-19T11:27:01.000Z" title="发表于 2023-12-19 19:27:01">2023-12-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-19T11:28:27.090Z" title="更新于 2023-12-19 19:28:27">2023-12-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">8.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>23分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="电子科大软件系统架构设计——用户界面设计"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="用户界面设计"><a href="#用户界面设计" class="headerlink" title="用户界面设计"></a>用户界面设计</h1><h2 id="用户界面设计概述"><a href="#用户界面设计概述" class="headerlink" title="用户界面设计概述"></a>用户界面设计概述</h2><h3 id="用户界面定义"><a href="#用户界面定义" class="headerlink" title="用户界面定义"></a>用户界面定义</h3><p><strong>用户界面</strong>(User Interface)泛指用户与系统之间进行交互所采用的方式、途径、内容、布局及结构的总称。它是系统和用户之间进行交互和信息交换的媒介。</p>
+<h3 id="用户界面作用"><a href="#用户界面作用" class="headerlink" title="用户界面作用"></a>用户界面作用</h3><ul>
+<li>用户界面作为信息系统软件的表示层构件,它们的基本作用是实现系统功能控制操作、数据输入&#x2F;输出。</li>
+<li>用户界面使得用户与系统之间实现人机交互,并将信息进行表达与展现。</li>
+</ul>
+<h3 id="用户界面类型"><a href="#用户界面类型" class="headerlink" title="用户界面类型"></a>用户界面类型</h3><p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231213160336284.png" alt="image-20231213160336284"></p>
+<h3 id="良好界面应具有的特性"><a href="#良好界面应具有的特性" class="headerlink" title="良好界面应具有的特性"></a>良好界面应具有的特性</h3><ol>
+<li>易用性:软件使用简单、操作方便。用户不用查阅帮助就能理解界面功能,并能引导用户完成业务功能操作。</li>
+<li>灵活性:用户可定制界面风格、界面功能、界面信息。支持用户灵活使用功能。</li>
+<li>安全性:可保证用户正确地使用系统,并确保数据安全操作。</li>
+<li>艺术性:软件界面美观、可使用户爽心悦目。</li>
+</ol>
+<h3 id="用户界面设计-1"><a href="#用户界面设计-1" class="headerlink" title="用户界面设计"></a>用户界面设计</h3><p><strong>用户界面设计</strong>是指对信息系统的界面组织结构、界面布局、界面视觉、人机<br>交互等方面的整体设计。</p>
+<p><strong>用户界面设计目标:</strong></p>
+<p>用户界面不仅需实现信息系统功能操作,还需使信息系统软件操作变得友好、舒适、简单、方便,同时使用户获得好的操作体验。</p>
+<h3 id="用户界面设计原则"><a href="#用户界面设计原则" class="headerlink" title="用户界面设计原则"></a>用户界面设计原则</h3><p>1.用户能有效控制系统</p>
+<ul>
+<li>界面应该操作简单,大多数操作从开始到执行不多于3次鼠标点击</li>
+<li>提供灵活的人机交互</li>
+<li>允许交互被中断或撤消</li>
+<li>允许有经验的用户以快捷方式操作</li>
+<li>允许用户对出现在屏幕上的对象直接操作</li>
+</ul>
+<p>2.减少用户的记忆负担</p>
+<ul>
+<li>界面设计应记忆过去的动作和结果需求</li>
+<li>建立有意义的缺省</li>
+<li>定义有意义的捷径</li>
+<li>界面的布局应基于现实世界的直观展示</li>
+<li>以不断进展的方式提示信息</li>
+</ul>
+<p>3.保持界面一致性</p>
+<ul>
+<li>在应用系列内保持一致性</li>
+<li>使用户执行一个功能时,能够预测将会发生什么</li>
+</ul>
+<p>4.界面实用与美观</p>
+<ul>
+<li>界面不仅需实用,还应通过精心的布局、色彩、字体和空白来吸引用户</li>
+<li>界面应该爽心悦目和符合用户预期心理</li>
+</ul>
+<p>5.界面客户化与个性化</p>
+<ul>
+<li>针对不同类型用户,可以进行功能裁剪与流程定义,使信息系统能实现客户化定制需求。</li>
+<li>为用户提供个体偏好的界面风格和布局设置,给用户带来可控性和个性化体验。</li>
+</ul>
+<h3 id="用户界面设计规范"><a href="#用户界面设计规范" class="headerlink" title="用户界面设计规范"></a>用户界面设计规范</h3><p>1.一致性规范</p>
+<ul>
+<li><p>系统各个用户界面的风格、界面布局、界面的交互方式应保持前后一致，遵循统一的设计规范。用户不需要太多培训就可以方便使用信息系统。</p>
+</li>
+<li><p>系统界面的色彩、文字、图标、图片、空间等视觉设计应保持前后一致，并符合系统应用领域主题</p>
+</li>
+</ul>
+<p>2.准确性规范</p>
+<ul>
+<li>使用与应用领域相符的界面风格，显示信息的含义应该非常明确，避免给用户产生歧义。</li>
+<li>显示有意义的出错信息，而不是单纯的程序错误代码。</li>
+<li>避免使用文本输入框来放置不可编辑的文字内容。</li>
+<li>使用备注说明来辅助理解。</li>
+</ul>
+<p>3.界面布局规范</p>
+<ul>
+<li>在进行UI设计时需要充分考虑布局的合理化问题，遵循用户从上而下，从左至右浏览与操作习惯。</li>
+<li>避免将功能按键排列过于分散，以造成用户鼠标移动距离过长的弊端。</li>
+<li>多做“减法”处理，将不常用的功能区块隐藏，以保持界面的简洁，使用户专注于主要业务操作流程，有利于提高软件的易用性及可用性。</li>
+</ul>
+<p>4.系统操作规范</p>
+<ul>
+<li>在查询条件输入框内按回车应该自动触发查询操作。</li>
+<li>在进行一些不可逆或者删除操作时应该有信息提示用户，并让用户确认是否继续操作，必要时应该把操作造成的后果也告诉用户。</li>
+<li>信息提示窗口的“确认”及“取消”按钮需要分别映射键盘按键“Enter和“ESC”</li>
+<li>避免使用鼠标双击动作，不仅会增加用户操作难度，还可能会引发用户误会，认为功能点击无效。</li>
+<li>在表单录入时，需要把输入焦点定位到第一个输入项。用户通过Tab键可以在输入框或操作按钮间切换，并注意Tab的操作应该遵循从左向右、从上而下的顺序。</li>
+</ul>
+<p>5.系统响应时间规范</p>
+<ul>
+<li>系统响应时间应该适中，响应时间过长，用户就会感到不安和沮丧，而响应时间过快也会影响到用户的操作节奏，并可能导致错误。</li>
+<li>提交请求处理应在3秒内完成，窗口应立即给出处理结果信息。</li>
+<li>提交请求处理在3秒以上完成，需在处理响应窗口中显示进度条。</li>
+<li>当一个长时间的处理完成时，应给出一个完成消息显示。</li>
+</ul>
+<h3 id="用户界面设计内容"><a href="#用户界面设计内容" class="headerlink" title="用户界面设计内容"></a>用户界面设计内容</h3><p>1.界面结构设计</p>
+<p><strong>界面结构设计</strong>是对用户界面系统的组成结构与控制关系进行设计。通过设计的界面结构图可以将系统所有的屏幕界面、表格和报表等组成元素联系起来，展示出系统的界面组织结构。在界面结构设计中，给出信息系统用户界面的层次结构关系和界面控制关系，从而将系统功能结构通过界面结构有效组织与呈现出来。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231213162423595.png" alt="image-20231213162423595"></p>
+<p>2.界面交互设计</p>
+<p><strong>界面交互设计</strong>是对用户实现功能操作的交互过程进行设计。信息系统功能服务通常需要用户通过操作来完成。用户在功能操作中需要与系统界面进行交互才能实现功能处理。因此，在设计用户界面时，需要针对每个功能的执行，给出交互逻辑设计。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231213162604610.png" alt="image-20231213162604610"></p>
+<p>3.界面导航设计</p>
+<p>一个信息系统通常有大量用户界面组成，这些界面需要有导航机制才能帮助用户操作使用，否则用户将淹没在界面交互的复杂链接关系中。在用户<strong>界面导航设计</strong>中，需要采用导航机制来帮助用户定位，告诉用户“从哪里来”、“现在在哪里”、“可以去哪”。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231213162844016.png" alt="image-20231213162844016"></p>
+<p>4.界面视觉设计</p>
+<p><strong>界面视觉设计</strong>是指在用户界面中通过使用恰当的视觉要素 (如色彩、文字、图片、空间) 满足用户功能需求和心理需求。一个出色的界面设计，必然是将这些要素做到了淋漓尽致。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231213163249878.png" alt="image-20231213163249878"></p>
+<p>5.界面布局设计</p>
+<p><strong>界面布局设计</strong>是指对界面内各元素的位置安排与分布来呈现内容。界面布局的目标是提高用户兴趣、方便用户操作。用户界面中布局方式直接影响着使用者视觉和操作两方面的用户体验。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231213163438707.png" alt="image-20231213163438707"></p>
+<h3 id="用户界面设计流程"><a href="#用户界面设计流程" class="headerlink" title="用户界面设计流程"></a>用户界面设计流程</h3><p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231213163524039.png" alt="image-20231213163524039"></p>
+<h2 id="Web系统GUI设计"><a href="#Web系统GUI设计" class="headerlink" title="Web系统GUI设计"></a>Web系统GUI设计</h2><h3 id="Web总体页面结构定义"><a href="#Web总体页面结构定义" class="headerlink" title="Web总体页面结构定义"></a>Web总体页面结构定义</h3><p><strong>Web总体页面结构</strong>是指连接Web系统所有页面的整体结构模型，它决定了系统<br>功能模块组织、页面导航路径、人机交互关系。</p>
+<h3 id="总体页面结构类型"><a href="#总体页面结构类型" class="headerlink" title="总体页面结构类型"></a>总体页面结构类型</h3><p>1.线性结构</p>
+<p>Web系统的页面交互采用顺序流程时，页面之间结构便为<strong>线性结构</strong>。当页面交<br>互有分支时，线性结构则为带有选择流的线性结构。</p>
+<p>优点:页面之间关联结构简单，容易实现导航控制。</p>
+<p>缺点: 页面之间关联单一，实现较复杂的人机交互需耗用更多时间。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214102827763.png" alt="image-20231214102827763"></p>
+<p>2.分层结构</p>
+<p>当Web系统的页面结构除了在垂直方向上支持控制流程外，还可以在水平方向<br>实现控制流程时，页面之间的这种结构便称为<strong>分层结构</strong>。</p>
+<p>优点:页面之间关联结构较简单，通过水平关联分支容易实现快速导航。</p>
+<p>缺点: 若用户界面没有明确的导航机制，可能会给用户带来更多寻径时间。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214103636581.png" alt="image-20231214103636581"></p>
+<p>3.网络结构</p>
+<p>在Web系统中，页面之间除了上下左右有关联外，还有跨层连接，则页面之间<br>的关系成为<strong>网络结构</strong>关系。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214174333991.png" alt="image-20231214174333991"></p>
+<p>优点: 页面之间关联灵活，通过彼此关联容易实现快速导航。</p>
+<p>缺点:若用户界面没有明确的导航机制，用户可能会迷失在网络迷宫。</p>
+<h3 id="页面布局设计"><a href="#页面布局设计" class="headerlink" title="页面布局设计"></a>页面布局设计</h3><p><strong>页面布局设计</strong>是指页面板块及元素的结构分布。页面布局的目标是规划页面<br>中各版块的内容呈现、方便用户操作。</p>
+<p>1.一栏式页面布局</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214104453148.png" alt="image-20231214104453148"></p>
+<p>优点: 1) 页面布局结构简单，用户视觉流清晰;2) 信息展示集中显示，用<br>户能够迅速找到页面中重点内容。</p>
+<p>缺点: 排版方式受到局限，页面内容可承载的信息量小。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214104535363.png" alt="image-20231214104535363"></p>
+<p>2.两栏式页面布局</p>
+<p>两栏式页面布局是一种除页头和页脚外，将页面分为导航版块和信息展示版<br>块，并进一步细分为左窄右宽式、左宽右窄式。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214104904327.png" alt="image-20231214104904327"></p>
+<p>优点:相比于一栏式布局，两栏式布局可以容纳更多信息内容; 用户可通过导航版块链接选取，切换信息展示版块内容。</p>
+<p>缺点:排版方式受到局限，页面不具备超大内容量呈现和视觉冲击力。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214105053373.png" alt="image-20231214105053373"></p>
+<p>3.三栏式页面布局</p>
+<p>三栏式页面布局也将整个页面分为导航版块和信息展示版块，但它细分为两窄一宽式、两宽一窄式。</p>
+<p>优点:相比于两栏式，三栏式页面布局可以尽量多地展示信息内容通过导航版块链接选取，可以切换信息展示版块内容。</p>
+<p>缺点:排版方式会造成页面上信息的拥挤，用户查找目标信息花费更多时间，同时页面内容的可控性降低。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214105521708.png" alt="image-20231214105521708"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214105601145.png" alt="image-20231214105601145"></p>
+<h3 id="页面导航设计"><a href="#页面导航设计" class="headerlink" title="页面导航设计"></a>页面导航设计</h3><p>当Web系统的页面结构和页面布局确定之后，设计人员便可开始进行页面导航<br>设计，其目标是使用户能够方便地访问Web系统各个功能页面。在页面导航设<br>计中，需要定义Web系统的导航结构、导航机制和导航语义。</p>
+<p>1.导航结构作用</p>
+<p>导航结构作用就是告诉用户访问系统的页面链接结构，当前在哪个页面，如<br>何到达哪些其他页面。</p>
+<p>2.导航结构类型</p>
+<p><strong>水平栏目导航</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214110117948.png" alt="image-20231214110117948"></p>
+<ul>
+<li>在页面头部区域版块中，采用水平栏目导航主菜单，实现功能页面一级导航。在一级菜单下，还可以扩展二级菜单。</li>
+<li>水平栏目导航主菜单的区域长度受限，其一级导航菜单数目有限。</li>
+<li>适用于业务简单，功能较少的信息系统。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214110455038.png" alt="image-20231214110455038"></p>
+<p><strong>垂直栏目导航</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214110633149.png" alt="image-20231214110633149"></p>
+<ul>
+<li>在页面的左侧区域垂直给出主菜单栏目，它们实现功能页面一级导航，也可扩展二级导航。</li>
+<li>垂直方式层级拓展性强，可支持更多栏目数，但减少了信息展示版块宽度，易受客户端显示器影响。</li>
+<li>适用于系统功能较多，需要频繁切换功能页面的信息系统。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214110731870.png" alt="image-20231214110731870"></p>
+<p><strong>混合栏目导航</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214110938102.png" alt="image-20231214110938102"></p>
+<ul>
+<li>混合栏目导航同时在页面的顶部区域和左侧区域给出栏目导航菜单。</li>
+<li>混合栏目导航方式层级与栏目扩展性强，适用于功能模块多且复杂度较高的信息系统。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214111055599.png" alt="image-20231214111055599"></p>
+<p><strong>页面内容导航</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214111301627.png" alt="image-20231214111301627"></p>
+<ul>
+<li><p>典型的页面内容导航方式有面包屑导航、超链导航、Tab标签导航等。</p>
+</li>
+<li><p>页面内容导航可提供更灵活的页面导航方式，适用于页面功能较多、交互关系复杂的人机交互。</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214111419057.png" alt="image-20231214111419057"></p>
+<p>3.导航机制</p>
+<p><font color='red'>导航机制</font>是指Web系统提供的页面导航元素及使能方式。</p>
+<p>典型的页面导航元素有NavMenu导航菜单、Breadcrumb (面包屑) 导航链<br>接、Tab导航标签、超文本导航链接、导航面板等。</p>
+<p><font color='red'>导航使能方式</font>通常为用户在导航元素上触发的事件，如鼠标点击或快捷按键操作。当事件出现后，根据导航元素关联的链接进行页面跳转。</p>
+<p><strong>NavMenu导航菜单</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214151041758.png" alt="image-20231214151041758"></p>
+<p><strong>面包屑导航链接</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214151108288.png" alt="image-20231214151108288"></p>
+<p><strong>Tab标签导航</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214151154832.png" alt="image-20231214151154832"></p>
+<p>4.导航语义</p>
+<p><font color='red'>导航语义</font>是指用户完成系统一个功能操作的页面导航流程。</p>
+<p><strong>例</strong>：在登录页面中，若用户忘记密码，可以通过“密码找回”功能重置用户密码。其“密码找回”链接导航语义的流程为:</p>
+<ol>
+<li>“在登录页面中点取“密码找回”链接</li>
+<li>在密码找回页面中输入用户账户和邮箱信息</li>
+<li>系统发送重置密码邮件</li>
+<li>在邮件界面中点取重置页面链接</li>
+<li>打开重置密码页面</li>
+<li>在重置密码页面中输入新密码和确认密码</li>
+<li>系统显示密码修改成功操作页面”</li>
+</ol>
+<h3 id="页面输入设计"><a href="#页面输入设计" class="headerlink" title="页面输入设计"></a>页面输入设计</h3><p>在Web系统中，数据输入是通过页面表单输入来实现的。<font color='red'>页面表单</font>是Web页面中一种用于组织数据输入到Web服务器的前端控件容器，它可以包含文本输入框、复选框、单选按钮、列表框、文件域、按钮等控件。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214152023325.png" alt="image-20231214152023325"></p>
+<p>1.文本输入框</p>
+<p><font color='red'>文本输入框</font>是一种用于在表单中输入文本内容的控件。在文本输入框控件属性中，可以定义输入文本为固定长度的字符串，也可不限制文本长度。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214152131143.png" alt="image-20231214152131143"></p>
+<ul>
+<li>文本输入框可以有单行文本输入框、密码输入框、多行文本输入框，以及数字输入框等类型。</li>
+<li>在文本框控件属性中，还可限定输入数据格式，这样输入数据可以进行格式校验检查。</li>
+<li>在表单设计时，需要在文本输入框前，添加文本标签，用于提示用户输入什么数据内容。</li>
+</ul>
+<p>2.复选框</p>
+<p><font color='red'>复选框</font>在表单中用于呈现多个输入选项列表。用户可以在复选框中选择多个选项，作为表单的输入数据。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214152533122.png" alt="image-20231214152533122"></p>
+<ul>
+<li>当用户提交表单执行后，已选择的复选框值被输入到系统进行处理。</li>
+<li>在Web页面表单设计时，复选框标签按照一定顺序放置。</li>
+<li>每个特定的选项序列通常不超过20个复选项。</li>
+</ul>
+<p>3.单选按钮<br>在表单中，<font color='red'>单选按钮</font>是一种用于输入单个选项值的控件。单选按钮呈现一个完整的、互斥的选项列表，每个选项前都有一个小圆圈。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214152507820.png" alt="image-20231214152507820"></p>
+<ul>
+<li>在Web表单设计时，单选按钮标签按照一定顺序放置。</li>
+<li>每个特定的选项序列使用不超过6个单选按钮。</li>
+</ul>
+<p>4.列表框</p>
+<p><font color='red'>列表框</font>在表单中用于列表选项输入。在列表框中可以选择单个选项或多个选项。使用列表数据输入，可以方便用户快速输入，并防止错误数据输入。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214153011034.png" alt="image-20231214153011034"></p>
+<p>5.文件域</p>
+<p><font color='red'>文件域</font>在表单中用于文件上传输入。文件域控件允许用户从操作系统文件目录中选取文件上传。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214153150693.png" alt="image-20231214153150693"></p>
+<p>在文件域控件属性中，可以限定上传文件类型或文件大小，以确保输入系统的文件有效性。</p>
+<p>6.按钮</p>
+<p>在表单中，<font color='red'>按钮</font>是一种用于产生事件，触发执行表单脚本程序的控件。它通常用于表单数据提交系统的输入处理。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214153309042.png" alt="image-20231214153309042"></p>
+<ul>
+<li>“提交”按钮的点击事件用于触发表单提交脚本程序执行，实现输入数据写入系统。</li>
+<li>“重置”按钮的点击事件用于触发清除数据脚本程序执行，实现表单输入域数据的清除处理。</li>
+</ul>
+<p>7.表单输入数据校验</p>
+<p>为了确保表单输入到信息系统中的数据是有效的，通常需要在页面表单中编写脚本程序，对输入数据进行校验检查。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214153413537.png" alt="image-20231214153413537"></p>
+<h3 id="页面输出设计"><a href="#页面输出设计" class="headerlink" title="页面输出设计"></a>页面输出设计</h3><p>在任何信息系统中，结果数据输出都是信息系统应提供的基本功能。无论是在屏幕显示、报告打印、音视频呈现，还是数据文件输出，它们均可为用户提供结果数据输出服务。</p>
+<p>在Web系统中，页面数据输出有多种实现形式:</p>
+<ul>
+<li>数据列表输出</li>
+<li>数据报表输出</li>
+<li>数据图形输出</li>
+<li>数据文件输出</li>
+</ul>
+<p>1.数据列表输出</p>
+<p>在Web系统中，数据列表输出是一种最基本的页面输出实现形式，它可以将数据直接在页面中以列表方式输出。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214153614721.png" alt="image-20231214153614721"></p>
+<ul>
+<li><p>Web数据列表输出具有结构简单、分隔明确、易于用户快速扫描浏览并获取所需信息等特点。</p>
+</li>
+<li><p>在数据列表交互层面，Web数据列表可以为用户提供数据信息排序、搜索、筛选，以及相关业务功能处理等操作。</p>
+</li>
+</ul>
+<p>2.数据报表输出</p>
+<p>数据报表也是一种以表格形式呈现结果数据的输出形式，但它与数据列表相比，可以提供更复杂的数据统计处理，其表格形式多样化，并可支持打印或文档输出。在信息系统中，数据报表使用非常普遍，它们为用户提供各类数据统计结果信息，可以支持业务管理与决策服务。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214153900586.png" alt="image-20231214153900586"></p>
+<p>3.数据统计图输出</p>
+<p>数据统计图输出是一种对用户直观的数据可视化呈现方式。在页面输出数据时，可以采多种图形(饼图、直方图、条形图、曲线图、散点图、雷达图、面积图等) 方式给出数据统计信息。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214154105138.png" alt="image-20231214154105138"></p>
+<ul>
+<li>在该页面输出信息中，主要采用饼图形式给出用户在7月份的话费消费构成数据。</li>
+<li>通过该图展示信息，用户可以很容易地分析出话费的消费构成和各项的数据比例关系。</li>
+</ul>
+<h3 id="Web系统GUI设计案例"><a href="#Web系统GUI设计案例" class="headerlink" title="Web系统GUI设计案例"></a>Web系统GUI设计案例</h3><p>针对一个课程学习评价系统的教师用户子系统，设计课程班级的学生学习成绩管理、课程学习成果达成分析，以及课程试卷分析报告等功能Web界面。</p>
+<p>在设计该子系统界面时，采用原型开发工具Axure RP分别对系统页面结构页面布局、页面导航、页面输入、页面输出等界面内容进行建模设计，从而为开发课程学习评价子系统界面给出设计蓝图与原型方案。</p>
+<p>1.Web系统页面结构设计</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214154424521.png" alt="image-20231214154424521"></p>
+<p>2.Web系统页面布局设计</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214154526405.png" alt="image-20231214154526405"></p>
+<p>3.Web系统页面导航设计</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214154646538.png" alt="image-20231214154646538"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214154843912.png" alt="image-20231214154843912"></p>
+<p>4.Web系统页面输入设计</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214160812614.png" alt="image-20231214160812614"></p>
+<p>5.Web系统页面输出设计</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214160907853.png" alt="image-20231214160907853"></p>
+<p>6.Web系统页面实现结果</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214161053731.png" alt="image-20231214161053731"></p>
+<h2 id="移动App软件GUI设计"><a href="#移动App软件GUI设计" class="headerlink" title="移动App软件GUI设计"></a>移动App软件GUI设计</h2><h3 id="移动App软件定义"><a href="#移动App软件定义" class="headerlink" title="移动App软件定义"></a>移动App软件定义</h3><p>移动App是指基于移动终端设备 (如智能手机、平板电脑、可穿戴设备等)的应用软件。移动App已广泛应用在信息系统中，成为用户普遍使用的应用软件。</p>
+<h3 id="移动App软件与桌面软件区别"><a href="#移动App软件与桌面软件区别" class="headerlink" title="移动App软件与桌面软件区别"></a>移动App软件与桌面软件区别</h3><p>移动App软件与传统的电脑软件有较大不同，它基于有限软硬件资源的移动终端运行，并且需要面对多种终端屏幕、多种终端操作系统、多种使用场景、无线通信网络、大量用户访问的复杂应用情况。</p>
+<h3 id="移动App软件界面设计挑战"><a href="#移动App软件界面设计挑战" class="headerlink" title="移动App软件界面设计挑战"></a>移动App软件界面设计挑战</h3><ul>
+<li>设计一个适应多种屏幕尺寸、不同像素分辨率、不同嵌入式硬核技术、不同操作系统环境的移动App应用界面具有一定难度。</li>
+<li>充分利用移动终端传感器为用户界面提供大量灵活交互是有难度的，并且在设计阶段进行处理会是一个挑战。</li>
+<li>移动终端设备的运行资源 (CPU、内存) 是有限的，针对一个需要较多数据处理的App应用来说，设计一个快速运行的App用户男面具有较大挑战性。</li>
+<li>移动应用市场正在快速变化。创新性和创造力使这个生态系统高度活跃。因此，移动App用户男面设计需要不断创新。</li>
+</ul>
+<h3 id="移动-App-软件界面设计原则"><a href="#移动-App-软件界面设计原则" class="headerlink" title="移动 App 软件界面设计原则"></a>移动 App 软件界面设计原则</h3><ul>
+<li><p>环境贴切原则——信息的表达需要符合真实世界场景、用户心理预期和使用习惯等。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214164457894.png" alt="image-20231214164457894"></p>
+</li>
+<li><p>易取原则——移动 App 的系统信息内容与操作控件可视化展示，可降低用户的记忆负担。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214164550716.png" alt="image-20231214164550716"></p>
+</li>
+<li><p>优美简约原则——为了让用户快速获取有用信息，可以采用简约设计原则。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214164635089.png" alt="image-20231214164635089"></p>
+</li>
+<li><p>人性化帮助原则——适当的信息提示，为用户提供导引帮助。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214164707690.png" alt="image-20231214164707690"></p>
+</li>
+<li><p>用户可控原则——用户对系统的页面操作与使用自主可控，以用户为中心组织功自界面。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214164846453.png" alt="image-20231214164846453"></p>
+</li>
+<li><p>灵活高效原则——支持用户快速高效达成目标。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214164946406.png" alt="image-20231214164946406"></p>
+</li>
+<li><p>防错原则——适当的风险提示可以防止用户错误操作，重要操作需要二次确认。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214165023507.png" alt="image-20231214165023507"></p>
+</li>
+<li><p>容错原则——用户可撤销、重做，恢复至原样。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214165110750.png" alt="image-20231214165110750"></p>
+</li>
+<li><p>系统状态可见原则——用户知道当前所在位置，可操作性和系统反馈均有视觉提示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214165141669.png" alt="image-20231214165141669"></p>
+</li>
+<li><p>界面一致性原则——界面风格、视觉语言与反馈效果前后具有一致性。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214165236133.png" alt="image-20231214165236133"></p>
+</li>
+</ul>
+<h3 id="总体界面结构"><a href="#总体界面结构" class="headerlink" title="总体界面结构"></a>总体界面结构</h3><p>在移动 App 软件 GUI开发中，首先需要设计系统总体界面结构，将 App 各个界面按照一定结构（如<font color='red'>思维导图</font>）组织起来，让用户了解 App 功能界面结构。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214165329700.png"></p>
+<h3 id="界面布局设计"><a href="#界面布局设计" class="headerlink" title="界面布局设计"></a>界面布局设计</h3><p>移动 App 界面布局设计是指在 App 界面中对内容文字、表格、图形、图像、视频等元素进行版面排布设计。它需要对界面主题内容、界面信息展示形式、用户行为心理、用户功能操作灵便性等方面进行整体考虑。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214165431048.png" alt="image-20231214165431048"></p>
+<ul>
+<li>App 界面的内容版块布局通常采用垂直分布，从上到下依次进行排列启动页、导引页、主页、内容页、设置页的布局有一定差别。</li>
+<li>不同内容版块的界面内容需要以间隙进行区分（如 20p ×间距）</li>
+<li>若某些界面元素本身带有效果，可以有效区分不同内容，内容版块之间则无需间隙。</li>
+</ul>
+<h3 id="界面导航设计"><a href="#界面导航设计" class="headerlink" title="界面导航设计"></a>界面导航设计</h3><p>界面导航是移动 App 用户界面中不可缺少的组成部分，它们引导用户抵达目标界面。移动 App 用户界面导航主要有标签导航、宫格导航、列表导航、抽屉式导航、轮播导航等多种形式。</p>
+<p>1.<font color='blue'>底部标签导航</font></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214165637291.png" alt="image-20231214165637291"></p>
+<p>底部标签导航位于界面底部，采用文字加图标的方式展现，一般有 3 一 5 个标签。它适合在相关的几类核心功能模块中频繁地切换使用。</p>
+<ul>
+<li><p>优点：使用户清楚当前所在的入口位置；直接展现最重要入口的内容信息。</p>
+</li>
+<li><p>缺点：标签不宜超过 5 个，否则容易分散注意力增加用户选择难度。标签图标会占用一定的显示面积。如果用户使用小屏幕手机，用户体验不是太好。</p>
+</li>
+</ul>
+<p>2.<font color='blue'>顶部+底部双标签导航</font></p>
+<p>如果界面内容分类与维度较多，可采用顶部和底部结合的标签导航形式。例如，腾讯新闻和网易新闻这种新闻类 App ，采用了顶部导航+底部导航结构，且加入手势切换的操作，方便用户在高频的标签中快速切换，能带来更好地阅读体验。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214170137194.png" alt="image-20231214170137194"></p>
+<ul>
+<li>优点：使用户清楚当前所在的入口位置；直接展现最重要入口的内容信息。</li>
+<li>缺点：最多 5 个标签。占用一定的高度，一般是图标加文字，如果用户使用小屏幕手机，用户体验不是太好。</li>
+</ul>
+<p>3.<font color='blue'>舵式标签导航</font></p>
+<p>当界面有处于同一层级的几大部分内容，同时又需要一个非常重要且频繁操作的入口时，可以采用舵式标签导航。舵式标签导航可以看为底部标签式导航的一种变体。它在后者的基础上，强调了一个高频核心功能，并且放在中间。</p>
+<ul>
+<li>优点：需要突出重要且频繁操作的入口。</li>
+<li>缺点：同标签导航，最多 5 个，功能入口过多时，该模式显得笨重不实用</li>
+</ul>
+<p>4.<font color='blue'>宫格导航</font></p>
+<p>宫格导航将主要入口全部聚合在页面内，让用户整体了解 App 的服务，从而选择自己需要的服务。各个入口之间相互独立，没有太多的交集，无法跳转互通。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214171030366.png" alt="image-20231214171030366"></p>
+<ul>
+<li>优点：导航类目清晰，页面可容纳多种类目，方便快速查找。</li>
+<li>缺点：信息独立，无法相互通达；不能直接展现入口内容，只能点击进去才能获知，容易形成更深的路径。</li>
+</ul>
+<p>5.<font color='blue'>列表导航</font></p>
+<p>列表导航主要用于级别不多，标题内容较长的入口。它通常用于二级界面，不会默认展示任何实质内容。这种导航结构清晰，易于理解，能够帮助用户快速定位相应界面。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214171323627.png" alt="image-20231214171323627"></p>
+<ul>
+<li>优点：层次展现清晰，可展现内容较长的标题，可展示标题的次级内容。</li>
+<li>缺点：同级过多时，容易产生疲劳；排版灵活性不高，只能通过排列顺序、颜色来区分各入口重要程度。一屏承载不下，用户需要下拉才能操作。</li>
+</ul>
+<p>6.<font color='blue'>抽屉式导航</font></p>
+<p>抽屉式导航与常用主导航搭配，作于次级导航。因为抽屉式导航的核心就是”藏”，隐藏低频操作的功能，如设置、关于、会员等功能，使用频率少，让核心功能更加突出。抽屉式菜单隐藏在当前界面后，只要侧面滑动或者点击入口就能将其拉出来，减少了主界面中导航控件的数量，让主界面更加干净利落。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214171649091.png" alt="image-20231214171649091"></p>
+<ul>
+<li>优点：节省界面展示空间；让用户注意力聚焦到当前界面；扩展性好；不用担心小屏手机用户体验问题。</li>
+<li>缺点：不适合频繁切换的应用。次级功能入口比较隐藏，用户不容易发现，同时次级功能需要二次点击，增加用户操作时间。</li>
+</ul>
+<p>7.<font color='blue'>轮播导航</font></p>
+<p>轮播导航也是一种常见的导航方式，使用者可以向左或者向右滑动进行快速切换界面，比较适合界面层级较低的交互，几乎不需要进一步的交互。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214171947927.png" alt="image-20231214171947927"></p>
+<ul>
+<li>优点：一般不需要用户更多的点击操作，适合层级简单的应用，一个界面基本就能满足需求。</li>
+<li>缺点：不适合交互复杂的 App 。</li>
+</ul>
+<h3 id="交互设计"><a href="#交互设计" class="headerlink" title="交互设计"></a>交互设计</h3><p>在 App 应用中，交互是指用户与 App 应用之间发生的一系列操作与信息反馈。 App 应用交互设计是定义用户与 App 应用之间交流的内容和结构，使之互相配合，共同达成某种目的。</p>
+<p>1.<font color='blue'>移动 App 交互设计与应用交互设计区别</font></p>
+<ol>
+<li>用户与界面交互方式不同</li>
+<li>设备尺寸不同</li>
+<li>使用环境不同</li>
+<li>网络环境不同</li>
+<li>通知方式不同</li>
+<li>基于位置服务的精细度不同</li>
+</ol>
+<p>2.<font color='blue'>移动 App 交互流程设计</font></p>
+<p>交互流程设计是对用户完成任务的交互点梳理，并设计交互操作流程，以达到让用户顺利地完成相关任务功能。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214172214084.png" alt="image-20231214172214084"></p>
+<h3 id="App-系统界面设计案例"><a href="#App-系统界面设计案例" class="headerlink" title="App 系统界面设计案例"></a>App 系统界面设计案例</h3><p>针对一个课程学习评价系统，采用手机微信小程序 App 方式实现课程学生学习过程成绩查看、课程学习成果评价等服务功能。</p>
+<p>在设计该 App 用户界面时，可以采用原型开发工具 Axure RP 分别对系统页面结构、页面布局、页面导航、页面交互等用户界面内容进行建模设计，从而为开发课程学习评价微信小程序 App 提供设计蓝图与原型方案。</p>
+<p>1.App 系统页面结构设计</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214172330910.png" alt="image-20231214172330910"></p>
+<p>2.App 系统页面布局设计</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214172358590.png" alt="image-20231214172358590"></p>
+<p>3.App 系统页面导航设计</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214172448130.png" alt="image-20231214172448130"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214172517565.png" alt="image-20231214172517565"></p>
+<p>4.App 系统页面交互设计</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214172543536.png" alt="image-20231214172543536"></p>
+<p>5.App 系统页面实现结果</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231214172623650.png" alt="image-20231214172623650"></p>
+<h2 id="课堂作业与作业练习"><a href="#课堂作业与作业练习" class="headerlink" title="课堂作业与作业练习"></a>课堂作业与作业练习</h2><p>单选题</p>
+<p>1.在信息系统中，下面哪项不是用户界面功能?（C）</p>
+<p>A.功能执行 </p>
+<p>B.状态查看 </p>
+<p>C.数据存取 </p>
+<p>D.输入&#x2F;输出</p>
+<p>2.下面哪项不在界面布局元素范围中? （B）</p>
+<p>A.菜单</p>
+<p>B.导航关系 </p>
+<p>C.按钮</p>
+<p>D.列表</p>
+<p>3.下面哪种页面结构适合电商Web系统? (C)</p>
+<p>A.线性结构 </p>
+<p>B.分层结构 </p>
+<p>C.网络结构 </p>
+<p>D.以上均可</p>
+<p>4.新闻类Web系统页面导航一般采用哪种方式? （D）</p>
+<p>A.水平栏目导航 </p>
+<p>B.垂直栏目导航</p>
+<p>C.混合栏目导航</p>
+<p>D.页面内容导航</p>
+<p>5.下面哪项不属于界面交互流程设计的步骤? （C）</p>
+<p>A.任务确定 </p>
+<p>B.场景梳理 </p>
+<p>C.界面布局 </p>
+<p>D场景流程添加</p>
+<p>二、判断题</p>
+<p>1.信息系统的功能是通过用户与系统界面交互来实现的。（√）</p>
+<p>2.人的视觉规律是以中心为重点向四周发散。 （ ⅹ ）</p>
+<p>3.在详细界面设计前需要进行系统原型设计。（ √ ）</p>
+<p>4.输入数据格式校验是通过执行检查程序来实现的。（ √ ）</p>
+<p>5.页面的数据列表可以打印输出。 （ ⅹ ）</p>
+<p>三、填空题</p>
+<p>为减少用户记忆负担，在界面上可以给出场景导引、默认值、（历史信息呈现）等提示。（或者填下拉列表值 &#x2F; 快捷方式 &#x2F; 逐次推进的提示方式 ）</p>
+<p>用户界面设计一般包括界面结构设计、界面交互设计、界面导航设计、界面视觉设计和（界面布局设计）。</p>
+<p>Web页面导航主要有水平栏目导航、垂直栏目导航、混合栏目导航和（页面内容导航）。</p>
+<p>在移动App页面布局设计中，需要对页面信息内容、页面主题内容、用户行为心理和（用户功能操作）进行整体考虑。</p>
+<p>在手机App页面布局设计中，页面可以分为背景层、内容层、悬浮层和（弹出层）。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://uestcwxy.love">Palp1tate</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://uestcwxy.love/2023/12/19/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/7/">https://uestcwxy.love/2023/12/19/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/7/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://uestcwxy.love" target="_blank">Palp1tate</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/">大三自学</a><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">软件系统架构设计</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2023/12/14/typora-color/" title="提高写作水平——怎样在Typora中使用快捷键实现快速改变字体颜色详解"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">提高写作水平——怎样在Typora中使用快捷键实现快速改变字体颜色详解</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/11/16/git/" title=".gitignore 文件——如何在 Git 中忽略文件和文件夹"><img class="cover" src="https://s2.loli.net/2023/05/31/UuGQIvw8HNBrZsp.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-16</div><div class="title">.gitignore 文件——如何在 Git 中忽略文件和文件夹</div></div></a></div><div><a href="/2023/11/17/git-use/" title="Git常用命令详细总结，更适合中国宝宝体质"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-17</div><div class="title">Git常用命令详细总结，更适合中国宝宝体质</div></div></a></div><div><a href="/2023/11/18/jetbrains-ai/" title="快速提高编码生产力——中国用户如何使用Jetbrains内置的AI助手"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-18</div><div class="title">快速提高编码生产力——中国用户如何使用Jetbrains内置的AI助手</div></div></a></div><div><a href="/2023/11/29/powershell/" title="快速提高生产力——Power Shell也能命令提示并自动补全"><img class="cover" src="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-29</div><div class="title">快速提高生产力——Power Shell也能命令提示并自动补全</div></div></a></div><div><a href="/2023/10/28/docker/1/" title="Ubuntu安装docker，并换镜像源详细教程"><img class="cover" src="https://s2.loli.net/2023/05/31/TREyA8hgqS7JnfV.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-28</div><div class="title">Ubuntu安装docker，并换镜像源详细教程</div></div></a></div><div><a href="/2023/11/29/site-deployment/" title="从零开始部署一个网站详细图文教程——腾讯云的服务器、SSL证书，阿里云的域名，七牛云的对象存储、CDN等"><img class="cover" src="https://s2.loli.net/2023/05/31/UuGQIvw8HNBrZsp.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-29</div><div class="title">从零开始部署一个网站详细图文教程——腾讯云的服务器、SSL证书，阿里云的域名，七牛云的对象存储、CDN等</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Palp1tate</div><div class="author-info__description">等我苦尽甘来时，我给你讲讲来时走的路。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/palp1tate/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.facebook.com/profile.php?id=100092533320651" target="_blank" title="facebook"><i class="fab fa-facebook" style="color: #4a7dbe;"></i></a><a class="social-icon" href="mailto:1939311091@qq.com" target="_blank" title="email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/1907948898" target="_blank" title="b站"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/tiktok.jpg" target="_blank" title="抖音"><i class="fab fa-tiktok" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/weixin.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">刚建站不久，博客美化有待研究，部分页面也没时间弄，路过的你将就看啦~😊，图片没加载出来就是网络不佳噢~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.</span> <span class="toc-text">用户界面设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">用户界面设计概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.1.</span> <span class="toc-text">用户界面定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E4%BD%9C%E7%94%A8"><span class="toc-number">1.1.2.</span> <span class="toc-text">用户界面作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.3.</span> <span class="toc-text">用户界面类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%89%AF%E5%A5%BD%E7%95%8C%E9%9D%A2%E5%BA%94%E5%85%B7%E6%9C%89%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">1.1.4.</span> <span class="toc-text">良好界面应具有的特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1-1"><span class="toc-number">1.1.5.</span> <span class="toc-text">用户界面设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-number">1.1.6.</span> <span class="toc-text">用户界面设计原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83"><span class="toc-number">1.1.7.</span> <span class="toc-text">用户界面设计规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E5%86%85%E5%AE%B9"><span class="toc-number">1.1.8.</span> <span class="toc-text">用户界面设计内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B"><span class="toc-number">1.1.9.</span> <span class="toc-text">用户界面设计流程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web%E7%B3%BB%E7%BB%9FGUI%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.</span> <span class="toc-text">Web系统GUI设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Web%E6%80%BB%E4%BD%93%E9%A1%B5%E9%9D%A2%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">Web总体页面结构定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E4%BD%93%E9%A1%B5%E9%9D%A2%E7%BB%93%E6%9E%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text">总体页面结构类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.3.</span> <span class="toc-text">页面布局设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E5%AF%BC%E8%88%AA%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.4.</span> <span class="toc-text">页面导航设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E8%BE%93%E5%85%A5%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.5.</span> <span class="toc-text">页面输入设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E8%BE%93%E5%87%BA%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.6.</span> <span class="toc-text">页面输出设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web%E7%B3%BB%E7%BB%9FGUI%E8%AE%BE%E8%AE%A1%E6%A1%88%E4%BE%8B"><span class="toc-number">1.2.7.</span> <span class="toc-text">Web系统GUI设计案例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8App%E8%BD%AF%E4%BB%B6GUI%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.3.</span> <span class="toc-text">移动App软件GUI设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8App%E8%BD%AF%E4%BB%B6%E5%AE%9A%E4%B9%89"><span class="toc-number">1.3.1.</span> <span class="toc-text">移动App软件定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8App%E8%BD%AF%E4%BB%B6%E4%B8%8E%E6%A1%8C%E9%9D%A2%E8%BD%AF%E4%BB%B6%E5%8C%BA%E5%88%AB"><span class="toc-number">1.3.2.</span> <span class="toc-text">移动App软件与桌面软件区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8App%E8%BD%AF%E4%BB%B6%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E6%8C%91%E6%88%98"><span class="toc-number">1.3.3.</span> <span class="toc-text">移动App软件界面设计挑战</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8-App-%E8%BD%AF%E4%BB%B6%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-number">1.3.4.</span> <span class="toc-text">移动 App 软件界面设计原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E4%BD%93%E7%95%8C%E9%9D%A2%E7%BB%93%E6%9E%84"><span class="toc-number">1.3.5.</span> <span class="toc-text">总体界面结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%95%8C%E9%9D%A2%E5%B8%83%E5%B1%80%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.3.6.</span> <span class="toc-text">界面布局设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%95%8C%E9%9D%A2%E5%AF%BC%E8%88%AA%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.3.7.</span> <span class="toc-text">界面导航设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.3.8.</span> <span class="toc-text">交互设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#App-%E7%B3%BB%E7%BB%9F%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E6%A1%88%E4%BE%8B"><span class="toc-number">1.3.9.</span> <span class="toc-text">App 系统界面设计案例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E5%A0%82%E4%BD%9C%E4%B8%9A%E4%B8%8E%E4%BD%9C%E4%B8%9A%E7%BB%83%E4%B9%A0"><span class="toc-number">1.4.</span> <span class="toc-text">课堂作业与作业练习</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/12/19/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/7/" title="电子科大软件系统架构设计——用户界面设计"><img src="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——用户界面设计"/></a><div class="content"><a class="title" href="/2023/12/19/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/7/" title="电子科大软件系统架构设计——用户界面设计">电子科大软件系统架构设计——用户界面设计</a><time datetime="2023-12-19T11:27:01.000Z" title="发表于 2023-12-19 19:27:01">2023-12-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/14/typora-color/" title="提高写作水平——怎样在Typora中使用快捷键实现快速改变字体颜色详解"><img src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="提高写作水平——怎样在Typora中使用快捷键实现快速改变字体颜色详解"/></a><div class="content"><a class="title" href="/2023/12/14/typora-color/" title="提高写作水平——怎样在Typora中使用快捷键实现快速改变字体颜色详解">提高写作水平——怎样在Typora中使用快捷键实现快速改变字体颜色详解</a><time datetime="2023-12-14T10:01:59.000Z" title="发表于 2023-12-14 18:01:59">2023-12-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/07/%E7%AE%97%E6%B3%95/q9/" title="q9"><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1284.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="q9"/></a><div class="content"><a class="title" href="/2023/12/07/%E7%AE%97%E6%B3%95/q9/" title="q9">q9</a><time datetime="2023-12-07T06:51:30.000Z" title="发表于 2023-12-07 14:51:30">2023-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/29/site-deployment/" title="从零开始部署一个网站详细图文教程——腾讯云的服务器、SSL证书，阿里云的域名，七牛云的对象存储、CDN等"><img src="https://s2.loli.net/2023/05/31/UuGQIvw8HNBrZsp.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从零开始部署一个网站详细图文教程——腾讯云的服务器、SSL证书，阿里云的域名，七牛云的对象存储、CDN等"/></a><div class="content"><a class="title" href="/2023/11/29/site-deployment/" title="从零开始部署一个网站详细图文教程——腾讯云的服务器、SSL证书，阿里云的域名，七牛云的对象存储、CDN等">从零开始部署一个网站详细图文教程——腾讯云的服务器、SSL证书，阿里云的域名，七牛云的对象存储、CDN等</a><time datetime="2023-11-29T14:25:28.000Z" title="发表于 2023-11-29 22:25:28">2023-11-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/29/powershell/" title="快速提高生产力——Power Shell也能命令提示并自动补全"><img src="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="快速提高生产力——Power Shell也能命令提示并自动补全"/></a><div class="content"><a class="title" href="/2023/11/29/powershell/" title="快速提高生产力——Power Shell也能命令提示并自动补全">快速提高生产力——Power Shell也能命令提示并自动补全</a><time datetime="2023-11-29T01:37:49.000Z" title="发表于 2023-11-29 09:37:49">2023-11-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 By Palp1tate</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><i class="fa-solid fa-cloud"></i><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>萌ICP备20230529号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="6614140207" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-mini="true"> </div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
