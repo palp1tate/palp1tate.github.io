@@ -1,0 +1,681 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>电子科大软件系统架构设计——系统分析与设计概述 | Palp1tate</title><meta name="author" content="Palp1tate,1939311091@qq.com"><meta name="copyright" content="Palp1tate"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="系统分析与设计概述信息系统概述what信息系统是一种能够完成对业务数据进行采集、转换、加工、计算、分析、传输、维护等信息处理，并能就某个方面问题给用户提供信息服务的计算机应用系统。  组成  信息化基础设施（计算机、计算机网络、服务器、系统软件等) 应用软件 数据库系统 业务数据 用户  类型业务处理系统业务处理系统(Transaction Process System, TPS)是一类运用IT技">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电子科大软件系统架构设计——系统分析与设计概述">
+<meta property="og:url" content="https://uestcwxy.love/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/1/index.html">
+<meta property="og:site_name" content="Palp1tate">
+<meta property="og:description" content="系统分析与设计概述信息系统概述what信息系统是一种能够完成对业务数据进行采集、转换、加工、计算、分析、传输、维护等信息处理，并能就某个方面问题给用户提供信息服务的计算机应用系统。  组成  信息化基础设施（计算机、计算机网络、服务器、系统软件等) 应用软件 数据库系统 业务数据 用户  类型业务处理系统业务处理系统(Transaction Process System, TPS)是一类运用IT技">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/05/31/UuGQIvw8HNBrZsp.jpg">
+<meta property="article:published_time" content="2023-12-20T03:57:47.000Z">
+<meta property="article:modified_time" content="2023-12-20T10:47:14.106Z">
+<meta property="article:author" content="Palp1tate">
+<meta property="article:tag" content="大三自学">
+<meta property="article:tag" content="软件系统架构设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/05/31/UuGQIvw8HNBrZsp.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://uestcwxy.love/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Palp1tate","link":"链接: ","source":"来源: Palp1tate","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '电子科大软件系统架构设计——系统分析与设计概述',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-20 18:47:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Palp1tate" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2023/05/31/UuGQIvw8HNBrZsp.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Palp1tate"><span class="site-name">Palp1tate</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">电子科大软件系统架构设计——系统分析与设计概述</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-20T03:57:47.000Z" title="发表于 2023-12-20 11:57:47">2023-12-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-20T10:47:14.106Z" title="更新于 2023-12-20 18:47:14">2023-12-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="电子科大软件系统架构设计——系统分析与设计概述"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="系统分析与设计概述"><a href="#系统分析与设计概述" class="headerlink" title="系统分析与设计概述"></a>系统分析与设计概述</h1><h2 id="信息系统概述"><a href="#信息系统概述" class="headerlink" title="信息系统概述"></a>信息系统概述</h2><h3 id="what"><a href="#what" class="headerlink" title="what"></a>what</h3><p><font color="red">信息系统</font>是一种能够完成对业务数据进行采集、转换、加工、计算、分析、传输、维护等信息处理，并能就某个方面问题给用户提供信息服务的计算机应用系统。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230901132156996.png" alt="image-20230901132156996"></p>
+<h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220121314491.png" alt="image-20231220121314491"></p>
+<ul>
+<li>信息化基础设施（计算机、计算机网络、服务器、系统软件等)</li>
+<li>应用软件</li>
+<li>数据库系统</li>
+<li>业务数据</li>
+<li>用户</li>
+</ul>
+<h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><h4 id="业务处理系统"><a href="#业务处理系统" class="headerlink" title="业务处理系统"></a>业务处理系统</h4><p><font color='red'><strong>业务处理系统</strong></font>(Transaction Process System, TPS)是一类运用IT技术对机构业务活动（如订购、销售、支付、出货、核算等）进行信息处理，实现业务处理自动化与提高业务处理效率的信息系统。</p>
+<ul>
+<li>商业终端销售系统</li>
+<li>网络银行业务系统（中国建设银行网上银行）</li>
+<li>航空机票订票系统</li>
+<li>酒店系统</li>
+<li>铁路12306客票订票系统</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220132537842.png" alt="image-20231220132537842"></p>
+<h4 id="管理信息系统"><a href="#管理信息系统" class="headerlink" title="管理信息系统"></a>管理信息系统</h4><p>**<font color='red'>管理信息系统</font>**（(Manage Information System，MIS）是一类以机构信息管理为主导，利用计算机软硬件、网络通信、数据库等IT技术，对机构职能进行整体信息化管理，以达到提高机构工作效率和服务价值，并支持机构职能与运营管理的信息系统。</p>
+<ul>
+<li>人力资源管理信息系统</li>
+<li>企业CRM系统</li>
+<li>企业ERP系统</li>
+<li>学籍管理信息系统</li>
+<li>企业生产安全管理系统</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220133511964.png" alt="image-20231220133511964"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220133703071.png" alt="image-20231220133703071"></p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.oracle.com/cn/cx/what-is-crm/">客户关系管理</a> (CRM) 是一种企业软件，可将客户与您的企业互动的方式自动化。CRM 通常是更大的客户体验 (CX) 应用套件的一部分，该套件还包括营销、广告、电商和客户服务解决方案。CRM 系统跟踪和存储所收集的所有客户数据，包括客户与销售代表的沟通、建议、购买历史和服务请求。许多 CRM 解决方案通过第三方数据源来补充这些客户记录，以确保联系数据的完整性和及时性。然后，所有这些客户数据可以在整个企业进行共享，让用户可以更好地了解在每个接触点发生了什么事情。优秀的 CRM 解决方案还使用人工智能 (AI) 来分析客户的历史，并为推荐下一步销售行动。</p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.oracle.com/cn/erp/what-is-erp/">企业资源计划</a> (ERP) 是一种商业软件，主要用于管理、自动化和连接日常的后台业务流程，如会计、采购、项目管理、供应链管理、风险管理和人力资源。一个 ERP 套件还可能包括<a target="_blank" rel="noopener" href="https://www.oracle.com/cn/performance-management/what-is-epm/">企业绩效管理</a> (EPM) 软件，用于帮助企业针对财务结果制定计划和编制预算，以及预测和报告财务结果。通过在一个单一的技术平台上统一这些业务流程，企业可以简化运营和工作流程。ERP 系统可从多个来源收集企业内部共享的交易数据，促进相关数据在部门之间流动，消除数据重复，并将数据存储在一个中央位置，形成单一可信数据源来确保数据的完整性。</p>
+</blockquote>
+<h4 id="决策支持系统"><a href="#决策支持系统" class="headerlink" title="决策支持系统"></a>决策支持系统</h4><p><strong>决策支持系统</strong>(decision support system ，简称DSS)是一类通过数据分析、模型评估和知识推理等信息处理，以人机交互方式，为决策者解决特定梦略问题提供服务支持的信息系统。</p>
+<ul>
+<li>防汛指挥决策支持系统</li>
+<li>法定传染病疫情预测信息系统</li>
+<li>电信营销大数据分析系统</li>
+<li>铁路区域地质灾害预警系统</li>
+<li>突发公共卫生事件应急预案系统</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220134656749.png" alt="image-20231220134656749"></p>
+<h4 id="专家系统"><a href="#专家系统" class="headerlink" title="专家系统"></a>专家系统</h4><p><strong>专家系统</strong>(Expert System, ES）是一种具有获取、存储与利用专家知识解决某类问题的信息系统。它一般是采用人工智能中的知识表示、知识推理、深度学习等技术来模拟通常由领域专家才能解决的复杂问题。<br>典型专家系统应用:</p>
+<ul>
+<li>AlphaGo围棋机器人</li>
+<li>蛋白质鉴定专家系统</li>
+<li>城市建设规划与设计专家系统</li>
+<li>蔬菜病虫害诊断专家系统</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220134926427.png" alt="image-20231220134926427"></p>
+<h4 id="办公自动化系统"><a href="#办公自动化系统" class="headerlink" title="办公自动化系统"></a>办公自动化系统</h4><p><strong>办公自动化系统</strong>（Office Automation，OA）是一种实现办公业务流程信息化、自动化处理的信息系统。</p>
+<ul>
+<li>政务办公系统</li>
+<li>高校办公系统</li>
+<li>企业办公系统</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220135714219.png" alt="image-20231220135714219"></p>
+<h4 id="知识工作支持系统"><a href="#知识工作支持系统" class="headerlink" title="知识工作支持系统"></a>知识工作支持系统</h4><p><strong>知识工作支持系统</strong>（Knowledge Work System，KWS）是一种具有强大的数据、图形、图像以及多媒体处理能力，能够在网络化条件下广泛应用多方面信息和技术资源，并为知识工作者提供设计创造、技术创新等服务工具的信息系统。</p>
+<ul>
+<li>工程制图系统（AutoCAD）</li>
+<li>影像非线性编辑系统</li>
+<li>CASE（计算机辅助软件工程）工具</li>
+<li>Power Designer软件系统</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220135800265.png" alt="image-20231220135800265"></p>
+<h3 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h3><p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230901135412110.png" alt="image-20230901135412110"></p>
+<h3 id="利益相关者"><a href="#利益相关者" class="headerlink" title="利益相关者"></a>利益相关者</h3><p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230901135518463.png" alt="image-20230901135518463"></p>
+<h3 id="用户分类"><a href="#用户分类" class="headerlink" title="用户分类"></a>用户分类</h3><ol>
+<li><p>系统内部用户</p>
+<ul>
+<li>业务人员</li>
+<li>主管、经理和总经理</li>
+</ul>
+</li>
+<li><p>系统外部用户</p>
+<ul>
+<li>客户</li>
+<li>供应商</li>
+<li>合作伙伴</li>
+</ul>
+</li>
+</ol>
+<h3 id="开发人员"><a href="#开发人员" class="headerlink" title="开发人员"></a>开发人员</h3><ol>
+<li><p>系统分析人员</p>
+<ul>
+<li>系统分析师</li>
+<li>业务领域专家</li>
+</ul>
+</li>
+<li><p>系统设计人员</p>
+<ul>
+<li>系统架构师</li>
+<li>软件工程师</li>
+<li>界面工程师</li>
+<li>数据库工程师</li>
+</ul>
+</li>
+<li><p>系统构造人员</p>
+<ul>
+<li>软件程序员</li>
+<li>硬件工程师</li>
+<li>网络工程师</li>
+<li>系统集成工程师</li>
+</ul>
+</li>
+<li><p>系统管理人员</p>
+<ul>
+<li>客户经理</li>
+<li>项目经理</li>
+<li>质量保证人员</li>
+<li>测试经理</li>
+</ul>
+</li>
+</ol>
+<h2 id="信息系统软件"><a href="#信息系统软件" class="headerlink" title="信息系统软件"></a>信息系统软件</h2><h3 id="类型-1"><a href="#类型-1" class="headerlink" title="类型"></a>类型</h3><ul>
+<li>应用软件</li>
+<li>支撑软件（中间件）</li>
+<li>系统软件</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220141358569.png" alt="image-20231220141358569"></p>
+<h3 id="其他分类"><a href="#其他分类" class="headerlink" title="其他分类"></a>其他分类</h3><p>按开发方式分：</p>
+<ul>
+<li>通用软件产品</li>
+<li>定制软件系统</li>
+</ul>
+<p>按授权许可分类：</p>
+<ul>
+<li>产品软件</li>
+<li>自由软件</li>
+<li>共享软件</li>
+<li>免费软件</li>
+<li>公共软件</li>
+<li>开源软件</li>
+</ul>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
+<li>软件是逻辑代码组成的程序集合，非有形物体。</li>
+<li>软件不会损耗，但会因失去价值被弃用。</li>
+<li>软件是开发人员通过脑力劳动开发出来的，还不能做到生产线制造。</li>
+<li>软件还未完全实现标准化构件组装系统。</li>
+</ul>
+<p>软件开发需解决的本质问题</p>
+<ul>
+<li>复杂性——随应用领域、规模、业务不同，软件复杂性差别较大。</li>
+<li>一致性——软件都要求与其运行环境的软硬件平台兼容一致。</li>
+<li>可变性——因业务过程与需求不断变化，应用软件需具有可变性（如软件版本升级）才能保持软件长久的生命力。</li>
+</ul>
+<h3 id="质量属性"><a href="#质量属性" class="headerlink" title="质量属性"></a>质量属性</h3><p>功能性(Functionality):是指软件所实现的功能可达到它所设计规范和满足用户需求的程度。</p>
+<p>可靠性(Reliability):是指在规定的时间和条件下，软件所能维持其正常的功能操作、性能水平的程度。</p>
+<p>易用性(Usability):是指用户学习、操作、使用软件所需努力的程度。</p>
+<p>效率(Efficiency):是指软件系统的处理效能，如处理时间、资源使用率。</p>
+<p>可移植性(Transportability):是指软件从一个计算机系统环境移植到另一计算机环境的容易程度。</p>
+<p>可维护性(Maintainability):是指当一个软件投入运行后，若需求发生变化、环境发生改变或软件发生错误时，进行修改所做努力的程度。</p>
+<p>可用性(Availability):用来衡量软件在特定场景下，用户使用它有效并且满意地达成特定目标的程度。</p>
+<p>可扩展性(Extensibility):是指软件增加新功能、扩充系统能力的难易程度。可伸缩性(Scalability):用来衡量软件在负载变化的情况下，系统处理性能的变化程度。</p>
+<p>安全性(Safety):用来衡量软件防止非法访问、数据丢失、病毒危害、非授权入侵等事件出现的能力。</p>
+<p>健壮性(Robustness):用来衡量软件在遭遇意外事件情况时，系统能继续正确执行功能的程度。</p>
+<p>互操作(Interoperability):用来衡量软件与其他软件系统进行数据交换和服务相互访问的难易程度。</p>
+<h2 id="信息系统开发过程"><a href="#信息系统开发过程" class="headerlink" title="信息系统开发过程"></a>信息系统开发过程</h2><p><strong>信息系统生命周期</strong>是指从提出系统的构想开始，经历系统规划、系统开发、系统运行与维护，到系统终止的时间过程。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220144647456.png" alt="image-20231220144647456"></p>
+<ol>
+<li><p>系统规划阶段</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220145112945.png" alt="image-20231220145112945"></p>
+</li>
+<li><p>系统需求分析阶段</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220145202531.png" alt="image-20231220145202531"></p>
+</li>
+<li><p>系统设计阶段</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220145317947.png" alt="image-20231220145317947"></p>
+</li>
+<li><p>系统构造阶段</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220145337311.png" alt="image-20231220145337311"></p>
+</li>
+<li><p>系统测试阶段</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220145409284.png" alt="image-20231220145409284"></p>
+</li>
+<li><p>系统运行与维护阶段</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220145451859.png" alt="image-20231220145451859"></p>
+</li>
+</ol>
+<p>以<strong>工程项目方式</strong>来管理系统开发过程、支持过程、组织过程中的大量任务活动，才能确保项目在规定时间内按照质量要求完成信息系统开发任务。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220145826261.png" alt="image-20231220145826261"></p>
+<h2 id="系统开发过程模型"><a href="#系统开发过程模型" class="headerlink" title="系统开发过程模型"></a>系统开发过程模型</h2><p>**<font color='red'>系统开发过程模型</font>**是指开发者在长期工程实践中积累的有效解决系统开发工程活动组织的特定模式。</p>
+<h3 id="瀑布开发过程模型"><a href="#瀑布开发过程模型" class="headerlink" title="瀑布开发过程模型"></a>瀑布开发过程模型</h3><p>在<font color='red'>瀑布开发过程模型</font>中，系统开发活动严格按生命周期阶段线性顺序开展，并在每个阶段都会创建和提交大量文档。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230901145618968.png" alt="image-20230901145618968"></p>
+<p><font color='blue'>模型特点:</font></p>
+<ul>
+<li>系统开发过程活动组织简单，项目阶段划分明确，具有完整的开发文档支持，便于项目管理。</li>
+<li>需要大量的文档工作和审查工作，通常会影响系统项目的进度，分散开发人员精力。</li>
+<li>用户经过较长周期才能见到信息系统的雏形，对系统项目的反馈迟缓，这会带来项目风险。</li>
+<li>在系统开发初期，通常难以获得用户的完整需求，这会导致瀑布开发过程难以开展。</li>
+</ul>
+<p><font color='blue'>应用场景:</font><br>瀑布开发过程模型作为一种经典的系统开发过程模型，只适合于<font color='green'>需求十分明确、规模较小</font>的系统项目。</p>
+<h3 id="原型开发过程模型"><a href="#原型开发过程模型" class="headerlink" title="原型开发过程模型"></a>原型开发过程模型</h3><p>在<font color='red'>原型开发过程模型</font>中，仅基于初始需求，便可采用快速开发方法与工具，及早给出初始版本的原型系统。用户反馈与新需求进入系统下一版本迭代开发，从而解决瀑布开发过程模型的局限。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230901145855119.png" alt="image-20230901145855119"></p>
+<p>模型特点:</p>
+<ul>
+<li>能够开发出真正满足用户需求的信息系统，能够较快地提交系统的初始功能版本给用户使用。</li>
+<li>需求变更能够很快在系统开发中得到反馈。</li>
+<li>系统项目开发难以标记进展的里程碑、项目管理较复杂。</li>
+<li>若系统体系结构设计不健壮，多次迭代会使系统稳定性受到挑战。</li>
+<li>原型开发过程模型还需要具有系统快速开发能力的工具支持。</li>
+</ul>
+<p>应用场景:<br>原型开发过程模型适合于<font color='green'>有大量人机交互界面的系统项目，也适合那些需求初期不太明确的系统项目</font>。</p>
+<h3 id="螺旋式开发过程模型"><a href="#螺旋式开发过程模型" class="headerlink" title="螺旋式开发过程模型"></a>螺旋式开发过程模型</h3><p>螺旋式开发模型也是一种进化迭代式的系统开发过程模型，它兼顾了原型开发过程的迭代特征和瀑布开发过程的系统化与严格审核优点。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230901150112960.png" alt="image-20230901150112960"></p>
+<p>模型特点:</p>
+<ul>
+<li>引入了其他模型不具备的风险分析，使项目在无法排除重大风险时有机会停止，以减小项目损失。</li>
+<li>在系统开发活动由内向外沿着螺线进行迭代开发。每次迭代都将获得系统的一个发布版本，直到获得完全满足用户需求的版本才成为最终系统。</li>
+<li>每次迭代开发都进行风险分析固然很好，但项目进度会延后，成本会增加，其项目开发的代价较高。</li>
+<li>相对瀑布开发过程模型和原型开发过程模型，螺旋式开发过程模型的项目管理更复杂，需要更多的开发活动组织管理。</li>
+</ul>
+<p>应用场景:</p>
+<p>螺旋式开发模型适合于<font color='green'>大型复杂的系统开发，特别强调系统开发的风险分析。</font></p>
+<h3 id="统一软件开发过程模型"><a href="#统一软件开发过程模型" class="headerlink" title="统一软件开发过程模型"></a>统一软件开发过程模型</h3><p><font color='red'>统一软件开发过程</font>（Rational Unified Process,RUP）是一种用例驱动的、增量迭代的、以体系架构为中心的系统开发过程模型。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230901151012480.png" alt="image-20230901151012480"></p>
+<p>模型特点:</p>
+<ul>
+<li>面向对象、用例驱动、以架构为中心开发系统。</li>
+<li>增量迭代开发，以质量控制和风险管理为目标。</li>
+<li>与UML配套、可定制流程框架。</li>
+</ul>
+<p>应用场景:<br>统一软件开发过程模型综合了以前的多种系统开发过程模型的优点，全面考虑了系统开发的技术因素和管理因素，适合于<font color='green'>大型复杂系统开发</font>。</p>
+<h3 id="敏捷软件开发模型"><a href="#敏捷软件开发模型" class="headerlink" title="敏捷软件开发模型"></a>敏捷软件开发模型</h3><p><font color='red'>敏捷软件开发</font>（Agile software development）是一种精简的、快速的、增量迭代的系统开发过程模型。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230901151151461.png" alt="image-20230901151151461"></p>
+<p>模型特点:</p>
+<ul>
+<li>提出一种轻量级开发过程模型方法，强调编程人员与业务专家之间的紧密协作、面对面的沟通、适应需求变化的代码编写。</li>
+<li>注重系统开发过程中人的作用、最小化文档编写，快速发布系统版本功能，并能够处理不断变化的用户需求。</li>
+<li>解决传统重量级开发过程模型在中小型系统项目中存在成本高、周期长、难以适应快速需求变更等局限。</li>
+</ul>
+<p>应用场景:<br>敏捷开发模式<font color='green'>注重系统快速开发，且适用于解决早期需求模糊或需求变更频繁的系统开发项目</font>。</p>
+<h2 id="系统开发方法与工具"><a href="#系统开发方法与工具" class="headerlink" title="系统开发方法与工具"></a>系统开发方法与工具</h2><h3 id="系统开发策略"><a href="#系统开发策略" class="headerlink" title="系统开发策略"></a>系统开发策略</h3><ol>
+<li><p>自行开发</p>
+<p>利用机构自身IT人员开发实现信息系统的开发方法。</p>
+<p>优缺点:</p>
+<ul>
+<li>可以得到满足自身需求的信息系统，并且通过系统开发培养自己的团队。</li>
+<li>组织专业规范的系统开发和实施严格的质量保证较困难，通常需要外部咨询和技术培训。</li>
+<li>所开发的系统可能存在通用性、稳定性、完整性的局限。</li>
+</ul>
+</li>
+<li><p>委托开发</p>
+<p>委托专业IT公司针对本机构业务需求定制开发信息系统的开发方法。</p>
+<p>优缺点:</p>
+<ul>
+<li>能够利用专业IT公司的技术优势和信息化经验，以较低的成本开发信息系统。</li>
+<li>机构自身可以节省人力资源，可专心于业务优化改进，将精力集中到具有较高价值回报的活动中。</li>
+<li>需要配备精通业务的分析人员，与开发团队进行大量的交流、沟通。</li>
+<li>依赖于专业IT公司的技术支持，后期系统维护较困难。</li>
+</ul>
+</li>
+<li><p>购买商品软件</p>
+<p>通过购买商品化软件包，并在此基础上实现信息系统的定制配置。</p>
+<p>优缺点:</p>
+<ul>
+<li>客户省时省力，短时间就可建立信息系统，效果可以立竿见影。</li>
+<li>购买到完全符合机构自身需求的系统不容易。</li>
+<li>受限于现有软件局限，难以满足业务需求变化。</li>
+</ul>
+</li>
+<li><p>联合开发</p>
+<p>机构与专业IT公司联合开发信息系统的开发方法。</p>
+<p>优缺点:</p>
+<ul>
+<li>充分发挥客户团队和开发团队的优势，有利于自身技术力量的培养。</li>
+<li>依赖于双方精诚团结，自身需要有一定的系统分析与设计能力。</li>
+</ul>
+</li>
+</ol>
+<h3 id="系统开发方法"><a href="#系统开发方法" class="headerlink" title="系统开发方法"></a>系统开发方法</h3><ol>
+<li><p>结构化方法</p>
+<p><font color='red'>结构化方法</font>是面向过程的软件开发方法，由结构化分析方法、结构化设计方法和结构化程序设计方法组成。<br>其基本思想如下:</p>
+<ul>
+<li><p>自顶向下</p>
+</li>
+<li><p>逐步求精</p>
+</li>
+<li><p>系统模块分解</p>
+</li>
+<li><p>以过程为中心构建软件系统</p>
+</li>
+</ul>
+<p><font color='red'>结构化方法典型技术:</font></p>
+<p>数据流图、数据字典、层次结构图设计、E-R关系图设计、程序流程图设计、伪代码设计、结构化编程等。</p>
+<p><font color='blue'>结构化方法优缺点:</font><br>简单实用、技术成熟、容易应用。<br>但对规模较大及处理复杂的软件系统项目不太适合，存在难以适应需求变更，难以解决软件复用，难以进行软件维护，难以提高软件生产效率等问题。</p>
+<p><font color='blue'>当前软件开发现状:</font><br>现在的软件系统项目大多具有功能复杂、规模较大、异构平台、快速交付、可维护性和可靠性要求高等特性。结构化方法不能适应这些要求。需有新的软件开发方法去应对。</p>
+</li>
+<li><p>面向对象软件开发方法</p>
+<p><font color='red'>面向对象方法</font>是一种将面向对象思想应用于软件开发过程、指导软件开发活动的方法。</p>
+<ul>
+<li><p>面向对象分析</p>
+</li>
+<li><p>面向对象设计</p>
+</li>
+<li><p>面向对象编程</p>
+</li>
+</ul>
+<p><font color='blue'>面向对象基本思想</font>:</p>
+<ul>
+<li>客观世界是由各种<font color='red'>对象（Object）</font>组成，复杂对象可以由简单对象组成。</li>
+<li><font color='red'>类(Class）</font>是具有相同特征对象的模板，将对象的属性数据和操作程序封装在一起。</li>
+<li>对象之间通过<font color='red'>消息（Message）</font>传递实现行为交互，以模拟现实世界中不同事物之间的联系。</li>
+</ul>
+<p><font color='blue'>面向对象方法优缺点:</font></p>
+<ol>
+<li>与人的思维方式一致</li>
+<li>稳定性好</li>
+<li>可重用性好</li>
+<li>可维护性好</li>
+<li>掌握面向对象技术方法需要更多的时间</li>
+</ol>
+<p><font color='blue'>面向对象方法适合的软件项目类型:</font></p>
+<p>面向对象方法适合需求变更较频繁、功能复杂、规模较大、异构平台、快速<br>交付、可维护性和可靠性要求高的软件系统项目。</p>
+</li>
+<li><p>基于构件软件开发方法</p>
+<p>基于构件软件开发方法是一种基于分布式对象技术、强调通过可复用构件设计与构造软件系统的开发方法。</p>
+<ul>
+<li>从业务功能视角出发，采用比面向对象方法更高一级的抽象技术设计实现软件，其软件重用度可以得到提高。</li>
+<li>将软件开发的重点从程序编写转移到了基于已有构件的组装，以更快方式构造系统，减轻支持与升级大型系统所需要的维护负担，从而降低软件开发的费用。</li>
+</ul>
+<p>优缺点:</p>
+<ul>
+<li>构件开发使得软件重用度、开发效率得到提高，确保软件质量。</li>
+<li>软件构件开发是与编程语言紧密联系，容易导致构件接口标准不统一，不同开发语言实现的构件难以实现互操作。</li>
+</ul>
+</li>
+<li><p>面向服务的系统开发方法<br>基于面向服务思想，采用松耦合、粗粒度软件功能重用的系统开发方法。</p>
+<ul>
+<li>面向服务的系统开发方法关注点是业务，它直接映射到业务，强调IT与业务的对齐，以业务服务为核心元素来封装业务功能或已有应用系统。</li>
+<li>服务比构件的粒度更大，更加匹配机构信息化应用中的业务，可以实现更高级别的软件重用。</li>
+</ul>
+<p>优缺点:</p>
+<ul>
+<li>可以实现跨平台的功能复用，也可复用现有应用系统。</li>
+<li>开发技术复杂，需要解决较多的分布式应用难点技术问题。</li>
+</ul>
+</li>
+</ol>
+<h3 id="系统开发工具与环境"><a href="#系统开发工具与环境" class="headerlink" title="系统开发工具与环境"></a>系统开发工具与环境</h3><ol>
+<li><p>开发工具</p>
+<p>按照开发过程分类:</p>
+<ul>
+<li><p>项目管理工具(Project)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220155231546.png" alt="image-20231220155231546"></p>
+</li>
+<li><p>版本控制管理工具(VisualSVN Server)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220155246012.png" alt="image-20231220155246012"></p>
+</li>
+<li><p>分析与设计工具(PowerDesigner、Enterprise Architect)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220155326518.png" alt="image-20231220155326518"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220155413143.png" alt="image-20231220155413143"></p>
+</li>
+<li><p>程序开发工具(Eclipse)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220155451801.png" alt="image-20231220155451801"></p>
+</li>
+<li><p>系统测试工具(Apache JMeter)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220155516392.png" alt="image-20231220155516392"></p>
+</li>
+<li><p>系统维护工具</p>
+</li>
+</ul>
+</li>
+<li><p>开发运行环境</p>
+<p><font color='red'>系统开发环境</font>是指在计算机硬件和系统软件平台上，进行信息系统开发及维护所使用的软件工具及集成环境。</p>
+<p><font color='red'>系统运行环境</font>是指信息系统运行所依赖的平台环境，包括操作系统软件、数据库软件、运行时软件等软件环境，以及服务器、网络设备、存储设备等硬件支持环境。</p>
+</li>
+</ol>
+<h1 id="课堂练习与课堂作业"><a href="#课堂练习与课堂作业" class="headerlink" title="课堂练习与课堂作业"></a>课堂练习与课堂作业</h1><p>1．下面哪个不是信息系统利益相关者?（D)</p>
+<p>A．客户B．用户 C.开发人员D．监理人员 </p>
+<p>2．下面哪项不是用户主要关注的软件质量属性?(B)</p>
+<p>A．安全性B．可复用性C．灵活性D．高效性 </p>
+<p>3．在信息系统生命周期中，下面哪个阶段持续时间最长?(D)</p>
+<p>A．系统需求分析B．系统设计 C．系统构造 D．系统运行与维护 </p>
+<p>4.下面哪种系统开发过程模型不需要迭代?(A) </p>
+<p>A．瀑布开发过程模型 B．原型开发过程模型 C. RUP开发过程模型 D．敏捷软件开发过程模型 </p>
+<p>5.下面哪种系统开发策略可培养机构自身的开发团队?(D)</p>
+<p>A．自行开发 B．委托开发 C．购买商品化软件包 D.联合开发</p>
+<p>1．项目经理是系统构造人员之一。(×) </p>
+<p>2．信息系统是指一类处理信息的系统软件。(×) </p>
+<p>3．系统规划是在项目立项之后进行的。(×) </p>
+<p>4．敏捷软件开发过程模型是一种轻量级的过程模型。（√)</p>
+<p>5．应用软件依赖于系统运行环境。（√)</p>
+<p>信息系统通常由信息化基础设施、应用软件、数据库管理系统、数据库、业务数据、（用户）等要素组成。</p>
+<p>软件被划分为系统软件、应用软件和（中间件）。</p>
+<p>在信息系统生命周期中的（系统规划）、系统需求分析、系统设计阶段进行系统分析与设计活动。</p>
+<p>在螺旋式开发过程模型中，系统软件编码是在（实施工程）阶段的开发活动。</p>
+<p>复用粒度最大的系统开发方法是（面向服务开发）。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://uestcwxy.love">Palp1tate</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://uestcwxy.love/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/1/">https://uestcwxy.love/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://uestcwxy.love" target="_blank">Palp1tate</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/">大三自学</a><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">软件系统架构设计</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2023/05/31/UuGQIvw8HNBrZsp.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/12/19/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/7/" title="电子科大软件系统架构设计——用户界面设计"><img class="cover" src="https://s2.loli.net/2023/05/31/1zC4bdRjiXnZ75a.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">电子科大软件系统架构设计——用户界面设计</div></div></a></div><div class="next-post pull-right"><a href="/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/2/" title="电子科大软件系统架构设计——面向对象建模基础"><img class="cover" src="https://s2.loli.net/2023/05/31/1zC4bdRjiXnZ75a.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">电子科大软件系统架构设计——面向对象建模基础</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/2/" title="电子科大软件系统架构设计——面向对象建模基础"><img class="cover" src="https://s2.loli.net/2023/05/31/1zC4bdRjiXnZ75a.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-20</div><div class="title">电子科大软件系统架构设计——面向对象建模基础</div></div></a></div><div><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/" title="电子科大软件系统架构设计——系统规划"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-21</div><div class="title">电子科大软件系统架构设计——系统规划</div></div></a></div><div><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/" title="电子科大软件系统架构设计——系统需求分析"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-21</div><div class="title">电子科大软件系统架构设计——系统需求分析</div></div></a></div><div><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/" title="电子科大软件系统架构设计——系统架构设计"><img class="cover" src="https://s2.loli.net/2023/05/31/TREyA8hgqS7JnfV.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-21</div><div class="title">电子科大软件系统架构设计——系统架构设计</div></div></a></div><div><a href="/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/" title="电子科大软件系统架构设计——设计模式"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-23</div><div class="title">电子科大软件系统架构设计——设计模式</div></div></a></div><div><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/" title="电子科大软件系统架构设计——软件建模详细设计"><img class="cover" src="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-21</div><div class="title">电子科大软件系统架构设计——软件建模详细设计</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Palp1tate</div><div class="author-info__description">等我苦尽甘来时，我给你讲讲来时走的路。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/palp1tate/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.facebook.com/profile.php?id=100092533320651" target="_blank" title="facebook"><i class="fab fa-facebook" style="color: #4a7dbe;"></i></a><a class="social-icon" href="mailto:1939311091@qq.com" target="_blank" title="email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/1907948898" target="_blank" title="b站"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/tiktok.jpg" target="_blank" title="抖音"><i class="fab fa-tiktok" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/weixin.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">刚建站不久，博客美化有待研究，部分页面也没时间弄，路过的你将就看啦~😊，图片没加载出来就是网络不佳噢~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">系统分析与设计概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">信息系统概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#what"><span class="toc-number">1.1.1.</span> <span class="toc-text">what</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E6%88%90"><span class="toc-number">1.1.2.</span> <span class="toc-text">组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.3.</span> <span class="toc-text">类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">业务处理系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">管理信息系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%B3%E7%AD%96%E6%94%AF%E6%8C%81%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">决策支持系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%93%E5%AE%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.1.3.4.</span> <span class="toc-text">专家系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9E%E5%85%AC%E8%87%AA%E5%8A%A8%E5%8C%96%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.1.3.5.</span> <span class="toc-text">办公自动化系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E5%B7%A5%E4%BD%9C%E6%94%AF%E6%8C%81%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.1.3.6.</span> <span class="toc-text">知识工作支持系统</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB"><span class="toc-number">1.1.4.</span> <span class="toc-text">关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%9B%8A%E7%9B%B8%E5%85%B3%E8%80%85"><span class="toc-number">1.1.5.</span> <span class="toc-text">利益相关者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%88%86%E7%B1%BB"><span class="toc-number">1.1.6.</span> <span class="toc-text">用户分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98"><span class="toc-number">1.1.7.</span> <span class="toc-text">开发人员</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">信息系统软件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.2.</span> <span class="toc-text">其他分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%80%A7"><span class="toc-number">1.2.3.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%A8%E9%87%8F%E5%B1%9E%E6%80%A7"><span class="toc-number">1.2.4.</span> <span class="toc-text">质量属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B"><span class="toc-number">1.3.</span> <span class="toc-text">信息系统开发过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.4.</span> <span class="toc-text">系统开发过程模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%80%91%E5%B8%83%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.4.1.</span> <span class="toc-text">瀑布开发过程模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.4.2.</span> <span class="toc-text">原型开发过程模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%9E%BA%E6%97%8B%E5%BC%8F%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.4.3.</span> <span class="toc-text">螺旋式开发过程模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%9F%E4%B8%80%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.4.4.</span> <span class="toc-text">统一软件开发过程模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%8F%E6%8D%B7%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.4.5.</span> <span class="toc-text">敏捷软件开发模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E4%B8%8E%E5%B7%A5%E5%85%B7"><span class="toc-number">1.5.</span> <span class="toc-text">系统开发方法与工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%AD%96%E7%95%A5"><span class="toc-number">1.5.1.</span> <span class="toc-text">系统开发策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.2.</span> <span class="toc-text">系统开发方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B8%8E%E7%8E%AF%E5%A2%83"><span class="toc-number">1.5.3.</span> <span class="toc-text">系统开发工具与环境</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%BE%E5%A0%82%E7%BB%83%E4%B9%A0%E4%B8%8E%E8%AF%BE%E5%A0%82%E4%BD%9C%E4%B8%9A"><span class="toc-number">2.</span> <span class="toc-text">课堂练习与课堂作业</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/" title="电子科大软件系统架构设计——设计模式"><img src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——设计模式"/></a><div class="content"><a class="title" href="/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/" title="电子科大软件系统架构设计——设计模式">电子科大软件系统架构设计——设计模式</a><time datetime="2023-12-23T13:43:11.000Z" title="发表于 2023-12-23 21:43:11">2023-12-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/" title="电子科大软件系统架构设计——软件建模详细设计"><img src="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——软件建模详细设计"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/" title="电子科大软件系统架构设计——软件建模详细设计">电子科大软件系统架构设计——软件建模详细设计</a><time datetime="2023-12-21T06:21:31.000Z" title="发表于 2023-12-21 14:21:31">2023-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/" title="电子科大软件系统架构设计——系统架构设计"><img src="https://s2.loli.net/2023/05/31/TREyA8hgqS7JnfV.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——系统架构设计"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/" title="电子科大软件系统架构设计——系统架构设计">电子科大软件系统架构设计——系统架构设计</a><time datetime="2023-12-21T06:21:26.000Z" title="发表于 2023-12-21 14:21:26">2023-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/" title="电子科大软件系统架构设计——系统需求分析"><img src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——系统需求分析"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/" title="电子科大软件系统架构设计——系统需求分析">电子科大软件系统架构设计——系统需求分析</a><time datetime="2023-12-21T06:21:22.000Z" title="发表于 2023-12-21 14:21:22">2023-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/" title="电子科大软件系统架构设计——系统规划"><img src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——系统规划"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/" title="电子科大软件系统架构设计——系统规划">电子科大软件系统架构设计——系统规划</a><time datetime="2023-12-21T03:02:30.000Z" title="发表于 2023-12-21 11:02:30">2023-12-21</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2023/05/31/UuGQIvw8HNBrZsp.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 By Palp1tate</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><i class="fa-solid fa-cloud"></i><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>萌ICP备20230529号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="6614140207" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-mini="true"> </div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

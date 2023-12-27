@@ -1,0 +1,889 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>电子科大软件架构设计——期末复习题集 | Palp1tate</title><meta name="author" content="Palp1tate,1939311091@qq.com"><meta name="copyright" content="Palp1tate"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="系统分析与设计概述1．下面哪个不是信息系统利益相关者?（D) A．客户B．用户 C.开发人员D．监理人员  2．下面哪项不是用户主要关注的软件质量属性?(B) A．安全性B．可复用性C．灵活性D．高效性  3．在信息系统生命周期中，下面哪个阶段持续时间最长?(D) A．系统需求分析B．系统设计 C．系统构造 D．系统运行与维护  4.下面哪种系统开发过程模型不需要迭代?(A)  A．瀑布开发过程模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电子科大软件架构设计——期末复习题集">
+<meta property="og:url" content="https://uestcwxy.love/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/8/index.html">
+<meta property="og:site_name" content="Palp1tate">
+<meta property="og:description" content="系统分析与设计概述1．下面哪个不是信息系统利益相关者?（D) A．客户B．用户 C.开发人员D．监理人员  2．下面哪项不是用户主要关注的软件质量属性?(B) A．安全性B．可复用性C．灵活性D．高效性  3．在信息系统生命周期中，下面哪个阶段持续时间最长?(D) A．系统需求分析B．系统设计 C．系统构造 D．系统运行与维护  4.下面哪种系统开发过程模型不需要迭代?(A)  A．瀑布开发过程模">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg">
+<meta property="article:published_time" content="2023-12-20T10:06:13.000Z">
+<meta property="article:modified_time" content="2023-12-27T13:57:36.235Z">
+<meta property="article:author" content="Palp1tate">
+<meta property="article:tag" content="大三自学">
+<meta property="article:tag" content="软件系统架构设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://uestcwxy.love/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Palp1tate","link":"链接: ","source":"来源: Palp1tate","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '电子科大软件架构设计——期末复习题集',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-27 21:57:36'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Palp1tate" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Palp1tate"><span class="site-name">Palp1tate</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">电子科大软件架构设计——期末复习题集</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-20T10:06:13.000Z" title="发表于 2023-12-20 18:06:13">2023-12-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-27T13:57:36.235Z" title="更新于 2023-12-27 21:57:36">2023-12-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">14.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>46分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="电子科大软件架构设计——期末复习题集"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="系统分析与设计概述"><a href="#系统分析与设计概述" class="headerlink" title="系统分析与设计概述"></a>系统分析与设计概述</h1><p>1．下面哪个不是信息系统利益相关者?（D)</p>
+<p>A．客户B．用户 C.开发人员D．监理人员 </p>
+<p>2．下面哪项不是用户主要关注的软件质量属性?(B)</p>
+<p>A．安全性B．可复用性C．灵活性D．高效性 </p>
+<p>3．在信息系统生命周期中，下面哪个阶段持续时间最长?(D)</p>
+<p>A．系统需求分析B．系统设计 C．系统构造 D．系统运行与维护 </p>
+<p>4.下面哪种系统开发过程模型不需要迭代?(A) </p>
+<p>A．瀑布开发过程模型 B．原型开发过程模型 C. RUP开发过程模型 D．敏捷软件开发过程模型 </p>
+<p>5.下面哪种系统开发策略可培养机构自身的开发团队?(D)</p>
+<p>A．自行开发 B．委托开发 C．购买商品化软件包 D.  联合开发</p>
+<p>1．项目经理是系统构造人员之一。(×) </p>
+<p>2．信息系统是指一类处理信息的系统软件。(×) </p>
+<p>3．系统规划是在项目立项之后进行的。(×) </p>
+<p>4．敏捷软件开发过程模型是一种轻量级的过程模型。（√)</p>
+<p>5．应用软件依赖于系统运行环境。（√)</p>
+<p>信息系统通常由信息化基础设施、应用软件、数据库管理系统、数据库、业务数据、（用户）等要素组成。</p>
+<p>软件被划分为系统软件、应用软件和（中间件）。</p>
+<p>在信息系统生命周期中的（系统规划）、系统需求分析、系统设计阶段进行系统分析与设计活动。</p>
+<p>在螺旋式开发过程模型中，系统软件编码是在（实施工程）阶段的开发活动。</p>
+<p>复用粒度最大的系统开发方法是（面向服务开发）。</p>
+<p>四、简答题</p>
+<p>1.比较系统分析员与系统架构设计师的角色职责有何异同？</p>
+<p>答：系统分析员与系统架构设计师相同职责是建立信息系统总体方案。不同点在于系统分析员负责系统需求分析，系统架构设计师负责系统架构设计。</p>
+<p>2.说明软件本质特性有哪些？</p>
+<p>答：软件本质特性如下：</p>
+<p>•软件是逻辑代码组成的程序集合，非有形物体。</p>
+<p>•软件不会损耗，但会因失去价值被弃用。</p>
+<p>•软件是开发人员通过脑力劳动开发出来的，还不能做到生产线制造。</p>
+<p>•软件还未完全实现标准化构件组装系统。</p>
+<p>3.说明哪些开发活动跨系统生命周期？</p>
+<p>答：跨系统生命周期的开发活动主要有项目计划、软件测试、项目管理、风险管理等活动。</p>
+<p>4.敏捷软件开发过程模型如何实施？</p>
+<p>答： 敏捷软件更强调编程人员与业务专家之间的紧密协作、面对面的沟通、适应需求变化地代码编写、注重系统开发过程中人的作用、最小化文档编写，快速发布系统版本功能，并能够处理不断变化的用户需求。 强调精简的、快速的、增量迭代的软件开发。</p>
+<p>5.现代软件系统开发的主流技术方法有哪些？</p>
+<p>答： 现代软件系统开发的主流技术方法包括面向对象软件开发、基于构件的软件开发、面向服务的软件开发方法。</p>
+<h1 id="面向对象建模语言"><a href="#面向对象建模语言" class="headerlink" title="面向对象建模语言"></a>面向对象建模语言</h1><p>1．下面哪个不是面向对象思想中的概念? (B)</p>
+<p>A．封装B．包含C．多态D．抽象</p>
+<p>2．UML结构图不包含下面哪种图?(A)</p>
+<p>A．用例图B．类图C．构件图D．部署图</p>
+<p>3．类图中包含下面哪个元素?(D)</p>
+<p>A．类	B．关联关系	C．接口	D．以上都是</p>
+<p>4．顺序图不包含下面哪个元素? （A)</p>
+<p>A．泳道	B．对象	C．消息	D．生命线</p>
+<p>5．模型是（A)</p>
+<p>A．现实世界的简化描述</p>
+<p>B．现实世界的完整描述</p>
+<p>C．现实世界的具体化描述</p>
+<p>D．现实世界的封装</p>
+<p>1．面向对象的需求分析与编程语言无关。（√)</p>
+<p>2．活动图可以表示并发活动。（√)</p>
+<p>3．每个状态机图可以反映多个对象的状态。(×)</p>
+<p>4．部署图的节点中可以嵌入构件。(√)</p>
+<p>5．BPMN可以基于WS-BPEL转换为软件流程组件。(√)</p>
+<p>6.状态机图有自转换状态。(√)</p>
+<ul>
+<li><p>面向对象的思想应用包括面向对象分析、(面向对象设计)、面向对象编程。</p>
+</li>
+<li><p>类图中类之间的关系有关联关系、依赖关系、聚合关系、(泛化关系)。</p>
+</li>
+<li><p>通信图中的元素包括对象、(消息)、链、自反链。</p>
+</li>
+<li><p>BPMN流对象分为三类：活动、(事件)、网关。</p>
+</li>
+<li><p>BPMN中数据分为数据对象、(数据对象集)、数据输入和数据输出等。</p>
+</li>
+</ul>
+<p>1.面向对象的分析与面向对象的设计在具体实施上有什么区别？</p>
+<p>答：面向对象的分析是进行需求分析，输出是需求规格说明书，是面向对象设计的输入。面向对象分析主要是绘制用例图、活动图、时序图和关键类图。</p>
+<p>面向对象设计的输出是面向对象编程的输入。面向对象的设计更注重绘制系统的详细类图、组件图和部署图等。</p>
+<p>2.BPMN 和 UML 建模语言的应用场景有什么区别？</p>
+<p>答：BPMN 建模语言更侧重于流程建模，在流程建模方面比UML有更多元素，表达的语义更为丰富；</p>
+<p>UML 建模语言更侧重于面向对象的系统分析与设计，包含的内容更为广泛，如用例图、时序图、活动图、类图、部署图等。</p>
+<p>3.UML建模语言的面向对象思想体现在哪些方面？</p>
+<p>答：UML的视图均体现了面向对象的思想，如类图是描述类及类之间关系的视图，是一种典型的面向对象思想，其他的如用例图、时序图等也包含了对象。</p>
+<p>4.包图与类图是否可以放在一起？</p>
+<p>答：可以放在一起，将类图的类放在包图的包中。</p>
+<p>5.不同层级的 BPMN 流程是如何表现与协作的？</p>
+<p>答： BPMN 流程通过子流程实现父流程和子流程的关联。子流程活动是一个复合活动，包含了活动、网关、事件和序列流等元素，它由在圆角矩形的下边界线上标注一个加号“+”表示。子流程活动的输入是前序活动的输出，子流程活动的输出提供给后续活动。</p>
+<p>6.针对顾客在比萨店就餐过程进行业务流程分析，说明 BPMN 各元素如何使用。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220214938716.png" alt="image-20231220214938716"></p>
+<p><strong>ChatGPT4</strong>：</p>
+<p>流程始于顾客感到饥饿想吃比萨的状态。顾客首先选择心仪的比萨然后下单，比萨店确认订单后进入制作阶段。比萨烘烤期间，如果顾客询问“我的比萨在哪里？”则需要通过客服安抚顾客，并保持顾客的耐心。当比萨烘烤完成后，比萨店将比萨交付给顾客，顾客在收到比萨后进行支付，支付方式可以是现金或其他电子支付方式。最后，顾客享用比萨，完成整个就餐过程，顾客的饥饿感得到满足，流程结束。</p>
+<p>流程图中的各个符号表示如下：</p>
+<ul>
+<li><strong>开始事件</strong>：空心圆表示流程的开始，即顾客感到饥饿。</li>
+<li><strong>任务</strong>：圆角矩形表示需要执行的动作或活动，如选择比萨、下订单、烘烤比萨等。</li>
+<li><strong>网关</strong>：菱形符号表示决策点或流程分支，比如“我的比萨在哪里？”的询问导致的流程分支。</li>
+<li><strong>结束事件</strong>：加粗圆圈表示流程的结束，即顾客饥饿得到满足。</li>
+<li><strong>连线</strong>：箭头表示活动之间的流向，指示了流程的顺序。</li>
+<li><strong>消息流</strong>：虚线箭头表示信息交换，如顾客和比萨店之间的订单信息交换。</li>
+<li><strong>数据对象</strong>：带有角折的矩形表示流程中使用或生成的数据，例如订单、收据和金钱。</li>
+</ul>
+<p>整个流程图详细展示了顾客从进入比萨店到满足饥饿的完整业务流程，明确了各个步骤及其相互之间的联系。</p>
+<p>7.针对如下电商系统构件图模型分析，说明电商系统构件组成结构的 UML 元素使用。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220215806058.png" alt="image-20231220215806058"></p>
+<p>ChatGPT4：</p>
+<ol>
+<li><strong>组件（Component）</strong>：带有两个小矩形的大矩形表示组件，它们是系统的物理部分，通常对应于可部署的软件单元。在您的图中，“Product”，“Customer”，“Order”和“Account”都是电商系统的组件。</li>
+<li><strong>接口（Interface）</strong>：小圆形符号表示组件之间的接口，这些是组件对外提供服务的点或者从其他组件接收服务的点。在您的图中，“Item Code”和“Customer Details”是组件“Product”和“Customer”暴露出的接口，而“Payment”和“Account Details”是组件“Order”和“Account”暴露出的接口。</li>
+<li><strong>连线</strong>：实线表示组件之间的关系，具体到接口级别的连接。在您的图中，实线连接了“Product”和“Order”以及“Customer”和“Order”，表示这些组件间通过特定的接口相互作用。</li>
+<li><strong>依赖关系（Dependency）</strong>：虚线箭头表示一个组件依赖于另一个组件的服务。在您的图中，“Order”组件通过“Payment”接口依赖于“Account”组件提供的“Account Details”服务。</li>
+</ol>
+<p>这样的组件图有助于软件开发人员和系统架构师理解系统的高层结构，以及不同组件之间是如何通过接口进行通信和交互的。</p>
+<p>补充知识：</p>
+<p>在UML图中，<strong>接口和构件</strong>之间用<strong>实线</strong>连接表示<strong>实现关系</strong>；而<strong>接口和构件</strong>之间用<strong>虚线箭头</strong>连接则表示<strong>依赖关系</strong>。导出接口由提供操作的构件提供。导入接口供访问操作的构件使用。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/v2-b6ffee3d37fda6110e00dbffb3309543_r.jpg" alt="img"></p>
+<p>8.针对如下订单查看序列图模型分析，说明订单功能逻辑的 UML 元素如何使用。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231220230813126.png" alt="image-20231220230813126"></p>
+<p>ChatGPT4：</p>
+<p>UML序列图是一种用于显示对象之间如何在时间序列内交互的图表，它特别适用于展示特定用例或功能流程的实现。在这个图中使用的UML元素及其作用如下：</p>
+<ol>
+<li><strong>参与者（Actor）</strong>：表示为小人图标的“Client”，代表与系统交互的外部实体，通常是用户或其他系统。</li>
+<li><strong>边界对象（Boundary Object）</strong>：用带有<code>&lt;&lt;boundary&gt;&gt;</code>标签的矩形表示，如图中的“View Open Orders”，代表系统的用户界面或用于与用户直接交互的部分。</li>
+<li><strong>控制对象（Control Object）</strong>：用带有<code>&lt;&lt;control&gt;&gt;</code>标签的矩形表示，如图中的“:View Open Orders”，代表协调其他对象或组件以完成特定任务的对象。</li>
+<li><strong>实体对象（Entity Object）</strong>：代表系统中的一个实体，通常对应于系统的数据模型。在这个图中，“:Account”和“:Transaction”表示与账户相关的信息和交易相关的信息。</li>
+<li><strong>生命线（Lifeline）</strong>：垂直的虚线表示对象的存在，延伸到整个交互过程。</li>
+<li><strong>激活条（Activation Bar）</strong>：表示对象正在进行处理的时间段，通常为垂直的矩形。</li>
+<li><strong>消息（Message）</strong>：箭头线表示对象之间传递的消息。实线箭头表示同步调用，即发送者等待接收者完成处理；虚线箭头表示返回消息，即操作完成后的响应。</li>
+</ol>
+<p>在您的图中，客户端首先向“View Open Orders”发送请求，接着“:View Open Orders”控制对象处理该请求。它进一步与“:Account”和“:Transaction”实体对象交互，分别通过<code>loadAccountDetails()</code>和<code>loadOpenOrders()</code>方法检索账户详情和未完成订单的数据。这些方法的调用和返回都在序列图上清晰地表示。</p>
+<h1 id="系统规划"><a href="#系统规划" class="headerlink" title="系统规划"></a>系统规划</h1><p>1．下面哪项不属于系统规划的内容?（D)</p>
+<p>A．信息系统目标	</p>
+<p>B．业务流程重组	</p>
+<p>C．软件系统方案	</p>
+<p>D．软件模块设计</p>
+<p>2．下面哪项不是系统规划方法?(C)</p>
+<p>A. KSF</p>
+<p>B. VCA</p>
+<p>C. ERP</p>
+<p>D. BSP</p>
+<p>3．下面哪项不是VCA规划方法中的基本活动?（A)</p>
+<p>A．技术研究</p>
+<p>B．生产</p>
+<p>C．销售</p>
+<p>D．售后服务</p>
+<p>4．下面哪种评估方法适合于任务工期估算?（D)</p>
+<p>A．三点估计法</p>
+<p>B．德尔菲法</p>
+<p>C．类比估算法</p>
+<p>D．以上都可以</p>
+<p>5．下面哪种可行性分析是企业最关心的?(C)</p>
+<p>A．技术可行性</p>
+<p>B．进度可行性</p>
+<p>C．经济可行性</p>
+<p>D．社会可行性</p>
+<p>1．系统规划需要在项目立项后进行。(×)</p>
+<p>2．信息系统建设目标必须支持组织机构战略目标达成。(√)</p>
+<p>3．系统规划内容包括功能需求分析。(×)</p>
+<p>4．BSP方法可以直接将组织机构目标转换为信息系统目标。（×)</p>
+<p>5．在完成项目成本预算后就可以进行任务分工。(×)</p>
+<p>系统规划涉及组织机构的信息系统目标、信息化现状分析、系统建设方案、(信息系统建设计划)等内容。</p>
+<p>系统规划步骤包括规划准备、初步调查、战略与现状分析、(制定信息系统建设目<br>标和战略)和确定总体架构等。</p>
+<p>业务流程重组强调以(业务流程为中心)、以关心客户的需求和满意度为目标，<br>对现有业务流程进行不断地优化或重新设计。</p>
+<p>企业价值链分析可以从内部价值链、纵向价值链和(横向)价值链角度进行分析。</p>
+<p>在项目成本估算中，既可以用货币单位表示，也可以采用工时、人月、(人天)<br>等单位表示。</p>
+<p>1.针对如下项目的甘特图，分析该项目的并行任务、前置任务、里程碑，并说明该项目总工期是多少。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231221140208363.png" alt="image-20231221140208363"></p>
+<ul>
+<li><strong>并行任务</strong>：这些任务在时间上是重叠的，即它们在甘特图上表示为同时进行的任务。在甘特图上，您可以通过查找时间线上同时进行的条形来识别并行任务。</li>
+<li><strong>前置任务</strong>：这些任务在其他任务开始之前必须完成。在甘特图上，前置任务通常通过箭头或线条连接表示，显示任务之间的依赖关系。</li>
+<li><strong>里程碑</strong>：这是项目时间表中的重要点或事件。里程碑通常用符号或特殊标记表示，如钻石形或特别的标记，它们通常没有持续时间。</li>
+<li><strong>总工期</strong>：项目的总工期是从第一个任务开始到最后一个任务完成的时间长度。</li>
+</ul>
+<p>86个工作日。</p>
+<p>2.针对如下项目的 PERT 图，分析该项目完成所需的最少时间天数，并找出其中关键任务。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231221140316075.png" alt="image-20231221140316075"></p>
+<p>48天，A-&gt;D-&gt;F-&gt;H-&gt;G</p>
+<p>3.针对一个选课系统的项目计划，设计项目进度安排的甘特图。</p>
+<p>答:采用 project 项目管理工具制定选课系统的项目计划，首先给出甘特图。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231221141604784.png" alt="image-20231221141604784"></p>
+<p>2.针对一个选课系统的项目计划，设计项目进度安排的 PERT 图。</p>
+<p>答：在 project 项目管理工具中将本项目甘特图对应转换为网络图 (PERT 图）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231221141713423.png" alt="image-20231221141713423"></p>
+<h1 id="系统需求分析"><a href="#系统需求分析" class="headerlink" title="系统需求分析"></a>系统需求分析</h1><p>1．下面哪种需求采集方法是通过触发问题的想法发挥作用的?B</p>
+<p>A．调查表法</p>
+<p>B．头脑风暴法</p>
+<p>C．原型法</p>
+<p>D．研究现有文档与系统</p>
+<p>2．下面哪种关系不出现在UML用例图中?D</p>
+<p>A．包含</p>
+<p>B．扩展</p>
+<p>C．泛化</p>
+<p>D．复合</p>
+<p>3．下面哪种关系在类图中表示一个类是另一个类的一部分? A</p>
+<p>A．聚合</p>
+<p>B．扩展</p>
+<p>C．泛化</p>
+<p>D．关联</p>
+<p>4．活动图包含下面哪个元素?D</p>
+<p>A．活动</p>
+<p>B．分支</p>
+<p>C．并发</p>
+<p>D．以上都是</p>
+<p>5．以下哪种不是非功能性需求? A</p>
+<p>A．录入成绩</p>
+<p>B．安全性需求</p>
+<p>C．可扩展性</p>
+<p>D．可靠性需求</p>
+<p>1.BPMN的编排流程中没有泳池。（√)</p>
+<p>2.UML用例之间的表示扩展关系的箭头是从扩展用例指向被扩展用例。(√)</p>
+<p>3．活动图无法表达并发执行的活动。（×)</p>
+<p>4．类图中两个类之间的泛化关系是指两个类之间的一般与特殊关系。(√)</p>
+<p>5．需求变更管理需要有专门的变更过程控制。(√)</p>
+<p>观察法分为旁观式观察、解释式观察、(参与式观察)。</p>
+<p>调查表中的封闭式问题有3种形式:单选&#x2F;多选问题、评价问题、(排序问题)。</p>
+<p>用例图包含的元素有用例、关系、(角色)。</p>
+<p>需求规格说明书中非常重要的三部分内容分别是功能性需求，(非功能性需求)、接口需求。</p>
+<p>一个类包含三方面要素:类名、属性、(方法)。</p>
+<p>1.什么是原型法，它对需求采集的作用如何？</p>
+<p>答：原型法是通过构造一个软件原型对待开发的系统进行可视化模拟，从而获得用户对需求反馈的方法。</p>
+<p>原型法作用：当用户无法准确描述需求的时候，原型法是一种非常有效的需求引导与采集方法。实际上，原型需求采集法是基于原型的软件工程过程模型的一部分，以原型为媒介，不仅让需求分析员与用户之间对需求的理解保持一致性，而且对项目难点、工作量的评估也起到了重要支撑作用。</p>
+<p>2.调查与调查表有什么区别？</p>
+<p>答：调查是使用各种方法了解一个事情的原委与事情情况。调查表是通过向被调查者发放预先设计的调查表格，要求被调查者填写后限时返回，然后整理分析的一种需求调查方法。调查表可以算是一种调查方法。</p>
+<p>3.用例规格说明中的主事件流与备选流有什么区别？</p>
+<p>答：主事件流指的是基本流程，是用例无论如何均会执行的流程；备选流指的是备选流程，描述了在某些特殊条件下会执行的流程，比如异常流程。</p>
+<p>4.实体类是什么？在类建模中还需要区分哪些种类的类？</p>
+<p>答：实体类是抽象描述大自然中自然存在的物体的类，比如：人、桌子、筷子、房子、羊等。除了实体类，还有概念类、事件类、组织类、人员类、岗位类等。</p>
+<p>5.参与者能有属性与操作吗？</p>
+<p>答：参与者作为一个对象的时候，是可以有属性和操作的。</p>
+<p>6.针对如下商品订购业务流程进行分析，抽象出实现该业务处理的业务用例图模型。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231221185531243.png" alt="image-20231221185531243"></p>
+<p>ChatGPT4：</p>
+<p>要从这个BPMN中抽象出业务用例图模型，您需要识别参与流程的角色、将用于处理订单的系统，以及角色和系统之间的交互。</p>
+<p>以下是从BPMN抽象出用例图的步骤：</p>
+<ol>
+<li><strong>识别参与者</strong>：寻找与流程交互的最终用户或外部系统。这可能是客户、销售代表或库存管理系统。</li>
+<li><strong>定义系统边界</strong>：确定所考虑的系统是什么。这通常是处理BPMN中描述的业务逻辑的订单处理系统。</li>
+<li><strong>提取用例</strong>：识别系统提供的主要功能。BPMN中代表重要动作或决策的每个步骤都可以被认为是潜在的用例。例如，“下订单”、“检查库存”、“处理付款”等。</li>
+<li><strong>创建关系</strong>：定义用例之间的关系（如包含、扩展）以及参与者和用例之间的关系（如关联）。</li>
+</ol>
+<p>7.针对如下图书管理用例图进行分析，抽象出实现图书管理用例的分析图模型。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231221190354073.png"></p>
+<p>ChatGPT4：</p>
+<p>要从用例图抽象出分析模型，您可能需要创建一个类图或者对象图，这些图可以展示系统的结构和类之间的关系。这通常涉及以下步骤：</p>
+<ol>
+<li><strong>识别类</strong>：从用例中提取可能的类，比如“图书”、“借书记录”、“用户”等。</li>
+<li><strong>定义属性和操作</strong>：为每个类确定其属性（如图书的ISBN、标题、作者）和操作（如查询、借出、归还）。</li>
+<li><strong>确定类之间的关系</strong>：包括关联（两个类如何相互关联）、聚合（表示类与类之间的整体与部分的关系）、组合（一种更强的整体与部分的关系）、继承（子类如何从父类继承属性和操作）等。</li>
+</ol>
+<p>针对该用例图，我们可以按照以下步骤抽象出一个分析模型：</p>
+<ol>
+<li><strong>定义实体类（Entity Classes）</strong>：<ul>
+<li>图书（Book）：包含书名、作者、ISBN、出版信息等属性。</li>
+<li>用户（User）：属性可能包括用户ID、姓名、密码、借阅历史等。</li>
+<li>借阅记录（Borrowing Record）：包含借阅日期、归还日期、借阅的图书等。</li>
+</ul>
+</li>
+<li><strong>定义控制类（Control Classes）</strong>：<ul>
+<li>图书管理（Book Management）：负责图书的增加、删除、修改、查询等操作。</li>
+<li>用户管理（User Management）：负责用户注册、信息修改、权限管理等。</li>
+<li>借阅控制（Borrowing Control）：处理图书借阅和归还的业务逻辑。</li>
+</ul>
+</li>
+<li><strong>定义边界类（Boundary Classes）</strong>：<ul>
+<li>系统界面（System Interface）：与用户进行交互的界面，如图书查询界面、借阅界面等。</li>
+<li>管理员界面（Admin Interface）：供管理员使用的界面，用于执行图书和用户管理等操作。</li>
+</ul>
+</li>
+<li><strong>描述类之间的关系</strong>：<ul>
+<li>用户与借阅记录之间是一对多的关系，一个用户可以有多条借阅记录。</li>
+<li>图书与借阅记录也是一对多的关系，一本书可以被多次借阅。</li>
+<li>控制类与实体类之间是关联关系，例如，图书管理控制类会操作图书实体。</li>
+<li>控制类与边界类之间是关联关系，例如，用户管理控制类通过系统界面与用户交互。</li>
+</ul>
+</li>
+<li><strong>建立继承关系（如果适用）</strong>：<ul>
+<li>如果有共同的属性或行为，可以考虑使用继承。比如，如果系统中有多种类型的用户（管理员、读者等），它们可以从一个共同的用户基类继承。</li>
+</ul>
+</li>
+</ol>
+<h1 id="系统架构设计"><a href="#系统架构设计" class="headerlink" title="系统架构设计"></a>系统架构设计</h1><p>1．高质量的信息系统主要由下面哪项工作决定?（A)</p>
+<p>A．系统设计</p>
+<p>B．软件编程</p>
+<p>C．软件测试</p>
+<p>D．软件运维</p>
+<p>2．下面哪种设计方法只应用在面向对象系统设计中?(D)</p>
+<p>A．抽象设计</p>
+<p>B．逐步求精</p>
+<p>C．模块化设计</p>
+<p>D．信息隐蔽</p>
+<p>3．下面哪种UML模型图只用于系统总体设计建模?（D)</p>
+<p>A．系统类图</p>
+<p>B．顺序图</p>
+<p>C．通信图</p>
+<p>D.系统部署图</p>
+<p>4．用户最关心下面哪种架构?（A)</p>
+<p>A．应用架构</p>
+<p>B．软件架构</p>
+<p>C．数据架构</p>
+<p>D．拓扑架构</p>
+<p>5．下面哪种软件架构风格最适合复杂软件系统?（A)</p>
+<p>A．分层体系架构</p>
+<p>B．客户机&#x2F;服务器体系架构</p>
+<p>C．微核体系架构</p>
+<p>D．数据共享体系架构</p>
+<p>二、判断题</p>
+<p>1．类图模型在系统设计各阶段都需要涉及。（√)</p>
+<p>2．系统数据架构是一类数据库模型。（×)</p>
+<p>3．系统架构的核心视图就是软件架构。（√)</p>
+<p>4．客户机&#x2F;服务器体系架构适合Web应用。(√)</p>
+<p>5．异步消息通信模式适合银行转账业务。(×)</p>
+<p>系统架构通常包括系统拓扑架构、系统数据架构、系统软件架构和(系统应用架构)等。</p>
+<p>典型软件系统一般被划分为表示层、业务逻辑层、(数据存取访问层)和数据存储层。</p>
+<p>客户&#x2F;服务模式可以细分为(多客户&#x2F;单服务模式)、多客户&#x2F;多服务模式、多层客户&#x2F;服务模式。</p>
+<p>在面向服务的软件架构中，其通信模式主要有服务注册通信模式、(服务代理转发通信模式)、服务句柄代理转发通信模式、服务发现通信模式。</p>
+<p>软件对象之间的消息通信模式主要有同步消息通信模式和(异步消息通信模式)。</p>
+<p>1.系统设计过程涉及哪些主要开发活动？</p>
+<p>答：系统设计涉及大量开发活动，主要包括基础设施平台设计、系统架构设计、系统构件设计、程序流程设计、数据库设计、用户界面设计、 安全机制设计等。</p>
+<p>2.系统架构设计如何满足系统非功能需求？</p>
+<p>答：系统架构决定了系统非功能特性，如系统可靠性、可用性、安全性、可伸缩性，以及系统性能。因此，在系统设计中，根据应用需求，可选择合适的系统架构模式进行系统架构设计。</p>
+<p>3.系统数据架构设计一般给出哪些内容？</p>
+<p>答：系统数据架构通常需要给出系统数据资源的组织与存储结构。它不仅需要反映数据结点的分布关系，还需要考虑这些数据资源的存储方式，如文件存储、数据库存储或数据仓库存储。系统数据架构与系统拓扑架构、系统应用架构密切相关，但它是从数据资源角度，反映信息系统的数据结点组成关系。</p>
+<p>4.微服务与微核体系架构有何异同？</p>
+<p>答：微服务（Microservice）是指一类细粒度的 Web 服务，每个服务都是自包含的，并且应该实现单一的业务功能。微核体系架构又称为”插件架构”，系统的软件内核相对较小，主要功能和业务逻辑都通过插件实现。</p>
+<p>5.软件架构模式在开发中如何选择？</p>
+<p>答：软件架构模式就是针对特定需求问题及其环境，所给出通用的软件架构设计解决方案。针对具体应用，分析该应用系统的非功能特性需求及解决特定问题，选取合适的软件架构模式。</p>
+<p>6.针对一个在线点餐外卖系统，给出该系统的架构模型设计。</p>
+<p>1)类图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222162152644.png" alt="image-20231222162152644"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222162241843.png" alt="image-20231222162241843"></p>
+<p>2)包图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222162321777.png" alt="image-20231222162321777"></p>
+<p>3)序列图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222162708053.png" alt="image-20231222162708053"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222162723441.png" alt="image-20231222162723441"></p>
+<p>4)构件图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222162814942.png" alt="image-20231222162814942"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222162852336.png" alt="image-20231222162852336"></p>
+<p>5)部署图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222162916050.png" alt="image-20231222162916050"></p>
+<p>7.架构模式、软件框架、设计模式分别指什么？它们之间是什么关系？</p>
+<ul>
+<li><p>概念</p>
+<p>  架构：简单的说架构就是一个蓝图，是一种设计方案，将客户的不同需求抽象成为抽象组件，并且能够描述这些抽象组件之间的通信和调用。</p>
+<p>  框架：软件框架是项目软件开发过程中提取特定领域软件的共性部分形成的体系结构，不同领域的软件项目有着不同的框架类型。框架不是现成可用的应用系统。而是一个半成品，提供了诸多服务，开发人员进行二次开发，实现具体功能的应用系统。</p>
+<p>  设计模式：是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结，它强调的是一个设计问题的解决方法。</p>
+</li>
+<li><p>框架与架构关系</p>
+<p>  首先说框架不是架构，应该说框架比架构更具体，更偏重于技术，而架构偏重于设计。还有一个关系就是架构可以通过多种框架来实现。</p>
+</li>
+<li><p>框架与设计模式关系</p>
+<p>  设计模式研究的是针对单一问题的设计思路和解决方法，一个模式可应用于不同的框架和被不同的语言所实现；而框架则是一个应用的体系结构，是一种或多种设计模式和代码的混合体虽然它们有所不同，但却共同致力于使人们的设计可以被重用，在思想上存在着统一性的特点，因而设计模式的思想可以在框架设计中进行应用。</p>
+</li>
+<li><p>架构与设计模式关系</p>
+<p>  两者的关系也是很好区分的，设计模式主要是针对单一问题的解决方法，范畴比较小，而架构是高层次的针对体系结构的一种设计思路，范畴比较大。可以这么说，一个架构中可能会出现多个设计模式来解决多种架构中的问题。</p>
+</li>
+<li><p>总结</p>
+<p>  通过上面的分析，我们能够知道他们之间的区别还是有很多，首先架构应该是一个范畴最大的概念，是最高层次的设计。一个架构设计中可能会用到多个框架和多个设计模式；而框架是针对共性抽象出来的半成品，这里面可能包含着多个设计模式；而设计模式就是解决单一问题的设计思路和解决方法。所以我们在做一个项目的时候首先出来的应该是架构，是对整个问题的一个总体上的设计，之后再会考虑运用什么样的框架和设计模式来实现我们的架构；当然，只使用框架和设计模式中的一种也是经常遇到的。</p>
+</li>
+</ul>
+<p>8.分析如下 MVC 架构模式、 MVP 架构模式、 MVVM 架构模式，说明它们在演化过程中分别解决了什么问题？ </p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222171523876.png" alt="image-20231222171523876"></p>
+<p>ChatGPT4：</p>
+<p>在软件设计领域，MVC、MVP和MVVM是三种流行的架构模式，用于分离关注点，提高应用程序的可维护性和可扩展性。下面是这三种模式的分析，以及它们在演化过程中解决的问题：</p>
+<ol>
+<li><strong>MVC (Model-View-Controller)</strong>:<ul>
+<li><strong>问题解决</strong>: MVC最初被引入是为了将用户界面（UI）从业务逻辑中分离出来。它允许视图独立于模型变化，使得用户界面可以更容易地修改，而不影响底层的业务逻辑。控制器作为模型和视图之间的中介，处理用户输入并决定视图显示。</li>
+<li><strong>演化动机</strong>: 但在MVC中，视图和控制器之间仍然存在紧密的耦合，因为视图直接监听模型的变化，控制器也直接更新视图。</li>
+</ul>
+</li>
+<li><strong>MVP (Model-View-Presenter)</strong>:<ul>
+<li><strong>问题解决</strong>: MVP模式是对MVC的一个改进，它将控制器替换为了Presenter。在MVP中，视图更加被动，它不直接监听模型的变化，而是将所有用户交互转发给Presenter。Presenter则处理这些交互，操作模型，并更新视图。</li>
+<li><strong>演化动机</strong>: MVP解决了MVC中视图与模型之间耦合过强的问题，通过Presenter使得视图不必了解模型的复杂性，从而进一步分离了视图和业务逻辑。</li>
+</ul>
+</li>
+<li><strong>MVVM (Model-View-ViewModel)</strong>:<ul>
+<li><strong>问题解决</strong>: MVVM是对MVP的进一步演化。在MVVM中，ViewModel承担了Presenter的职责，并通过数据绑定与视图相连接。ViewModel将视图的状态和行为抽象化，而视图通过声明性数据绑定反映这些状态和行为，从而最小化视图逻辑。</li>
+<li><strong>演化动机</strong>: MVVM的引入主要是为了简化用户界面的动态更新问题。随着富客户端应用的增长，需要一种方式来更方便地更新UI元素以响应底层数据模型的变化。数据绑定允许自动更新UI元素，这减少了手动操作DOM或视图元素的需要，并使得视图模型可以独立于视图操作，进一步提升了开发效率和可测试性。</li>
+</ul>
+</li>
+</ol>
+<p>总的来说，MVC、MVP和MVVM架构模式在演化过程中逐渐减少了视图与业务逻辑之间的耦合，提高了分离关注点的效果，并使得开发者能够更容易地构建和维护复杂的用户界面。</p>
+<p>补充知识：</p>
+<p><strong>MVC</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/82rp1c04h5.png" alt="img"></p>
+<ol>
+<li>View 传送指令到 Controller</li>
+<li>Controller 完成业务逻辑后，要求 Model 改变状态</li>
+<li>Model 将新的数据发送到 View，用户得到反馈</li>
+</ol>
+<p>所有通信都是单向的</p>
+<p><strong>MVP</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/5f6aq0hl1t.png" alt="img"></p>
+<ol>
+<li>各部分之间的通信，都是双向的。</li>
+<li>View 与 Model 不发生联系，都通过 Presenter 传递。</li>
+<li>View 非常薄，不部署任何业务逻辑，称为”被动视图”（Passive View），即没有任何主动性，而 Presenter非常厚，所有逻辑都部署在那里。</li>
+</ol>
+<p><strong>MVVM</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/gsfqomt452.png" alt="img"></p>
+<p>MVVM 模式将 Presenter 改名为 ViewModel，基本上与 MVP 模式完全一致。唯一的区别是，它采用双向绑定（data-binding）：View的变动，自动反映在 ViewModel，反之亦然。</p>
+<h1 id="软件建模详细设计与设计模式"><a href="#软件建模详细设计与设计模式" class="headerlink" title="软件建模详细设计与设计模式"></a>软件建模详细设计与设计模式</h1><p>一、单选题</p>
+<p>1．哪种设计原则要求面向接口编程，而不要面向实现编程?(C)</p>
+<p>A．开闭原则</p>
+<p>B．里氏替换原则</p>
+<p>C．依赖倒置原则</p>
+<p>D．接口分离原则</p>
+<p>2．哪种设计原则要求没有直接关系的类就不能直接相互调用?(B)</p>
+<p>A．里氏替换原则</p>
+<p>B．迪米特法则</p>
+<p>C.  依赖倒置原则</p>
+<p>D．开闭原则</p>
+<p>3．下面哪个不是发现类的方法?(C)</p>
+<p>A. CRC方法</p>
+<p>B．用例驱动法</p>
+<p>C．头脑风暴</p>
+<p>D．公共类模式法</p>
+<p>4．子类组合来自超类的特征，并重载部分继承来的特征，该继承称为什么?(C)</p>
+<p>A．扩展继承</p>
+<p>B．方便继承</p>
+<p>C．限制继承</p>
+<p>D．以上都不是</p>
+<p>5．下面哪一个操作符用于定义条件片段?(C)</p>
+<p>A. opt</p>
+<p>B. para</p>
+<p>C. alt</p>
+<p>D. loop</p>
+<p>二、判断题</p>
+<p>1．单例模式属于设计模式的行为模式类别。(×)</p>
+<p>2．适配器模式可以解决不同模块的类接口转换问题。(√)</p>
+<p>3．桥接模式是一种用于把抽象部分与实现部分解耦的设计模式。（√)</p>
+<p>4．责任链模式要求请求发送者与多个请求处理者直接交互。(×)</p>
+<p>5．中介者模式的动机用于降低多个对象之间存在较复杂的关系。(√)</p>
+<p>6.处于相同状态的同类的不同对象对同一事件的反应往往是一样的，而处于不同状态的同一对象则对同一事件会做出不同反应。（√）</p>
+<p>7.只要将包中元素的可见性设为公共的，则其他包就可以访问它。（×）</p>
+<p>8.聚合与泛化都是面向对象系统支持功能复用的强大技术。（×）</p>
+<p>9.在UML构件图中，需要定义消息来描述构件之间的联系。（×）</p>
+<p>10.所有对象都通过类来描述，所有类都具有对象。（×）</p>
+<p><strong>补充：</strong></p>
+<p>6.<font color='red'>处于相同状态的对象对同一事件具有同样方式的反应</font>，所以当给定状态下的多个对象当接受到相同事件时会执行相同的动作，例如：当一个在线视频播放器处于”播放中”状态时，对于”暂停”按钮的点击事件，所有这类播放器对象都会执行相同的动作，即暂停当前视频。无论哪个播放器实例，只要它正在播放视频，点击”暂停”按钮都会导致视频停止播放。<font color='red'>然而处于不同状态下的对象会通过不同的动作对同一事件做出不同的反应</font>。例如，当自动答复机处于处理事务状态或空闲状态时会对取消键做出不同的反应。</p>
+<p>7.虽然将类或成员的可见性设为公共（public）可以让其他包中的类访问这些元素，但这并不是唯一的条件。其他包中的类还需要正确地导入包含公共元素的包。</p>
+<p>8.这道题网上搜出来都是对的，答案给的错，后面再看看吧。</p>
+<p>10.所有对象都是由类来描述的，这是正确的；但不是所有类都具有对象实例。有些类可能从未被实例化，尤其是抽象类和工具类（可能只有静态方法和成员）。</p>
+<p>三、填空题</p>
+<p>（状态机图）通过对对象的各种状态建立模型来描述对象随时间变化的动态行为，并且它是以独立的对象为中心进行描述的。</p>
+<p>在UML类图中，类用矩形图符来表示，这个矩形由3个部分组成，分别是类型名、（属性）和操作。</p>
+<p>UML中的交互图包括顺序图和（通信图）。</p>
+<p>UML中顺序图表示为二维图，纵向是对象，横向代表参与交互对象之间的（消息）。</p>
+<p>状态机图由对象的状态和连接这些状态的（转换）组成。</p>
+<p>UML 建模机制中，对模型的组织是通过 （包） 来实现的。</p>
+<p>在类关系中，泛化表达的是 （一般与特殊） 关系，聚合表达的是 （部分与整体） 关系。</p>
+<p>接口用于描述类或者组件的一个服务的操作集。接口定义 （一组操作） ，但不定义 （操作的实现 ）。</p>
+<p>考察交互能够发现类中的方法，顺序图和通信图中的每一条消息，都必须有目标对象的一个 （操作） 为其服务。</p>
+<p>（构件图 ）表示构件和构件间的接口和依赖关系来表示设计元素的实现。 （部署图） 表示运行时的计算资源的物理布置。 （包图） 由包以及包之间的关系组成。</p>
+<p>1.客户数据访问功能模块为了实现将TXT 或 Excel文件中的客户信息输入到数据库中，需要进行数据格式转换。在客户数据访问类（CustomerDAO）中，将调用各外部数据源的转换类方法来实现格式转换，其模块设计类如下：</p>
+<p>1）该设计是否满足开闭原则、里氏代换原则和依赖倒置原则？</p>
+<p>2）若不满足，请给出满足这些原则的设计类图。</p>
+<p><img src="https://rain-oplat.xuetangx.com/ue/2023-11-23/12302377/1700707971295-image.png" alt="image.png"></p>
+<ol>
+<li></li>
+</ol>
+<p>不满足开闭原则，里氏代换原则、依赖倒置原则。</p>
+<p>如果需要添加新的数据格式转换器，比如一个用于CSV文件的转换器，需要修改CustomerDAO类。</p>
+<p>图中没有显示转换器的共同超类或接口，要符合里氏代换原则，<code>TXTDataConverter</code>和<code>ExcelDataConverter</code>都需要继承自定义了<code>readFile()</code>方法的共同接口或超类。</p>
+<p>依赖倒置原则要求基于抽象类编程，不依赖具体类编程。<code>CustomerDAO</code>直接依赖于具体的转换器类，这违反了依赖倒置原则。</p>
+<p>2）</p>
+<ol>
+<li>创建一个名为<code>DataConverter</code>的接口，该接口定义了一个<code>readFile()</code>方法。</li>
+<li>让<code>TXTDataConverter</code>和<code>ExcelDataConverter</code>类实现<code>DataConverter</code>接口。</li>
+<li>修改<code>CustomerDAO</code>类，使其仅依赖于<code>IDataConverter</code>接口。</li>
+</ol>
+<p>在这个设计中，<code>CustomerDAO</code>不再直接依赖于具体的转换器类，而是依赖于<code>DataConverter</code>接口。这样，无论是添加新的数据转换器类，还是替换现有的转换器类，都不需要修改<code>CustomerDAO</code>类的代码，满足了开闭原则。同时，任何实现了<code>DataConverter</code>接口的类都可以被<code>CustomerDAO</code>使用，满足了里氏替换原则。最后，因为依赖关系已经从具体的类转移到了接口，也就满足了依赖倒置原则。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231224222054851.png" alt="image-20231224222054851"></p>
+<p>2.分析如下视频服务程序代码，该编程设计存在什么局限？可采取什么设计原则完善该程序设计？给出完善后设计类图及其java代码程序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">VideoUserService</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">serveGrade</span><span class="params">(String userType)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">&quot;VIP用户&quot;</span>.equals(userType)) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;VIP用户，视频1080P蓝光&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">&quot;普通用户&quot;</span>.equals(userType)) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;普通用户，视频720P超清&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">&quot;访客用户&quot;</span>.equals(userType)) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;访客用户，视频480P高清&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用户类型（VIP用户、普通用户、访客用户）直接硬编码在方法中，这种方式在添加新用户类型时需要修改原有代码，违反了开闭原则，扩展性和可维护性较差。</p>
+<p>采用开闭原则完善程序设计。</p>
+<p>设计类图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231224232836388.png" alt="image-20231224232836388"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">IVideoUserService</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">definition</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">advertisement</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GuestVideoUserService</span> <span class="keyword">implements</span> <span class="title class_">IVideoUserService</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">definition</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;访客用户，视频480P高清&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">advertisement</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 访客用户的广告逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OrdinaryVideoUserService</span> <span class="keyword">implements</span> <span class="title class_">IVideoUserService</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">definition</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;普通用户，视频720P超清&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">advertisement</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 普通用户的广告逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">VipVideoUserService</span> <span class="keyword">implements</span> <span class="title class_">IVideoUserService</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">definition</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;VIP用户，视频1080P蓝光&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">advertisement</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// VIP用户的广告逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">VideoUserService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> IVideoUserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">VideoUserService</span><span class="params">(IVideoUserService userService)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.userService = userService;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">serve</span><span class="params">()</span> &#123;</span><br><span class="line">        userService.definition();</span><br><span class="line">        userService.advertisement();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">VideoUserServiceTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">IVideoUserService</span> <span class="variable">guestUser</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">GuestVideoUserService</span>();</span><br><span class="line">        <span class="type">IVideoUserService</span> <span class="variable">ordinaryUser</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OrdinaryVideoUserService</span>();</span><br><span class="line">        <span class="type">IVideoUserService</span> <span class="variable">vipUser</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">VipVideoUserService</span>();</span><br><span class="line"></span><br><span class="line">        <span class="type">VideoUserService</span> <span class="variable">guestService</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">VideoUserService</span>(guestUser);</span><br><span class="line">        <span class="type">VideoUserService</span> <span class="variable">ordinaryService</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">VideoUserService</span>(ordinaryUser);</span><br><span class="line">        <span class="type">VideoUserService</span> <span class="variable">vipService</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">VideoUserService</span>(vipUser);</span><br><span class="line"></span><br><span class="line">        guestService.serve();</span><br><span class="line">        ordinaryService.serve();</span><br><span class="line">        vipService.serve();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231224232640432.png" alt="image-20231224232640432"></p>
+<p>3.分析如下设计类模型存在什么局限？应采取什么设计原则完善该设计？给出完善后设计类图，并实现其代码。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1700724276448-image.png" alt="image.png"></p>
+<p><code>Driver</code> 类直接依赖于 <code>Benz</code> 类，如果需要在不同类型的车辆之间切换，<code>Driver</code> 类需要进行修改，违反开闭原则，灵活性差。</p>
+<p>采取开闭原则和依赖倒置原则。</p>
+<p>改进后的设计类图：</p>
+<p>改进后的设计类图应该包含以下部分：</p>
+<ul>
+<li>一个 <code>Car</code> 接口，定义 <code>run</code> 方法。</li>
+<li><code>Benz</code> 类实现 <code>Car</code> 接口。</li>
+<li><code>Driver</code> 类有一个 <code>drive</code> 方法，它接受 <code>Car</code> 类型的参数。</li>
+</ul>
+<p>如果需要添加一个新的汽车品牌，比如 <code>BMW</code>，只需要创建一个新的 <code>BMW</code> 类实现 <code>Car</code> 接口，无需修改 <code>Driver</code> 类。这样使得系统更加灵活和易于维护。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Car接口</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Car</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Benz类实现Car接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Benz</span> <span class="keyword">implements</span> <span class="title class_">Car</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Benz is running.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Driver类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Driver</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">drive</span><span class="params">(Car car)</span> &#123;</span><br><span class="line">        car.run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Driver</span> <span class="variable">driver</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Driver</span>();</span><br><span class="line">        <span class="type">Car</span> <span class="variable">benz</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Benz</span>();</span><br><span class="line">        driver.drive(benz);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：<br><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231224234153730.png" alt="image-20231224234153730"></p>
+<p>5.解释静态模型、交互模型和状态机模型的主要特点和互补特征。</p>
+<p>答：静态模型描述系统的静态结构，包括类、类的内部结构和类之间的关系，采用类图建模。交互模型描述系统中对象的交互，采用顺序图和通信图建模。状态机模型描述对象在其生命周期中的状态的动态变化，采用状态机图建模。</p>
+<p>这三个模型提供了不同但互补的观点，通常基于相同的元素建模。静态视图显示存在于系统中的元素种类，交互模型确保组成元素能够协作完成所需要的系统功能，状态机模型则为类的进化定义了框架，并定义了交互和静态模型必须遵守的对类状态的约束。</p>
+<p>6.什么是类图？类图里有什么元素？</p>
+<p>答：类图对系统的静态结构建模，表示不同的实体（人、事物和数据）是如何彼此相关联起来的。类图主要由类和接口、类的内部结构、类与类之间的关系构成。</p>
+<p>7.类之间的关系有哪些？举例描述这些关系。</p>
+<p>答：类之间存在依赖关系、关联关系、泛化关系和实现关系。另一种说法，类之间存在关联、泛化和聚合关系。</p>
+<p>8.顺序图和通信图有哪些区别和联系？</p>
+<p>答：顺序图和通信图都是对交互的建模，展示对象之间的交互。顺序图与通信图语义等价，可相互转换。</p>
+<p>顺序图强调消息的时间顺序，展示对象之间随时间发生的交互。通信图强调对象间的连接关系，强调交互的语境和参与交互的对象的整体组织，消息的时间顺序使用序列号表示。顺序图按照时间顺序布图，通信图按照空间组织布图。</p>
+<p>9.什么是抽象类？什么是接口？它们之间有什么区别？</p>
+<p>答：抽象类指不具有实例的类，其作用是为其它类描述它们的公共属性和行为。接口定义一组操作，不定义操作的实现。</p>
+<p>抽象类是对一组具有相同属性和方法的逻辑上有关系的事物的一种抽象，接口是对一组具有相同属性和方法的逻辑上不相关的事物的一种抽象。抽象类能提供一些操作的部分实现，接口不实现任何操作。抽象类体现一种继承关系，接口仅仅是契约关系。</p>
+<p>10.计算机包括主板、 CPU、内存等部件，请确定它们之间的关系并画出类图。人体包括头、躯干、四肢等部分，请确定它们之间的关系并画出类图。前面两问中的两种关系相同吗？为什么？</p>
+<p>答：两种关系不同，计算机和主板、 CPU、内存之间是聚合关系，人体和头、躯干、四肢之间是复合关系。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231225120415889.png" alt="image-20231225120415889"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231225120435825.png" alt="image-20231225120435825"></p>
+<p>11.在一个银行系统中，银行可以拥有多个账户，银行可以拥有多个客户，一个客户可以开设多个账户，一个账户可以有多个持有者，可以开户、注销账户、存钱、取钱、转账、查询交易记录。请创建“取钱”的顺序图和“存钱”的通信图。  </p>
+<p>答：“取钱”的顺序图如下：  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231225120533414.png" alt="image-20231225120533414"></p>
+<p>“存钱”通信图如下：  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231225120632808.png" alt="image-20231225120632808"></p>
+<p>12.请画出烧水壶的状态机图。  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231225120809140.png" alt="image-20231225120809140"></p>
+<p>13.银行 ATM 系统可以处理登录、存款、取款、转账、查询业务。请创建该系统的构件图。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231225120909320.png" alt="image-20231225120909320"></p>
+<p>14.针对如下民政服务系统的婚姻登记功能设计类图，如何采用饿汉式单例模式实现Java程序编写，并在主程序中输出消息反馈。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1699501799014-image.png" alt="image.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MarriageRegister</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 私有静态实例，在类加载时创建</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">MarriageRegister</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MarriageRegister</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 私有构造方法，防止外部通过new创建多个实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">MarriageRegister</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 初始化操作</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 公有静态方法，返回唯一实例</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> MarriageRegister <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 公有方法，输出消息</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">showMessage</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Marriage registration is successful.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Client</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 获取MarriageRegister的单例实例</span></span><br><span class="line">        <span class="type">MarriageRegister</span> <span class="variable">register</span> <span class="operator">=</span> MarriageRegister.getInstance();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 输出消息</span></span><br><span class="line">        register.showMessage();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：<br><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231224152645879.png" alt="image-20231224152645879"></p>
+<p>15.分析下面设计类图如何解决新能源汽车的发动机接口？给出Java程序实现该设计功能。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1699503842075-image.png" alt="image.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Motor接口</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Motor</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">drive</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 电动电机类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ElectricMotor</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">electricDrive</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Electric Motor drive.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 光电电机类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OpticalMotor</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">opticalDrive</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Optical Motor drive.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 电动电机适配器</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ElectricAdapter</span> <span class="keyword">implements</span> <span class="title class_">Motor</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> ElectricMotor emotor;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ElectricAdapter</span><span class="params">()</span> &#123;</span><br><span class="line">        emotor = <span class="keyword">new</span> <span class="title class_">ElectricMotor</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">drive</span><span class="params">()</span> &#123;</span><br><span class="line">        emotor.electricDrive();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 光电电机适配器</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OpticalAdapter</span> <span class="keyword">implements</span> <span class="title class_">Motor</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> OpticalMotor omotor;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">OpticalAdapter</span><span class="params">()</span> &#123;</span><br><span class="line">        omotor = <span class="keyword">new</span> <span class="title class_">OpticalMotor</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">drive</span><span class="params">()</span> &#123;</span><br><span class="line">        omotor.opticalDrive();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取XML配置文件</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ReadXML</span> &#123;</span><br><span class="line">    <span class="comment">// 这里提供一个示例方法，用于模拟从XML配置中获取电机对象</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title function_">getObject</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 这里可以根据实际情况读取XML配置，实例化不同的Motor</span></span><br><span class="line">        <span class="comment">// 以下代码仅作为示例</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ElectricAdapter</span>(); <span class="comment">// 或者 return new OpticalAdapter();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MotorAdapterTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 假设ReadXML.getObject()方法返回一个Motor类型的对象</span></span><br><span class="line">        <span class="type">Motor</span> <span class="variable">motor</span> <span class="operator">=</span> (Motor) ReadXML.getObject();</span><br><span class="line">        motor.drive();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：<br><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231224152610322.png" alt="image-20231224152610322"></p>
+<p>16.分析如下女士皮包选购功能类图设计如何应用桥接模式？如何编写Java程序实现该功能。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1700107691449-image.png" alt="image.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Color接口及其具体实现</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Color</span> &#123;</span><br><span class="line">    String <span class="title function_">getColor</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Yellow</span> <span class="keyword">implements</span> <span class="title class_">Color</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getColor</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;yellow&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Red</span> <span class="keyword">implements</span> <span class="title class_">Color</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getColor</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;red&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Bag抽象类及其具体实现</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Bag</span> &#123;</span><br><span class="line">    <span class="keyword">protected</span> Color color;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setColor</span><span class="params">(Color color)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title function_">getName</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HandBag</span> <span class="keyword">extends</span> <span class="title class_">Bag</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;HandBag&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Wallet</span> <span class="keyword">extends</span> <span class="title class_">Bag</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Wallet&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// BagManage类来展示如何使用桥接模式</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BagManage</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建具体实现化角色</span></span><br><span class="line">        <span class="type">Color</span> <span class="variable">yellow</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Yellow</span>();</span><br><span class="line">        <span class="type">Color</span> <span class="variable">red</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Red</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建扩充抽象化角色，并桥接具体实现化角色</span></span><br><span class="line">        <span class="type">Bag</span> <span class="variable">handBag</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HandBag</span>();</span><br><span class="line">        handBag.setColor(yellow); <span class="comment">// 设置黄色</span></span><br><span class="line"></span><br><span class="line">        <span class="type">Bag</span> <span class="variable">wallet</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Wallet</span>();</span><br><span class="line">        wallet.setColor(red); <span class="comment">// 设置红色</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 操作</span></span><br><span class="line">        System.out.println(<span class="string">&quot;The &quot;</span> + handBag.getName() + <span class="string">&quot; is &quot;</span> + handBag.color.getColor());</span><br><span class="line">        System.out.println(<span class="string">&quot;The &quot;</span> + wallet.getName() + <span class="string">&quot; is &quot;</span> + wallet.color.getColor());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：<br><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231224153833943.png" alt="image-20231224153833943"></p>
+<p>17.分析如下请假条审批模块功能类图如何应用责任链模式设计？如何编写Java程序。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1700107843639-image.png" alt="image.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 领导者是抽象处理者</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Leader</span> &#123;</span><br><span class="line">    <span class="keyword">protected</span> Leader next;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setNext</span><span class="params">(Leader next)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.next = next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Leader <span class="title function_">getNext</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 抽象处理请求的方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(<span class="type">int</span> LeaveDays)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体处理者1：班主任</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ClassAdviser</span> <span class="keyword">extends</span> <span class="title class_">Leader</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(<span class="type">int</span> LeaveDays)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (LeaveDays &lt;= <span class="number">2</span>) &#123; <span class="comment">// 班主任可以批准最多2天的请假</span></span><br><span class="line">            System.out.println(<span class="string">&quot;班主任批准了 &quot;</span> + LeaveDays + <span class="string">&quot; 天的请假。&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (next != <span class="literal">null</span>) &#123;</span><br><span class="line">            next.handleRequest(LeaveDays);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体处理者2：系主任</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DepartmentHead</span> <span class="keyword">extends</span> <span class="title class_">Leader</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(<span class="type">int</span> LeaveDays)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (LeaveDays &lt;= <span class="number">5</span>) &#123; <span class="comment">// 系主任可以批准最多5天的请假</span></span><br><span class="line">            System.out.println(<span class="string">&quot;系主任批准了 &quot;</span> + LeaveDays + <span class="string">&quot; 天的请假。&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (next != <span class="literal">null</span>) &#123;</span><br><span class="line">            next.handleRequest(LeaveDays);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体处理者3：院长</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dean</span> <span class="keyword">extends</span> <span class="title class_">Leader</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(<span class="type">int</span> LeaveDays)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (LeaveDays &lt;= <span class="number">10</span>) &#123; <span class="comment">// 院长可以批准最多10天的请假</span></span><br><span class="line">            System.out.println(<span class="string">&quot;院长批准了 &quot;</span> + LeaveDays + <span class="string">&quot; 天的请假。&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;请假请求 &quot;</span> + LeaveDays + <span class="string">&quot; 天被拒绝。&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LeaveApprovalTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 设置责任链</span></span><br><span class="line">        <span class="type">Leader</span> <span class="variable">teacher1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ClassAdviser</span>();</span><br><span class="line">        <span class="type">Leader</span> <span class="variable">teacher2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DepartmentHead</span>();</span><br><span class="line">        <span class="type">Leader</span> <span class="variable">teacher3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dean</span>();</span><br><span class="line"></span><br><span class="line">        teacher1.setNext(teacher2);</span><br><span class="line">        teacher2.setNext(teacher3);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 发起请求</span></span><br><span class="line">        teacher1.handleRequest(<span class="number">8</span>); <span class="comment">// 这个请求将由院长处理</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>18.分析如下“房地产交流”模块功能类图如何应用中介者模式设计？给出Java程序。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1700707825220-image.png" alt="image.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 中介者接口</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Medium</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">register</span><span class="params">(Customer member)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">relay</span><span class="params">(String from, String ad)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 房地产中介</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">EstateMedium</span> <span class="keyword">implements</span> <span class="title class_">Medium</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Customer&gt; members = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">register</span><span class="params">(Customer member)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!members.contains(member)) &#123;</span><br><span class="line">            members.add(member);</span><br><span class="line">            member.setMedium(<span class="built_in">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">relay</span><span class="params">(String from, String ad)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (Customer member : members) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!member.getName().equals(from)) &#123;</span><br><span class="line">                member.receive(from, ad);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Customer</span> &#123;</span><br><span class="line">    <span class="keyword">protected</span> Medium medium;</span><br><span class="line">    <span class="keyword">protected</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Customer</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">send</span><span class="params">(String ad)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">receive</span><span class="params">(String from, String ad)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setMedium</span><span class="params">(Medium medium)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.medium = medium;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 卖方类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Seller</span> <span class="keyword">extends</span> <span class="title class_">Customer</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Seller</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">send</span><span class="params">(String ad)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Seller [&quot;</span> + <span class="built_in">this</span>.name + <span class="string">&quot;] sends message: &quot;</span> + ad);</span><br><span class="line">        medium.relay(<span class="built_in">this</span>.name, ad);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">receive</span><span class="params">(String from, String ad)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Seller [&quot;</span> + <span class="built_in">this</span>.name + <span class="string">&quot;] received message from &quot;</span> + from + <span class="string">&quot;: &quot;</span> + ad);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 买方类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Buyer</span> <span class="keyword">extends</span> <span class="title class_">Customer</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Buyer</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">send</span><span class="params">(String ad)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Buyer [&quot;</span> + <span class="built_in">this</span>.name + <span class="string">&quot;] sends message: &quot;</span> + ad);</span><br><span class="line">        medium.relay(<span class="built_in">this</span>.name, ad);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">receive</span><span class="params">(String from, String ad)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Buyer [&quot;</span> + <span class="built_in">this</span>.name + <span class="string">&quot;] received message from &quot;</span> + from + <span class="string">&quot;: &quot;</span> + ad);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 中介者模式演示</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MediatorPattern</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Medium</span> <span class="variable">medium</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">EstateMedium</span>();</span><br><span class="line">        <span class="type">Customer</span> <span class="variable">seller</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Seller</span>(<span class="string">&quot;Alice&quot;</span>);</span><br><span class="line">        <span class="type">Customer</span> <span class="variable">buyer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Buyer</span>(<span class="string">&quot;Bob&quot;</span>);</span><br><span class="line"></span><br><span class="line">        medium.register(seller);</span><br><span class="line">        medium.register(buyer);</span><br><span class="line"></span><br><span class="line">        seller.send(<span class="string">&quot;House for sale!&quot;</span>);</span><br><span class="line">        buyer.send(<span class="string">&quot;Looking for a house!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：<br><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231224174229978.png" alt="image-20231224174229978"></p>
+<h1 id="用户界面设计"><a href="#用户界面设计" class="headerlink" title="用户界面设计"></a>用户界面设计</h1><p>单选题</p>
+<p>1.在信息系统中，下面哪项不是用户界面功能?（C）</p>
+<p>A.功能执行 </p>
+<p>B.状态查看 </p>
+<p>C.数据存取 </p>
+<p>D.输入&#x2F;输出</p>
+<p>2.下面哪项不在界面布局元素范围中? （B）</p>
+<p>A.菜单</p>
+<p>B.导航关系 </p>
+<p>C.按钮</p>
+<p>D.列表</p>
+<p>3.下面哪种页面结构适合电商Web系统? (C)</p>
+<p>A.线性结构 </p>
+<p>B.分层结构 </p>
+<p>C.网络结构 </p>
+<p>D.以上均可</p>
+<p>4.新闻类Web系统页面导航一般采用哪种方式? （D）</p>
+<p>A.水平栏目导航 </p>
+<p>B.垂直栏目导航</p>
+<p>C.混合栏目导航</p>
+<p>D.页面内容导航</p>
+<p>5.下面哪项不属于界面交互流程设计的步骤? （C）</p>
+<p>A.任务确定 </p>
+<p>B.场景梳理 </p>
+<p>C.界面布局 </p>
+<p>D场景流程添加</p>
+<p>二、判断题</p>
+<p>1.信息系统的功能是通过用户与系统界面交互来实现的。（√）</p>
+<p>2.人的视觉规律是以中心为重点向四周发散。 （ ⅹ ）</p>
+<p>3.在详细界面设计前需要进行系统原型设计。（ √ ）</p>
+<p>4.输入数据格式校验是通过执行检查程序来实现的。（ √ ）</p>
+<p>5.页面的数据列表可以打印输出。 （ ⅹ ）</p>
+<p>三、填空题</p>
+<p>为减少用户记忆负担，在界面上可以给出场景导引、默认值、（历史信息呈现）等提示。（或者填下拉列表值 &#x2F; 快捷方式 &#x2F; 逐次推进的提示方式 ）</p>
+<p>用户界面设计一般包括界面结构设计、界面交互设计、界面导航设计、界面视觉设计和（界面布局设计）。</p>
+<p>Web页面导航主要有水平栏目导航、垂直栏目导航、混合栏目导航和（页面内容导航）。</p>
+<p>在移动App页面布局设计中，需要对页面信息内容、页面主题内容、用户行为心理和（用户功能操作）进行整体考虑。</p>
+<p>在手机App页面布局设计中，页面可以分为背景层、内容层、悬浮层和（弹出层）。</p>
+<p>1.用户界面设计需要遵循哪些基本原则？</p>
+<p>答：1） 用户能有效控制系统， 2） 减轻用户记忆负担， 3） 保持界面一致性， 4） 界面美观与实用， 5）界面客户化与个性化。</p>
+<p>2.用户界面输入需要考虑解决哪些问题？</p>
+<p>答：用户界面输入需要解决： </p>
+<p>1）如何定位输入控件， 2）如何确定输入顺序， 3）如何验证输入数据是否符合规则， 4）如何防范错误输入操作等。</p>
+<p>3.Web 页面结构设计与移动 App 界面结构设计有哪些异同？</p>
+<p>答：Web 页面结构设计与移动 App 界面结构设计都应符合用户界面设计通用的设计原则与规范。它们的不同之处在于 Web 页面结构设计主要采用网络结构， App 界面结构设计主要采用层次结构。</p>
+<p>4.Web 页面输出有哪些形式？</p>
+<p>答：在 Web 系统中，页面数据输出有多种实现形式，它可以是数据列表输出、数据统计图输出、数据报表输出等形式。</p>
+<p>5.用户界面交互设计主要包括哪些方面？</p>
+<p>答：用户界面交互设计主要包括功能任务、交互场景、交互流程、交互方式、 交互点、视觉流、动效等方面设计。</p>
+<p>6.针对一个在线点餐外卖手机 App 软件，采用界面原型工具给出该系统的如下 GUI 界面设计。  </p>
+<p>1）移动 App 总体页面结构设计  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231225123524769.png" alt="image-20231225123524769"></p>
+<p>2）移动 App 典型功能的页面布局设计  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231225123559797.png" alt="image-20231225123559797"></p>
+<p>3）移动 App 页面导航设计  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231225123635752.png" alt="image-20231225123635752"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231225123654923.png" alt="image-20231225123654923"></p>
+<p>4）移动 App 页面功能的交互设计  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231225123717164.png" alt="image-20231225123717164"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://uestcwxy.love">Palp1tate</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://uestcwxy.love/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/8/">https://uestcwxy.love/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://uestcwxy.love" target="_blank">Palp1tate</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/">大三自学</a><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">软件系统架构设计</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/2/" title="电子科大软件系统架构设计——面向对象建模基础"><img class="cover" src="https://s2.loli.net/2023/05/31/1zC4bdRjiXnZ75a.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">电子科大软件系统架构设计——面向对象建模基础</div></div></a></div><div class="next-post pull-right"><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/" title="电子科大软件系统架构设计——系统规划"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">电子科大软件系统架构设计——系统规划</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/1/" title="电子科大软件系统架构设计——系统分析与设计概述"><img class="cover" src="https://s2.loli.net/2023/05/31/UuGQIvw8HNBrZsp.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-20</div><div class="title">电子科大软件系统架构设计——系统分析与设计概述</div></div></a></div><div><a href="/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/2/" title="电子科大软件系统架构设计——面向对象建模基础"><img class="cover" src="https://s2.loli.net/2023/05/31/1zC4bdRjiXnZ75a.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-20</div><div class="title">电子科大软件系统架构设计——面向对象建模基础</div></div></a></div><div><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/" title="电子科大软件系统架构设计——系统规划"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-21</div><div class="title">电子科大软件系统架构设计——系统规划</div></div></a></div><div><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/" title="电子科大软件系统架构设计——系统需求分析"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-21</div><div class="title">电子科大软件系统架构设计——系统需求分析</div></div></a></div><div><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/" title="电子科大软件系统架构设计——系统架构设计"><img class="cover" src="https://s2.loli.net/2023/05/31/TREyA8hgqS7JnfV.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-21</div><div class="title">电子科大软件系统架构设计——系统架构设计</div></div></a></div><div><a href="/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/" title="电子科大软件系统架构设计——设计模式"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-23</div><div class="title">电子科大软件系统架构设计——设计模式</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Palp1tate</div><div class="author-info__description">等我苦尽甘来时，我给你讲讲来时走的路。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/palp1tate/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.facebook.com/profile.php?id=100092533320651" target="_blank" title="facebook"><i class="fab fa-facebook" style="color: #4a7dbe;"></i></a><a class="social-icon" href="mailto:1939311091@qq.com" target="_blank" title="email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/1907948898" target="_blank" title="b站"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/tiktok.jpg" target="_blank" title="抖音"><i class="fab fa-tiktok" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/weixin.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">刚建站不久，博客美化有待研究，部分页面也没时间弄，路过的你将就看啦~😊，图片没加载出来就是网络不佳噢~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">系统分析与设计概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">面向对象建模语言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%A7%84%E5%88%92"><span class="toc-number">3.</span> <span class="toc-text">系统规划</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">系统需求分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">5.</span> <span class="toc-text">系统架构设计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%BB%BA%E6%A8%A1%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">6.</span> <span class="toc-text">软件建模详细设计与设计模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="toc-number">7.</span> <span class="toc-text">用户界面设计</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/" title="电子科大软件系统架构设计——设计模式"><img src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——设计模式"/></a><div class="content"><a class="title" href="/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/" title="电子科大软件系统架构设计——设计模式">电子科大软件系统架构设计——设计模式</a><time datetime="2023-12-23T13:43:11.000Z" title="发表于 2023-12-23 21:43:11">2023-12-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/" title="电子科大软件系统架构设计——软件建模详细设计"><img src="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——软件建模详细设计"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/" title="电子科大软件系统架构设计——软件建模详细设计">电子科大软件系统架构设计——软件建模详细设计</a><time datetime="2023-12-21T06:21:31.000Z" title="发表于 2023-12-21 14:21:31">2023-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/" title="电子科大软件系统架构设计——系统架构设计"><img src="https://s2.loli.net/2023/05/31/TREyA8hgqS7JnfV.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——系统架构设计"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/" title="电子科大软件系统架构设计——系统架构设计">电子科大软件系统架构设计——系统架构设计</a><time datetime="2023-12-21T06:21:26.000Z" title="发表于 2023-12-21 14:21:26">2023-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/" title="电子科大软件系统架构设计——系统需求分析"><img src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——系统需求分析"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/" title="电子科大软件系统架构设计——系统需求分析">电子科大软件系统架构设计——系统需求分析</a><time datetime="2023-12-21T06:21:22.000Z" title="发表于 2023-12-21 14:21:22">2023-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/" title="电子科大软件系统架构设计——系统规划"><img src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——系统规划"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/" title="电子科大软件系统架构设计——系统规划">电子科大软件系统架构设计——系统规划</a><time datetime="2023-12-21T03:02:30.000Z" title="发表于 2023-12-21 11:02:30">2023-12-21</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 By Palp1tate</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><i class="fa-solid fa-cloud"></i><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>萌ICP备20230529号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="6614140207" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-mini="true"> </div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

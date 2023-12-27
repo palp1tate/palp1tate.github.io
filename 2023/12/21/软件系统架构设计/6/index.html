@@ -1,0 +1,974 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>电子科大软件系统架构设计——软件建模详细设计 | Palp1tate</title><meta name="author" content="Palp1tate,1939311091@qq.com"><meta name="copyright" content="Palp1tate"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="软件建模详细设计概述软件建模详细设计目标软件建模详细设计是在软件架构模型设计基础上，对系统中各模型进一步细化设计，给出软件程序实现的设计方案。 软件建模详细设计原则开闭原则 软件实体（类、构件等）应该对功能扩展具有开放性，对代码修改具有封闭性。 当应用需求改变时，在不修改软件实体源代码的前提下，就可以扩展模块的功能，使其满足新的需求。  案例：“环境监测器”功能构件设计  开闭原则设计的好处：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电子科大软件系统架构设计——软件建模详细设计">
+<meta property="og:url" content="https://uestcwxy.love/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/index.html">
+<meta property="og:site_name" content="Palp1tate">
+<meta property="og:description" content="软件建模详细设计概述软件建模详细设计目标软件建模详细设计是在软件架构模型设计基础上，对系统中各模型进一步细化设计，给出软件程序实现的设计方案。 软件建模详细设计原则开闭原则 软件实体（类、构件等）应该对功能扩展具有开放性，对代码修改具有封闭性。 当应用需求改变时，在不修改软件实体源代码的前提下，就可以扩展模块的功能，使其满足新的需求。  案例：“环境监测器”功能构件设计  开闭原则设计的好处：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg">
+<meta property="article:published_time" content="2023-12-21T06:21:31.000Z">
+<meta property="article:modified_time" content="2023-12-27T13:50:28.360Z">
+<meta property="article:author" content="Palp1tate">
+<meta property="article:tag" content="大三自学">
+<meta property="article:tag" content="软件系统架构设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://uestcwxy.love/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Palp1tate","link":"链接: ","source":"来源: Palp1tate","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '电子科大软件系统架构设计——软件建模详细设计',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-27 21:50:28'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Palp1tate" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Palp1tate"><span class="site-name">Palp1tate</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">电子科大软件系统架构设计——软件建模详细设计</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-21T06:21:31.000Z" title="发表于 2023-12-21 14:21:31">2023-12-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-27T13:50:28.360Z" title="更新于 2023-12-27 21:50:28">2023-12-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">12.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>42分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="电子科大软件系统架构设计——软件建模详细设计"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="软件建模详细设计概述"><a href="#软件建模详细设计概述" class="headerlink" title="软件建模详细设计概述"></a>软件建模详细设计概述</h1><h2 id="软件建模详细设计目标"><a href="#软件建模详细设计目标" class="headerlink" title="软件建模详细设计目标"></a>软件建模详细设计目标</h2><p>软件建模详细设计是在软件架构模型设计基础上，对系统中各模型进一步细化设计，给出软件程序实现的设计方案。</p>
+<h2 id="软件建模详细设计原则"><a href="#软件建模详细设计原则" class="headerlink" title="软件建模详细设计原则"></a>软件建模详细设计原则</h2><h3 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h3><ul>
+<li>软件实体（类、构件等）应该对功能扩展具有开放性，对代码修改具有封闭性。</li>
+<li>当应用需求改变时，在不修改软件实体源代码的前提下，就可以扩展模块的功能，使其满足新的需求。</li>
+</ul>
+<p>案例：“环境监测器”功能构件设计</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222200751781.png" alt="image-20231222200751781"></p>
+<p><font color='blue'>开闭原则设计的好处：</font></p>
+<ul>
+<li>在不修改原有代码基础上，可以扩展新功能。</li>
+<li>提高代码的可复用性及可维护性。</li>
+</ul>
+<h3 id="里氏-Liskov-替换原则"><a href="#里氏-Liskov-替换原则" class="headerlink" title="里氏 (Liskov) 替换原则"></a>里氏 (Liskov) 替换原则</h3><ul>
+<li>子类可以扩展基类的功能，但不能改变基类原有的功能。</li>
+<li>子类在继承基类时，除了添加新的方法且完成新增功能外，不要重写基类的方法代码。</li>
+<li>子类必须遵守基类与外部类之间的隐含约定。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222201247864.png" alt="image-20231222201247864"></p>
+<p><font color='blue'>里氏替换原则设计的好处：</font></p>
+<ul>
+<li>解决了继承重写父类带来的可复用性变差问题。</li>
+<li>提高代码的可复用性及可维护性。</li>
+</ul>
+<p>案例：鸟类飞行时间计算模块程序设计</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222202235280.png" alt="image-20231222202235280"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//鸟类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Bird</span> &#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="type">double</span> flySpeed;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSpeed</span><span class="params">(<span class="type">double</span> speed)</span> &#123;</span><br><span class="line">        flySpeed = speed;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getFlyTime</span><span class="params">(<span class="type">double</span> distance)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (distance / flySpeed);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//燕子类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Swallow</span> <span class="keyword">extends</span> <span class="title class_">Bird</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//几维鸟类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BrownKiwi</span> <span class="keyword">extends</span> <span class="title class_">Bird</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSpeed</span><span class="params">(<span class="type">double</span> speed)</span> &#123;</span><br><span class="line">        flySpeed = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222213807148.png" alt="image-20231222213807148"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> principle;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LSPtest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Bird</span> <span class="variable">bird1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Swallow</span>();</span><br><span class="line">        <span class="type">Bird</span> <span class="variable">bird2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BrownKiwi</span>();</span><br><span class="line">        bird1.setSpeed(<span class="number">120</span>);</span><br><span class="line">        bird2.setSpeed(<span class="number">120</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;如果飞行300公里: &quot;</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;燕子将飞行&quot;</span> +</span><br><span class="line">                    bird1.getFlyTime(<span class="number">300</span>) + <span class="string">&quot;小时.&quot;</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;几维鸟将飞行&quot;</span> +</span><br><span class="line">                    bird2.getFlyTime(<span class="number">300</span>) + <span class="string">&quot;小时.&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception err) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;发生错误了!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><font color='red'>按照里氏替换原则重新设计该模块</font></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222220441588.png" alt="image-20231222220441588"></p>
+<p>完整代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 动物类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="type">double</span> runSpeed;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setRunSpeed</span><span class="params">(<span class="type">double</span> speed)</span> &#123;</span><br><span class="line">        runSpeed = speed;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getRunTime</span><span class="params">(<span class="type">double</span> distance)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (distance / runSpeed);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 鸟类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Bird</span> <span class="keyword">extends</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="type">double</span> flySpeed;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setFlySpeed</span><span class="params">(<span class="type">double</span> speed)</span> &#123;</span><br><span class="line">        flySpeed = speed;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getFlyTime</span><span class="params">(<span class="type">double</span> distance)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (distance / flySpeed);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 燕子类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Swallow</span> <span class="keyword">extends</span> <span class="title class_">Bird</span> &#123;</span><br><span class="line">    <span class="comment">// 燕子类可以继承 Bird 类的飞行行为</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 几维鸟类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BrownKiwi</span> <span class="keyword">extends</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="comment">// 几维鸟不能飞，所以我们不实现飞行相关的方法</span></span><br><span class="line">    <span class="comment">// 而是使用 Animal 类的跑步行为</span></span><br><span class="line">    <span class="comment">// 如果需要，这里可以覆盖跑步速度设置方法或行为</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="依赖倒置原则"><a href="#依赖倒置原则" class="headerlink" title="依赖倒置原则"></a>依赖倒置原则</h3><ul>
+<li>基于抽象类编程，不依赖具体类编程。</li>
+<li>面向接口编程，不要面向实现编程。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222220812371.png" alt="image-20231222220812371"></p>
+<p><font color='blue'>依赖倒置原则设计的好处：</font></p>
+<ul>
+<li>降低客户类与实现类之间的耦合性，容易实现代码可扩展性。</li>
+<li>降低并行开发可能出现的风险性。</li>
+</ul>
+<p>案例：顾客购物模块程序设计</p>
+<p>顾客类 (Customer) 通过韶关网店（ShaoguanShop）类实现购物，其代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Customer</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">shopping</span><span class="params">(ShaoguanShop shop)</span> &#123;</span><br><span class="line">        <span class="comment">//购物</span></span><br><span class="line">        System.out.println(shop.sell());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>顾客若想从婺源网店 (WuyuanShop) 购物，需要对顾客类 (Customer ）代码修改：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Customer</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">shopping</span><span class="params">(WuyuanShop shop)</span> &#123;</span><br><span class="line">        <span class="comment">//购物</span></span><br><span class="line">        System.out.println(shop.sell());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解决方法：定义“婺源网店”和“韶关网店”的共同接口 Shop ，顾客类 (Customer ）面向该接口编程，其代码修改如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222221518622.png" alt="image-20231222221518622"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Customer</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">shopping</span><span class="params">(Shop shop)</span> &#123;</span><br><span class="line">        <span class="comment">//购物</span></span><br><span class="line">        System.out.println(shop.sell());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完整代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义 Shop 接口</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Shop</span> &#123;</span><br><span class="line">    String <span class="title function_">sell</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 韶关网店实现 Shop 接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ShaoguanShop</span> <span class="keyword">implements</span> <span class="title class_">Shop</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">sell</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 实现卖出商品的方法，返回结果</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;韶关网店销售的商品&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 婺源网店实现 Shop 接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">WuyuanShop</span> <span class="keyword">implements</span> <span class="title class_">Shop</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">sell</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 实现卖出商品的方法，返回结果</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;婺源网店销售的商品&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顾客类，面向 Shop 接口编程</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Customer</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">shopping</span><span class="params">(Shop shop)</span> &#123;</span><br><span class="line">        <span class="comment">// 购物</span></span><br><span class="line">        System.out.println(shop.sell());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="接口分离原则"><a href="#接口分离原则" class="headerlink" title="接口分离原则"></a>接口分离原则</h3><ul>
+<li>一个构件对外应提供不同服务的专用接口，而不要试图去建立一个很庞大的接口供所有依赖它的构件去调用，避免客户端依赖不必要的接口方法</li>
+<li>提供者构件应该为每个不同访问构件类型提供一个特定的接口</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222223341534.png" alt="image-20231222223341534"></p>
+<p><font color='blue'>接口分离原则设计的好处：</font></p>
+<ul>
+<li>符合高内聚低耦合设计思想，提高代码可扩展性。</li>
+<li>使得类具有很好的可读性、可扩展性和可维护性。</li>
+</ul>
+<p>案例：学生成绩管理程序</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222223506809.png" alt="image-20231222223506809"></p>
+<ul>
+<li>学生成绩管理程序一般包含插入成绩、删除成绩、修改成绩、计算总分、计算均分、打印成绩信息、查询成绩信息等功能。</li>
+<li>如果将这些功能全部放到一个接口中对外提供访问服务，这显然不太合理。</li>
+<li>合理的做法是对外提供不同的功能服务访问接口。</li>
+</ul>
+<h3 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h3><ul>
+<li>一个类应该有且仅有一个功能职责，否则该类应该被拆分。</li>
+<li>单一职责原则的核心就是控制类的粒度大小，将对象解耦，提高其内聚性。</li>
+</ul>
+<p><font color='blue'>单一职责原则设计的好处：</font></p>
+<ul>
+<li>降低类的复杂度。一个类只负责一项职责，其代码逻辑肯定要比负责多项职责简单得多。</li>
+<li>提高类代码的可读性。复杂性降低，自然其可读性会提高。</li>
+<li>提高类代码的可维护性。可读性提高，那自然更容易维护了。</li>
+</ul>
+<p>案例：学生工作管理</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222225406643.png" alt="image-20231222225406643"></p>
+<p>学生工作主要包括学生生活辅导和学生学业指导两个方面的工作：</p>
+<ul>
+<li>生活辅导主要包括班委建设、出勤统计、心理辅导、费用催缴、班级管理等工学业指导主要包括专业引导、学习辅导、科研指导、学习总结等工作。</li>
+<li>如果将这些工作交给一位老师负责显然不合理，好的做法是生活辅导由辅导员负责，学业指导由学业导师负责。</li>
+</ul>
+<h3 id="最少知识原则（迪米特法则）"><a href="#最少知识原则（迪米特法则）" class="headerlink" title="最少知识原则（迪米特法则）"></a>最少知识原则（迪米特法则）</h3><p>迪米特法则的定义是：只与你的朋友交谈，不跟“陌生人”说话。在程序设计中，如果两个软件实体没有直接关系，那么就不直接调用，可以通过第三方转发该调用。</p>
+<p><font color='blue'>迪米特法则具有以下好处：</font></p>
+<ul>
+<li>降低了类之间的耦合度，提高了模块的相对独立性。</li>
+<li>由于耦合度降低，从而提高了类的可复用性和系统的扩展性。</li>
+</ul>
+<p>案例：明星与经纪人的关系</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222230017098.png" alt="image-20231222230017098"></p>
+<ul>
+<li>明星需全身心投入艺术，所以许多日常事务交给经纪人去处理，如与粉丝的见面会，与媒体公司的业务洽淡等。</li>
+<li>经纪人是明星的朋友，而粉丝和媒体公司对明星来讲是陌生人。</li>
+</ul>
+<h3 id="高内聚原则"><a href="#高内聚原则" class="headerlink" title="高内聚原则"></a>高内聚原则</h3><p>内聚性意味着构件或者类只封装那些密切关联的属性和操作。</p>
+<p>按照内聚性的级别，内聚性分为以下三种，它们的内聚性依次变弱：</p>
+<ul>
+<li><font color='red'>功能内聚</font>：模块内的所有元素紧密配合完成同一个功能，即满足单一职责原则。</li>
+<li><font color='red'>分层内聚</font>：系统采用分层结构，高层能够访问低层服务，但低层不能访问高层服务。</li>
+<li><font color='red'>通信内聚</font>：模块内的所有元素都访问相同数据。通信内聚通常用于数据的查询、访问和存储。</li>
+</ul>
+<p>一般来说，内聚性越高，构件越易于实现、测试和维护。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231222231011912.png" alt="image-20231222231011912"></p>
+<h3 id="松耦合原则"><a href="#松耦合原则" class="headerlink" title="松耦合原则"></a>松耦合原则</h3><p>耦合性指不同对象之间相互关联的程度。如果一个对象过多地依赖于其它对象来完成自己的工作，这会增加测试、修改的难度，同时降低了对象的可重用性和可移植性。</p>
+<p>在详细设计中要尽可能保持对象之间松耦合。但是软件必须进行内部和外部的通信，因此耦合是必然存在的。当两个对象必须相互联系时，应该通过类的公共接口实现耦合，不应该直接依赖于类的实例。</p>
+<p>补充例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个通信接口</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Communicator</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">sendMessage</span><span class="params">(String message)</span>;</span><br><span class="line"></span><br><span class="line">    String <span class="title function_">receiveMessage</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实现Communicator接口的Email类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">EmailCommunicator</span> <span class="keyword">implements</span> <span class="title class_">Communicator</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendMessage</span><span class="params">(String message)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Sending email with message: &quot;</span> + message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">receiveMessage</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 假设接收到消息</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Email message received&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实现Communicator接口的SMS类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SMSCommunicator</span> <span class="keyword">implements</span> <span class="title class_">Communicator</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendMessage</span><span class="params">(String message)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Sending SMS with message: &quot;</span> + message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">receiveMessage</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 假设接收到消息</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;SMS message received&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用Communicator接口的Client类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Client</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Communicator communicator;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Client</span><span class="params">(Communicator communicator)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.communicator = communicator;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">communicate</span><span class="params">()</span> &#123;</span><br><span class="line">        communicator.sendMessage(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">        System.out.println(communicator.receiveMessage());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在应用程序中使用Client和Communicator</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CommunicationApp</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Communicator</span> <span class="variable">email</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">EmailCommunicator</span>();</span><br><span class="line">        <span class="type">Communicator</span> <span class="variable">sms</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SMSCommunicator</span>();</span><br><span class="line"></span><br><span class="line">        <span class="type">Client</span> <span class="variable">emailClient</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Client</span>(email);</span><br><span class="line">        <span class="type">Client</span> <span class="variable">smsClient</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Client</span>(sms);</span><br><span class="line"></span><br><span class="line">        emailClient.communicate();</span><br><span class="line">        smsClient.communicate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>Client</code> 类不直接与 <code>EmailCommunicator</code> 或 <code>SMSCommunicator</code> 类耦合。相反，它通过 <code>Communicator</code> 接口与它们通信。这允许 <code>Client</code> 类在不知道通信细节的情况下发送和接收消息。因此，如果将来引入了一个新的 <code>Communicator</code> 实现，例如 <code>WhatsAppCommunicator</code>，<code>Client</code> 类不需要任何修改就能使用它，只需在创建 <code>Client</code> 实例时传入新的通信器即可。这就是通过类的公共接口实现耦合的一个典型例子。</p>
+<h3 id="可重用原则"><a href="#可重用原则" class="headerlink" title="可重用原则"></a>可重用原则</h3><ul>
+<li>为了提高工作效率、减少错误、降低成本，要充分考虑软件元素的<font color='red'>重用性</font>。</li>
+<li>重用性有两个方面的含义：尽量复用已有的类代码，如开发环境提供的类库；在设计新类时考虑将来的可重用性。</li>
+<li>设计一个可重用的软件比设计一个普通软件的代价要高，但是随着这些软件被重用次数的增加，分摊到它的设计和实现成本就会降低。</li>
+</ul>
+<p>补充例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一个通用的接口定义了操作的契约</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Operable</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">operate</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一个具体的类实现了Operable接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Printer</span> <span class="keyword">implements</span> <span class="title class_">Operable</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">operate</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Printing a document...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 另一个具体的类实现了Operable接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Scanner</span> <span class="keyword">implements</span> <span class="title class_">Operable</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">operate</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Scanning a document...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设计一个工作流程类，它可以利用Operable接口操作任何设备</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Workflow</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Operable&gt; operations = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addOperation</span><span class="params">(Operable operable)</span> &#123;</span><br><span class="line">        operations.add(operable);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">runAll</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (Operable operable : operations) &#123;</span><br><span class="line">            operable.operate();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 演示如何重用Workflow类来操作不同的设备</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OfficeAutomationApp</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建设备的实例</span></span><br><span class="line">        <span class="type">Printer</span> <span class="variable">printer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Printer</span>();</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建工作流并添加操作</span></span><br><span class="line">        <span class="type">Workflow</span> <span class="variable">officeWorkflow</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Workflow</span>();</span><br><span class="line">        officeWorkflow.addOperation(printer);</span><br><span class="line">        officeWorkflow.addOperation(scanner);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 运行所有操作</span></span><br><span class="line">        officeWorkflow.runAll();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>Operable</code> 接口允许我们定义一个可以操作任何设备的通用契约。<code>Printer</code> 和 <code>Scanner</code> 类都实现了这个接口，使得它们可以在 <code>Workflow</code> 类中互换使用。这样的设计不仅提高了类的重用性，而且在设计新类时也考虑到了将来的可重用性。例如，如果我们想添加一个新设备类如 <code>FaxMachine</code>，我们只需要让它实现 <code>Operable</code> 接口，就可以轻松地添加到现有的工作流程中而不需要修改 <code>Workflow</code> 类的代码。</p>
+<p>此外，这个例子还展示了如何复用Java开发环境提供的类库，例如 <code>ArrayList</code> 类，来管理 <code>Operable</code> 对象的集合。这种复用标准类库可以提高开发效率，减少错误，并降低开发成本。</p>
+<p>以下客户功能模块存在什么设计问题？该如何完善？</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1697086935825-image.png"></p>
+<p>接口分离原则， <code>IClient</code> 接口提供的方法太多或不是所有的客户端都需要这些方法，它违反了接口分离原则。客户端不应该被迫依赖于它们不使用的方法。 根据不同的职责将 <code>IClient</code> 接口拆分为更小的接口。详细代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接口负责连接管理</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">IConnectionManager</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">connect</span><span class="params">()</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">disconnect</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 接口负责数据的发送和接收</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">IDataTransfer</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">send</span><span class="params">()</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">receive</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端类实现这两个接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Client</span> <span class="keyword">implements</span> <span class="title class_">IConnectionManager</span>, IDataTransfer &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">connect</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 实现连接逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">disconnect</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 实现断开连接逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">send</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 实现发送数据逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">receive</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 实现接收数据逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>问题探讨：以下客户数据图形分析模块存在什么设计问题？该如何完善？</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223123236184.png" alt="image-20231223123236184"></p>
+<p>违背单一职责原则，应将该类进行拆分，<code>CustomerDataChart</code> 类负责图表的创建和显示，一个 <code>CustomerDAO</code> 类负责数据访问操作，以及一个 <code>DBUtil</code> 类负责数据库连接。</p>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DBUtil</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> Connection <span class="title function_">getConnection</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 实现数据库连接的逻辑</span></span><br><span class="line">        <span class="comment">// 例如使用 JDBC 连接到数据库</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>; <span class="comment">// 应返回实际的数据库连接对象</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CustomerDAO</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> DBUtil util;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">CustomerDAO</span><span class="params">(DBUtil util)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.util = util;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;Customer&gt; <span class="title function_">findCustomers</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 使用 util.getConnection() 获取数据库连接</span></span><br><span class="line">        <span class="comment">// 执行查询并返回客户列表</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(); <span class="comment">// 应返回实际查询到的客户列表</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CustomerDataChart</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> CustomerDAO dao;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">CustomerDataChart</span><span class="params">(CustomerDAO dao)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.dao = dao;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">createChart</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 使用 dao.findCustomers() 获取数据</span></span><br><span class="line">        <span class="comment">// 根据获取的数据创建图表</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">displayChart</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 显示图表的逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建 DBUtil 实例</span></span><br><span class="line">        <span class="type">DBUtil</span> <span class="variable">dbUtil</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DBUtil</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 使用 DBUtil 实例来创建 CustomerDAO 实例</span></span><br><span class="line">        <span class="type">CustomerDAO</span> <span class="variable">customerDAO</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CustomerDAO</span>(dbUtil);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 使用 CustomerDAO 实例来创建 CustomerDataChart 实例</span></span><br><span class="line">        <span class="type">CustomerDataChart</span> <span class="variable">dataChart</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CustomerDataChart</span>(customerDAO);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建图表</span></span><br><span class="line">        dataChart.createChart();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 显示图表</span></span><br><span class="line">        dataChart.displayChart();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>图形展示如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223123656209.png" alt="image-20231223123656209"></p>
+<h2 id="软件建模详细设计内容"><a href="#软件建模详细设计内容" class="headerlink" title="软件建模详细设计内容"></a>软件建模详细设计内容</h2><ul>
+<li>在分析类基础上，对软件静态结构模型的<font color='red'>类图</font>进行详细设计。各个功能构件均需给出设计类模型。</li>
+<li>针对构件功能，分析对象之间的交互关系，给出功能构件逻辑实现的动态行为<font color='red'>交互图</font>模型详细设计。</li>
+<li>分析对象生命周期的状态变化，给出对象状态变迁的<font color='red'>状态机图</font>模型详细设计。</li>
+<li>对反映软件物理实现模型的<font color='red'>构件图</font>和<font color='red'>部署图</font>进行详细设计。</li>
+</ul>
+<h1 id="UML-软件静态结构视图建模"><a href="#UML-软件静态结构视图建模" class="headerlink" title="UML 软件静态结构视图建模"></a>UML 软件静态结构视图建模</h1><h2 id="软件静态结构细化设计"><a href="#软件静态结构细化设计" class="headerlink" title="软件静态结构细化设计"></a>软件静态结构细化设计</h2><ul>
+<li>静态结构视图用来表示软件系统的类程序组成结构，同时也反映各个类中封装的数据与操作方法。</li>
+<li>静态结构视图支撑面向对象程序编程。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223131811928.png" alt="image-20231223131811928"></p>
+<h2 id="类的聚合关系细分"><a href="#类的聚合关系细分" class="headerlink" title="类的聚合关系细分"></a>类的聚合关系细分</h2><h3 id="专属聚合-Exclusive0wns"><a href="#专属聚合-Exclusive0wns" class="headerlink" title="专属聚合 (Exclusive0wns)"></a>专属聚合 (Exclusive0wns)</h3><p>专属聚合是类之间语义最强的聚合，部分类与整体类之间满足 4 个条件：</p>
+<ol>
+<li>部分类对整体类具有存在依赖性，删除整体类时，部分类也被删除。</li>
+<li>具有传递性，如果对象 C1是 B1 的一部分，并且 B1 是 A1 的一部分， C1 也是 A1 的一部分。</li>
+<li>具有非对称性，如果 B1 是 A1 的一部分，则 A1 不是 B1 的一部分。</li>
+<li>具有固定性，如果 B1 是 A1 的一部分，则它绝不是 Ai （i！&#x3D;1）的一部分。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223133005855.png" alt="image-20231223133005855"></p>
+<h3 id="从属聚合-0wns"><a href="#从属聚合-0wns" class="headerlink" title="从属聚合 (0wns)"></a>从属聚合 (0wns)</h3><p>从属聚合的语义比专属聚合稍弱，部分类与整体类之间满足 3 个条件：</p>
+<ol>
+<li>部分类对整体类具有存在依赖性，删除整体类时，部分类也被删除。</li>
+<li>具有传递性，如果对象 C1 是 B1 的一部分，并且 B1 是 A1 的一部分，则 C1 是 A1 的一部分。</li>
+<li>具有非对称性，如果 B1 是 A1 的一部分，则 A1 不是 B1 的一部分。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223133208338.png" alt="image-20231223133208338"></p>
+<h3 id="拥有聚合-Has"><a href="#拥有聚合-Has" class="headerlink" title="拥有聚合 (Has)"></a>拥有聚合 (Has)</h3><p>拥有聚合的语义比从属聚合弱，部分类与整体类之间满足 2 个条件：</p>
+<ol>
+<li>具有传递性，如果对象 C1 是 B1 的一部分，并且 B1 是 A1 的一部分，则 C1 是 A1 的一部分。</li>
+<li>具有非对称性，如果 B1 是 A1 的一部分，则 A1 不是 B1 的一部分。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223133256847.png" alt="image-20231223133256847"></p>
+<h3 id="成员聚合-Member"><a href="#成员聚合-Member" class="headerlink" title="成员聚合 (Member)"></a>成员聚合 (Member)</h3><p>成员聚合的语义最低，仅仅是将一组对象组合在一起。</p>
+<ul>
+<li>不具有存在依赖性、传递性、非对称性、固定性。</li>
+<li>Member 聚合具有组合独立对象的特征。</li>
+<li>表示一组对象作为一个高层复合对象来考虑。</li>
+<li>一个对象可以同时属于一个以上的复合对象，因此 member 聚合的多重性可以是多对多。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223133531574.png" alt="image-20231223133531574"></p>
+<h2 id="泛化与继承"><a href="#泛化与继承" class="headerlink" title="泛化与继承"></a>泛化与继承</h2><ul>
+<li><font color='red'>泛化</font>是指多个类的公共特征抽象到一个更一般化的类中，它描述类之间的一般与具体关系。</li>
+<li><font color='red'>继承</font>是指子类复用基类（超类）属性与操作的机制。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223133655398.png" alt="image-20231223133655398"></p>
+<h2 id="实现继承"><a href="#实现继承" class="headerlink" title="实现继承"></a>实现继承</h2><p><font color='red'>实现继承</font>是指在子类中组合基类（超类）的特征，并允许在必要时以新的实现来重载这些特征。</p>
+<h3 id="扩展继承"><a href="#扩展继承" class="headerlink" title="扩展继承"></a>扩展继承</h3><p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223133923122.png" alt="image-20231223133923122"></p>
+<p>在扩展继承中，子类组合来自超类的特征，并增加新的特征。</p>
+<h3 id="限制继承"><a href="#限制继承" class="headerlink" title="限制继承"></a>限制继承</h3><p><font color='red'>限制继承</font>是指子类组合来自超类的特征，并重载部分继承来的特征。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223134137099.png" alt="image-20231223134137099"></p>
+<p>问题：重载导致子类没有包括超类的所有特征，会带来维护上的问题，可替换性原则失效。</p>
+<h3 id="方便继承"><a href="#方便继承" class="headerlink" title="方便继承"></a>方便继承</h3><p>某些类之间具有一定相似的实现，但它们之间不存在泛化关系，即没有概念上的分类关系。<font color='red'>方便继承</font>是指将它们中一个类作为其它类的超类。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223134310533.png" alt="image-20231223134310533"></p>
+<p>问题：子类没有包括超类的所有特征，子类与超类之间没有泛化关系，可替换性原则无效。尽量避免采用这种方式实现继承。</p>
+<h2 id="高级类图建模"><a href="#高级类图建模" class="headerlink" title="高级类图建模"></a>高级类图建模</h2><p>软件开发的实际情况很复杂，复杂的问题不会有简单的解决方案。本节引入类图建模的高级概念，包括：</p>
+<ul>
+<li>可见性</li>
+<li>导出信息</li>
+<li>限定关联</li>
+<li>关联类与具体化类</li>
+</ul>
+<h3 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h3><p>通过设置<font color='red'>可见性</font>可以确定类内部的封装程度，决定其他类能否访问该类的元素。应用于类的属性和操作的可见性类型包括：</p>
+<ul>
+<li><code>+ public</code>公共可见性: 该元素对任何类都可见；</li>
+<li><code>- private</code>私有可见性: 该元素只对本类可见；</li>
+<li><code># protected</code>保护可见性: 该元素对本类及子类可见；</li>
+<li><code>~ package</code>包可见性: 该元素对同一包中的元素可见.</li>
+</ul>
+<p>在设计良好的面向对象系统中，大多数操作是公共的，大多数属性是私有的。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223135711089.png" alt="image-20231223135711089"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Visibility</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> privateAttribute;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> publicAttribute;</span><br><span class="line">    <span class="keyword">protected</span> <span class="type">int</span> protectedAttribute;</span><br><span class="line">    <span class="type">int</span> packageAttribute; <span class="comment">// 默认访问修饰符，也称为包访问权限</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">privateOperation</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">publicOperation</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">protectedOperation</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">packageOperation</span><span class="params">()</span> &#123; <span class="comment">// 默认访问修饰符，也称为包访问权限</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（ 1 ）保护可见性</p>
+<ul>
+<li>保护可见性指类的属性或操作对本类及其子类可见。</li>
+<li>应用于继承的情况，允许子类对象访问父类对象中的属性和操作。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223140102952.png" alt="image-20231223140102952"></p>
+<p>（ 2 ）包可见性</p>
+<ul>
+<li>具有包可见性类的属性和操作能够被处于同一包中的其他类访问。</li>
+<li>包可见性是 Java 语言默认的可见性。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223140200495.png" alt="image-20231223140200495"></p>
+<p>（ 3 ）友元可见性友元可见性用于 c++语言。当一个类需要访问另一个类的私有属性或操作时，可以采用友元可见性，在授予友元关系的类中声明友元操作。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223140224108.png" alt="image-20231223140224108"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Book</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">putOnBookShelf</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BookShelf</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">friend</span> <span class="type">void</span> <span class="title">Book::putOnBookShelf</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="导出信息"><a href="#导出信息" class="headerlink" title="导出信息"></a>导出信息</h3><p><font color='red'>导出信息</font>是指从其他元素计算得到的信息。它作为一种冗余信息，其目的是为了增加可读性和信息存取速度。导出信息包括<font color='red'>导出属性</font>和<font color='red'>导出关联。</font></p>
+<ul>
+<li>导出属性是指可以由其他信息导出的属性。</li>
+<li>导出关联是指由其它关联导出的关联。</li>
+<li>导出信息的 UML 表示是在导出属性名或导出关联名前面加上一条斜线“&#x2F;”。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223140818360.png" alt="image-20231223140818360"></p>
+<h3 id="限定关联"><a href="#限定关联" class="headerlink" title="限定关联"></a>限定关联</h3><p><font color='red'>限定关联</font>是一对多或多对多关联的约束条件表示。限定关联在二元关联的一端设定属性限定符，即在框中给出一个或多个属性用于约束条件。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223140934691.png" alt="image-20231223140934691"></p>
+<h3 id="关联类与具体化类"><a href="#关联类与具体化类" class="headerlink" title="关联类与具体化类"></a>关联类与具体化类</h3><p>如果两个类之间是多对多的关联，且每个关联实例都具有属性值，这时可以使用<font color='red'>关联类</font>。关联类具有一个约束，要求对于每一对链接起来的类实例，只能作为关联类的一个实例。如果不能满足这个约束的话，就需要将关联具体化，即使用一个<font color='red'>具体化类</font>来代替关联类。这个具体化类与之前的两个类均具有二元关联。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223141222186.png" alt="image-20231223141222186"></p>
+<h2 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h2><h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p><font color='red'>接口</font>用于定义一个类或者构件的功能操作函数集。</p>
+<ul>
+<li>接口定义一组操作，但不定义操作的实现。</li>
+<li>接口一般不定义属性，只有定义操作，并且所有操作都隐含是公共的、抽象的可视性。</li>
+<li>在实现接口的类中，这些操作都要被实现。</li>
+<li>一个类可以实现多个接口，一个接口可以被多个类实现</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223143811716.png" alt="image-20231223143811716"></p>
+<p>接口是一种特殊的类，所有的接口都是构造型为<code>&lt;&lt;interface&gt;&gt;</code>的类。在UML中，接口的表示方式有三种: 第一种是接口的图标表示，第二种是接口的修饰表示，第三种是接口的构造型标签表示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223144103353.png" alt="image-20231223144103353"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223144123081.png" alt="image-20231223144123081"></p>
+<ul>
+<li>如果接口使用 构造型标签表示，实现关系线是一条末端带有空心三角的虚线，箭头指向接口，虚线上可以加上构造型关键字《implement》。</li>
+<li>如果接口使用图标表示，实现关系线则是一条实线，没有箭头，实线上也可以加上构造型关键字《implement》。</li>
+<li>一个类使用接口，表明该类依赖该接口，用指向接口的一条虚线箭头表示，箭头上可以加上构造型关键字《use》。</li>
+</ul>
+<p>案例: IElectricalEquipment接口定义了turnOn操作和turnoff操作，TV类和Player类均实现了该接口，即实现了turnOn操作和turnoff操作，RemoteControl类使用了IElectricalEquipment接口。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223144513328.png" alt="image-20231223144513328"></p>
+<h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><p><font color='red'>抽象类</font>指不具有实例的类，它通常作为父类，不创建实例对象。抽象类的子类可以实例化。</p>
+<ul>
+<li>抽象类一般至少有一个抽象操作。</li>
+<li>抽象类的作用是为其子类描述它们的公共属性和行为。</li>
+<li>UML 采用斜体表示抽象类的名称，也可以使用 {abstract) 约束来表示。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223144739041.png" alt="image-20231223144739041"></p>
+<p>补充代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个 Vehicle 基类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Vehicle</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String color; <span class="comment">// 车辆颜色属性</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Vehicle</span><span class="params">(String color)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getColor</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setColor</span><span class="params">(String color)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义一个抽象方法 drive</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">drive</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Plane 类继承自 Vehicle</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Plane</span> <span class="keyword">extends</span> <span class="title class_">Vehicle</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Plane</span><span class="params">(String color)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(color);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 实现 drive 方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">drive</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Plane is flying.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Bus 类继承自 Vehicle</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Bus</span> <span class="keyword">extends</span> <span class="title class_">Vehicle</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Bus</span><span class="params">(String color)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(color);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 实现 drive 方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">drive</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Bus is driving on the road.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Driver 类与 Vehicle 有关联关系</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Driver</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Vehicle vehicle;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Driver 可以驾驶任何类型的 Vehicle</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">driveVehicle</span><span class="params">(Vehicle vehicle)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.vehicle = vehicle;</span><br><span class="line">        vehicle.drive();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="接口与抽象类的区别"><a href="#接口与抽象类的区别" class="headerlink" title="接口与抽象类的区别"></a>接口与抽象类的区别</h3><ul>
+<li>抽象类是对一组具有相同属性和方法、逻辑上有关系的类抽象。</li>
+<li>接口是对一组具有相同属性和方法、逻辑上不相关的类抽象。</li>
+<li>抽象类可提供部分方法的代码实现，而接口不实现任何方法的代码实现。</li>
+<li>抽象类体现一种泛化关系，而接口体现契约关系。</li>
+<li>抽象是在问题域分析中发现，而是接口是在设计发现。</li>
+</ul>
+<h2 id="类内聚与耦合"><a href="#类内聚与耦合" class="headerlink" title="类内聚与耦合"></a>类内聚与耦合</h2><p><font color='red'>类内聚</font>是指类内部元素之间相关性的程度。<font color='red'>类耦合</font>是指类之间联系的程度。</p>
+<ul>
+<li><p>内聚和耦合彼此相关联，更强的内聚会导致更弱的耦合，反之亦然。</p>
+</li>
+<li><p>良好的程序设计应确保在类的内聚与耦合之间达到良好平衡。</p>
+</li>
+</ul>
+<h3 id="类内聚与耦合的启发规则"><a href="#类内聚与耦合的启发规则" class="headerlink" title="类内聚与耦合的启发规则"></a>类内聚与耦合的启发规则</h3><p>为了取得类内聚和类耦合之间的平衡， Riel提出了一些启发规则：</p>
+<ul>
+<li>属性及其相关操作封装在一个类中；</li>
+<li>类之间只通过公共接口产生依赖；</li>
+<li>每个类应该只实现单一职责功能；</li>
+<li>类中不存在一个操作子集只与一个属性子集相关的情况；</li>
+<li>系统功能应尽可能在各个类中均匀分配。</li>
+</ul>
+<h3 id="类耦合的种类"><a href="#类耦合的种类" class="headerlink" title="类耦合的种类"></a>类耦合的种类</h3><p>（ 1 ） x 类有属性指向 Y 类的实例</p>
+<p>（ 2 ） x 类有方法引用了 Y 类的实例，如x 使用 Y 类对象作为局部变量；或者返回 Y 类对象</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223145855463.png" alt="image-20231223145855463"></p>
+<p>（ 3 ） x 类对象调用 Y 类对象方法发送消息</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223150051051.png" alt="image-20231223150051051"></p>
+<p>（ 4 ） Y 类是 X 类的直接或间接子类</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223150243469.png" alt="image-20231223150243469"></p>
+<p>（ 5 ）X 类方法中输入参数为 Y 类的实例。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223150330305.png" alt="image-20231223150330305"></p>
+<p>（ 6 ） Y 类是一个接口，而 X 类实现了该接口。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223150352801.png" alt="image-20231223150352801"></p>
+<h3 id="类之间-6-种关系的耦合强度依次增强"><a href="#类之间-6-种关系的耦合强度依次增强" class="headerlink" title="类之间 6 种关系的耦合强度依次增强"></a>类之间 6 种关系的耦合强度依次增强</h3><p>1 ）依赖关系一耦合度最弱</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223150456224.png" alt="image-20231223150456224"></p>
+<p>2 ）关联关系一耦合度其次弱</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223150507795.png" alt="image-20231223150507795"></p>
+<p>3 ）聚合关系一耦合度一般</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223150609064.png" alt="image-20231223150609064"></p>
+<p>4 ）组合关系一耦合度较高</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223150621436.png" alt="image-20231223150621436"></p>
+<p>5 ）继承关系一耦合度高</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223150654467.png" alt="image-20231223150654467"></p>
+<p>6 ）实现关系一耦合度最高</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223150736520.png" alt="image-20231223150736520"></p>
+<h3 id="迪米特法则应用"><a href="#迪米特法则应用" class="headerlink" title="迪米特法则应用"></a>迪米特法则应用</h3><p>类耦合对于对象之间协作实现特定功能是必要的，但它应该尽量被限制在类的层次内，即<font color='red'>层内耦合</font>，层间耦合应该最小化。</p>
+<p>为了限制类间任意通信，采用<font color='red'>迪米特法则</font>（最少知识原则）设计，指明在类操作中只允许将以下对象作为消息目标，即没有直接关系的类之间不交互通信，仅仅有直接关系类进行通信。</p>
+<ul>
+<li>当前对象本身</li>
+<li>当前操作中作为参数的对象</li>
+<li>当前对象的属性指向的对象</li>
+<li>当前操作创建的对象</li>
+<li>全局变量引用的对象</li>
+</ul>
+<h2 id="设计类图建模实践"><a href="#设计类图建模实践" class="headerlink" title="设计类图建模实践"></a>设计类图建模实践</h2><ul>
+<li>设计类图建模是在分析类图基础之上对系统分析类图进行细化与完善设计，从而在设计层面描述系统的静态结构。</li>
+<li>在设计类图中除了详细定义各种类属性与方法外，还需定义类之间关系的设计约束。</li>
+</ul>
+<p>Power Designer 建模实践：雇员职位管理设计类图建模</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223151832857.png" alt="image-20231223151832857"></p>
+<p>ChatGPT4：</p>
+<ol>
+<li><strong>Person 类</strong>：<ul>
+<li>属性：<code>name</code> (String), <code>sex</code> (char)</li>
+<li>方法：<code>getName()</code> 返回 String，<code>getSex()</code> 返回 char</li>
+<li>这个类似乎代表了具有基本属性如姓名和性别的普通人。</li>
+</ul>
+</li>
+<li><strong>Employee 类（继承自 Person 类）</strong>：<ul>
+<li>属性：<code>username</code> (String), <code>password</code> (String)</li>
+<li>方法：<code>username</code> 和 <code>password</code> 的获取和设置方法，一个接受用户名和密码并返回布尔值的 <code>login()</code> 方法，以及重写的 <code>getName()</code> 和 <code>getSex()</code> 方法。</li>
+<li><code>Employee</code> 类继承自 <code>Person</code> 类，这意味着每个 <code>Employee</code> 都是 <code>Person</code>，但具有特定于雇员的额外属性和行为，如登录系统的凭证。</li>
+</ul>
+</li>
+<li><strong>Post 类</strong>：<ul>
+<li>属性：<code>postname</code> (String)</li>
+<li>方法：<code>getPostname()</code> 返回 String，<code>setPostname()</code> 接受一个 String，<code>addPost()</code> 返回一个布尔值。</li>
+<li>这个类似乎代表 <code>Employee</code> 可以持有的职位或职称。<code>1..1</code> 表示每个 <code>Employee</code> 有且仅有一个 <code>Post</code>。</li>
+</ul>
+</li>
+<li><strong>Department 类</strong>：<ul>
+<li>属性：<code>departmentname</code> (String)</li>
+<li>方法：<code>departmentname</code> 的获取和设置方法，<code>addDepartment()</code> 返回布尔值。</li>
+<li>代表组织中的一个部门。每个 <code>Employee</code> 与一个 <code>Department</code> 关联，而一个 <code>Department</code> 可以有多个雇员（<code>1..*</code> 关系）。</li>
+</ul>
+</li>
+<li><strong>Power 类</strong>：<ul>
+<li>属性：<code>powername</code> (String)</li>
+<li>方法：<code>powername</code> 的获取和设置方法。</li>
+<li>代表与 <code>Post</code> 关联的权力或权限。每个 <code>Post</code> 有且仅有一个 <code>Power</code>，表示一对一的关系。</li>
+</ul>
+</li>
+<li><strong>Poweritem 类（继承自 Power 类）</strong>：<ul>
+<li>属性：<code>itemname</code> (String), <code>isvalue</code> (int)</li>
+<li>方法：<code>itemname</code> 和 <code>isvalue</code> 的获取和设置方法，<code>addItem()</code> 返回布尔值。</li>
+<li>这个类继承自 <code>Power</code> 类，暗示每个权限可以有多个 <code>Poweritem</code> 实例，这些是更具体的权限或许可。</li>
+</ul>
+</li>
+</ol>
+<p>类图还展示了类之间的关联关系：</p>
+<ul>
+<li>一个 <code>Employee</code> 与一个 <code>Person</code> 相关联（继承关系）。</li>
+<li>一个 <code>Employee</code> 可以有一个或多个 <code>Post</code>（<code>0..*</code> 到 <code>1..1</code> 的关系），但每个 <code>Post</code> 都确切地与一个 <code>Employee</code> 相关联。</li>
+<li>每个 <code>Post</code> 与一个 <code>Power</code> 关联，每个 <code>Power</code> 与一个 <code>Post</code> 关联（<code>1..1</code> 关系）。</li>
+<li>一个 <code>Department</code> 可以有多个 <code>Employee</code> 实例，但每个 <code>Employee</code> 都与一个 <code>Department</code> 相关联。</li>
+</ul>
+<p>这个模型旨在管理组织中雇员的角色和责任。它捕捉了不同组织实体如人员、职位、部门以及与这些职位相关联的权限之间的层次结构和关系。该系统可用于跟踪员工的职位角色、所属部门及其在组织内的相应权限。使用继承和关联确保了清晰、可维护的结构，能够准确反映组织结构。</p>
+<p>1 .分析说明如下模型中类之间设计该关系依据是什么？以及它们的耦合度高低。</p>
+<p>2 .针对如下 UML 设计类图给出 Vehicle 类、 Car 类、 Bus 类的 Java 编程代码。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1697688419242-image.png" alt="image.png"></p>
+<p>1）耦合度高低：依赖&lt;关联&lt;聚合&lt;组合&lt;实现</p>
+<p>2）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Vehicle.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Vehicle</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Car.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Car</span> <span class="keyword">implements</span> <span class="title class_">Vehicle</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Driver&gt; drivers;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Car</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.drivers = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// Car的run实现</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">beforeRun</span><span class="params">(Oil oil)</span> &#123;</span><br><span class="line">        <span class="comment">// Car的beforeRun实现</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addDriver</span><span class="params">(Driver driver)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.drivers.add(driver);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Bus.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Bus</span> <span class="keyword">extends</span> <span class="title class_">Car</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Bus</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Bus可能有特定的行为和属性，这里只提供基础构造方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完整代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Vehicle.java</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Vehicle</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Car.java</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span> <span class="keyword">implements</span> <span class="title class_">Vehicle</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Driver&gt; drivers;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Car</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.drivers = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// Car的run实现</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">beforeRun</span><span class="params">(Oil oil)</span> &#123;</span><br><span class="line">        <span class="comment">// Car的beforeRun实现</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addDriver</span><span class="params">(Driver driver)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.drivers.add(driver);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Bus.java</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Bus</span> <span class="keyword">extends</span> <span class="title class_">Car</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Bus</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Bus可能有特定的行为和属性，这里只提供基础构造方法</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Driver.java</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Driver</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Car&gt; cars;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Driver</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">        <span class="built_in">this</span>.cars = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addCar</span><span class="params">(Car car)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.cars.add(car);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Oil.java</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Oil</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String type;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Oil</span><span class="params">(String type)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.type = type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// Oil的add方法实现</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="UML软件动态交互视图建模"><a href="#UML软件动态交互视图建模" class="headerlink" title="UML软件动态交互视图建模"></a>UML软件动态交互视图建模</h1><p><font color='red'>软件动态交互视图</font>用于描述系统功能的对象之间动态交互行为。顺序图和通信图均属于动态交互模型图。</p>
+<h2 id="顺序图"><a href="#顺序图" class="headerlink" title="顺序图"></a>顺序图</h2><p><font color='red'>顺序图</font>也称序列图，它按照从上至下顺序描述对象之间的消息交互，其目的是展示功能逻辑的设计实现。</p>
+<ul>
+<li>顺序图由一组对象及它们之间的消息组成，强调消息的先后时间顺序。</li>
+<li>顺序图也包括生命线、激活、片段等图形元素。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223163902262.png" alt="image-20231223163902262"></p>
+<h2 id="通信图"><a href="#通信图" class="headerlink" title="通信图"></a>通信图</h2><p>通信图是另一种类型的动态交互图，它用于表现对象之间的协作关系。通信图由对象以及其关联组成，它强调对象间的连接关系，对象之间消息通信顺序使用序列号表示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223165901323.png" alt="image-20231223165901323"></p>
+<h2 id="类操作"><a href="#类操作" class="headerlink" title="类操作"></a>类操作</h2><p><font color='red'>类操作（方法）</font>是指类所能提供的服务或功能函数。类将一组操作函数作为服务提供给系统中的其他类访问。</p>
+<h3 id="发现操作"><a href="#发现操作" class="headerlink" title="发现操作"></a>发现操作</h3><ul>
+<li>可从顺序图或通信图的对象交互中发现类操作。顺序图和通信图中的每一条消息，都必须有目标对象的一个操作为其服务。</li>
+<li>根据类的职责确定操作，如数据记录创建、读取、更新和删除操作。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223170220267.png" alt="image-20231223170220267"></p>
+<h3 id="类操作的表示"><a href="#类操作的表示" class="headerlink" title="类操作的表示"></a>类操作的表示</h3><p>在 UML 中，类操作的表示语法为：</p>
+<p><code>[可见性] 操作名称 [（参数表）] [:返回类型] [&#123;属性字符串&#125;]</code></p>
+<p>操作名称是动词或动词短语，单词首字母小写。如果有多个单词，则将这些单词连接起来，第一个单词首字母小写，其他单词首字母大写。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223170420445.png" alt="image-20231223170420445"></p>
+<p>ChatGPT4:</p>
+<p>类图代表了使用数据传输对象（DTO）模式的用户注册系统设计。这种模式在面向对象设计中常用于软件应用子系统之间的数据传输。这里是类图的每个部分的详细解释：</p>
+<p><strong>UserDTO</strong> 类：</p>
+<p>这是一个简单的 DTO 类，包含两个属性：</p>
+<ul>
+<li><code>userAccount</code>：一个 <code>String</code> 类型，用来存储用户的账户名。</li>
+<li><code>userPassword</code>：一个 <code>String</code> 类型，用来存储用户的密码。</li>
+</ul>
+<p>它还提供了两个属性的获取和设置方法，允许其他类访问和修改这些值：</p>
+<ul>
+<li><code>getUserAccount()</code>：返回 <code>userAccount</code> 字符串。</li>
+<li><code>setUserAccount(String userAccount)</code>：设置 <code>userAccount</code> 字符串。</li>
+<li><code>getUserPassword()</code>：返回 <code>userPassword</code> 字符串。</li>
+<li><code>setUserPassword(String userPassword)</code>：设置 <code>userPassword</code> 字符串。</li>
+</ul>
+<p><strong>RegisterForm</strong> 类：</p>
+<p>这个类似乎代表用户填写的注册表单。它包含：</p>
+<ul>
+<li><code>user</code>：<code>UserDTO</code> 的一个实例，用来保存与用户相关的表单数据。</li>
+<li><code>userDao</code>：<code>IUserDAO</code> 接口的一个实例（下面会解释），可能用于将用户添加到某种类型的数据存储中。</li>
+</ul>
+<p><strong>IUserDAO</strong> 接口：</p>
+<p>这是一个定义用户数据访问对象（DAO）契约的接口，包含以下方法：</p>
+<ul>
+<li><code>addUser(UserDTO user)</code>：一个接受 <code>UserDTO</code> 对象并返回一个表示添加用户到数据存储是否成功的 <code>boolean</code> 值的方法。</li>
+</ul>
+<p><strong>OracleUserDAO</strong> 类：</p>
+<p>这是 <code>IUserDAO</code> 接口的一个具体实现，专门设计用来与 Oracle 数据库交互。它实现了 <code>IUserDAO</code> 接口的 <code>addUser</code> 方法。</p>
+<p><strong>关系</strong>：</p>
+<ul>
+<li><code>RegisterForm</code> 与 <code>UserDTO</code> 有一个组合关系，由实心菱形表示，意味着 <code>RegisterForm</code> 包含并控制 <code>UserDTO</code> 实例的生命周期。</li>
+<li><code>RegisterForm</code> 与 <code>IUserDAO</code> 有一个关联关系，由箭头表示，意味着它使用 <code>IUserDAO</code> 接口来访问用户数据。</li>
+<li><code>IUserDAO</code> 与 <code>OracleUserDAO</code> 有一个实现关系，由虚线和空心箭头表示。这意味着 <code>OracleUserDAO</code> 承诺实现 <code>IUserDAO</code> 定义的契约。</li>
+</ul>
+<p>案例：发现操作</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223170723340.png" alt="image-20231223170723340"></p>
+<h2 id="顺序图高级交互技术"><a href="#顺序图高级交互技术" class="headerlink" title="顺序图高级交互技术"></a>顺序图高级交互技术</h2><h3 id="创建与销毁临时对象"><a href="#创建与销毁临时对象" class="headerlink" title="创建与销毁临时对象"></a>创建与销毁临时对象</h3><ul>
+<li>当创建临时对象时，发送者发出一个实例化消息后将创建临时对象。</li>
+<li>当销毁临时对象时，发送者发出消息销毁临时对象，并回收其拥有的资源。</li>
+<li>在顺序图中，在对象的生命线上标记“×”符号，表示对象被销毁。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223171503752.png" alt="image-20231223171503752"></p>
+<h3 id="片段"><a href="#片段" class="headerlink" title="片段"></a>片段</h3><p>在模块功能详细设计中，需要描述功能处理的控制逻辑，如展示<font color='red'>条件分支</font>、<font color='red'>循环处理</font>，以及并行执行。在顺序图中采用不同类型的片段来表示这些控制逻辑。</p>
+<p>UML 2.x中预定义了如下片段:</p>
+<ul>
+<li>opt选项片段</li>
+<li>alt条件片段</li>
+<li>loop循环片段</li>
+<li>para并行片段</li>
+</ul>
+<p><font color='blue'>(1) loop循环片段</font></p>
+<p>在模块功能逻辑设计中，使用loop片段表示重复执行一些操作。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223172428127.png" alt="image-20231223172428127"></p>
+<p><font color='blue'>（2）para并行片段</font></p>
+<p>在模块功能逻辑设计中，使用para片段表示执行一些并行操作。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223172616562.png" alt="image-20231223172616562"></p>
+<p><font color='blue'>（3）alt条件片段</font></p>
+<p>在模块功能逻辑设计中，使用alt片段表示根据条件执行操作。alt片段表达if-then-else逻辑。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223172942095.png" alt="image-20231223172942095"></p>
+<p><font color='blue'>(4) opt选项片段</font></p>
+<p>在模块功能逻辑设计中，使用opt片段根据当条件执行选项操作。opt片段表达if..then逻辑。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223173118811.png" alt="image-20231223173118811"></p>
+<h3 id="交互引用"><a href="#交互引用" class="headerlink" title="交互引用"></a>交互引用</h3><p>在设计有较多相同处理逻辑的模块时，可以采用交互引用复用已有处理逻辑，被引用的处理逻辑采用标签 ref 标注。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223173248501.png" alt="image-20231223173248501"></p>
+<p>在如下订单提交模块序列图模型中，包含了哪些处理逻辑？并分别说明各交互对象的对象类型。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1698029643389-image.png" alt="image.png"></p>
+<p>订单结账和信用卡支付。</p>
+<p>Customer、Payment Processor为参与者， Order Checkout、CreditCard Payment为控制类对象， Checkout Page为边界类对象 ，Order、OrderItem、Item为实体类对象。</p>
+<h1 id="UML软件状态机视图建模"><a href="#UML软件状态机视图建模" class="headerlink" title="UML软件状态机视图建模"></a>UML软件状态机视图建模</h1><p><font color='red'>状态机图</font>是对系统中对象的状态变化逻辑进行建模，它描述类对象随时间变化的行为状态，以及对象受事件影响如何进行状态变迁。</p>
+<p>状态机图建模步骤：</p>
+<ul>
+<li>发现对象状态</li>
+<li>分析对象变迁的事件与条件</li>
+<li>建立对象状态图</li>
+</ul>
+<p>案例：微波炉工作的状态机图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223175114284.png" alt="image-20231223175114284"></p>
+<p>ChatGPT4：</p>
+<p>状态：</p>
+<ul>
+<li><strong>Waiting（等待）</strong>：微波炉的初始状态，显示时间，等待用户输入。</li>
+<li><strong>Full Power（全功率）</strong>：微波炉在全功率模式下工作，功率设置为600W。</li>
+<li><strong>Half Power（半功率）</strong>：微波炉在半功率模式下工作，功率设置为300W。</li>
+<li><strong>Set Time（设置时间）</strong>：用户设置微波炉的工作时间。</li>
+<li><strong>Enabled（启用）</strong>：微波炉门关闭，准备开始工作，显示“Ready”。</li>
+<li><strong>Disabled（禁用）</strong>：微波炉门开启，不允许操作，显示“Waiting”。</li>
+<li><strong>Operation（操作）</strong>：微波炉开始工作。</li>
+</ul>
+<p>转换和触发事件：</p>
+<ul>
+<li>用户选择全功率或半功率，微波炉进入相应的功率状态。</li>
+<li>在任何功率状态下，设置时间后，微波炉进入设置时间的状态。</li>
+<li>当时间被设置后，如果微波炉门关闭，微波炉变为启用状态。</li>
+<li>如果微波炉门打开，微波炉将变为禁用状态。</li>
+<li>从启用状态，开始操作将使微波炉进入操作状态并开始加热。</li>
+<li>用户可以在任何时候取消操作，微波炉将返回到等待状态。</li>
+<li>在操作结束后，微波炉将完成加热过程并返回到等待状态。</li>
+</ul>
+<p>针对如下电梯对象的状态机图模型，如何编写其Java控制程序？</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1698029766988-image.png" alt="image.png"></p>
+<p>代码均为简化代码，参考思路即可：</p>
+<p>1.定义电梯的状态和事件：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">ElevatorState</span> &#123;</span><br><span class="line">    IDLE,</span><br><span class="line">    MOVING_UP,</span><br><span class="line">    MOVING_DOWN,</span><br><span class="line">    OPEN_DOORS,</span><br><span class="line">    CLOSED_DOORS</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">ElevatorEvent</span> &#123;</span><br><span class="line">    CALL_UP,</span><br><span class="line">    CALL_DOWN,</span><br><span class="line">    MOVE_UP,</span><br><span class="line">    MOVE_DOWN,</span><br><span class="line">    DOORS_OPEN,</span><br><span class="line">    DOORS_CLOSE,</span><br><span class="line">    TIMEOUT</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.创建电梯的控制类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ElevatorControl</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> ElevatorState currentState;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ElevatorControl</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.currentState = ElevatorState.IDLE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleEvent</span><span class="params">(ElevatorEvent event)</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> (currentState) &#123;</span><br><span class="line">            <span class="keyword">case</span> IDLE:</span><br><span class="line">                <span class="keyword">switch</span> (event) &#123;</span><br><span class="line">                    <span class="keyword">case</span> CALL_UP:</span><br><span class="line">                        openDoors();</span><br><span class="line">                        currentState = ElevatorState.OPEN_DOORS;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> CALL_DOWN:</span><br><span class="line">                        <span class="comment">// Similar logic for CALL_DOWN</span></span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="comment">// Handle other events</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> MOVING_UP:</span><br><span class="line">                <span class="keyword">switch</span> (event) &#123;</span><br><span class="line">                    <span class="keyword">case</span> MOVE_UP:</span><br><span class="line">                        <span class="comment">// Logic for moving up</span></span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> TIMEOUT:</span><br><span class="line">                        currentState = ElevatorState.IDLE;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="comment">// Handle other events</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="comment">// Implement logic for other states</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">openDoors</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// Logic to open elevator doors</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Doors are opening.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Define other methods such as closeDoors(), moveUp(), moveDown(), etc.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.使用控制类响应事件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ElevatorSystem</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ElevatorControl</span> <span class="variable">elevator</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ElevatorControl</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Simulate events</span></span><br><span class="line">        elevator.handleEvent(ElevatorEvent.CALL_UP);</span><br><span class="line">        elevator.handleEvent(ElevatorEvent.DOORS_CLOSE);</span><br><span class="line">        elevator.handleEvent(ElevatorEvent.MOVE_UP);</span><br><span class="line">        <span class="comment">// Add more events as needed</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="UML-软件的实现视图建模"><a href="#UML-软件的实现视图建模" class="headerlink" title="UML 软件的实现视图建模"></a>UML 软件的实现视图建模</h1><h2 id="实现视图"><a href="#实现视图" class="headerlink" title="实现视图"></a>实现视图</h2><p>实现视图是对系统的实现结构建模，包括如下模型图：</p>
+<ul>
+<li><font color='red'>构件图</font>：建模构件和构件间的接口和依赖关系，表示系统构件组成结构；：</li>
+<li><font color='red'>部署图</font>：建模在系统运行时，构件在系统各节点上的物理部署关系及其运行环境；</li>
+<li><font color='red'>子系统与包图</font>：子系统可以用包来体现，可使用包图表示系统逻辑架构。</li>
+</ul>
+<h2 id="构件图"><a href="#构件图" class="headerlink" title="构件图"></a>构件图</h2><ul>
+<li>构件图是用来表示系统中构件与构件之间、构件与接口之间关系的图。</li>
+<li>构件图可以从多种层次粒度描述系统实现架构，如系统分解哪几个子系统，子系统包括哪些构件，构件由哪些类封装组成。</li>
+</ul>
+<h3 id="构件和构件之间的依赖关系"><a href="#构件和构件之间的依赖关系" class="headerlink" title="构件和构件之间的依赖关系"></a>构件和构件之间的依赖关系</h3><p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223181134347.png" alt="image-20231223181134347"></p>
+<h3 id="构件与接口之间的关系"><a href="#构件与接口之间的关系" class="headerlink" title="构件与接口之间的关系"></a>构件与接口之间的关系</h3><ul>
+<li>构件与构件之间通过定义良好的<font color='red'>接口</font>进行协作。</li>
+<li>构件图中，构件之间的关系表现为<font color='red'>依赖关系</font>或<font color='red'>实现关系</font>。</li>
+<li>实现关系指一个构件实现了一个接口，使用实线连接到小圆上。该接口被称为<font color='red'>供给接口</font>。</li>
+<li>依赖关系指一个构件使用了一个接口，使用实线连接到半圆上。该接口被称为<font color='red'>请求接口</font>。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223181425907.png" alt="image-20231223181425907"></p>
+<h3 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h3><p><font color='red'>端口</font>是指构件一个对外交互点。端口显示为一个小正方形，放置在构件方框的边界上。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223181609946.png" alt="image-20231223181609946"></p>
+<h3 id="端口连接"><a href="#端口连接" class="headerlink" title="端口连接"></a>端口连接</h3><p>在 UML 软件架构建模设计中，主要使用如下连接器将构件的端口进行连接。</p>
+<ul>
+<li>装配连接器：用于连接构件之间的端口</li>
+<li>委托连接器：用于连接构件供给端口与内部供给端口或内部请求端口与构件请求端口</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223182203179.png" alt="image-20231223182203179"></p>
+<p>作为一种选择， UML 还允许将<font color='red'>连接器</font>按如下方案连接构件端口。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223182641103.png" alt="image-20231223182641103"></p>
+<p>若有多个构件使用相同接口访问另一构件接口， UML 允许将连接器按如下方案连接构件端口。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223184949103.png" alt="image-20231223184949103"></p>
+<p>身份认证构件 (Authentication）端口与订单构件 (Orders) 端口均使用相同请求接口（lCustomers）连接客户构件（:Customers )端口的供给接口lCustomers。</p>
+<p><font color='red'>委托连接器</font>是将构件的端口连接到实现该行为的对象。它表示消息到达一个端口后，将被传递给内部目标对象进行处理。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223185338266.png" alt="image-20231223185338266"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223185434470.png" alt="image-20231223185434470"></p>
+<p>案例：电子商务系统的构件图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223185547292.png" alt="image-20231223185547292"></p>
+<h2 id="部署图"><a href="#部署图" class="headerlink" title="部署图"></a>部署图</h2><ul>
+<li>部署图用于对系统的物理实现情况进行建模。</li>
+<li>部署图用于表示软件构件如何部署到硬件环境中，它显示系统中的不同构件在何处物理地运行，以及彼此之间如何进行通信。</li>
+</ul>
+<p><strong>节点</strong></p>
+<ul>
+<li>节点是指人工制品和构件在系统中部署的硬件设备及其运行环境。</li>
+<li>节点之间通过通信线路将连接起来实现信息传输。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223190533597.png" alt="image-20231223190533597"></p>
+<p><strong>构件在节点中部署</strong></p>
+<p>构件需要在节点设备中运行。在建模时，需要将构件在节点中进行部署</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223190606027.png" alt="image-20231223190606027"></p>
+<p>案例：电子商务系统部署图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223190641805.png" alt="image-20231223190641805"></p>
+<h2 id="包图"><a href="#包图" class="headerlink" title="包图"></a>包图</h2><ul>
+<li>在 UML 模型图中包用来对模型元素进行分组，简化 UML 图，使其更容易理解。</li>
+<li>包图用于对模型自身组织进行建模，它是由一系列模型元素（类、用例等）构成的包所组成的模型，描述包与包之间的关系。</li>
+</ul>
+<h3 id="包"><a href="#包" class="headerlink" title="包"></a>包</h3><p>UML 中包表示为左上方带有小矩形的矩形。包的名称采用字符串，简单名仅包含名称字符串，全限定名则以本包所处的外围包的名称作为前缀。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223191018148.png" alt="image-20231223191018148"></p>
+<h3 id="包的可见性"><a href="#包的可见性" class="headerlink" title="包的可见性"></a>包的可见性</h3><p>包可以控制protected所包含的内部元素的可见性，即外部元素访问包内元素的权限：</p>
+<ul>
+<li><code>+ public</code>公共可见性: 对它所在包和内嵌包的对象可见，也对所有引入它的包及其子包中对象可见；</li>
+<li><code>- private</code>私有可见性: 只对它所在包中对象可见；</li>
+<li><code># protected</code>保护可见性: 对它所在包和内嵌包中对象可见；</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223191331202.png" alt="image-20231223191331202"></p>
+<h3 id="包的嵌套"><a href="#包的嵌套" class="headerlink" title="包的嵌套"></a>包的嵌套</h3><ul>
+<li>包可以拥有其他包，子包又可以拥有自己的子包，从而构成嵌套结构。</li>
+<li>包的嵌套可以清晰地表现模型元素之间的层次结构关系。</li>
+<li>但是包的嵌套不宜过深，层数一般以 2到 3 层为宜</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223191441457.png" alt="image-20231223191441457"></p>
+<h3 id="包图-1"><a href="#包图-1" class="headerlink" title="包图"></a>包图</h3><ul>
+<li>包图描述包与包之间的关系，可用于描述软件系统的逻辑模型。</li>
+<li>包与包之间可以存在依赖关系。两个包之间存在着依赖关系通常是指这两个包所包含的模型元素之间存在着一个或多个依赖关系。</li>
+<li>包的依赖关系使用一根虚线箭线表示，箭头指向被依赖的包。依赖关系可以标上标签，在《》中包含依赖关系的类型。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223191748930.png" alt="image-20231223191748930"></p>
+<p>案例：应用包图描述系统的软件架构</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223191823052.png" alt="image-20231223191823052"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223191939764.png" alt="image-20231223191939764"></p>
+<p>针对如下股票投资分析系统构件模型，分析构件之间关系如何设计？</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1698895901014-image.png" alt="image.png"></p>
+<p>ChatGPT4：</p>
+<p>在这个股票投资分析系统的构件模型中，构件之间的关系是按照客户端-服务器架构设计的。客户端包含用户界面（GUI）、图形库（Graphing Lib）、客户端会话（Client Session）和股票组合（Stock Portfolio）构件。服务器端包含认证服务器（Authentication Server）、服务器会话（Server Session）、股票市场分析器（Stock Market Analyzer）和投资组合数据库（Portfolio DB）构件。</p>
+<p>客户端的GUI用于展示信息和接收用户输入，图形库用于数据可视化。客户端会话管理用户与系统的交互，而股票组合构件负责管理用户的个人投资组合信息。这些客户端构件通过API与服务器端的构件交互。服务器端的认证服务器负责处理登录和安全认证，服务器会话维护与客户端的连接状态。股票市场分析器是系统的核心，负责分析股票市场数据和生成投资建议，而投资组合数据库存储用户的投资组合信息。</p>
+<p>客户端与服务器之间的交互通过网络进行。例如，用户通过GUI发起请求，客户端会话将请求发送到服务器，服务器会话接收请求并与认证服务器进行认证，然后由股票市场分析器处理请求。结果通过服务器会话返回给客户端会话，并最终通过GUI展示给用户。</p>
+<p>此外，系统还接入了第三方服务，如彭博数据库（Bloomberg DB），这提供了额外的市场数据，股票市场分析器可能会使用这些数据来增强分析结果的准确性。</p>
+<p>针对如下房地产按揭交易系统部署模型，分析各要素之间关系如何设计？</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1698896529486-image.png" alt="image.png"></p>
+<p>针对如下电商系统软件架构模型，分析包之间关系如何设计？</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/1698896624718-image.png" alt="image.png"></p>
+<p>《use》关系表示使用依赖，Web Shopping依赖Payment，Mobile Shopping依赖Payment……</p>
+<p>《merge》关系表示合并，Web Shopping、Mobile Shopping、Phone Shopping、和Mail Shopping合并之后就拥有了Shopping Cart的全部功能 。也表明了它们共享一些在“Web Shopping”包中定义的通用功能。</p>
+<p>《Access》关系表示私有引入，比如代码中的指定包名类名 。Payment可以访问Shopping Cart中的特定功能或类，但这种访问是受限的。</p>
+<p>《Import》关系表示公共引入，比如Java中的import之后，就可以直接使用import包中的类了。一旦“Shopping Cart”公共导入了“Inventory”，它就可以直接使用“Inventory”中定义的公共类和接口。</p>
+<h1 id="图书借阅管理系统软件建模设计实践"><a href="#图书借阅管理系统软件建模设计实践" class="headerlink" title="图书借阅管理系统软件建模设计实践"></a>图书借阅管理系统软件建模设计实践</h1><h2 id="系统需求"><a href="#系统需求" class="headerlink" title="系统需求"></a>系统需求</h2><p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223200450359.png" alt="image-20231223200450359"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223200521472.png" alt="image-20231223200521472"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223200634562.png" alt="image-20231223200634562"></p>
+<h2 id="系统静态模型设计"><a href="#系统静态模型设计" class="headerlink" title="系统静态模型设计"></a>系统静态模型设计</h2><p>建立系统静态模型类图。建立类图需要确定系统中的类，确定类的属性，确疋类之间的关系。根据系统动态模型确定类的操作并完善类图。</p>
+<p>（ 1 ）确定系统中的类</p>
+<ul>
+<li>系统用户有管理员 (Administrator) 、图书管理员 (Librarian) 和借阅者(Borrower) 三个参与者，可将他们抽取为的角色实体类。</li>
+<li>系统需存储图书信息，可抽取出Book类；需要存储借阅信息，可抽取出Loan类；需要存储预定信息，可抽取出Reservation类；这些类是系统中的主要业务实体类。</li>
+</ul>
+<p>（ 2 ）确定类的属性</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223200936822.png" alt="image-20231223200936822"></p>
+<p>（ 3 ）确定类之间的关系，创建系统类图</p>
+<h2 id="系统动态模型设计"><a href="#系统动态模型设计" class="headerlink" title="系统动态模型设计"></a><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223201018670.png" alt="image-20231223201018670">系统动态模型设计</h2><p>系统详细设计阶段，针对用例图中的每一个用例，考虑如何通过对象之间的协作来完成用例的功能。采用顺序图或通信图对用例功能进行设计建模，采用状态机图对类的行为状态进行设计建模。</p>
+<h3 id="图书搜索功能逻辑设计"><a href="#图书搜索功能逻辑设计" class="headerlink" title="图书搜索功能逻辑设计"></a>图书搜索功能逻辑设计</h3><p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223201152550.png" alt="image-20231223201152550"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223201207722.png" alt="image-20231223201207722"></p>
+<h3 id="图书借阅功能逻辑设计"><a href="#图书借阅功能逻辑设计" class="headerlink" title="图书借阅功能逻辑设计"></a>图书借阅功能逻辑设计</h3><p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223201319348.png" alt="image-20231223201319348"></p>
+<h3 id="图书归还功能逻辑设计"><a href="#图书归还功能逻辑设计" class="headerlink" title="图书归还功能逻辑设计"></a>图书归还功能逻辑设计</h3><p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223201354929.png" alt="image-20231223201354929"></p>
+<h3 id="Book对象的状态机图设计"><a href="#Book对象的状态机图设计" class="headerlink" title="Book对象的状态机图设计"></a>Book对象的状态机图设计</h3><p>Book 对象是图书管理系统中具有明显状态变化的对象，图书借阅业务都与Book对象状态有关。Book对象具有如下状态: 新书 (NewBook) 、可借阅预定(Available) 、被预定 (Reserved) 、被借阅 (Borrowed) 、被删除 (Deleted)。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223201509834.png" alt="image-20231223201509834"></p>
+<h3 id="Borrower对象的状态机图设计"><a href="#Borrower对象的状态机图设计" class="headerlink" title="Borrower对象的状态机图设计"></a>Borrower对象的状态机图设计</h3><p>Borrower对象也具有比较明显的状态，因此也采用状态机图对其建模。</p>
+<p>Borrower 对象具 有 如下状态: 新建 (NewUser) 、未预定未借书 (NoLoanReserve) 、有预定 (HasReserve) 、有借书 (HasLoan) 、有预定有借书 (HasLoanReserve) 、被删除 (Deleted)。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223201645185.png" alt="image-20231223201645185"></p>
+<h3 id="静态结构的类图模型细化设计"><a href="#静态结构的类图模型细化设计" class="headerlink" title="静态结构的类图模型细化设计"></a>静态结构的类图模型细化设计</h3><ul>
+<li><p>Borrower类需要提供</p>
+<ul>
+<li>checkBorrower操作</li>
+<li>checkNumBooks操作</li>
+<li>addLoan操作</li>
+<li>deleteLoan操作</li>
+</ul>
+</li>
+<li><p>Book类需要提供</p>
+<ul>
+<li>searchBook操作</li>
+<li>checkBook操作</li>
+<li>setLoanStatus操作</li>
+</ul>
+</li>
+<li><p>Loan类需要提供</p>
+<ul>
+<li>addLoan操作</li>
+<li>deleteLoan操作</li>
+<li>checkOverdue操作</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231223201905272.png" alt="image-20231223201905272"></p>
+<p>针对图书借阅管理系统如下构件，如何设计系统部署图模型，并在部署图中给出部署关系和运行环境（Apache、JBoss、PostgreSQL、Ubuntu）。</p>
+<p>1）页面构件：borrowBook.jsp、returnBook.jsp、reserveBook.jsp、searchBook.jsp、viewBook.jsp、borrowerInfo.jsp，</p>
+<p>2）控制构件：borrowBook.java、returnBook.java、reserveBook.java、searchBook.java、viewBook.java、borrowerInfo.java，</p>
+<p>3）实体构件：book.java、reservation.java、loan.java、borrower.java，</p>
+<p>4）数据库表：BookInfo、Reservation、Loan、Borrower、BookType</p>
+<p>ChatGPT4：</p>
+<p>我们可以按照三层架构来组织这些构件：</p>
+<ul>
+<li><strong>表示层</strong>（通过Apache和JBoss托管）: 包括所有的JSP页面，如 <code>borrowBook.jsp</code>, <code>returnBook.jsp</code> 等。</li>
+<li><strong>业务逻辑层</strong>（运行在JBoss上）: 包括控制和实体构件，如 <code>borrowBook.java</code>, <code>book.java</code> 等。</li>
+<li><strong>数据层</strong>（使用PostgreSQL）: 包含所有数据库表，如 <code>BookInfo</code>, <code>Loan</code> 等。</li>
+</ul>
+<p>现在，我将详细设计一个系统部署图模型来展示这些构件是如何部署和相互作用的：</p>
+<ol>
+<li><strong>Apache Web Server</strong>: 托管所有的JSP页面。这些页面通过HTTP请求与JBoss服务器通信。</li>
+<li><strong>JBoss Application Server</strong>: 处理来自Apache服务器的请求，并运行Java控制和实体构件。JBoss可以部署这些Java构件，并提供必要的运行环境。</li>
+<li><strong>PostgreSQL Database Server</strong>: 存储所有的数据库表，由JBoss服务器通过JDBC进行访问和操作。</li>
+</ol>
+<ul>
+<li>Apache Web Server托管JSP页面，并将请求转发给JBoss服务器。</li>
+<li>JBoss服务器处理业务逻辑，并与数据库服务器进行交互以存储或检索数据。</li>
+<li>PostgreSQL数据库服务器存储和管理数据，为业务逻辑层提供数据支持。</li>
+</ul>
+<p>所有这些组件都部署在Ubuntu操作系统上，确保系统兼容性和稳定性。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://uestcwxy.love">Palp1tate</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://uestcwxy.love/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/">https://uestcwxy.love/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://uestcwxy.love" target="_blank">Palp1tate</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/">大三自学</a><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">软件系统架构设计</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/" title="电子科大软件系统架构设计——系统架构设计"><img class="cover" src="https://s2.loli.net/2023/05/31/TREyA8hgqS7JnfV.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">电子科大软件系统架构设计——系统架构设计</div></div></a></div><div class="next-post pull-right"><a href="/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/" title="电子科大软件系统架构设计——设计模式"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">电子科大软件系统架构设计——设计模式</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/1/" title="电子科大软件系统架构设计——系统分析与设计概述"><img class="cover" src="https://s2.loli.net/2023/05/31/UuGQIvw8HNBrZsp.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-20</div><div class="title">电子科大软件系统架构设计——系统分析与设计概述</div></div></a></div><div><a href="/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/2/" title="电子科大软件系统架构设计——面向对象建模基础"><img class="cover" src="https://s2.loli.net/2023/05/31/1zC4bdRjiXnZ75a.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-20</div><div class="title">电子科大软件系统架构设计——面向对象建模基础</div></div></a></div><div><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/" title="电子科大软件系统架构设计——系统规划"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-21</div><div class="title">电子科大软件系统架构设计——系统规划</div></div></a></div><div><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/" title="电子科大软件系统架构设计——系统需求分析"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-21</div><div class="title">电子科大软件系统架构设计——系统需求分析</div></div></a></div><div><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/" title="电子科大软件系统架构设计——系统架构设计"><img class="cover" src="https://s2.loli.net/2023/05/31/TREyA8hgqS7JnfV.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-21</div><div class="title">电子科大软件系统架构设计——系统架构设计</div></div></a></div><div><a href="/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/" title="电子科大软件系统架构设计——设计模式"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-23</div><div class="title">电子科大软件系统架构设计——设计模式</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Palp1tate</div><div class="author-info__description">等我苦尽甘来时，我给你讲讲来时走的路。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/palp1tate/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.facebook.com/profile.php?id=100092533320651" target="_blank" title="facebook"><i class="fab fa-facebook" style="color: #4a7dbe;"></i></a><a class="social-icon" href="mailto:1939311091@qq.com" target="_blank" title="email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/1907948898" target="_blank" title="b站"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/tiktok.jpg" target="_blank" title="抖音"><i class="fab fa-tiktok" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/weixin.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">刚建站不久，博客美化有待研究，部分页面也没时间弄，路过的你将就看啦~😊，图片没加载出来就是网络不佳噢~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%BB%BA%E6%A8%A1%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">软件建模详细设计概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%BB%BA%E6%A8%A1%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text">软件建模详细设计目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%BB%BA%E6%A8%A1%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-number">1.2.</span> <span class="toc-text">软件建模详细设计原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99"><span class="toc-number">1.2.1.</span> <span class="toc-text">开闭原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8C%E6%B0%8F-Liskov-%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99"><span class="toc-number">1.2.2.</span> <span class="toc-text">里氏 (Liskov) 替换原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE%E5%8E%9F%E5%88%99"><span class="toc-number">1.2.3.</span> <span class="toc-text">依赖倒置原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E5%88%86%E7%A6%BB%E5%8E%9F%E5%88%99"><span class="toc-number">1.2.4.</span> <span class="toc-text">接口分离原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99"><span class="toc-number">1.2.5.</span> <span class="toc-text">单一职责原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%B0%91%E7%9F%A5%E8%AF%86%E5%8E%9F%E5%88%99%EF%BC%88%E8%BF%AA%E7%B1%B3%E7%89%B9%E6%B3%95%E5%88%99%EF%BC%89"><span class="toc-number">1.2.6.</span> <span class="toc-text">最少知识原则（迪米特法则）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E5%86%85%E8%81%9A%E5%8E%9F%E5%88%99"><span class="toc-number">1.2.7.</span> <span class="toc-text">高内聚原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%BE%E8%80%A6%E5%90%88%E5%8E%9F%E5%88%99"><span class="toc-number">1.2.8.</span> <span class="toc-text">松耦合原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%87%8D%E7%94%A8%E5%8E%9F%E5%88%99"><span class="toc-number">1.2.9.</span> <span class="toc-text">可重用原则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%BB%BA%E6%A8%A1%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E5%86%85%E5%AE%B9"><span class="toc-number">1.3.</span> <span class="toc-text">软件建模详细设计内容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UML-%E8%BD%AF%E4%BB%B6%E9%9D%99%E6%80%81%E7%BB%93%E6%9E%84%E8%A7%86%E5%9B%BE%E5%BB%BA%E6%A8%A1"><span class="toc-number">2.</span> <span class="toc-text">UML 软件静态结构视图建模</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E9%9D%99%E6%80%81%E7%BB%93%E6%9E%84%E7%BB%86%E5%8C%96%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.1.</span> <span class="toc-text">软件静态结构细化设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E8%81%9A%E5%90%88%E5%85%B3%E7%B3%BB%E7%BB%86%E5%88%86"><span class="toc-number">2.2.</span> <span class="toc-text">类的聚合关系细分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%93%E5%B1%9E%E8%81%9A%E5%90%88-Exclusive0wns"><span class="toc-number">2.2.1.</span> <span class="toc-text">专属聚合 (Exclusive0wns)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E5%B1%9E%E8%81%9A%E5%90%88-0wns"><span class="toc-number">2.2.2.</span> <span class="toc-text">从属聚合 (0wns)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%A5%E6%9C%89%E8%81%9A%E5%90%88-Has"><span class="toc-number">2.2.3.</span> <span class="toc-text">拥有聚合 (Has)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%90%E5%91%98%E8%81%9A%E5%90%88-Member"><span class="toc-number">2.2.4.</span> <span class="toc-text">成员聚合 (Member)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%8C%96%E4%B8%8E%E7%BB%A7%E6%89%BF"><span class="toc-number">2.3.</span> <span class="toc-text">泛化与继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF"><span class="toc-number">2.4.</span> <span class="toc-text">实现继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E7%BB%A7%E6%89%BF"><span class="toc-number">2.4.1.</span> <span class="toc-text">扩展继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%90%E5%88%B6%E7%BB%A7%E6%89%BF"><span class="toc-number">2.4.2.</span> <span class="toc-text">限制继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E4%BE%BF%E7%BB%A7%E6%89%BF"><span class="toc-number">2.4.3.</span> <span class="toc-text">方便继承</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E7%B1%BB%E5%9B%BE%E5%BB%BA%E6%A8%A1"><span class="toc-number">2.5.</span> <span class="toc-text">高级类图建模</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-number">2.5.1.</span> <span class="toc-text">可见性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E4%BF%A1%E6%81%AF"><span class="toc-number">2.5.2.</span> <span class="toc-text">导出信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%90%E5%AE%9A%E5%85%B3%E8%81%94"><span class="toc-number">2.5.3.</span> <span class="toc-text">限定关联</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E7%B1%BB%E4%B8%8E%E5%85%B7%E4%BD%93%E5%8C%96%E7%B1%BB"><span class="toc-number">2.5.4.</span> <span class="toc-text">关联类与具体化类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-number">2.6.</span> <span class="toc-text">接口与抽象类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.6.1.</span> <span class="toc-text">接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-number">2.6.2.</span> <span class="toc-text">抽象类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.6.3.</span> <span class="toc-text">接口与抽象类的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%86%85%E8%81%9A%E4%B8%8E%E8%80%A6%E5%90%88"><span class="toc-number">2.7.</span> <span class="toc-text">类内聚与耦合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%86%85%E8%81%9A%E4%B8%8E%E8%80%A6%E5%90%88%E7%9A%84%E5%90%AF%E5%8F%91%E8%A7%84%E5%88%99"><span class="toc-number">2.7.1.</span> <span class="toc-text">类内聚与耦合的启发规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E8%80%A6%E5%90%88%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-number">2.7.2.</span> <span class="toc-text">类耦合的种类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E4%B9%8B%E9%97%B4-6-%E7%A7%8D%E5%85%B3%E7%B3%BB%E7%9A%84%E8%80%A6%E5%90%88%E5%BC%BA%E5%BA%A6%E4%BE%9D%E6%AC%A1%E5%A2%9E%E5%BC%BA"><span class="toc-number">2.7.3.</span> <span class="toc-text">类之间 6 种关系的耦合强度依次增强</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%AA%E7%B1%B3%E7%89%B9%E6%B3%95%E5%88%99%E5%BA%94%E7%94%A8"><span class="toc-number">2.7.4.</span> <span class="toc-text">迪米特法则应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E7%B1%BB%E5%9B%BE%E5%BB%BA%E6%A8%A1%E5%AE%9E%E8%B7%B5"><span class="toc-number">2.8.</span> <span class="toc-text">设计类图建模实践</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UML%E8%BD%AF%E4%BB%B6%E5%8A%A8%E6%80%81%E4%BA%A4%E4%BA%92%E8%A7%86%E5%9B%BE%E5%BB%BA%E6%A8%A1"><span class="toc-number">3.</span> <span class="toc-text">UML软件动态交互视图建模</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%9B%BE"><span class="toc-number">3.1.</span> <span class="toc-text">顺序图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E5%9B%BE"><span class="toc-number">3.2.</span> <span class="toc-text">通信图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E6%93%8D%E4%BD%9C"><span class="toc-number">3.3.</span> <span class="toc-text">类操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E7%8E%B0%E6%93%8D%E4%BD%9C"><span class="toc-number">3.3.1.</span> <span class="toc-text">发现操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E6%93%8D%E4%BD%9C%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-number">3.3.2.</span> <span class="toc-text">类操作的表示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%9B%BE%E9%AB%98%E7%BA%A7%E4%BA%A4%E4%BA%92%E6%8A%80%E6%9C%AF"><span class="toc-number">3.4.</span> <span class="toc-text">顺序图高级交互技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%8E%E9%94%80%E6%AF%81%E4%B8%B4%E6%97%B6%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.4.1.</span> <span class="toc-text">创建与销毁临时对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%87%E6%AE%B5"><span class="toc-number">3.4.2.</span> <span class="toc-text">片段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92%E5%BC%95%E7%94%A8"><span class="toc-number">3.4.3.</span> <span class="toc-text">交互引用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UML%E8%BD%AF%E4%BB%B6%E7%8A%B6%E6%80%81%E6%9C%BA%E8%A7%86%E5%9B%BE%E5%BB%BA%E6%A8%A1"><span class="toc-number">4.</span> <span class="toc-text">UML软件状态机视图建模</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UML-%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%AE%9E%E7%8E%B0%E8%A7%86%E5%9B%BE%E5%BB%BA%E6%A8%A1"><span class="toc-number">5.</span> <span class="toc-text">UML 软件的实现视图建模</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%A7%86%E5%9B%BE"><span class="toc-number">5.1.</span> <span class="toc-text">实现视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E4%BB%B6%E5%9B%BE"><span class="toc-number">5.2.</span> <span class="toc-text">构件图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E4%BB%B6%E5%92%8C%E6%9E%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB"><span class="toc-number">5.2.1.</span> <span class="toc-text">构件和构件之间的依赖关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E4%BB%B6%E4%B8%8E%E6%8E%A5%E5%8F%A3%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">5.2.2.</span> <span class="toc-text">构件与接口之间的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3"><span class="toc-number">5.2.3.</span> <span class="toc-text">端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E8%BF%9E%E6%8E%A5"><span class="toc-number">5.2.4.</span> <span class="toc-text">端口连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E5%9B%BE"><span class="toc-number">5.3.</span> <span class="toc-text">部署图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%85%E5%9B%BE"><span class="toc-number">5.4.</span> <span class="toc-text">包图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85"><span class="toc-number">5.4.1.</span> <span class="toc-text">包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E7%9A%84%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-number">5.4.2.</span> <span class="toc-text">包的可见性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E7%9A%84%E5%B5%8C%E5%A5%97"><span class="toc-number">5.4.3.</span> <span class="toc-text">包的嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E5%9B%BE-1"><span class="toc-number">5.4.4.</span> <span class="toc-text">包图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E4%B9%A6%E5%80%9F%E9%98%85%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E5%BB%BA%E6%A8%A1%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5"><span class="toc-number">6.</span> <span class="toc-text">图书借阅管理系统软件建模设计实践</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E9%9C%80%E6%B1%82"><span class="toc-number">6.1.</span> <span class="toc-text">系统需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E9%9D%99%E6%80%81%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1"><span class="toc-number">6.2.</span> <span class="toc-text">系统静态模型设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%8A%A8%E6%80%81%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1"><span class="toc-number">6.3.</span> <span class="toc-text">系统动态模型设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E4%B9%A6%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1"><span class="toc-number">6.3.1.</span> <span class="toc-text">图书搜索功能逻辑设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E4%B9%A6%E5%80%9F%E9%98%85%E5%8A%9F%E8%83%BD%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1"><span class="toc-number">6.3.2.</span> <span class="toc-text">图书借阅功能逻辑设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E4%B9%A6%E5%BD%92%E8%BF%98%E5%8A%9F%E8%83%BD%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1"><span class="toc-number">6.3.3.</span> <span class="toc-text">图书归还功能逻辑设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Book%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%8A%B6%E6%80%81%E6%9C%BA%E5%9B%BE%E8%AE%BE%E8%AE%A1"><span class="toc-number">6.3.4.</span> <span class="toc-text">Book对象的状态机图设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Borrower%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%8A%B6%E6%80%81%E6%9C%BA%E5%9B%BE%E8%AE%BE%E8%AE%A1"><span class="toc-number">6.3.5.</span> <span class="toc-text">Borrower对象的状态机图设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E7%BB%93%E6%9E%84%E7%9A%84%E7%B1%BB%E5%9B%BE%E6%A8%A1%E5%9E%8B%E7%BB%86%E5%8C%96%E8%AE%BE%E8%AE%A1"><span class="toc-number">6.3.6.</span> <span class="toc-text">静态结构的类图模型细化设计</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/" title="电子科大软件系统架构设计——设计模式"><img src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——设计模式"/></a><div class="content"><a class="title" href="/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/" title="电子科大软件系统架构设计——设计模式">电子科大软件系统架构设计——设计模式</a><time datetime="2023-12-23T13:43:11.000Z" title="发表于 2023-12-23 21:43:11">2023-12-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/" title="电子科大软件系统架构设计——软件建模详细设计"><img src="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——软件建模详细设计"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/" title="电子科大软件系统架构设计——软件建模详细设计">电子科大软件系统架构设计——软件建模详细设计</a><time datetime="2023-12-21T06:21:31.000Z" title="发表于 2023-12-21 14:21:31">2023-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/" title="电子科大软件系统架构设计——系统架构设计"><img src="https://s2.loli.net/2023/05/31/TREyA8hgqS7JnfV.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——系统架构设计"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/" title="电子科大软件系统架构设计——系统架构设计">电子科大软件系统架构设计——系统架构设计</a><time datetime="2023-12-21T06:21:26.000Z" title="发表于 2023-12-21 14:21:26">2023-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/" title="电子科大软件系统架构设计——系统需求分析"><img src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——系统需求分析"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/" title="电子科大软件系统架构设计——系统需求分析">电子科大软件系统架构设计——系统需求分析</a><time datetime="2023-12-21T06:21:22.000Z" title="发表于 2023-12-21 14:21:22">2023-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/" title="电子科大软件系统架构设计——系统规划"><img src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——系统规划"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/" title="电子科大软件系统架构设计——系统规划">电子科大软件系统架构设计——系统规划</a><time datetime="2023-12-21T03:02:30.000Z" title="发表于 2023-12-21 11:02:30">2023-12-21</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 By Palp1tate</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><i class="fa-solid fa-cloud"></i><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>萌ICP备20230529号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="6614140207" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-mini="true"> </div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

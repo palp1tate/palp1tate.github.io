@@ -1,0 +1,436 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>电子科大软件系统架构设计——面向对象建模基础 | Palp1tate</title><meta name="author" content="Palp1tate,1939311091@qq.com"><meta name="copyright" content="Palp1tate"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="面向对象建模基础UML建模语言一、系统开发为什么需要建模? 在现实世界中，信息系统通常是一个复杂系统。为了开发实现信息系统，需要抽象出一套模型反映系统最本质的东西。这样可略去枝节，实现对信息系统实质性的分析描述和某种程度的系统设计简化。因此，模型是对现实世界的简化描述。 二、系统模型的作用  可以抽象出待开发系统的可视化模型表示 模型可以反映系统的结构和行为 模型提供构造系统的模板 模型可以作为系">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电子科大软件系统架构设计——面向对象建模基础">
+<meta property="og:url" content="https://uestcwxy.love/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/2/index.html">
+<meta property="og:site_name" content="Palp1tate">
+<meta property="og:description" content="面向对象建模基础UML建模语言一、系统开发为什么需要建模? 在现实世界中，信息系统通常是一个复杂系统。为了开发实现信息系统，需要抽象出一套模型反映系统最本质的东西。这样可略去枝节，实现对信息系统实质性的分析描述和某种程度的系统设计简化。因此，模型是对现实世界的简化描述。 二、系统模型的作用  可以抽象出待开发系统的可视化模型表示 模型可以反映系统的结构和行为 模型提供构造系统的模板 模型可以作为系">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/05/31/1zC4bdRjiXnZ75a.jpg">
+<meta property="article:published_time" content="2023-12-20T10:06:06.000Z">
+<meta property="article:modified_time" content="2023-12-20T13:38:42.960Z">
+<meta property="article:author" content="Palp1tate">
+<meta property="article:tag" content="大三自学">
+<meta property="article:tag" content="软件系统架构设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/05/31/1zC4bdRjiXnZ75a.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://uestcwxy.love/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Palp1tate","link":"链接: ","source":"来源: Palp1tate","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '电子科大软件系统架构设计——面向对象建模基础',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-20 21:38:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Palp1tate" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2023/05/31/1zC4bdRjiXnZ75a.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Palp1tate"><span class="site-name">Palp1tate</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">电子科大软件系统架构设计——面向对象建模基础</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-20T10:06:06.000Z" title="发表于 2023-12-20 18:06:06">2023-12-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-20T13:38:42.960Z" title="更新于 2023-12-20 21:38:42">2023-12-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="电子科大软件系统架构设计——面向对象建模基础"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="面向对象建模基础"><a href="#面向对象建模基础" class="headerlink" title="面向对象建模基础"></a>面向对象建模基础</h1><h2 id="UML建模语言"><a href="#UML建模语言" class="headerlink" title="UML建模语言"></a>UML建模语言</h2><p><strong>一、系统开发为什么需要建模?</strong></p>
+<p>在现实世界中，信息系统通常是一个复杂系统。为了开发实现信息系统，需要抽象出一套模型反映系统最本质的东西。这样可略去枝节，实现对信息系统实质性的分析描述和某种程度的系统设计简化。因此，模型是对现实世界的简化描述。</p>
+<p>二、<strong>系统模型的作用</strong></p>
+<ul>
+<li>可以抽象出待开发系统的可视化模型表示</li>
+<li>模型可以反映系统的结构和行为</li>
+<li>模型提供构造系统的模板</li>
+<li>模型可以作为系统设计决策依据</li>
+</ul>
+<p>三、<strong>系统建模的原则</strong></p>
+<ul>
+<li>选择合适的建模方法</li>
+<li>提供不同层次的抽象模型</li>
+<li>从多个视角创建不同的视图模型</li>
+<li>模型应准确刻画系统的静态结构与动态行为</li>
+</ul>
+<p><strong>四、UML建模语言简介</strong></p>
+<ul>
+<li>UML(Unified Modeling Language)是一种<font color='red'>面向对象的可视化建模语言</font>。</li>
+<li>UML是一个通用的标准建模语言，它可以对系统的<font color='red'>静态结构和动态行为</font>进行建模。</li>
+<li>UML可用于系统开发的不同阶段阶段建模，如从系统需求分析到系统测试与维护。</li>
+<li>UML包含描述系统的静态结构和动态行为的两大类模型图，共计14种图形。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905133342903.png" alt="image-20230905133342903"></p>
+<h2 id="UML模型图"><a href="#UML模型图" class="headerlink" title="UML模型图"></a>UML模型图</h2><h3 id="用例图"><a href="#用例图" class="headerlink" title="用例图"></a>用例图</h3><p>用例图模型元素：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905134028842.png" alt="image-20230905134028842"></p>
+<p><font color='red'>系统用例图</font>（ System Use CaseDiagram) 从<strong>系统需求分析</strong>角度对系统开发的功能要求进行抽象描述的模型图。</p>
+<ul>
+<li><strong>用例是系统的功能点抽象</strong>。</li>
+<li><strong>角色是系统的用户类型抽象</strong>。</li>
+<li>角色与用例、用例与用例之间的关联表示它们存在一定的联系。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905133908758.png" alt="image-20230905133908758"></p>
+<p><font color='red'>业务用例图 </font>(Business Use CaseDiagram) 是从<strong>业务分析</strong>角度对业务功能进行抽象描述的模型图。</p>
+<ul>
+<li><strong>用例是业务的功能点抽象</strong>。</li>
+<li><strong>角色是业务的用户类型抽象</strong>。</li>
+<li>角色与用例、用例与用例之间的关联表示它们存在一定的联系。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905134332706.png" alt="image-20230905134332706"></p>
+<h3 id="活动图"><a href="#活动图" class="headerlink" title="活动图"></a>活动图</h3><p>活动图模型元素：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905134746803.png" alt="image-20230905134746803"></p>
+<p><font color="red">活动图</font>(Activity Diagram）是描述用例内部活动执行顺序以及活动输入输出的模型图。<br>活动图还可用于描述业务流程、算法流程、系统控制流程等。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905134711881.png" alt="image-20230905134711881"></p>
+<h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><p>类图模型元素：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905135136570.png" alt="image-20230905135136570"></p>
+<p><font color="red">类图</font>(Class Diagram）是描述系统由哪些类组成，即面向对象程序组成。<br>它也用于描述表示系统中类程序之间的关系，直观呈现系统程序的静态结构。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905135206500.png" alt="image-20230905135206500"></p>
+<h3 id="顺序图"><a href="#顺序图" class="headerlink" title="顺序图"></a>顺序图</h3><p>顺序图模型元素：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905135333599.png" alt="image-20230905135333599"></p>
+<p><font color="red">顺序图</font>(Sequence Diagram,也称序列图）是一种描述对象之间消息交互的模型图。<br>用来反映对象之间的动态协作关系，也就是对象之间的交互关系。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905135438712.png" alt="image-20230905135438712"></p>
+<h3 id="通信图"><a href="#通信图" class="headerlink" title="通信图"></a>通信图</h3><p>通信图模型元素：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905135725605.png" alt="image-20230905135725605"></p>
+<p><strong>通信图</strong>(Communication Diagram）是表现对象间直接消息交互关系的模型图。<br>它展现了多个对象在协同工作达成共同目标的过程中互相通信的情况。<br>通过对象和对象之间的链接、发送的消息来显示对象之间的交互关系。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905135747072.png" alt="image-20230905135747072"></p>
+<h3 id="状态机图"><a href="#状态机图" class="headerlink" title="状态机图"></a>状态机图</h3><p>状态机图模型元素：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905135846412.png" alt="image-20230905135846412"></p>
+<p><strong>状态机图</strong>( State MachineDiagram)是描述一个对象在其生命周期内所经历的各种状态以及状态变迁的模型图。<br>描述类的对象所有可能的状态以及事件发生时状态的转移条件。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905135922799.png" alt="image-20230905135922799"></p>
+<h3 id="构件图"><a href="#构件图" class="headerlink" title="构件图"></a>构件图</h3><p>构件图模型元素：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905140057026.png" alt="image-20230905140057026"></p>
+<p><strong>构件图</strong>(Component Diagram）是描述系统的构件组成及其关系的模型图。<br>描述软件实现的物理结构，从而反映出基于构件的软件实现。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905140434381.png" alt="image-20230905140434381"></p>
+<h3 id="部署图"><a href="#部署图" class="headerlink" title="部署图"></a>部署图</h3><p>部署图模型元素：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905142201823.png" alt="image-20230905142201823"></p>
+<p><strong>部署图</strong>(Deployment Diagram )是表示系统构件在运行环境节点中的部署方案。<br>从部署图还可以获知软件和硬件节点之间的物理拓扑、处理节点以及运行环境情况。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905142320147.png" alt="image-20230905142320147"></p>
+<h3 id="包图"><a href="#包图" class="headerlink" title="包图"></a>包图</h3><p>包图模型元素：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905142646033.png" alt="image-20230905142646033"></p>
+<p><strong>包图</strong>(Package Diagram）是采用类似文件夹的包符号表示模型元素的组织结构模型图。包被描述成文件夹，可以应用在任何一种UML图上。<br>系统中的每个元素都只能为一个包所有，一个包可嵌套在另一个包中。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905142937389.png" alt="image-20230905142937389"></p>
+<h3 id="对象图"><a href="#对象图" class="headerlink" title="对象图"></a>对象图</h3><p><strong>对象图</strong>(0bject Diagram)显示类元素的实例间如何关联，以及在运行时如何使用的模型图。<br>UML对象图与类图一样均反映系统的静态结构，但对象图是从实例化情景来表达，它显示某时刻对象与对象之间的关系。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905143405814.png" alt="image-20230905143405814"></p>
+<h3 id="组合结构图"><a href="#组合结构图" class="headerlink" title="组合结构图"></a>组合结构图</h3><p><strong>组合结构图</strong>(CompositeStructure Diagram)提供了一种对系统部件的内部结构建模方法，同时也描述本部件与系统其它部件的交互点。<br>内部部件通过端口与环境交互。内部部件之间的协作关系。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905143455963.png" alt="image-20230905143455963"></p>
+<h3 id="扩展图"><a href="#扩展图" class="headerlink" title="扩展图"></a>扩展图</h3><p><strong>扩展图</strong>(Profile Diagram）为特定领域提供一种轻量级UML扩展机制（构造型、标记值、约束、基类等)。<br>使用域专用的属性与限制定义一组构建体，从而扩展潜在的UML元素。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905143534091.png" alt="image-20230905143534091"></p>
+<h3 id="交互概览图"><a href="#交互概览图" class="headerlink" title="交互概览图"></a>交互概览图</h3><p><strong>交互概览图</strong>（Profile Diagram）为交互图与活动图的混合体。<br>提供在复杂活动流程节点中描述对象之间的交互行为。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905143603572.png" alt="image-20230905143603572"></p>
+<h3 id="时间图"><a href="#时间图" class="headerlink" title="时间图"></a>时间图</h3><p><strong>时间图</strong>( Time Diagram)用来建模对象之间交互的时序状态变化关系。<br>也表示对象之间交互的时间和期限约束。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905143632676.png" alt="image-20230905143632676"></p>
+<h2 id="BPMN建模语言"><a href="#BPMN建模语言" class="headerlink" title="BPMN建模语言"></a>BPMN建模语言</h2><h3 id="业务建模"><a href="#业务建模" class="headerlink" title="业务建模"></a>业务建模</h3><p><strong>业务建模</strong>（Business Modeling，BM）是以业务模型方式描述组织机构管理及其业务所涉及的对象要素、以及它们的行为关系，为持续改进业务过程提供基础。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905144138683.png" alt="image-20230905144138683"></p>
+<p><strong>业务建模内容</strong>：</p>
+<ul>
+<li>组织机构建模</li>
+<li>部门职能建模</li>
+<li>业务过程建模</li>
+<li>业务信息数据建模</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905144338809.png" alt="image-20230905144338809"></p>
+<p><strong>业务模型图之间的关系</strong>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905144451605.png" alt="image-20230905144451605"></p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><strong>BPMN</strong>(Business Process Modelling Notation）定义了一套标准的业务流程图符号，使用这些符号可以创建描述业务流程操作的图形化模型。</p>
+<p>BPMN还支持生成可执行的<strong>业务流程执行语言</strong>（BPEL)。BPMN可以基于WS-BPEL转换为软件流程组件。使用BPMN可以建模描述机构内部业务流程能力，其模型可以作为设计人员、管理人员和业务流程实现人员交流业务活动的桥梁。</p>
+<h3 id="模型元素"><a href="#模型元素" class="headerlink" title="模型元素"></a>模型元素</h3><h4 id="流对象"><a href="#流对象" class="headerlink" title="流对象"></a>流对象</h4><h5 id="活动"><a href="#活动" class="headerlink" title="活动"></a>活动</h5><p><font color='red'>活动</font>(Activity) :是指在流程中执行的任何工作，即任务。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905144944871.png" alt="image-20230905144944871"></p>
+<h5 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h5><p><font color='red'>事件</font>(Event) :在业务流程中发生的任何事情。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905145025840.png" alt="image-20230905145025840"></p>
+<h5 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h5><p><font color='red'>网关</font>(Gateway） :用于控制流程的分支。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905145102669.png" alt="image-20230905145102669"></p>
+<h4 id="流"><a href="#流" class="headerlink" title="流"></a>流</h4><p><font color='red'>流</font>(Flow）用于连接流对象，与流对象一起定义业务流程的过程。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905145223226.png" alt="image-20230905145223226"></p>
+<h4 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h4><p>数据（Data）是指业务流程中的数据表示，具体又分为<strong>数据对象、数据对象集、数据输入和数据输出</strong>等。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905145304515.png" alt="image-20230905145304515"></p>
+<h4 id="人工制品"><a href="#人工制品" class="headerlink" title="人工制品"></a>人工制品</h4><p><font color='red'>人工制品</font>(Artifact）用以表示流程附加一些额外的信息，支持业务流程的过程说明。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905145335240.png" alt="image-20230905145335240"></p>
+<h4 id="泳池和泳道"><a href="#泳池和泳道" class="headerlink" title="泳池和泳道"></a>泳池和泳道</h4><p><font color='red'>泳池</font>（Pool）标识业务的各实体参与者活动及流程范围。一个泳池可以包含多个<font color='red'>泳道</font>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905145419686.png" alt="image-20230905145419686"></p>
+<h3 id="建模案例"><a href="#建模案例" class="headerlink" title="建模案例"></a>建模案例</h3><h4 id="订单采购流程建模"><a href="#订单采购流程建模" class="headerlink" title="订单采购流程建模"></a>订单采购流程建模</h4><p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905150239041.png"></p>
+<h4 id="电商系统订货业务流程建模"><a href="#电商系统订货业务流程建模" class="headerlink" title="电商系统订货业务流程建模"></a>电商系统订货业务流程建模</h4><p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905151328307.png" alt="image-20230905151328307"></p>
+<h4 id="硬件零售商的运输业务流程建模"><a href="#硬件零售商的运输业务流程建模" class="headerlink" title="硬件零售商的运输业务流程建模"></a>硬件零售商的运输业务流程建模</h4><p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230905151411356.png"></p>
+<p>UML建模和BPMN建模都可以使用建模工具Power Designer和Enterprise Architecture。</p>
+<h2 id="课堂练习"><a href="#课堂练习" class="headerlink" title="课堂练习"></a>课堂练习</h2><p>1．下面哪个不是面向对象思想中的概念? (B)</p>
+<p>A．封装B．包含C．多态D．抽象</p>
+<p>2．UML结构图不包含下面哪种图?(A)</p>
+<p>A．用例图B．类图C．构件图D．部署图</p>
+<p>3．类图中包含下面哪个元素?(D)</p>
+<p>A．类	B．关联关系	C．接口	D．以上都是</p>
+<p>4．顺序图不包含下面哪个元素? （A)</p>
+<p>A．泳道	B．对象	C．消息	D．生命线</p>
+<p>5．模型是（A)</p>
+<p>A．现实世界的简化描述</p>
+<p>B．现实世界的完整描述</p>
+<p>C．现实世界的具体化描述</p>
+<p>D．现实世界的封装</p>
+<p>1．面向对象的需求分析与编程语言无关。（√)</p>
+<p>2．活动图可以表示并发活动。（√)</p>
+<p>3．每个状态机图可以反映多个对象的状态。(×)</p>
+<p>4．部署图的节点中可以嵌入构件。(√)</p>
+<p>5．BPMN可以基于WS-BPEL转换为软件流程组件。(√)</p>
+<p>6.状态机图有自转换状态。(√)</p>
+<ul>
+<li><p>面向对象的思想应用包括面向对象分析、(面向对象设计)、面向对象编程。</p>
+</li>
+<li><p>类图中类之间的关系有关联关系、依赖关系、聚合关系、(泛化关系)。</p>
+</li>
+<li><p>通信图中的元素包括对象、(消息)、链、自反链。</p>
+</li>
+<li><p>BPMN流对象分为三类：活动、(事件)、网关。</p>
+</li>
+<li><p>BPMN中数据分为数据对象、(数据对象集)、数据输入和数据输出等。</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://uestcwxy.love">Palp1tate</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://uestcwxy.love/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/2/">https://uestcwxy.love/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://uestcwxy.love" target="_blank">Palp1tate</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/">大三自学</a><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">软件系统架构设计</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2023/05/31/1zC4bdRjiXnZ75a.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/1/" title="电子科大软件系统架构设计——系统分析与设计概述"><img class="cover" src="https://s2.loli.net/2023/05/31/UuGQIvw8HNBrZsp.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">电子科大软件系统架构设计——系统分析与设计概述</div></div></a></div><div class="next-post pull-right"><a href="/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/8/" title="电子科大软件架构设计——期末复习题集"><img class="cover" src="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">电子科大软件架构设计——期末复习题集</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/1/" title="电子科大软件系统架构设计——系统分析与设计概述"><img class="cover" src="https://s2.loli.net/2023/05/31/UuGQIvw8HNBrZsp.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-20</div><div class="title">电子科大软件系统架构设计——系统分析与设计概述</div></div></a></div><div><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/" title="电子科大软件系统架构设计——系统规划"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-21</div><div class="title">电子科大软件系统架构设计——系统规划</div></div></a></div><div><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/" title="电子科大软件系统架构设计——系统需求分析"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-21</div><div class="title">电子科大软件系统架构设计——系统需求分析</div></div></a></div><div><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/" title="电子科大软件系统架构设计——系统架构设计"><img class="cover" src="https://s2.loli.net/2023/05/31/TREyA8hgqS7JnfV.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-21</div><div class="title">电子科大软件系统架构设计——系统架构设计</div></div></a></div><div><a href="/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/" title="电子科大软件系统架构设计——设计模式"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-23</div><div class="title">电子科大软件系统架构设计——设计模式</div></div></a></div><div><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/" title="电子科大软件系统架构设计——软件建模详细设计"><img class="cover" src="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-21</div><div class="title">电子科大软件系统架构设计——软件建模详细设计</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Palp1tate</div><div class="author-info__description">等我苦尽甘来时，我给你讲讲来时走的路。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/palp1tate/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.facebook.com/profile.php?id=100092533320651" target="_blank" title="facebook"><i class="fab fa-facebook" style="color: #4a7dbe;"></i></a><a class="social-icon" href="mailto:1939311091@qq.com" target="_blank" title="email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/1907948898" target="_blank" title="b站"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/tiktok.jpg" target="_blank" title="抖音"><i class="fab fa-tiktok" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/weixin.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">刚建站不久，博客美化有待研究，部分页面也没时间弄，路过的你将就看啦~😊，图片没加载出来就是网络不佳噢~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%BB%BA%E6%A8%A1%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">面向对象建模基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#UML%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">UML建模语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UML%E6%A8%A1%E5%9E%8B%E5%9B%BE"><span class="toc-number">1.2.</span> <span class="toc-text">UML模型图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E4%BE%8B%E5%9B%BE"><span class="toc-number">1.2.1.</span> <span class="toc-text">用例图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B4%BB%E5%8A%A8%E5%9B%BE"><span class="toc-number">1.2.2.</span> <span class="toc-text">活动图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9B%BE"><span class="toc-number">1.2.3.</span> <span class="toc-text">类图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%9B%BE"><span class="toc-number">1.2.4.</span> <span class="toc-text">顺序图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E5%9B%BE"><span class="toc-number">1.2.5.</span> <span class="toc-text">通信图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%9C%BA%E5%9B%BE"><span class="toc-number">1.2.6.</span> <span class="toc-text">状态机图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E4%BB%B6%E5%9B%BE"><span class="toc-number">1.2.7.</span> <span class="toc-text">构件图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E5%9B%BE"><span class="toc-number">1.2.8.</span> <span class="toc-text">部署图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E5%9B%BE"><span class="toc-number">1.2.9.</span> <span class="toc-text">包图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%9B%BE"><span class="toc-number">1.2.10.</span> <span class="toc-text">对象图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E7%BB%93%E6%9E%84%E5%9B%BE"><span class="toc-number">1.2.11.</span> <span class="toc-text">组合结构图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E5%9B%BE"><span class="toc-number">1.2.12.</span> <span class="toc-text">扩展图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92%E6%A6%82%E8%A7%88%E5%9B%BE"><span class="toc-number">1.2.13.</span> <span class="toc-text">交互概览图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%9B%BE"><span class="toc-number">1.2.14.</span> <span class="toc-text">时间图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BPMN%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80"><span class="toc-number">1.3.</span> <span class="toc-text">BPMN建模语言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E5%BB%BA%E6%A8%A1"><span class="toc-number">1.3.1.</span> <span class="toc-text">业务建模</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.3.2.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%85%83%E7%B4%A0"><span class="toc-number">1.3.3.</span> <span class="toc-text">模型元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">流对象</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B4%BB%E5%8A%A8"><span class="toc-number">1.3.3.1.1.</span> <span class="toc-text">活动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.3.3.1.2.</span> <span class="toc-text">事件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BD%91%E5%85%B3"><span class="toc-number">1.3.3.1.3.</span> <span class="toc-text">网关</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%BA%E5%B7%A5%E5%88%B6%E5%93%81"><span class="toc-number">1.3.3.4.</span> <span class="toc-text">人工制品</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%B3%E6%B1%A0%E5%92%8C%E6%B3%B3%E9%81%93"><span class="toc-number">1.3.3.5.</span> <span class="toc-text">泳池和泳道</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E6%A8%A1%E6%A1%88%E4%BE%8B"><span class="toc-number">1.3.4.</span> <span class="toc-text">建模案例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A2%E5%8D%95%E9%87%87%E8%B4%AD%E6%B5%81%E7%A8%8B%E5%BB%BA%E6%A8%A1"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">订单采购流程建模</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%A2%E8%B4%A7%E4%B8%9A%E5%8A%A1%E6%B5%81%E7%A8%8B%E5%BB%BA%E6%A8%A1"><span class="toc-number">1.3.4.2.</span> <span class="toc-text">电商系统订货业务流程建模</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E9%9B%B6%E5%94%AE%E5%95%86%E7%9A%84%E8%BF%90%E8%BE%93%E4%B8%9A%E5%8A%A1%E6%B5%81%E7%A8%8B%E5%BB%BA%E6%A8%A1"><span class="toc-number">1.3.4.3.</span> <span class="toc-text">硬件零售商的运输业务流程建模</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E5%A0%82%E7%BB%83%E4%B9%A0"><span class="toc-number">1.4.</span> <span class="toc-text">课堂练习</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/" title="电子科大软件系统架构设计——设计模式"><img src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——设计模式"/></a><div class="content"><a class="title" href="/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/" title="电子科大软件系统架构设计——设计模式">电子科大软件系统架构设计——设计模式</a><time datetime="2023-12-23T13:43:11.000Z" title="发表于 2023-12-23 21:43:11">2023-12-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/" title="电子科大软件系统架构设计——软件建模详细设计"><img src="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——软件建模详细设计"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/" title="电子科大软件系统架构设计——软件建模详细设计">电子科大软件系统架构设计——软件建模详细设计</a><time datetime="2023-12-21T06:21:31.000Z" title="发表于 2023-12-21 14:21:31">2023-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/" title="电子科大软件系统架构设计——系统架构设计"><img src="https://s2.loli.net/2023/05/31/TREyA8hgqS7JnfV.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——系统架构设计"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/" title="电子科大软件系统架构设计——系统架构设计">电子科大软件系统架构设计——系统架构设计</a><time datetime="2023-12-21T06:21:26.000Z" title="发表于 2023-12-21 14:21:26">2023-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/" title="电子科大软件系统架构设计——系统需求分析"><img src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——系统需求分析"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/" title="电子科大软件系统架构设计——系统需求分析">电子科大软件系统架构设计——系统需求分析</a><time datetime="2023-12-21T06:21:22.000Z" title="发表于 2023-12-21 14:21:22">2023-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/" title="电子科大软件系统架构设计——系统规划"><img src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——系统规划"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/" title="电子科大软件系统架构设计——系统规划">电子科大软件系统架构设计——系统规划</a><time datetime="2023-12-21T03:02:30.000Z" title="发表于 2023-12-21 11:02:30">2023-12-21</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2023/05/31/1zC4bdRjiXnZ75a.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 By Palp1tate</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><i class="fa-solid fa-cloud"></i><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>萌ICP备20230529号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="6614140207" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-mini="true"> </div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

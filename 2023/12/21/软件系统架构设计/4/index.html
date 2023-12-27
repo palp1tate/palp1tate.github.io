@@ -1,0 +1,765 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>电子科大软件系统架构设计——系统需求分析 | Palp1tate</title><meta name="author" content="Palp1tate,1939311091@qq.com"><meta name="copyright" content="Palp1tate"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="系统需求分析需求采集研究现有文档与系统 组织机构图 系统规划文档 工作规范文档 业务单据 数据报表 反馈意见 领域知识 现有系统  组织机构图组织机构图提供了组织机构的部门、关键岗位与角色构成，并能反映它们之间的所属关系。  系统规划文档组织机构的使命陈述、IT战略、信息化目标、建设方案、技术路线等。  工作规范文档组织管理上的各种制度与规范，如客服服务流程规范文件、财务报销规定、采购规定、设备入">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电子科大软件系统架构设计——系统需求分析">
+<meta property="og:url" content="https://uestcwxy.love/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/index.html">
+<meta property="og:site_name" content="Palp1tate">
+<meta property="og:description" content="系统需求分析需求采集研究现有文档与系统 组织机构图 系统规划文档 工作规范文档 业务单据 数据报表 反馈意见 领域知识 现有系统  组织机构图组织机构图提供了组织机构的部门、关键岗位与角色构成，并能反映它们之间的所属关系。  系统规划文档组织机构的使命陈述、IT战略、信息化目标、建设方案、技术路线等。  工作规范文档组织管理上的各种制度与规范，如客服服务流程规范文件、财务报销规定、采购规定、设备入">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg">
+<meta property="article:published_time" content="2023-12-21T06:21:22.000Z">
+<meta property="article:modified_time" content="2023-12-22T02:39:07.721Z">
+<meta property="article:author" content="Palp1tate">
+<meta property="article:tag" content="大三自学">
+<meta property="article:tag" content="软件系统架构设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://uestcwxy.love/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Palp1tate","link":"链接: ","source":"来源: Palp1tate","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '电子科大软件系统架构设计——系统需求分析',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-22 10:39:07'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Palp1tate" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Palp1tate"><span class="site-name">Palp1tate</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-clipboard-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">电子科大软件系统架构设计——系统需求分析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-21T06:21:22.000Z" title="发表于 2023-12-21 14:21:22">2023-12-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-22T02:39:07.721Z" title="更新于 2023-12-22 10:39:07">2023-12-22</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>17分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="电子科大软件系统架构设计——系统需求分析"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="系统需求分析"><a href="#系统需求分析" class="headerlink" title="系统需求分析"></a>系统需求分析</h1><h2 id="需求采集"><a href="#需求采集" class="headerlink" title="需求采集"></a>需求采集</h2><h3 id="研究现有文档与系统"><a href="#研究现有文档与系统" class="headerlink" title="研究现有文档与系统"></a>研究现有文档与系统</h3><ul>
+<li>组织机构图</li>
+<li>系统规划文档</li>
+<li>工作规范文档</li>
+<li>业务单据</li>
+<li>数据报表</li>
+<li>反馈意见</li>
+<li>领域知识</li>
+<li>现有系统</li>
+</ul>
+<h4 id="组织机构图"><a href="#组织机构图" class="headerlink" title="组织机构图"></a>组织机构图</h4><p>组织机构图提供了组织机构的部门、关键岗位与角色构成，并能反映它们之间的所属关系。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230914145306157.png" alt="image-20230914145306157"></p>
+<h4 id="系统规划文档"><a href="#系统规划文档" class="headerlink" title="系统规划文档"></a>系统规划文档</h4><p>组织机构的使命陈述、IT战略、信息化目标、建设方案、技术路线等。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230914145424408.png" alt="image-20230914145424408"></p>
+<h4 id="工作规范文档"><a href="#工作规范文档" class="headerlink" title="工作规范文档"></a>工作规范文档</h4><p>组织管理上的各种制度与规范，如客服服务流程规范文件、财务报销规定、采购规定、设备入库管理规定、出差补贴规定等。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230914145453040.png" alt="image-20230914145453040"></p>
+<h4 id="业务单据"><a href="#业务单据" class="headerlink" title="业务单据"></a>业务单据</h4><p>不同业务的单据，比如进销存业务有采购申请单、进货单、发货单、到货单、到货检验单、销售订单。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230914145550230.png" alt="image-20230914145550230"></p>
+<h4 id="报表"><a href="#报表" class="headerlink" title="报表"></a>报表</h4><p>不同业务的报告，如采购周报、库存月报、销售日报、销售月报、生产日报、生产月报、应收帐月报等。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230914145658736.png" alt="image-20230914145658736"></p>
+<h4 id="问题描述文档"><a href="#问题描述文档" class="headerlink" title="问题描述文档"></a>问题描述文档</h4><p>这些文档包括反映业务往来的函件、研究报告、建议单、反映意见表等。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230914145733060.png" alt="image-20230914145733060"></p>
+<h4 id="领域专业知识"><a href="#领域专业知识" class="headerlink" title="领域专业知识"></a>领域专业知识</h4><p>业务处理涉及的专业领域知识，比如一个化工企业相关的专业知识是化学工程，一个银行相关的专业知识是存贷、理财产品、投行等。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231221153612258.png" alt="image-20231221153612258"></p>
+<h4 id="现有相关软件系统"><a href="#现有相关软件系统" class="headerlink" title="现有相关软件系统"></a>现有相关软件系统</h4><p>现有软件系统相关的流程图、设计文档、程序文档、用户使用手册、界面、数据库表等材料。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230914145842478.png" alt="image-20230914145842478"></p>
+<h3 id="与客户及相关人员进行面谈"><a href="#与客户及相关人员进行面谈" class="headerlink" title="与客户及相关人员进行面谈"></a>与客户及相关人员进行面谈</h3><p><strong>面谈法</strong>是通过与客户直接面谈交流，获取需求的调查方法。</p>
+<p>访谈对象:</p>
+<ul>
+<li>客户:周期、预算、质量要求、预期收益</li>
+<li>用户:功能需求、非功能需求</li>
+<li>领域专家:领域知识</li>
+<li>客户的上下游合作伙伴:对业务协作与接口</li>
+</ul>
+<h4 id="正式面谈"><a href="#正式面谈" class="headerlink" title="正式面谈"></a>正式面谈</h4><ul>
+<li>正式面谈需要提前预约，有特定的参与对象。</li>
+<li>需求调研人员需要提前准备要面谈的问题，有些问题有预设答案，供被面谈对象进行选择与确认，有的是开放式的,无法提前准备可选答案。</li>
+</ul>
+<h4 id="非正式面谈"><a href="#非正式面谈" class="headerlink" title="非正式面谈"></a>非正式面谈</h4><ul>
+<li>非正式面谈是正式面谈的补充，时间、地点、形式都不确定，更多是日常交流，没有预设的问题。</li>
+<li>在轻松的面谈环境下，被访谈对象更可能说出自己真实的想法，或提及调研人员没有想到的问题和事实。</li>
+</ul>
+<h4 id="典型访谈问题"><a href="#典型访谈问题" class="headerlink" title="典型访谈问题"></a>典型访谈问题</h4><p>1）请问公司（部门)的组织结构是怎样的?</p>
+<p>2）您能描述一下您的岗位职责有哪些吗?</p>
+<p>3）请问是收货过程是先计量、质检，然后再开收货单吗?</p>
+<p>4）借款的审批流程是怎么样的，不同额度是不是有不同审批流程?</p>
+<p>5）生产日报中产量的单位是什么?</p>
+<p>6）目前对客户关系的维护与管理有哪些?</p>
+<p>7）有没有业务相关的资料（包括表格、表单、文档、报表等）可以提供?</p>
+<p>8）目前工作中您觉得存在什么样的问题?</p>
+<p>9）对现在的信息系统您满意吗?希望在哪些方面进行改进?</p>
+<p>10）您对整个系统的期望定位是什么?</p>
+<p>11）对我们将要开发的系统您有什么建议或期望?</p>
+<h4 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h4><p>优点:</p>
+<p>通过面对面的谈话与聊天，能比较深入地了解被面谈者对问题的看法与回答，并能够根据被面谈者的回答动态地调整面谈内容。</p>
+<p>缺点:</p>
+<p>需要提前预约，由于每个岗位平时都在忙于处理自己的业务，面谈时间可能不一定能及时安排，且面谈后需要整理，并尽量得到被面谈者的书面确认，这也需要一定时间周期，这会导致调研过程时间较长。</p>
+<h3 id="问卷调查法"><a href="#问卷调查法" class="headerlink" title="问卷调查法"></a>问卷调查法</h3><p><font color='red'>问卷调查法</font>是通过向被调查者发放预先设计的调查表格，请求被调查者填写表格内容，然后收集整理分析的一种需求调查方法。</p>
+<p>适用场景:</p>
+<ul>
+<li>对于那些目标清晰、业务相对简单的项目，调查表是一种高效的、低成本的需求采集方法。</li>
+<li>当需要调查很多人的观点而他们又不在同一个地方的时候，调查表更能获取更多人员的需求。</li>
+</ul>
+<h4 id="调查表问卷设计"><a href="#调查表问卷设计" class="headerlink" title="调查表问卷设计"></a>调查表问卷设计</h4><p>调查表问卷可以设计两类问题:封闭式问题（有备选答案）、开放式问题（没有备选答案）。</p>
+<p>封闭问题类型:</p>
+<ul>
+<li>单选&#x2F;多选问题。被调查者需要从提供的备选答案中选择一个或多个答案;</li>
+<li>评价问题。一类特殊的单选问题，表达被调查者对问题的态度或观点，如“强烈同意、同意、中立、不同意”;</li>
+<li>排序问题。对所提供的备选答案按优先级排序，可以是序号、百分比等排序方式。</li>
+<li>判断问题。被调查者对问题打勾或打叉。</li>
+</ul>
+<p>开放式问题类型：填空题、问答题</p>
+<h4 id="问卷调查表应用方式"><a href="#问卷调查表应用方式" class="headerlink" title="问卷调查表应用方式"></a>问卷调查表应用方式</h4><ul>
+<li>传统方法<br>采用纸质问卷表格采集需求，人手工填写，效率低、成本高，难以异地。</li>
+<li>新型渠道方法<br>采用网页问卷、微信问卷、电子邮件等方式采集需求，具有高效、准确、便于统计等优点。</li>
+</ul>
+<p>案例：办公OA系统需求调查问卷</p>
+<h3 id="观察法"><a href="#观察法" class="headerlink" title="观察法"></a>观察法</h3><p>观察法是一种通过观察业务工作及其活动，了解业务过程与相关领域知识，进一步获取业务需求的调查方法。</p>
+<ul>
+<li>旁观式观察</li>
+<li>解释式观察</li>
+<li>参与式观察</li>
+</ul>
+<h3 id="头脑风暴法"><a href="#头脑风暴法" class="headerlink" title="头脑风暴法"></a>头脑风暴法</h3><p>头脑风暴法是一种激发参与者脑力活动，产生新思想或者提出问题解决方案的会议技术。</p>
+<p>头脑风暴的作用:</p>
+<ul>
+<li>激发参与者产生新思想</li>
+<li>启发用户的潜在需求</li>
+<li>对来自不同人员的需求达成一致意见</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230914150828412.png" alt="image-20230914150828412"></p>
+<h3 id="原型法"><a href="#原型法" class="headerlink" title="原型法"></a>原型法</h3><p>原型法是一种利用快速构建的原型演示系统启发用户需求或验证用户需求的方法，从而可获得用户的需求反馈。</p>
+<p>原型法的用途:</p>
+<ul>
+<li>了解用户对原型系统的反馈信息</li>
+<li>启发用户的潜在需求</li>
+<li>获取用户的真实需求</li>
+</ul>
+<h4 id="原型方法分类"><a href="#原型方法分类" class="headerlink" title="原型方法分类"></a>原型方法分类</h4><p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230914150956411.png" alt="image-20230914150956411"></p>
+<p>进化式原型目标:将原型系统逐渐地演化为产品系统。</p>
+<ul>
+<li>进化式原型必须具有健壮性的系统架构设计。即便系统多次迭代修改，系统都应具有稳定性。</li>
+<li>进化式原型也必须采用可扩展性的系统设计原则，以支持版本升级与功能扩展。</li>
+<li>建立进化式原型比建立抛弃式原型需要更多时间。</li>
+</ul>
+<p>抛弃式原型目标:通过原型系统获取用户的明确需求。</p>
+<ul>
+<li>在原型达到预期目的以后将它抛弃，可以花费较少的代价导引出系统需求。</li>
+<li>抛弃式原型方法适合解决需求中的不确定性、二义性、不完整性或含糊性问题，以减少在继续开发时存在的风险。</li>
+<li>抛弃式原型可帮助用户和开发者激发需求，并可以发现需求中的漏洞。</li>
+</ul>
+<h4 id="原型法开发过程"><a href="#原型法开发过程" class="headerlink" title="原型法开发过程"></a>原型法开发过程</h4><p>1）确定用户基本需求。</p>
+<ul>
+<li><p>基本功能</p>
+</li>
+<li><p>典型输入&#x2F;输出数据。</p>
+</li>
+<li><p>基本界面形式</p>
+</li>
+</ul>
+<p>2）快速构建原型系统</p>
+<ul>
+<li>采用所见即所得的<font color='red'>快速开发工具</font>实现基本功能界面（如<code>WebBuilder</code>等)</li>
+<li>采用<font color='red'>界面原型设计工具</font>（如<code>Mockplus</code>,<code>Axure RP</code>等）实现演示系统</li>
+</ul>
+<p>3）对原型运行与评价</p>
+<ul>
+<li>用户试用原型系统，反馈问题</li>
+<li>确定系统的真实需求</li>
+<li>启发用户的新需求</li>
+</ul>
+<p>4）修正和改进原型系统</p>
+<ul>
+<li>根据用户反馈问题，确定修改方案</li>
+<li>改进原型系统</li>
+<li>用户再试用与评价，再修改，直到满意为止</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230914151410850.png" alt="image-20230914151410850"></p>
+<h3 id="快速应用开发"><a href="#快速应用开发" class="headerlink" title="快速应用开发"></a>快速应用开发</h3><p><strong>快速应用开发</strong>（Rapid Application Development，RAD）是一种通过快速开发并发布软件版本，以便用户及时反馈潜在需求的软件开发过程方法。该方法可以用于复杂系统的需求导引,也可用于系统迭代开发。</p>
+<p>快速应用开发的用途:</p>
+<ul>
+<li>尽快得到系统原型，验证用户的真实需求。</li>
+<li>通过系统原型使用，启发用户的潜在需求。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230914151521270.png" alt="image-20230914151521270"></p>
+<p>RAD融合了进化型原型法和头脑风暴方法，其基本思想为:</p>
+<ul>
+<li>让用户更主动地参与到项目分析、设计和构造活动中;</li>
+<li>组织一系列重点需求问题解决的研讨会，由投资方、用户、系统分析员、系统设计人员和开发人员一同参与；</li>
+<li>通过一种迭代过程方法加快需求分析和设计阶段进展，</li>
+<li>让用户尽快看到一个可运行的系统。</li>
+</ul>
+<p>RAD组合了5个方面的技术:</p>
+<ul>
+<li>进化原型迭代开发技术</li>
+<li>CASE（计算机辅助软件工程）工具支持</li>
+<li>拥有能使用先进工具的专门人员</li>
+<li>利用头脑风暴会议解决重点需求问题</li>
+<li>严格按照项目进度要求实施开发活动</li>
+</ul>
+<p>RAD方法的不足:</p>
+<ul>
+<li>RAD需要足够的人力资源，并投入相当的精力;</li>
+<li>开发人员和客户必须在很短的时间内完成一系列的需求分析，任何一方配合不当都会导致RAD项目失败;</li>
+<li>RAD 不适合技术风险很高的场景。当一个系统开发要采用很多新技术或需较多人员配合时， RAD 方法会面临较大风险；</li>
+<li>RAD可能产生难以维护与扩展的软件;</li>
+<li>RAD难以有足够时间去完成文档工作，其开发文档不足。</li>
+</ul>
+<h2 id="可视化需求建模"><a href="#可视化需求建模" class="headerlink" title="可视化需求建模"></a>可视化需求建模</h2><p>一、为什么开展需求可视化建模</p>
+<ul>
+<li>从用户收集到的需求信息通常是一大堆杂乱的文字信息，即使你对它们进行了分类，这些组织好的信息还不足够使开发人员对需求完全理解。</li>
+<li>用户需求通常是一些宽泛的文本描述，难以对信息系统开发给出明确的、详细的、标准的需求规格定义。</li>
+<li>需求可视化UML建模可以直观地、形式化展示系统需求要求，可帮助分析人员解决需求说明中不一致性、模糊性等问题。</li>
+</ul>
+<p>二、业务流程建模</p>
+<p><strong>业务流程模型</strong>是用来描述业务活动处理过程的模型，基于BPMN建模语言可以实现业务处理过程的可视化建模。</p>
+<h3 id="业务流程建模"><a href="#业务流程建模" class="headerlink" title="业务流程建模"></a>业务流程建模</h3><h4 id="普通流程建模"><a href="#普通流程建模" class="headerlink" title="普通流程建模"></a>普通流程建模</h4><ul>
+<li>私有业务流程——属于某个特定组织内部的业务流程。在BPMN建模时，使用单个泳池组织业务流程活动。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919143857555.png" alt="image-20230919143857555"></p>
+<ul>
+<li>公开业务流程——反映公众参与者与服务机构业务之间的交互。在BPMN建模时，需使用多个泳池组织业务流程活动。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231221161606183.png" alt="image-20231221161606183"></p>
+<h4 id="合作流程建模"><a href="#合作流程建模" class="headerlink" title="合作流程建模"></a>合作流程建模</h4><p><strong>合作流程</strong>是指有多个组织或部门参与者在业务流程中协作完成工作。一个合作流程通常包含两个或更多泳池，每个泳池关联到一个合作中的参与者对象。泳池之间通过消息流表示相应参与者之间交换的消息。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919144043187.png" alt="image-20230919144043187"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919144108081.png" alt="image-20230919143947012"></p>
+<h4 id="编排流程建模"><a href="#编排流程建模" class="headerlink" title="编排流程建模"></a>编排流程建模</h4><p><strong>编排流程</strong>也是描述多个参与者之间交互的流程建模方法，但<strong>编排流程取消掉了泳池的概念</strong>，它通过多个参与者之间直接的消息交互描述业务流程。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919144201877.png" alt="image-20230919144201877"></p>
+<p><strong>实践练习：医院门诊就医业务流程建模</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919144236835.png" alt="image-20230919144236835"></p>
+<h3 id="业务用例建模"><a href="#业务用例建模" class="headerlink" title="业务用例建模"></a>业务用例建模</h3><p><strong>业务用例模型</strong>是一种描述业务功能的模型，它需要直观地抽象出业务工作的功能、人员角色以及业务边界，可采用面向对象的UML业务用例图进行建模。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919144340151.png" alt="image-20230919144340151"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919144422852.png" alt="image-20230919144422852"></p>
+<h3 id="系统用例图建模"><a href="#系统用例图建模" class="headerlink" title="系统用例图建模"></a>系统用例图建模</h3><p>针对复杂系统或大型系统进行功能需求分析，可采用面向对象的UML用例图建模方法。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919144508100.png" alt="image-20230919144508100"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919144526018.png" alt="image-20230919144526018"></p>
+<h3 id="活动图建模"><a href="#活动图建模" class="headerlink" title="活动图建模"></a>活动图建模</h3><p>在系统需求分析中，除了定义功能用例外，还需要描述该功能用例的内部处理流程。这就需要采用UML活动图建模用例的行为过程。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919144801218.png" alt="image-20230919144801218"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919144909570.png" alt="image-20230919144909570"></p>
+<h3 id="分析类图建模"><a href="#分析类图建模" class="headerlink" title="分析类图建模"></a>分析类图建模</h3><p>在系统分析阶段，除了建立用例图与活动图模型外，还可进一步建立分析类图模型，用于描述系统由哪些分析类来实现用例功能。</p>
+<p>补充：</p>
+<p><font color='red'>多重性关联</font> ：多重性关联关系又称为重数性（Multiplicity）关联关系，表示两个关联对象在数量上的对应关系。在 UML 中，对象之间的多重性可以直接在关联直线上用一个数字或一个数字范围表示。</p>
+<table>
+<thead>
+<tr>
+<th><strong>表示方式</strong></th>
+<th><strong>多重性说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1..1</td>
+<td>表示另一个类的一个对象只与该类的一个对象有关系</td>
+</tr>
+<tr>
+<td>0..*</td>
+<td>表示另一个类的一个对象与该类的零个或多个对象有关系</td>
+</tr>
+<tr>
+<td>1..*</td>
+<td>表示另一个类的一个对象与该类的一个或多个对象有关系</td>
+</tr>
+<tr>
+<td>0..1</td>
+<td>表示另一个类的一个对象没有或只与该类的一个对象有关系</td>
+</tr>
+<tr>
+<td>m..n</td>
+<td>表示另一个类的一个对象与该类最少m，最多n个对象有关系 (m≤n)</td>
+</tr>
+</tbody></table>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919145120237.png" alt="image-20230919145120237"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919145140074.png" alt="image-20230919145140074"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919145217898.png" alt="image-20230919145217898"></p>
+<h4 id="分析类图建模步骤"><a href="#分析类图建模步骤" class="headerlink" title="分析类图建模步骤"></a>分析类图建模步骤</h4><ol>
+<li>从问题领域抽取类</li>
+<li>定义类名及属性</li>
+<li>确定类之间关联</li>
+<li>增量迭代完善类图</li>
+</ol>
+<h4 id="抽取类的方法"><a href="#抽取类的方法" class="headerlink" title="抽取类的方法"></a>抽取类的方法</h4><ol>
+<li><p>用例驱动方法</p>
+<p>从用例模型抽取类的方法:</p>
+<ul>
+<li>分析用例图模型，抽取含有业务数据的实体，作为系统的第一批实体类，如<code>Grades</code>类和<code>ReportCard</code>类。</li>
+<li>将用例的参与者作为第二批实体类，如<code>Teacher</code>类、<code>Student</code>类和<code>Administrator</code>类。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919145756659.png" alt="image-20230919145756659"></p>
+</li>
+<li><p>名词短语方法抽取类</p>
+<ul>
+<li>阅读需求文档陈述，从中找出包含数据信息的名词短语</li>
+<li>每个名词短语可以作为一个候选类</li>
+<li>将候选类分为相关类、模糊类</li>
+</ul>
+<p>例：采用名词短语方法从大学注册系统的需求陈述进行类抽取</p>
+<ul>
+<li>大学的每个<font color='blue'>学位</font>都设置了多门<font color='blue'>必修课程</font>和<font color='blue'>选修课程</font></li>
+<li>每门<font color='blue'>课程</font>设定了级别及学分</li>
+<li>同一课程可以是多个学位的组成部分</li>
+<li>每个学位都规定了完成所要求的最低总学分值</li>
+<li><font color='blue'>学生</font>可以对学位培养的<font color='blue'>开设课程</font>进行选修，形成适合自己需要的学习计划。当通过这些课程学习的考核评价后，就能获得他们所注册的学位。</li>
+</ul>
+<p>采用名词短语方法抽取的类如下:</p>
+<table>
+<thead>
+<tr>
+<th>相关类</th>
+<th>模糊类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Course</td>
+<td>CompulsoryCourse</td>
+</tr>
+<tr>
+<td>Degree</td>
+<td>ElectiveCourse</td>
+</tr>
+<tr>
+<td>Student</td>
+<td>StudyProgram</td>
+</tr>
+<tr>
+<td>CourseOffering</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>说明:</p>
+<p>1）名词短语方法抽取的类是否完整，取决于需求文档陈述的完整性和正确性。</p>
+<p>2）从大量文字描述中，抽取准确的、完整的类名称是较困难的事情。</p>
+</li>
+<li><p>公共类模式方法</p>
+<p>根据对象分类理论来识别业务领域通用的概念、事件、组织、人员、地点等术语来定义类。</p>
+<ul>
+<li>概念类，如专业（Major)、课程目录（Curricula）、课程（Course)</li>
+<li>事件类，如选课(<code>SelectingCourse</code>）、重修课程（<code>RetakeCourse</code>)</li>
+<li>组织类，如学院（College)</li>
+<li>人员类，如教师(Teacher)、学生(Student)</li>
+<li>地点类，如办公室(Office)</li>
+</ul>
+</li>
+<li><p>CRC(Class-Responsibility-Collaborator，类-职责-协作者)方法</p>
+<p>CRC方法是一种基于业务领域知识卡片去发现类、描述职责和定义协作者的类识别方法。</p>
+<p><strong>类名</strong>代表相似对象的集合名称。<strong>职责</strong>是指对象完成职责所需要数据和操作。<strong>协作者</strong>是为对象完成职责需要配合的其它类。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919150749523.png" alt="image-20230919150749523"></p>
+</li>
+</ol>
+<h4 id="定义类属性"><a href="#定义类属性" class="headerlink" title="定义类属性"></a>定义类属性</h4><p>一旦抽取出系统的基本候选类列表后，就可以使用建模工具进行类图定义。首先，需要定义各个类的属性。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919150911834.png" alt="image-20230919150911834"></p>
+<h4 id="建模类之间的关系"><a href="#建模类之间的关系" class="headerlink" title="建模类之间的关系"></a>建模类之间的关系</h4><p>分析类之间的业务关系，如类之间的关联关系、依赖关系、泛化关系、聚合关系等。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919151501607.png" alt="image-20230919151501607"></p>
+<p>在系统类图建模中，还可对类之间关联进行修饰说明。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919151533777.png" alt="image-20230919151533777"></p>
+<p>在系统类图建模中，一些类之间存在公共特性（属性和操作），则需要对公共部分进行抽象定义，并建立继承关系，或称为泛化关系。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919151608781.png" alt="image-20230919151608781"></p>
+<p>在系统类图建模中，一些类之间若存在“整体-部分”语义关系，则需要建立类之间的<strong>聚合关系</strong>或<strong>复合关系</strong>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919151713797.png" alt="image-20230919151713797"></p>
+<h4 id="增量迭代完善类模型"><a href="#增量迭代完善类模型" class="headerlink" title="增量迭代完善类模型"></a>增量迭代完善类模型</h4><p>在现有类模型基础上，进行增量迭代完善。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230919151811641.png" alt="image-20230919151811641"></p>
+<h2 id="需求文档化"><a href="#需求文档化" class="headerlink" title="需求文档化"></a>需求文档化</h2><p>一、需求规格说明书</p>
+<p>在建立系统需求模型后，还应对系统需求模型进行规范化的文档描述，即编写需求规格说明书。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230921142826027.png" alt="image-20230921142826027"></p>
+<p>二、需求规格说明标准</p>
+<ol>
+<li>IEEE830-1998系统需求规格说明</li>
+<li>GB9385-2008 计算机软件需求规格说明规范</li>
+<li>企业IT系统需求规格说明</li>
+</ol>
+<p>三、系统需求组成</p>
+<h3 id="功能性需求"><a href="#功能性需求" class="headerlink" title="功能性需求"></a>功能性需求</h3><p><strong>功能性需求</strong>指系统应该提供什么样的服务、如何对输入进行处理以及系统在特定条件下的行为等描述。</p>
+<p>功能性需求类型:</p>
+<ul>
+<li><p>系统需提供什么服务?</p>
+</li>
+<li><p>系统需做什么处理?</p>
+</li>
+<li><p>有哪几种操作模式?</p>
+</li>
+<li><p>必须执行什么计算或数据转换?</p>
+</li>
+</ul>
+<p>功能性需求是描述系统的具体功能要求。除采用用例图建模描述，还需使用规约表、活动图、时序图等模型之一对功能用例进行详细描述。</p>
+<h3 id="非功能性需求"><a href="#非功能性需求" class="headerlink" title="非功能性需求"></a>非功能性需求</h3><p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230921143111624.png" alt="image-20230921143111624"></p>
+<p>常见的系统性能需求指标:</p>
+<p>1.响应时间</p>
+<p>对请求的响应时间。包括客户端响应时间、服务器响应时间、网络响应时间。</p>
+<p>2.吞吐量</p>
+<p>单位时间内处理多少事务量&#x2F;数据量。</p>
+<p>3.并发用户数</p>
+<p>支持多少用户同时执行一个操作的能力。</p>
+<p>4.资源使用率</p>
+<p>CPU占用率、内存占用率、磁盘I&#x2F;0、网络I&#x2F;0。</p>
+<p><strong>例：一个图书借阅管理系统基本需求内容</strong></p>
+<p>基本功能需求</p>
+<ul>
+<li>图书查找</li>
+<li>图书借阅</li>
+<li>图书归还</li>
+<li>图书预订</li>
+</ul>
+<p>基本非功能需求</p>
+<ul>
+<li>1-3秒内完成图书查找</li>
+<li>支持200并发用户</li>
+<li>该系统应7×24小时持续运行</li>
+</ul>
+<h3 id="接口需求"><a href="#接口需求" class="headerlink" title="接口需求"></a>接口需求</h3><ul>
+<li><strong>用户接口</strong>:定义了用户使用软件时的接口需求，如用尸是迪过饰令仃处是图形用户界面使用系统。</li>
+<li><strong>软件接口</strong>:指待开发软件与其他软件系统之间的接口。如系统调用API服务接口实现系统功能集成。</li>
+<li><strong>硬件接口</strong>:描述本软件与硬件设备之间的接口，如设备驱动、接插件标准等。</li>
+<li><strong>通信接口</strong>:描述系统与其他系统之间的通信方式与协议，如局域网违信协议、蓝牙4.0协议、WIFI协议等。</li>
+</ul>
+<p>四、需求规格说明案例</p>
+<ul>
+<li>《四川省疾病控制中心法定传染病监测报告规范化管理平台》需求规格说明书</li>
+<li>《智慧酒店物品追踪系统》需求分析报告</li>
+</ul>
+<h2 id="需求管理"><a href="#需求管理" class="headerlink" title="需求管理"></a>需求管理</h2><p>一、需求管理内容</p>
+<p>需求管理主要包括两方面内容:</p>
+<ul>
+<li>对需求说明进行规范化处理;</li>
+<li>对需求的变更进行流程化管理，避免出现需求变更带来的项目失败风险</li>
+</ul>
+<p>当需求数目比较少时，采用需求依赖矩阵是一种发现需求矛盾或需求重叠的有效技术方法。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230921143701037.png" alt="image-20230921143701037"></p>
+<p>二、需求变更管理</p>
+<p>在系统开发生命周期的任何阶段，需求都可能发生变更。若没有对这些变化进行管理，将会给项目管理带来麻烦。需要采用<strong>需求变更管理工具</strong>进行存储与跟踪管理。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230921143733656.png" alt="image-20230921143733656"></p>
+<p>需求变更追踪管理:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230921143816431.png" alt="image-20230921143816431"></p>
+<p>需求变更控制流程:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230921143836063.png" alt="image-20230921143836063"></p>
+<p>需求变更管理工具：</p>
+<ul>
+<li><p>腾讯敏捷研发协作云平台(<a target="_blank" rel="noopener" href="https://www.tapd.cn/">https://www.tapd.cn/</a>)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231221180337342.png" alt="image-20231221180337342"></p>
+</li>
+<li><p>数知鸟(<a target="_blank" rel="noopener" href="https://shuzhiniao.com/">https://shuzhiniao.com</a>)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20231221180355632.png" alt="image-20231221180355632"></p>
+</li>
+</ul>
+<p>三、需求风险分析与优先级</p>
+<p><strong>需求风险分析</strong>是确认那些很可能在开发阶段产生困难或导致项目失败的需求。典型的需求风险类型:</p>
+<ul>
+<li>技术风险</li>
+<li>性能风险</li>
+<li>安全风险</li>
+<li>数据库完整性风险</li>
+<li>开发过程风险</li>
+<li>易变性风险</li>
+<li>法律风险</li>
+<li>政治风险</li>
+</ul>
+<p><strong>需求优先级</strong>是确认各个需求在项目中的重要程度。当项目面临延误时，使用优先级安排系统开发实现需求的先后顺序。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230921144119283.png" alt="image-20230921144119283"></p>
+<h2 id="需求分析案例"><a href="#需求分析案例" class="headerlink" title="需求分析案例"></a>需求分析案例</h2><p>一、案例说明</p>
+<p>以一个简化的银行ATM机系统为例进行需求分析，给出此系统的UML用例图、活动图和类图。银行ATM机系统具有用户身份认证、余额查询、取钱、存钱和转账这五个基本功能。</p>
+<p>二、业务用例图建模</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230921144212619.png" alt="image-20230921144212619"></p>
+<p>三、系统用例图建模</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230921144242474.png" alt="image-20230921144242474"></p>
+<p>用户身份验证用例规约：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230921144328382.png" alt="image-20230921144328382"></p>
+<p>余额查询用例规约：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230921144353373.png" alt="image-20230921144353373"></p>
+<p>取款用例规约：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230921144414338.png" alt="image-20230921144414338"></p>
+<p>四、活动图建模</p>
+<p>活动图与用例图对应，因此，可以为每个用例的内部处理要求建模一个活动图。</p>
+<p>用户身份验证用例的活动图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230921144456331.png" alt="image-20230921144456331"></p>
+<p>余额查询用例的活动图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230921144518741.png" alt="image-20230921144518741"></p>
+<p>取款用例的活动图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230921144544272.png" alt="image-20230921144544272"></p>
+<p>五、分析类图建模</p>
+<p>分析类图建模ATM机系统的数据需求。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/palp1tate/ImgPicGo/img/image-20230921144623813.png" alt="image-20230921144623813"></p>
+<h2 id="课堂作业与作业练习"><a href="#课堂作业与作业练习" class="headerlink" title="课堂作业与作业练习"></a>课堂作业与作业练习</h2><p>1．下面哪种需求采集方法是通过触发问题的想法发挥作用的?B</p>
+<p>A．调查表法</p>
+<p>B．头脑风暴法</p>
+<p>C．原型法</p>
+<p>D．研究现有文档与系统</p>
+<p>2．下面哪种关系不出现在UML用例图中?D</p>
+<p>A．包含</p>
+<p>B．扩展</p>
+<p>C．泛化</p>
+<p>D．复合</p>
+<p>3．下面哪种关系在类图中表示一个类是另一个类的一部分? A</p>
+<p>A．聚合</p>
+<p>B．扩展</p>
+<p>C．泛化</p>
+<p>D．关联</p>
+<p>4．活动图包含下面哪个元素?D</p>
+<p>A．活动</p>
+<p>B．分支</p>
+<p>C．并发</p>
+<p>D．以上都是</p>
+<p>5．以下哪种不是非功能性需求? A</p>
+<p>A．录入成绩</p>
+<p>B．安全性需求</p>
+<p>C．可扩展性</p>
+<p>D．可靠性需求</p>
+<p>1.BPMN的编排流程中没有泳池。（√)</p>
+<p>2.UML用例之间的表示扩展关系的箭头是从扩展用例指向被扩展用例。(√)</p>
+<p>3．活动图无法表达并发执行的活动。（×)</p>
+<p>4．类图中两个类之间的泛化关系是指两个类之间的一般与特殊关系。(√)</p>
+<p>5．需求变更管理需要有专门的变更过程控制。(√)</p>
+<p>观察法分为旁观式观察、解释式观察、(参与式观察)。</p>
+<p>调查表中的封闭式问题有3种形式:单选&#x2F;多选问题、评价问题、(排序问题)。</p>
+<p>用例图包含的元素有用例、关系、(角色)。</p>
+<p>需求规格说明书中非常重要的三部分内容分别是功能性需求，(非功能性需求)、接口需求。</p>
+<p>一个类包含三方面要素:类名、属性、(方法)。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://uestcwxy.love">Palp1tate</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://uestcwxy.love/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/">https://uestcwxy.love/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://uestcwxy.love" target="_blank">Palp1tate</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/">大三自学</a><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">软件系统架构设计</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/" title="电子科大软件系统架构设计——系统规划"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">电子科大软件系统架构设计——系统规划</div></div></a></div><div class="next-post pull-right"><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/" title="电子科大软件系统架构设计——系统架构设计"><img class="cover" src="https://s2.loli.net/2023/05/31/TREyA8hgqS7JnfV.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">电子科大软件系统架构设计——系统架构设计</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/1/" title="电子科大软件系统架构设计——系统分析与设计概述"><img class="cover" src="https://s2.loli.net/2023/05/31/UuGQIvw8HNBrZsp.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-20</div><div class="title">电子科大软件系统架构设计——系统分析与设计概述</div></div></a></div><div><a href="/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/2/" title="电子科大软件系统架构设计——面向对象建模基础"><img class="cover" src="https://s2.loli.net/2023/05/31/1zC4bdRjiXnZ75a.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-20</div><div class="title">电子科大软件系统架构设计——面向对象建模基础</div></div></a></div><div><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/" title="电子科大软件系统架构设计——系统规划"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-21</div><div class="title">电子科大软件系统架构设计——系统规划</div></div></a></div><div><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/" title="电子科大软件系统架构设计——系统架构设计"><img class="cover" src="https://s2.loli.net/2023/05/31/TREyA8hgqS7JnfV.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-21</div><div class="title">电子科大软件系统架构设计——系统架构设计</div></div></a></div><div><a href="/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/" title="电子科大软件系统架构设计——设计模式"><img class="cover" src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-23</div><div class="title">电子科大软件系统架构设计——设计模式</div></div></a></div><div><a href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/" title="电子科大软件系统架构设计——软件建模详细设计"><img class="cover" src="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-21</div><div class="title">电子科大软件系统架构设计——软件建模详细设计</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Palp1tate</div><div class="author-info__description">等我苦尽甘来时，我给你讲讲来时走的路。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/palp1tate/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.facebook.com/profile.php?id=100092533320651" target="_blank" title="facebook"><i class="fab fa-facebook" style="color: #4a7dbe;"></i></a><a class="social-icon" href="mailto:1939311091@qq.com" target="_blank" title="email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/1907948898" target="_blank" title="b站"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/tiktok.jpg" target="_blank" title="抖音"><i class="fab fa-tiktok" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/img/weixin.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">刚建站不久，博客美化有待研究，部分页面也没时间弄，路过的你将就看啦~😊，图片没加载出来就是网络不佳噢~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">系统需求分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E9%87%87%E9%9B%86"><span class="toc-number">1.1.</span> <span class="toc-text">需求采集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A0%94%E7%A9%B6%E7%8E%B0%E6%9C%89%E6%96%87%E6%A1%A3%E4%B8%8E%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.1.1.</span> <span class="toc-text">研究现有文档与系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E7%BB%87%E6%9C%BA%E6%9E%84%E5%9B%BE"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">组织机构图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%A7%84%E5%88%92%E6%96%87%E6%A1%A3"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">系统规划文档</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E8%A7%84%E8%8C%83%E6%96%87%E6%A1%A3"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">工作规范文档</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E5%8D%95%E6%8D%AE"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">业务单据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%A5%E8%A1%A8"><span class="toc-number">1.1.1.5.</span> <span class="toc-text">报表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0%E6%96%87%E6%A1%A3"><span class="toc-number">1.1.1.6.</span> <span class="toc-text">问题描述文档</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%86%E5%9F%9F%E4%B8%93%E4%B8%9A%E7%9F%A5%E8%AF%86"><span class="toc-number">1.1.1.7.</span> <span class="toc-text">领域专业知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8E%B0%E6%9C%89%E7%9B%B8%E5%85%B3%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.1.1.8.</span> <span class="toc-text">现有相关软件系统</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E%E5%AE%A2%E6%88%B7%E5%8F%8A%E7%9B%B8%E5%85%B3%E4%BA%BA%E5%91%98%E8%BF%9B%E8%A1%8C%E9%9D%A2%E8%B0%88"><span class="toc-number">1.1.2.</span> <span class="toc-text">与客户及相关人员进行面谈</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E5%BC%8F%E9%9D%A2%E8%B0%88"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">正式面谈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E6%AD%A3%E5%BC%8F%E9%9D%A2%E8%B0%88"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">非正式面谈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E8%AE%BF%E8%B0%88%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">典型访谈问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">优缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E5%8D%B7%E8%B0%83%E6%9F%A5%E6%B3%95"><span class="toc-number">1.1.3.</span> <span class="toc-text">问卷调查法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E6%9F%A5%E8%A1%A8%E9%97%AE%E5%8D%B7%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">调查表问卷设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E5%8D%B7%E8%B0%83%E6%9F%A5%E8%A1%A8%E5%BA%94%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">问卷调查表应用方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E6%B3%95"><span class="toc-number">1.1.4.</span> <span class="toc-text">观察法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B4%E8%84%91%E9%A3%8E%E6%9A%B4%E6%B3%95"><span class="toc-number">1.1.5.</span> <span class="toc-text">头脑风暴法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E6%B3%95"><span class="toc-number">1.1.6.</span> <span class="toc-text">原型法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E6%96%B9%E6%B3%95%E5%88%86%E7%B1%BB"><span class="toc-number">1.1.6.1.</span> <span class="toc-text">原型方法分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E6%B3%95%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B"><span class="toc-number">1.1.6.2.</span> <span class="toc-text">原型法开发过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91"><span class="toc-number">1.1.7.</span> <span class="toc-text">快速应用开发</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E9%9C%80%E6%B1%82%E5%BB%BA%E6%A8%A1"><span class="toc-number">1.2.</span> <span class="toc-text">可视化需求建模</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E6%B5%81%E7%A8%8B%E5%BB%BA%E6%A8%A1"><span class="toc-number">1.2.1.</span> <span class="toc-text">业务流程建模</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E6%B5%81%E7%A8%8B%E5%BB%BA%E6%A8%A1"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">普通流程建模</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%88%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%BB%BA%E6%A8%A1"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">合作流程建模</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E6%8E%92%E6%B5%81%E7%A8%8B%E5%BB%BA%E6%A8%A1"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">编排流程建模</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E7%94%A8%E4%BE%8B%E5%BB%BA%E6%A8%A1"><span class="toc-number">1.2.2.</span> <span class="toc-text">业务用例建模</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%94%A8%E4%BE%8B%E5%9B%BE%E5%BB%BA%E6%A8%A1"><span class="toc-number">1.2.3.</span> <span class="toc-text">系统用例图建模</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B4%BB%E5%8A%A8%E5%9B%BE%E5%BB%BA%E6%A8%A1"><span class="toc-number">1.2.4.</span> <span class="toc-text">活动图建模</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E7%B1%BB%E5%9B%BE%E5%BB%BA%E6%A8%A1"><span class="toc-number">1.2.5.</span> <span class="toc-text">分析类图建模</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E7%B1%BB%E5%9B%BE%E5%BB%BA%E6%A8%A1%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.2.5.1.</span> <span class="toc-text">分析类图建模步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%BD%E5%8F%96%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.5.2.</span> <span class="toc-text">抽取类的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%B1%9E%E6%80%A7"><span class="toc-number">1.2.5.3.</span> <span class="toc-text">定义类属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%BA%E6%A8%A1%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.2.5.4.</span> <span class="toc-text">建模类之间的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A2%9E%E9%87%8F%E8%BF%AD%E4%BB%A3%E5%AE%8C%E5%96%84%E7%B1%BB%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.2.5.5.</span> <span class="toc-text">增量迭代完善类模型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E5%8C%96"><span class="toc-number">1.3.</span> <span class="toc-text">需求文档化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E6%80%A7%E9%9C%80%E6%B1%82"><span class="toc-number">1.3.1.</span> <span class="toc-text">功能性需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E5%8A%9F%E8%83%BD%E6%80%A7%E9%9C%80%E6%B1%82"><span class="toc-number">1.3.2.</span> <span class="toc-text">非功能性需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E9%9C%80%E6%B1%82"><span class="toc-number">1.3.3.</span> <span class="toc-text">接口需求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86"><span class="toc-number">1.4.</span> <span class="toc-text">需求管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B"><span class="toc-number">1.5.</span> <span class="toc-text">需求分析案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E5%A0%82%E4%BD%9C%E4%B8%9A%E4%B8%8E%E4%BD%9C%E4%B8%9A%E7%BB%83%E4%B9%A0"><span class="toc-number">1.6.</span> <span class="toc-text">课堂作业与作业练习</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/" title="电子科大软件系统架构设计——设计模式"><img src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——设计模式"/></a><div class="content"><a class="title" href="/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/" title="电子科大软件系统架构设计——设计模式">电子科大软件系统架构设计——设计模式</a><time datetime="2023-12-23T13:43:11.000Z" title="发表于 2023-12-23 21:43:11">2023-12-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/" title="电子科大软件系统架构设计——软件建模详细设计"><img src="https://s2.loli.net/2023/05/31/z6eMNGUOmTkQ8aC.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——软件建模详细设计"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/" title="电子科大软件系统架构设计——软件建模详细设计">电子科大软件系统架构设计——软件建模详细设计</a><time datetime="2023-12-21T06:21:31.000Z" title="发表于 2023-12-21 14:21:31">2023-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/" title="电子科大软件系统架构设计——系统架构设计"><img src="https://s2.loli.net/2023/05/31/TREyA8hgqS7JnfV.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——系统架构设计"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/" title="电子科大软件系统架构设计——系统架构设计">电子科大软件系统架构设计——系统架构设计</a><time datetime="2023-12-21T06:21:26.000Z" title="发表于 2023-12-21 14:21:26">2023-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/" title="电子科大软件系统架构设计——系统需求分析"><img src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——系统需求分析"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/" title="电子科大软件系统架构设计——系统需求分析">电子科大软件系统架构设计——系统需求分析</a><time datetime="2023-12-21T06:21:22.000Z" title="发表于 2023-12-21 14:21:22">2023-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/" title="电子科大软件系统架构设计——系统规划"><img src="https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子科大软件系统架构设计——系统规划"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/" title="电子科大软件系统架构设计——系统规划">电子科大软件系统架构设计——系统规划</a><time datetime="2023-12-21T03:02:30.000Z" title="发表于 2023-12-21 11:02:30">2023-12-21</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2023/05/31/Ev8Fdzey4foigRr.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 By Palp1tate</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><i class="fa-solid fa-cloud"></i><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>萌ICP备20230529号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="6614140207" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-mini="true"> </div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
