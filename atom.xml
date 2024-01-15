@@ -6,7 +6,7 @@
   <link href="https://uestcwxy.love/atom.xml" rel="self"/>
   
   <link href="https://uestcwxy.love/"/>
-  <updated>2023-12-28T02:21:02.138Z</updated>
+  <updated>2024-01-15T06:16:06.529Z</updated>
   <id>https://uestcwxy.love/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Go+快速开始指南</title>
+    <link href="https://uestcwxy.love/2024/01/15/go+/"/>
+    <id>https://uestcwxy.love/2024/01/15/go+/</id>
+    <published>2024-01-15T06:13:58.000Z</published>
+    <updated>2024-01-15T06:16:06.529Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    
+    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+  </entry>
   
   <entry>
     <title>电子科大软件系统架构设计——设计模式</title>
@@ -310,9 +335,9 @@
     
     <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
-    <category term="计算机网络" scheme="https://uestcwxy.love/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
     <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    
+    <category term="计算机网络" scheme="https://uestcwxy.love/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
@@ -468,29 +493,6 @@
     <id>https://uestcwxy.love/2023/11/17/git-use/</id>
     <published>2023-11-17T13:26:14.000Z</published>
     <updated>2023-11-24T13:36:11.057Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>.gitignore 文件——如何在 Git 中忽略文件和文件夹</title>
-    <link href="https://uestcwxy.love/2023/11/16/git/"/>
-    <id>https://uestcwxy.love/2023/11/16/git/</id>
-    <published>2023-11-16T11:07:53.000Z</published>
-    <updated>2023-11-17T13:19:38.442Z</updated>
     
     
       
