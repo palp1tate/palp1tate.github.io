@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Palp1tate</title>
+  <title>王翊珩</title>
   <icon>https://www.gravatar.com/avatar/baf7a9a441045c4183b26510f38f5d76</icon>
-  <subtitle>one uestcerのblog</subtitle>
-  <link href="https://uestcwxy.love/atom.xml" rel="self"/>
+  <subtitle>one coderのblog</subtitle>
+  <link href="https://palp1tate.github.io/atom.xml" rel="self"/>
   
-  <link href="https://uestcwxy.love/"/>
+  <link href="https://palp1tate.github.io/"/>
   <updated>2024-04-21T09:28:08.215Z</updated>
-  <id>https://uestcwxy.love/</id>
+  <id>https://palp1tate.github.io/</id>
   
   <author>
     <name>Palp1tate</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Github主页设置贪吃蛇详细教程</title>
-    <link href="https://uestcwxy.love/2024/04/21/snake/"/>
-    <id>https://uestcwxy.love/2024/04/21/snake/</id>
+    <link href="https://palp1tate.github.io/2024/04/21/snake/"/>
+    <id>https://palp1tate.github.io/2024/04/21/snake/</id>
     <published>2024-04-21T09:26:41.000Z</published>
     <updated>2024-04-21T09:28:08.215Z</updated>
     
@@ -35,14 +35,14 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
   <entry>
     <title>Go+快速开始指南</title>
-    <link href="https://uestcwxy.love/2024/01/15/go+/"/>
-    <id>https://uestcwxy.love/2024/01/15/go+/</id>
+    <link href="https://palp1tate.github.io/2024/01/15/go+/"/>
+    <id>https://palp1tate.github.io/2024/01/15/go+/</id>
     <published>2024-01-15T06:13:58.000Z</published>
     <updated>2024-01-15T06:16:06.529Z</updated>
     
@@ -58,16 +58,16 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    <category term="Go" scheme="https://palp1tate.github.io/tags/Go/"/>
     
   </entry>
   
   <entry>
     <title>电子科大软件系统架构设计——设计模式</title>
-    <link href="https://uestcwxy.love/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/"/>
-    <id>https://uestcwxy.love/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/</id>
+    <link href="https://palp1tate.github.io/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/"/>
+    <id>https://palp1tate.github.io/2023/12/23/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6-2/</id>
     <published>2023-12-23T13:43:11.000Z</published>
     <updated>2023-12-28T02:21:02.138Z</updated>
     
@@ -83,16 +83,16 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
-    <category term="软件系统架构设计" scheme="https://uestcwxy.love/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
+    <category term="软件系统架构设计" scheme="https://palp1tate.github.io/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
   <entry>
     <title>电子科大软件系统架构设计——软件建模详细设计</title>
-    <link href="https://uestcwxy.love/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/"/>
-    <id>https://uestcwxy.love/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/</id>
+    <link href="https://palp1tate.github.io/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/"/>
+    <id>https://palp1tate.github.io/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/6/</id>
     <published>2023-12-21T06:21:31.000Z</published>
     <updated>2023-12-27T13:50:28.360Z</updated>
     
@@ -108,16 +108,16 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
-    <category term="软件系统架构设计" scheme="https://uestcwxy.love/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
+    <category term="软件系统架构设计" scheme="https://palp1tate.github.io/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
   <entry>
     <title>电子科大软件系统架构设计——系统架构设计</title>
-    <link href="https://uestcwxy.love/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/"/>
-    <id>https://uestcwxy.love/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/</id>
+    <link href="https://palp1tate.github.io/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/"/>
+    <id>https://palp1tate.github.io/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/5/</id>
     <published>2023-12-21T06:21:26.000Z</published>
     <updated>2023-12-22T08:50:31.798Z</updated>
     
@@ -133,16 +133,16 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
-    <category term="软件系统架构设计" scheme="https://uestcwxy.love/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
+    <category term="软件系统架构设计" scheme="https://palp1tate.github.io/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
   <entry>
     <title>电子科大软件系统架构设计——系统需求分析</title>
-    <link href="https://uestcwxy.love/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/"/>
-    <id>https://uestcwxy.love/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/</id>
+    <link href="https://palp1tate.github.io/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/"/>
+    <id>https://palp1tate.github.io/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/4/</id>
     <published>2023-12-21T06:21:22.000Z</published>
     <updated>2023-12-22T02:39:07.721Z</updated>
     
@@ -158,16 +158,16 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
-    <category term="软件系统架构设计" scheme="https://uestcwxy.love/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
+    <category term="软件系统架构设计" scheme="https://palp1tate.github.io/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
   <entry>
     <title>电子科大软件系统架构设计——系统规划</title>
-    <link href="https://uestcwxy.love/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/"/>
-    <id>https://uestcwxy.love/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/</id>
+    <link href="https://palp1tate.github.io/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/"/>
+    <id>https://palp1tate.github.io/2023/12/21/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/3/</id>
     <published>2023-12-21T03:02:30.000Z</published>
     <updated>2023-12-21T07:21:14.651Z</updated>
     
@@ -183,16 +183,16 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
-    <category term="软件系统架构设计" scheme="https://uestcwxy.love/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
+    <category term="软件系统架构设计" scheme="https://palp1tate.github.io/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
   <entry>
     <title>电子科大软件架构设计——期末复习题集</title>
-    <link href="https://uestcwxy.love/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/8/"/>
-    <id>https://uestcwxy.love/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/8/</id>
+    <link href="https://palp1tate.github.io/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/8/"/>
+    <id>https://palp1tate.github.io/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/8/</id>
     <published>2023-12-20T10:06:13.000Z</published>
     <updated>2023-12-30T02:51:16.316Z</updated>
     
@@ -208,16 +208,16 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
-    <category term="软件系统架构设计" scheme="https://uestcwxy.love/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
+    <category term="软件系统架构设计" scheme="https://palp1tate.github.io/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
   <entry>
     <title>电子科大软件系统架构设计——面向对象建模基础</title>
-    <link href="https://uestcwxy.love/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/2/"/>
-    <id>https://uestcwxy.love/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/2/</id>
+    <link href="https://palp1tate.github.io/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/2/"/>
+    <id>https://palp1tate.github.io/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/2/</id>
     <published>2023-12-20T10:06:06.000Z</published>
     <updated>2023-12-20T13:38:42.960Z</updated>
     
@@ -233,16 +233,16 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
-    <category term="软件系统架构设计" scheme="https://uestcwxy.love/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
+    <category term="软件系统架构设计" scheme="https://palp1tate.github.io/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
   <entry>
     <title>电子科大软件系统架构设计——系统分析与设计概述</title>
-    <link href="https://uestcwxy.love/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/1/"/>
-    <id>https://uestcwxy.love/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/1/</id>
+    <link href="https://palp1tate.github.io/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/1/"/>
+    <id>https://palp1tate.github.io/2023/12/20/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/1/</id>
     <published>2023-12-20T03:57:47.000Z</published>
     <updated>2023-12-20T10:47:14.106Z</updated>
     
@@ -258,16 +258,16 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
-    <category term="软件系统架构设计" scheme="https://uestcwxy.love/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
+    <category term="软件系统架构设计" scheme="https://palp1tate.github.io/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
   <entry>
     <title>电子科大软件系统架构设计——用户界面设计</title>
-    <link href="https://uestcwxy.love/2023/12/19/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/7/"/>
-    <id>https://uestcwxy.love/2023/12/19/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/7/</id>
+    <link href="https://palp1tate.github.io/2023/12/19/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/7/"/>
+    <id>https://palp1tate.github.io/2023/12/19/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/7/</id>
     <published>2023-12-19T11:27:01.000Z</published>
     <updated>2023-12-19T11:28:27.090Z</updated>
     
@@ -283,16 +283,16 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
-    <category term="软件系统架构设计" scheme="https://uestcwxy.love/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
+    <category term="软件系统架构设计" scheme="https://palp1tate.github.io/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
   <entry>
     <title>提高写作水平——怎样在Typora中使用快捷键实现快速改变字体颜色详解</title>
-    <link href="https://uestcwxy.love/2023/12/14/typora-color/"/>
-    <id>https://uestcwxy.love/2023/12/14/typora-color/</id>
+    <link href="https://palp1tate.github.io/2023/12/14/typora-color/"/>
+    <id>https://palp1tate.github.io/2023/12/14/typora-color/</id>
     <published>2023-12-14T10:01:59.000Z</published>
     <updated>2023-12-14T11:09:17.095Z</updated>
     
@@ -308,14 +308,14 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
   <entry>
     <title>q9</title>
-    <link href="https://uestcwxy.love/2023/12/07/%E7%AE%97%E6%B3%95/q9/"/>
-    <id>https://uestcwxy.love/2023/12/07/%E7%AE%97%E6%B3%95/q9/</id>
+    <link href="https://palp1tate.github.io/2023/12/07/%E7%AE%97%E6%B3%95/q9/"/>
+    <id>https://palp1tate.github.io/2023/12/07/%E7%AE%97%E6%B3%95/q9/</id>
     <published>2023-12-07T06:51:30.000Z</published>
     <updated>2023-12-07T08:14:56.968Z</updated>
     
@@ -331,16 +331,16 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
-    <category term="算法" scheme="https://uestcwxy.love/tags/%E7%AE%97%E6%B3%95/"/>
+    <category term="算法" scheme="https://palp1tate.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>从零开始部署一个网站详细图文教程——腾讯云的服务器、SSL证书，阿里云的域名，七牛云的对象存储、CDN等</title>
-    <link href="https://uestcwxy.love/2023/11/29/site-deployment/"/>
-    <id>https://uestcwxy.love/2023/11/29/site-deployment/</id>
+    <link href="https://palp1tate.github.io/2023/11/29/site-deployment/"/>
+    <id>https://palp1tate.github.io/2023/11/29/site-deployment/</id>
     <published>2023-11-29T14:25:28.000Z</published>
     <updated>2023-12-02T08:46:20.991Z</updated>
     
@@ -356,18 +356,18 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
-    <category term="Go" scheme="https://uestcwxy.love/tags/Go/"/>
+    <category term="Go" scheme="https://palp1tate.github.io/tags/Go/"/>
     
-    <category term="计算机网络" scheme="https://uestcwxy.love/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    <category term="计算机网络" scheme="https://palp1tate.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
   <entry>
     <title>快速提高生产力——Power Shell也能命令提示并自动补全</title>
-    <link href="https://uestcwxy.love/2023/11/29/powershell/"/>
-    <id>https://uestcwxy.love/2023/11/29/powershell/</id>
+    <link href="https://palp1tate.github.io/2023/11/29/powershell/"/>
+    <id>https://palp1tate.github.io/2023/11/29/powershell/</id>
     <published>2023-11-29T01:37:49.000Z</published>
     <updated>2023-11-29T03:29:24.547Z</updated>
     
@@ -383,14 +383,14 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
   <entry>
     <title>leetcode二叉树必刷题（2）——N 叉树的层序遍历、在每个树行中找最大值、填充每个节点的下一个右侧节点指针、填充每个节点的下一个右侧节点指针II、二叉树的最大深度、二叉树的最小深度</title>
-    <link href="https://uestcwxy.love/2023/11/28/%E7%AE%97%E6%B3%95/q8/"/>
-    <id>https://uestcwxy.love/2023/11/28/%E7%AE%97%E6%B3%95/q8/</id>
+    <link href="https://palp1tate.github.io/2023/11/28/%E7%AE%97%E6%B3%95/q8/"/>
+    <id>https://palp1tate.github.io/2023/11/28/%E7%AE%97%E6%B3%95/q8/</id>
     <published>2023-11-28T02:44:54.000Z</published>
     <updated>2023-12-02T08:45:53.482Z</updated>
     
@@ -406,16 +406,16 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
-    <category term="算法" scheme="https://uestcwxy.love/tags/%E7%AE%97%E6%B3%95/"/>
+    <category term="算法" scheme="https://palp1tate.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>leetcode二叉树必刷题（1）——二叉树的前序遍历、二叉树的中序遍历、二叉树的后序遍历、二叉树的层序遍历、二叉树的层序遍历、II 二叉树的右视图、二叉树的层平均值</title>
-    <link href="https://uestcwxy.love/2023/11/25/%E7%AE%97%E6%B3%95/q7/"/>
-    <id>https://uestcwxy.love/2023/11/25/%E7%AE%97%E6%B3%95/q7/</id>
+    <link href="https://palp1tate.github.io/2023/11/25/%E7%AE%97%E6%B3%95/q7/"/>
+    <id>https://palp1tate.github.io/2023/11/25/%E7%AE%97%E6%B3%95/q7/</id>
     <published>2023-11-25T05:32:02.000Z</published>
     <updated>2023-11-26T12:47:37.710Z</updated>
     
@@ -431,16 +431,16 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
-    <category term="算法" scheme="https://uestcwxy.love/tags/%E7%AE%97%E6%B3%95/"/>
+    <category term="算法" scheme="https://palp1tate.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>leetcode栈与队列必刷题——用栈实现队列、用队列实现栈、有效的括号、删除字符串中的所有相邻重复项、逆波兰表达式求值、滑动窗口最大值、前 K 个高频元素</title>
-    <link href="https://uestcwxy.love/2023/11/21/%E7%AE%97%E6%B3%95/q6/"/>
-    <id>https://uestcwxy.love/2023/11/21/%E7%AE%97%E6%B3%95/q6/</id>
+    <link href="https://palp1tate.github.io/2023/11/21/%E7%AE%97%E6%B3%95/q6/"/>
+    <id>https://palp1tate.github.io/2023/11/21/%E7%AE%97%E6%B3%95/q6/</id>
     <published>2023-11-21T07:05:51.000Z</published>
     <updated>2023-11-24T13:36:58.164Z</updated>
     
@@ -456,16 +456,16 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
-    <category term="算法" scheme="https://uestcwxy.love/tags/%E7%AE%97%E6%B3%95/"/>
+    <category term="算法" scheme="https://palp1tate.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>leetcode字符串必刷题——反转字符串、反转字符串 II、反转字符串中的单词、找出字符串中第一个匹配项的下标、重复的子字符串</title>
-    <link href="https://uestcwxy.love/2023/11/19/%E7%AE%97%E6%B3%95/q5/"/>
-    <id>https://uestcwxy.love/2023/11/19/%E7%AE%97%E6%B3%95/q5/</id>
+    <link href="https://palp1tate.github.io/2023/11/19/%E7%AE%97%E6%B3%95/q5/"/>
+    <id>https://palp1tate.github.io/2023/11/19/%E7%AE%97%E6%B3%95/q5/</id>
     <published>2023-11-19T05:59:33.000Z</published>
     <updated>2023-11-20T14:24:13.644Z</updated>
     
@@ -481,16 +481,16 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
-    <category term="算法" scheme="https://uestcwxy.love/tags/%E7%AE%97%E6%B3%95/"/>
+    <category term="算法" scheme="https://palp1tate.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>快速提高编码生产力——中国用户如何使用Jetbrains内置的AI助手</title>
-    <link href="https://uestcwxy.love/2023/11/18/jetbrains-ai/"/>
-    <id>https://uestcwxy.love/2023/11/18/jetbrains-ai/</id>
+    <link href="https://palp1tate.github.io/2023/11/18/jetbrains-ai/"/>
+    <id>https://palp1tate.github.io/2023/11/18/jetbrains-ai/</id>
     <published>2023-11-18T05:24:31.000Z</published>
     <updated>2023-11-18T08:38:20.658Z</updated>
     
@@ -506,7 +506,7 @@
     
     
     
-    <category term="大三自学" scheme="https://uestcwxy.love/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
+    <category term="大三自学" scheme="https://palp1tate.github.io/tags/%E5%A4%A7%E4%B8%89%E8%87%AA%E5%AD%A6/"/>
     
   </entry>
   
